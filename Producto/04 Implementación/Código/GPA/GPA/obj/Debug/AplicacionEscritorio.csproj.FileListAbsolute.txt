@@ -10,6 +10,9 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\AplicacionEscritorio.csprojResolveAssemblyReference.cache
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.exe
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.pdb
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.HistoriaClinica.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.Registrar_Análisis_de_Laboratorio.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.RegistrarEstudio.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.RegistrarInstitucion.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.RegistrarHistoriaClínica.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.InicioSesión.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.MenuPrincipal.resources

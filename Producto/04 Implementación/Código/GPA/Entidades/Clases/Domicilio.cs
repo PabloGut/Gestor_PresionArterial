@@ -14,6 +14,8 @@ namespace Entidades.Clases
         public int piso { get; set; }
         public string departamento { get; set; }
         public Barrio barrio { get; set; }
+        public int id_institucion { get; set; }
+        public int id_barrio { get; set; }
 
     }
 }

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases
 {
-    public class Institucion
+    public class Usuario
     {
         public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public Domicilio domicilio { get; set; }
-        public int id_domicilio { get; set; }
-
+        public string pass { get; set; }
+        public DateTime fechaCreacion { get; set; }
     }
 }

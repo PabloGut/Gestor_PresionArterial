@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
+using Entidades.Clases;
 using DAO;
+using Manejadores;
+
 namespace GPA
 {
     public partial class RegistrarEstudio : Form
     {
-        Entidades.Manejadores.ManejadorRegistrarEstudio manejador;
+        ManejadorRegistrarEstudio manejador;
+
         public RegistrarEstudio()
         {
             InitializeComponent();
-            manejador = new Entidades.Manejadores.ManejadorRegistrarEstudio();
+            manejador = new ManejadorRegistrarEstudio();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,35 +37,24 @@ namespace GPA
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            DateTime? fecha = null;
 
-            if (string.IsNullOrEmpty(txtNombreEstudio.Text))
-            {
-                MessageBox.Show("Debe ingresar el nombre del estudio.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtNombreEstudio.Focus();
-                return;
-            }
-            if (!string.IsNullOrEmpty(mtbFechaEstudio.Text))
-                fecha = Convert.ToDateTime(mtbFechaEstudio);
-
-            if (string.IsNullOrEmpty(txtDoctorACargo.Text))
-            {
-                MessageBox.Show("Debe ingresar el nombre del doctor a cargo del estudio.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtDoctorACargo.Focus();
-                return;
-            }
-            if (string.IsNullOrEmpty(txtInforme.Text))
-            {
-                MessageBox.Show("Debe ingresar el informe del estudio.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtInforme.Focus();
-                return;
-            }
-            manejador.nombreEstudioIngresado(txtNombreEstudio.Text);
-            manejador.fechaEstudioIngresado(Convert.ToDateTime(mtbFechaEstudio));
-            manejador.doctorACargoIngresado(txtDoctorACargo.Text);
-            manejador.InformeIngresado(txtInforme.Text);
+            Estudio estudio = crearEstudio();
+            manejador.registrarEstudio(estudio);
         }
+        public Estudio crearEstudio()
+        {
+            Estudio est = new Estudio();
+            est.nombre = txtNombreEstudio.Text;
+            est.fecha = Convert.ToDateTime(mtbFechaEstudio.Text);
+            est.doctorACargo = txtDoctorACargo.Text;
+            est.informeEstudio = txtInforme.Text;
+            est.id_institucion = Convert.ToInt32(cboInstitucion.SelectedValue);
+            est.id_hc = 1;
+            return est;
 
+
+            
+        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -71,7 +63,7 @@ namespace GPA
         private void btnBuscarInstitucion_Click(object sender, EventArgs e)
         {
             int id_institucion = Convert.ToInt32(cboInstitucion.SelectedValue);
-            List<Entidades.Clases.Domicilio> domicilio = InstitucionDAO.buscarDomicilioInstitucion(id_institucion);
+            List<Entidades.Clases.Domicilio> domicilio=manejador.obtenerDomicilioInstitucion(id_institucion);
 
             if (domicilio.Count() > 0)
             {
@@ -79,6 +71,14 @@ namespace GPA
                 txtNumero.Text = domicilio[0].numero;
 
             }
+        }
+
+        private void btnRegInstitucion_Click(object sender, EventArgs e)
+        {
+            RegistrarInstitucion regIns = new RegistrarInstitucion(cboInstitucion);
+            regIns.ShowDialog();
+
+
         }
     }
 }

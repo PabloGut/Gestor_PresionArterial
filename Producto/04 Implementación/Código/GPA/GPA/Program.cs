@@ -17,7 +17,7 @@ namespace GPA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegistrarEstudio());
+            Application.Run(new InicioSesión());
         }
     }
 }

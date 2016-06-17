@@ -75,5 +75,50 @@ namespace DAO
             cn.Close();
             return domicilio;
         }
+        public static void InsertarInstitucion(string nombre, string descripcion, Domicilio domicilio)
+        {
+            
+            SqlTransaction tran = null;
+
+            string consulta = "insert into Institucion(nombre,descripcion) values (@nombre,@desc)";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+            cmd.Parameters.AddWithValue("@desc", descripcion);
+
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+
+            try
+            {
+
+                cn.Open();
+                tran = cn.BeginTransaction();
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                cmd.Transaction = tran;
+
+                cmd.ExecuteNonQuery();
+
+                SqlCommand cmd1 = new SqlCommand("select @@Identity", cn, tran);
+                domicilio.id_institucion = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                DomicilioDAO.insertarDomicilio(domicilio, cn, tran);
+                tran.Commit();
+                cn.Close();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                throw new ApplicationException("error al guardar la institución. " + e.Message);
+            }
+
+
+        }
     }
 }

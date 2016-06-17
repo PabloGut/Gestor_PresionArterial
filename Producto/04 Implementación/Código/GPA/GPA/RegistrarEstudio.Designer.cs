@@ -91,6 +91,7 @@
             this.btnRegInstitucion.TabIndex = 6;
             this.btnRegInstitucion.Text = "Registrar Institución";
             this.btnRegInstitucion.UseVisualStyleBackColor = true;
+            this.btnRegInstitucion.Click += new System.EventHandler(this.btnRegInstitucion_Click);
             // 
             // txtNumero
             // 

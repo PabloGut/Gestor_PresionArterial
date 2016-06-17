@@ -44,17 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InicioSesión.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioSesión.Designer.cs">
+      <DependentUpon>InicioSesión.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manejadores\ManejadorRegistrarEstudio.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarInstitucion.cs" />
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarEstudio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegistrarEstudio.Designer.cs">
       <DependentUpon>RegistrarEstudio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HistoriaClinica.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HistoriaClinica.Designer.cs">
-      <DependentUpon>HistoriaClinica.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,11 +78,23 @@
     <Compile Include="Registrar Análisis de Laboratorio.Designer.cs">
       <DependentUpon>Registrar Análisis de Laboratorio.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarInstitucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarInstitucion.Designer.cs">
+      <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioSesión.resx">
+      <DependentUpon>InicioSesión.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrarEstudio.resx">
       <DependentUpon>RegistrarEstudio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HistoriaClinica.resx">
-      <DependentUpon>HistoriaClinica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +107,9 @@
     </Compile>
     <EmbeddedResource Include="Registrar Análisis de Laboratorio.resx">
       <DependentUpon>Registrar Análisis de Laboratorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarInstitucion.resx">
+      <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

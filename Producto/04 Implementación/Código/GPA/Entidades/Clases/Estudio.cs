@@ -8,11 +8,13 @@ namespace Entidades.Clases
 {
     public class Estudio
     {
-        private string nombre { get; set; }
-        private DateTime fecha { get; set; }
-        private String doctorACargo { get; set; }
-        private String informeEstudio { get; set; }
+        public string nombre { get; set; }
+        public DateTime fecha { get; set; }
+        public String doctorACargo { get; set; }
+        public String informeEstudio { get; set; }
         private Institucion institucion { get; set; }
+        public int id_institucion { get; set; }
+        public int id_hc { get; set; }
 
 
     }

@@ -8,9 +8,10 @@ namespace Entidades.Clases
 {
     public class Barrio
     {
-        private string nombre { get; set; }
-        private string descripcion { get; set; }
-        private Localidad localidad { get; set; }
+        public int id_barrio { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public Localidad localidad { get; set; }
 
     }
 }
