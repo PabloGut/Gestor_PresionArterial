@@ -44,11 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ConsultarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ConsultarPaciente.Designer.cs">
+      <DependentUpon>ConsultarPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
+    <Compile Include="RegistrarHistoriClinica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarHistoriClinica.Designer.cs">
+      <DependentUpon>RegistrarHistoriClinica.cs</DependentUpon>
     </Compile>
     <Compile Include="InicioSesión.cs">
       <SubType>Form</SubType>
@@ -56,6 +63,7 @@
     <Compile Include="InicioSesión.Designer.cs">
       <DependentUpon>InicioSesión.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manejadores\ManejadorInicioSesion.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEstudio.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarInstitucion.cs" />
     <Compile Include="MenuPrincipal.cs">
@@ -84,8 +92,11 @@
     <Compile Include="RegistrarInstitucion.Designer.cs">
       <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ConsultarPaciente.resx">
+      <DependentUpon>ConsultarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarHistoriClinica.resx">
+      <DependentUpon>RegistrarHistoriClinica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InicioSesión.resx">
       <DependentUpon>InicioSesión.cs</DependentUpon>

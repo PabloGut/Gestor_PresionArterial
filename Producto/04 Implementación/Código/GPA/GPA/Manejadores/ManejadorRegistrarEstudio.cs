@@ -7,7 +7,7 @@ using Entidades.Clases;
 using DAO;
 using System.Data;
 
-namespace Manejadores
+namespace GPA
 {
    
 
