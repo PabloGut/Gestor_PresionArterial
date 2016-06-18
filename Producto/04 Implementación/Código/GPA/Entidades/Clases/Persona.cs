@@ -28,6 +28,20 @@ namespace Entidades.Clases
             this.id_tipoDoc = id_tipoDoc;
             this.nroDoc = nroDoc;         
         }
+        public Persona(int id_tipoDoc, long nroDoc)
+        {
+            this.id_tipoDoc = id_tipoDoc;
+            this.nroDoc = nroDoc;
+        }
+        public Persona(string nombre, string apellido)
+        {
+            this.nombre = nombre;
+            this.apellido = apellido;
+        }
+        public Persona()
+        {
+        }
+
         public string nombre { get; set; }
         public string apellido { get; set; }
         public int id_tipoDoc { get; set; }

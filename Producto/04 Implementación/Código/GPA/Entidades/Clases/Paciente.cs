@@ -8,8 +8,13 @@ namespace Entidades.Clases
 {
     public class Paciente :Persona
     {
-        public Paciente(string nombre, string apellido,int id_tipoDoc,int nroDoc,int id_domicilio,long telefono,long nroCelular,string mail,int id_usuario,int id_estado)
+        public Paciente(string nombre, string apellido,int id_tipoDoc,long nroDoc,int id_domicilio,long telefono,long nroCelular,string mail,int id_usuario,int id_estado)
         : base(nombre,apellido,id_tipoDoc,nroDoc,id_domicilio,telefono,nroCelular,mail,id_usuario,id_estado)
+        {
+
+        }
+        public Paciente()
+        : base()
         {
 
         }
@@ -17,6 +22,8 @@ namespace Entidades.Clases
         public int edad { get; set; }
         public float altura { get; set; }
         public int peso { get; set; }
+        public int nrohc { get; set; }
+        public int id_hc { get; set; }
 
     }
 }

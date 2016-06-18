@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases
 {
-    public class Usuario
+    public class TipoDocumento
     {
-        public int id_usuario { get; set; }
+        public int id_tipoDoc { get; set; }
         public string nombre { get; set; }
-        public string pass { get; set; }
-        public DateTime fechaCreacion { get; set; }
+        public string descripcion { get; set; }
+
     }
 }

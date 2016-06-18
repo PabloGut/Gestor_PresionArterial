@@ -21,6 +21,16 @@ namespace Entidades.Clases
          {
 
          }
+         public ProfesionaMedico(int id_tipoDoc, long nroDoc)
+             : base(id_tipoDoc, nroDoc)
+         {
+
+         }
+         public ProfesionaMedico(string nombre, string apellido)
+             : base(nombre, apellido)
+         {
+
+         }
     }
    
 }

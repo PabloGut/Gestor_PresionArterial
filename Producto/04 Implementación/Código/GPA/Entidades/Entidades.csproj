@@ -47,11 +47,13 @@
     <Compile Include="Clases\Barrio.cs" />
     <Compile Include="Clases\Domicilio.cs" />
     <Compile Include="Clases\Estudio.cs" />
+    <Compile Include="Clases\HistoriaClinica.cs" />
     <Compile Include="Clases\Institucion.cs" />
     <Compile Include="Clases\Localidad.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\Persona.cs" />
     <Compile Include="Clases\ProfesionaMedico.cs" />
+    <Compile Include="Clases\TipoDocumento.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
