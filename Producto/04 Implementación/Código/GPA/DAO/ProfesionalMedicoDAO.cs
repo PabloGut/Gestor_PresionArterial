@@ -13,9 +13,10 @@ namespace DAO
     {
         private static string cadenaConexion = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
 
-        public static void buscarProfesionalMédico(Usuario usuarioMedico)
+        public static ProfesionaMedico buscarProfesionalMédico(Usuario usuarioMedico)
         {
-            
+            ProfesionaMedico pm=null;
+
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
 
@@ -29,9 +30,63 @@ namespace DAO
 
             while (dr.Read())
             {
-                ProfesionaMedico pm = new ProfesionaMedico(dr["nombre"].ToString(),dr["apellido"].ToString(),(int)dr["id_tipodoc_fk"],(long)dr["nro_documento"]);
+                pm = new ProfesionaMedico(dr["nombre"].ToString(),dr["apellido"].ToString(),(int)dr["id_tipodoc_fk"],(long)dr["nro_documento"]);
 
             }
+            cn.Close();
+            return pm;
+
+        }
+        public static ProfesionaMedico buscarMedicoDeUsuario(int id_usuario)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+            ProfesionaMedico medico=null;
+            string consulta = "select id_tipodoc_fk,nro_documento from ProfesionalMedico where id_usuario_fk=@id_usuario";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                medico = new ProfesionaMedico((int)dr["id_tipodoc_fk"], Convert.ToInt32(dr["nro_documento"].ToString()));
+            }
+            cn.Close();
+            return medico;
+
+        }
+        public static void buscarMedicoLogueado(ProfesionaMedico profesionalLogueado)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+            //ProfesionaMedico medico = null;
+            string consulta = "select nombre,apellido from ProfesionalMedico where id_tipodoc_fk=@idtipodoc and nro_documento=@nrodoc";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idtipodoc", profesionalLogueado.id_tipoDoc);
+            cmd.Parameters.AddWithValue("@nrodoc", profesionalLogueado.nroDoc);
+
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                //medico = new ProfesionaMedico(dr["nombre"].ToString(),dr["apellido"].ToString());
+                profesionalLogueado.nombre = dr["nombre"].ToString();
+                profesionalLogueado.apellido = dr["apellido"].ToString();
+            }
+            cn.Close();
+            
 
         }
     }
