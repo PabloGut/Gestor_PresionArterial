@@ -35,6 +35,7 @@ namespace GPA
         private void ConsultarPaciente_Load(object sender, EventArgs e)
         {
             cargarComboTipoDocumento();
+            cboTipoDoc.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         public void cargarComboTipoDocumento()
         {
@@ -49,6 +50,19 @@ namespace GPA
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (cboTipoDoc.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un tipo de documento!", "Atención",MessageBoxButtons.OK ,MessageBoxIcon.Information);
+                cboTipoDoc.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(txtNroDoc.Text))
+            {
+                MessageBox.Show("Debe ingresar el número de documento", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtNroDoc.Focus();
+                return;
+            
+            }
             List<Paciente>pacientes= PacienteDAO.buscarPaciente((int)cboTipoDoc.SelectedValue,long.Parse(txtNroDoc.Text));
 
             if(pacientes.Count > 0)
@@ -65,37 +79,48 @@ namespace GPA
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (cboTipoDoc.SelectedIndex==-1 || string.IsNullOrEmpty(txtNroDoc.Text) || string.IsNullOrEmpty(txtApellido.Text) || string.IsNullOrEmpty(txtNombre.Text))
+            {
+                MessageBox.Show("Faltan datos por ingresar!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
 
+            }
             RegistrarHistoriaClínica rhc = new RegistrarHistoriaClínica(referenciaAMenuPrincipal,this);
+            int tipodoc = (int)cboTipoDoc.SelectedValue;
+            long nrodoc = long.Parse(txtNroDoc.Text);
+            string nom = txtNombre.Text;
+            string apellido = txtApellido.Text;
+
             this.Hide();
-            rhc.obtenerPaciente((int)cboTipoDoc.SelectedValue, long.Parse(txtNroDoc.Text), txtNombre.Text, txtApellido.Text);
+            
+            rhc.obtenerPaciente(tipodoc, nrodoc, nom, apellido);
             rhc.medicoLogueado(medico);
-            pasarPacienteSeleccionado();
+            pasarPacienteSeleccionado(tipodoc,nrodoc,nom,apellido);
             rhc.ShowDialog();
             this.Show();
             
             
             
         }
-        public void pasarPacienteSeleccionado()
+        public void pasarPacienteSeleccionado(int tipodoc,long nrodoc,string nom,string apellido)
         {
             if (pacienteSeleccionado == null)
             {
                 pacienteSeleccionado = new Paciente();
-                pacienteSeleccionado.id_tipoDoc = (int)cboTipoDoc.SelectedValue;
-                pacienteSeleccionado.nroDoc = long.Parse(txtNroDoc.Text);
-                pacienteSeleccionado.nombre = txtNombre.Text;
-                pacienteSeleccionado.apellido = txtApellido.Text;
+                pacienteSeleccionado.id_tipoDoc = tipodoc;
+                pacienteSeleccionado.nroDoc = nrodoc;
+                pacienteSeleccionado.nombre = nom;
+                pacienteSeleccionado.apellido = apellido;
                 referenciaAMenuPrincipal.pacienteSeleccionado = pacienteSeleccionado;
 
             }
             else
             {
                 
-                pacienteSeleccionado.id_tipoDoc = (int)cboTipoDoc.SelectedValue;
-                pacienteSeleccionado.nroDoc = long.Parse(txtNroDoc.Text);
-                pacienteSeleccionado.nombre = txtNombre.Text;
-                pacienteSeleccionado.apellido = txtApellido.Text;
+                pacienteSeleccionado.id_tipoDoc = tipodoc;
+                pacienteSeleccionado.nroDoc = nrodoc;
+                pacienteSeleccionado.nombre =nom;
+                pacienteSeleccionado.apellido = apellido;
                 referenciaAMenuPrincipal.pacienteSeleccionado = pacienteSeleccionado;
 
             }
@@ -117,12 +142,78 @@ namespace GPA
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            
-            pasarPacienteSeleccionado();
+            if (cboTipoDoc.SelectedIndex == -1 || string.IsNullOrEmpty(txtNroDoc.Text) || string.IsNullOrEmpty(txtApellido.Text) || string.IsNullOrEmpty(txtNombre.Text))
+            {
+                MessageBox.Show("Faltan datos por ingresar!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+            }
+            int tipodoc = (int)cboTipoDoc.SelectedValue;
+            long nrodoc = long.Parse(txtNroDoc.Text);
+            string nom = txtNombre.Text;
+            string apellido = txtApellido.Text;
+
+            pasarPacienteSeleccionado(tipodoc,nrodoc,nom,apellido);
             referenciaAMenuPrincipal.Show();
             this.Hide();
             
             
         }
+        public void soloLetras(KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Ingresar solo letras", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+            }
+
+        }
+        public void soloNumeros(KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Ingresar solo números", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+
+        }
+
+        private void txtNroDoc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloLetras(e);
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloLetras(e);
+        }
+       
     }
 }

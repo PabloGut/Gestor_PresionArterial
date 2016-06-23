@@ -25,6 +25,7 @@ namespace DAO
         }
         public static List<Paciente> buscarPaciente(int id_tipoDoc,long nroDocumento)
         {
+            setCadenaConexion();
             List<Paciente> pacientes = new List<Paciente>();
 
             SqlConnection cn = new SqlConnection(cadenaConexion);

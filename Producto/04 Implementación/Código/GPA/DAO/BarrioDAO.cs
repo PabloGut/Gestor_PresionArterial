@@ -10,7 +10,7 @@ namespace DAO
 {
     public class BarrioDAO
     {
-        //private static string cadenaConexion = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+        //nicoprivate static string cadenaConexion = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
         private static string cadenaConexion;
 
         public static void setCadenaConexion()

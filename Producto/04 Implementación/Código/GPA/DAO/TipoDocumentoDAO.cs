@@ -25,6 +25,7 @@ namespace DAO
         }
         public static List<TipoDocumento> buscarTiposDoc()
         {
+            setCadenaConexion();
             List<TipoDocumento> tiposDoc = new List<TipoDocumento>();
 
             SqlConnection cn = new SqlConnection(cadenaConexion);
