@@ -32,7 +32,6 @@ namespace GPA
 
             }
 
-            
             List<Usuario> usuario = manejador.buscarUsuario(txtUsuario.Text, txtPass.Text);
 
             if (usuario.Count > 0)

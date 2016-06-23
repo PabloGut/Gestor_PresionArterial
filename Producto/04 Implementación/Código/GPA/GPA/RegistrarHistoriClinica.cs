@@ -38,6 +38,8 @@ namespace GPA
 
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
+            deshabilitarHabilitarComponentes(false);
+            btnVerificarHC.Focus();
             mtbFechaActual.Text = DateTime.Today.ToString();
             cargarComboTipoDocumento();
             presentarDatosProfesionalMedico();
@@ -83,10 +85,22 @@ namespace GPA
             else
             {
                 MessageBox.Show("El paciente no posee historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                deshabilitarHabilitarComponentes(true);
             }
 
         }
+        public void deshabilitarHabilitarComponentes(Boolean valor)
+        {
+            mtbFechaActual.Enabled=valor;
+            txtDiagnostico.Enabled = valor;
+            txtAntecedentes.Enabled = valor;
+            cboTipoDocumento.Enabled = valor;
+            txtNroDocumento.Enabled = valor;
+            txtNombreDoctor.Enabled = valor;
+            txtApellidoDoctor.Enabled = valor;
+            btnAceptar.Enabled = valor;
 
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             int nroHc = manejador.buscarNroHc();

@@ -11,8 +11,18 @@ namespace DAO
 {
     public class TipoDocumentoDAO
     {
-        private static string cadenaConexion = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+        //private static string cadenaConexion = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+        private static string cadenaConexion;
 
+        public static void setCadenaConexion()
+        {
+            CadenaConexion singleton = CadenaConexion.getInstancia();
+            cadenaConexion = singleton.getCadena();
+        }
+        public static string getCadenaConexion()
+        {
+            return cadenaConexion;
+        }
         public static List<TipoDocumento> buscarTiposDoc()
         {
             List<TipoDocumento> tiposDoc = new List<TipoDocumento>();

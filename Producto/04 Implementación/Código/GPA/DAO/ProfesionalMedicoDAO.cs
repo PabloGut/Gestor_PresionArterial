@@ -11,12 +11,21 @@ namespace DAO
 {
     public class ProfesionalMedicoDAO
     {
-        private static string cadenaConexion = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+        //private static string cadenaConexion = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+        private static string cadenaConexion;
 
+        public static void setCadenaConexion()
+        {
+            CadenaConexion singleton = CadenaConexion.getInstancia();
+            cadenaConexion = singleton.getCadena();
+        }
+        public static string getCadenaConexion()
+        {
+            return cadenaConexion;
+        }
         public static ProfesionaMedico buscarProfesionalMédico(Usuario usuarioMedico)
         {
             ProfesionaMedico pm=null;
-
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
 
@@ -39,6 +48,7 @@ namespace DAO
         }
         public static ProfesionaMedico buscarMedicoDeUsuario(int id_usuario)
         {
+            
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
             ProfesionaMedico medico=null;

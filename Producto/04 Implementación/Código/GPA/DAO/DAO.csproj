@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarrioDAO.cs" />
+    <Compile Include="CadenaConexion.cs" />
     <Compile Include="DomicilioDAO.cs" />
     <Compile Include="EstudioDAO.cs" />
     <Compile Include="Form1.cs">

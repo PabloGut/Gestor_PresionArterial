@@ -10,6 +10,17 @@ namespace DAO
 {
     public class DomicilioDAO
     {
+        private static string cadenaConexion;
+
+        public static void setCadenaConexion()
+        {
+            CadenaConexion singleton = CadenaConexion.getInstancia();
+            cadenaConexion = singleton.getCadena();
+        }
+        public static string getCadenaConexion()
+        {
+            return cadenaConexion;
+        }
         public static void insertarDomicilio(Domicilio domicilio,SqlConnection cn, SqlTransaction tran)
         {
             string consulta = "insert into Domicilio(calle,numero,codigo_postal,piso,departamento,id_institucion,id_barrio) values (@calle,@numero,@codigoPostal,@piso,@departamento,@idIns,@idBarrio)";

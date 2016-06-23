@@ -72,6 +72,7 @@ namespace GPA
             rhc.medicoLogueado(medico);
             pasarPacienteSeleccionado();
             rhc.ShowDialog();
+            this.Show();
             
             
             
