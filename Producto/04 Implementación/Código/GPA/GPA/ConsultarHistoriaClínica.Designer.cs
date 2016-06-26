@@ -42,14 +42,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbEstudios = new System.Windows.Forms.TabControl();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvEstudios = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbContenidoDeHC = new System.Windows.Forms.TabControl();
             this.panel1.SuspendLayout();
-            this.tbEstudios.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudios)).BeginInit();
+            this.tbContenidoDeHC.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -202,18 +203,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Datos de la historia clínica";
             // 
-            // tbEstudios
+            // btnSalir
             // 
-            this.tbEstudios.Controls.Add(this.tabPage1);
-            this.tbEstudios.Controls.Add(this.tabPage2);
-            this.tbEstudios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEstudios.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbEstudios.Location = new System.Drawing.Point(584, 12);
-            this.tbEstudios.Name = "tbEstudios";
-            this.tbEstudios.RightToLeftLayout = true;
-            this.tbEstudios.SelectedIndex = 0;
-            this.tbEstudios.Size = new System.Drawing.Size(497, 252);
-            this.tbEstudios.TabIndex = 4;
+            this.btnSalir.Location = new System.Drawing.Point(584, 270);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(115, 23);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(489, 214);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -238,22 +246,26 @@
             this.dgvEstudios.TabIndex = 0;
             this.dgvEstudios.DoubleClick += new System.EventHandler(this.dgvEstudios_DoubleClick);
             // 
-            // tabPage2
+            // tbContenidoDeHC
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(518, 214);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tbContenidoDeHC.Controls.Add(this.tabPage1);
+            this.tbContenidoDeHC.Controls.Add(this.tabPage2);
+            this.tbContenidoDeHC.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbContenidoDeHC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tbContenidoDeHC.Location = new System.Drawing.Point(584, 12);
+            this.tbContenidoDeHC.Name = "tbContenidoDeHC";
+            this.tbContenidoDeHC.RightToLeftLayout = true;
+            this.tbContenidoDeHC.SelectedIndex = 0;
+            this.tbContenidoDeHC.Size = new System.Drawing.Size(497, 252);
+            this.tbContenidoDeHC.TabIndex = 4;
             // 
             // ConsultarHistoriaClínica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 538);
-            this.Controls.Add(this.tbEstudios);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.tbContenidoDeHC);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "ConsultarHistoriaClínica";
@@ -262,9 +274,9 @@
             this.Load += new System.EventHandler(this.ConsultarHistoriaClínica_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tbEstudios.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudios)).EndInit();
+            this.tbContenidoDeHC.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -285,9 +297,10 @@
         private System.Windows.Forms.TextBox txtNroHc;
         private System.Windows.Forms.MaskedTextBox mtbFechaInicioTratamiento;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TabControl tbEstudios;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvEstudios;
+        private System.Windows.Forms.TabControl tbContenidoDeHC;
     }
 }

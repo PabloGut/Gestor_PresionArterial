@@ -26,6 +26,7 @@ namespace DAO
         public static DataTable buscarInstituciones()
         {
             //List<Institucion> instituciones = new List<Institucion>();
+            setCadenaConexion();
             DataTable dt = new DataTable();
 
             SqlConnection cn = new SqlConnection(cadenaConexion);

@@ -106,6 +106,7 @@ namespace GPA
             {
                 ConsultarHistoriaClínica consultarHc = new ConsultarHistoriaClínica(this);
                 consultarHc.ShowDialog();
+                this.Show();
                 
             }
         }

@@ -37,6 +37,8 @@ namespace GPA
         private void ConsultarHistoriaClínica_Load(object sender, EventArgs e)
         {
             presentarDatosHc();
+            tbContenidoDeHC.Controls.Remove(tbContenidoDeHC.TabPages[1]);
+            
         }
         public void presentarDatosHc()
         {
@@ -72,7 +74,7 @@ namespace GPA
                 dgvEstudios.Columns["nombre"].Width = 150;
                 dgvEstudios.Columns["fecha"].HeaderText = "Fecha";
                 dgvEstudios.Columns["fecha"].Width = 150;
-                dgvEstudios.Columns["doctorACargo"].HeaderText = "Doctor encargado del estudio";
+                dgvEstudios.Columns["doctorACargo"].HeaderText = "Doctor";
                 dgvEstudios.Columns["doctorACargo"].Width = 150;
                 dgvEstudios.Columns["informeEstudio"].HeaderText = "Informe";
                 dgvEstudios.Columns["informeEstudio"].Width=200;
@@ -95,8 +97,32 @@ namespace GPA
 
         private void dgvEstudios_DoubleClick(object sender, EventArgs e)
         {
+            tomarEstudioSeleccionado();
+
+
+        }
+        public void tomarEstudioSeleccionado()
+        {
             //dgPedidos.CurrentRow.Cells("nropedido").Value
             //factura.dgvArticulos.Rows.Add(nPed, dom, fecha, nomb, ape, total)
+            string nombre = dgvEstudios.CurrentRow.Cells["nombre"].Value.ToString();
+            DateTime fecha = Convert.ToDateTime(dgvEstudios.CurrentRow.Cells["fecha"].Value);
+            string doctor = dgvEstudios.CurrentRow.Cells["doctorACargo"].Value.ToString();
+            string informe = dgvEstudios.CurrentRow.Cells["InformeEstudio"].Value.ToString();
+
+            ConsultarEstudio ce = new ConsultarEstudio();
+            ce.presentarDatosEstudio(nombre, fecha, doctor, informe);
+            ce.ShowDialog();
+            this.Show();
+            
+
+                
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
 }
