@@ -23,14 +23,13 @@ values ('15/06/2016','Diaz','Normal','1','1')
 select *
 from Historia_Clinica
 
-select *
-from Paciente
+
 
 select *
 from Estudio
 
 select *
-from Localidad
+from Usuario
 
 delete from Historia_Clinica
 where nro_hc=3
@@ -74,7 +73,8 @@ insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('Usuario1'
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('Usuario1',PWDENCRYPT(654321),'16/06/2016')
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('MedicoUsuario1',PWDENCRYPT(102030),'16/06/2016')
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('LJ',102030,'16/06/2016')
-
+insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('EA',PWDENCRYPT(123456),'24/06/2016')
+insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('EE',PWDENCRYPT(123456),'24/06/2016')
 
 insert into Estado(nombre,descripcion) values ('Activo',NUll)
 insert into Estado(nombre,descripcion) values ('Inactivo',NUll)
@@ -84,6 +84,9 @@ edad,altura,peso,id_hc_fk) values ('1','12036547','Juan','Gomez','4785289','1568
 
 insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_inicio_tratamiento,
 edad,altura,peso,id_hc_fk) values ('1','11456987','Elias','Rodriguez','4767845','156124578','EliasRodriguez@hotmail.com','7','1','16/06/2016','56','1.70','60','2')
+
+insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_inicio_tratamiento,
+edad,altura,peso,id_hc_fk) values ('1','11222333','Esteban','Altamirano','4760012','156540022','EA@hotmail.com','12','1','16/06/2016','56','1.70','60',null)
 
 Insert into Historia_Clinica(nro_hc,fecha_creación,diagnostico,antecedentes,fecha_inicio_atencion_con_profesional)
 values ('2','16/06/2016','HTA','Sin antecedentes','16/06/2016')
@@ -117,8 +120,7 @@ where nombre_usuario='LJ' and CONVERT(varchar(255), DECRYPTBYPASSPHRASE('clave',
 
  select id_tipodoc_fk,nro_documento from ProfesionalMedico where id_usuario_fk=1
 
-select *
-from Historia_Clinica
+
 
  delete Usuario
  where nombre_usuario='LJ'
@@ -126,6 +128,11 @@ from Historia_Clinica
  insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_inicio_tratamiento,
 edad,altura,peso,id_hc_fk) values ('1','20002657','Gabriela','Gonzalez','4760845','156880078','gabrielagonzalez@hotmail.com','11','1','16/06/2016','56','1.70','60',null)
 
+insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_inicio_tratamiento,
+edad,altura,peso,id_hc_fk) values ('1','20002657','Gabriela','Gonzalez','4760845','156880078','gabrielagonzalez@hotmail.com','11','1','16/06/2016','56','1.70','60',null)
+
+insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_inicio_tratamiento,
+edad,altura,peso,id_hc_fk) values ('1','12345678','Elias','Morales','4760845','156880078','EM@hotmail.com','13','1','16/06/2016','56','1.70','60',null)
 
 select id_hc_fk from Paciente where id_tipoDoc_fk='1' and nro_documento='20002657'
 
@@ -135,4 +142,39 @@ ORDER BY id_hc DESC
 SELECT * FROM Historia_Clinica WHERE id_hc = (SELECT MAX(id_hc) FROM Historia_Clinica)
 
 alter table Historia_Clinica ADD id_tipodoc_fk int ,
-nro_documento int 
+nro_documento int;
+
+alter table Historia_Clinica ADD id_tipodoc_fk int ,
+nro_documento int;
+
+alter table Historia_Clinica
+alter column nro_documento bigint;
+
+alter table Historia_Clinica
+alter column diagnostico text 
+
+alter table Historia_Clinica
+alter column antecedentes text 
+
+alter table Historia_Clinica
+add id_tipodoc_paciente_fk int,
+nro_doc_paciente_fk bigint
+
+
+
+select * from Historia_Clinica where id_tipodoc_fk=1 and nro_documento=15036547
+select * from Historia_Clinica where id_tipodoc_paciente_fk=1 and nro_doc_paciente_fk=20002657
+
+update Historia_Clinica
+set id_tipodoc_paciente_fk='1', nro_doc_paciente_fk='20002657'
+where id_hc='8'
+
+select *
+from Historia_Clinica
+
+select *
+from Paciente
+select *
+from Estudio
+
+select id_estudio,nombre as 'Nombre del estudio',fecha_estudio,doctorACargo,informe_estudio,id_hc_fk,id_institucion_fk from Estudio where id_hc_fk=8
