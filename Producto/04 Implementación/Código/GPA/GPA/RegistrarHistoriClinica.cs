@@ -119,6 +119,9 @@ namespace GPA
             hc.fechaInicioAtencion=DateTime.Today;
             hc.idtipodoc = medico.id_tipoDoc;
             hc.nrodoc = medico.nroDoc;
+            hc.idtipodoc_paciente = tipodoc;
+            hc.nrodoc_paciente = nro;
+
 
             int idhc=manejador.registrarNvaHC(hc);
 

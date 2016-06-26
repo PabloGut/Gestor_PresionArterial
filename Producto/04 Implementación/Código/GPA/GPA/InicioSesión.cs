@@ -54,5 +54,10 @@ namespace GPA
 
             
         }
+
+        private void InicioSesión_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

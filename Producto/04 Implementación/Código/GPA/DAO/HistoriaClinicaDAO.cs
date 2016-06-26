@@ -25,6 +25,7 @@ namespace DAO
         }
         public static int buscarNroHC()
         {
+            setCadenaConexion();
             int nro = -1;
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
@@ -56,7 +57,7 @@ namespace DAO
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
 
-            string consulta = "insert into Historia_Clinica(nro_hc,fecha_creación,diagnostico,antecedentes,fecha_inicio_atencion_con_profesional,id_tipodoc_fk,nro_documento) values (@nrohc,@fecha,@diagnostico,@antecedentes,@fechainicioAtencion,@idtipo,@nrodoc)";
+            string consulta = "insert into Historia_Clinica(nro_hc,fecha_creación,diagnostico,antecedentes,fecha_inicio_atencion_con_profesional,id_tipodoc_fk,nro_documento,id_tipodoc_paciente_fk,nro_doc_paciente_fk) values (@nrohc,@fecha,@diagnostico,@antecedentes,@fechainicioAtencion,@idtipo,@nrodoc,@idtipodocpaciente,@nrodocpaciente)";
 
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.AddWithValue("@nroHC", hc.nro_hc);
@@ -66,6 +67,8 @@ namespace DAO
             cmd.Parameters.AddWithValue("@fechainicioAtencion", hc.fechaInicioAtencion);
             cmd.Parameters.AddWithValue("@idtipo", hc.idtipodoc);
             cmd.Parameters.AddWithValue("@nrodoc", hc.nrodoc);
+            cmd.Parameters.AddWithValue("@idtipodocpaciente", hc.idtipodoc_paciente);
+            cmd.Parameters.AddWithValue("@nrodocpaciente", hc.nrodoc_paciente);
 
             cmd.CommandText = consulta;
             cmd.CommandType = CommandType.Text;
@@ -79,5 +82,51 @@ namespace DAO
             cn.Close();
             return idhc;
         }
+        public static HistoriaClinica mostrarHistoriaClinica(Paciente paciente)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            HistoriaClinica hc=null;
+
+            string consulta = "select * from Historia_Clinica where id_tipodoc_paciente_fk=@idtipodoc and nro_doc_paciente_fk=@nrodocumento";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idtipodoc", paciente.id_tipoDoc);
+            cmd.Parameters.AddWithValue("@nrodocumento", paciente.nroDoc);
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    hc = new HistoriaClinica();
+
+                    int idhc = (int)dr["id_hc"];
+                    int nrohc = (int)dr["nro_hc"];
+                    DateTime fecha = Convert.ToDateTime(dr["fecha_creación"]);
+                    string diagnostico = dr["diagnostico"].ToString();
+                    string antecedentes = dr["antecedentes"].ToString();
+                    DateTime fechaInicioAtencion = Convert.ToDateTime(dr["fecha_inicio_atencion_con_profesional"].ToString());
+
+                    hc.id_hc = idhc;
+                    hc.nro_hc = nrohc;
+                    hc.fecha = fecha;
+                    hc.diagnostico = diagnostico;
+                    hc.antecedentes = antecedentes;
+                    hc.fechaInicioAtencion = fechaInicioAtencion;
+
+                }
+            }
+            cn.Close();
+            return hc;
+               
+          
+            }
     }
 }

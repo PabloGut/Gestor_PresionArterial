@@ -101,6 +101,7 @@
             this.Name = "InicioSesión";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioSesión";
+            this.Load += new System.EventHandler(this.InicioSesión_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

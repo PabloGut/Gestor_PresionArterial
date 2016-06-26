@@ -90,8 +90,6 @@ namespace GPA
             long nrodoc = long.Parse(txtNroDoc.Text);
             string nom = txtNombre.Text;
             string apellido = txtApellido.Text;
-
-            this.Hide();
             
             rhc.obtenerPaciente(tipodoc, nrodoc, nom, apellido);
             rhc.medicoLogueado(medico);

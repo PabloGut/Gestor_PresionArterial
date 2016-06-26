@@ -44,12 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultarHistoriaClínica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarHistoriaClínica.Designer.cs">
+      <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsultarPaciente.Designer.cs">
       <DependentUpon>ConsultarPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manejadores\ManejadorConsultarHC.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
     <Compile Include="RegistrarHistoriClinica.cs">
       <SubType>Form</SubType>
@@ -92,6 +99,9 @@
     <Compile Include="RegistrarInstitucion.Designer.cs">
       <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConsultarHistoriaClínica.resx">
+      <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultarPaciente.resx">
       <DependentUpon>ConsultarPaciente.cs</DependentUpon>
     </EmbeddedResource>

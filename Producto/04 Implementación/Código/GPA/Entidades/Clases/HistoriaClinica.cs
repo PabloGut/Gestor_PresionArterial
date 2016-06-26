@@ -16,5 +16,19 @@ namespace Entidades.Clases
         public DateTime fechaInicioAtencion { get; set; }
         public int idtipodoc { get; set; }
         public long nrodoc { get; set; }
+        public int idtipodoc_paciente { get; set; }
+        public long nrodoc_paciente { get; set; }
+       
+        public List<Estudio> estudios;
+
+        public HistoriaClinica()
+        {
+            estudios = new List<Estudio>();
+        }
+        public void agregarEstudio(List<Estudio> e)
+        {
+            estudios = e;
+        }
+
     }
 }

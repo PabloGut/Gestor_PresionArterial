@@ -8,6 +8,7 @@ namespace Entidades.Clases
 {
     public class Estudio
     {
+        public int id_estudio { get; set; }
         public string nombre { get; set; }
         public DateTime fecha { get; set; }
         public String doctorACargo { get; set; }

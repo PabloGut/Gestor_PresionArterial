@@ -75,5 +75,39 @@ namespace GPA
         {
             pacienteSeleccionado = paciente;
         }
+        public Paciente getPacienteSeleccionado()
+        {
+            if (pacienteSeleccionado != null)
+            {
+                return pacienteSeleccionado;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void consultarHistoriaClinicaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("Primero debe seleccionar el paciente que recibe atención médica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ConsultarPaciente cp = new ConsultarPaciente(this);
+                cp.ShowDialog();
+                
+
+            }
+            else
+            {
+                ConsultarHistoriaClínica consultarHc = new ConsultarHistoriaClínica(this);
+                consultarHc.ShowDialog();
+                
+            }
+        }
     }
 }

@@ -33,6 +33,7 @@
             this.buscarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearHistoriaClínicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarEstudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +46,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(813, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // archivoToolStripMenuItem
             // 
@@ -66,6 +68,7 @@
             // crearHistoriaClínicaToolStripMenuItem
             // 
             this.crearHistoriaClínicaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consultarHistoriaClinicaToolStripMenuItem,
             this.agregarEstudioToolStripMenuItem});
             this.crearHistoriaClínicaToolStripMenuItem.Name = "crearHistoriaClínicaToolStripMenuItem";
             this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
@@ -75,9 +78,16 @@
             // agregarEstudioToolStripMenuItem
             // 
             this.agregarEstudioToolStripMenuItem.Name = "agregarEstudioToolStripMenuItem";
-            this.agregarEstudioToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.agregarEstudioToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.agregarEstudioToolStripMenuItem.Text = "Agregar Estudio";
             this.agregarEstudioToolStripMenuItem.Click += new System.EventHandler(this.agregarEstudioToolStripMenuItem_Click);
+            // 
+            // consultarHistoriaClinicaToolStripMenuItem
+            // 
+            this.consultarHistoriaClinicaToolStripMenuItem.Name = "consultarHistoriaClinicaToolStripMenuItem";
+            this.consultarHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.consultarHistoriaClinicaToolStripMenuItem.Text = "Consultar Historia Clinica";
+            this.consultarHistoriaClinicaToolStripMenuItem.Click += new System.EventHandler(this.consultarHistoriaClinicaToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -104,5 +114,6 @@
         private System.Windows.Forms.ToolStripMenuItem buscarPacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearHistoriaClínicaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarEstudioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultarHistoriaClinicaToolStripMenuItem;
     }
 }

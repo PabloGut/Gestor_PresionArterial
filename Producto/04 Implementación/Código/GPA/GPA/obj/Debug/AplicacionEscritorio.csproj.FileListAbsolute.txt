@@ -17,3 +17,4 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.InicioSesión.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.MenuPrincipal.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.ConsultarPaciente.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\GPA\obj\Debug\GPA.ConsultarHistoriaClínica.resources
