@@ -76,6 +76,8 @@ insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('LJ',10203
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('EA',PWDENCRYPT(123456),'24/06/2016')
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('EE',PWDENCRYPT(123456),'24/06/2016')
 
+
+
 insert into Estado(nombre,descripcion) values ('Activo',NUll)
 insert into Estado(nombre,descripcion) values ('Inactivo',NUll)
 
@@ -174,7 +176,8 @@ from Historia_Clinica
 
 select *
 from Paciente
+order by id_usuario_fk
 select *
-from Estudio
+from Usuario
 
 select id_estudio,nombre as 'Nombre del estudio',fecha_estudio,doctorACargo,informe_estudio,id_hc_fk,id_institucion_fk from Estudio where id_hc_fk=8
