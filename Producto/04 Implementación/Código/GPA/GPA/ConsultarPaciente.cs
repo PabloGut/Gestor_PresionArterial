@@ -31,7 +31,7 @@ namespace GPA
             referenciaAMenuPrincipal = menuPrincipal;
             pacienteSeleccionado = new Paciente();
         }
-      
+        
         private void ConsultarPaciente_Load(object sender, EventArgs e)
         {
             cargarComboTipoDocumento();
@@ -43,7 +43,14 @@ namespace GPA
             cboTipoDoc.ValueMember = "id_TipoDoc";
             cboTipoDoc.DisplayMember = "nombre";
         }
-
+        public Paciente getPaciente()
+        {
+            return pacienteSeleccionado;
+        }
+        public void setPaciente(Paciente p)
+        {
+            pacienteSeleccionado = p;
+        }
         public void obtenerProfesionalLogueado(ProfesionaMedico medicoLogueado)
         {
             medico=medicoLogueado;
@@ -68,12 +75,12 @@ namespace GPA
             if(pacientes.Count > 0)
             {
                 txtNombre.Text= pacientes[0].nombre;
-                txtApellido.Text= pacientes[0].apellido;
+                txtApellido.Text = pacientes[0].apellido;
                 if (pacientes[0].id_hc != 0)
                 {
                     pacienteSeleccionado.id_hc = pacientes[0].id_hc;
                 }
-                
+
             }
         }
 
@@ -83,23 +90,25 @@ namespace GPA
             {
                 MessageBox.Show("Faltan datos por ingresar!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-
             }
-            RegistrarHistoriaClínica rhc = new RegistrarHistoriaClínica(referenciaAMenuPrincipal,this);
+            RegistrarHistoriaClínica rhc = new RegistrarHistoriaClínica(referenciaAMenuPrincipal, this);
             int tipodoc = (int)cboTipoDoc.SelectedValue;
             long nrodoc = long.Parse(txtNroDoc.Text);
             string nom = txtNombre.Text;
             string apellido = txtApellido.Text;
-            
+
             rhc.obtenerPaciente(tipodoc, nrodoc, nom, apellido);
             rhc.medicoLogueado(medico);
-            pasarPacienteSeleccionado(tipodoc,nrodoc,nom,apellido);
+            pasarPacienteSeleccionado(tipodoc, nrodoc, nom, apellido);
             rhc.ShowDialog();
             this.Show();
             
             
             
         }
+        /*
+         * Le pasa los datos, del paciente seleccionado, al menú principal.
+         */
         public void pasarPacienteSeleccionado(int tipodoc,long nrodoc,string nom,string apellido)
         {
             if (pacienteSeleccionado == null)

@@ -99,7 +99,6 @@ namespace GPA
                 MessageBox.Show("Primero debe seleccionar el paciente que recibe atención médica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ConsultarPaciente cp = new ConsultarPaciente(this);
                 cp.ShowDialog();
-                
 
             }
             else

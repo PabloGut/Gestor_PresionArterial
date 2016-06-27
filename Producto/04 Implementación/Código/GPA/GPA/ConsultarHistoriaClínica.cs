@@ -60,6 +60,12 @@ namespace GPA
 
                     presentarEstudiosDeHc(hcpaciente.id_hc);
                 }
+                else
+                {
+                    MessageBox.Show("El paciente no tiene historia clínica.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                    return;
+                }
             }
          
 

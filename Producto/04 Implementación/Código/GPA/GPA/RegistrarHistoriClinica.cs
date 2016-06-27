@@ -35,6 +35,18 @@ namespace GPA
             referenciaMenuPrincipal = mp;
             referenciaConsultarPaciente = cp;
         }
+        public RegistrarHistoriaClínica(MenuPrincipal mp)
+        {
+            InitializeComponent();
+            manejador = new ManejadorRegistrarHC();
+            referenciaMenuPrincipal = mp;
+
+            if (referenciaMenuPrincipal.getPacienteSeleccionado() != null)
+            {
+                tipodoc=referenciaMenuPrincipal.getPacienteSeleccionado().id_tipoDoc;
+                nro = referenciaMenuPrincipal.getPacienteSeleccionado().nroDoc;
+            }
+        }
 
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
