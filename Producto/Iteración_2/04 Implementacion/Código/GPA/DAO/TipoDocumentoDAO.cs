@@ -31,7 +31,7 @@ namespace DAO
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
 
-            string consulta="select id_TipoDoc,nombre from TipoDocumento";
+            string consulta="select id_TipoDoc,nombre,descripcion from TipoDocumento";
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = consulta;
@@ -45,14 +45,75 @@ namespace DAO
                 tiposDoc.Add(new TipoDocumento()
                 {
                     id_tipoDoc = (int)dr["id_TipoDoc"],
-                    nombre = dr["nombre"].ToString()
+                    nombre = dr["nombre"].ToString(),
+                    descripcion = dr["descripcion"].ToString()
                 });
             }
             cn.Close();
             return tiposDoc;
+        }
+
+        public static int insertarTipoDoc(string nombre, string descripcion)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "insert into TipoDocumento (nombre, descripcion) values (@paramNombre, @paramDescripcion)";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@paramNombre", nombre);
+            cmd.Parameters.AddWithValue("@paramDescripcion", descripcion);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            SqlCommand cmd1 = new SqlCommand("select @@Identity", cn);
+            int idhc = Convert.ToInt32(cmd1.ExecuteScalar());
 
 
+            cn.Close();
+            return idhc;
+        }
 
+        public static void actualizarTipoDoc(int id, string nombre, string descripcion)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "UPDATE TipoDocumento SET nombre=@paramNombre, descripcion=@paramDescripcion " +
+                              "WHERE id_tipoDoc=@paramId_tipoDoc";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@paramNombre", nombre);
+            cmd.Parameters.AddWithValue("@paramDescripcion", descripcion);
+            cmd.Parameters.AddWithValue("@paramId_tipoDoc", id);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            cn.Close();
+        }
+
+        public static void eliminarTipoDoc(int id)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "DELETE FROM TipoDocumento WHERE id_tipoDoc=@paramId_tipoDoc";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@paramId_tipoDoc", id);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            cn.Close();
         }
     }
 }
