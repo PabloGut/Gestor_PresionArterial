@@ -12,5 +12,17 @@ namespace Entidades.Clases
         public string nombre { get; set; }
         public string pass { get; set; }
         public DateTime fechaCreacion { get; set; }
+
+        public int existeMayorNumeroUsuario(int numeroUsuario)
+        {
+            if (Convert.ToInt32((nombre.Substring(nombre.Length))) > numeroUsuario)
+            {
+                return Convert.ToInt32((nombre.Substring(nombre.Length)));
+            }
+            else
+            {
+                return numeroUsuario;
+            }
+        }
     }
 }

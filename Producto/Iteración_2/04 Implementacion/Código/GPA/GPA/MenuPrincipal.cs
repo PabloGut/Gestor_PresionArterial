@@ -37,7 +37,13 @@ namespace GPA
         {
 
         }
-        
+
+        private void registrarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarPaciente rp = new RegistrarPaciente();
+            rp.ShowDialog();
+        }
+
         private void buscarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsultarPaciente cp = new ConsultarPaciente(this);
@@ -108,6 +114,35 @@ namespace GPA
                 this.Show();
                 
             }
+        }
+
+        private void MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void barriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarBarrio rb = new RegistrarBarrio();
+            rb.ShowDialog();
+        }
+
+        private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarEspecialidad re = new RegistrarEspecialidad();
+            re.ShowDialog();
+        }
+
+        private void localidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarLocalidad rl = new RegistrarLocalidad();
+            rl.ShowDialog();
+        }
+
+        private void tiposDeDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarTipoDeDocumento rtd = new RegistrarTipoDeDocumento();
+            rtd.ShowDialog();
         }
     }
 }

@@ -8,7 +8,19 @@ namespace Entidades.Clases
 {
     public class Localidad
     {
-        private string nombre { get; set; }
+        public int id_localidad { get; set; }
+        public string nombre { get; set; }
 
+        public Localidad()
+        {
+            id_localidad = 0;
+            nombre = "";
+        }
+
+        public Localidad(int id, string nom)
+        {
+            id_localidad = id;
+            nombre = nom;
+        }
     }
 }

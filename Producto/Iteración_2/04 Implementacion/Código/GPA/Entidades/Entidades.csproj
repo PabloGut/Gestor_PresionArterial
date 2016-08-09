@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Clases\Barrio.cs" />
     <Compile Include="Clases\Domicilio.cs" />
+    <Compile Include="Clases\Especialidad.cs" />
+    <Compile Include="Clases\Estado.cs" />
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\HistoriaClinica.cs" />
     <Compile Include="Clases\Institucion.cs" />

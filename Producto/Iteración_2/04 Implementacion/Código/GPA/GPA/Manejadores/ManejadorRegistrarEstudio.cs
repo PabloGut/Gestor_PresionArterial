@@ -47,15 +47,15 @@ namespace GPA
             List<Entidades.Clases.Domicilio> domicilio = DAO.InstitucionDAO.buscarDomicilioInstitucion(id_institucion);
             return domicilio;
         }
-        public DataTable  buscarBarrios()
+        public List<Barrio> buscarBarrios()
         {
-            DataTable dt = BarrioDAO.buscarBarrios();
-            return dt;
+            List<Barrio> barrios = BarrioDAO.buscarBarrios();
+            return barrios;
         }
-        public DataTable buscarLocalidades()
+        public List<Localidad> buscarLocalidades()
         {
-            DataTable dt = LocalidadDAO.buscarLocalidades();
-            return dt;
+            List<Localidad> localidades = LocalidadDAO.buscarLocalidades();
+            return localidades;
         }
         public void registrarEstudio(Estudio estudio)
         {
