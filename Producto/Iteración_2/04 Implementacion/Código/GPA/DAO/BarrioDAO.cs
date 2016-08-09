@@ -18,31 +18,139 @@ namespace DAO
             CadenaConexion singleton = CadenaConexion.getInstancia();
             cadenaConexion = singleton.getCadena();
         }
+        
         public static string getCadenaConexion()
         {
             return cadenaConexion;
         }
-        public static DataTable buscarBarrios()
+
+        public static List<Barrio> buscarBarrios()
         {
-            DataTable dt= new DataTable();
+            List<Barrio> barrios = new List<Barrio>();
 
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
 
-            string consulta = "select id_barrio, nombre from Barrio";
+            string consulta = "SELECT B.id_barrio, B.nombre, B.descripcion, L.id_localidad, L.nombre AS nombre_localidad FROM Barrio B " +
+                              "INNER JOIN Localidad L ON B.id_localidad_fk=L.id_localidad";
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.Text;
             cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
             cmd.Connection = cn;
-            dt.Load(cmd.ExecuteReader());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                barrios.Add(new Barrio()
+                {
+                    id_barrio = (int)dr["id_barrio"],
+                    nombre = dr["nombre"].ToString(),
+                    descripcion = dr["descripcion"].ToString(),
+                    localidad = new Localidad((int)dr["id_localidad"], dr["nombre_localidad"].ToString())
+                });
+            }
             cn.Close();
-            return dt;
+            return barrios;
         }
 
-        
+        public static List<Barrio> buscarBarriosDeLocalidad(int id)
+        {
+            setCadenaConexion();
+            List<Barrio> barrios = new List<Barrio>();
 
-        
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
 
+            string consulta = "SELECT B.id_barrio, B.nombre, B.descripcion, L.id_localidad, L.nombre AS nombre_localidad FROM Barrio B " +
+                              "INNER JOIN Localidad L ON B.id_localidad_fk=L.id_localidad WHERE B.id_localidad_fk=@paramId_localidad";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@paramId_localidad", id);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                barrios.Add(new Barrio()
+                {
+                    id_barrio = (int)dr["id_barrio"],
+                    nombre = dr["nombre"].ToString(),
+                    descripcion = dr["descripcion"].ToString(),
+                    localidad = new Localidad((int)dr["id_localidad"], dr["nombre_localidad"].ToString())
+                });
+            }
+            cn.Close();
+            return barrios;
+        }
+
+        public static int insertarBarrio(int id_localidad, string nombre, string descripcion)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "INSERT INTO Barrio (nombre, descripcion, id_localidad_fk) " +
+                              "VALUES (@paramNombre, @paramDescripcion, @paramId_localidad_fk)";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@paramNombre", nombre);
+            cmd.Parameters.AddWithValue("@paramDescripcion", descripcion);
+            cmd.Parameters.AddWithValue("@paramId_localidad_fk", id_localidad);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            SqlCommand cmd1 = new SqlCommand("SELECT @@Identity", cn);
+            int idhc = Convert.ToInt32(cmd1.ExecuteScalar());
+
+            cn.Close();
+            return idhc;
+        }
+
+        public static void actualizarBarrio(int id, string nombre, string descripcion)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "UPDATE Barrio SET nombre=@paramNombre, descripcion=@paramDescripcion " +
+                              "WHERE id_barrio=@paramId_barrio";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@paramNombre", nombre);
+            cmd.Parameters.AddWithValue("@paramDescripcion", descripcion);
+            cmd.Parameters.AddWithValue("@paramId_barrio", id);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            cn.Close();
+        }
+
+        public static void eliminarBarrio(int id)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "DELETE FROM Barrio WHERE id_barrio=@paramId_barrio";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@paramId_barrio", id);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+            cmd.ExecuteNonQuery();
+
+            cn.Close();
+        }
     }
 }
