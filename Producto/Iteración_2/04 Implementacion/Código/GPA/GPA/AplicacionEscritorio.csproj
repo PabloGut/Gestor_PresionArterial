@@ -63,7 +63,24 @@
       <DependentUpon>ConsultarPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="Manejadores\ManejadorConsultarHC.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarBarrio.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarEspecialidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarLocalidad.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarPaciente.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarTipoDeDocumento.cs" />
+    <Compile Include="RegistrarBarrio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarBarrio.designer.cs">
+      <DependentUpon>RegistrarBarrio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarEspecialidad.designer.cs">
+      <DependentUpon>RegistrarEspecialidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarHistoriClinica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +122,31 @@
     <Compile Include="RegistrarInstitucion.Designer.cs">
       <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarLocalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarLocalidad.designer.cs">
+      <DependentUpon>RegistrarLocalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarPaciente.designer.cs">
+      <DependentUpon>RegistrarPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProfesionalMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarProfesionalMedico.designer.cs">
+      <DependentUpon>RegistrarProfesionalMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarTipoDeDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarTipoDeDocumento.designer.cs">
+      <DependentUpon>RegistrarTipoDeDocumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades.cs" />
     <EmbeddedResource Include="ConsultarEstudio.resx">
       <DependentUpon>ConsultarEstudio.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +155,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarPaciente.resx">
       <DependentUpon>ConsultarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarBarrio.resx">
+      <DependentUpon>RegistrarBarrio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarEspecialidad.resx">
+      <DependentUpon>RegistrarEspecialidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarHistoriClinica.resx">
       <DependentUpon>RegistrarHistoriClinica.cs</DependentUpon>
@@ -140,6 +188,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarInstitucion.resx">
       <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarLocalidad.resx">
+      <DependentUpon>RegistrarLocalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarPaciente.resx">
+      <DependentUpon>RegistrarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarProfesionalMedico.resx">
+      <DependentUpon>RegistrarProfesionalMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarTipoDeDocumento.resx">
+      <DependentUpon>RegistrarTipoDeDocumento.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

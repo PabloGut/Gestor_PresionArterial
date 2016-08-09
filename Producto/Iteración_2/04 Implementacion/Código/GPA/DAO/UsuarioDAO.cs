@@ -82,9 +82,35 @@ namespace DAO
             }
             cn.Close();
             return usuarios;
-
-
         }
-        
+
+        public static List<Usuario> buscarUsuarioPorNombre(string nombre)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "SELECT id_usuario FROM Usuario WHERE nombre_usuario LIKE @paramNombre";
+
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Parameters.AddWithValue("@paramNombre", nombre);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                usuarios.Add(new Usuario()
+                {
+                    id_usuario = (int)dr["id_usuario"],
+                });
+            }
+            cn.Close();
+            return usuarios;
+        }
     }
 }

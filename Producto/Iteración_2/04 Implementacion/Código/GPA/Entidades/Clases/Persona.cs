@@ -14,11 +14,11 @@ namespace Entidades.Clases
             this.apellido = apellido;
             this.id_tipoDoc = id_tipoDoc;
             this.nroDoc = nroDoc;
-            this.id_domicilio = id_domicilio;
+            crearDomicilio(id_domicilio);
             this.telefono = telefono;
             this.nroCelular = nroCelular;
             this.mail = mail;
-            this.id_usuario = id_usuario;
+            crearUsuario(id_usuario);
             this.id_estado = id_estado;
         }
         public Persona(string nombre, string apellido, int id_tipoDoc, long nroDoc)
@@ -53,7 +53,15 @@ namespace Entidades.Clases
         public int id_usuario { get; set; }
         public int id_estado { get; set; }
 
+        public void crearDomicilio(int id_domicilio)
+        {
+            this.id_domicilio = id_domicilio;
+        }
 
+        public void crearUsuario(int id_usuario)
+        {
+            this.id_usuario = id_usuario;
+        }
 
     }
 }
