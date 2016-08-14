@@ -31,6 +31,15 @@ namespace Entidades.Clases
          {
 
          }
+
+         public ProfesionaMedico()
+             : base()
+         {
+
+         }
+
+         public Especialidad especialidad { get; set; }
+         public int matricula_profesional { get; set; }
     }
    
 }

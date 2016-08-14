@@ -144,5 +144,11 @@ namespace GPA
             RegistrarTipoDeDocumento rtd = new RegistrarTipoDeDocumento();
             rtd.ShowDialog();
         }
+
+        private void registrarProfesionalMédicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarProfesionalMedico rpm = new RegistrarProfesionalMedico();
+            rpm.ShowDialog();
+        }
     }
 }

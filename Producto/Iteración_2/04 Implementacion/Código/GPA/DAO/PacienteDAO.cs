@@ -157,7 +157,7 @@ namespace DAO
                 SqlCommand cmdInsertarUsuario = new SqlCommand();
                 cmdInsertarUsuario.Parameters.AddWithValue("@paramNombre_usuario", nombre_usuario);
                 cmdInsertarUsuario.Parameters.AddWithValue("@paramContraseña", contraseña);
-                cmdInsertarUsuario.Parameters.AddWithValue("@paramFecha_creacion", Convert.ToString(fecha_creacion));
+                cmdInsertarUsuario.Parameters.AddWithValue("@paramFecha_creacion", fecha_creacion.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
 
                 cmdInsertarUsuario.CommandText = consultaInsertarUsuario;
                 cmdInsertarUsuario.CommandType = CommandType.Text;
@@ -182,7 +182,7 @@ namespace DAO
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramEmail", email);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramId_usuario_fk", id_usuario);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramId_estado_fk", id_estado);
-                cmdInsertarPaciente.Parameters.AddWithValue("@paramFecha_inicio_tratamiento", Convert.ToString(DateTime.Today));
+                cmdInsertarPaciente.Parameters.AddWithValue("@paramFecha_inicio_tratamiento", DateTime.Today.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramEdad", edad);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramAltura", altura);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramPeso", peso);

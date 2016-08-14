@@ -14,6 +14,8 @@ namespace DAO
         private CadenaConexion()
         {
             cadena = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+            //"Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+            //@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Repositorio\trunk\Producto\04 Implementación\GPA_BD_DePrueba\GPA_BD_2.mdf;Integrated Security=True;Connect Timeout=30";
         }
         public static CadenaConexion getInstancia()
         {
