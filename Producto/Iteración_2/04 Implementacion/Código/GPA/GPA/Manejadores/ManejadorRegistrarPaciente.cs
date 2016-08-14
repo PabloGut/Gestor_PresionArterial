@@ -98,7 +98,7 @@ namespace GPA.Manejadores
 
         public int verificarExistenciaUsuario(string nombre){
 
-            List<Usuario> usuarios = UsuarioDAO.buscarUsuarioPorNombre(nombre + "'[1-9]%'");
+            List<Usuario> usuarios = UsuarioDAO.buscarUsuarioPorNombre(nombre + "[1-9]%");
             int numeroUsuario=0;
             foreach (Usuario usuario in usuarios)
             {

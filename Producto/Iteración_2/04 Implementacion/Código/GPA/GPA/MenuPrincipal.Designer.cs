@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearHistoriaClínicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,7 @@
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,16 +61,24 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarPacienteToolStripMenuItem,
             this.buscarPacienteToolStripMenuItem,
-            this.crearHistoriaClínicaToolStripMenuItem});
+            this.crearHistoriaClínicaToolStripMenuItem,
+            this.registrarProfesionalMédicoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
             this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
+            // registrarPacienteToolStripMenuItem
+            // 
+            this.registrarPacienteToolStripMenuItem.Name = "registrarPacienteToolStripMenuItem";
+            this.registrarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.registrarPacienteToolStripMenuItem.Text = "Registrar Paciente";
+            this.registrarPacienteToolStripMenuItem.Click += new System.EventHandler(this.registrarPacienteToolStripMenuItem_Click);
+            // 
             // buscarPacienteToolStripMenuItem
             // 
             this.buscarPacienteToolStripMenuItem.Name = "buscarPacienteToolStripMenuItem";
-            this.buscarPacienteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.buscarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.buscarPacienteToolStripMenuItem.Text = "Buscar Paciente";
             this.buscarPacienteToolStripMenuItem.Click += new System.EventHandler(this.buscarPacienteToolStripMenuItem_Click);
             // 
@@ -79,7 +88,7 @@
             this.consultarHistoriaClinicaToolStripMenuItem,
             this.agregarEstudioToolStripMenuItem});
             this.crearHistoriaClínicaToolStripMenuItem.Name = "crearHistoriaClínicaToolStripMenuItem";
-            this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.crearHistoriaClínicaToolStripMenuItem.Text = "Historia Clínica";
             this.crearHistoriaClínicaToolStripMenuItem.Click += new System.EventHandler(this.crearHistoriaClínicaToolStripMenuItem_Click);
             // 
@@ -136,12 +145,12 @@
             this.tiposDeDocumentoToolStripMenuItem.Text = "Tipos de Documento";
             this.tiposDeDocumentoToolStripMenuItem.Click += new System.EventHandler(this.tiposDeDocumentoToolStripMenuItem_Click);
             // 
-            // registrarPacienteToolStripMenuItem
+            // registrarProfesionalMédicoToolStripMenuItem
             // 
-            this.registrarPacienteToolStripMenuItem.Name = "registrarPacienteToolStripMenuItem";
-            this.registrarPacienteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.registrarPacienteToolStripMenuItem.Text = "Registrar Paciente";
-            this.registrarPacienteToolStripMenuItem.Click += new System.EventHandler(this.registrarPacienteToolStripMenuItem_Click);
+            this.registrarProfesionalMédicoToolStripMenuItem.Name = "registrarProfesionalMédicoToolStripMenuItem";
+            this.registrarProfesionalMédicoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.registrarProfesionalMédicoToolStripMenuItem.Text = "Registrar Profesional Médico";
+            this.registrarProfesionalMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarProfesionalMédicoToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -176,5 +185,6 @@
         private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposDeDocumentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarPacienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarProfesionalMédicoToolStripMenuItem;
     }
 }

@@ -79,7 +79,7 @@
             // 
             // _txtNroDocumento
             // 
-            this._txtNroDocumento.Location = new System.Drawing.Point(124, 46);
+            this._txtNroDocumento.Location = new System.Drawing.Point(131, 46);
             this._txtNroDocumento.Name = "_txtNroDocumento";
             this._txtNroDocumento.Size = new System.Drawing.Size(121, 20);
             this._txtNroDocumento.TabIndex = 1;
@@ -87,7 +87,7 @@
             // lblNroDocumento
             // 
             this.lblNroDocumento.AutoSize = true;
-            this.lblNroDocumento.Location = new System.Drawing.Point(-3, 49);
+            this.lblNroDocumento.Location = new System.Drawing.Point(4, 49);
             this.lblNroDocumento.Name = "lblNroDocumento";
             this.lblNroDocumento.Size = new System.Drawing.Size(120, 13);
             this.lblNroDocumento.TabIndex = 1;
@@ -96,7 +96,7 @@
             // _cmbTipoDocumento
             // 
             this._cmbTipoDocumento.FormattingEnabled = true;
-            this._cmbTipoDocumento.Location = new System.Drawing.Point(124, 13);
+            this._cmbTipoDocumento.Location = new System.Drawing.Point(131, 13);
             this._cmbTipoDocumento.Name = "_cmbTipoDocumento";
             this._cmbTipoDocumento.Size = new System.Drawing.Size(121, 21);
             this._cmbTipoDocumento.TabIndex = 1;
@@ -104,7 +104,7 @@
             // lblTipoDocumento
             // 
             this.lblTipoDocumento.AutoSize = true;
-            this.lblTipoDocumento.Location = new System.Drawing.Point(13, 16);
+            this.lblTipoDocumento.Location = new System.Drawing.Point(20, 16);
             this.lblTipoDocumento.Name = "lblTipoDocumento";
             this.lblTipoDocumento.Size = new System.Drawing.Size(104, 13);
             this.lblTipoDocumento.TabIndex = 1;
