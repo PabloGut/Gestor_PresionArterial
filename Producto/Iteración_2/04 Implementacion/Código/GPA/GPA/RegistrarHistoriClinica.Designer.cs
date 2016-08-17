@@ -165,42 +165,8 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.button22 = new System.Windows.Forms.Button();
-            this.dataGridView12 = new System.Windows.Forms.DataGridView();
-            this.label62 = new System.Windows.Forms.Label();
-            this.button39 = new System.Windows.Forms.Button();
-            this.textBox36 = new System.Windows.Forms.TextBox();
-            this.comboBox48 = new System.Windows.Forms.ComboBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label101 = new System.Windows.Forms.Label();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
-            this.label104 = new System.Windows.Forms.Label();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
-            this.label58 = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.comboBox19 = new System.Windows.Forms.ComboBox();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.label61 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.label54 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.comboBox18 = new System.Windows.Forms.ComboBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.label57 = new System.Windows.Forms.Label();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
@@ -213,6 +179,31 @@
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.label53 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.button20 = new System.Windows.Forms.Button();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.label58 = new System.Windows.Forms.Label();
+            this.button21 = new System.Windows.Forms.Button();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.comboBox19 = new System.Windows.Forms.ComboBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.radioButton13 = new System.Windows.Forms.RadioButton();
+            this.radioButton14 = new System.Windows.Forms.RadioButton();
+            this.label61 = new System.Windows.Forms.Label();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.button18 = new System.Windows.Forms.Button();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.label54 = new System.Windows.Forms.Label();
+            this.button19 = new System.Windows.Forms.Button();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.comboBox18 = new System.Windows.Forms.ComboBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.label57 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.button16 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
@@ -225,6 +216,18 @@
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.label48 = new System.Windows.Forms.Label();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.button22 = new System.Windows.Forms.Button();
+            this.dataGridView12 = new System.Windows.Forms.DataGridView();
+            this.label62 = new System.Windows.Forms.Label();
+            this.button39 = new System.Windows.Forms.Button();
+            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.comboBox48 = new System.Windows.Forms.ComboBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.radioButton23 = new System.Windows.Forms.RadioButton();
+            this.radioButton24 = new System.Windows.Forms.RadioButton();
+            this.label104 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
@@ -354,9 +357,8 @@
             this.button36 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
-            this.tabControl4 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.label105 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -379,16 +381,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel3.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
-            this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            this.tabControl4.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            this.tabPage12.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -406,9 +411,6 @@
             this.tabPage9.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
-            this.tabControl4.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage12.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -1217,6 +1219,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.textBox37);
+            this.groupBox8.Controls.Add(this.label105);
             this.groupBox8.Controls.Add(this.button12);
             this.groupBox8.Controls.Add(this.label36);
             this.groupBox8.Controls.Add(this.comboBox13);
@@ -1268,7 +1272,7 @@
             // comboBox13
             // 
             this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(374, 139);
+            this.comboBox13.Location = new System.Drawing.Point(354, 131);
             this.comboBox13.Name = "comboBox13";
             this.comboBox13.Size = new System.Drawing.Size(121, 21);
             this.comboBox13.TabIndex = 28;
@@ -1276,28 +1280,28 @@
             // comboBox14
             // 
             this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Location = new System.Drawing.Point(374, 99);
+            this.comboBox14.Location = new System.Drawing.Point(354, 91);
             this.comboBox14.Name = "comboBox14";
             this.comboBox14.Size = new System.Drawing.Size(121, 21);
             this.comboBox14.TabIndex = 27;
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(575, 139);
+            this.textBox16.Location = new System.Drawing.Point(555, 131);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(62, 20);
             this.textBox16.TabIndex = 26;
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(575, 99);
+            this.textBox17.Location = new System.Drawing.Point(555, 91);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(62, 20);
             this.textBox17.TabIndex = 25;
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(396, 62);
+            this.textBox18.Location = new System.Drawing.Point(376, 54);
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(66, 20);
             this.textBox18.TabIndex = 24;
@@ -1305,7 +1309,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(341, 142);
+            this.label43.Location = new System.Drawing.Point(321, 134);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(28, 13);
             this.label43.TabIndex = 23;
@@ -1314,7 +1318,7 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(341, 102);
+            this.label44.Location = new System.Drawing.Point(321, 94);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(28, 13);
             this.label44.TabIndex = 22;
@@ -1323,7 +1327,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(341, 65);
+            this.label45.Location = new System.Drawing.Point(321, 57);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(49, 13);
             this.label45.TabIndex = 21;
@@ -1377,7 +1381,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(520, 102);
+            this.label42.Location = new System.Drawing.Point(500, 94);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(49, 13);
             this.label42.TabIndex = 11;
@@ -1386,7 +1390,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(520, 142);
+            this.label41.Location = new System.Drawing.Point(500, 134);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(49, 13);
             this.label41.TabIndex = 10;
@@ -1395,7 +1399,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(324, 30);
+            this.label35.Location = new System.Drawing.Point(304, 22);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(126, 13);
             this.label35.TabIndex = 4;
@@ -1744,365 +1748,27 @@
             this.tabPage5.Text = "Alergias";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.button22);
-            this.groupBox12.Controls.Add(this.dataGridView12);
-            this.groupBox12.Controls.Add(this.label62);
-            this.groupBox12.Controls.Add(this.button39);
-            this.groupBox12.Controls.Add(this.textBox36);
-            this.groupBox12.Controls.Add(this.comboBox48);
-            this.groupBox12.Controls.Add(this.label63);
-            this.groupBox12.Controls.Add(this.label101);
-            this.groupBox12.Controls.Add(this.radioButton23);
-            this.groupBox12.Controls.Add(this.radioButton24);
-            this.groupBox12.Controls.Add(this.label104);
-            this.groupBox12.Location = new System.Drawing.Point(6, 190);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(690, 178);
-            this.groupBox12.TabIndex = 4;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Alergia a picaduras de insectos";
-            // 
-            // button22
-            // 
-            this.button22.Location = new System.Drawing.Point(550, 53);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(134, 23);
-            this.button22.TabIndex = 15;
-            this.button22.Text = "Agregar insecto";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView12
-            // 
-            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView12.Location = new System.Drawing.Point(127, 82);
-            this.dataGridView12.Name = "dataGridView12";
-            this.dataGridView12.Size = new System.Drawing.Size(412, 86);
-            this.dataGridView12.TabIndex = 14;
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(6, 82);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(86, 13);
-            this.label62.TabIndex = 13;
-            this.label62.Text = "Lista de insectos";
-            // 
-            // button39
-            // 
-            this.button39.Location = new System.Drawing.Point(451, 13);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(57, 23);
-            this.button39.TabIndex = 12;
-            this.button39.Text = "Añadir";
-            this.button39.UseVisualStyleBackColor = true;
-            // 
-            // textBox36
-            // 
-            this.textBox36.Location = new System.Drawing.Point(55, 42);
-            this.textBox36.Multiline = true;
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(484, 34);
-            this.textBox36.TabIndex = 11;
-            // 
-            // comboBox48
-            // 
-            this.comboBox48.FormattingEnabled = true;
-            this.comboBox48.Location = new System.Drawing.Point(282, 16);
-            this.comboBox48.Name = "comboBox48";
-            this.comboBox48.Size = new System.Drawing.Size(163, 21);
-            this.comboBox48.TabIndex = 10;
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(6, 45);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(43, 13);
-            this.label63.TabIndex = 9;
-            this.label63.Text = "Efectos";
-            // 
-            // label101
-            // 
-            this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(205, 16);
-            this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(42, 13);
-            this.label101.TabIndex = 8;
-            this.label101.Text = "Insecto";
-            // 
-            // radioButton23
-            // 
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.Location = new System.Drawing.Point(152, 16);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(39, 17);
-            this.radioButton23.TabIndex = 7;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "No";
-            this.radioButton23.UseVisualStyleBackColor = true;
-            // 
-            // radioButton24
-            // 
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.Location = new System.Drawing.Point(90, 16);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(34, 17);
-            this.radioButton24.TabIndex = 6;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Si";
-            this.radioButton24.UseVisualStyleBackColor = true;
-            // 
-            // label104
-            // 
-            this.label104.AutoSize = true;
-            this.label104.Location = new System.Drawing.Point(0, 18);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(71, 13);
-            this.label104.TabIndex = 5;
-            this.label104.Text = "¿Es alérgico?";
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.button20);
-            this.groupBox11.Controls.Add(this.dataGridView7);
-            this.groupBox11.Controls.Add(this.label58);
-            this.groupBox11.Controls.Add(this.button21);
-            this.groupBox11.Controls.Add(this.textBox21);
-            this.groupBox11.Controls.Add(this.comboBox19);
-            this.groupBox11.Controls.Add(this.label59);
-            this.groupBox11.Controls.Add(this.label60);
-            this.groupBox11.Controls.Add(this.radioButton13);
-            this.groupBox11.Controls.Add(this.radioButton14);
-            this.groupBox11.Controls.Add(this.label61);
-            this.groupBox11.Location = new System.Drawing.Point(9, 224);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(687, 223);
-            this.groupBox11.TabIndex = 3;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Alergia a sustancia del ambiente";
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(547, 53);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(134, 23);
-            this.button20.TabIndex = 15;
-            this.button20.Text = "Agregar sustancia";
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView7
-            // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Location = new System.Drawing.Point(127, 82);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.Size = new System.Drawing.Size(408, 135);
-            this.dataGridView7.TabIndex = 14;
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(6, 82);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(97, 13);
-            this.label58.TabIndex = 13;
-            this.label58.Text = "Lista de sustancias";
-            // 
-            // button21
-            // 
-            this.button21.Location = new System.Drawing.Point(451, 13);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(57, 23);
-            this.button21.TabIndex = 12;
-            this.button21.Text = "Añadir";
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // textBox21
-            // 
-            this.textBox21.Location = new System.Drawing.Point(55, 42);
-            this.textBox21.Multiline = true;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(480, 34);
-            this.textBox21.TabIndex = 11;
-            // 
-            // comboBox19
-            // 
-            this.comboBox19.FormattingEnabled = true;
-            this.comboBox19.Location = new System.Drawing.Point(282, 15);
-            this.comboBox19.Name = "comboBox19";
-            this.comboBox19.Size = new System.Drawing.Size(163, 21);
-            this.comboBox19.TabIndex = 10;
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(6, 45);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(43, 13);
-            this.label59.TabIndex = 9;
-            this.label59.Text = "Efectos";
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(205, 18);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(54, 13);
-            this.label60.TabIndex = 8;
-            this.label60.Text = "Sustancia";
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(152, 16);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(39, 17);
-            this.radioButton13.TabIndex = 7;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "No";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(90, 16);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(34, 17);
-            this.radioButton14.TabIndex = 6;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Si";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(0, 18);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(71, 13);
-            this.label61.TabIndex = 5;
-            this.label61.Text = "¿Es alérgico?";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.button18);
-            this.groupBox10.Controls.Add(this.dataGridView6);
-            this.groupBox10.Controls.Add(this.label54);
-            this.groupBox10.Controls.Add(this.button19);
-            this.groupBox10.Controls.Add(this.textBox20);
-            this.groupBox10.Controls.Add(this.comboBox18);
-            this.groupBox10.Controls.Add(this.label55);
-            this.groupBox10.Controls.Add(this.label56);
-            this.groupBox10.Controls.Add(this.radioButton11);
-            this.groupBox10.Controls.Add(this.radioButton12);
-            this.groupBox10.Controls.Add(this.label57);
-            this.groupBox10.Location = new System.Drawing.Point(6, 6);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(690, 178);
-            this.groupBox10.TabIndex = 2;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Alergia a sustancias en contacto con la piel";
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(550, 53);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(134, 23);
-            this.button18.TabIndex = 15;
-            this.button18.Text = "Agregar sustancia";
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView6
-            // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Location = new System.Drawing.Point(127, 82);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(412, 86);
-            this.dataGridView6.TabIndex = 14;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(6, 82);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(97, 13);
-            this.label54.TabIndex = 13;
-            this.label54.Text = "Lista de sustancias";
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(451, 13);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(57, 23);
-            this.button19.TabIndex = 12;
-            this.button19.Text = "Añadir";
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(55, 42);
-            this.textBox20.Multiline = true;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(484, 34);
-            this.textBox20.TabIndex = 11;
-            // 
-            // comboBox18
-            // 
-            this.comboBox18.FormattingEnabled = true;
-            this.comboBox18.Location = new System.Drawing.Point(282, 15);
-            this.comboBox18.Name = "comboBox18";
-            this.comboBox18.Size = new System.Drawing.Size(163, 21);
-            this.comboBox18.TabIndex = 10;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(6, 45);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(43, 13);
-            this.label55.TabIndex = 9;
-            this.label55.Text = "Efectos";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(205, 18);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(54, 13);
-            this.label56.TabIndex = 8;
-            this.label56.Text = "Sustancia";
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(152, 16);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(39, 17);
-            this.radioButton11.TabIndex = 7;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "No";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(90, 16);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(34, 17);
-            this.radioButton12.TabIndex = 6;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Si";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(0, 18);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(71, 13);
-            this.label57.TabIndex = 5;
-            this.label57.Text = "¿Es alérgico?";
+            // tabControl4
+            // 
+            this.tabControl4.Controls.Add(this.tabPage4);
+            this.tabControl4.Controls.Add(this.tabPage12);
+            this.tabControl4.Location = new System.Drawing.Point(6, 6);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(710, 591);
+            this.tabControl4.TabIndex = 5;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.groupBox3);
+            this.tabPage4.Controls.Add(this.groupBox11);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(702, 565);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Alimentos/Sustancias del ambiente";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -2224,6 +1890,259 @@
             this.label53.TabIndex = 5;
             this.label53.Text = "¿Es alérgico?";
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.button20);
+            this.groupBox11.Controls.Add(this.dataGridView7);
+            this.groupBox11.Controls.Add(this.label58);
+            this.groupBox11.Controls.Add(this.button21);
+            this.groupBox11.Controls.Add(this.textBox21);
+            this.groupBox11.Controls.Add(this.comboBox19);
+            this.groupBox11.Controls.Add(this.label59);
+            this.groupBox11.Controls.Add(this.label60);
+            this.groupBox11.Controls.Add(this.radioButton13);
+            this.groupBox11.Controls.Add(this.radioButton14);
+            this.groupBox11.Controls.Add(this.label61);
+            this.groupBox11.Location = new System.Drawing.Point(9, 224);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(687, 223);
+            this.groupBox11.TabIndex = 3;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Alergia a sustancia del ambiente";
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(547, 53);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(134, 23);
+            this.button20.TabIndex = 15;
+            this.button20.Text = "Agregar sustancia";
+            this.button20.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView7
+            // 
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Location = new System.Drawing.Point(127, 82);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(408, 135);
+            this.dataGridView7.TabIndex = 14;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(6, 82);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(97, 13);
+            this.label58.TabIndex = 13;
+            this.label58.Text = "Lista de sustancias";
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(451, 13);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(57, 23);
+            this.button21.TabIndex = 12;
+            this.button21.Text = "Añadir";
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // textBox21
+            // 
+            this.textBox21.Location = new System.Drawing.Point(55, 42);
+            this.textBox21.Multiline = true;
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(480, 34);
+            this.textBox21.TabIndex = 11;
+            // 
+            // comboBox19
+            // 
+            this.comboBox19.FormattingEnabled = true;
+            this.comboBox19.Location = new System.Drawing.Point(282, 15);
+            this.comboBox19.Name = "comboBox19";
+            this.comboBox19.Size = new System.Drawing.Size(163, 21);
+            this.comboBox19.TabIndex = 10;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(6, 45);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(43, 13);
+            this.label59.TabIndex = 9;
+            this.label59.Text = "Efectos";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(205, 18);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(54, 13);
+            this.label60.TabIndex = 8;
+            this.label60.Text = "Sustancia";
+            // 
+            // radioButton13
+            // 
+            this.radioButton13.AutoSize = true;
+            this.radioButton13.Location = new System.Drawing.Point(152, 16);
+            this.radioButton13.Name = "radioButton13";
+            this.radioButton13.Size = new System.Drawing.Size(39, 17);
+            this.radioButton13.TabIndex = 7;
+            this.radioButton13.TabStop = true;
+            this.radioButton13.Text = "No";
+            this.radioButton13.UseVisualStyleBackColor = true;
+            // 
+            // radioButton14
+            // 
+            this.radioButton14.AutoSize = true;
+            this.radioButton14.Location = new System.Drawing.Point(90, 16);
+            this.radioButton14.Name = "radioButton14";
+            this.radioButton14.Size = new System.Drawing.Size(34, 17);
+            this.radioButton14.TabIndex = 6;
+            this.radioButton14.TabStop = true;
+            this.radioButton14.Text = "Si";
+            this.radioButton14.UseVisualStyleBackColor = true;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(0, 18);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(71, 13);
+            this.label61.TabIndex = 5;
+            this.label61.Text = "¿Es alérgico?";
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.groupBox10);
+            this.tabPage12.Controls.Add(this.groupBox9);
+            this.tabPage12.Controls.Add(this.groupBox12);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(702, 565);
+            this.tabPage12.TabIndex = 1;
+            this.tabPage12.Text = "Sustancias en contacto con la piel/insectos/medicamentos";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.button18);
+            this.groupBox10.Controls.Add(this.dataGridView6);
+            this.groupBox10.Controls.Add(this.label54);
+            this.groupBox10.Controls.Add(this.button19);
+            this.groupBox10.Controls.Add(this.textBox20);
+            this.groupBox10.Controls.Add(this.comboBox18);
+            this.groupBox10.Controls.Add(this.label55);
+            this.groupBox10.Controls.Add(this.label56);
+            this.groupBox10.Controls.Add(this.radioButton11);
+            this.groupBox10.Controls.Add(this.radioButton12);
+            this.groupBox10.Controls.Add(this.label57);
+            this.groupBox10.Location = new System.Drawing.Point(6, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(690, 178);
+            this.groupBox10.TabIndex = 2;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Alergia a sustancias en contacto con la piel";
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(550, 53);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(134, 23);
+            this.button18.TabIndex = 15;
+            this.button18.Text = "Agregar sustancia";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(127, 82);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(412, 86);
+            this.dataGridView6.TabIndex = 14;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(6, 82);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(97, 13);
+            this.label54.TabIndex = 13;
+            this.label54.Text = "Lista de sustancias";
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(451, 13);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(57, 23);
+            this.button19.TabIndex = 12;
+            this.button19.Text = "Añadir";
+            this.button19.UseVisualStyleBackColor = true;
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(55, 42);
+            this.textBox20.Multiline = true;
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(484, 34);
+            this.textBox20.TabIndex = 11;
+            // 
+            // comboBox18
+            // 
+            this.comboBox18.FormattingEnabled = true;
+            this.comboBox18.Location = new System.Drawing.Point(282, 15);
+            this.comboBox18.Name = "comboBox18";
+            this.comboBox18.Size = new System.Drawing.Size(163, 21);
+            this.comboBox18.TabIndex = 10;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(6, 45);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(43, 13);
+            this.label55.TabIndex = 9;
+            this.label55.Text = "Efectos";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(205, 18);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(54, 13);
+            this.label56.TabIndex = 8;
+            this.label56.Text = "Sustancia";
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Location = new System.Drawing.Point(152, 16);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(39, 17);
+            this.radioButton11.TabIndex = 7;
+            this.radioButton11.TabStop = true;
+            this.radioButton11.Text = "No";
+            this.radioButton11.UseVisualStyleBackColor = true;
+            // 
+            // radioButton12
+            // 
+            this.radioButton12.AutoSize = true;
+            this.radioButton12.Location = new System.Drawing.Point(90, 16);
+            this.radioButton12.Name = "radioButton12";
+            this.radioButton12.Size = new System.Drawing.Size(34, 17);
+            this.radioButton12.TabIndex = 6;
+            this.radioButton12.TabStop = true;
+            this.radioButton12.Text = "Si";
+            this.radioButton12.UseVisualStyleBackColor = true;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(0, 18);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(71, 13);
+            this.label57.TabIndex = 5;
+            this.label57.Text = "¿Es alérgico?";
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.button16);
@@ -2343,6 +2262,126 @@
             this.label48.Size = new System.Drawing.Size(71, 13);
             this.label48.TabIndex = 5;
             this.label48.Text = "¿Es alérgico?";
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.button22);
+            this.groupBox12.Controls.Add(this.dataGridView12);
+            this.groupBox12.Controls.Add(this.label62);
+            this.groupBox12.Controls.Add(this.button39);
+            this.groupBox12.Controls.Add(this.textBox36);
+            this.groupBox12.Controls.Add(this.comboBox48);
+            this.groupBox12.Controls.Add(this.label63);
+            this.groupBox12.Controls.Add(this.label101);
+            this.groupBox12.Controls.Add(this.radioButton23);
+            this.groupBox12.Controls.Add(this.radioButton24);
+            this.groupBox12.Controls.Add(this.label104);
+            this.groupBox12.Location = new System.Drawing.Point(6, 190);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(690, 178);
+            this.groupBox12.TabIndex = 4;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Alergia a picaduras de insectos";
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(550, 53);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(134, 23);
+            this.button22.TabIndex = 15;
+            this.button22.Text = "Agregar insecto";
+            this.button22.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView12
+            // 
+            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView12.Location = new System.Drawing.Point(127, 82);
+            this.dataGridView12.Name = "dataGridView12";
+            this.dataGridView12.Size = new System.Drawing.Size(412, 86);
+            this.dataGridView12.TabIndex = 14;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(6, 82);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(86, 13);
+            this.label62.TabIndex = 13;
+            this.label62.Text = "Lista de insectos";
+            // 
+            // button39
+            // 
+            this.button39.Location = new System.Drawing.Point(451, 13);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(57, 23);
+            this.button39.TabIndex = 12;
+            this.button39.Text = "Añadir";
+            this.button39.UseVisualStyleBackColor = true;
+            // 
+            // textBox36
+            // 
+            this.textBox36.Location = new System.Drawing.Point(55, 42);
+            this.textBox36.Multiline = true;
+            this.textBox36.Name = "textBox36";
+            this.textBox36.Size = new System.Drawing.Size(484, 34);
+            this.textBox36.TabIndex = 11;
+            // 
+            // comboBox48
+            // 
+            this.comboBox48.FormattingEnabled = true;
+            this.comboBox48.Location = new System.Drawing.Point(282, 16);
+            this.comboBox48.Name = "comboBox48";
+            this.comboBox48.Size = new System.Drawing.Size(163, 21);
+            this.comboBox48.TabIndex = 10;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 45);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(43, 13);
+            this.label63.TabIndex = 9;
+            this.label63.Text = "Efectos";
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(205, 16);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(42, 13);
+            this.label101.TabIndex = 8;
+            this.label101.Text = "Insecto";
+            // 
+            // radioButton23
+            // 
+            this.radioButton23.AutoSize = true;
+            this.radioButton23.Location = new System.Drawing.Point(152, 16);
+            this.radioButton23.Name = "radioButton23";
+            this.radioButton23.Size = new System.Drawing.Size(39, 17);
+            this.radioButton23.TabIndex = 7;
+            this.radioButton23.TabStop = true;
+            this.radioButton23.Text = "No";
+            this.radioButton23.UseVisualStyleBackColor = true;
+            // 
+            // radioButton24
+            // 
+            this.radioButton24.AutoSize = true;
+            this.radioButton24.Location = new System.Drawing.Point(90, 16);
+            this.radioButton24.Name = "radioButton24";
+            this.radioButton24.Size = new System.Drawing.Size(34, 17);
+            this.radioButton24.TabIndex = 6;
+            this.radioButton24.TabStop = true;
+            this.radioButton24.Text = "Si";
+            this.radioButton24.UseVisualStyleBackColor = true;
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(0, 18);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(71, 13);
+            this.label104.TabIndex = 5;
+            this.label104.Text = "¿Es alérgico?";
             // 
             // tabPage6
             // 
@@ -3589,40 +3628,21 @@
             this.button38.Text = "Salir";
             this.button38.UseVisualStyleBackColor = true;
             // 
-            // tabControl4
+            // textBox37
             // 
-            this.tabControl4.Controls.Add(this.tabPage4);
-            this.tabControl4.Controls.Add(this.tabPage12);
-            this.tabControl4.Location = new System.Drawing.Point(6, 6);
-            this.tabControl4.Name = "tabControl4";
-            this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(710, 591);
-            this.tabControl4.TabIndex = 5;
+            this.textBox37.Location = new System.Drawing.Point(428, 166);
+            this.textBox37.Name = "textBox37";
+            this.textBox37.Size = new System.Drawing.Size(66, 20);
+            this.textBox37.TabIndex = 32;
             // 
-            // tabPage4
+            // label105
             // 
-            this.tabPage4.Controls.Add(this.groupBox3);
-            this.tabPage4.Controls.Add(this.groupBox11);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(702, 565);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Alimentos/Sustancias del ambiente";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage12
-            // 
-            this.tabPage12.Controls.Add(this.groupBox10);
-            this.tabPage12.Controls.Add(this.groupBox9);
-            this.tabPage12.Controls.Add(this.groupBox12);
-            this.tabPage12.Location = new System.Drawing.Point(4, 22);
-            this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage12.Size = new System.Drawing.Size(702, 565);
-            this.tabPage12.TabIndex = 1;
-            this.tabPage12.Text = "Sustancias en contacto con la piel/insectos/medicamentos";
-            this.tabPage12.UseVisualStyleBackColor = true;
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(321, 169);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(101, 13);
+            this.label105.TabIndex = 31;
+            this.label105.Text = "Cantidad hijos vivos";
             // 
             // RegistrarHistoriaClínica
             // 
@@ -3669,21 +3689,24 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.tabControl4.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            this.tabPage12.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
@@ -3709,9 +3732,6 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
-            this.tabControl4.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4047,5 +4067,7 @@
         private System.Windows.Forms.TabControl tabControl4;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.Label label105;
     }
 }

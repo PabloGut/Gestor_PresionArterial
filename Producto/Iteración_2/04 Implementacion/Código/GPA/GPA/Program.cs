@@ -17,7 +17,7 @@ namespace GPA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InicioSesión());
+            Application.Run(new RegistrarHistoriaClínica());
         }
     }
 }

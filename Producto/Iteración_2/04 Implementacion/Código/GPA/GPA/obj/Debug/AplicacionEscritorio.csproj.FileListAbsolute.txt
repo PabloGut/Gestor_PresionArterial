@@ -67,3 +67,9 @@ D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Reposito
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\bin\Debug\Entidades.exe
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\bin\Debug\DAO.pdb
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarBarrio.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarEspecialidad.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarLocalidad.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarPaciente.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarProfesionalMedico.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarTipoDeDocumento.resources
