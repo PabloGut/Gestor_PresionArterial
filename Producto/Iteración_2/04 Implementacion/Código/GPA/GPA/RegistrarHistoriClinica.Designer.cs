@@ -112,6 +112,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.label105 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
@@ -357,8 +359,6 @@
             this.button36 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
-            this.textBox37 = new System.Windows.Forms.TextBox();
-            this.label105 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1250,6 +1250,22 @@
             this.groupBox8.TabIndex = 9;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Antecedentes Ginecoobstétricos";
+            // 
+            // textBox37
+            // 
+            this.textBox37.Location = new System.Drawing.Point(428, 166);
+            this.textBox37.Name = "textBox37";
+            this.textBox37.Size = new System.Drawing.Size(66, 20);
+            this.textBox37.TabIndex = 32;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(321, 169);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(101, 13);
+            this.label105.TabIndex = 31;
+            this.label105.Text = "Cantidad hijos vivos";
             // 
             // button12
             // 
@@ -3627,22 +3643,6 @@
             this.button38.TabIndex = 15;
             this.button38.Text = "Salir";
             this.button38.UseVisualStyleBackColor = true;
-            // 
-            // textBox37
-            // 
-            this.textBox37.Location = new System.Drawing.Point(428, 166);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(66, 20);
-            this.textBox37.TabIndex = 32;
-            // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(321, 169);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(101, 13);
-            this.label105.TabIndex = 31;
-            this.label105.Text = "Cantidad hijos vivos";
             // 
             // RegistrarHistoriaClínica
             // 

@@ -73,3 +73,4 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarPaciente.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarProfesionalMedico.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarTipoDeDocumento.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.Form1.resources

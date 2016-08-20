@@ -21,16 +21,23 @@ namespace GPA
             medicoLogueado=pmLogueado;
 
         }
-        
+        public MenuPrincipal()
+        {
+            InitializeComponent();
+            
+
+        }
         private void historiaClínicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal;
             //this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             //this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+            
+
         }
 
         private void crearHistoriaClínicaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -143,6 +150,41 @@ namespace GPA
         {
             RegistrarTipoDeDocumento rtd = new RegistrarTipoDeDocumento();
             rtd.ShowDialog();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label38_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label41_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
