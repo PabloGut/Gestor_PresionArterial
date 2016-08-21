@@ -2505,6 +2505,7 @@
             this.comboBox14.Name = "comboBox14";
             this.comboBox14.Size = new System.Drawing.Size(149, 24);
             this.comboBox14.TabIndex = 10;
+            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.comboBox14_SelectedIndexChanged);
             // 
             // label60
             // 

@@ -186,5 +186,10 @@ namespace GPA
         {
 
         }
+
+        private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
