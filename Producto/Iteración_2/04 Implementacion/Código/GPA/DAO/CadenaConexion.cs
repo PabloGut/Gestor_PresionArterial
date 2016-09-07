@@ -13,7 +13,7 @@ namespace DAO
 
         private CadenaConexion()
         {
-            cadena = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_2;Integrated Security=True";
+            cadena = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_4;Integrated Security=True";
         }
         public static CadenaConexion getInstancia()
         {

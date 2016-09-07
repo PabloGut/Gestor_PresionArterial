@@ -55,35 +55,36 @@ namespace DAO
         public static Localidad buscarLocalidad(int id)
         {
             SqlConnection cn = new SqlConnection(cadenaConexion);
-            cn.Open();
+                cn.Open();
 
-            string consulta = "SELECT id_localidad,nombre FROM Localidad " +
-                              "WHERE id_localidad=@paramId_localidad";
+                string consulta = "SELECT id_localidad,nombre FROM Localidad " +
+                                  "WHERE id_localidad=@paramId_localidad";
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("@paramId_localidad", id);
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@paramId_localidad", id);
 
-            cmd.CommandText = consulta;
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
 
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                Localidad localidad = new Localidad();
-                localidad.id_localidad = (int)dr["id_localidad"];
-                localidad.nombre = dr["nombre"].ToString();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    Localidad localidad = new Localidad();
+                    localidad.id_localidad = (int)dr["id_localidad"];
+                    localidad.nombre = dr["nombre"].ToString();
 
-                cn.Close();
-                return localidad;
+                    cn.Close();
+                    return localidad;
+                }
+                else
+                {
+                    cn.Close();
+                    return null;
+                }
             }
-            else
-            {
-                cn.Close();
-                return null;
-            }
-
-        }
+          
+        
 
         public static int insertarLocalidad(string nombre)
         {
@@ -172,6 +173,47 @@ namespace DAO
                 }
                 throw new Exception("Error al eliminar localidad\nDetalles: "+ex.Message);
             }
+        }
+        /*
+         * Método para buscar los datos de una localidad por su id.
+         * Accede a la base de datos para buscar la localidad.
+         * Toma como parámetro el id_localidad.
+         * Retorna un objeto Localidad.
+         */
+        public static Localidad mostrarLocalidad(int id_localidad)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection();
+            Localidad localidad = null;
+            try
+            {
+                cn.Open();
+                string consulta = "select * from localidad where id_localidad=@idLocalidad";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    localidad = new Localidad();
+                    localidad.id_localidad = (int)dr["id_localidad"];
+                    localidad.nombre = dr["nombre"].ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return localidad;
+                
         }
     }
 }

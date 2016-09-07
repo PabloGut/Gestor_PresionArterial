@@ -95,7 +95,7 @@ namespace GPA
             if (domicilio.Count() > 0)
             {
                 txtCalle.Text = domicilio[0].calle;
-                txtNumero.Text = domicilio[0].numero;
+                //txtNumero.Text = domicilio[0].numero;
 
             }
         }

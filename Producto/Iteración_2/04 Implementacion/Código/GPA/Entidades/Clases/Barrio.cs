@@ -11,6 +11,7 @@ namespace Entidades.Clases
         public int id_barrio { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
+        public int id_localidad { get; set; }
         public Localidad localidad { get; set; }
 
     }

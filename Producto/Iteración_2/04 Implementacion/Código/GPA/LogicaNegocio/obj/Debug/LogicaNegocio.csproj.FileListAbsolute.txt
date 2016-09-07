@@ -1,0 +1,9 @@
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\DAO.exe
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\Entidades.exe
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\DAO.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.pdb

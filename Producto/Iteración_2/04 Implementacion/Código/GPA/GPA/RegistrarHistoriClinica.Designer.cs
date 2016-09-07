@@ -47,46 +47,46 @@
             this.mtbFechaActual = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtbHoraActual = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtmotivoConsulta = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.dgvListaSintoma = new System.Windows.Forms.DataGridView();
+            this.btnAgregarSintoma = new System.Windows.Forms.Button();
+            this.btnAñadirElementoModificacion = new System.Windows.Forms.Button();
+            this.cboElementoModificacion = new System.Windows.Forms.ComboBox();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.btnComoModificaSintoma = new System.Windows.Forms.Button();
+            this.cboComoModificaSintoma = new System.Windows.Forms.ComboBox();
+            this.btnAñadirDescripcioTiempo = new System.Windows.Forms.Button();
+            this.cboCuandoComenzo = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cboElementoTiempo = new System.Windows.Forms.ComboBox();
+            this.mtbFechaComienzoSintoma = new System.Windows.Forms.MaskedTextBox();
+            this.txtHaciaDondeIrradia = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.btnAñadirCaracterDolor = new System.Windows.Forms.Button();
+            this.txtCantTiempoInicioSintoma = new System.Windows.Forms.TextBox();
+            this.cboCaracterDolor = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.rbNoDolor = new System.Windows.Forms.RadioButton();
+            this.rbSiDolor = new System.Windows.Forms.RadioButton();
+            this.btnAñadirParteCuerpo = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboParteCuerpo = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtDescQueSientePaciente = new System.Windows.Forms.TextBox();
+            this.btnAñadirQueSientePaciente = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboQueSienteElPaciente = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -356,9 +356,9 @@
             this.comboBox45 = new System.Windows.Forms.ComboBox();
             this.label99 = new System.Windows.Forms.Label();
             this.label98 = new System.Windows.Forms.Label();
-            this.button36 = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -368,7 +368,7 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaSintoma)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage10.SuspendLayout();
@@ -572,7 +572,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.maskedTextBox1);
+            this.groupBox2.Controls.Add(this.mtbHoraActual);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.mtbFechaActual);
             this.groupBox2.Location = new System.Drawing.Point(12, 234);
@@ -591,14 +591,14 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "Hora";
             // 
-            // maskedTextBox1
+            // mtbHoraActual
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(393, 44);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(41, 20);
-            this.maskedTextBox1.TabIndex = 4;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.mtbHoraActual.Location = new System.Drawing.Point(393, 44);
+            this.mtbHoraActual.Mask = "00:00";
+            this.mtbHoraActual.Name = "mtbHoraActual";
+            this.mtbHoraActual.Size = new System.Drawing.Size(41, 20);
+            this.mtbHoraActual.TabIndex = 4;
+            this.mtbHoraActual.ValidatingType = typeof(System.DateTime);
             // 
             // panel1
             // 
@@ -613,7 +613,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtmotivoConsulta);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Location = new System.Drawing.Point(12, 333);
             this.groupBox5.Name = "groupBox5";
@@ -622,14 +622,14 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Motivo de consulta";
             // 
-            // textBox1
+            // txtmotivoConsulta
             // 
-            this.textBox1.Location = new System.Drawing.Point(207, 38);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(448, 90);
-            this.textBox1.TabIndex = 13;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtmotivoConsulta.Location = new System.Drawing.Point(207, 38);
+            this.txtmotivoConsulta.Multiline = true;
+            this.txtmotivoConsulta.Name = "txtmotivoConsulta";
+            this.txtmotivoConsulta.Size = new System.Drawing.Size(448, 90);
+            this.txtmotivoConsulta.TabIndex = 13;
+            this.txtmotivoConsulta.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label11
             // 
@@ -678,36 +678,36 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.label12);
-            this.groupBox6.Controls.Add(this.dataGridView1);
-            this.groupBox6.Controls.Add(this.button7);
-            this.groupBox6.Controls.Add(this.button6);
-            this.groupBox6.Controls.Add(this.comboBox7);
-            this.groupBox6.Controls.Add(this.textBox8);
-            this.groupBox6.Controls.Add(this.button5);
-            this.groupBox6.Controls.Add(this.comboBox6);
-            this.groupBox6.Controls.Add(this.button4);
-            this.groupBox6.Controls.Add(this.comboBox5);
+            this.groupBox6.Controls.Add(this.dgvListaSintoma);
+            this.groupBox6.Controls.Add(this.btnAgregarSintoma);
+            this.groupBox6.Controls.Add(this.btnAñadirElementoModificacion);
+            this.groupBox6.Controls.Add(this.cboElementoModificacion);
+            this.groupBox6.Controls.Add(this.txtObservaciones);
+            this.groupBox6.Controls.Add(this.btnComoModificaSintoma);
+            this.groupBox6.Controls.Add(this.cboComoModificaSintoma);
+            this.groupBox6.Controls.Add(this.btnAñadirDescripcioTiempo);
+            this.groupBox6.Controls.Add(this.cboCuandoComenzo);
             this.groupBox6.Controls.Add(this.label25);
-            this.groupBox6.Controls.Add(this.comboBox4);
-            this.groupBox6.Controls.Add(this.maskedTextBox2);
-            this.groupBox6.Controls.Add(this.textBox3);
+            this.groupBox6.Controls.Add(this.cboElementoTiempo);
+            this.groupBox6.Controls.Add(this.mtbFechaComienzoSintoma);
+            this.groupBox6.Controls.Add(this.txtHaciaDondeIrradia);
             this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.button3);
-            this.groupBox6.Controls.Add(this.textBox4);
-            this.groupBox6.Controls.Add(this.comboBox3);
+            this.groupBox6.Controls.Add(this.btnAñadirCaracterDolor);
+            this.groupBox6.Controls.Add(this.txtCantTiempoInicioSintoma);
+            this.groupBox6.Controls.Add(this.cboCaracterDolor);
             this.groupBox6.Controls.Add(this.label23);
-            this.groupBox6.Controls.Add(this.radioButton2);
-            this.groupBox6.Controls.Add(this.radioButton1);
-            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.rbNoDolor);
+            this.groupBox6.Controls.Add(this.rbSiDolor);
+            this.groupBox6.Controls.Add(this.btnAñadirParteCuerpo);
             this.groupBox6.Controls.Add(this.label22);
-            this.groupBox6.Controls.Add(this.comboBox2);
+            this.groupBox6.Controls.Add(this.cboParteCuerpo);
             this.groupBox6.Controls.Add(this.label20);
-            this.groupBox6.Controls.Add(this.textBox2);
-            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Controls.Add(this.txtDescQueSientePaciente);
+            this.groupBox6.Controls.Add(this.btnAñadirQueSientePaciente);
             this.groupBox6.Controls.Add(this.label21);
             this.groupBox6.Controls.Add(this.label19);
             this.groupBox6.Controls.Add(this.label18);
-            this.groupBox6.Controls.Add(this.comboBox1);
+            this.groupBox6.Controls.Add(this.cboQueSienteElPaciente);
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.label17);
@@ -729,81 +729,81 @@
             this.label12.TabIndex = 24;
             this.label12.Text = "Lista de síntomas";
             // 
-            // dataGridView1
+            // dgvListaSintoma
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 429);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(669, 139);
-            this.dataGridView1.TabIndex = 23;
+            this.dgvListaSintoma.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaSintoma.Location = new System.Drawing.Point(9, 429);
+            this.dgvListaSintoma.Name = "dgvListaSintoma";
+            this.dgvListaSintoma.Size = new System.Drawing.Size(669, 139);
+            this.dgvListaSintoma.TabIndex = 23;
             // 
-            // button7
+            // btnAgregarSintoma
             // 
-            this.button7.Location = new System.Drawing.Point(291, 400);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(132, 23);
-            this.button7.TabIndex = 22;
-            this.button7.Text = "Agregar Síntoma";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnAgregarSintoma.Location = new System.Drawing.Point(291, 400);
+            this.btnAgregarSintoma.Name = "btnAgregarSintoma";
+            this.btnAgregarSintoma.Size = new System.Drawing.Size(132, 23);
+            this.btnAgregarSintoma.TabIndex = 22;
+            this.btnAgregarSintoma.Text = "Agregar Síntoma";
+            this.btnAgregarSintoma.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnAñadirElementoModificacion
             // 
-            this.button6.Location = new System.Drawing.Point(603, 308);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 21;
-            this.button6.Text = "Añadir";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnAñadirElementoModificacion.Location = new System.Drawing.Point(603, 308);
+            this.btnAñadirElementoModificacion.Name = "btnAñadirElementoModificacion";
+            this.btnAñadirElementoModificacion.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirElementoModificacion.TabIndex = 21;
+            this.btnAñadirElementoModificacion.Text = "Añadir";
+            this.btnAñadirElementoModificacion.UseVisualStyleBackColor = true;
             // 
-            // comboBox7
+            // cboElementoModificacion
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(476, 310);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 21);
-            this.comboBox7.TabIndex = 20;
+            this.cboElementoModificacion.FormattingEnabled = true;
+            this.cboElementoModificacion.Location = new System.Drawing.Point(476, 310);
+            this.cboElementoModificacion.Name = "cboElementoModificacion";
+            this.cboElementoModificacion.Size = new System.Drawing.Size(121, 21);
+            this.cboElementoModificacion.TabIndex = 20;
             // 
-            // textBox8
+            // txtObservaciones
             // 
-            this.textBox8.Location = new System.Drawing.Point(90, 342);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(588, 52);
-            this.textBox8.TabIndex = 17;
+            this.txtObservaciones.Location = new System.Drawing.Point(90, 342);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(588, 52);
+            this.txtObservaciones.TabIndex = 17;
             // 
-            // button5
+            // btnComoModificaSintoma
             // 
-            this.button5.Location = new System.Drawing.Point(241, 308);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 19;
-            this.button5.Text = "Añadir";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnComoModificaSintoma.Location = new System.Drawing.Point(241, 308);
+            this.btnComoModificaSintoma.Name = "btnComoModificaSintoma";
+            this.btnComoModificaSintoma.Size = new System.Drawing.Size(75, 23);
+            this.btnComoModificaSintoma.TabIndex = 19;
+            this.btnComoModificaSintoma.Text = "Añadir";
+            this.btnComoModificaSintoma.UseVisualStyleBackColor = true;
             // 
-            // comboBox6
+            // cboComoModificaSintoma
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(114, 310);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 18;
+            this.cboComoModificaSintoma.FormattingEnabled = true;
+            this.cboComoModificaSintoma.Location = new System.Drawing.Point(114, 310);
+            this.cboComoModificaSintoma.Name = "cboComoModificaSintoma";
+            this.cboComoModificaSintoma.Size = new System.Drawing.Size(121, 21);
+            this.cboComoModificaSintoma.TabIndex = 18;
             // 
-            // button4
+            // btnAñadirDescripcioTiempo
             // 
-            this.button4.Location = new System.Drawing.Point(241, 271);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Añadir";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAñadirDescripcioTiempo.Location = new System.Drawing.Point(241, 271);
+            this.btnAñadirDescripcioTiempo.Name = "btnAñadirDescripcioTiempo";
+            this.btnAñadirDescripcioTiempo.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirDescripcioTiempo.TabIndex = 17;
+            this.btnAñadirDescripcioTiempo.Text = "Añadir";
+            this.btnAñadirDescripcioTiempo.UseVisualStyleBackColor = true;
             // 
-            // comboBox5
+            // cboCuandoComenzo
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(114, 273);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 16;
+            this.cboCuandoComenzo.FormattingEnabled = true;
+            this.cboCuandoComenzo.Location = new System.Drawing.Point(114, 273);
+            this.cboCuandoComenzo.Name = "cboCuandoComenzo";
+            this.cboCuandoComenzo.Size = new System.Drawing.Size(121, 21);
+            this.cboCuandoComenzo.TabIndex = 16;
             // 
             // label25
             // 
@@ -814,29 +814,29 @@
             this.label25.TabIndex = 13;
             this.label25.Text = "Observaciones";
             // 
-            // comboBox4
+            // cboElementoTiempo
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(305, 237);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(118, 21);
-            this.comboBox4.TabIndex = 15;
+            this.cboElementoTiempo.FormattingEnabled = true;
+            this.cboElementoTiempo.Location = new System.Drawing.Point(305, 237);
+            this.cboElementoTiempo.Name = "cboElementoTiempo";
+            this.cboElementoTiempo.Size = new System.Drawing.Size(118, 21);
+            this.cboElementoTiempo.TabIndex = 15;
             // 
-            // maskedTextBox2
+            // mtbFechaComienzoSintoma
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(49, 238);
-            this.maskedTextBox2.Mask = "00/00/0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox2.TabIndex = 14;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.mtbFechaComienzoSintoma.Location = new System.Drawing.Point(49, 238);
+            this.mtbFechaComienzoSintoma.Mask = "00/00/0000";
+            this.mtbFechaComienzoSintoma.Name = "mtbFechaComienzoSintoma";
+            this.mtbFechaComienzoSintoma.Size = new System.Drawing.Size(100, 20);
+            this.mtbFechaComienzoSintoma.TabIndex = 14;
+            this.mtbFechaComienzoSintoma.ValidatingType = typeof(System.DateTime);
             // 
-            // textBox3
+            // txtHaciaDondeIrradia
             // 
-            this.textBox3.Location = new System.Drawing.Point(134, 177);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(343, 20);
-            this.textBox3.TabIndex = 11;
+            this.txtHaciaDondeIrradia.Location = new System.Drawing.Point(134, 177);
+            this.txtHaciaDondeIrradia.Name = "txtHaciaDondeIrradia";
+            this.txtHaciaDondeIrradia.Size = new System.Drawing.Size(343, 20);
+            this.txtHaciaDondeIrradia.TabIndex = 11;
             // 
             // label24
             // 
@@ -847,29 +847,29 @@
             this.label24.TabIndex = 12;
             this.label24.Text = "¿Elemento que lo modifica?";
             // 
-            // button3
+            // btnAñadirCaracterDolor
             // 
-            this.button3.Location = new System.Drawing.Point(402, 143);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Añadir";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAñadirCaracterDolor.Location = new System.Drawing.Point(402, 143);
+            this.btnAñadirCaracterDolor.Name = "btnAñadirCaracterDolor";
+            this.btnAñadirCaracterDolor.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirCaracterDolor.TabIndex = 10;
+            this.btnAñadirCaracterDolor.Text = "Añadir";
+            this.btnAñadirCaracterDolor.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // txtCantTiempoInicioSintoma
             // 
-            this.textBox4.Location = new System.Drawing.Point(258, 238);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(41, 20);
-            this.textBox4.TabIndex = 12;
+            this.txtCantTiempoInicioSintoma.Location = new System.Drawing.Point(258, 238);
+            this.txtCantTiempoInicioSintoma.Name = "txtCantTiempoInicioSintoma";
+            this.txtCantTiempoInicioSintoma.Size = new System.Drawing.Size(41, 20);
+            this.txtCantTiempoInicioSintoma.TabIndex = 12;
             // 
-            // comboBox3
+            // cboCaracterDolor
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(275, 145);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 9;
+            this.cboCaracterDolor.FormattingEnabled = true;
+            this.cboCaracterDolor.Location = new System.Drawing.Point(275, 145);
+            this.cboCaracterDolor.Name = "cboCaracterDolor";
+            this.cboCaracterDolor.Size = new System.Drawing.Size(121, 21);
+            this.cboCaracterDolor.TabIndex = 9;
             // 
             // label23
             // 
@@ -880,36 +880,36 @@
             this.label23.TabIndex = 11;
             this.label23.Text = "¿Cómo se modifica?";
             // 
-            // radioButton2
+            // rbNoDolor
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(125, 146);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(39, 17);
-            this.radioButton2.TabIndex = 8;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbNoDolor.AutoSize = true;
+            this.rbNoDolor.Location = new System.Drawing.Point(125, 146);
+            this.rbNoDolor.Name = "rbNoDolor";
+            this.rbNoDolor.Size = new System.Drawing.Size(39, 17);
+            this.rbNoDolor.TabIndex = 8;
+            this.rbNoDolor.TabStop = true;
+            this.rbNoDolor.Text = "No";
+            this.rbNoDolor.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbSiDolor
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(85, 146);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(34, 17);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Si";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbSiDolor.AutoSize = true;
+            this.rbSiDolor.Location = new System.Drawing.Point(85, 146);
+            this.rbSiDolor.Name = "rbSiDolor";
+            this.rbSiDolor.Size = new System.Drawing.Size(34, 17);
+            this.rbSiDolor.TabIndex = 7;
+            this.rbSiDolor.TabStop = true;
+            this.rbSiDolor.Text = "Si";
+            this.rbSiDolor.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAñadirParteCuerpo
             // 
-            this.button2.Location = new System.Drawing.Point(364, 101);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Añadir";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAñadirParteCuerpo.Location = new System.Drawing.Point(364, 101);
+            this.btnAñadirParteCuerpo.Name = "btnAñadirParteCuerpo";
+            this.btnAñadirParteCuerpo.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirParteCuerpo.TabIndex = 6;
+            this.btnAñadirParteCuerpo.Text = "Añadir";
+            this.btnAñadirParteCuerpo.UseVisualStyleBackColor = true;
             // 
             // label22
             // 
@@ -920,13 +920,13 @@
             this.label22.TabIndex = 10;
             this.label22.Text = "¿Cuándo comenzó?";
             // 
-            // comboBox2
+            // cboParteCuerpo
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(216, 103);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(142, 21);
-            this.comboBox2.TabIndex = 5;
+            this.cboParteCuerpo.FormattingEnabled = true;
+            this.cboParteCuerpo.Location = new System.Drawing.Point(216, 103);
+            this.cboParteCuerpo.Name = "cboParteCuerpo";
+            this.cboParteCuerpo.Size = new System.Drawing.Size(142, 21);
+            this.cboParteCuerpo.TabIndex = 5;
             // 
             // label20
             // 
@@ -937,22 +937,22 @@
             this.label20.TabIndex = 8;
             this.label20.Text = "Fecha";
             // 
-            // textBox2
+            // txtDescQueSientePaciente
             // 
-            this.textBox2.Location = new System.Drawing.Point(153, 63);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(371, 29);
-            this.textBox2.TabIndex = 4;
+            this.txtDescQueSientePaciente.Location = new System.Drawing.Point(153, 63);
+            this.txtDescQueSientePaciente.Multiline = true;
+            this.txtDescQueSientePaciente.Name = "txtDescQueSientePaciente";
+            this.txtDescQueSientePaciente.Size = new System.Drawing.Size(371, 29);
+            this.txtDescQueSientePaciente.TabIndex = 4;
             // 
-            // button1
+            // btnAñadirQueSientePaciente
             // 
-            this.button1.Location = new System.Drawing.Point(252, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Añadir";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAñadirQueSientePaciente.Location = new System.Drawing.Point(252, 22);
+            this.btnAñadirQueSientePaciente.Name = "btnAñadirQueSientePaciente";
+            this.btnAñadirQueSientePaciente.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirQueSientePaciente.TabIndex = 3;
+            this.btnAñadirQueSientePaciente.Text = "Añadir";
+            this.btnAñadirQueSientePaciente.UseVisualStyleBackColor = true;
             // 
             // label21
             // 
@@ -981,13 +981,13 @@
             this.label18.TabIndex = 6;
             this.label18.Text = "¿Hacia donde se irradia?";
             // 
-            // comboBox1
+            // cboQueSienteElPaciente
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(125, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cboQueSienteElPaciente.FormattingEnabled = true;
+            this.cboQueSienteElPaciente.Location = new System.Drawing.Point(125, 24);
+            this.cboQueSienteElPaciente.Name = "cboQueSienteElPaciente";
+            this.cboQueSienteElPaciente.Size = new System.Drawing.Size(121, 21);
+            this.cboQueSienteElPaciente.TabIndex = 2;
             // 
             // label13
             // 
@@ -3617,41 +3617,42 @@
             this.label98.TabIndex = 0;
             this.label98.Text = "Deporte o actividad";
             // 
-            // button36
+            // btnAceptar
             // 
-            this.button36.Location = new System.Drawing.Point(12, 647);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(75, 23);
-            this.button36.TabIndex = 13;
-            this.button36.Text = "Aceptar";
-            this.button36.UseVisualStyleBackColor = true;
+            this.btnAceptar.Location = new System.Drawing.Point(12, 647);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 13;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click_1);
             // 
-            // button37
+            // btnCancelar
             // 
-            this.button37.Location = new System.Drawing.Point(93, 647);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(75, 23);
-            this.button37.TabIndex = 14;
-            this.button37.Text = "Cancelar";
-            this.button37.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(93, 647);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 14;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // button38
+            // btnSalir
             // 
-            this.button38.Location = new System.Drawing.Point(174, 647);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(75, 23);
-            this.button38.TabIndex = 15;
-            this.button38.Text = "Salir";
-            this.button38.UseVisualStyleBackColor = true;
+            this.btnSalir.Location = new System.Drawing.Point(174, 647);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 15;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // RegistrarHistoriaClínica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 682);
-            this.Controls.Add(this.button38);
-            this.Controls.Add(this.button37);
-            this.Controls.Add(this.button36);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.tabControl1);
             this.Name = "RegistrarHistoriaClínica";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -3671,7 +3672,7 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaSintoma)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
@@ -3758,12 +3759,12 @@
         private System.Windows.Forms.ComboBox cboTipoDocumento;
         private System.Windows.Forms.Button btnVerificarHC;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtbHoraActual;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtmotivoConsulta;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label13;
@@ -3779,29 +3780,29 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.TextBox txtObservaciones;
+        private System.Windows.Forms.ComboBox cboElementoTiempo;
+        private System.Windows.Forms.MaskedTextBox mtbFechaComienzoSintoma;
+        private System.Windows.Forms.TextBox txtHaciaDondeIrradia;
+        private System.Windows.Forms.Button btnAñadirCaracterDolor;
+        private System.Windows.Forms.TextBox txtCantTiempoInicioSintoma;
+        private System.Windows.Forms.ComboBox cboCaracterDolor;
+        private System.Windows.Forms.RadioButton rbNoDolor;
+        private System.Windows.Forms.RadioButton rbSiDolor;
+        private System.Windows.Forms.Button btnAñadirParteCuerpo;
+        private System.Windows.Forms.ComboBox cboParteCuerpo;
+        private System.Windows.Forms.TextBox txtDescQueSientePaciente;
+        private System.Windows.Forms.Button btnAñadirQueSientePaciente;
+        private System.Windows.Forms.ComboBox cboQueSienteElPaciente;
+        private System.Windows.Forms.ComboBox cboCuandoComenzo;
+        private System.Windows.Forms.Button btnAñadirDescripcioTiempo;
+        private System.Windows.Forms.Button btnAñadirElementoModificacion;
+        private System.Windows.Forms.ComboBox cboElementoModificacion;
+        private System.Windows.Forms.Button btnComoModificaSintoma;
+        private System.Windows.Forms.ComboBox cboComoModificaSintoma;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dgvListaSintoma;
+        private System.Windows.Forms.Button btnAgregarSintoma;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button button11;
@@ -4013,9 +4014,9 @@
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.TabPage tabPage11;
-        private System.Windows.Forms.Button button36;
-        private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.DataGridView dataGridView12;

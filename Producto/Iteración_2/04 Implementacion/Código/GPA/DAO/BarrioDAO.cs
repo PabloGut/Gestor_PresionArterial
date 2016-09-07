@@ -152,5 +152,54 @@ namespace DAO
 
             cn.Close();
         }
+        /*
+         * Método para buscar todos los datos de un barrio.
+         * Recibe como parámetro el id_barrio.
+         * Retorna un objeto barrio.
+         */
+        public static Barrio mostrarBarrio(int id_barrio)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection();
+            Barrio barrio = null;
+            try
+            {
+                cn.Open();
+                string consulta = "select * froma Barrio where id_barrio=@idBarrio";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    barrio = new Barrio();
+                    barrio.id_barrio = (int)dr["id_barrio"];
+                    barrio.nombre = dr["nombre"].ToString();
+                    barrio.id_localidad=(int) dr["id_localidad"];
+                    if (string.IsNullOrEmpty(dr["descripcion"].ToString()))
+                    {
+                        barrio.descripcion = dr["descripcion"].ToString();
+                    }
+                }
+                barrio.localidad=LocalidadDAO.mostrarLocalidad(barrio.id_localidad);
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            if (barrio != null)
+            {
+                barrio.localidad = LocalidadDAO.mostrarLocalidad(barrio.id_localidad);
+            }
+            return barrio;
+        }
     }
 }

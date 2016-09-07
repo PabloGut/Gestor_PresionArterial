@@ -15,56 +15,20 @@ namespace GPA
 {
     public partial class RegistrarHistoriaClínica : Form
     {
-        private int tipodoc;
-        private long nro;
-        private ProfesionaMedico medico{get;set;}
-        private ManejadorRegistrarHC manejador;
-        private MenuPrincipal referenciaMenuPrincipal;
-        private ConsultarPaciente referenciaConsultarPaciente;
+    
 
         public RegistrarHistoriaClínica()
         {
-            InitializeComponent();
-            manejador = new ManejadorRegistrarHC();
+          
 
         }
-        public RegistrarHistoriaClínica(MenuPrincipal mp,ConsultarPaciente cp )
-        {
-            InitializeComponent();
-            manejador = new ManejadorRegistrarHC();
-            referenciaMenuPrincipal = mp;
-            referenciaConsultarPaciente = cp;
-        }
-        public RegistrarHistoriaClínica(MenuPrincipal mp)
-        {
-            InitializeComponent();
-            manejador = new ManejadorRegistrarHC();
-            referenciaMenuPrincipal = mp;
-
-            if (referenciaMenuPrincipal.getPacienteSeleccionado() != null)
-            {
-                tipodoc=referenciaMenuPrincipal.getPacienteSeleccionado().id_tipoDoc;
-                nro = referenciaMenuPrincipal.getPacienteSeleccionado().nroDoc;
-            }
-        }
-
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
-            deshabilitarHabilitarComponentes(false);
-            btnVerificarHC.Focus();
-            mtbFechaActual.Text = DateTime.Today.ToString();
-            cargarComboTipoDocumento();
-            presentarDatosProfesionalMedico();
-
+           
         }
         public void presentarDatosProfesionalMedico()
         {
-            cboTipoDocumento.SelectedValue = medico.id_tipoDoc;
-            txtNroDocumento.Text =Convert.ToString(medico.nroDoc);
-
-            manejador.buscarProfesionaMedico(medico);
-            txtNombreDoctor.Text = medico.nombre;
-            txtApellidoDoctor.Text = medico.apellido;
+           
 
         }
         public void cargarComboTipoDocumento()
@@ -75,30 +39,20 @@ namespace GPA
         }
         public void obtenerPaciente(int id_tipoDoc,long nroDoc,string nombre,string apellido)
         {
-            txtNombrePaciente.Text = nombre;
-            txtApellidoPaciente.Text = apellido;
-            tipodoc = id_tipoDoc;
-            nro = nroDoc;
+           
         }
         public void medicoLogueado(ProfesionaMedico medicoLogueado)
         {
-            medico=medicoLogueado;
+           
         }
         private void btnVerificarHC_Click(object sender, EventArgs e)
         {
-            if (PacienteDAO.ExisteHC(tipodoc, nro) == true)
-            {
-                MessageBox.Show("El paciente ya tiene historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                this.Close();
-                referenciaConsultarPaciente.Show();
-                return;
-            }
-            else
-            {
-                MessageBox.Show("El paciente no posee historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                deshabilitarHabilitarComponentes(true);
-            }
+          
+          //MessageBox.Show("El paciente ya tiene historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+        
+          //MessageBox.Show("El paciente no posee historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           
+         
 
         }
         public void deshabilitarHabilitarComponentes(Boolean valor)
@@ -119,15 +73,13 @@ namespace GPA
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            referenciaMenuPrincipal.Show();
-            this.Close();
+          
             
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            referenciaMenuPrincipal.Show();
-            this.Hide();
+           
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -146,6 +98,11 @@ namespace GPA
         }
 
         private void tabPage10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAceptar_Click_1(object sender, EventArgs e)
         {
 
         }

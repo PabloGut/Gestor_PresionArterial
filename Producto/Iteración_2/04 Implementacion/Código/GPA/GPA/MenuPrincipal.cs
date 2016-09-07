@@ -8,17 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades.Clases;
+using GPA.Manejadores;
 namespace GPA
 {
     public partial class MenuPrincipal : Form
     {
         ProfesionaMedico medicoLogueado;
         public Paciente pacienteSeleccionado{set;get;}
-        
+        ManejadorConsultarPaciente manejadorConsultarPaciente;
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
             medicoLogueado=pmLogueado;
+            manejadorConsultarPaciente = new ManejadorConsultarPaciente();
 
         }
         public MenuPrincipal()
@@ -33,11 +35,25 @@ namespace GPA
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
+
+            cargarComboTipoDocumento();
+            dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+            //this.WindowState = FormWindowState.Normal;
             //this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             //this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             
 
+        }
+        /*
+         * Método para cargar el ComboBox del tipo de documento.
+         * Llama al método mostrarTiposDocumentos del manejador consultar paciente.
+         * No recibe parámetros.
+         */
+        public void cargarComboTipoDocumento()
+        {
+            cboTipoDocPaciente.DataSource = manejadorConsultarPaciente.mostrarTiposDocumentos();
+            cboTipoDocPaciente.ValueMember = "id_tipoDoc";
+            cboTipoDocPaciente.DisplayMember = "nombre";
         }
 
         private void crearHistoriaClínicaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,9 +69,7 @@ namespace GPA
 
         private void buscarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConsultarPaciente cp = new ConsultarPaciente(this);
-            cp.obtenerProfesionalLogueado(medicoLogueado);
-            cp.ShowDialog();
+           
         }
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -64,21 +78,7 @@ namespace GPA
 
         private void agregarEstudioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("Primero debe seleccionar el paciente que recibe atención médica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                ConsultarPaciente cp = new ConsultarPaciente(this);
-                cp.ShowDialog();
-                //this.Hide();
-
-            }
-            else
-            {
-                RegistrarEstudio re = new RegistrarEstudio(this);
-                re.IdHCPaciente(pacienteSeleccionado.id_hc);
-                re.ShowDialog();
-                //this.Hide();
-            }
+           
         }
         public void obtenerIdHC(int idHC)
         {
@@ -107,20 +107,7 @@ namespace GPA
 
         private void consultarHistoriaClinicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("Primero debe seleccionar el paciente que recibe atención médica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                ConsultarPaciente cp = new ConsultarPaciente(this);
-                cp.ShowDialog();
-
-            }
-            else
-            {
-                ConsultarHistoriaClínica consultarHc = new ConsultarHistoriaClínica(this);
-                consultarHc.ShowDialog();
-                this.Show();
-                
-            }
+            
         }
 
         private void MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
@@ -190,6 +177,14 @@ namespace GPA
         private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        /*
+         * Métodos para buscar el paciente de un médico que recibirá atención médica.
+         */
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            
+            dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacienteBuscadoDelProfesional(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc,(int) cboTipoDocPaciente.SelectedValue, Convert.ToInt64(txtNroDocPaciente.Text), txtNombreApellidoPaciente.Text);
         }
     }
 }

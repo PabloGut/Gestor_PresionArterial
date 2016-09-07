@@ -23,6 +23,7 @@ namespace DAO
         {
             return cadenaConexion;
         }
+        /*
         public static int buscarNroHC()
         {
             setCadenaConexion();
@@ -127,6 +128,6 @@ namespace DAO
             return hc;
                
           
-            }
+            }*/
     }
 }

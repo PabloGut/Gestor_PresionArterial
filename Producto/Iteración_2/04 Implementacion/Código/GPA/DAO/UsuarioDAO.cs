@@ -52,33 +52,54 @@ namespace DAO
             return usuario;
         }
 
+        /*
+         * 
+         * Método para que buscar un usuario.
+         * Toma como parámetros el nombre y la contraseña del usuario.
+         * Accede a la base de datos obtiene el id_usuario.
+         * Retorna el usuario correspondiente.
+         * 
+         */
         public static List<Usuario> buscarUsuario(string nombre, string pass)
         {
+            setCadenaConexion();
             List<Usuario> usuarios = new List<Usuario>();
             
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            cn.Open();
-
-            string consulta = "select id_usuario from Usuario where nombre_usuario=@nombre and CONVERT(varchar(255), DECRYPTBYPASSPHRASE('clave',contraseña))=@pass";
-
-            SqlCommand cmd = new SqlCommand();
-
-
-            cmd.Parameters.AddWithValue("@nombre", nombre);
-            cmd.Parameters.AddWithValue("@pass", pass);
-            
-
-            cmd.CommandText = consulta;
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = cn;
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            try
             {
-                usuarios.Add(new Usuario()
+
+                cn.Open();
+
+                string consulta = "select id_usuario from Usuario where nombre_usuario=@nombre and pwdcompare(@pass,contraseña)=1";
+
+                SqlCommand cmd = new SqlCommand();
+
+
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@pass", pass);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
                 {
-                    id_usuario = (int)dr["id_usuario"],
-                });
+                    usuarios.Add(new Usuario()
+                    {
+                        id_usuario = (int)dr["id_usuario"],
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
             }
             cn.Close();
             return usuarios;

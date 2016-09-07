@@ -99,5 +99,15 @@ namespace DAO
             
 
         }
+        /*
+         * Método para obtener todos los pacientes de un profesional médico.
+         * Se pasan como parametros el tipo y número de documento del médico.
+         * Llama al metodo mostrarPacientesDelProfesional() de la clase PacienteDAO.
+         * El valor de retorno es un DataTable.
+         */
+        public static DataTable mostrarPacientesDelMedicoLogueado(int id_tipodoc_medico, long nroDocMedico)
+        {
+            return PacienteDAO.mostrarPacientesDelProfesional(id_tipodoc_medico, nroDocMedico);
+        }
     }
 }

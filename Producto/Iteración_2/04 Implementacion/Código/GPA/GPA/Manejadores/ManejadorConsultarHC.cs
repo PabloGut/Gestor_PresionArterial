@@ -11,18 +11,6 @@ namespace GPA.Manejadores
 {
     public class ManejadorConsultarHC
     {
-        public HistoriaClinica mostrarHistoriaClinica(Paciente paciente)
-        {
-            return HistoriaClinicaDAO.mostrarHistoriaClinica(paciente);
-        }
-        public List<Estudio> mostrarEstudiosDeHcLista(int id_hc)
-        {
-            return EstudioDAO.mostrarEstudiosDeHCLista(id_hc);
-
-        }
-        public DataSet mostrarEstudiosDeHcDS(int id_hc)
-        {
-            return EstudioDAO.mostrarEstudiosDeHCDS(id_hc);
-        }
+        
     }
 }

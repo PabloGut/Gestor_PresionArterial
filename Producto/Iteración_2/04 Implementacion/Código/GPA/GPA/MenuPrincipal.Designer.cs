@@ -45,20 +45,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPacientesDelProfesionalLogueado = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNombreApellidoPaciente = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cboTipoDocPaciente = new System.Windows.Forms.ComboBox();
+            this.txtNroDocPaciente = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -83,7 +75,6 @@
             this.lblTipoDocumento = new System.Windows.Forms.Label();
             this.lblNroDocumento = new System.Windows.Forms.Label();
             this._txtNroDocumento = new System.Windows.Forms.TextBox();
-            this._cmbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.grbAdicionales = new System.Windows.Forms.GroupBox();
             this._txtPeso = new System.Windows.Forms.TextBox();
             this.lblPeso = new System.Windows.Forms.Label();
@@ -263,6 +254,36 @@
             this.label52 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button19 = new System.Windows.Forms.Button();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label99 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label94 = new System.Windows.Forms.Label();
+            this.label92 = new System.Windows.Forms.Label();
+            this.textBox49 = new System.Windows.Forms.TextBox();
+            this.label97 = new System.Windows.Forms.Label();
+            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label96 = new System.Windows.Forms.Label();
+            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.comboBox37 = new System.Windows.Forms.ComboBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.comboBox36 = new System.Windows.Forms.ComboBox();
+            this.comboBox35 = new System.Windows.Forms.ComboBox();
+            this.comboBox34 = new System.Windows.Forms.ComboBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label87 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox43 = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
@@ -321,42 +342,13 @@
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.label87 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
-            this.label89 = new System.Windows.Forms.Label();
-            this.comboBox34 = new System.Windows.Forms.ComboBox();
-            this.comboBox35 = new System.Windows.Forms.ComboBox();
-            this.comboBox36 = new System.Windows.Forms.ComboBox();
-            this.label90 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label93 = new System.Windows.Forms.Label();
-            this.comboBox37 = new System.Windows.Forms.ComboBox();
-            this.textBox47 = new System.Windows.Forms.TextBox();
-            this.textBox48 = new System.Windows.Forms.TextBox();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
-            this.textBox49 = new System.Windows.Forms.TextBox();
-            this.label97 = new System.Windows.Forms.Label();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.label92 = new System.Windows.Forms.Label();
-            this.label94 = new System.Windows.Forms.Label();
-            this.label98 = new System.Windows.Forms.Label();
-            this.label99 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPacientesDelProfesionalLogueado)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -385,6 +377,8 @@
             this.panel9.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            this.groupBox11.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -392,8 +386,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -544,75 +536,27 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dgvPacientesDelProfesionalLogueado);
             this.panel3.Location = new System.Drawing.Point(6, 134);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(849, 444);
             this.panel3.TabIndex = 2;
             // 
-            // dataGridView1
+            // dgvPacientesDelProfesionalLogueado
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(843, 438);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Apellido";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Tipo de Documento";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Número de documento";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Sexo";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Calle y Número";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Barrio";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Localidad";
-            this.Column8.Name = "Column8";
+            this.dgvPacientesDelProfesionalLogueado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPacientesDelProfesionalLogueado.Location = new System.Drawing.Point(3, 3);
+            this.dgvPacientesDelProfesionalLogueado.Name = "dgvPacientesDelProfesionalLogueado";
+            this.dgvPacientesDelProfesionalLogueado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPacientesDelProfesionalLogueado.Size = new System.Drawing.Size(843, 438);
+            this.dgvPacientesDelProfesionalLogueado.TabIndex = 1;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txtNombreApellidoPaciente);
+            this.panel2.Controls.Add(this.btnBuscar);
+            this.panel2.Controls.Add(this.cboTipoDocPaciente);
+            this.panel2.Controls.Add(this.txtNroDocPaciente);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
@@ -622,36 +566,37 @@
             this.panel2.Size = new System.Drawing.Size(852, 122);
             this.panel2.TabIndex = 0;
             // 
-            // textBox1
+            // txtNombreApellidoPaciente
             // 
-            this.textBox1.Location = new System.Drawing.Point(674, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtNombreApellidoPaciente.Location = new System.Drawing.Point(674, 47);
+            this.txtNombreApellidoPaciente.Name = "txtNombreApellidoPaciente";
+            this.txtNombreApellidoPaciente.Size = new System.Drawing.Size(160, 20);
+            this.txtNombreApellidoPaciente.TabIndex = 9;
             // 
-            // button1
+            // btnBuscar
             // 
-            this.button1.Location = new System.Drawing.Point(377, 87);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Buscar paciente";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBuscar.Location = new System.Drawing.Point(377, 87);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(117, 23);
+            this.btnBuscar.TabIndex = 8;
+            this.btnBuscar.Text = "Buscar paciente";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // comboBox2
+            // cboTipoDocPaciente
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(139, 47);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(86, 21);
-            this.comboBox2.TabIndex = 7;
+            this.cboTipoDocPaciente.FormattingEnabled = true;
+            this.cboTipoDocPaciente.Location = new System.Drawing.Point(139, 47);
+            this.cboTipoDocPaciente.Name = "cboTipoDocPaciente";
+            this.cboTipoDocPaciente.Size = new System.Drawing.Size(86, 21);
+            this.cboTipoDocPaciente.TabIndex = 7;
             // 
-            // textBox2
+            // txtNroDocPaciente
             // 
-            this.textBox2.Location = new System.Drawing.Point(409, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtNroDocPaciente.Location = new System.Drawing.Point(409, 47);
+            this.txtNroDocPaciente.Name = "txtNroDocPaciente";
+            this.txtNroDocPaciente.Size = new System.Drawing.Size(121, 20);
+            this.txtNroDocPaciente.TabIndex = 5;
             // 
             // label4
             // 
@@ -849,10 +794,10 @@
             // 
             // grbDocumento
             // 
+            this.grbDocumento.Controls.Add(this.textBox1);
             this.grbDocumento.Controls.Add(this.lblTipoDocumento);
             this.grbDocumento.Controls.Add(this.lblNroDocumento);
             this.grbDocumento.Controls.Add(this._txtNroDocumento);
-            this.grbDocumento.Controls.Add(this._cmbTipoDocumento);
             this.grbDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbDocumento.Location = new System.Drawing.Point(12, 11);
             this.grbDocumento.Name = "grbDocumento";
@@ -885,14 +830,6 @@
             this._txtNroDocumento.Name = "_txtNroDocumento";
             this._txtNroDocumento.Size = new System.Drawing.Size(121, 23);
             this._txtNroDocumento.TabIndex = 1;
-            // 
-            // _cmbTipoDocumento
-            // 
-            this._cmbTipoDocumento.FormattingEnabled = true;
-            this._cmbTipoDocumento.Location = new System.Drawing.Point(148, 43);
-            this._cmbTipoDocumento.Name = "_cmbTipoDocumento";
-            this._cmbTipoDocumento.Size = new System.Drawing.Size(143, 24);
-            this._cmbTipoDocumento.TabIndex = 1;
             // 
             // grbAdicionales
             // 
@@ -2680,6 +2617,249 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Presión arterial";
             // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16,
+            this.Column17});
+            this.dataGridView6.Location = new System.Drawing.Point(349, 99);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(483, 179);
+            this.dataGridView6.TabIndex = 20;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Fecha";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Hora";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Extremidad";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Posición";
+            this.Column14.Name = "Column14";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Sitio de medición";
+            this.Column15.Name = "Column15";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Presión Sistólica";
+            this.Column16.Name = "Column16";
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "Presión Diastólica";
+            this.Column17.Name = "Column17";
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(260, 99);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(76, 33);
+            this.button19.TabIndex = 19;
+            this.button19.Text = "Agregar";
+            this.button19.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.label99);
+            this.groupBox11.Controls.Add(this.label98);
+            this.groupBox11.Controls.Add(this.label94);
+            this.groupBox11.Controls.Add(this.label92);
+            this.groupBox11.Location = new System.Drawing.Point(6, 134);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(330, 144);
+            this.groupBox11.TabIndex = 18;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Clasificación";
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(6, 113);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(137, 17);
+            this.label99.TabIndex = 19;
+            this.label99.Text = "Rango valor mínimo:";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(6, 84);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(140, 17);
+            this.label98.TabIndex = 2;
+            this.label98.Text = "Rango valor máximo:";
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(6, 56);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(73, 17);
+            this.label94.TabIndex = 1;
+            this.label94.Text = "Categoría:";
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(6, 29);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(72, 17);
+            this.label92.TabIndex = 0;
+            this.label92.Text = "Promedio:";
+            // 
+            // textBox49
+            // 
+            this.textBox49.Location = new System.Drawing.Point(684, 61);
+            this.textBox49.Name = "textBox49";
+            this.textBox49.Size = new System.Drawing.Size(72, 23);
+            this.textBox49.TabIndex = 17;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(635, 64);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(43, 17);
+            this.label97.TabIndex = 16;
+            this.label97.Text = "Pulso";
+            // 
+            // textBox48
+            // 
+            this.textBox48.Location = new System.Drawing.Point(477, 61);
+            this.textBox48.Name = "textBox48";
+            this.textBox48.Size = new System.Drawing.Size(72, 23);
+            this.textBox48.TabIndex = 15;
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(555, 64);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(48, 17);
+            this.label95.TabIndex = 14;
+            this.label95.Text = "mmHg";
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(307, 64);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(170, 17);
+            this.label96.TabIndex = 13;
+            this.label96.Text = "Presión Arterial Diastólica";
+            // 
+            // textBox47
+            // 
+            this.textBox47.Location = new System.Drawing.Point(175, 61);
+            this.textBox47.Name = "textBox47";
+            this.textBox47.Size = new System.Drawing.Size(72, 23);
+            this.textBox47.TabIndex = 12;
+            // 
+            // comboBox37
+            // 
+            this.comboBox37.FormattingEnabled = true;
+            this.comboBox37.Location = new System.Drawing.Point(126, 104);
+            this.comboBox37.Name = "comboBox37";
+            this.comboBox37.Size = new System.Drawing.Size(121, 24);
+            this.comboBox37.TabIndex = 11;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(253, 64);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(48, 17);
+            this.label93.TabIndex = 9;
+            this.label93.Text = "mmHg";
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(8, 107);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(112, 17);
+            this.label91.TabIndex = 7;
+            this.label91.Text = "Momento del día";
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(6, 64);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(161, 17);
+            this.label90.TabIndex = 6;
+            this.label90.Text = "Presión Arterial Sistólica";
+            // 
+            // comboBox36
+            // 
+            this.comboBox36.FormattingEnabled = true;
+            this.comboBox36.Location = new System.Drawing.Point(551, 22);
+            this.comboBox36.Name = "comboBox36";
+            this.comboBox36.Size = new System.Drawing.Size(157, 24);
+            this.comboBox36.TabIndex = 5;
+            // 
+            // comboBox35
+            // 
+            this.comboBox35.FormattingEnabled = true;
+            this.comboBox35.Location = new System.Drawing.Point(284, 22);
+            this.comboBox35.Name = "comboBox35";
+            this.comboBox35.Size = new System.Drawing.Size(140, 24);
+            this.comboBox35.TabIndex = 4;
+            // 
+            // comboBox34
+            // 
+            this.comboBox34.FormattingEnabled = true;
+            this.comboBox34.Location = new System.Drawing.Point(90, 22);
+            this.comboBox34.Name = "comboBox34";
+            this.comboBox34.Size = new System.Drawing.Size(121, 24);
+            this.comboBox34.TabIndex = 3;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(430, 25);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(115, 17);
+            this.label89.TabIndex = 2;
+            this.label89.Text = "Sitio de medición";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(217, 25);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(61, 17);
+            this.label88.TabIndex = 1;
+            this.label88.Text = "Posición";
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(6, 25);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(78, 17);
+            this.label87.TabIndex = 0;
+            this.label87.Text = "Extremidad";
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.textBox43);
@@ -3230,248 +3410,12 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // label87
+            // textBox1
             // 
-            this.label87.AutoSize = true;
-            this.label87.Location = new System.Drawing.Point(6, 25);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(78, 17);
-            this.label87.TabIndex = 0;
-            this.label87.Text = "Extremidad";
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(217, 25);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(61, 17);
-            this.label88.TabIndex = 1;
-            this.label88.Text = "Posición";
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(430, 25);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(115, 17);
-            this.label89.TabIndex = 2;
-            this.label89.Text = "Sitio de medición";
-            // 
-            // comboBox34
-            // 
-            this.comboBox34.FormattingEnabled = true;
-            this.comboBox34.Location = new System.Drawing.Point(90, 22);
-            this.comboBox34.Name = "comboBox34";
-            this.comboBox34.Size = new System.Drawing.Size(121, 24);
-            this.comboBox34.TabIndex = 3;
-            // 
-            // comboBox35
-            // 
-            this.comboBox35.FormattingEnabled = true;
-            this.comboBox35.Location = new System.Drawing.Point(284, 22);
-            this.comboBox35.Name = "comboBox35";
-            this.comboBox35.Size = new System.Drawing.Size(140, 24);
-            this.comboBox35.TabIndex = 4;
-            // 
-            // comboBox36
-            // 
-            this.comboBox36.FormattingEnabled = true;
-            this.comboBox36.Location = new System.Drawing.Point(551, 22);
-            this.comboBox36.Name = "comboBox36";
-            this.comboBox36.Size = new System.Drawing.Size(157, 24);
-            this.comboBox36.TabIndex = 5;
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(6, 64);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(161, 17);
-            this.label90.TabIndex = 6;
-            this.label90.Text = "Presión Arterial Sistólica";
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(8, 107);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(112, 17);
-            this.label91.TabIndex = 7;
-            this.label91.Text = "Momento del día";
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(253, 64);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(48, 17);
-            this.label93.TabIndex = 9;
-            this.label93.Text = "mmHg";
-            // 
-            // comboBox37
-            // 
-            this.comboBox37.FormattingEnabled = true;
-            this.comboBox37.Location = new System.Drawing.Point(126, 104);
-            this.comboBox37.Name = "comboBox37";
-            this.comboBox37.Size = new System.Drawing.Size(121, 24);
-            this.comboBox37.TabIndex = 11;
-            // 
-            // textBox47
-            // 
-            this.textBox47.Location = new System.Drawing.Point(175, 61);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(72, 23);
-            this.textBox47.TabIndex = 12;
-            // 
-            // textBox48
-            // 
-            this.textBox48.Location = new System.Drawing.Point(477, 61);
-            this.textBox48.Name = "textBox48";
-            this.textBox48.Size = new System.Drawing.Size(72, 23);
-            this.textBox48.TabIndex = 15;
-            // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(555, 64);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(48, 17);
-            this.label95.TabIndex = 14;
-            this.label95.Text = "mmHg";
-            // 
-            // label96
-            // 
-            this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(307, 64);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(170, 17);
-            this.label96.TabIndex = 13;
-            this.label96.Text = "Presión Arterial Diastólica";
-            // 
-            // textBox49
-            // 
-            this.textBox49.Location = new System.Drawing.Point(684, 61);
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(72, 23);
-            this.textBox49.TabIndex = 17;
-            // 
-            // label97
-            // 
-            this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(635, 64);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(43, 17);
-            this.label97.TabIndex = 16;
-            this.label97.Text = "Pulso";
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.label99);
-            this.groupBox11.Controls.Add(this.label98);
-            this.groupBox11.Controls.Add(this.label94);
-            this.groupBox11.Controls.Add(this.label92);
-            this.groupBox11.Location = new System.Drawing.Point(6, 134);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(330, 144);
-            this.groupBox11.TabIndex = 18;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Clasificación";
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(6, 29);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(72, 17);
-            this.label92.TabIndex = 0;
-            this.label92.Text = "Promedio:";
-            // 
-            // label94
-            // 
-            this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(6, 56);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(73, 17);
-            this.label94.TabIndex = 1;
-            this.label94.Text = "Categoría:";
-            // 
-            // label98
-            // 
-            this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(6, 84);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(140, 17);
-            this.label98.TabIndex = 2;
-            this.label98.Text = "Rango valor máximo:";
-            // 
-            // label99
-            // 
-            this.label99.AutoSize = true;
-            this.label99.Location = new System.Drawing.Point(6, 113);
-            this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(137, 17);
-            this.label99.TabIndex = 19;
-            this.label99.Text = "Rango valor mínimo:";
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(260, 99);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(76, 33);
-            this.button19.TabIndex = 19;
-            this.button19.Text = "Agregar";
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView6
-            // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16,
-            this.Column17});
-            this.dataGridView6.Location = new System.Drawing.Point(349, 99);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(483, 179);
-            this.dataGridView6.TabIndex = 20;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Fecha";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Hora";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Extremidad";
-            this.Column13.Name = "Column13";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Posición";
-            this.Column14.Name = "Column14";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "Sitio de medición";
-            this.Column15.Name = "Column15";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "Presión Sistólica";
-            this.Column16.Name = "Column16";
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "Presión Diastólica";
-            this.Column17.Name = "Column17";
+            this.textBox1.Location = new System.Drawing.Point(170, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(121, 23);
+            this.textBox1.TabIndex = 2;
             // 
             // MenuPrincipal
             // 
@@ -3493,7 +3437,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPacientesDelProfesionalLogueado)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -3537,6 +3481,9 @@
             this.tabPage9.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.tabPage10.ResumeLayout(false);
@@ -3546,9 +3493,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3573,24 +3517,16 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridView dgvPacientesDelProfesionalLogueado;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ComboBox cboTipoDocPaciente;
+        private System.Windows.Forms.TextBox txtNroDocPaciente;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNombreApellidoPaciente;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
@@ -3599,7 +3535,6 @@
         private System.Windows.Forms.Label lblTipoDocumento;
         private System.Windows.Forms.Label lblNroDocumento;
         private System.Windows.Forms.TextBox _txtNroDocumento;
-        private System.Windows.Forms.ComboBox _cmbTipoDocumento;
         private System.Windows.Forms.GroupBox grbAdicionales;
         private System.Windows.Forms.TextBox _txtPeso;
         private System.Windows.Forms.Label lblPeso;
@@ -3879,5 +3814,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

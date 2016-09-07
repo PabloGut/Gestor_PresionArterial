@@ -8,8 +8,8 @@ namespace Entidades.Clases
 {
     public class ProfesionaMedico :Persona
     {
-         public ProfesionaMedico(string nombre, string apellido,int id_tipoDoc,int nroDoc,int id_domicilio,long telefono,long nroCelular,string mail,int id_usuario,int id_estado)
-        : base(nombre,apellido,id_tipoDoc,nroDoc,id_domicilio,telefono,nroCelular,mail,id_usuario,id_estado)
+         public ProfesionaMedico(string nombre, string apellido,int id_tipoDoc,int nroDoc,int id_domicilio,long telefono,long nroCelular,string mail,int id_usuario,int id_estado, DateTime fechaNacimiento)
+        : base(nombre,apellido,id_tipoDoc,nroDoc,id_domicilio,telefono,nroCelular,mail,id_usuario,id_estado,fechaNacimiento)
         {
 
         }

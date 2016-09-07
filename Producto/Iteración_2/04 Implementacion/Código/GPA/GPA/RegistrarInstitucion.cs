@@ -57,7 +57,7 @@ namespace GPA
             Domicilio dom = new Domicilio();
 
             dom.calle = txtCalle.Text;
-            dom.numero = txtNumero.Text;
+            //dom.numero = txtNumero.Text;
             dom.codigoPostal =Convert.ToInt32( txtCodigoPostal.Text);
 
             if (!String.IsNullOrEmpty(txtPiso.Text))

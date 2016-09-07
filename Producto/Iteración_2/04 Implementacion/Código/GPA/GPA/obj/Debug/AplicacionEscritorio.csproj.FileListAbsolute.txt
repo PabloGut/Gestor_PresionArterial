@@ -31,7 +31,6 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\AplicacionEscritorio.csprojResolveAssemblyReference.cache
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.ConsultarEstudio.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.ConsultarHistoriaClínica.resources
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.ConsultarPaciente.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarHistoriaClínica.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.InicioSesión.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.MenuPrincipal.resources
@@ -74,3 +73,5 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarProfesionalMedico.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarTipoDeDocumento.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.Form1.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\bin\Debug\LogicaNegocio.dll
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\bin\Debug\LogicaNegocio.pdb

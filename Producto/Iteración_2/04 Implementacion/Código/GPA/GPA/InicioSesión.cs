@@ -21,7 +21,10 @@ namespace GPA
             manejador = new ManejadorInicioSesion();
 
         }
-
+        /**
+         * Método de inicio de sesión.
+         * Invoca al método buscarUsuario del ManejadorInicioSesion.
+         */
         private void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtUsuario.Text) && string.IsNullOrEmpty(txtPass.Text))

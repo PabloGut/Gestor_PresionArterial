@@ -79,7 +79,7 @@ namespace DAO
                 domicilio.Add(new Domicilio()
                                     {
                                         calle = dr["calle"].ToString(),
-                                        numero = dr["numero"].ToString()
+                                        //numero = dr["numero"].ToString()
 
                                     });
             }
@@ -112,7 +112,7 @@ namespace DAO
                 cmd.ExecuteNonQuery();
 
                 SqlCommand cmd1 = new SqlCommand("select @@Identity", cn, tran);
-                domicilio.id_institucion = Convert.ToInt32(cmd1.ExecuteScalar());
+                //domicilio.id_institucion = Convert.ToInt32(cmd1.ExecuteScalar());
 
                 DomicilioDAO.insertarDomicilio(domicilio, cn, tran);
                 tran.Commit();

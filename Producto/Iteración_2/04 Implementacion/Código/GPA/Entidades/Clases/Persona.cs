@@ -8,7 +8,7 @@ namespace Entidades.Clases
 {
     public class Persona
     {
-        public Persona(string nombre, string apellido,int id_tipoDoc,long nroDoc,int id_domicilio,long telefono,long nroCelular,string mail,int id_usuario,int id_estado)
+        public Persona(string nombre, string apellido,int id_tipoDoc,long nroDoc,int id_domicilio,long telefono,long nroCelular,string mail,int id_usuario,int id_estado, DateTime fechaNacimiento)
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -20,6 +20,9 @@ namespace Entidades.Clases
             this.mail = mail;
             crearUsuario(id_usuario);
             this.id_estado = id_estado;
+            this.fechaNacimiento = fechaNacimiento;
+            
+
         }
         public Persona(string nombre, string apellido, int id_tipoDoc, long nroDoc)
         {
@@ -52,7 +55,11 @@ namespace Entidades.Clases
         public string mail { get; set; }
         public int id_usuario { get; set; }
         public int id_estado { get; set; }
-
+        public DateTime fechaNacimiento { get; set; }
+        public Domicilio domicilio { get; set; }
+        
+        
+        
         public void crearDomicilio(int id_domicilio)
         {
             this.id_domicilio = id_domicilio;
