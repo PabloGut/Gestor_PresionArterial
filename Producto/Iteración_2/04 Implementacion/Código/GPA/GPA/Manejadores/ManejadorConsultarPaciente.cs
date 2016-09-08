@@ -47,5 +47,16 @@ namespace GPA.Manejadores
         {
             return TipoDocumentoLN.mostrarTipoDocumento();
         }
+        /*
+          * Método para mostrar un paciente.
+           * Llama al método mostrarPacienteBuscado de la capa lógica de negocio.
+          * Recibe como parámetros tipoDocMedico, nroDocMedico relacionados al ProfesionalMedico.
+          * Recibe como parámetros tipoDocPaciente y nroDocPaciente relacionados al Paciente que se quiere mostrar.
+          * Retorna un objeto Paciente.
+        */
+        public Paciente mostrarPacienteBuscado(int tipoDocMedico, long nroDocMedico, int tipoDocPaciente, long nroDocPaciente)
+        {
+            return PacienteLN.mostrarPacienteBuscado(tipoDocMedico, nroDocMedico, tipoDocPaciente, nroDocPaciente);
+        }
     }
 }

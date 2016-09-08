@@ -62,16 +62,19 @@ namespace DAO
          *Recibe como parámetro el id_domicilio.
          *Retorna un objeto del tipo Domicilio.
          */
-        public Domicilio mostrarDomicilioDelPaciente(int id_domicilio)
+        public static Domicilio mostrarDomicilioDelPaciente(int id_domicilio)
         {
             setCadenaConexion();
-            SqlConnection cn = new SqlConnection();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
             Domicilio domicilio=null;
             try
             {
                 cn.Open();
                 string consulta = "select * from Domicilio where id_domicilio=@id_domicilio";
                 SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@id_domicilio", id_domicilio);
+
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
@@ -82,15 +85,15 @@ namespace DAO
                     domicilio = new Domicilio();
                     domicilio.calle = dr["calle"].ToString();
                     domicilio.numero = (int)dr["numero"];
-                    if (string.IsNullOrEmpty(dr["piso"].ToString()))
+                    if (dr["piso"] != DBNull.Value)
                     {
-                        domicilio.piso = (int)dr["piso"];
+                        domicilio.piso = Convert.ToInt32(dr["piso"].ToString());
                     }
-                    if (string.IsNullOrEmpty(dr["depto"].ToString()))
+                    if (dr["departamento"] != DBNull.Value)
                     {
-                        domicilio.departamento = dr["depto"].ToString();
+                        domicilio.departamento = dr["departamento"].ToString();
                     }
-                    domicilio.codigoPostal = (int)dr["codigoPostal"];
+                    domicilio.codigoPostal = (int)dr["codigo_postal"];
                     domicilio.id_barrio = (int)dr["id_barrio_fk"];
                 }
             }

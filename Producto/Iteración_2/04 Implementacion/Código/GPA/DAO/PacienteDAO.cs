@@ -225,7 +225,7 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', td.nombre as 'TipoDocumento', p.nro_documento as 'Número de documento', d.calle, d.numero, b.nombre as 'Barrio', l.nombre as 'Localidad', e.nombre as 'Estado', s.nombre as'Sexo'
+                string consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', td.nombre as 'TipoDocumento', p.id_tipoDoc_fk, p.nro_documento as 'Número de documento', d.calle, d.numero, b.nombre as 'Barrio', l.nombre as 'Localidad', e.nombre as 'Estado', s.nombre as'Sexo'
                                    from Paciente p, TipoDocumento td, Domicilio d, Barrio b, Localidad l, Estado e, Sexo s
                                    where p.id_profesionalMedico_tipoDoc_fk=@tipoDocMedico and p.id_profesionalMedico_nroDoc_fk=@nroDocMedico
                                    and p.id_tipoDoc_fk=td.id_tipoDoc and p.id_domicilio_fk=d.id_domicilio 
@@ -272,7 +272,7 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', td.nombre as 'TipoDocumento', p.nro_documento as 'Número de documento', d.calle, d.numero, b.nombre as 'Barrio', l.nombre as 'Localidad', e.nombre as Estado, s.nombre as 'Sexo'
+                string consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', td.nombre as 'TipoDocumento', p.nro_documento as 'Número de documento', p.id_tipoDoc_fk, d.calle, d.numero, b.nombre as 'Barrio', l.nombre as 'Localidad', e.nombre as Estado, s.nombre as 'Sexo'
                                     from Paciente p, TipoDocumento td, Domicilio d, Barrio b, Localidad l, ProfesionalMedico pm, Especialidad es, Estado e, Sexo s
                                     where p.id_profesionalMedico_tipoDoc_fk=@tipoDocMedico and p.id_profesionalMedico_nroDoc_fk=@nroDocMedico
                                     and p.id_tipoDoc_fk=td.id_tipoDoc and p.id_domicilio_fk=d.id_domicilio 
@@ -320,7 +320,7 @@ namespace DAO
          * Recibe como parámetro el tipo de documento, número de documento, nombre y apellido del paciente.
          * Retorna un objeto Paciente.
          */
-        public static Paciente mostrarPacienteBuscado(int tipoDocPaciente, int nroDocPaciente, string nombreYApellido,int tipoDocMedico, int nroDocMedico)
+        public static Paciente mostrarPacienteBuscado(int tipoDocMedico, long nroDocMedico, int tipoDocPaciente, long nroDocPaciente)
         {
             setCadenaConexion();
 
@@ -329,17 +329,18 @@ namespace DAO
             try
             {
                 cn.Open();
-                String consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', td.nombre as 'TipoDocumento', p.nro_documento as 'Número de documento', d.calle, d.numero, b.nombre as 'Barrio', l.nombre as 'Localidad', pm.nombre , pm.apellido, pm.matricula, pm.email, pm.nroCelular, es.nombre, e.nombre as Estado, s.nombre as 'Sexo'
-                                    from Paciente p, TipoDocumento td, Domicilio d, Barrio b, Localidad l, ProfesionalMedico pm, Especialidad es, Estado e, Sexo s
+                String consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', p.telefono, p.nroCelular, p.email, p.fecha_nacimiento, p.altura, p.peso, p.id_domicilio_fk, p.id_profesionalMedico_tipoDoc_fk, p.id_profesionalMedico_nroDoc_fk
+                                    from Paciente p
                                     where p.id_profesionalMedico_tipoDoc_fk=@tipoDocMedico and p.id_profesionalMedico_nroDoc_fk=@nroDocMedico
-                                    and p.id_tipoDoc_fk=td.id_tipoDoc and p.id_domicilio_fk=d.id_domicilio 
-                                    and d.id_barrio_fk=b.id_barrio and b.id_localidad_fk=l.id_localidad
-                                    and p.id_profesionalMedico_tipoDoc_fk=pm.id_tipodoc_fk and p.id_profesionalMedico_nroDoc_fk=pm.nro_documento
-                                    and pm.id_especialidad_fk= es.id_especialidad
-                                    and p.id_sexo_fk=s.id_sexo and p.id_estado_fk=s.id_estado
-                                    and p.id_tipoDoc_fk=@tipoDocPaciente and p.nro_documento=@nroDocPaciente and p.nombre+' '+p.apeillido like '@nombreYApellido%'";
+                                    and p.id_tipoDoc_fk=@tipoDocPaciente and p.nro_documento=@nroDocPaciente";
 
                 SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@tipoDocMedico", tipoDocMedico);
+                cmd.Parameters.AddWithValue("@nroDocMedico", nroDocMedico);
+                cmd.Parameters.AddWithValue("@tipoDocPaciente", tipoDocPaciente);
+                cmd.Parameters.AddWithValue("@nroDocPaciente", nroDocPaciente);
+
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
@@ -348,9 +349,18 @@ namespace DAO
 
                 while (dr.Read())
                 {
-                    
-
-
+                    paciente = new Paciente();
+                    paciente.nombre = dr["Nombre"].ToString();
+                    paciente.apellido = dr["Apellido"].ToString();
+                    paciente.telefono = Convert.ToInt64(dr["telefono"].ToString());
+                    paciente.nroCelular = Convert.ToInt64(dr["nroCelular"].ToString());
+                    paciente.mail = dr["email"].ToString();
+                    paciente.fechaNacimiento = Convert.ToDateTime(dr["fecha_nacimiento"].ToString());
+                    //paciente.altura =Convert.ToInt32(dr["altura"].ToString());
+                    paciente.peso = (int)dr["peso"];
+                    paciente.id_domicilio = (int)dr["id_domicilio_fk"];
+                    paciente.id_tipodoc_medico = (int)dr["id_profesionalMedico_tipoDoc_fk"];
+                    paciente.nrodoc_medico = Convert.ToInt64(dr["id_profesionalMedico_nroDoc_fk"].ToString());
                 }
 
             }
@@ -361,6 +371,13 @@ namespace DAO
                     cn.Close();
                 }
                 throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            if (paciente != null)
+            {
+                paciente.domicilio = DomicilioDAO.mostrarDomicilioDelPaciente(paciente.id_domicilio);
+                paciente.medico = ProfesionalMedicoDAO.buscarProfesionalMedicoPorTipoNroDocumento(paciente.id_tipoDoc,paciente.nroDoc);
+                paciente.tipoDoc = TipoDocumentoDAO.mostrarTipoDocumento(paciente.id_tipoDoc);
             }
             return paciente;
         }

@@ -115,5 +115,45 @@ namespace DAO
 
             cn.Close();
         }
+
+        /*
+         * Método para buscar el nombre de la especialidad correspondiente al id_especialidad.
+         * Recibe como parámetro el id_especialidad.
+         * Retorna un objeto Especialidad.
+         */
+        public static Especialidad mostrarEspecialidad(int id_especidadlidad)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            Especialidad especialidad = null;
+            try
+            {
+                cn.Open();
+                string consulta = "select nombre from Especialidad where id_especialidad=@idEspecialidad";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    especialidad = new Especialidad();
+                    especialidad.nombre = dr["nombre"].ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return especialidad;
+        }
     }
 }

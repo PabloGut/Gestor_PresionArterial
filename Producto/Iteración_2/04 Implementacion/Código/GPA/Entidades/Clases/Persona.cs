@@ -57,6 +57,7 @@ namespace Entidades.Clases
         public int id_estado { get; set; }
         public DateTime fechaNacimiento { get; set; }
         public Domicilio domicilio { get; set; }
+        public TipoDocumento tipoDoc { get; set; }
         
         
         

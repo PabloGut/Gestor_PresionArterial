@@ -32,6 +32,8 @@ namespace Entidades.Clases
         public int id_hc { get; set; }
         public int id_tipodoc_medico { get; set; }
         public long nrodoc_medico { get; set; }
+        public ProfesionaMedico medico { get; set; }
+        
 
     }
 }

@@ -15,6 +15,7 @@ namespace Entidades.Clases
         }
          public long matricula { get; set; }
          public int id_especialidad { get; set; }
+         public Especialidad especialidad { get; set; }
 
          public ProfesionaMedico(string nombre, string apellido, int id_tipoDoc, long nroDoc)
              : base(nombre,apellido,id_tipoDoc,nroDoc)

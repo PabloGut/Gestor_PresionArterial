@@ -183,7 +183,7 @@ namespace DAO
         public static Localidad mostrarLocalidad(int id_localidad)
         {
             setCadenaConexion();
-            SqlConnection cn = new SqlConnection();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
             Localidad localidad = null;
             try
             {

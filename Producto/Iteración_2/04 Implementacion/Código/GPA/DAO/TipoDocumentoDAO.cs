@@ -115,5 +115,44 @@ namespace DAO
 
             cn.Close();
         }
+        public static TipoDocumento mostrarTipoDocumento(int id_tipoDoc)
+        {
+            setCadenaConexion();
+            TipoDocumento tipoDoc = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            try
+            {
+                cn.Open();
+
+                string consulta = "select nombre from TipoDocumento where id_tipoDocumento=@idTipoDoc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    tipoDoc=new TipoDocumento();
+                    tipoDoc.nombre = dr["nombre"].ToString();
+                }
+
+            }
+            catch(Exception e)
+            {
+                if (cn.State==ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            
+            cn.Close();
+            return tipoDoc;
+        }
     }
 }

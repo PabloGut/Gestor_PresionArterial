@@ -38,11 +38,7 @@ namespace GPA
 
             cargarComboTipoDocumento();
             dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
-            //this.WindowState = FormWindowState.Normal;
-            //this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-            //this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            
-
+            dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -185,6 +181,59 @@ namespace GPA
         {
             
             dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacienteBuscadoDelProfesional(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc,(int) cboTipoDocPaciente.SelectedValue, Convert.ToInt64(txtNroDocPaciente.Text), txtNombreApellidoPaciente.Text);
+        }
+
+        private void btnSeleccionaPaciente_Click(object sender, EventArgs e)
+        {
+            int tipoDocPaciente=(int)dgvPacientesDelProfesionalLogueado.CurrentRow.Cells[4].Value;
+            long nroDocPaciente=Convert.ToInt64(dgvPacientesDelProfesionalLogueado.CurrentRow.Cells[3].Value.ToString());
+            pacienteSeleccionado = manejadorConsultarPaciente.mostrarPacienteBuscado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, tipoDocPaciente, nroDocPaciente);
+            cargarDatosPacienteSeleccionado(pacienteSeleccionado);
+
+        }
+        public void cargarDatosPacienteSeleccionado(Paciente pacienteSeleccionado)
+        {
+            txtTipoDocPaciente.Text = pacienteSeleccionado.tipoDoc.nombre;
+            txtNroDocPaciente.Text = Convert.ToString(pacienteSeleccionado.nroDoc);
+            txtNombrePaciente.Text = pacienteSeleccionado.nombre;
+            txtApellidoPaciente.Text = pacienteSeleccionado.apellido;
+            txtTelefonoFijoPaciente.Text = pacienteSeleccionado.telefono.ToString();
+            txtNroCelularPaciente.Text = pacienteSeleccionado.nroCelular.ToString();
+            txtEmailPaciente.Text = pacienteSeleccionado.mail;
+            mtbFechaNacimientoPaciente.Text = pacienteSeleccionado.fechaNacimiento.ToString();
+            txtAlturaPaciente.Text = pacienteSeleccionado.altura.ToString();
+            txtPesoPaciente.Text = pacienteSeleccionado.peso.ToString();
+
+            txtCallePaciente.Text = pacienteSeleccionado.domicilio.calle.ToString();
+            txtNroCallePaciente.Text = pacienteSeleccionado.domicilio.numero.ToString();
+            if (pacienteSeleccionado.domicilio.piso == null)
+            {
+                txtPisoPaciente.Text = "-";
+            }
+            else
+            {
+                txtPisoPaciente.Text = pacienteSeleccionado.domicilio.piso.ToString();
+                
+            }
+            if (pacienteSeleccionado.domicilio.departamento == null)
+            {
+                txtDeptoPaciente.Text = pacienteSeleccionado.domicilio.departamento.ToString();
+            }
+            else
+            {
+                txtDeptoPaciente.Text = "-";
+            }
+            txtCodigoPostalPaciente.Text = pacienteSeleccionado.domicilio.codigoPostal.ToString();
+            txtBarrioPaciente.Text = pacienteSeleccionado.domicilio.barrio.ToString();
+            txtLocalidadPaciente.Text = pacienteSeleccionado.domicilio.barrio.localidad.ToString();
+
+            txtNombreMedico.Text = pacienteSeleccionado.medico.nombre.ToString();
+            txtApellidoMedico.Text = pacienteSeleccionado.medico.apellido.ToString();
+            txtMatriculaMedico.Text = pacienteSeleccionado.medico.matricula.ToString();
+            txtEspecialidadMedico.Text = pacienteSeleccionado.medico.especialidad.nombre.ToString();
+
+            
+
         }
     }
 }

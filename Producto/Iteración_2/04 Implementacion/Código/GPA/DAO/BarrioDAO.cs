@@ -160,13 +160,16 @@ namespace DAO
         public static Barrio mostrarBarrio(int id_barrio)
         {
             setCadenaConexion();
-            SqlConnection cn = new SqlConnection();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
             Barrio barrio = null;
             try
             {
                 cn.Open();
-                string consulta = "select * froma Barrio where id_barrio=@idBarrio";
+                string consulta = "select * from Barrio where id_barrio=@idBarrio";
                 SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idBarrio", id_barrio);
+
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
@@ -178,7 +181,7 @@ namespace DAO
                     barrio = new Barrio();
                     barrio.id_barrio = (int)dr["id_barrio"];
                     barrio.nombre = dr["nombre"].ToString();
-                    barrio.id_localidad=(int) dr["id_localidad"];
+                    barrio.id_localidad=(int) dr["id_localidad_fk"];
                     if (string.IsNullOrEmpty(dr["descripcion"].ToString()))
                     {
                         barrio.descripcion = dr["descripcion"].ToString();

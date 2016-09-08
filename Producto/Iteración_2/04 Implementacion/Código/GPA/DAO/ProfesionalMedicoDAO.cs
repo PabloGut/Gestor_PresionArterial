@@ -109,5 +109,45 @@ namespace DAO
         {
             return PacienteDAO.mostrarPacientesDelProfesional(id_tipodoc_medico, nroDocMedico);
         }
+        /*
+         * Método para buscar los datos de un profesional médico a través de tipo y número de documento.
+         * Recibe como parámetros el tipoDoc y nroDoc correspondientes al profesional médico.
+         * Retorna un objeto ProfesionalMedico.
+         */
+        public static ProfesionaMedico buscarProfesionalMedicoPorTipoNroDocumento(int tipoDoc, long nroDoc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            cn.Open();
+            ProfesionaMedico medico = null;
+            string consulta = "select nombre,apellido, matricula, id_especialidad_fk, nroCelular, email from ProfesionalMedico where id_tipodoc_fk=@idtipodoc and nro_documento=@nrodoc";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idtipodoc", tipoDoc);
+            cmd.Parameters.AddWithValue("@nrodoc", nroDoc);
+
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                
+                medico.nombre = dr["nombre"].ToString();
+                medico.apellido = dr["apellido"].ToString();
+                medico.matricula =(long) dr["matricula"];
+                medico.id_especialidad = (int)dr["id_especialidad_fk"];
+                medico.nroCelular = (long)dr["nroCelular"];
+                medico.mail = dr["email"].ToString();
+            }
+            cn.Close();
+            medico.especialidad = EspecialidadDAO.mostrarEspecialidad(medico.id_especialidad);
+            return medico;
+
+
+        }
     }
 }
