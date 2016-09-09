@@ -509,7 +509,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(872, 641);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
             // 
@@ -530,7 +530,7 @@
             this.btnSeleccionaPaciente.Location = new System.Drawing.Point(380, 584);
             this.btnSeleccionaPaciente.Name = "btnSeleccionaPaciente";
             this.btnSeleccionaPaciente.Size = new System.Drawing.Size(117, 23);
-            this.btnSeleccionaPaciente.TabIndex = 3;
+            this.btnSeleccionaPaciente.TabIndex = 5;
             this.btnSeleccionaPaciente.Text = "Seleccionar Paciente";
             this.btnSeleccionaPaciente.UseVisualStyleBackColor = true;
             this.btnSeleccionaPaciente.Click += new System.EventHandler(this.btnSeleccionaPaciente_Click);
@@ -572,14 +572,14 @@
             this.txtNombreApellidoPaciente.Location = new System.Drawing.Point(674, 47);
             this.txtNombreApellidoPaciente.Name = "txtNombreApellidoPaciente";
             this.txtNombreApellidoPaciente.Size = new System.Drawing.Size(160, 20);
-            this.txtNombreApellidoPaciente.TabIndex = 9;
+            this.txtNombreApellidoPaciente.TabIndex = 3;
             // 
             // btnBuscar
             // 
             this.btnBuscar.Location = new System.Drawing.Point(377, 87);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(117, 23);
-            this.btnBuscar.TabIndex = 8;
+            this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar paciente";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -590,14 +590,14 @@
             this.cboTipoDocPaciente.Location = new System.Drawing.Point(139, 47);
             this.cboTipoDocPaciente.Name = "cboTipoDocPaciente";
             this.cboTipoDocPaciente.Size = new System.Drawing.Size(86, 21);
-            this.cboTipoDocPaciente.TabIndex = 7;
+            this.cboTipoDocPaciente.TabIndex = 1;
             // 
             // txtNroDocPaciente
             // 
             this.txtNroDocPaciente.Location = new System.Drawing.Point(409, 47);
             this.txtNroDocPaciente.Name = "txtNroDocPaciente";
             this.txtNroDocPaciente.Size = new System.Drawing.Size(121, 20);
-            this.txtNroDocPaciente.TabIndex = 5;
+            this.txtNroDocPaciente.TabIndex = 2;
             // 
             // label4
             // 
@@ -670,7 +670,7 @@
             this.btnCrearHistoriaClinica.Location = new System.Drawing.Point(458, 537);
             this.btnCrearHistoriaClinica.Name = "btnCrearHistoriaClinica";
             this.btnCrearHistoriaClinica.Size = new System.Drawing.Size(264, 28);
-            this.btnCrearHistoriaClinica.TabIndex = 28;
+            this.btnCrearHistoriaClinica.TabIndex = 7;
             this.btnCrearHistoriaClinica.Text = "Crear Historia Clínica";
             this.btnCrearHistoriaClinica.UseVisualStyleBackColor = true;
             // 
@@ -688,7 +688,6 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Enabled = false;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(346, 314);
             this.groupBox1.Name = "groupBox1";
@@ -717,14 +716,14 @@
             // 
             this.txtEmailMedico.Location = new System.Drawing.Point(67, 154);
             this.txtEmailMedico.Name = "txtEmailMedico";
-            this.txtEmailMedico.Size = new System.Drawing.Size(123, 23);
+            this.txtEmailMedico.Size = new System.Drawing.Size(160, 23);
             this.txtEmailMedico.TabIndex = 11;
             // 
             // txtNroCelularMedico
             // 
-            this.txtNroCelularMedico.Location = new System.Drawing.Point(353, 154);
+            this.txtNroCelularMedico.Location = new System.Drawing.Point(369, 154);
             this.txtNroCelularMedico.Name = "txtNroCelularMedico";
-            this.txtNroCelularMedico.Size = new System.Drawing.Size(144, 23);
+            this.txtNroCelularMedico.Size = new System.Drawing.Size(128, 23);
             this.txtNroCelularMedico.TabIndex = 10;
             // 
             // txtMatriculaMedico
@@ -760,7 +759,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(217, 157);
+            this.label6.Location = new System.Drawing.Point(233, 157);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(130, 17);
             this.label6.TabIndex = 5;
@@ -847,7 +846,6 @@
             this.grbAdicionales.Controls.Add(this.lblAltura);
             this.grbAdicionales.Controls.Add(this.mtbFechaNacimientoPaciente);
             this.grbAdicionales.Controls.Add(this.lblFechaNacimiento);
-            this.grbAdicionales.Enabled = false;
             this.grbAdicionales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbAdicionales.Location = new System.Drawing.Point(12, 411);
             this.grbAdicionales.Name = "grbAdicionales";
@@ -923,7 +921,6 @@
             this.grbDomicilio.Controls.Add(this.lblNro);
             this.grbDomicilio.Controls.Add(this.txtCallePaciente);
             this.grbDomicilio.Controls.Add(this.lblCalle);
-            this.grbDomicilio.Enabled = false;
             this.grbDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbDomicilio.Location = new System.Drawing.Point(346, 11);
             this.grbDomicilio.Name = "grbDomicilio";
@@ -1016,6 +1013,7 @@
             // 
             this.txtNroCallePaciente.Location = new System.Drawing.Point(317, 43);
             this.txtNroCallePaciente.Name = "txtNroCallePaciente";
+            this.txtNroCallePaciente.ReadOnly = true;
             this.txtNroCallePaciente.Size = new System.Drawing.Size(41, 23);
             this.txtNroCallePaciente.TabIndex = 15;
             // 
@@ -1032,6 +1030,7 @@
             // 
             this.txtCallePaciente.Location = new System.Drawing.Point(59, 43);
             this.txtCallePaciente.Name = "txtCallePaciente";
+            this.txtCallePaciente.ReadOnly = true;
             this.txtCallePaciente.Size = new System.Drawing.Size(173, 23);
             this.txtCallePaciente.TabIndex = 13;
             // 
@@ -1056,7 +1055,6 @@
             this.grbPersonales.Controls.Add(this.lblTelefonoFijo);
             this.grbPersonales.Controls.Add(this.lblApellido);
             this.grbPersonales.Controls.Add(this.lblNombre);
-            this.grbPersonales.Enabled = false;
             this.grbPersonales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbPersonales.Location = new System.Drawing.Point(12, 148);
             this.grbPersonales.Name = "grbPersonales";
@@ -1067,9 +1065,9 @@
             // 
             // txtEmailPaciente
             // 
-            this.txtEmailPaciente.Location = new System.Drawing.Point(136, 206);
+            this.txtEmailPaciente.Location = new System.Drawing.Point(63, 209);
             this.txtEmailPaciente.Name = "txtEmailPaciente";
-            this.txtEmailPaciente.Size = new System.Drawing.Size(123, 23);
+            this.txtEmailPaciente.Size = new System.Drawing.Size(194, 23);
             this.txtEmailPaciente.TabIndex = 11;
             // 
             // txtNroCelularPaciente
@@ -1103,7 +1101,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(81, 209);
+            this.lblEmail.Location = new System.Drawing.Point(6, 212);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(51, 17);
             this.lblEmail.TabIndex = 6;

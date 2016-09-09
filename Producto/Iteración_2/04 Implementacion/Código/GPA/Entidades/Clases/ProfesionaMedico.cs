@@ -32,6 +32,11 @@ namespace Entidades.Clases
          {
 
          }
+         public ProfesionaMedico()
+             :base()
+         {
+
+         }
     }
    
 }

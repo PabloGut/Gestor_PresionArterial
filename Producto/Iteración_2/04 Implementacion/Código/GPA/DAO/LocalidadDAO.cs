@@ -190,6 +190,9 @@ namespace DAO
                 cn.Open();
                 string consulta = "select * from localidad where id_localidad=@idLocalidad";
                 SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("idLocalidad", id_localidad);
+
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;

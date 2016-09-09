@@ -135,12 +135,12 @@ namespace DAO
 
             while (dr.Read())
             {
-                
+                medico = new ProfesionaMedico();
                 medico.nombre = dr["nombre"].ToString();
                 medico.apellido = dr["apellido"].ToString();
-                medico.matricula =(long) dr["matricula"];
+                medico.matricula =Convert.ToInt64( dr["matricula"].ToString());
                 medico.id_especialidad = (int)dr["id_especialidad_fk"];
-                medico.nroCelular = (long)dr["nroCelular"];
+                medico.nroCelular = Convert.ToInt64(dr["nroCelular"].ToString());
                 medico.mail = dr["email"].ToString();
             }
             cn.Close();

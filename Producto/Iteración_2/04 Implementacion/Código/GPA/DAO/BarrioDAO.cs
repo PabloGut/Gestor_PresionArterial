@@ -187,7 +187,7 @@ namespace DAO
                         barrio.descripcion = dr["descripcion"].ToString();
                     }
                 }
-                barrio.localidad=LocalidadDAO.mostrarLocalidad(barrio.id_localidad);
+               
             }
             catch (Exception e)
             {

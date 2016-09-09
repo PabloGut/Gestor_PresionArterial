@@ -126,9 +126,12 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = "select nombre from TipoDocumento where id_tipoDocumento=@idTipoDoc";
+                string consulta = "select nombre from TipoDocumento where id_tipoDoc=@idTipoDoc";
 
                 SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idTipoDoc", id_tipoDoc);
+
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;

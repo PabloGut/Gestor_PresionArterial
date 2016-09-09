@@ -132,6 +132,9 @@ namespace DAO
                 string consulta = "select nombre from Especialidad where id_especialidad=@idEspecialidad";
 
                 SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idEspecialidad", id_especidadlidad);
+
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;

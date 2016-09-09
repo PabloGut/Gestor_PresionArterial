@@ -38,7 +38,8 @@ namespace GPA
 
             cargarComboTipoDocumento();
             dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
-            dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
+            dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = true;
+            TextBoxSoloLectura(true);
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -185,16 +186,36 @@ namespace GPA
 
         private void btnSeleccionaPaciente_Click(object sender, EventArgs e)
         {
-            int tipoDocPaciente=(int)dgvPacientesDelProfesionalLogueado.CurrentRow.Cells[4].Value;
-            long nroDocPaciente=Convert.ToInt64(dgvPacientesDelProfesionalLogueado.CurrentRow.Cells[3].Value.ToString());
-            pacienteSeleccionado = manejadorConsultarPaciente.mostrarPacienteBuscado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, tipoDocPaciente, nroDocPaciente);
-            cargarDatosPacienteSeleccionado(pacienteSeleccionado);
+            presentarPaciente();
 
         }
-        public void cargarDatosPacienteSeleccionado(Paciente pacienteSeleccionado)
+        /*
+         * Método para tomar el tipo y número de documento del paciente seleccionado del datagridview, obtener el objeto correspondiente al paciente y llamar al método para mostrar los datos en el formulario.
+         * Llama al método cargarDatosPacienteSeleccionado.
+         * El valor de retorno es void.
+         */
+        public void presentarPaciente()
+        {
+            //int tipoDocPaciente = (int)dgvPacientesDelProfesionalLogueado.CurrentRow.Cells[4].Value;
+            //long nroDocPaciente = Convert.ToInt64(dgvPacientesDelProfesionalLogueado.CurrentRow.Cells[3].Value);
+
+            int tipoDocPaciente =(int) dgvPacientesDelProfesionalLogueado.CurrentRow.Cells["id_tipoDoc_fk"].Value;
+            long nroDocPaciente=(int) dgvPacientesDelProfesionalLogueado.CurrentRow.Cells["Número de documento"].Value;
+            
+            
+            pacienteSeleccionado = manejadorConsultarPaciente.mostrarPacienteBuscado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, tipoDocPaciente, nroDocPaciente);
+
+            cargarDatosPacienteSeleccionado();
+        }
+        /*
+         * Método para cargar los datos del paciente en los componentes del formulario.
+         *El valor de retorno es void. 
+         * 
+         */
+        public void cargarDatosPacienteSeleccionado()
         {
             txtTipoDocPaciente.Text = pacienteSeleccionado.tipoDoc.nombre;
-            txtNroDocPaciente.Text = Convert.ToString(pacienteSeleccionado.nroDoc);
+            txtNroDocumentoPaciente.Text = Convert.ToString(pacienteSeleccionado.nroDoc);
             txtNombrePaciente.Text = pacienteSeleccionado.nombre;
             txtApellidoPaciente.Text = pacienteSeleccionado.apellido;
             txtTelefonoFijoPaciente.Text = pacienteSeleccionado.telefono.ToString();
@@ -206,7 +227,7 @@ namespace GPA
 
             txtCallePaciente.Text = pacienteSeleccionado.domicilio.calle.ToString();
             txtNroCallePaciente.Text = pacienteSeleccionado.domicilio.numero.ToString();
-            if (pacienteSeleccionado.domicilio.piso == null)
+            if (pacienteSeleccionado.domicilio.piso == 0)
             {
                 txtPisoPaciente.Text = "-";
             }
@@ -217,23 +238,83 @@ namespace GPA
             }
             if (pacienteSeleccionado.domicilio.departamento == null)
             {
-                txtDeptoPaciente.Text = pacienteSeleccionado.domicilio.departamento.ToString();
+                txtDeptoPaciente.Text = "-";
             }
             else
             {
-                txtDeptoPaciente.Text = "-";
+                txtDeptoPaciente.Text = pacienteSeleccionado.domicilio.departamento.ToString();
             }
             txtCodigoPostalPaciente.Text = pacienteSeleccionado.domicilio.codigoPostal.ToString();
-            txtBarrioPaciente.Text = pacienteSeleccionado.domicilio.barrio.ToString();
-            txtLocalidadPaciente.Text = pacienteSeleccionado.domicilio.barrio.localidad.ToString();
+            txtBarrioPaciente.Text = pacienteSeleccionado.domicilio.barrio.nombre.ToString();
+            txtLocalidadPaciente.Text = pacienteSeleccionado.domicilio.barrio.localidad.nombre.ToString();
 
             txtNombreMedico.Text = pacienteSeleccionado.medico.nombre.ToString();
             txtApellidoMedico.Text = pacienteSeleccionado.medico.apellido.ToString();
             txtMatriculaMedico.Text = pacienteSeleccionado.medico.matricula.ToString();
             txtEspecialidadMedico.Text = pacienteSeleccionado.medico.especialidad.nombre.ToString();
+            txtEmailMedico.Text = pacienteSeleccionado.medico.mail.ToString();
+            txtNroCelularMedico.Text = pacienteSeleccionado.medico.nroCelular.ToString();
 
             
 
+        }
+        /*
+         * Método para habilitar 
+         */ 
+        public void TextBoxSoloLectura(Boolean valor)
+        {
+            if (valor == true)
+            {
+                txtTipoDocPaciente.ReadOnly = valor;
+                txtNroDocumentoPaciente.ReadOnly = valor;
+                txtNombrePaciente.ReadOnly = valor;
+                txtApellidoPaciente.ReadOnly = valor;
+                txtTelefonoFijoPaciente.ReadOnly = valor;
+                txtNroCelularPaciente.ReadOnly = valor;
+                txtEmailPaciente.ReadOnly = valor;
+                mtbFechaNacimientoPaciente.ReadOnly = valor;
+                txtAlturaPaciente.ReadOnly = valor;
+                txtPesoPaciente.ReadOnly = valor;
+                txtPisoPaciente.ReadOnly = valor;
+                txtDeptoPaciente.ReadOnly = valor;
+
+                txtCodigoPostalPaciente.ReadOnly = valor;
+                txtBarrioPaciente.ReadOnly = valor;
+                txtLocalidadPaciente.ReadOnly = valor;
+
+                txtNombreMedico.ReadOnly = valor;
+                txtApellidoMedico.ReadOnly = valor;
+                txtMatriculaMedico.ReadOnly = valor;
+                txtEspecialidadMedico.ReadOnly = valor;
+                txtEmailMedico.ReadOnly = valor;
+                txtNroCelularMedico.ReadOnly = valor;
+            }
+            else
+            {
+                txtTipoDocPaciente.ReadOnly = valor;
+                txtNroDocumentoPaciente.ReadOnly = valor;
+                txtNombrePaciente.ReadOnly = valor;
+                txtApellidoPaciente.ReadOnly = valor;
+                txtTelefonoFijoPaciente.ReadOnly = valor;
+                txtNroCelularPaciente.ReadOnly = valor;
+                txtEmailPaciente.ReadOnly = valor;
+                mtbFechaNacimientoPaciente.ReadOnly = valor;
+                txtAlturaPaciente.ReadOnly = valor;
+                txtPesoPaciente.ReadOnly = valor;
+                txtPisoPaciente.ReadOnly = valor;
+                txtDeptoPaciente.ReadOnly = valor;
+
+                txtCodigoPostalPaciente.Enabled = valor;
+                txtBarrioPaciente.Enabled = valor;
+                txtLocalidadPaciente.Enabled = valor;
+
+                txtNombreMedico.Enabled = valor;
+                txtApellidoMedico.Enabled = valor;
+                txtMatriculaMedico.Enabled = valor;
+                txtEspecialidadMedico.Enabled = valor;
+                txtEmailMedico.Enabled = valor;
+                txtNroCelularMedico.Enabled = valor;
+            }
         }
     }
 }

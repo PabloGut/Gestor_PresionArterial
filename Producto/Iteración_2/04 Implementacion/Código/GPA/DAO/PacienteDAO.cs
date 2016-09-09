@@ -352,6 +352,8 @@ namespace DAO
                     paciente = new Paciente();
                     paciente.nombre = dr["Nombre"].ToString();
                     paciente.apellido = dr["Apellido"].ToString();
+                    paciente.id_tipoDoc = (int)tipoDocPaciente;
+                    paciente.nroDoc = Convert.ToInt64(nroDocPaciente);
                     paciente.telefono = Convert.ToInt64(dr["telefono"].ToString());
                     paciente.nroCelular = Convert.ToInt64(dr["nroCelular"].ToString());
                     paciente.mail = dr["email"].ToString();
@@ -376,7 +378,7 @@ namespace DAO
             if (paciente != null)
             {
                 paciente.domicilio = DomicilioDAO.mostrarDomicilioDelPaciente(paciente.id_domicilio);
-                paciente.medico = ProfesionalMedicoDAO.buscarProfesionalMedicoPorTipoNroDocumento(paciente.id_tipoDoc,paciente.nroDoc);
+                paciente.medico = ProfesionalMedicoDAO.buscarProfesionalMedicoPorTipoNroDocumento(paciente.id_tipodoc_medico,paciente.nrodoc_medico);
                 paciente.tipoDoc = TipoDocumentoDAO.mostrarTipoDocumento(paciente.id_tipoDoc);
             }
             return paciente;
