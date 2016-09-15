@@ -46,6 +46,11 @@ namespace DAO
             return pm;
 
         }
+        /*
+         * Método para buscar el Profesional médico que corresponde al usuario logueado.
+         * Recibe como parámetros el id_usuario.
+         * Retorna un objeto ProfesionalMedico.
+         */
         public static ProfesionaMedico buscarMedicoDeUsuario(int id_usuario)
         {
             
@@ -65,7 +70,7 @@ namespace DAO
 
             while (dr.Read())
             {
-                medico = new ProfesionaMedico((int)dr["id_tipodoc_fk"], Convert.ToInt32(dr["nro_documento"].ToString()));
+                medico = new ProfesionaMedico((int)dr["id_tipodoc_fk"], Convert.ToInt64(dr["nro_documento"].ToString()));
             }
             cn.Close();
             return medico;
@@ -145,6 +150,7 @@ namespace DAO
             }
             cn.Close();
             medico.especialidad = EspecialidadDAO.mostrarEspecialidad(medico.id_especialidad);
+            medico.tipoDoc = TipoDocumentoDAO.mostrarTipoDocumento(tipoDoc);
             return medico;
 
 

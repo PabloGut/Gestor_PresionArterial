@@ -67,8 +67,9 @@
     <Compile Include="Manejadores\ManejadorConsultarHC.cs" />
     <Compile Include="Manejadores\ManejadorConsultarPaciente.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarBarrio.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarEnfermedadActual.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEspecialidad.cs" />
-    <Compile Include="Manejadores\ManejadorRegistrarNvaHistoriaClinica.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarLocalidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarPaciente.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarTipoDeDocumento.cs" />
@@ -84,11 +85,11 @@
     <Compile Include="RegistrarEspecialidad.designer.cs">
       <DependentUpon>RegistrarEspecialidad.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarHistoriClinica.cs">
+    <Compile Include="RegistrarHistoriaClinica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrarHistoriClinica.Designer.cs">
-      <DependentUpon>RegistrarHistoriClinica.cs</DependentUpon>
+    <Compile Include="RegistrarHistoriaClinica.Designer.cs">
+      <DependentUpon>RegistrarHistoriaClinica.cs</DependentUpon>
     </Compile>
     <Compile Include="InicioSesión.cs">
       <SubType>Form</SubType>
@@ -165,8 +166,8 @@
     <EmbeddedResource Include="RegistrarEspecialidad.resx">
       <DependentUpon>RegistrarEspecialidad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrarHistoriClinica.resx">
-      <DependentUpon>RegistrarHistoriClinica.cs</DependentUpon>
+    <EmbeddedResource Include="RegistrarHistoriaClinica.resx">
+      <DependentUpon>RegistrarHistoriaClinica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InicioSesión.resx">
       <DependentUpon>InicioSesión.cs</DependentUpon>

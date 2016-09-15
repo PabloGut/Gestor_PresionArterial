@@ -115,6 +115,11 @@ namespace DAO
 
             cn.Close();
         }
+        /*
+         * Método para buscar el nombre de un tipo de documento.
+         * Recibe como parámetros el id_tipoDoc.
+         * Retorna un objeto de TipoDocumento.
+         */
         public static TipoDocumento mostrarTipoDocumento(int id_tipoDoc)
         {
             setCadenaConexion();

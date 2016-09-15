@@ -13,9 +13,10 @@ namespace GPA
 {
     public partial class MenuPrincipal : Form
     {
-        ProfesionaMedico medicoLogueado;
+        public ProfesionaMedico medicoLogueado{set;get;}
         public Paciente pacienteSeleccionado{set;get;}
         ManejadorConsultarPaciente manejadorConsultarPaciente;
+
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace GPA
 
             cargarComboTipoDocumento();
             dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
-            dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = true;
+            dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
         }
         /*
@@ -204,8 +205,25 @@ namespace GPA
             
             
             pacienteSeleccionado = manejadorConsultarPaciente.mostrarPacienteBuscado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, tipoDocPaciente, nroDocPaciente);
-
+            setDatosProfesionalLogueado(pacienteSeleccionado.medico);
             cargarDatosPacienteSeleccionado();
+        }
+        /*
+         * Método para agregar datos al objeto Profesional Medico logueado.
+         * Recibe como parámetro un objeto profesional médico.
+         * No tiene valor de retorno.
+         */
+        public void setDatosProfesionalLogueado(ProfesionaMedico medico)
+        {
+            medicoLogueado.nombre = medico.nombre;
+            medicoLogueado.apellido = medico.apellido;
+            medicoLogueado.tipoDoc=medico.tipoDoc;
+            medicoLogueado.especialidad = medico.especialidad;
+            medicoLogueado.matricula = medico.matricula;
+            medicoLogueado.mail = medico.mail;
+            medicoLogueado.nroCelular = medico.nroCelular;
+
+
         }
         /*
          * Método para cargar los datos del paciente en los componentes del formulario.
@@ -259,7 +277,7 @@ namespace GPA
 
         }
         /*
-         * Método para habilitar 
+         * Método para que los texbox sean de solo lectura.
          */ 
         public void TextBoxSoloLectura(Boolean valor)
         {
@@ -315,6 +333,12 @@ namespace GPA
                 txtEmailMedico.Enabled = valor;
                 txtNroCelularMedico.Enabled = valor;
             }
+        }
+
+        private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)
+        {
+            RegistrarHistoriaClínica regHC = new RegistrarHistoriaClínica(medicoLogueado,pacienteSeleccionado);
+            regHC.ShowDialog();
         }
     }
 }

@@ -673,6 +673,7 @@
             this.btnCrearHistoriaClinica.TabIndex = 7;
             this.btnCrearHistoriaClinica.Text = "Crear Historia Clínica";
             this.btnCrearHistoriaClinica.UseVisualStyleBackColor = true;
+            this.btnCrearHistoriaClinica.Click += new System.EventHandler(this.btnCrearHistoriaClinica_Click);
             // 
             // groupBox1
             // 
