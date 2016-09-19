@@ -30,6 +30,8 @@ namespace GPA
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
+            habilitarDeshabilitarTabPageYBotones(false);
+            rbSiDolor.Checked = true;
             presentarDatosPacienteYMedico();
 
             presentarFechaYHoraActual();
@@ -119,13 +121,23 @@ namespace GPA
         }
         private void btnVerificarHC_Click(object sender, EventArgs e)
         {
-          
-          //MessageBox.Show("El paciente ya tiene historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-        
-          //MessageBox.Show("El paciente no posee historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-           
-         
-
+            if (manejadorRegistrarHC.existeHC(paciente.id_tipoDoc, paciente.nroDoc) == false)
+            {
+                MessageBox.Show("El paciente no posee historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                habilitarDeshabilitarTabPageYBotones(true);
+            }
+            else
+            {
+                MessageBox.Show("El paciente ya tiene historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            }
+        }
+        public void habilitarDeshabilitarTabPageYBotones(Boolean valor)
+        {
+            btnAceptar.Enabled = valor;
+            ((Control)tpEnfermedadActual).Enabled = valor;
+            ((Control)tpAntecedentes).Enabled = valor;
+            ((Control)tpAlergias).Enabled = valor;
+            ((Control)tpHabitos).Enabled = valor;
         }
         public void deshabilitarHabilitarComponentes(Boolean valor)
         {
@@ -177,6 +189,16 @@ namespace GPA
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void rbSiDolor_CheckedChanged(object sender, EventArgs e)
+        {
+            cboCaracterDolor.Enabled = true;
+        }
+
+        private void rbNoDolor_CheckedChanged(object sender, EventArgs e)
+        {
+            cboCaracterDolor.Enabled = false;
         }
     }
 }

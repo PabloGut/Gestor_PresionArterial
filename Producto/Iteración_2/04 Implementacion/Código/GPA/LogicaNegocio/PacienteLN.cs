@@ -18,5 +18,9 @@ namespace LogicaNegocio
         {
             return PacienteDAO.mostrarPacienteBuscado(tipoDocMedico,nroDocMedico,tipoDocPaciente,nroDocPaciente);
         }
+        public static Boolean existeHC(int tipoDoc, long nroDoc)
+        {
+            return PacienteDAO.ExisteHC(tipoDoc, nroDoc);
+        }
     }
 }

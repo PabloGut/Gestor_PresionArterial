@@ -39,7 +39,10 @@ namespace GPA.Manejadores
         {
             return HistoriaClinicaLN.mostrarHoraActual();
         }
-        
+        public Boolean existeHC(int tipoDoc, long nroDoc)
+        {
+            return PacienteLN.existeHC(tipoDoc, nroDoc);
+        }
 
     }
 }

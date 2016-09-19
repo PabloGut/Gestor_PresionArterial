@@ -53,8 +53,8 @@
             this.txtmotivoConsulta = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpGeneral = new System.Windows.Forms.TabPage();
+            this.tpEnfermedadActual = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvListaSintoma = new System.Windows.Forms.DataGridView();
@@ -92,7 +92,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -166,7 +166,7 @@
             this.comboBox15 = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tpAlergias = new System.Windows.Forms.TabPage();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -230,7 +230,7 @@
             this.radioButton23 = new System.Windows.Forms.RadioButton();
             this.radioButton24 = new System.Windows.Forms.RadioButton();
             this.label104 = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tpHabitos = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -365,11 +365,11 @@
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpGeneral.SuspendLayout();
+            this.tpEnfermedadActual.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaSintoma)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.tpAntecedentes.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -380,7 +380,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel3.SuspendLayout();
-            this.tabPage5.SuspendLayout();
+            this.tpAlergias.SuspendLayout();
             this.tabControl4.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -394,7 +394,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
-            this.tabPage6.SuspendLayout();
+            this.tpHabitos.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -641,38 +641,38 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tpGeneral);
+            this.tabControl1.Controls.Add(this.tpEnfermedadActual);
+            this.tabControl1.Controls.Add(this.tpAntecedentes);
+            this.tabControl1.Controls.Add(this.tpAlergias);
+            this.tabControl1.Controls.Add(this.tpHabitos);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(730, 629);
             this.tabControl1.TabIndex = 12;
             // 
-            // tabPage1
+            // tpGeneral
             // 
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(722, 603);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "General";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpGeneral.Controls.Add(this.panel1);
+            this.tpGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tpGeneral.Name = "tpGeneral";
+            this.tpGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tpGeneral.Size = new System.Drawing.Size(722, 603);
+            this.tpGeneral.TabIndex = 0;
+            this.tpGeneral.Text = "General";
+            this.tpGeneral.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tpEnfermedadActual
             // 
-            this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(722, 603);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Enfermedad Actual";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpEnfermedadActual.Controls.Add(this.groupBox6);
+            this.tpEnfermedadActual.Location = new System.Drawing.Point(4, 22);
+            this.tpEnfermedadActual.Name = "tpEnfermedadActual";
+            this.tpEnfermedadActual.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEnfermedadActual.Size = new System.Drawing.Size(722, 603);
+            this.tpEnfermedadActual.TabIndex = 1;
+            this.tpEnfermedadActual.Text = "Enfermedad Actual";
+            this.tpEnfermedadActual.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -848,7 +848,7 @@
             // 
             // btnAñadirCaracterDolor
             // 
-            this.btnAñadirCaracterDolor.Location = new System.Drawing.Point(402, 143);
+            this.btnAñadirCaracterDolor.Location = new System.Drawing.Point(430, 143);
             this.btnAñadirCaracterDolor.Name = "btnAñadirCaracterDolor";
             this.btnAñadirCaracterDolor.Size = new System.Drawing.Size(75, 23);
             this.btnAñadirCaracterDolor.TabIndex = 10;
@@ -867,7 +867,7 @@
             this.cboCaracterDolor.FormattingEnabled = true;
             this.cboCaracterDolor.Location = new System.Drawing.Point(275, 145);
             this.cboCaracterDolor.Name = "cboCaracterDolor";
-            this.cboCaracterDolor.Size = new System.Drawing.Size(121, 21);
+            this.cboCaracterDolor.Size = new System.Drawing.Size(149, 21);
             this.cboCaracterDolor.TabIndex = 9;
             // 
             // label23
@@ -889,6 +889,7 @@
             this.rbNoDolor.TabStop = true;
             this.rbNoDolor.Text = "No";
             this.rbNoDolor.UseVisualStyleBackColor = true;
+            this.rbNoDolor.CheckedChanged += new System.EventHandler(this.rbNoDolor_CheckedChanged);
             // 
             // rbSiDolor
             // 
@@ -900,6 +901,7 @@
             this.rbSiDolor.TabStop = true;
             this.rbSiDolor.Text = "Si";
             this.rbSiDolor.UseVisualStyleBackColor = true;
+            this.rbSiDolor.CheckedChanged += new System.EventHandler(this.rbSiDolor_CheckedChanged);
             // 
             // btnAñadirParteCuerpo
             // 
@@ -1033,16 +1035,16 @@
             this.label16.TabIndex = 4;
             this.label16.Text = "¿Siente dolor?";
             // 
-            // tabPage3
+            // tpAntecedentes
             // 
-            this.tabPage3.Controls.Add(this.tabControl3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(722, 603);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Antecedentes";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tpAntecedentes.Controls.Add(this.tabControl3);
+            this.tpAntecedentes.Location = new System.Drawing.Point(4, 22);
+            this.tpAntecedentes.Name = "tpAntecedentes";
+            this.tpAntecedentes.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAntecedentes.Size = new System.Drawing.Size(722, 603);
+            this.tpAntecedentes.TabIndex = 2;
+            this.tpAntecedentes.Text = "Antecedentes";
+            this.tpAntecedentes.UseVisualStyleBackColor = true;
             // 
             // tabControl3
             // 
@@ -1752,16 +1754,16 @@
             this.label38.TabIndex = 1;
             this.label38.Text = "Vive";
             // 
-            // tabPage5
+            // tpAlergias
             // 
-            this.tabPage5.Controls.Add(this.tabControl4);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(722, 603);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Alergias";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tpAlergias.Controls.Add(this.tabControl4);
+            this.tpAlergias.Location = new System.Drawing.Point(4, 22);
+            this.tpAlergias.Name = "tpAlergias";
+            this.tpAlergias.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAlergias.Size = new System.Drawing.Size(722, 603);
+            this.tpAlergias.TabIndex = 4;
+            this.tpAlergias.Text = "Alergias";
+            this.tpAlergias.UseVisualStyleBackColor = true;
             // 
             // tabControl4
             // 
@@ -2398,16 +2400,16 @@
             this.label104.TabIndex = 5;
             this.label104.Text = "¿Es alérgico?";
             // 
-            // tabPage6
+            // tpHabitos
             // 
-            this.tabPage6.Controls.Add(this.tabControl2);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(722, 603);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Hábitos";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tpHabitos.Controls.Add(this.tabControl2);
+            this.tpHabitos.Location = new System.Drawing.Point(4, 22);
+            this.tpHabitos.Name = "tpHabitos";
+            this.tpHabitos.Padding = new System.Windows.Forms.Padding(3);
+            this.tpHabitos.Size = new System.Drawing.Size(722, 603);
+            this.tpHabitos.TabIndex = 5;
+            this.tpHabitos.Text = "Hábitos";
+            this.tpHabitos.UseVisualStyleBackColor = true;
             // 
             // tabControl2
             // 
@@ -3667,12 +3669,12 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tpGeneral.ResumeLayout(false);
+            this.tpEnfermedadActual.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaSintoma)).EndInit();
-            this.tabPage3.ResumeLayout(false);
+            this.tpAntecedentes.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
@@ -3688,7 +3690,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
+            this.tpAlergias.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -3707,7 +3709,7 @@
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
-            this.tabPage6.ResumeLayout(false);
+            this.tpHabitos.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
@@ -3759,8 +3761,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox mtbHoraActual;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpGeneral;
+        private System.Windows.Forms.TabPage tpEnfermedadActual;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtmotivoConsulta;
         private System.Windows.Forms.Label label11;
@@ -3801,7 +3803,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dgvListaSintoma;
         private System.Windows.Forms.Button btnAgregarSintoma;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tpAntecedentes;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button9;
@@ -3870,7 +3872,7 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tpAlergias;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.ComboBox comboBox16;
@@ -3883,7 +3885,7 @@
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tpHabitos;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
