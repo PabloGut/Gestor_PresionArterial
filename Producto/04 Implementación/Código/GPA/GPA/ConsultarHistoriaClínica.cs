@@ -18,6 +18,7 @@ namespace GPA
         private MenuPrincipal refMenuPrincipal;
         private ManejadorConsultarHC manejadorConsultarHC;
         private HistoriaClinica hcPacienteSeleccionado;
+        private Paciente pacienteSelec;
 
         public ConsultarHistoriaClínica(MenuPrincipal mp)
         {
@@ -43,16 +44,16 @@ namespace GPA
         public void presentarDatosHc()
         {
             
-            Paciente paciente = refMenuPrincipal.getPacienteSeleccionado();
-            if (paciente != null)
+            pacienteSelec = refMenuPrincipal.getPacienteSeleccionado();
+            if (pacienteSelec != null)
             {
-                HistoriaClinica hcpaciente = manejadorConsultarHC.mostrarHistoriaClinica(paciente);
+                HistoriaClinica hcpaciente = manejadorConsultarHC.mostrarHistoriaClinica(pacienteSelec);
                 if (hcpaciente != null)
                 {
                     setHistoriaClinica(hcpaciente);
                     txtNroHc.Text = Convert.ToString(hcpaciente.nro_hc);
-                    txtNombreApellidoPaciente.Text = paciente.apellido + " ";
-                    txtNombreApellidoPaciente.Text += paciente.nombre;
+                    txtNombreApellidoPaciente.Text = pacienteSelec.apellido + " ";
+                    txtNombreApellidoPaciente.Text += pacienteSelec.nombre;
                     mtbFechaCreacionHC.Text = Convert.ToString(hcpaciente.fecha);
                     mtbFechaInicioTratamiento.Text = Convert.ToString(hcpaciente.fechaInicioAtencion);
                     txtAntecedentes.Text = hcpaciente.antecedentes;
