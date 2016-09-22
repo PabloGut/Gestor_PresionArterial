@@ -41,6 +41,16 @@ namespace GPA
             presentarPartesDelCuerpoHumano(manejadorRegistrarEnfermedadActual.mostrarPartesDelCuerpoHumano());
 
             presentarCaracterDelDolor(manejadorRegistrarEnfermedadActual.mostrarCaracterDelDolor());
+
+            presentarElementosDelTiempo(manejadorRegistrarHC.mostrarElementosDelTiempo());
+
+            presentarDescripcionesDelTiempo(manejadorRegistrarHC.mostrarDescripcionesDelTiempo());
+
+            presentarModificacionesDelSintoma(manejadorRegistrarHC.mostrarModificacionesDelSintoma());
+
+            presentarElementosDeModificacionDelSintoma(manejadorRegistrarHC.mostrarElementosDeModificacion());
+
+
            
         }
         public void presentarFechaYHoraActual()
@@ -84,7 +94,46 @@ namespace GPA
         {
             cargarCombo(cboCaracterDolor, caracterDelDolor, "id_caracterDelDolor", "nombre");
         }
-       
+        /*
+       * Método para mostrar los elementos del tiempo.
+       * Recibe como parámetro una lista de objetos ElementoDelTiempo.
+       * El valor de retorno es void.
+       * Llama al método cargarCombo.
+       */
+        public void presentarElementosDelTiempo(List<ElementoDelTiempo> elementosDelTiempo)
+        {
+            cargarCombo(cboElementoTiempo,elementosDelTiempo, "id_elementoDelTiempo", "nombre");
+        }
+        /*
+         * Método para mostrar las descripciones del tiempo
+         * Recibe como parámetro una lista de objetos DescripcionDelTiempo.
+         * El valor de retorno es void.
+         * Llama al método cargarCombo.
+         */
+        public void presentarDescripcionesDelTiempo(List<DescripcionDelTiempo> descripcionesDelTiempo)
+        {
+            cargarCombo(cboCuandoComenzo, descripcionesDelTiempo, "id_descripcionDelTiempo", "nombre");
+        }
+        /*
+       * Método para mostrar las formas de modificaciones del los síntomas
+       * Recibe como parámetro una lista de objetos ModificacionSintoma.
+       * El valor de retorno es void.
+       * Llama al método cargarCombo.
+       */
+        public void presentarModificacionesDelSintoma(List<ModificacionSintoma> modificacionesDelSintoma)
+        {
+            cargarCombo(cboComoModificaSintoma, modificacionesDelSintoma,"id_modificacionSintoma","nombre");
+        }
+        /*
+       * Método para mostrar los elementos que modifican un síntoma.
+       * Recibe como parámetro una lista de objetos ElementoDeModificacion.
+       * El valor de retorno es void.
+       * Llama al método cargarCombo.
+        */
+        public void presentarElementosDeModificacionDelSintoma(List<ElementoDeModificacion> elementosDeModificacion)
+        {
+            cargarCombo(cboElementoModificacion, elementosDeModificacion, "id_elementoDeModificacion","nombre");
+        }
         /*
          * Método para cargar un ComboBox.
          * Recibe como parámetro una referencia de un ComboBox, una lista genérica,  un string del valueMember y un string del displayMember.

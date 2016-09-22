@@ -46,13 +46,17 @@
   <ItemGroup>
     <Compile Include="Clases\Barrio.cs" />
     <Compile Include="Clases\CaracterDelDolor.cs" />
+    <Compile Include="Clases\DescripcionDelTiempo.cs" />
     <Compile Include="Clases\Domicilio.cs" />
+    <Compile Include="Clases\ElementoDelTiempo.cs" />
+    <Compile Include="Clases\ElementoDeModificacion.cs" />
     <Compile Include="Clases\Especialidad.cs" />
     <Compile Include="Clases\Estado.cs" />
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\HistoriaClinica.cs" />
     <Compile Include="Clases\Institucion.cs" />
     <Compile Include="Clases\Localidad.cs" />
+    <Compile Include="Clases\ModificacionSintoma.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\ParteDelCuerpo.cs" />
     <Compile Include="Clases\Persona.cs" />

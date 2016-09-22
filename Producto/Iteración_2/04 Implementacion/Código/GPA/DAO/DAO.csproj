@@ -47,7 +47,10 @@
     <Compile Include="BarrioDAO.cs" />
     <Compile Include="CadenaConexion.cs" />
     <Compile Include="CaracterDelDolorDAO.cs" />
+    <Compile Include="DescripcionDelTiempoDAO.cs" />
     <Compile Include="DomicilioDAO.cs" />
+    <Compile Include="ElementoDelTiempoDAO.cs" />
+    <Compile Include="ElementoDeModificacionDAO.cs" />
     <Compile Include="EspecialidadDAO.cs" />
     <Compile Include="EstadoDAO.cs" />
     <Compile Include="EstudioDAO.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="HistoriaClinicaDAO.cs" />
     <Compile Include="InstitucionDAO.cs" />
     <Compile Include="LocalidadDAO.cs" />
+    <Compile Include="ModificacionSintomaDAO.cs" />
     <Compile Include="PacienteDAO.cs" />
     <Compile Include="ParteDelCuerpoDAO.cs" />
     <Compile Include="ProfesionalMedicoDAO.cs" />

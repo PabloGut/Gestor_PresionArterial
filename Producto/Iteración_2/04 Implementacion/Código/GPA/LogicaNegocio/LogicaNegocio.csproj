@@ -40,7 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaracterDelDolorLN.cs" />
+    <Compile Include="DescripcionDelTiempoLN.cs" />
+    <Compile Include="ElementoDelTiempoLN.cs" />
+    <Compile Include="ElementoDeModificacionLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
+    <Compile Include="ModificacionSintomaLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
     <Compile Include="TipoDocumentoLN.cs" />
     <Compile Include="TipoSintomaLN.cs" />

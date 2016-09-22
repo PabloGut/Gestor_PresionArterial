@@ -43,6 +43,22 @@ namespace GPA.Manejadores
         {
             return PacienteLN.existeHC(tipoDoc, nroDoc);
         }
+        public List<ElementoDelTiempo> mostrarElementosDelTiempo()
+        {
+            return ElementoDelTiempoLN.mostrarElementosDelTiempo();
+        }
+        public List<DescripcionDelTiempo> mostrarDescripcionesDelTiempo()
+        {
+            return DescripcionDelTiempoLN.mostrarDescripcionesDelTiempo();
+        }
+        public List<ModificacionSintoma> mostrarModificacionesDelSintoma()
+        {
+            return ModificacionSintomaLN.mostrarModificacionesDelSintoma();
+        }
+        public List<ElementoDeModificacion> mostrarElementosDeModificacion()
+        {
+            return ElementoDeModificacionLN.mostrarElementosDeModificacion();
+        }
 
     }
 }
