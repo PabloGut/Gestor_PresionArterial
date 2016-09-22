@@ -109,6 +109,54 @@ values('Fulgurante')
 insert into CaracterDelDolor(nombre)
 values('Terebrante')
 
+/*--------------------------*/
+
+/*-------Insert Elementos del tiempo-----*/
+insert into ElementoDelTiempo(nombre)
+values('Días')
+
+insert into ElementoDelTiempo(nombre)
+values('Meses')
+
+insert into ElementoDelTiempo(nombre)
+values('Años')
+
+
+/*--------------------------*/
+
+/*-------Insert Descripción del tiempo-----*/
+
+insert into DescripcionDelTiempo(nombre)
+values('Antenoche')
+
+insert into DescripcionDelTiempo(nombre)
+values('Hace tres días')
+
+insert into DescripcionDelTiempo(nombre)
+values('La semana pasada')
+
+/*--------------------------*/
+
+/*-------Insert ModificaciónSíntoma-----*/
+insert into ModificacionSintoma(nombre)
+values('Aumentando')
+
+insert into ModificacionSintoma(nombre)
+values('Disminuyendo')
+
+insert into ModificacionSintoma(nombre)
+values('No se modifica')
+
+select * from ElementoDeModificacion
+delete from ModificacionSintoma 
+/*--------------------------*/
+
+/*-------Insert ElementoDeModificacion-----*/
+insert into ElementoDeModificacion(nombre)
+values('Alimentos')
+
+insert into ElementoDeModificacion(nombre)
+values('Posiciones corporales')
 
 
 /*--------------------------*/
