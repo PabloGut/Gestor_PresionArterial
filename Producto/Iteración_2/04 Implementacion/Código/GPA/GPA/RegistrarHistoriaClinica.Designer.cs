@@ -103,11 +103,11 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.cboNombrePorTipoAntecedenteMorbido = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.cboTipoAntecedenteMorbido = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.cboTiempoOcurridoAntMorbido = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -1078,11 +1078,11 @@
             this.groupBox7.Controls.Add(this.textBox7);
             this.groupBox7.Controls.Add(this.textBox6);
             this.groupBox7.Controls.Add(this.textBox5);
-            this.groupBox7.Controls.Add(this.comboBox9);
+            this.groupBox7.Controls.Add(this.cboNombrePorTipoAntecedenteMorbido);
             this.groupBox7.Controls.Add(this.label30);
-            this.groupBox7.Controls.Add(this.comboBox8);
+            this.groupBox7.Controls.Add(this.cboTipoAntecedenteMorbido);
             this.groupBox7.Controls.Add(this.label29);
-            this.groupBox7.Controls.Add(this.comboBox10);
+            this.groupBox7.Controls.Add(this.cboTiempoOcurridoAntMorbido);
             this.groupBox7.Controls.Add(this.label28);
             this.groupBox7.Controls.Add(this.label26);
             this.groupBox7.Controls.Add(this.label27);
@@ -1149,13 +1149,13 @@
             this.textBox5.Size = new System.Drawing.Size(60, 20);
             this.textBox5.TabIndex = 8;
             // 
-            // comboBox9
+            // cboNombrePorTipoAntecedenteMorbido
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(55, 73);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(121, 21);
-            this.comboBox9.TabIndex = 1;
+            this.cboNombrePorTipoAntecedenteMorbido.FormattingEnabled = true;
+            this.cboNombrePorTipoAntecedenteMorbido.Location = new System.Drawing.Point(55, 73);
+            this.cboNombrePorTipoAntecedenteMorbido.Name = "cboNombrePorTipoAntecedenteMorbido";
+            this.cboNombrePorTipoAntecedenteMorbido.Size = new System.Drawing.Size(121, 21);
+            this.cboNombrePorTipoAntecedenteMorbido.TabIndex = 1;
             // 
             // label30
             // 
@@ -1166,13 +1166,14 @@
             this.label30.TabIndex = 7;
             this.label30.Text = "Evolución";
             // 
-            // comboBox8
+            // cboTipoAntecedenteMorbido
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(40, 31);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(136, 21);
-            this.comboBox8.TabIndex = 0;
+            this.cboTipoAntecedenteMorbido.FormattingEnabled = true;
+            this.cboTipoAntecedenteMorbido.Location = new System.Drawing.Point(40, 31);
+            this.cboTipoAntecedenteMorbido.Name = "cboTipoAntecedenteMorbido";
+            this.cboTipoAntecedenteMorbido.Size = new System.Drawing.Size(136, 21);
+            this.cboTipoAntecedenteMorbido.TabIndex = 0;
+            this.cboTipoAntecedenteMorbido.SelectedIndexChanged += new System.EventHandler(this.cboTipoAntecedenteMorbido_SelectedIndexChanged);
             // 
             // label29
             // 
@@ -1183,13 +1184,13 @@
             this.label29.TabIndex = 6;
             this.label29.Text = "Tratamiento";
             // 
-            // comboBox10
+            // cboTiempoOcurridoAntMorbido
             // 
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(248, 117);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(121, 21);
-            this.comboBox10.TabIndex = 2;
+            this.cboTiempoOcurridoAntMorbido.FormattingEnabled = true;
+            this.cboTiempoOcurridoAntMorbido.Location = new System.Drawing.Point(248, 117);
+            this.cboTiempoOcurridoAntMorbido.Name = "cboTiempoOcurridoAntMorbido";
+            this.cboTiempoOcurridoAntMorbido.Size = new System.Drawing.Size(121, 21);
+            this.cboTiempoOcurridoAntMorbido.TabIndex = 2;
             // 
             // label28
             // 
@@ -3811,11 +3812,11 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox cboNombrePorTipoAntecedenteMorbido;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox cboTipoAntecedenteMorbido;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.ComboBox cboTiempoOcurridoAntMorbido;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
