@@ -157,12 +157,63 @@ values('Alimentos')
 
 insert into ElementoDeModificacion(nombre)
 values('Posiciones corporales')
+/*--------------------------*/
+
+/*-------Insert TiposAntecedentesMórbidos-----*/
+
+insert into TiposAntecedentesMorbidos(nombre)
+values('Enfermedad')
+
+insert into TiposAntecedentesMorbidos(nombre)
+values('Operación')
+
+insert into TiposAntecedentesMorbidos(nombre)
+values('Traumatismo')
+/*--------------------------*/
+
+/*-------Insert Enfermedades-----*/
+insert into Enfermedades(nombre,id_tipoAntecedenteMorbido_fk)
+values('Hipertensión Arterial','1')
+
+insert into Enfermedades(nombre,id_tipoAntecedenteMorbido_fk)
+values('Diabetes Mellitus','1')
+
+insert into Enfermedades(nombre,id_tipoAntecedenteMorbido_fk)
+values('Epilepsia','1')
+
+insert into Enfermedades(nombre,id_tipoAntecedenteMorbido_fk)
+values('Asma','1')
+/*--------------------------*/
 
 
+/*-------Insert Operaciones-----*/
+insert into Operaciones(nombre,id_tipoAntecedenteMorbido_fk)
+values('Apendicectomía','2')
+
+insert into Operaciones(nombre,id_tipoAntecedenteMorbido_fk)
+values('Cirugía de cataratas','2')
+
+insert into Operaciones(nombre,id_tipoAntecedenteMorbido_fk)
+values('Cesárea','2')
+
+insert into Operaciones(nombre,id_tipoAntecedenteMorbido_fk)
+values('Bypass de arteria coronaria','2')
+/*--------------------------*/
+
+/*-------Insert Traumatismos-----*/
+insert into Traumatismos(nombre,id_tipoAntecedenteMorbido_fk)
+values('Traumatismo de cráneo','3')
+
+insert into Traumatismos(nombre,id_tipoAntecedenteMorbido_fk)
+values('Traumatismo de cara','3')
+
+insert into Traumatismos(nombre,id_tipoAntecedenteMorbido_fk)
+values('Traumatismo de columna vertebral','3')
 /*--------------------------*/
 
 /*-------Insert-----*/
-
+alter table Traumatismos
+add descripcion text
 /*--------------------------*/
 
 

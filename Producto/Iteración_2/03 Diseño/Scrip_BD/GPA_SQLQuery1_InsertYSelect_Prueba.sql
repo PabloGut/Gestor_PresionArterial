@@ -179,10 +179,25 @@ from Paciente
 order by id_usuario_fk
 
 select *
-from Sexo
+from Operaciones
 
 update ProfesionalMedico
 set id_sexo_fk='1'
 where  id_tipoDoc_fk='8' and nro_documento='15036547'
 
+update Operaciones
+set id_tipoAntecedenteMorbido_fk='2'
+where  id_tipoAntecedenteMorbido_fk='1'
+
 select id_estudio,nombre as 'Nombre del estudio',fecha_estudio,doctorACargo,informe_estudio,id_hc_fk,id_institucion_fk from Estudio where id_hc_fk=8
+
+alter table TipoAntecedenteMorbido
+drop column descripcion
+
+alter table TipoAntecedenteMorbido
+drop column id_nombrePorTipo_fk
+
+drop table Operaciones
+
+alter table Traumatismos
+add descripcion text

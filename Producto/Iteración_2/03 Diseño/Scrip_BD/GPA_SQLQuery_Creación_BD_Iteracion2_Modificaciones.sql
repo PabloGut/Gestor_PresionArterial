@@ -250,14 +250,32 @@ foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE NombrePorTipoAntecedenteMorbido (
 id_nombrePortipoAntecedenteMorbido int primary key identity,
-nombre varchar(100) not null)
+nombre varchar(200) not null)
 
-CREATE TABLE TipoAntecedenteMorbido (
+CREATE TABLE TiposAntecedentesMorbidos (
 id_tipoAntecedenteMorbido int primary key identity,
-nombre varchar(100) not null,
-id_nombrePorTipo_fk int not null,
-descripcion varchar(200) not null,
-foreign key (id_nombrePorTipo_fk) references NombrePorTipoAntecedenteMorbido(id_nombrePortipoAntecedenteMorbido))
+nombre varchar(200) not null)
+
+CREATE TABLE Operaciones (
+id_operacion int primary key identity,
+nombre varchar(200) not null,
+id_tipoAntecedenteMorbido_fk int not null,
+foreign key (id_tipoAntecedenteMorbido_fk) references TiposAntecedentesMorbidos(id_tipoAntecedenteMorbido))
+
+CREATE TABLE Traumatismos (
+id_traumatismo int primary key identity,
+nombre varchar(200) not null,
+descripcion text,
+id_tipoAntecedenteMorbido_fk int not null,
+foreign key (id_tipoAntecedenteMorbido_fk) references TiposAntecedentesMorbidos(id_tipoAntecedenteMorbido))
+
+CREATE TABLE Enfermedades (
+id_enfermedad int primary key identity,
+nombre varchar(200) not null,
+id_tipoAntecedenteMorbido_fk int not null,
+foreign key (id_tipoAntecedenteMorbido_fk) references TiposAntecedentesMorbidos(id_tipoAntecedenteMorbido))
+
+
 
 
 CREATE TABLE AntecedentesMorbidos(
