@@ -66,7 +66,10 @@
     </Compile>
     <Compile Include="Manejadores\ManejadorConsultarHC.cs" />
     <Compile Include="Manejadores\ManejadorConsultarPaciente.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarAlergias.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarAntecedentesGinecoObstetricos.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesMorbidos.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarAntecedentesPatologicosFamiliares.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarBarrio.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEnfermedadActual.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEspecialidad.cs" />

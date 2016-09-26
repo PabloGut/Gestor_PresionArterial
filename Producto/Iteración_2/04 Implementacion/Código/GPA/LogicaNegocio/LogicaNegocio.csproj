@@ -39,17 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlimentoLN.cs" />
     <Compile Include="CaracterDelDolorLN.cs" />
     <Compile Include="DescripcionDelTiempoLN.cs" />
     <Compile Include="ElementoDelTiempoLN.cs" />
     <Compile Include="ElementoDeModificacionLN.cs" />
     <Compile Include="EnfermedadLN.cs" />
+    <Compile Include="FamiliarLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
+    <Compile Include="InsectoLN.cs" />
     <Compile Include="ModificacionSintomaLN.cs" />
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
+    <Compile Include="SustanciaAmbienteLN.cs" />
+    <Compile Include="SustanciaContactoPielLN.cs" />
+    <Compile Include="TipoAbortoLN.cs" />
     <Compile Include="TipoAntecedenteMorbidoLN.cs" />
     <Compile Include="TipoDocumentoLN.cs" />
+    <Compile Include="TipoPartoLN.cs" />
     <Compile Include="TipoSintomaLN.cs" />
     <Compile Include="TraumatismoLN.cs" />
     <Compile Include="UsuarioLN.cs" />

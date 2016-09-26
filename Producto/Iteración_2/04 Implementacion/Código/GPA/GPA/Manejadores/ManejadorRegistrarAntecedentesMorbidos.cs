@@ -27,5 +27,9 @@ namespace GPA.Manejadores
         {
             return TraumatismoLN.mostrarTraumatismos(id_tipoAntecedenteMorbido);
         }
+        public List<ElementoDelTiempo> mostrarElementosDelTiempo()
+        {
+            return ElementoDelTiempoLN.mostrarElementosDelTiempo();
+        }
     }
 }

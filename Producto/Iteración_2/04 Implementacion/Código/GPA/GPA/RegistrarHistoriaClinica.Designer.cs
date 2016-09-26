@@ -112,24 +112,27 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.cboTipoPartoPostermino = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label106 = new System.Windows.Forms.Label();
+            this.txtCantidadHijosVivos = new System.Windows.Forms.TextBox();
             this.label105 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.cboTipoAborto2 = new System.Windows.Forms.ComboBox();
+            this.cboTipoAborto1 = new System.Windows.Forms.ComboBox();
+            this.txtCantidadTipoAborto2 = new System.Windows.Forms.TextBox();
+            this.txtCantidadTipoAborto1 = new System.Windows.Forms.TextBox();
+            this.txtCantidadAbortos = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.cboTipoPartoATermino = new System.Windows.Forms.ComboBox();
+            this.cboTipoPartoPretermino = new System.Windows.Forms.ComboBox();
+            this.txtProblemasEmbarazo = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtCantidadEmbarazos = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -139,96 +142,98 @@
             this.label31 = new System.Windows.Forms.Label();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label107 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.rbNoOtraEnfermedad = new System.Windows.Forms.RadioButton();
+            this.rbSiOtraEnfermedad = new System.Windows.Forms.RadioButton();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.button14 = new System.Windows.Forms.Button();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txtCausaMuerte = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtDescripcionOtraEnfermedad = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chbTranstornosNutricionales = new System.Windows.Forms.CheckBox();
+            this.chbParasitismo = new System.Windows.Forms.CheckBox();
+            this.chbHepatitis = new System.Windows.Forms.CheckBox();
+            this.chbLepra = new System.Windows.Forms.CheckBox();
+            this.chbTuberculosis = new System.Windows.Forms.CheckBox();
+            this.chbAnemias = new System.Windows.Forms.CheckBox();
+            this.chbHipertensión = new System.Windows.Forms.CheckBox();
+            this.chbDiabetes = new System.Windows.Forms.CheckBox();
+            this.chbAsma = new System.Windows.Forms.CheckBox();
             this.label39 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.comboBox15 = new System.Windows.Forms.ComboBox();
+            this.rbNoViveFamiliar = new System.Windows.Forms.RadioButton();
+            this.rbSiViveFamiliar = new System.Windows.Forms.RadioButton();
+            this.cboFamiliar = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.tpAlergias = new System.Windows.Forms.TabPage();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarAlergiaAlimentos = new System.Windows.Forms.Button();
+            this.dgvAlergiasAlimentos = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.comboBox17 = new System.Windows.Forms.ComboBox();
+            this.btnAñadirAlimento = new System.Windows.Forms.Button();
+            this.txtEfectosAlergiaAlimentos = new System.Windows.Forms.TextBox();
+            this.cboAlimentos = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.rbNoAlergicoAlimentos = new System.Windows.Forms.RadioButton();
+            this.rbSiAlergicoAlimentos = new System.Windows.Forms.RadioButton();
             this.label53 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarSustanciaAmbiente = new System.Windows.Forms.Button();
+            this.dgvAlergiasSustanciaAmbiente = new System.Windows.Forms.DataGridView();
             this.label58 = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.comboBox19 = new System.Windows.Forms.ComboBox();
+            this.btnAñadirSustanciaAmbiente = new System.Windows.Forms.Button();
+            this.txtEfectosAlergiaSustanciaAmbiente = new System.Windows.Forms.TextBox();
+            this.cboSustanciaAmbiente = new System.Windows.Forms.ComboBox();
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
+            this.rbNoAlergiaSustanciaAmbiente = new System.Windows.Forms.RadioButton();
+            this.rbSiAlergiaSustanciaAmbiente = new System.Windows.Forms.RadioButton();
             this.label61 = new System.Windows.Forms.Label();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarSustanciaContactoPiel = new System.Windows.Forms.Button();
+            this.dgvAlergiasSustanciasContactoPiel = new System.Windows.Forms.DataGridView();
             this.label54 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.comboBox18 = new System.Windows.Forms.ComboBox();
+            this.btnAñadirSustanciaContactoPiel = new System.Windows.Forms.Button();
+            this.txtEfectosAlergiaSustanciaContactoPiel = new System.Windows.Forms.TextBox();
+            this.cboSustanciaContactoPiel = new System.Windows.Forms.ComboBox();
             this.label55 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.rbNoAlergiaSustanciaContactoPiel = new System.Windows.Forms.RadioButton();
+            this.rbSiAlergiaSustanciaContactoPiel = new System.Windows.Forms.RadioButton();
             this.label57 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarMedicamento = new System.Windows.Forms.Button();
+            this.dgvAlergiasMedicamentos = new System.Windows.Forms.DataGridView();
             this.label51 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.comboBox16 = new System.Windows.Forms.ComboBox();
+            this.btnAñadirMedicamento = new System.Windows.Forms.Button();
+            this.txtEfectosAlergiasMedicamentos = new System.Windows.Forms.TextBox();
+            this.cboMedicamentos = new System.Windows.Forms.ComboBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.rbNoAlergiaMedicamento = new System.Windows.Forms.RadioButton();
+            this.rbSiAlergiaMedicamento = new System.Windows.Forms.RadioButton();
             this.label48 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.button22 = new System.Windows.Forms.Button();
-            this.dataGridView12 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarAlergiaInsecto = new System.Windows.Forms.Button();
+            this.dgvAlergiasInsectos = new System.Windows.Forms.DataGridView();
             this.label62 = new System.Windows.Forms.Label();
-            this.button39 = new System.Windows.Forms.Button();
-            this.textBox36 = new System.Windows.Forms.TextBox();
-            this.comboBox48 = new System.Windows.Forms.ComboBox();
+            this.btnAñadirInsecto = new System.Windows.Forms.Button();
+            this.txtEfectosAlergiaInsecto = new System.Windows.Forms.TextBox();
+            this.cboInsectos = new System.Windows.Forms.ComboBox();
             this.label63 = new System.Windows.Forms.Label();
             this.label101 = new System.Windows.Forms.Label();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
+            this.rbNoAlergiaInsecto = new System.Windows.Forms.RadioButton();
+            this.rbSiAlergiaInsecto = new System.Windows.Forms.RadioButton();
             this.label104 = new System.Windows.Forms.Label();
             this.tpHabitos = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -384,16 +389,16 @@
             this.tabControl4.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasAlimentos)).BeginInit();
             this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasSustanciaAmbiente)).BeginInit();
             this.tabPage12.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasSustanciasContactoPiel)).BeginInit();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasMedicamentos)).BeginInit();
             this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasInsectos)).BeginInit();
             this.tpHabitos.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -1221,24 +1226,27 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.textBox37);
+            this.groupBox8.Controls.Add(this.cboTipoPartoPostermino);
+            this.groupBox8.Controls.Add(this.textBox1);
+            this.groupBox8.Controls.Add(this.label106);
+            this.groupBox8.Controls.Add(this.txtCantidadHijosVivos);
             this.groupBox8.Controls.Add(this.label105);
             this.groupBox8.Controls.Add(this.button12);
             this.groupBox8.Controls.Add(this.label36);
-            this.groupBox8.Controls.Add(this.comboBox13);
-            this.groupBox8.Controls.Add(this.comboBox14);
-            this.groupBox8.Controls.Add(this.textBox16);
-            this.groupBox8.Controls.Add(this.textBox17);
-            this.groupBox8.Controls.Add(this.textBox18);
+            this.groupBox8.Controls.Add(this.cboTipoAborto2);
+            this.groupBox8.Controls.Add(this.cboTipoAborto1);
+            this.groupBox8.Controls.Add(this.txtCantidadTipoAborto2);
+            this.groupBox8.Controls.Add(this.txtCantidadTipoAborto1);
+            this.groupBox8.Controls.Add(this.txtCantidadAbortos);
             this.groupBox8.Controls.Add(this.label43);
             this.groupBox8.Controls.Add(this.label44);
             this.groupBox8.Controls.Add(this.label45);
-            this.groupBox8.Controls.Add(this.comboBox12);
-            this.groupBox8.Controls.Add(this.comboBox11);
-            this.groupBox8.Controls.Add(this.textBox15);
+            this.groupBox8.Controls.Add(this.cboTipoPartoATermino);
+            this.groupBox8.Controls.Add(this.cboTipoPartoPretermino);
+            this.groupBox8.Controls.Add(this.txtProblemasEmbarazo);
             this.groupBox8.Controls.Add(this.textBox11);
             this.groupBox8.Controls.Add(this.textBox10);
-            this.groupBox8.Controls.Add(this.textBox9);
+            this.groupBox8.Controls.Add(this.txtCantidadEmbarazos);
             this.groupBox8.Controls.Add(this.label42);
             this.groupBox8.Controls.Add(this.label41);
             this.groupBox8.Controls.Add(this.label35);
@@ -1253,17 +1261,41 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Antecedentes Ginecoobstétricos";
             // 
-            // textBox37
+            // cboTipoPartoPostermino
             // 
-            this.textBox37.Location = new System.Drawing.Point(428, 166);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(66, 20);
-            this.textBox37.TabIndex = 32;
+            this.cboTipoPartoPostermino.FormattingEnabled = true;
+            this.cboTipoPartoPostermino.Location = new System.Drawing.Point(140, 116);
+            this.cboTipoPartoPostermino.Name = "cboTipoPartoPostermino";
+            this.cboTipoPartoPostermino.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoPartoPostermino.TabIndex = 35;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(72, 116);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(62, 20);
+            this.textBox1.TabIndex = 34;
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(6, 119);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(59, 13);
+            this.label106.TabIndex = 33;
+            this.label106.Text = "Postérmino";
+            // 
+            // txtCantidadHijosVivos
+            // 
+            this.txtCantidadHijosVivos.Location = new System.Drawing.Point(446, 151);
+            this.txtCantidadHijosVivos.Name = "txtCantidadHijosVivos";
+            this.txtCantidadHijosVivos.Size = new System.Drawing.Size(66, 20);
+            this.txtCantidadHijosVivos.TabIndex = 32;
             // 
             // label105
             // 
             this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(321, 169);
+            this.label105.Location = new System.Drawing.Point(339, 154);
             this.label105.Name = "label105";
             this.label105.Size = new System.Drawing.Size(101, 13);
             this.label105.TabIndex = 31;
@@ -1287,47 +1319,47 @@
             this.label36.TabIndex = 29;
             this.label36.Text = "Problemas asociados al embarazo";
             // 
-            // comboBox13
+            // cboTipoAborto2
             // 
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(354, 131);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(121, 21);
-            this.comboBox13.TabIndex = 28;
+            this.cboTipoAborto2.FormattingEnabled = true;
+            this.cboTipoAborto2.Location = new System.Drawing.Point(372, 116);
+            this.cboTipoAborto2.Name = "cboTipoAborto2";
+            this.cboTipoAborto2.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoAborto2.TabIndex = 28;
             // 
-            // comboBox14
+            // cboTipoAborto1
             // 
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Location = new System.Drawing.Point(354, 91);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(121, 21);
-            this.comboBox14.TabIndex = 27;
+            this.cboTipoAborto1.FormattingEnabled = true;
+            this.cboTipoAborto1.Location = new System.Drawing.Point(372, 76);
+            this.cboTipoAborto1.Name = "cboTipoAborto1";
+            this.cboTipoAborto1.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoAborto1.TabIndex = 27;
             // 
-            // textBox16
+            // txtCantidadTipoAborto2
             // 
-            this.textBox16.Location = new System.Drawing.Point(555, 131);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(62, 20);
-            this.textBox16.TabIndex = 26;
+            this.txtCantidadTipoAborto2.Location = new System.Drawing.Point(573, 116);
+            this.txtCantidadTipoAborto2.Name = "txtCantidadTipoAborto2";
+            this.txtCantidadTipoAborto2.Size = new System.Drawing.Size(62, 20);
+            this.txtCantidadTipoAborto2.TabIndex = 26;
             // 
-            // textBox17
+            // txtCantidadTipoAborto1
             // 
-            this.textBox17.Location = new System.Drawing.Point(555, 91);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(62, 20);
-            this.textBox17.TabIndex = 25;
+            this.txtCantidadTipoAborto1.Location = new System.Drawing.Point(573, 76);
+            this.txtCantidadTipoAborto1.Name = "txtCantidadTipoAborto1";
+            this.txtCantidadTipoAborto1.Size = new System.Drawing.Size(62, 20);
+            this.txtCantidadTipoAborto1.TabIndex = 25;
             // 
-            // textBox18
+            // txtCantidadAbortos
             // 
-            this.textBox18.Location = new System.Drawing.Point(376, 54);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(66, 20);
-            this.textBox18.TabIndex = 24;
+            this.txtCantidadAbortos.Location = new System.Drawing.Point(394, 39);
+            this.txtCantidadAbortos.Name = "txtCantidadAbortos";
+            this.txtCantidadAbortos.Size = new System.Drawing.Size(66, 20);
+            this.txtCantidadAbortos.TabIndex = 24;
             // 
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(321, 134);
+            this.label43.Location = new System.Drawing.Point(339, 119);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(28, 13);
             this.label43.TabIndex = 23;
@@ -1336,7 +1368,7 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(321, 94);
+            this.label44.Location = new System.Drawing.Point(339, 79);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(28, 13);
             this.label44.TabIndex = 22;
@@ -1345,61 +1377,61 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(321, 57);
+            this.label45.Location = new System.Drawing.Point(339, 42);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(49, 13);
             this.label45.TabIndex = 21;
             this.label45.Text = "Cantidad";
             // 
-            // comboBox12
+            // cboTipoPartoATermino
             // 
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Location = new System.Drawing.Point(142, 135);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(121, 21);
-            this.comboBox12.TabIndex = 20;
+            this.cboTipoPartoATermino.FormattingEnabled = true;
+            this.cboTipoPartoATermino.Location = new System.Drawing.Point(140, 89);
+            this.cboTipoPartoATermino.Name = "cboTipoPartoATermino";
+            this.cboTipoPartoATermino.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoPartoATermino.TabIndex = 20;
             // 
-            // comboBox11
+            // cboTipoPartoPretermino
             // 
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(142, 95);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(121, 21);
-            this.comboBox11.TabIndex = 19;
+            this.cboTipoPartoPretermino.FormattingEnabled = true;
+            this.cboTipoPartoPretermino.Location = new System.Drawing.Point(140, 62);
+            this.cboTipoPartoPretermino.Name = "cboTipoPartoPretermino";
+            this.cboTipoPartoPretermino.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoPartoPretermino.TabIndex = 19;
             // 
-            // textBox15
+            // txtProblemasEmbarazo
             // 
-            this.textBox15.Location = new System.Drawing.Point(9, 192);
-            this.textBox15.Multiline = true;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(656, 48);
-            this.textBox15.TabIndex = 18;
+            this.txtProblemasEmbarazo.Location = new System.Drawing.Point(9, 192);
+            this.txtProblemasEmbarazo.Multiline = true;
+            this.txtProblemasEmbarazo.Name = "txtProblemasEmbarazo";
+            this.txtProblemasEmbarazo.Size = new System.Drawing.Size(656, 48);
+            this.txtProblemasEmbarazo.TabIndex = 18;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(74, 134);
+            this.textBox11.Location = new System.Drawing.Point(72, 89);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(62, 20);
             this.textBox11.TabIndex = 14;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(74, 95);
+            this.textBox10.Location = new System.Drawing.Point(72, 63);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(62, 20);
             this.textBox10.TabIndex = 13;
             // 
-            // textBox9
+            // txtCantidadEmbarazos
             // 
-            this.textBox9.Location = new System.Drawing.Point(129, 58);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(66, 20);
-            this.textBox9.TabIndex = 12;
+            this.txtCantidadEmbarazos.Location = new System.Drawing.Point(130, 36);
+            this.txtCantidadEmbarazos.Name = "txtCantidadEmbarazos";
+            this.txtCantidadEmbarazos.Size = new System.Drawing.Size(66, 20);
+            this.txtCantidadEmbarazos.TabIndex = 12;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(500, 94);
+            this.label42.Location = new System.Drawing.Point(518, 79);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(49, 13);
             this.label42.TabIndex = 11;
@@ -1408,7 +1440,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(500, 134);
+            this.label41.Location = new System.Drawing.Point(518, 119);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(49, 13);
             this.label41.TabIndex = 10;
@@ -1417,7 +1449,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(304, 22);
+            this.label35.Location = new System.Drawing.Point(339, 15);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(126, 13);
             this.label35.TabIndex = 4;
@@ -1426,7 +1458,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(5, 138);
+            this.label34.Location = new System.Drawing.Point(6, 92);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(51, 13);
             this.label34.TabIndex = 3;
@@ -1435,16 +1467,16 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(5, 98);
+            this.label33.Location = new System.Drawing.Point(6, 66);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(63, 13);
+            this.label33.Size = new System.Drawing.Size(57, 13);
             this.label33.TabIndex = 2;
-            this.label33.Text = "Prematuros ";
+            this.label33.Text = "Pretérmino";
             // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(5, 61);
+            this.label32.Location = new System.Drawing.Point(6, 39);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(118, 13);
             this.label32.TabIndex = 1;
@@ -1453,7 +1485,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(5, 30);
+            this.label31.Location = new System.Drawing.Point(6, 16);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(131, 13);
             this.label31.TabIndex = 0;
@@ -1472,20 +1504,22 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.label107);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.dataGridView3);
             this.panel2.Controls.Add(this.button14);
-            this.panel2.Controls.Add(this.textBox13);
+            this.panel2.Controls.Add(this.txtCausaMuerte);
             this.panel2.Controls.Add(this.label47);
-            this.panel2.Controls.Add(this.textBox12);
+            this.panel2.Controls.Add(this.txtDescripcionOtraEnfermedad);
             this.panel2.Controls.Add(this.label46);
             this.panel2.Controls.Add(this.label40);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label39);
             this.panel2.Controls.Add(this.button13);
-            this.panel2.Controls.Add(this.radioButton4);
-            this.panel2.Controls.Add(this.radioButton3);
-            this.panel2.Controls.Add(this.comboBox15);
+            this.panel2.Controls.Add(this.rbNoViveFamiliar);
+            this.panel2.Controls.Add(this.rbSiViveFamiliar);
+            this.panel2.Controls.Add(this.cboFamiliar);
             this.panel2.Controls.Add(this.label37);
             this.panel2.Controls.Add(this.label38);
             this.panel2.Location = new System.Drawing.Point(6, 6);
@@ -1493,60 +1527,78 @@
             this.panel2.Size = new System.Drawing.Size(690, 546);
             this.panel2.TabIndex = 2;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(90, 323);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(564, 53);
+            this.textBox2.TabIndex = 19;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(6, 326);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(78, 13);
+            this.label107.TabIndex = 18;
+            this.label107.Text = "Observaciones";
+            // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.radioButton6);
-            this.panel4.Controls.Add(this.radioButton5);
+            this.panel4.Controls.Add(this.rbNoOtraEnfermedad);
+            this.panel4.Controls.Add(this.rbSiOtraEnfermedad);
             this.panel4.Location = new System.Drawing.Point(239, 177);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(116, 27);
             this.panel4.TabIndex = 17;
             // 
-            // radioButton6
+            // rbNoOtraEnfermedad
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(51, 4);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(39, 17);
-            this.radioButton6.TabIndex = 10;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "No";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.rbNoOtraEnfermedad.AutoSize = true;
+            this.rbNoOtraEnfermedad.Location = new System.Drawing.Point(51, 4);
+            this.rbNoOtraEnfermedad.Name = "rbNoOtraEnfermedad";
+            this.rbNoOtraEnfermedad.Size = new System.Drawing.Size(39, 17);
+            this.rbNoOtraEnfermedad.TabIndex = 10;
+            this.rbNoOtraEnfermedad.TabStop = true;
+            this.rbNoOtraEnfermedad.Text = "No";
+            this.rbNoOtraEnfermedad.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbSiOtraEnfermedad
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(3, 4);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(34, 17);
-            this.radioButton5.TabIndex = 9;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Si";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rbSiOtraEnfermedad.AutoSize = true;
+            this.rbSiOtraEnfermedad.Location = new System.Drawing.Point(3, 4);
+            this.rbSiOtraEnfermedad.Name = "rbSiOtraEnfermedad";
+            this.rbSiOtraEnfermedad.Size = new System.Drawing.Size(34, 17);
+            this.rbSiOtraEnfermedad.TabIndex = 9;
+            this.rbSiOtraEnfermedad.TabStop = true;
+            this.rbSiOtraEnfermedad.Text = "Si";
+            this.rbSiOtraEnfermedad.UseVisualStyleBackColor = true;
+            this.rbSiOtraEnfermedad.CheckedChanged += new System.EventHandler(this.rbSiOtraEnfermedad_CheckedChanged);
             // 
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(9, 326);
+            this.dataGridView3.Location = new System.Drawing.Point(9, 411);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(645, 126);
             this.dataGridView3.TabIndex = 16;
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(505, 280);
+            this.button14.Location = new System.Drawing.Point(285, 382);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(122, 23);
             this.button14.TabIndex = 15;
             this.button14.Text = "Agregar antecedente";
             this.button14.UseVisualStyleBackColor = true;
             // 
-            // textBox13
+            // txtCausaMuerte
             // 
-            this.textBox13.Location = new System.Drawing.Point(93, 282);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(406, 20);
-            this.textBox13.TabIndex = 14;
+            this.txtCausaMuerte.Location = new System.Drawing.Point(93, 282);
+            this.txtCausaMuerte.Name = "txtCausaMuerte";
+            this.txtCausaMuerte.Size = new System.Drawing.Size(561, 20);
+            this.txtCausaMuerte.TabIndex = 14;
             // 
             // label47
             // 
@@ -1557,13 +1609,13 @@
             this.label47.TabIndex = 13;
             this.label47.Text = "Causa de muerte";
             // 
-            // textBox12
+            // txtDescripcionOtraEnfermedad
             // 
-            this.textBox12.Location = new System.Drawing.Point(75, 210);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(579, 53);
-            this.textBox12.TabIndex = 12;
+            this.txtDescripcionOtraEnfermedad.Location = new System.Drawing.Point(75, 210);
+            this.txtDescripcionOtraEnfermedad.Multiline = true;
+            this.txtDescripcionOtraEnfermedad.Name = "txtDescripcionOtraEnfermedad";
+            this.txtDescripcionOtraEnfermedad.Size = new System.Drawing.Size(579, 53);
+            this.txtDescripcionOtraEnfermedad.TabIndex = 12;
             // 
             // label46
             // 
@@ -1585,109 +1637,109 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.checkBox9);
-            this.panel3.Controls.Add(this.checkBox8);
-            this.panel3.Controls.Add(this.checkBox7);
-            this.panel3.Controls.Add(this.checkBox6);
-            this.panel3.Controls.Add(this.checkBox5);
-            this.panel3.Controls.Add(this.checkBox4);
-            this.panel3.Controls.Add(this.checkBox3);
-            this.panel3.Controls.Add(this.checkBox2);
-            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Controls.Add(this.chbTranstornosNutricionales);
+            this.panel3.Controls.Add(this.chbParasitismo);
+            this.panel3.Controls.Add(this.chbHepatitis);
+            this.panel3.Controls.Add(this.chbLepra);
+            this.panel3.Controls.Add(this.chbTuberculosis);
+            this.panel3.Controls.Add(this.chbAnemias);
+            this.panel3.Controls.Add(this.chbHipertensión);
+            this.panel3.Controls.Add(this.chbDiabetes);
+            this.panel3.Controls.Add(this.chbAsma);
             this.panel3.Location = new System.Drawing.Point(142, 71);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(410, 100);
             this.panel3.TabIndex = 7;
             // 
-            // checkBox9
+            // chbTranstornosNutricionales
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(270, 69);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(138, 17);
-            this.checkBox9.TabIndex = 8;
-            this.checkBox9.Text = "Trastornos nutricionales";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.chbTranstornosNutricionales.AutoSize = true;
+            this.chbTranstornosNutricionales.Location = new System.Drawing.Point(270, 69);
+            this.chbTranstornosNutricionales.Name = "chbTranstornosNutricionales";
+            this.chbTranstornosNutricionales.Size = new System.Drawing.Size(138, 17);
+            this.chbTranstornosNutricionales.TabIndex = 8;
+            this.chbTranstornosNutricionales.Text = "Trastornos nutricionales";
+            this.chbTranstornosNutricionales.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // chbParasitismo
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(270, 46);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(79, 17);
-            this.checkBox8.TabIndex = 7;
-            this.checkBox8.Text = "Parasitismo";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.chbParasitismo.AutoSize = true;
+            this.chbParasitismo.Location = new System.Drawing.Point(270, 46);
+            this.chbParasitismo.Name = "chbParasitismo";
+            this.chbParasitismo.Size = new System.Drawing.Size(79, 17);
+            this.chbParasitismo.TabIndex = 7;
+            this.chbParasitismo.Text = "Parasitismo";
+            this.chbParasitismo.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // chbHepatitis
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(270, 23);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(70, 17);
-            this.checkBox7.TabIndex = 6;
-            this.checkBox7.Text = "Hepatitis ";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.chbHepatitis.AutoSize = true;
+            this.chbHepatitis.Location = new System.Drawing.Point(270, 23);
+            this.chbHepatitis.Name = "chbHepatitis";
+            this.chbHepatitis.Size = new System.Drawing.Size(70, 17);
+            this.chbHepatitis.TabIndex = 6;
+            this.chbHepatitis.Text = "Hepatitis ";
+            this.chbHepatitis.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // chbLepra
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(134, 69);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(53, 17);
-            this.checkBox6.TabIndex = 5;
-            this.checkBox6.Text = "Lepra";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.chbLepra.AutoSize = true;
+            this.chbLepra.Location = new System.Drawing.Point(134, 69);
+            this.chbLepra.Name = "chbLepra";
+            this.chbLepra.Size = new System.Drawing.Size(53, 17);
+            this.chbLepra.TabIndex = 5;
+            this.chbLepra.Text = "Lepra";
+            this.chbLepra.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // chbTuberculosis
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(134, 46);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(86, 17);
-            this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "Tuberculosis";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.chbTuberculosis.AutoSize = true;
+            this.chbTuberculosis.Location = new System.Drawing.Point(134, 46);
+            this.chbTuberculosis.Name = "chbTuberculosis";
+            this.chbTuberculosis.Size = new System.Drawing.Size(86, 17);
+            this.chbTuberculosis.TabIndex = 4;
+            this.chbTuberculosis.Text = "Tuberculosis";
+            this.chbTuberculosis.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // chbAnemias
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(134, 23);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(66, 17);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Anemias";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.chbAnemias.AutoSize = true;
+            this.chbAnemias.Location = new System.Drawing.Point(134, 23);
+            this.chbAnemias.Name = "chbAnemias";
+            this.chbAnemias.Size = new System.Drawing.Size(66, 17);
+            this.chbAnemias.TabIndex = 3;
+            this.chbAnemias.Text = "Anemias";
+            this.chbAnemias.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // chbHipertensión
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(3, 69);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(85, 17);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Hipertensión";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chbHipertensión.AutoSize = true;
+            this.chbHipertensión.Location = new System.Drawing.Point(3, 69);
+            this.chbHipertensión.Name = "chbHipertensión";
+            this.chbHipertensión.Size = new System.Drawing.Size(85, 17);
+            this.chbHipertensión.TabIndex = 2;
+            this.chbHipertensión.Text = "Hipertensión";
+            this.chbHipertensión.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chbDiabetes
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(3, 46);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(68, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Diabetes";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chbDiabetes.AutoSize = true;
+            this.chbDiabetes.Location = new System.Drawing.Point(3, 46);
+            this.chbDiabetes.Name = "chbDiabetes";
+            this.chbDiabetes.Size = new System.Drawing.Size(68, 17);
+            this.chbDiabetes.TabIndex = 1;
+            this.chbDiabetes.Text = "Diabetes";
+            this.chbDiabetes.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // chbAsma
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 23);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(52, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Asma";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chbAsma.AutoSize = true;
+            this.chbAsma.Location = new System.Drawing.Point(3, 23);
+            this.chbAsma.Name = "chbAsma";
+            this.chbAsma.Size = new System.Drawing.Size(52, 17);
+            this.chbAsma.TabIndex = 0;
+            this.chbAsma.Text = "Asma";
+            this.chbAsma.UseVisualStyleBackColor = true;
             // 
             // label39
             // 
@@ -1707,35 +1759,36 @@
             this.button13.Text = "Añadir";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rbNoViveFamiliar
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(413, 16);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(39, 17);
-            this.radioButton4.TabIndex = 4;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "No";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rbNoViveFamiliar.AutoSize = true;
+            this.rbNoViveFamiliar.Location = new System.Drawing.Point(413, 16);
+            this.rbNoViveFamiliar.Name = "rbNoViveFamiliar";
+            this.rbNoViveFamiliar.Size = new System.Drawing.Size(39, 17);
+            this.rbNoViveFamiliar.TabIndex = 4;
+            this.rbNoViveFamiliar.TabStop = true;
+            this.rbNoViveFamiliar.Text = "No";
+            this.rbNoViveFamiliar.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbSiViveFamiliar
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(373, 16);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(34, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Si";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbSiViveFamiliar.AutoSize = true;
+            this.rbSiViveFamiliar.Location = new System.Drawing.Point(373, 16);
+            this.rbSiViveFamiliar.Name = "rbSiViveFamiliar";
+            this.rbSiViveFamiliar.Size = new System.Drawing.Size(34, 17);
+            this.rbSiViveFamiliar.TabIndex = 3;
+            this.rbSiViveFamiliar.TabStop = true;
+            this.rbSiViveFamiliar.Text = "Si";
+            this.rbSiViveFamiliar.UseVisualStyleBackColor = true;
+            this.rbSiViveFamiliar.CheckedChanged += new System.EventHandler(this.rbSiViveFamiliar_CheckedChanged);
             // 
-            // comboBox15
+            // cboFamiliar
             // 
-            this.comboBox15.FormattingEnabled = true;
-            this.comboBox15.Location = new System.Drawing.Point(51, 15);
-            this.comboBox15.Name = "comboBox15";
-            this.comboBox15.Size = new System.Drawing.Size(169, 21);
-            this.comboBox15.TabIndex = 2;
+            this.cboFamiliar.FormattingEnabled = true;
+            this.cboFamiliar.Location = new System.Drawing.Point(51, 15);
+            this.cboFamiliar.Name = "cboFamiliar";
+            this.cboFamiliar.Size = new System.Drawing.Size(169, 21);
+            this.cboFamiliar.TabIndex = 2;
             // 
             // label37
             // 
@@ -1790,16 +1843,16 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button10);
-            this.groupBox3.Controls.Add(this.dataGridView5);
+            this.groupBox3.Controls.Add(this.btnAgregarAlergiaAlimentos);
+            this.groupBox3.Controls.Add(this.dgvAlergiasAlimentos);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.button17);
-            this.groupBox3.Controls.Add(this.textBox19);
-            this.groupBox3.Controls.Add(this.comboBox17);
+            this.groupBox3.Controls.Add(this.btnAñadirAlimento);
+            this.groupBox3.Controls.Add(this.txtEfectosAlergiaAlimentos);
+            this.groupBox3.Controls.Add(this.cboAlimentos);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label52);
-            this.groupBox3.Controls.Add(this.radioButton9);
-            this.groupBox3.Controls.Add(this.radioButton10);
+            this.groupBox3.Controls.Add(this.rbNoAlergicoAlimentos);
+            this.groupBox3.Controls.Add(this.rbSiAlergicoAlimentos);
             this.groupBox3.Controls.Add(this.label53);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
@@ -1808,22 +1861,22 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Alergia a alimentos";
             // 
-            // button10
+            // btnAgregarAlergiaAlimentos
             // 
-            this.button10.Location = new System.Drawing.Point(550, 53);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(134, 23);
-            this.button10.TabIndex = 15;
-            this.button10.Text = "Agregar alimento";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnAgregarAlergiaAlimentos.Location = new System.Drawing.Point(550, 53);
+            this.btnAgregarAlergiaAlimentos.Name = "btnAgregarAlergiaAlimentos";
+            this.btnAgregarAlergiaAlimentos.Size = new System.Drawing.Size(134, 23);
+            this.btnAgregarAlergiaAlimentos.TabIndex = 15;
+            this.btnAgregarAlergiaAlimentos.Text = "Agregar alimento";
+            this.btnAgregarAlergiaAlimentos.UseVisualStyleBackColor = true;
             // 
-            // dataGridView5
+            // dgvAlergiasAlimentos
             // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(127, 82);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(411, 124);
-            this.dataGridView5.TabIndex = 14;
+            this.dgvAlergiasAlimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlergiasAlimentos.Location = new System.Drawing.Point(127, 82);
+            this.dgvAlergiasAlimentos.Name = "dgvAlergiasAlimentos";
+            this.dgvAlergiasAlimentos.Size = new System.Drawing.Size(411, 124);
+            this.dgvAlergiasAlimentos.TabIndex = 14;
             // 
             // label4
             // 
@@ -1834,30 +1887,30 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Lista de alimentos";
             // 
-            // button17
+            // btnAñadirAlimento
             // 
-            this.button17.Location = new System.Drawing.Point(451, 13);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(57, 23);
-            this.button17.TabIndex = 12;
-            this.button17.Text = "Añadir";
-            this.button17.UseVisualStyleBackColor = true;
+            this.btnAñadirAlimento.Location = new System.Drawing.Point(451, 13);
+            this.btnAñadirAlimento.Name = "btnAñadirAlimento";
+            this.btnAñadirAlimento.Size = new System.Drawing.Size(57, 23);
+            this.btnAñadirAlimento.TabIndex = 12;
+            this.btnAñadirAlimento.Text = "Añadir";
+            this.btnAñadirAlimento.UseVisualStyleBackColor = true;
             // 
-            // textBox19
+            // txtEfectosAlergiaAlimentos
             // 
-            this.textBox19.Location = new System.Drawing.Point(55, 42);
-            this.textBox19.Multiline = true;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(483, 34);
-            this.textBox19.TabIndex = 11;
+            this.txtEfectosAlergiaAlimentos.Location = new System.Drawing.Point(55, 42);
+            this.txtEfectosAlergiaAlimentos.Multiline = true;
+            this.txtEfectosAlergiaAlimentos.Name = "txtEfectosAlergiaAlimentos";
+            this.txtEfectosAlergiaAlimentos.Size = new System.Drawing.Size(483, 34);
+            this.txtEfectosAlergiaAlimentos.TabIndex = 11;
             // 
-            // comboBox17
+            // cboAlimentos
             // 
-            this.comboBox17.FormattingEnabled = true;
-            this.comboBox17.Location = new System.Drawing.Point(282, 15);
-            this.comboBox17.Name = "comboBox17";
-            this.comboBox17.Size = new System.Drawing.Size(163, 21);
-            this.comboBox17.TabIndex = 10;
+            this.cboAlimentos.FormattingEnabled = true;
+            this.cboAlimentos.Location = new System.Drawing.Point(282, 15);
+            this.cboAlimentos.Name = "cboAlimentos";
+            this.cboAlimentos.Size = new System.Drawing.Size(163, 21);
+            this.cboAlimentos.TabIndex = 10;
             // 
             // label5
             // 
@@ -1877,27 +1930,27 @@
             this.label52.TabIndex = 8;
             this.label52.Text = "Alimento";
             // 
-            // radioButton9
+            // rbNoAlergicoAlimentos
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(152, 16);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(39, 17);
-            this.radioButton9.TabIndex = 7;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "No";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.rbNoAlergicoAlimentos.AutoSize = true;
+            this.rbNoAlergicoAlimentos.Location = new System.Drawing.Point(152, 16);
+            this.rbNoAlergicoAlimentos.Name = "rbNoAlergicoAlimentos";
+            this.rbNoAlergicoAlimentos.Size = new System.Drawing.Size(39, 17);
+            this.rbNoAlergicoAlimentos.TabIndex = 7;
+            this.rbNoAlergicoAlimentos.TabStop = true;
+            this.rbNoAlergicoAlimentos.Text = "No";
+            this.rbNoAlergicoAlimentos.UseVisualStyleBackColor = true;
             // 
-            // radioButton10
+            // rbSiAlergicoAlimentos
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(90, 16);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(34, 17);
-            this.radioButton10.TabIndex = 6;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "Si";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.rbSiAlergicoAlimentos.AutoSize = true;
+            this.rbSiAlergicoAlimentos.Location = new System.Drawing.Point(90, 16);
+            this.rbSiAlergicoAlimentos.Name = "rbSiAlergicoAlimentos";
+            this.rbSiAlergicoAlimentos.Size = new System.Drawing.Size(34, 17);
+            this.rbSiAlergicoAlimentos.TabIndex = 6;
+            this.rbSiAlergicoAlimentos.TabStop = true;
+            this.rbSiAlergicoAlimentos.Text = "Si";
+            this.rbSiAlergicoAlimentos.UseVisualStyleBackColor = true;
             // 
             // label53
             // 
@@ -1910,16 +1963,16 @@
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.button20);
-            this.groupBox11.Controls.Add(this.dataGridView7);
+            this.groupBox11.Controls.Add(this.btnAgregarSustanciaAmbiente);
+            this.groupBox11.Controls.Add(this.dgvAlergiasSustanciaAmbiente);
             this.groupBox11.Controls.Add(this.label58);
-            this.groupBox11.Controls.Add(this.button21);
-            this.groupBox11.Controls.Add(this.textBox21);
-            this.groupBox11.Controls.Add(this.comboBox19);
+            this.groupBox11.Controls.Add(this.btnAñadirSustanciaAmbiente);
+            this.groupBox11.Controls.Add(this.txtEfectosAlergiaSustanciaAmbiente);
+            this.groupBox11.Controls.Add(this.cboSustanciaAmbiente);
             this.groupBox11.Controls.Add(this.label59);
             this.groupBox11.Controls.Add(this.label60);
-            this.groupBox11.Controls.Add(this.radioButton13);
-            this.groupBox11.Controls.Add(this.radioButton14);
+            this.groupBox11.Controls.Add(this.rbNoAlergiaSustanciaAmbiente);
+            this.groupBox11.Controls.Add(this.rbSiAlergiaSustanciaAmbiente);
             this.groupBox11.Controls.Add(this.label61);
             this.groupBox11.Location = new System.Drawing.Point(9, 224);
             this.groupBox11.Name = "groupBox11";
@@ -1928,22 +1981,22 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Alergia a sustancia del ambiente";
             // 
-            // button20
+            // btnAgregarSustanciaAmbiente
             // 
-            this.button20.Location = new System.Drawing.Point(547, 53);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(134, 23);
-            this.button20.TabIndex = 15;
-            this.button20.Text = "Agregar sustancia";
-            this.button20.UseVisualStyleBackColor = true;
+            this.btnAgregarSustanciaAmbiente.Location = new System.Drawing.Point(547, 53);
+            this.btnAgregarSustanciaAmbiente.Name = "btnAgregarSustanciaAmbiente";
+            this.btnAgregarSustanciaAmbiente.Size = new System.Drawing.Size(134, 23);
+            this.btnAgregarSustanciaAmbiente.TabIndex = 15;
+            this.btnAgregarSustanciaAmbiente.Text = "Agregar sustancia";
+            this.btnAgregarSustanciaAmbiente.UseVisualStyleBackColor = true;
             // 
-            // dataGridView7
+            // dgvAlergiasSustanciaAmbiente
             // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Location = new System.Drawing.Point(127, 82);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.Size = new System.Drawing.Size(408, 135);
-            this.dataGridView7.TabIndex = 14;
+            this.dgvAlergiasSustanciaAmbiente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlergiasSustanciaAmbiente.Location = new System.Drawing.Point(127, 82);
+            this.dgvAlergiasSustanciaAmbiente.Name = "dgvAlergiasSustanciaAmbiente";
+            this.dgvAlergiasSustanciaAmbiente.Size = new System.Drawing.Size(408, 135);
+            this.dgvAlergiasSustanciaAmbiente.TabIndex = 14;
             // 
             // label58
             // 
@@ -1954,30 +2007,30 @@
             this.label58.TabIndex = 13;
             this.label58.Text = "Lista de sustancias";
             // 
-            // button21
+            // btnAñadirSustanciaAmbiente
             // 
-            this.button21.Location = new System.Drawing.Point(451, 13);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(57, 23);
-            this.button21.TabIndex = 12;
-            this.button21.Text = "Añadir";
-            this.button21.UseVisualStyleBackColor = true;
+            this.btnAñadirSustanciaAmbiente.Location = new System.Drawing.Point(451, 13);
+            this.btnAñadirSustanciaAmbiente.Name = "btnAñadirSustanciaAmbiente";
+            this.btnAñadirSustanciaAmbiente.Size = new System.Drawing.Size(54, 23);
+            this.btnAñadirSustanciaAmbiente.TabIndex = 12;
+            this.btnAñadirSustanciaAmbiente.Text = "Añadir";
+            this.btnAñadirSustanciaAmbiente.UseVisualStyleBackColor = true;
             // 
-            // textBox21
+            // txtEfectosAlergiaSustanciaAmbiente
             // 
-            this.textBox21.Location = new System.Drawing.Point(55, 42);
-            this.textBox21.Multiline = true;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(480, 34);
-            this.textBox21.TabIndex = 11;
+            this.txtEfectosAlergiaSustanciaAmbiente.Location = new System.Drawing.Point(55, 42);
+            this.txtEfectosAlergiaSustanciaAmbiente.Multiline = true;
+            this.txtEfectosAlergiaSustanciaAmbiente.Name = "txtEfectosAlergiaSustanciaAmbiente";
+            this.txtEfectosAlergiaSustanciaAmbiente.Size = new System.Drawing.Size(480, 34);
+            this.txtEfectosAlergiaSustanciaAmbiente.TabIndex = 11;
             // 
-            // comboBox19
+            // cboSustanciaAmbiente
             // 
-            this.comboBox19.FormattingEnabled = true;
-            this.comboBox19.Location = new System.Drawing.Point(282, 15);
-            this.comboBox19.Name = "comboBox19";
-            this.comboBox19.Size = new System.Drawing.Size(163, 21);
-            this.comboBox19.TabIndex = 10;
+            this.cboSustanciaAmbiente.FormattingEnabled = true;
+            this.cboSustanciaAmbiente.Location = new System.Drawing.Point(282, 15);
+            this.cboSustanciaAmbiente.Name = "cboSustanciaAmbiente";
+            this.cboSustanciaAmbiente.Size = new System.Drawing.Size(163, 21);
+            this.cboSustanciaAmbiente.TabIndex = 10;
             // 
             // label59
             // 
@@ -1997,27 +2050,27 @@
             this.label60.TabIndex = 8;
             this.label60.Text = "Sustancia";
             // 
-            // radioButton13
+            // rbNoAlergiaSustanciaAmbiente
             // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(152, 16);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(39, 17);
-            this.radioButton13.TabIndex = 7;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "No";
-            this.radioButton13.UseVisualStyleBackColor = true;
+            this.rbNoAlergiaSustanciaAmbiente.AutoSize = true;
+            this.rbNoAlergiaSustanciaAmbiente.Location = new System.Drawing.Point(152, 16);
+            this.rbNoAlergiaSustanciaAmbiente.Name = "rbNoAlergiaSustanciaAmbiente";
+            this.rbNoAlergiaSustanciaAmbiente.Size = new System.Drawing.Size(39, 17);
+            this.rbNoAlergiaSustanciaAmbiente.TabIndex = 7;
+            this.rbNoAlergiaSustanciaAmbiente.TabStop = true;
+            this.rbNoAlergiaSustanciaAmbiente.Text = "No";
+            this.rbNoAlergiaSustanciaAmbiente.UseVisualStyleBackColor = true;
             // 
-            // radioButton14
+            // rbSiAlergiaSustanciaAmbiente
             // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(90, 16);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(34, 17);
-            this.radioButton14.TabIndex = 6;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Si";
-            this.radioButton14.UseVisualStyleBackColor = true;
+            this.rbSiAlergiaSustanciaAmbiente.AutoSize = true;
+            this.rbSiAlergiaSustanciaAmbiente.Location = new System.Drawing.Point(90, 16);
+            this.rbSiAlergiaSustanciaAmbiente.Name = "rbSiAlergiaSustanciaAmbiente";
+            this.rbSiAlergiaSustanciaAmbiente.Size = new System.Drawing.Size(34, 17);
+            this.rbSiAlergiaSustanciaAmbiente.TabIndex = 6;
+            this.rbSiAlergiaSustanciaAmbiente.TabStop = true;
+            this.rbSiAlergiaSustanciaAmbiente.Text = "Si";
+            this.rbSiAlergiaSustanciaAmbiente.UseVisualStyleBackColor = true;
             // 
             // label61
             // 
@@ -2043,40 +2096,40 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.button18);
-            this.groupBox10.Controls.Add(this.dataGridView6);
+            this.groupBox10.Controls.Add(this.btnAgregarSustanciaContactoPiel);
+            this.groupBox10.Controls.Add(this.dgvAlergiasSustanciasContactoPiel);
             this.groupBox10.Controls.Add(this.label54);
-            this.groupBox10.Controls.Add(this.button19);
-            this.groupBox10.Controls.Add(this.textBox20);
-            this.groupBox10.Controls.Add(this.comboBox18);
+            this.groupBox10.Controls.Add(this.btnAñadirSustanciaContactoPiel);
+            this.groupBox10.Controls.Add(this.txtEfectosAlergiaSustanciaContactoPiel);
+            this.groupBox10.Controls.Add(this.cboSustanciaContactoPiel);
             this.groupBox10.Controls.Add(this.label55);
             this.groupBox10.Controls.Add(this.label56);
-            this.groupBox10.Controls.Add(this.radioButton11);
-            this.groupBox10.Controls.Add(this.radioButton12);
+            this.groupBox10.Controls.Add(this.rbNoAlergiaSustanciaContactoPiel);
+            this.groupBox10.Controls.Add(this.rbSiAlergiaSustanciaContactoPiel);
             this.groupBox10.Controls.Add(this.label57);
             this.groupBox10.Location = new System.Drawing.Point(6, 6);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(690, 178);
             this.groupBox10.TabIndex = 2;
             this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Alergia a sustancias en contacto con la piel";
+            this.groupBox10.Text = "Alergia a sustancias o materiales en contacto con la piel";
             // 
-            // button18
+            // btnAgregarSustanciaContactoPiel
             // 
-            this.button18.Location = new System.Drawing.Point(550, 53);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(134, 23);
-            this.button18.TabIndex = 15;
-            this.button18.Text = "Agregar sustancia";
-            this.button18.UseVisualStyleBackColor = true;
+            this.btnAgregarSustanciaContactoPiel.Location = new System.Drawing.Point(550, 53);
+            this.btnAgregarSustanciaContactoPiel.Name = "btnAgregarSustanciaContactoPiel";
+            this.btnAgregarSustanciaContactoPiel.Size = new System.Drawing.Size(134, 23);
+            this.btnAgregarSustanciaContactoPiel.TabIndex = 15;
+            this.btnAgregarSustanciaContactoPiel.Text = "Agregar sustancia";
+            this.btnAgregarSustanciaContactoPiel.UseVisualStyleBackColor = true;
             // 
-            // dataGridView6
+            // dgvAlergiasSustanciasContactoPiel
             // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Location = new System.Drawing.Point(127, 82);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(412, 86);
-            this.dataGridView6.TabIndex = 14;
+            this.dgvAlergiasSustanciasContactoPiel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlergiasSustanciasContactoPiel.Location = new System.Drawing.Point(127, 82);
+            this.dgvAlergiasSustanciasContactoPiel.Name = "dgvAlergiasSustanciasContactoPiel";
+            this.dgvAlergiasSustanciasContactoPiel.Size = new System.Drawing.Size(412, 86);
+            this.dgvAlergiasSustanciasContactoPiel.TabIndex = 14;
             // 
             // label54
             // 
@@ -2087,30 +2140,30 @@
             this.label54.TabIndex = 13;
             this.label54.Text = "Lista de sustancias";
             // 
-            // button19
+            // btnAñadirSustanciaContactoPiel
             // 
-            this.button19.Location = new System.Drawing.Point(451, 13);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(57, 23);
-            this.button19.TabIndex = 12;
-            this.button19.Text = "Añadir";
-            this.button19.UseVisualStyleBackColor = true;
+            this.btnAñadirSustanciaContactoPiel.Location = new System.Drawing.Point(550, 11);
+            this.btnAñadirSustanciaContactoPiel.Name = "btnAñadirSustanciaContactoPiel";
+            this.btnAñadirSustanciaContactoPiel.Size = new System.Drawing.Size(57, 23);
+            this.btnAñadirSustanciaContactoPiel.TabIndex = 12;
+            this.btnAñadirSustanciaContactoPiel.Text = "Añadir";
+            this.btnAñadirSustanciaContactoPiel.UseVisualStyleBackColor = true;
             // 
-            // textBox20
+            // txtEfectosAlergiaSustanciaContactoPiel
             // 
-            this.textBox20.Location = new System.Drawing.Point(55, 42);
-            this.textBox20.Multiline = true;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(484, 34);
-            this.textBox20.TabIndex = 11;
+            this.txtEfectosAlergiaSustanciaContactoPiel.Location = new System.Drawing.Point(55, 42);
+            this.txtEfectosAlergiaSustanciaContactoPiel.Multiline = true;
+            this.txtEfectosAlergiaSustanciaContactoPiel.Name = "txtEfectosAlergiaSustanciaContactoPiel";
+            this.txtEfectosAlergiaSustanciaContactoPiel.Size = new System.Drawing.Size(484, 34);
+            this.txtEfectosAlergiaSustanciaContactoPiel.TabIndex = 11;
             // 
-            // comboBox18
+            // cboSustanciaContactoPiel
             // 
-            this.comboBox18.FormattingEnabled = true;
-            this.comboBox18.Location = new System.Drawing.Point(282, 15);
-            this.comboBox18.Name = "comboBox18";
-            this.comboBox18.Size = new System.Drawing.Size(163, 21);
-            this.comboBox18.TabIndex = 10;
+            this.cboSustanciaContactoPiel.FormattingEnabled = true;
+            this.cboSustanciaContactoPiel.Location = new System.Drawing.Point(376, 12);
+            this.cboSustanciaContactoPiel.Name = "cboSustanciaContactoPiel";
+            this.cboSustanciaContactoPiel.Size = new System.Drawing.Size(163, 21);
+            this.cboSustanciaContactoPiel.TabIndex = 10;
             // 
             // label55
             // 
@@ -2124,33 +2177,33 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(205, 18);
+            this.label56.Location = new System.Drawing.Point(268, 16);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(54, 13);
+            this.label56.Size = new System.Drawing.Size(102, 13);
             this.label56.TabIndex = 8;
-            this.label56.Text = "Sustancia";
+            this.label56.Text = "Sustancia o material";
             // 
-            // radioButton11
+            // rbNoAlergiaSustanciaContactoPiel
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(152, 16);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(39, 17);
-            this.radioButton11.TabIndex = 7;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "No";
-            this.radioButton11.UseVisualStyleBackColor = true;
+            this.rbNoAlergiaSustanciaContactoPiel.AutoSize = true;
+            this.rbNoAlergiaSustanciaContactoPiel.Location = new System.Drawing.Point(152, 16);
+            this.rbNoAlergiaSustanciaContactoPiel.Name = "rbNoAlergiaSustanciaContactoPiel";
+            this.rbNoAlergiaSustanciaContactoPiel.Size = new System.Drawing.Size(39, 17);
+            this.rbNoAlergiaSustanciaContactoPiel.TabIndex = 7;
+            this.rbNoAlergiaSustanciaContactoPiel.TabStop = true;
+            this.rbNoAlergiaSustanciaContactoPiel.Text = "No";
+            this.rbNoAlergiaSustanciaContactoPiel.UseVisualStyleBackColor = true;
             // 
-            // radioButton12
+            // rbSiAlergiaSustanciaContactoPiel
             // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(90, 16);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(34, 17);
-            this.radioButton12.TabIndex = 6;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Si";
-            this.radioButton12.UseVisualStyleBackColor = true;
+            this.rbSiAlergiaSustanciaContactoPiel.AutoSize = true;
+            this.rbSiAlergiaSustanciaContactoPiel.Location = new System.Drawing.Point(90, 16);
+            this.rbSiAlergiaSustanciaContactoPiel.Name = "rbSiAlergiaSustanciaContactoPiel";
+            this.rbSiAlergiaSustanciaContactoPiel.Size = new System.Drawing.Size(34, 17);
+            this.rbSiAlergiaSustanciaContactoPiel.TabIndex = 6;
+            this.rbSiAlergiaSustanciaContactoPiel.TabStop = true;
+            this.rbSiAlergiaSustanciaContactoPiel.Text = "Si";
+            this.rbSiAlergiaSustanciaContactoPiel.UseVisualStyleBackColor = true;
             // 
             // label57
             // 
@@ -2163,16 +2216,16 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.button16);
-            this.groupBox9.Controls.Add(this.dataGridView4);
+            this.groupBox9.Controls.Add(this.btnAgregarMedicamento);
+            this.groupBox9.Controls.Add(this.dgvAlergiasMedicamentos);
             this.groupBox9.Controls.Add(this.label51);
-            this.groupBox9.Controls.Add(this.button15);
-            this.groupBox9.Controls.Add(this.textBox14);
-            this.groupBox9.Controls.Add(this.comboBox16);
+            this.groupBox9.Controls.Add(this.btnAñadirMedicamento);
+            this.groupBox9.Controls.Add(this.txtEfectosAlergiasMedicamentos);
+            this.groupBox9.Controls.Add(this.cboMedicamentos);
             this.groupBox9.Controls.Add(this.label50);
             this.groupBox9.Controls.Add(this.label49);
-            this.groupBox9.Controls.Add(this.radioButton7);
-            this.groupBox9.Controls.Add(this.radioButton8);
+            this.groupBox9.Controls.Add(this.rbNoAlergiaMedicamento);
+            this.groupBox9.Controls.Add(this.rbSiAlergiaMedicamento);
             this.groupBox9.Controls.Add(this.label48);
             this.groupBox9.Location = new System.Drawing.Point(6, 374);
             this.groupBox9.Name = "groupBox9";
@@ -2181,22 +2234,22 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Alergia a medicamentos";
             // 
-            // button16
+            // btnAgregarMedicamento
             // 
-            this.button16.Location = new System.Drawing.Point(550, 53);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(134, 23);
-            this.button16.TabIndex = 15;
-            this.button16.Text = "Agregar medicamento";
-            this.button16.UseVisualStyleBackColor = true;
+            this.btnAgregarMedicamento.Location = new System.Drawing.Point(550, 53);
+            this.btnAgregarMedicamento.Name = "btnAgregarMedicamento";
+            this.btnAgregarMedicamento.Size = new System.Drawing.Size(134, 23);
+            this.btnAgregarMedicamento.TabIndex = 15;
+            this.btnAgregarMedicamento.Text = "Agregar medicamento";
+            this.btnAgregarMedicamento.UseVisualStyleBackColor = true;
             // 
-            // dataGridView4
+            // dgvAlergiasMedicamentos
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(127, 86);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(412, 86);
-            this.dataGridView4.TabIndex = 14;
+            this.dgvAlergiasMedicamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlergiasMedicamentos.Location = new System.Drawing.Point(127, 86);
+            this.dgvAlergiasMedicamentos.Name = "dgvAlergiasMedicamentos";
+            this.dgvAlergiasMedicamentos.Size = new System.Drawing.Size(412, 86);
+            this.dgvAlergiasMedicamentos.TabIndex = 14;
             // 
             // label51
             // 
@@ -2207,30 +2260,30 @@
             this.label51.TabIndex = 13;
             this.label51.Text = "Lista de medicamentos";
             // 
-            // button15
+            // btnAñadirMedicamento
             // 
-            this.button15.Location = new System.Drawing.Point(451, 13);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(57, 23);
-            this.button15.TabIndex = 12;
-            this.button15.Text = "Añadir";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnAñadirMedicamento.Location = new System.Drawing.Point(451, 13);
+            this.btnAñadirMedicamento.Name = "btnAñadirMedicamento";
+            this.btnAñadirMedicamento.Size = new System.Drawing.Size(57, 23);
+            this.btnAñadirMedicamento.TabIndex = 12;
+            this.btnAñadirMedicamento.Text = "Añadir";
+            this.btnAñadirMedicamento.UseVisualStyleBackColor = true;
             // 
-            // textBox14
+            // txtEfectosAlergiasMedicamentos
             // 
-            this.textBox14.Location = new System.Drawing.Point(55, 42);
-            this.textBox14.Multiline = true;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(484, 34);
-            this.textBox14.TabIndex = 11;
+            this.txtEfectosAlergiasMedicamentos.Location = new System.Drawing.Point(55, 42);
+            this.txtEfectosAlergiasMedicamentos.Multiline = true;
+            this.txtEfectosAlergiasMedicamentos.Name = "txtEfectosAlergiasMedicamentos";
+            this.txtEfectosAlergiasMedicamentos.Size = new System.Drawing.Size(484, 34);
+            this.txtEfectosAlergiasMedicamentos.TabIndex = 11;
             // 
-            // comboBox16
+            // cboMedicamentos
             // 
-            this.comboBox16.FormattingEnabled = true;
-            this.comboBox16.Location = new System.Drawing.Point(282, 15);
-            this.comboBox16.Name = "comboBox16";
-            this.comboBox16.Size = new System.Drawing.Size(163, 21);
-            this.comboBox16.TabIndex = 10;
+            this.cboMedicamentos.FormattingEnabled = true;
+            this.cboMedicamentos.Location = new System.Drawing.Point(282, 15);
+            this.cboMedicamentos.Name = "cboMedicamentos";
+            this.cboMedicamentos.Size = new System.Drawing.Size(163, 21);
+            this.cboMedicamentos.TabIndex = 10;
             // 
             // label50
             // 
@@ -2250,27 +2303,27 @@
             this.label49.TabIndex = 8;
             this.label49.Text = "Medicamento";
             // 
-            // radioButton7
+            // rbNoAlergiaMedicamento
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(152, 16);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(39, 17);
-            this.radioButton7.TabIndex = 7;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "No";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.rbNoAlergiaMedicamento.AutoSize = true;
+            this.rbNoAlergiaMedicamento.Location = new System.Drawing.Point(152, 16);
+            this.rbNoAlergiaMedicamento.Name = "rbNoAlergiaMedicamento";
+            this.rbNoAlergiaMedicamento.Size = new System.Drawing.Size(39, 17);
+            this.rbNoAlergiaMedicamento.TabIndex = 7;
+            this.rbNoAlergiaMedicamento.TabStop = true;
+            this.rbNoAlergiaMedicamento.Text = "No";
+            this.rbNoAlergiaMedicamento.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // rbSiAlergiaMedicamento
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(90, 16);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(34, 17);
-            this.radioButton8.TabIndex = 6;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Si";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.rbSiAlergiaMedicamento.AutoSize = true;
+            this.rbSiAlergiaMedicamento.Location = new System.Drawing.Point(90, 16);
+            this.rbSiAlergiaMedicamento.Name = "rbSiAlergiaMedicamento";
+            this.rbSiAlergiaMedicamento.Size = new System.Drawing.Size(34, 17);
+            this.rbSiAlergiaMedicamento.TabIndex = 6;
+            this.rbSiAlergiaMedicamento.TabStop = true;
+            this.rbSiAlergiaMedicamento.Text = "Si";
+            this.rbSiAlergiaMedicamento.UseVisualStyleBackColor = true;
             // 
             // label48
             // 
@@ -2283,16 +2336,16 @@
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.button22);
-            this.groupBox12.Controls.Add(this.dataGridView12);
+            this.groupBox12.Controls.Add(this.btnAgregarAlergiaInsecto);
+            this.groupBox12.Controls.Add(this.dgvAlergiasInsectos);
             this.groupBox12.Controls.Add(this.label62);
-            this.groupBox12.Controls.Add(this.button39);
-            this.groupBox12.Controls.Add(this.textBox36);
-            this.groupBox12.Controls.Add(this.comboBox48);
+            this.groupBox12.Controls.Add(this.btnAñadirInsecto);
+            this.groupBox12.Controls.Add(this.txtEfectosAlergiaInsecto);
+            this.groupBox12.Controls.Add(this.cboInsectos);
             this.groupBox12.Controls.Add(this.label63);
             this.groupBox12.Controls.Add(this.label101);
-            this.groupBox12.Controls.Add(this.radioButton23);
-            this.groupBox12.Controls.Add(this.radioButton24);
+            this.groupBox12.Controls.Add(this.rbNoAlergiaInsecto);
+            this.groupBox12.Controls.Add(this.rbSiAlergiaInsecto);
             this.groupBox12.Controls.Add(this.label104);
             this.groupBox12.Location = new System.Drawing.Point(6, 190);
             this.groupBox12.Name = "groupBox12";
@@ -2301,22 +2354,22 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Alergia a picaduras de insectos";
             // 
-            // button22
+            // btnAgregarAlergiaInsecto
             // 
-            this.button22.Location = new System.Drawing.Point(550, 53);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(134, 23);
-            this.button22.TabIndex = 15;
-            this.button22.Text = "Agregar insecto";
-            this.button22.UseVisualStyleBackColor = true;
+            this.btnAgregarAlergiaInsecto.Location = new System.Drawing.Point(550, 53);
+            this.btnAgregarAlergiaInsecto.Name = "btnAgregarAlergiaInsecto";
+            this.btnAgregarAlergiaInsecto.Size = new System.Drawing.Size(134, 23);
+            this.btnAgregarAlergiaInsecto.TabIndex = 15;
+            this.btnAgregarAlergiaInsecto.Text = "Agregar insecto";
+            this.btnAgregarAlergiaInsecto.UseVisualStyleBackColor = true;
             // 
-            // dataGridView12
+            // dgvAlergiasInsectos
             // 
-            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView12.Location = new System.Drawing.Point(127, 82);
-            this.dataGridView12.Name = "dataGridView12";
-            this.dataGridView12.Size = new System.Drawing.Size(412, 86);
-            this.dataGridView12.TabIndex = 14;
+            this.dgvAlergiasInsectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlergiasInsectos.Location = new System.Drawing.Point(127, 82);
+            this.dgvAlergiasInsectos.Name = "dgvAlergiasInsectos";
+            this.dgvAlergiasInsectos.Size = new System.Drawing.Size(412, 86);
+            this.dgvAlergiasInsectos.TabIndex = 14;
             // 
             // label62
             // 
@@ -2327,30 +2380,30 @@
             this.label62.TabIndex = 13;
             this.label62.Text = "Lista de insectos";
             // 
-            // button39
+            // btnAñadirInsecto
             // 
-            this.button39.Location = new System.Drawing.Point(451, 13);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(57, 23);
-            this.button39.TabIndex = 12;
-            this.button39.Text = "Añadir";
-            this.button39.UseVisualStyleBackColor = true;
+            this.btnAñadirInsecto.Location = new System.Drawing.Point(451, 13);
+            this.btnAñadirInsecto.Name = "btnAñadirInsecto";
+            this.btnAñadirInsecto.Size = new System.Drawing.Size(57, 23);
+            this.btnAñadirInsecto.TabIndex = 12;
+            this.btnAñadirInsecto.Text = "Añadir";
+            this.btnAñadirInsecto.UseVisualStyleBackColor = true;
             // 
-            // textBox36
+            // txtEfectosAlergiaInsecto
             // 
-            this.textBox36.Location = new System.Drawing.Point(55, 42);
-            this.textBox36.Multiline = true;
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(484, 34);
-            this.textBox36.TabIndex = 11;
+            this.txtEfectosAlergiaInsecto.Location = new System.Drawing.Point(55, 42);
+            this.txtEfectosAlergiaInsecto.Multiline = true;
+            this.txtEfectosAlergiaInsecto.Name = "txtEfectosAlergiaInsecto";
+            this.txtEfectosAlergiaInsecto.Size = new System.Drawing.Size(484, 34);
+            this.txtEfectosAlergiaInsecto.TabIndex = 11;
             // 
-            // comboBox48
+            // cboInsectos
             // 
-            this.comboBox48.FormattingEnabled = true;
-            this.comboBox48.Location = new System.Drawing.Point(282, 16);
-            this.comboBox48.Name = "comboBox48";
-            this.comboBox48.Size = new System.Drawing.Size(163, 21);
-            this.comboBox48.TabIndex = 10;
+            this.cboInsectos.FormattingEnabled = true;
+            this.cboInsectos.Location = new System.Drawing.Point(282, 16);
+            this.cboInsectos.Name = "cboInsectos";
+            this.cboInsectos.Size = new System.Drawing.Size(163, 21);
+            this.cboInsectos.TabIndex = 10;
             // 
             // label63
             // 
@@ -2364,33 +2417,33 @@
             // label101
             // 
             this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(205, 16);
+            this.label101.Location = new System.Drawing.Point(234, 20);
             this.label101.Name = "label101";
             this.label101.Size = new System.Drawing.Size(42, 13);
             this.label101.TabIndex = 8;
             this.label101.Text = "Insecto";
             // 
-            // radioButton23
+            // rbNoAlergiaInsecto
             // 
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.Location = new System.Drawing.Point(152, 16);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(39, 17);
-            this.radioButton23.TabIndex = 7;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "No";
-            this.radioButton23.UseVisualStyleBackColor = true;
+            this.rbNoAlergiaInsecto.AutoSize = true;
+            this.rbNoAlergiaInsecto.Location = new System.Drawing.Point(152, 16);
+            this.rbNoAlergiaInsecto.Name = "rbNoAlergiaInsecto";
+            this.rbNoAlergiaInsecto.Size = new System.Drawing.Size(39, 17);
+            this.rbNoAlergiaInsecto.TabIndex = 7;
+            this.rbNoAlergiaInsecto.TabStop = true;
+            this.rbNoAlergiaInsecto.Text = "No";
+            this.rbNoAlergiaInsecto.UseVisualStyleBackColor = true;
             // 
-            // radioButton24
+            // rbSiAlergiaInsecto
             // 
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.Location = new System.Drawing.Point(90, 16);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(34, 17);
-            this.radioButton24.TabIndex = 6;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Si";
-            this.radioButton24.UseVisualStyleBackColor = true;
+            this.rbSiAlergiaInsecto.AutoSize = true;
+            this.rbSiAlergiaInsecto.Location = new System.Drawing.Point(90, 16);
+            this.rbSiAlergiaInsecto.Name = "rbSiAlergiaInsecto";
+            this.rbSiAlergiaInsecto.Size = new System.Drawing.Size(34, 17);
+            this.rbSiAlergiaInsecto.TabIndex = 6;
+            this.rbSiAlergiaInsecto.TabStop = true;
+            this.rbSiAlergiaInsecto.Text = "Si";
+            this.rbSiAlergiaInsecto.UseVisualStyleBackColor = true;
             // 
             // label104
             // 
@@ -3696,20 +3749,20 @@
             this.tabPage4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasAlimentos)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasSustanciaAmbiente)).EndInit();
             this.tabPage12.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasSustanciasContactoPiel)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasMedicamentos)).EndInit();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlergiasInsectos)).EndInit();
             this.tpHabitos.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
@@ -3821,20 +3874,20 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ComboBox comboBox13;
-        private System.Windows.Forms.ComboBox comboBox14;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.ComboBox cboTipoAborto2;
+        private System.Windows.Forms.ComboBox cboTipoAborto1;
+        private System.Windows.Forms.TextBox txtCantidadTipoAborto2;
+        private System.Windows.Forms.TextBox txtCantidadTipoAborto1;
+        private System.Windows.Forms.TextBox txtCantidadAbortos;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.ComboBox comboBox12;
-        private System.Windows.Forms.ComboBox comboBox11;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.ComboBox cboTipoPartoATermino;
+        private System.Windows.Forms.ComboBox cboTipoPartoPretermino;
+        private System.Windows.Forms.TextBox txtProblemasEmbarazo;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtCantidadEmbarazos;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label35;
@@ -3847,45 +3900,45 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chbTranstornosNutricionales;
+        private System.Windows.Forms.CheckBox chbParasitismo;
+        private System.Windows.Forms.CheckBox chbHepatitis;
+        private System.Windows.Forms.CheckBox chbLepra;
+        private System.Windows.Forms.CheckBox chbTuberculosis;
+        private System.Windows.Forms.CheckBox chbAnemias;
+        private System.Windows.Forms.CheckBox chbHipertensión;
+        private System.Windows.Forms.CheckBox chbDiabetes;
+        private System.Windows.Forms.CheckBox chbAsma;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.ComboBox comboBox15;
+        private System.Windows.Forms.RadioButton rbNoViveFamiliar;
+        private System.Windows.Forms.RadioButton rbSiViveFamiliar;
+        private System.Windows.Forms.ComboBox cboFamiliar;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox txtCausaMuerte;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtDescripcionOtraEnfermedad;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton rbNoOtraEnfermedad;
+        private System.Windows.Forms.RadioButton rbSiOtraEnfermedad;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TabPage tpAlergias;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.ComboBox comboBox16;
+        private System.Windows.Forms.TextBox txtEfectosAlergiasMedicamentos;
+        private System.Windows.Forms.ComboBox cboMedicamentos;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton rbNoAlergiaMedicamento;
+        private System.Windows.Forms.RadioButton rbSiAlergiaMedicamento;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.Button btnAgregarMedicamento;
+        private System.Windows.Forms.DataGridView dgvAlergiasMedicamentos;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btnAñadirMedicamento;
         private System.Windows.Forms.TabPage tpHabitos;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage7;
@@ -4019,58 +4072,63 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.DataGridView dataGridView12;
+        private System.Windows.Forms.Button btnAgregarAlergiaInsecto;
+        private System.Windows.Forms.DataGridView dgvAlergiasInsectos;
         private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Button button39;
-        private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.ComboBox comboBox48;
+        private System.Windows.Forms.Button btnAñadirInsecto;
+        private System.Windows.Forms.TextBox txtEfectosAlergiaInsecto;
+        private System.Windows.Forms.ComboBox cboInsectos;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label101;
-        private System.Windows.Forms.RadioButton radioButton23;
-        private System.Windows.Forms.RadioButton radioButton24;
+        private System.Windows.Forms.RadioButton rbNoAlergiaInsecto;
+        private System.Windows.Forms.RadioButton rbSiAlergiaInsecto;
         private System.Windows.Forms.Label label104;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.Button btnAgregarSustanciaAmbiente;
+        private System.Windows.Forms.DataGridView dgvAlergiasSustanciaAmbiente;
         private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.ComboBox comboBox19;
+        private System.Windows.Forms.Button btnAñadirSustanciaAmbiente;
+        private System.Windows.Forms.TextBox txtEfectosAlergiaSustanciaAmbiente;
+        private System.Windows.Forms.ComboBox cboSustanciaAmbiente;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.RadioButton radioButton13;
-        private System.Windows.Forms.RadioButton radioButton14;
+        private System.Windows.Forms.RadioButton rbNoAlergiaSustanciaAmbiente;
+        private System.Windows.Forms.RadioButton rbSiAlergiaSustanciaAmbiente;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.Button btnAgregarSustanciaContactoPiel;
+        private System.Windows.Forms.DataGridView dgvAlergiasSustanciasContactoPiel;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.ComboBox comboBox18;
+        private System.Windows.Forms.Button btnAñadirSustanciaContactoPiel;
+        private System.Windows.Forms.TextBox txtEfectosAlergiaSustanciaContactoPiel;
+        private System.Windows.Forms.ComboBox cboSustanciaContactoPiel;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton12;
+        private System.Windows.Forms.RadioButton rbNoAlergiaSustanciaContactoPiel;
+        private System.Windows.Forms.RadioButton rbSiAlergiaSustanciaContactoPiel;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.Button btnAgregarAlergiaAlimentos;
+        private System.Windows.Forms.DataGridView dgvAlergiasAlimentos;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.ComboBox comboBox17;
+        private System.Windows.Forms.Button btnAñadirAlimento;
+        private System.Windows.Forms.TextBox txtEfectosAlergiaAlimentos;
+        private System.Windows.Forms.ComboBox cboAlimentos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton rbNoAlergicoAlimentos;
+        private System.Windows.Forms.RadioButton rbSiAlergicoAlimentos;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.TabControl tabControl4;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage12;
-        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.TextBox txtCantidadHijosVivos;
         private System.Windows.Forms.Label label105;
         private System.Windows.Forms.TextBox txtTipoDocumentoDoctor;
+        private System.Windows.Forms.ComboBox cboTipoPartoPostermino;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label107;
     }
 }

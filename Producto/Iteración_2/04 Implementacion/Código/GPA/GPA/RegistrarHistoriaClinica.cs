@@ -18,9 +18,14 @@ namespace GPA
 
         ProfesionaMedico medico{set;get;}
         Paciente paciente {set; get;}
+
         ManejadorRegistrarHC manejadorRegistrarHC;
         ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
         ManejadorRegistrarAntecedentesMorbidos manejadorRegistrarAntecedentesMorbidos;
+        ManejadorRegistrarAntecedentesGinecoObstetricos manejadorRegistrarAntecedentesGinecoObstetricos;
+        ManejadorRegistrarAntecedentesPatologicosFamiliares manejadorRegistrarAntecedentesPatologicosFamiliares;
+        ManejadorRegistrarAlergias manejadorRegistrarAlergias;
+
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
             InitializeComponent();
@@ -29,6 +34,9 @@ namespace GPA
             manejadorRegistrarHC = new ManejadorRegistrarHC();
             manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
             manejadorRegistrarAntecedentesMorbidos = new ManejadorRegistrarAntecedentesMorbidos();
+            manejadorRegistrarAntecedentesGinecoObstetricos = new ManejadorRegistrarAntecedentesGinecoObstetricos();
+            manejadorRegistrarAntecedentesPatologicosFamiliares = new ManejadorRegistrarAntecedentesPatologicosFamiliares();
+            manejadorRegistrarAlergias = new ManejadorRegistrarAlergias();
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
@@ -53,7 +61,32 @@ namespace GPA
             presentarElementosDeModificacionDelSintoma(cboElementoModificacion, manejadorRegistrarEnfermedadActual.mostrarElementosDeModificacion(), "id_elementoDeModificacion", "nombre");
 
             presentarTiposAntecedentesMorbidos(cboTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarTiposAntecedentesMorbidos(), "id_tipoAntecedenteMorbido", "nombre");
-           
+
+            presentarElementosDelTiempo(cboTiempoOcurridoAntMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+
+            presentarTiposDeParto(cboTipoPartoATermino, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeParto(), "id_tipoParto", "nombre");
+
+            presentarTiposDeParto(cboTipoPartoPostermino, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeParto(), "id_tipoParto", "nombre");
+
+            presentarTiposDeParto(cboTipoPartoPretermino, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeParto(), "id_tipoParto", "nombre");
+
+            presentarTiposAborto(cboTipoAborto1, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeAbortos(), "id_tipoAborto", "nombre");
+
+            presentarTiposAborto(cboTipoAborto2, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeAbortos(), "id_tipoAborto", "nombre");
+
+            presentarFamiliares(cboFamiliar, manejadorRegistrarAntecedentesPatologicosFamiliares.mostrarFamiliares(), "id_familiar", "nombre");
+            rbSiViveFamiliar.Checked = true;
+            rbNoOtraEnfermedad.Checked = true;
+            txtDescripcionOtraEnfermedad.Enabled=false;
+            txtCausaMuerte.Enabled = false;
+
+            presentarAlimentos(cboAlimentos, manejadorRegistrarAlergias.mostrarAlimentos(), "id_alimento", "nombre");
+
+            presentarSustanciasDelAmbiente(cboSustanciaAmbiente, manejadorRegistrarAlergias.mostrarSustanciasDelAmbiente(), "id_sustanciaAmbiente", "nombre");
+
+            presentarSustanciasContactoPiel(cboSustanciaContactoPiel, manejadorRegistrarAlergias.mostrarSustanciasContactoPiel(), "id_sustanciaContactoPiel", "nombre");
+
+            presentarInsectos(cboInsectos, manejadorRegistrarAlergias.mostrarInsectos(), "id_insecto", "nombre");
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -68,7 +101,7 @@ namespace GPA
         }
         /*
          * Método para mostrar los tipos de síntomas en el combo box correspondiente.
-         * Recibe como parámetro una lista de los tipos de sintomas.
+         * Recibe como parámetro la referencia del ComboBox, una lista de objetos TiposSintoma, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
          * El valor de retorno es void.
          * Llama al método cargarCombo.
          */
@@ -78,7 +111,7 @@ namespace GPA
         }
         /*
        * Método para mostrar las del cuerpo humano en el combo box correspondiente.
-       * Recibe como parámetro una lista de las partes del cuerpo.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos ParteDelCuerpo, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
        * El valor de retorno es void.
        * Llama al método cargarCombo.
        */
@@ -88,7 +121,7 @@ namespace GPA
         }
         /*
       * Método para mostrar los tipos de dolores(carácter del dolor).
-      * Recibe como parámetro una lista de los tipos de dolores.
+      * Recibe como parámetro la referencia del ComboBox, una lista de objetos CaracterDelDolor, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
       * El valor de retorno es void.
       * Llama al método cargarCombo.
       */
@@ -98,7 +131,7 @@ namespace GPA
         }
         /*
        * Método para mostrar los elementos del tiempo.
-       * Recibe como parámetro una lista de objetos ElementoDelTiempo.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos ElementoDelTiempo, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
        * El valor de retorno es void.
        * Llama al método cargarCombo.
        */
@@ -108,7 +141,7 @@ namespace GPA
         }
         /*
          * Método para mostrar las descripciones del tiempo
-         * Recibe como parámetro una lista de objetos DescripcionDelTiempo.
+         * Recibe como parámetro la referencia del ComboBox, una lista de objetos DescripcionDelTiempo, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
          * El valor de retorno es void.
          * Llama al método cargarCombo.
          */
@@ -118,7 +151,7 @@ namespace GPA
         }
         /*
        * Método para mostrar las formas de modificaciones del los síntomas
-       * Recibe como parámetro una lista de objetos ModificacionSintoma.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos ModificacionSintoma, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
        * El valor de retorno es void.
        * Llama al método cargarCombo.
        */
@@ -128,7 +161,7 @@ namespace GPA
         }
         /*
        * Método para mostrar los elementos que modifican un síntoma.
-       * Recibe como parámetro una lista de objetos ElementoDeModificacion.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos ElementoModificacion, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
        * El valor de retorno es void.
        * Llama al método cargarCombo.
         */
@@ -138,7 +171,7 @@ namespace GPA
         }
         /*
          * Método para presentar los tipos de antecedentes mórbidos en el combobox.
-         * Recibe como parámetro una lista de objetos TipoAntecedenteMorbido.
+         * Recibe como parámetro la referencia del ComboBox, una lista de objetos TipoAntecedenteMorbido, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
          * El valor de retorno es void.
          * Llama al método cargarCombo.
         */
@@ -148,7 +181,7 @@ namespace GPA
         }
         /*
        * Método para presentar las enfermedades en el combobox.
-       * Recibe como parámetro una lista de objetos Enfermedad.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos Enfermedad, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
        * El valor de retorno es void.
        * Llama al método cargarCombo.
         */
@@ -158,7 +191,7 @@ namespace GPA
         }
         /*
      * Método para presentar las operaciones en el combobox.
-     * Recibe como parámetro una lista de objetos Operacion.
+     * Recibe como parámetro la referencia del ComboBox, una lista de objetos Operación, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
      * El valor de retorno es void.
      * Llama al método cargarCombo.
       */
@@ -168,13 +201,83 @@ namespace GPA
         }
         /*
        * Método para presentar los traumatismos en el combobox.
-       * Recibe como parámetro una lista de objetos Traumatismo.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos Traumatismo, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
        * El valor de retorno es void.
        * Llama al método cargarCombo.
         */
         public void presentarTraumatismos(ComboBox combo, List<Traumatismo> traumatismos, string valueMember, string displayMember)
         {
             cargarCombo(cboNombrePorTipoAntecedenteMorbido, traumatismos, valueMember, displayMember);
+        }
+        /*
+        * Método para presentar los tipos de parto en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos TipoParto, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+        */
+        public void presentarTiposDeParto(ComboBox combo, List<TipoParto> tiposDeParto, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, tiposDeParto, valueMember, displayMember);
+        }
+        /*
+        * Método para presentar los tipos de abortos en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos TipoAborto, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+        */
+        public void presentarTiposAborto(ComboBox combo, List<TipoAborto> tiposDeAbortos, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, tiposDeAbortos, valueMember, displayMember);
+        }
+        /*
+          * Método para mostrar los familiares o grado de parentezco en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos Familiar, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+        */
+        public void presentarFamiliares(ComboBox combo, List<Familiar> familiares, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, familiares, valueMember, displayMember);
+        }
+        /*
+        * Método para mostrar los alimentos en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos Alimento, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+      */
+        public void presentarAlimentos(ComboBox combo, List<Alimento> alimentos, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, alimentos, valueMember, displayMember);
+        }
+        /*
+        * Método para mostrar las sustancias del ambiente en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaAmbiente, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+      */
+        public void presentarSustanciasDelAmbiente(ComboBox combo, List<SustaciaAmbiente> sustanciasDelAmbiente, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, sustanciasDelAmbiente, valueMember, displayMember);
+        }
+        /*
+          * Método para mostrar, las sustancias que producen alergias en contacto con la piel, en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaContactoPiel, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+        */
+        public void presentarSustanciasContactoPiel(ComboBox combo, List<SustanciaContactoPiel> sustanciasContactoPiel, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, sustanciasContactoPiel, valueMember, displayMember);
+        }
+        /*
+           * Método para mostrar, los insectos que producen alergias,  en el combobox.
+           * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaContactoPiel, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+           * El valor de retorno es void.
+           * Llama al método cargarCombo.
+         */
+        public void presentarInsectos(ComboBox combo, List<Insecto> insectos, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, insectos, valueMember, displayMember);
         }
         /*
          * Método para cargar un ComboBox.
@@ -210,6 +313,9 @@ namespace GPA
         {
            
         }
+        /*
+         * Método para verificar si el paciente seleccionado tiene historia clínica.
+         */
         private void btnVerificarHC_Click(object sender, EventArgs e)
         {
             if (manejadorRegistrarHC.existeHC(paciente.id_tipoDoc, paciente.nroDoc) == false)
@@ -222,6 +328,11 @@ namespace GPA
                 MessageBox.Show("El paciente ya tiene historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information); 
             }
         }
+        /*
+         * Método para habilitar o deshabilitar los componentes TabPage y button.
+         * Recibe como parámetro un valor boolean.
+         * El valor de retorno es void.
+         */
         public void habilitarDeshabilitarTabPageYBotones(Boolean valor)
         {
             btnAceptar.Enabled = valor;
@@ -229,6 +340,36 @@ namespace GPA
             ((Control)tpAntecedentes).Enabled = valor;
             ((Control)tpAlergias).Enabled = valor;
             ((Control)tpHabitos).Enabled = valor;
+        }
+        /*
+         * Método para habilitar o deshabilitar, en antecedentes patológicos familiares, el txtDescripcionOtraEnfermedad de acuerdo a la selección del rbSiOtraEnfermedad.
+         * 
+         */
+        public void habilitarDeshabilitarTxtDescripcionOtraEnfermedadAntecedentesPatologicos()
+        {
+            if (rbNoOtraEnfermedad.Checked == true)
+            {
+                txtDescripcionOtraEnfermedad.Enabled = false;
+            }
+            else
+            {
+                txtDescripcionOtraEnfermedad.Enabled = true;
+            }
+        }
+        /*
+        * Método para habilitar o deshabilitar, en antecedentes patológicos familiares, el txtCausaMuerte de acuerdo a la selección del rbSiViveFamiliar.
+        * 
+        */
+        public void habilitarDeshabilitarTxtCausaMuerteAntecedentesPatologicos()
+        {
+            if (rbSiViveFamiliar.Checked == true)
+            {
+                txtCausaMuerte.Enabled = false;
+            }
+            else
+            {
+                txtCausaMuerte.Enabled = true;
+            }
         }
         public void cargarComboTipoDocumento()
         {
@@ -297,20 +438,23 @@ namespace GPA
         {
             cboCaracterDolor.Enabled = false;
         }
-
+        /*
+         * Método para cargar enfermedades, operaciones o traumatismos según el tipo de antecedente mórbido seleccionado en el combobox cboTipoAntecedenteMorbido
+         * El valor de retorno es void.
+         */
         private void cboTipoAntecedenteMorbido_SelectedIndexChanged(object sender, EventArgs e)
         {
              TipoAntecedenteMorbido tipo = (TipoAntecedenteMorbido)cboTipoAntecedenteMorbido.SelectedItem;
              switch (tipo.nombre)
              {
                  case "Enfermedad":
-                     presentarEnfermedades(cboNombrePorTipoAntecedenteMorbido,   manejadorRegistrarAntecedentesMorbidos.mostrarEnfermedades(tipo.id_tipoAntecedenteMorbido),"id_enfermedad","nombre");
+                     presentarEnfermedades(cboNombrePorTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarEnfermedades(tipo.id_tipoAntecedenteMorbido),"id_enfermedad","nombre");
                      break;
                  case "Operación":
                      presentarOperaciones(cboNombrePorTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarOperaciones(tipo.id_tipoAntecedenteMorbido),"id_operacion","nombre");
                      break;
                  case "Traumatismo":
-                     presentarTraumatismos( cboNombrePorTipoAntecedenteMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarTraumatismos(tipo.id_tipoAntecedenteMorbido),"id_Traumatismo","nombre");
+                     presentarTraumatismos(cboNombrePorTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarTraumatismos(tipo.id_tipoAntecedenteMorbido),"id_Traumatismo","nombre");
                      break;
                  default:
                      break;
@@ -319,6 +463,16 @@ namespace GPA
                 
             
             
+        }
+
+        private void rbSiOtraEnfermedad_CheckedChanged(object sender, EventArgs e)
+        {
+            habilitarDeshabilitarTxtDescripcionOtraEnfermedadAntecedentesPatologicos();
+        }
+
+        private void rbSiViveFamiliar_CheckedChanged(object sender, EventArgs e)
+        {
+            habilitarDeshabilitarTxtCausaMuerteAntecedentesPatologicos();
         }
     }
 }
