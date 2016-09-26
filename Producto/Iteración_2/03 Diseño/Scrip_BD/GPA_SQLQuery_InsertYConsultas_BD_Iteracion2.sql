@@ -211,10 +211,107 @@ insert into Traumatismos(nombre,id_tipoAntecedenteMorbido_fk)
 values('Traumatismo de columna vertebral','3')
 /*--------------------------*/
 
-/*-------Insert-----*/
-alter table Traumatismos
-add descripcion text
+/*-------Insert TipoParto-----*/
+insert into TipoParto(nombre)
+values('Cesarea')
+
+insert into TipoParto(nombre)
+values('Natural')
 /*--------------------------*/
 
+/*-------Insert TipoAborto-----*/
+insert into TipoAborto(nombre)
+values('Espontáneo')
 
+insert into TipoAborto(nombre)
+values('Provocado')
+/*--------------------------*/
+
+/*-------Insert Familiar-----*/
+insert into Familiar(nombre)
+values('Madre')
+
+insert into Familiar(nombre)
+values('Padre')
+
+insert into Familiar(nombre)
+values('Hermano')
+
+insert into Familiar(nombre)
+values('Hermana')
+
+
+/*--------------------------*/
+
+/*-------Insert Alimento-----*/
+insert into Alimento(nombre)
+values('Pescado')
+
+insert into Alimento(nombre)
+values('Leche')
+
+insert into Alimento(nombre)
+values('Maní')
+
+insert into Alimento(nombre)
+values('Soja')
+
+insert into Alimento(nombre)
+values('Nuez')
+
+insert into Alimento(nombre)
+values('Trigo')
+
+insert into Alimento(nombre)
+values('Huevo')
+
+/*--------------------------*/
+
+/*-------Insert SustanciasAmbiente-----*/
+insert into SustanciaAmbiente(nombre)
+values('Pólenes')
+
+insert into SustanciaAmbiente(nombre)
+values('Mohos')
+
+insert into SustanciaAmbiente(nombre)
+values('Ácaros')
+
+insert into SustanciaAmbiente(nombre)
+values('Hongos')
+
+/*--------------------------*/
+
+/*-------Insert SustanciaContactoPiel-----*/
+insert into SustanciaContactoPiel(nombre)
+values('Tinturas para cabello')
+
+insert into SustanciaContactoPiel(nombre)
+values('Plaguisidas')
+
+insert into SustanciaContactoPiel(nombre)
+values('Guantes de caucho')
+
+insert into SustanciaContactoPiel(nombre)
+values('Shampoos')
+/*--------------------------*/
+
+/*-------Insert Insectos-----*/
+insert into Insecto(nombre)
+values('Abejas')
+
+insert into Insecto(nombre)
+values('Avispas')
+
+insert into Insecto(nombre)
+values('Hormigas')
+
+/*--------------------------*/
+
+/*-------Insert-----*/
+
+/*--------------------------*/
+
+alter table Traumatismos
+add descripcion text
 

@@ -712,6 +712,11 @@ foreign key(id_programacionMedicamento_fk) references ProgramacionMedicamento(id
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento))
 
 
+create table Familiar(
+id_familiar int primary key identity,
+nombre text)
+
+
 
 
 
