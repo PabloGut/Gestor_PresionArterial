@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarFormaAdministracionMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarFormaAdministracionMedicamento.Designer.cs">
+      <DependentUpon>ActualizarFormaAdministracionMedicamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarPresentacionMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarPresentacionMedicamento.Designer.cs">
+      <DependentUpon>ActualizarPresentacionMedicamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarUnidadMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarUnidadMedida.Designer.cs">
+      <DependentUpon>ActualizarUnidadMedida.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarEstudio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +91,9 @@
     <Compile Include="Manejadores\ManejadorRegistrarBarrio.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEnfermedadActual.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEspecialidad.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarHabitoAlcoholismo.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarHabitosDrogasIlicitas.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarHabitosTabaquismo.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarLocalidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarPaciente.cs" />
@@ -136,6 +157,12 @@
     <Compile Include="RegistrarLocalidad.designer.cs">
       <DependentUpon>RegistrarLocalidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarMedicamento.Designer.cs">
+      <DependentUpon>RegistrarMedicamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +182,15 @@
       <DependentUpon>RegistrarTipoDeDocumento.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="ActualizarFormaAdministracionMedicamento.resx">
+      <DependentUpon>ActualizarFormaAdministracionMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarPresentacionMedicamento.resx">
+      <DependentUpon>ActualizarPresentacionMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarUnidadMedida.resx">
+      <DependentUpon>ActualizarUnidadMedida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultarEstudio.resx">
       <DependentUpon>ConsultarEstudio.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarLocalidad.resx">
       <DependentUpon>RegistrarLocalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarMedicamento.resx">
+      <DependentUpon>RegistrarMedicamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarPaciente.resx">
       <DependentUpon>RegistrarPaciente.cs</DependentUpon>

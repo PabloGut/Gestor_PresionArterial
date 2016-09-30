@@ -340,5 +340,12 @@ namespace GPA
             RegistrarHistoriaClínica regHC = new RegistrarHistoriaClínica(medicoLogueado,pacienteSeleccionado);
             regHC.ShowDialog();
         }
+
+        private void btnRegistraMedicamento_Click(object sender, EventArgs e)
+        {
+            RegistrarMedicamento formRegistrarMedicamento = new RegistrarMedicamento();
+            formRegistrarMedicamento.ShowDialog();
+
+        }
     }
 }

@@ -26,6 +26,10 @@ namespace GPA.Manejadores
         {
             return InsectoLN.mostrarInsectos();
         }
+        public List<Medicamento> mostrarNombreMedicamentos()
+        {
+            return MedicamentoLN.mostrarNombreMedicamentos();
+        }
 
     }
 }

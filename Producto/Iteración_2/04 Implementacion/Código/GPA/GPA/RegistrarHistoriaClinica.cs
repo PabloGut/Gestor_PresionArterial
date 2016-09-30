@@ -25,6 +25,9 @@ namespace GPA
         ManejadorRegistrarAntecedentesGinecoObstetricos manejadorRegistrarAntecedentesGinecoObstetricos;
         ManejadorRegistrarAntecedentesPatologicosFamiliares manejadorRegistrarAntecedentesPatologicosFamiliares;
         ManejadorRegistrarAlergias manejadorRegistrarAlergias;
+        ManejadorRegistrarHabitosTabaquismo manejadorRegistrarHabitosTabaquismo;
+        ManejadorRegistrarHabitoAlcoholismo manejadorRegistrarHabitosAlcoholismo;
+        ManejadorRegistrarHabitosDrogasIlicitas manajadorRegistrarHabitosDrogasIlicitas;
 
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
@@ -37,6 +40,9 @@ namespace GPA
             manejadorRegistrarAntecedentesGinecoObstetricos = new ManejadorRegistrarAntecedentesGinecoObstetricos();
             manejadorRegistrarAntecedentesPatologicosFamiliares = new ManejadorRegistrarAntecedentesPatologicosFamiliares();
             manejadorRegistrarAlergias = new ManejadorRegistrarAlergias();
+            manejadorRegistrarHabitosTabaquismo = new ManejadorRegistrarHabitosTabaquismo();
+            manejadorRegistrarHabitosAlcoholismo = new ManejadorRegistrarHabitoAlcoholismo();
+            manajadorRegistrarHabitosDrogasIlicitas = new ManejadorRegistrarHabitosDrogasIlicitas();
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
@@ -87,6 +93,31 @@ namespace GPA
             presentarSustanciasContactoPiel(cboSustanciaContactoPiel, manejadorRegistrarAlergias.mostrarSustanciasContactoPiel(), "id_sustanciaContactoPiel", "nombre");
 
             presentarInsectos(cboInsectos, manejadorRegistrarAlergias.mostrarInsectos(), "id_insecto", "nombre");
+
+            presentarNombreMedicamentos(cboMedicamentos, manejadorRegistrarAlergias.mostrarNombreMedicamentos(), "id_medicamento", "nombreGenerico");
+
+            presentarNombreElementosQueFuma(cboElementoQueFuma, manejadorRegistrarHabitosTabaquismo.mostrarNombreElementoQueFuma(), "id_elementoQueFuma", "nombre");
+
+            presentarNombreElementosQueFuma(cboElementoFumaba, manejadorRegistrarHabitosTabaquismo.mostrarNombreElementoQueFuma(), "id_elementoQueFuma", "nombre");
+
+            presentarComponentesDelTiempo(cboComponenteTiempoFuma, manejadorRegistrarHabitosTabaquismo.mostrarComponentesDelTiempo(), "id_componenteTiempo", "nombre");
+
+            presentarComponentesDelTiempo(cboComponenteTiempoFumaba, manejadorRegistrarHabitosTabaquismo.mostrarComponentesDelTiempo(), "id_componenteTiempo", "nombre");
+
+            presentarDescripcionesDelTiempo(cboDescripcionDelTiempoFumaba, manejadorRegistrarHabitosTabaquismo.mostrarDescripcionesDelTiempo(), "id_descripcionDelTiempo", "nombre");
+
+            presentarElementosDelTiempo(cboElementosDelTiempoFumaba, manejadorRegistrarHabitosTabaquismo.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+
+            presentarTiposBebidas(cboTipoBebida, manejadorRegistrarHabitosAlcoholismo.mostrarTiposDeBebidas(), "id_tipoBebida", "nombre");
+
+            presentarComponentesDelTiempo(cboComponenteTiempoAlcoholismo, manejadorRegistrarHabitosAlcoholismo.mostrarComponentesDelTiempo(), "id_componenteTiempo", "nombre");
+
+            presentarMedidasBebidasAlcoholicas(cboMedidaConsumeAlcohol, manejadorRegistrarHabitosAlcoholismo.mostrarMedidasBebidasAlcoholicas(), "id_medida", "nombre");
+
+            presentarSustanciasDrogasIlicitas(cboSustanciaDrogaIlicita, manajadorRegistrarHabitosDrogasIlicitas.mostrarSustanciasDrogasIlicitas(), "id_sustancia", "nombre");
+
+            presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manajadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -271,13 +302,75 @@ namespace GPA
         }
         /*
            * Método para mostrar, los insectos que producen alergias,  en el combobox.
-           * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaContactoPiel, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+           * Recibe como parámetro la referencia del ComboBox, una lista de objetos Insecto, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
            * El valor de retorno es void.
            * Llama al método cargarCombo.
          */
         public void presentarInsectos(ComboBox combo, List<Insecto> insectos, string valueMember, string displayMember)
         {
             cargarCombo(combo, insectos, valueMember, displayMember);
+        }
+        /*
+           * Método para mostrar, los nombres de medicamentos que producen alergias,  en el combobox.
+           * Recibe como parámetro la referencia del ComboBox, una lista de objetos Medicamento, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+           * El valor de retorno es void.
+           * Llama al método cargarCombo.
+         */
+        public void presentarNombreMedicamentos(ComboBox combo, List<Medicamento> medicamentos, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, medicamentos, valueMember, displayMember);
+        }
+        /*
+          * Método para mostrar, los nombres de elementos utilizados para fumar,  en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos ElementoQueFuma, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+        */
+        public void presentarNombreElementosQueFuma(ComboBox combo, List<ElementoQueFuma> elementos, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, elementos, valueMember, displayMember);
+        }
+        /*
+          * Método para mostrar, los componentes del tiempo,  en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos ComponenteDelTiempo, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+        */
+        public void presentarComponentesDelTiempo(ComboBox combo, List<ComponenteDelTiempo> componentes, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, componentes, valueMember, displayMember);
+        }
+        /*
+        * Método para mostrar, los tipos de bebidas,  en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos TiposBebida, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+      */
+        public void presentarTiposBebidas(ComboBox combo, List<TipoBebida> tiposDeBebidas, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, tiposDeBebidas, valueMember, displayMember);
+        }
+        /*
+        * Método para mostrar, las medidas para bebidas alcoholicas,  en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos Medida, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+        */
+        public void presentarMedidasBebidasAlcoholicas(ComboBox combo, List<Medida> medidas, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, medidas, valueMember, displayMember);
+            
+        }
+        /*
+       * Método para mostrar, las sustancias que son drogas ilicitas,  en el combobox.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaDrogaIlicita, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+       * El valor de retorno es void.
+       * Llama al método cargarCombo.
+       */
+        public void presentarSustanciasDrogasIlicitas(ComboBox combo, List<SustanciaDrogaIlicita> sustancias, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, sustancias, valueMember, displayMember);
+
         }
         /*
          * Método para cargar un ComboBox.
@@ -473,6 +566,11 @@ namespace GPA
         private void rbSiViveFamiliar_CheckedChanged(object sender, EventArgs e)
         {
             habilitarDeshabilitarTxtCausaMuerteAntecedentesPatologicos();
+        }
+
+        private void label108_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

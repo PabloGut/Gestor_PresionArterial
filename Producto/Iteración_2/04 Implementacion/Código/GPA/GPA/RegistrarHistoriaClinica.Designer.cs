@@ -239,96 +239,98 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.button24 = new System.Windows.Forms.Button();
-            this.dataGridView8 = new System.Windows.Forms.DataGridView();
-            this.button23 = new System.Windows.Forms.Button();
-            this.comboBox28 = new System.Windows.Forms.ComboBox();
+            this.label108 = new System.Windows.Forms.Label();
+            this.txtDescripcionMedida = new System.Windows.Forms.TextBox();
+            this.btnAgregarHabitoAlcoholismo = new System.Windows.Forms.Button();
+            this.dgvHabitosAlcoholismo = new System.Windows.Forms.DataGridView();
+            this.brnAñadiTipoBebida = new System.Windows.Forms.Button();
+            this.cboComponenteTiempoAlcoholismo = new System.Windows.Forms.ComboBox();
             this.label77 = new System.Windows.Forms.Label();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.comboBox27 = new System.Windows.Forms.ComboBox();
-            this.comboBox26 = new System.Windows.Forms.ComboBox();
+            this.txtCantidaConsume = new System.Windows.Forms.TextBox();
+            this.cboMedidaConsumeAlcohol = new System.Windows.Forms.ComboBox();
+            this.cboTipoBebida = new System.Windows.Forms.ComboBox();
             this.label76 = new System.Windows.Forms.Label();
             this.label75 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.radioButton17 = new System.Windows.Forms.RadioButton();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
+            this.rbNoConsumeAlcohol = new System.Windows.Forms.RadioButton();
+            this.rbSiConsumeAlcohol = new System.Windows.Forms.RadioButton();
             this.label73 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.button25 = new System.Windows.Forms.Button();
-            this.dataGridView9 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarHabitoTabaquismo = new System.Windows.Forms.Button();
+            this.dgvHabitosFumar = new System.Windows.Forms.DataGridView();
             this.label72 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
-            this.comboBox24 = new System.Windows.Forms.ComboBox();
-            this.comboBox25 = new System.Windows.Forms.ComboBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.comboBox23 = new System.Windows.Forms.ComboBox();
-            this.comboBox22 = new System.Windows.Forms.ComboBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.cboComponenteTiempoFumaba = new System.Windows.Forms.ComboBox();
+            this.cboElementoFumaba = new System.Windows.Forms.ComboBox();
+            this.txtCantidadFumaba = new System.Windows.Forms.TextBox();
+            this.cboDescripcionDelTiempoFumaba = new System.Windows.Forms.ComboBox();
+            this.cboElementosDelTiempoFumaba = new System.Windows.Forms.ComboBox();
+            this.txtCantiTiempoDejoFumar = new System.Windows.Forms.TextBox();
+            this.cbDejoFumar = new System.Windows.Forms.CheckBox();
             this.label69 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.txtCantidadAñosFumando = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
-            this.comboBox21 = new System.Windows.Forms.ComboBox();
-            this.comboBox20 = new System.Windows.Forms.ComboBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.cboElementoQueFuma = new System.Windows.Forms.ComboBox();
+            this.cboComponenteTiempoFuma = new System.Windows.Forms.ComboBox();
+            this.txtCantidadQueFuma = new System.Windows.Forms.TextBox();
             this.label64 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
+            this.rbNoFuma = new System.Windows.Forms.RadioButton();
+            this.rbSiFuma = new System.Windows.Forms.RadioButton();
             this.label65 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.button33 = new System.Windows.Forms.Button();
-            this.comboBox44 = new System.Windows.Forms.ComboBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.btnAgregarHabitoMedicamento = new System.Windows.Forms.Button();
+            this.cboElementoTiempoCancelacionMedicamento = new System.Windows.Forms.ComboBox();
+            this.txtCantTiempoCancelacionMedicamento = new System.Windows.Forms.TextBox();
             this.label95 = new System.Windows.Forms.Label();
             this.textBox34 = new System.Windows.Forms.TextBox();
             this.label97 = new System.Windows.Forms.Label();
-            this.comboBox43 = new System.Windows.Forms.ComboBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.cboElementoTiempoMedicamento = new System.Windows.Forms.ComboBox();
+            this.txtCantidadTiempoConsumoMedicamento = new System.Windows.Forms.TextBox();
+            this.txtMotivoConsumo = new System.Windows.Forms.TextBox();
             this.label88 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.chbAutomedicado = new System.Windows.Forms.CheckBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.comboBox40 = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.cboPresentacionMedicamento1 = new System.Windows.Forms.ComboBox();
+            this.mtbHora3 = new System.Windows.Forms.MaskedTextBox();
             this.label86 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.mtbHora2 = new System.Windows.Forms.MaskedTextBox();
             this.label87 = new System.Windows.Forms.Label();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.mtbHora1 = new System.Windows.Forms.MaskedTextBox();
             this.label91 = new System.Windows.Forms.Label();
             this.label103 = new System.Windows.Forms.Label();
-            this.comboBox37 = new System.Windows.Forms.ComboBox();
+            this.cboMomentoDia1 = new System.Windows.Forms.ComboBox();
             this.label102 = new System.Windows.Forms.Label();
-            this.comboBox38 = new System.Windows.Forms.ComboBox();
-            this.comboBox42 = new System.Windows.Forms.ComboBox();
-            this.comboBox39 = new System.Windows.Forms.ComboBox();
-            this.comboBox41 = new System.Windows.Forms.ComboBox();
+            this.cboMomentoDia2 = new System.Windows.Forms.ComboBox();
+            this.cboCantidadMedicamento3 = new System.Windows.Forms.ComboBox();
+            this.cboMomentoDia3 = new System.Windows.Forms.ComboBox();
+            this.cboCantidadMedicamento2 = new System.Windows.Forms.ComboBox();
             this.label92 = new System.Windows.Forms.Label();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.txtCantidadMedicamento1 = new System.Windows.Forms.TextBox();
+            this.txtCantidadMedicamento3 = new System.Windows.Forms.TextBox();
             this.label96 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
-            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.txtcantidadMedicamento2 = new System.Windows.Forms.TextBox();
             this.button32 = new System.Windows.Forms.Button();
-            this.comboBox36 = new System.Windows.Forms.ComboBox();
-            this.comboBox35 = new System.Windows.Forms.ComboBox();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
+            this.cboFrecuencia = new System.Windows.Forms.ComboBox();
+            this.cboPresentacionMedicamento = new System.Windows.Forms.ComboBox();
+            this.rbMedicamentoAnterior = new System.Windows.Forms.RadioButton();
+            this.rbMedicamentoActual = new System.Windows.Forms.RadioButton();
             this.button31 = new System.Windows.Forms.Button();
-            this.comboBox34 = new System.Windows.Forms.ComboBox();
+            this.cboFormaAdministración = new System.Windows.Forms.ComboBox();
             this.button30 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
-            this.comboBox33 = new System.Windows.Forms.ComboBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.comboBox32 = new System.Windows.Forms.ComboBox();
-            this.comboBox31 = new System.Windows.Forms.ComboBox();
+            this.cboUnidadMedida = new System.Windows.Forms.ComboBox();
+            this.txtConcentración = new System.Windows.Forms.TextBox();
+            this.cboNombreComercial = new System.Windows.Forms.ComboBox();
+            this.cboNombreGenerico = new System.Windows.Forms.ComboBox();
             this.label90 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
             this.label85 = new System.Windows.Forms.Label();
@@ -337,18 +339,18 @@
             this.label81 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.dataGridView10 = new System.Windows.Forms.DataGridView();
-            this.button27 = new System.Windows.Forms.Button();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.button26 = new System.Windows.Forms.Button();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.comboBox30 = new System.Windows.Forms.ComboBox();
-            this.comboBox29 = new System.Windows.Forms.ComboBox();
+            this.dgvHabitosDrogasIlicitas = new System.Windows.Forms.DataGridView();
+            this.btnAgregarHabitoDrogaIlicita = new System.Windows.Forms.Button();
+            this.txtCantidadTiempoConsumiendo = new System.Windows.Forms.TextBox();
+            this.chbDejoConsumir = new System.Windows.Forms.CheckBox();
+            this.btnAñadirSustanciaDrogaIlicita = new System.Windows.Forms.Button();
+            this.chbEnTratamiento = new System.Windows.Forms.CheckBox();
+            this.cboElementoTiempoDrogasIlicitas = new System.Windows.Forms.ComboBox();
+            this.cboSustanciaDrogaIlicita = new System.Windows.Forms.ComboBox();
             this.label79 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
-            this.radioButton19 = new System.Windows.Forms.RadioButton();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
+            this.rnNoConsumeDrogas = new System.Windows.Forms.RadioButton();
+            this.rbSiConsumeDrogas = new System.Windows.Forms.RadioButton();
             this.label70 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -403,16 +405,16 @@
             this.tabControl2.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.groupBox14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosAlcoholismo)).BeginInit();
             this.panel6.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosFumar)).BeginInit();
             this.panel5.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosDrogasIlicitas)).BeginInit();
             this.tabPage9.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
@@ -2490,14 +2492,16 @@
             // 
             // groupBox14
             // 
-            this.groupBox14.Controls.Add(this.button24);
-            this.groupBox14.Controls.Add(this.dataGridView8);
-            this.groupBox14.Controls.Add(this.button23);
-            this.groupBox14.Controls.Add(this.comboBox28);
+            this.groupBox14.Controls.Add(this.label108);
+            this.groupBox14.Controls.Add(this.txtDescripcionMedida);
+            this.groupBox14.Controls.Add(this.btnAgregarHabitoAlcoholismo);
+            this.groupBox14.Controls.Add(this.dgvHabitosAlcoholismo);
+            this.groupBox14.Controls.Add(this.brnAñadiTipoBebida);
+            this.groupBox14.Controls.Add(this.cboComponenteTiempoAlcoholismo);
             this.groupBox14.Controls.Add(this.label77);
-            this.groupBox14.Controls.Add(this.textBox26);
-            this.groupBox14.Controls.Add(this.comboBox27);
-            this.groupBox14.Controls.Add(this.comboBox26);
+            this.groupBox14.Controls.Add(this.txtCantidaConsume);
+            this.groupBox14.Controls.Add(this.cboMedidaConsumeAlcohol);
+            this.groupBox14.Controls.Add(this.cboTipoBebida);
             this.groupBox14.Controls.Add(this.label76);
             this.groupBox14.Controls.Add(this.label75);
             this.groupBox14.Controls.Add(this.label74);
@@ -2510,76 +2514,93 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Ingesta de bebidas alcohólicas";
             // 
-            // button24
+            // label108
             // 
-            this.button24.Location = new System.Drawing.Point(499, 132);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(90, 27);
-            this.button24.TabIndex = 16;
-            this.button24.Text = "Agregar hábito";
-            this.button24.UseVisualStyleBackColor = true;
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(161, 109);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(129, 13);
+            this.label108.TabIndex = 18;
+            this.label108.Text = "Descripción de la medida:";
+            this.label108.Click += new System.EventHandler(this.label108_Click);
             // 
-            // dataGridView8
+            // txtDescripcionMedida
             // 
-            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView8.Location = new System.Drawing.Point(9, 132);
-            this.dataGridView8.Name = "dataGridView8";
-            this.dataGridView8.Size = new System.Drawing.Size(484, 100);
-            this.dataGridView8.TabIndex = 15;
+            this.txtDescripcionMedida.Location = new System.Drawing.Point(293, 106);
+            this.txtDescripcionMedida.Name = "txtDescripcionMedida";
+            this.txtDescripcionMedida.Size = new System.Drawing.Size(372, 20);
+            this.txtDescripcionMedida.TabIndex = 17;
             // 
-            // button23
+            // btnAgregarHabitoAlcoholismo
             // 
-            this.button23.Location = new System.Drawing.Point(201, 102);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(58, 23);
-            this.button23.TabIndex = 14;
-            this.button23.Text = "Añadir";
-            this.button23.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoAlcoholismo.Location = new System.Drawing.Point(499, 132);
+            this.btnAgregarHabitoAlcoholismo.Name = "btnAgregarHabitoAlcoholismo";
+            this.btnAgregarHabitoAlcoholismo.Size = new System.Drawing.Size(90, 27);
+            this.btnAgregarHabitoAlcoholismo.TabIndex = 16;
+            this.btnAgregarHabitoAlcoholismo.Text = "Agregar hábito";
+            this.btnAgregarHabitoAlcoholismo.UseVisualStyleBackColor = true;
             // 
-            // comboBox28
+            // dgvHabitosAlcoholismo
             // 
-            this.comboBox28.FormattingEnabled = true;
-            this.comboBox28.Location = new System.Drawing.Point(551, 104);
-            this.comboBox28.Name = "comboBox28";
-            this.comboBox28.Size = new System.Drawing.Size(111, 21);
-            this.comboBox28.TabIndex = 13;
+            this.dgvHabitosAlcoholismo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHabitosAlcoholismo.Location = new System.Drawing.Point(9, 132);
+            this.dgvHabitosAlcoholismo.Name = "dgvHabitosAlcoholismo";
+            this.dgvHabitosAlcoholismo.Size = new System.Drawing.Size(484, 100);
+            this.dgvHabitosAlcoholismo.TabIndex = 15;
+            // 
+            // brnAñadiTipoBebida
+            // 
+            this.brnAñadiTipoBebida.Location = new System.Drawing.Point(201, 71);
+            this.brnAñadiTipoBebida.Name = "brnAñadiTipoBebida";
+            this.brnAñadiTipoBebida.Size = new System.Drawing.Size(58, 23);
+            this.brnAñadiTipoBebida.TabIndex = 14;
+            this.brnAñadiTipoBebida.Text = "Añadir";
+            this.brnAñadiTipoBebida.UseVisualStyleBackColor = true;
+            // 
+            // cboComponenteTiempoAlcoholismo
+            // 
+            this.cboComponenteTiempoAlcoholismo.FormattingEnabled = true;
+            this.cboComponenteTiempoAlcoholismo.Location = new System.Drawing.Point(554, 73);
+            this.cboComponenteTiempoAlcoholismo.Name = "cboComponenteTiempoAlcoholismo";
+            this.cboComponenteTiempoAlcoholismo.Size = new System.Drawing.Size(111, 21);
+            this.cboComponenteTiempoAlcoholismo.TabIndex = 13;
             // 
             // label77
             // 
             this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(531, 108);
+            this.label77.Location = new System.Drawing.Point(531, 76);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(14, 13);
             this.label77.TabIndex = 12;
             this.label77.Text = "X";
             // 
-            // textBox26
+            // txtCantidaConsume
             // 
-            this.textBox26.Location = new System.Drawing.Point(338, 104);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(53, 20);
-            this.textBox26.TabIndex = 11;
+            this.txtCantidaConsume.Location = new System.Drawing.Point(348, 73);
+            this.txtCantidaConsume.Name = "txtCantidaConsume";
+            this.txtCantidaConsume.Size = new System.Drawing.Size(53, 20);
+            this.txtCantidaConsume.TabIndex = 11;
             // 
-            // comboBox27
+            // cboMedidaConsumeAlcohol
             // 
-            this.comboBox27.FormattingEnabled = true;
-            this.comboBox27.Location = new System.Drawing.Point(397, 104);
-            this.comboBox27.Name = "comboBox27";
-            this.comboBox27.Size = new System.Drawing.Size(121, 21);
-            this.comboBox27.TabIndex = 10;
+            this.cboMedidaConsumeAlcohol.FormattingEnabled = true;
+            this.cboMedidaConsumeAlcohol.Location = new System.Drawing.Point(407, 73);
+            this.cboMedidaConsumeAlcohol.Name = "cboMedidaConsumeAlcohol";
+            this.cboMedidaConsumeAlcohol.Size = new System.Drawing.Size(121, 21);
+            this.cboMedidaConsumeAlcohol.TabIndex = 10;
             // 
-            // comboBox26
+            // cboTipoBebida
             // 
-            this.comboBox26.FormattingEnabled = true;
-            this.comboBox26.Location = new System.Drawing.Point(98, 105);
-            this.comboBox26.Name = "comboBox26";
-            this.comboBox26.Size = new System.Drawing.Size(97, 21);
-            this.comboBox26.TabIndex = 9;
+            this.cboTipoBebida.FormattingEnabled = true;
+            this.cboTipoBebida.Location = new System.Drawing.Point(98, 73);
+            this.cboTipoBebida.Name = "cboTipoBebida";
+            this.cboTipoBebida.Size = new System.Drawing.Size(97, 21);
+            this.cboTipoBebida.TabIndex = 9;
             // 
             // label76
             // 
             this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(283, 107);
+            this.label76.Location = new System.Drawing.Point(290, 76);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(49, 13);
             this.label76.TabIndex = 8;
@@ -2588,7 +2609,7 @@
             // label75
             // 
             this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(14, 108);
+            this.label75.Location = new System.Drawing.Point(14, 76);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(78, 13);
             this.label75.TabIndex = 7;
@@ -2597,42 +2618,42 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(14, 73);
+            this.label74.Location = new System.Drawing.Point(290, 40);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(180, 13);
+            this.label74.Size = new System.Drawing.Size(183, 13);
             this.label74.TabIndex = 6;
-            this.label74.Text = "Estimación de la cantidad de alcohol";
+            this.label74.Text = "Estimación de la cantidad de alcohol:";
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.radioButton17);
-            this.panel6.Controls.Add(this.radioButton18);
+            this.panel6.Controls.Add(this.rbNoConsumeAlcohol);
+            this.panel6.Controls.Add(this.rbSiConsumeAlcohol);
             this.panel6.Location = new System.Drawing.Point(118, 23);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(150, 30);
             this.panel6.TabIndex = 5;
             // 
-            // radioButton17
+            // rbNoConsumeAlcohol
             // 
-            this.radioButton17.AutoSize = true;
-            this.radioButton17.Location = new System.Drawing.Point(109, 7);
-            this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(39, 17);
-            this.radioButton17.TabIndex = 5;
-            this.radioButton17.TabStop = true;
-            this.radioButton17.Text = "No";
-            this.radioButton17.UseVisualStyleBackColor = true;
+            this.rbNoConsumeAlcohol.AutoSize = true;
+            this.rbNoConsumeAlcohol.Location = new System.Drawing.Point(109, 7);
+            this.rbNoConsumeAlcohol.Name = "rbNoConsumeAlcohol";
+            this.rbNoConsumeAlcohol.Size = new System.Drawing.Size(39, 17);
+            this.rbNoConsumeAlcohol.TabIndex = 5;
+            this.rbNoConsumeAlcohol.TabStop = true;
+            this.rbNoConsumeAlcohol.Text = "No";
+            this.rbNoConsumeAlcohol.UseVisualStyleBackColor = true;
             // 
-            // radioButton18
+            // rbSiConsumeAlcohol
             // 
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.Location = new System.Drawing.Point(3, 7);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(34, 17);
-            this.radioButton18.TabIndex = 4;
-            this.radioButton18.TabStop = true;
-            this.radioButton18.Text = "Si";
-            this.radioButton18.UseVisualStyleBackColor = true;
+            this.rbSiConsumeAlcohol.AutoSize = true;
+            this.rbSiConsumeAlcohol.Location = new System.Drawing.Point(3, 7);
+            this.rbSiConsumeAlcohol.Name = "rbSiConsumeAlcohol";
+            this.rbSiConsumeAlcohol.Size = new System.Drawing.Size(34, 17);
+            this.rbSiConsumeAlcohol.TabIndex = 4;
+            this.rbSiConsumeAlcohol.TabStop = true;
+            this.rbSiConsumeAlcohol.Text = "Si";
+            this.rbSiConsumeAlcohol.UseVisualStyleBackColor = true;
             // 
             // label73
             // 
@@ -2645,23 +2666,23 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.button25);
-            this.groupBox13.Controls.Add(this.dataGridView9);
+            this.groupBox13.Controls.Add(this.btnAgregarHabitoTabaquismo);
+            this.groupBox13.Controls.Add(this.dgvHabitosFumar);
             this.groupBox13.Controls.Add(this.label72);
             this.groupBox13.Controls.Add(this.label71);
-            this.groupBox13.Controls.Add(this.comboBox24);
-            this.groupBox13.Controls.Add(this.comboBox25);
-            this.groupBox13.Controls.Add(this.textBox25);
-            this.groupBox13.Controls.Add(this.comboBox23);
-            this.groupBox13.Controls.Add(this.comboBox22);
-            this.groupBox13.Controls.Add(this.textBox24);
-            this.groupBox13.Controls.Add(this.checkBox10);
+            this.groupBox13.Controls.Add(this.cboComponenteTiempoFumaba);
+            this.groupBox13.Controls.Add(this.cboElementoFumaba);
+            this.groupBox13.Controls.Add(this.txtCantidadFumaba);
+            this.groupBox13.Controls.Add(this.cboDescripcionDelTiempoFumaba);
+            this.groupBox13.Controls.Add(this.cboElementosDelTiempoFumaba);
+            this.groupBox13.Controls.Add(this.txtCantiTiempoDejoFumar);
+            this.groupBox13.Controls.Add(this.cbDejoFumar);
             this.groupBox13.Controls.Add(this.label69);
-            this.groupBox13.Controls.Add(this.textBox23);
+            this.groupBox13.Controls.Add(this.txtCantidadAñosFumando);
             this.groupBox13.Controls.Add(this.label68);
-            this.groupBox13.Controls.Add(this.comboBox21);
-            this.groupBox13.Controls.Add(this.comboBox20);
-            this.groupBox13.Controls.Add(this.textBox22);
+            this.groupBox13.Controls.Add(this.cboElementoQueFuma);
+            this.groupBox13.Controls.Add(this.cboComponenteTiempoFuma);
+            this.groupBox13.Controls.Add(this.txtCantidadQueFuma);
             this.groupBox13.Controls.Add(this.label64);
             this.groupBox13.Controls.Add(this.panel5);
             this.groupBox13.Controls.Add(this.label65);
@@ -2674,27 +2695,27 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Tabaquismo";
             // 
-            // button25
+            // btnAgregarHabitoTabaquismo
             // 
-            this.button25.Location = new System.Drawing.Point(499, 199);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(90, 27);
-            this.button25.TabIndex = 19;
-            this.button25.Text = "Agregar hábito";
-            this.button25.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoTabaquismo.Location = new System.Drawing.Point(499, 169);
+            this.btnAgregarHabitoTabaquismo.Name = "btnAgregarHabitoTabaquismo";
+            this.btnAgregarHabitoTabaquismo.Size = new System.Drawing.Size(90, 27);
+            this.btnAgregarHabitoTabaquismo.TabIndex = 19;
+            this.btnAgregarHabitoTabaquismo.Text = "Agregar hábito";
+            this.btnAgregarHabitoTabaquismo.UseVisualStyleBackColor = true;
             // 
-            // dataGridView9
+            // dgvHabitosFumar
             // 
-            this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView9.Location = new System.Drawing.Point(6, 194);
-            this.dataGridView9.Name = "dataGridView9";
-            this.dataGridView9.Size = new System.Drawing.Size(489, 85);
-            this.dataGridView9.TabIndex = 18;
+            this.dgvHabitosFumar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHabitosFumar.Location = new System.Drawing.Point(4, 169);
+            this.dgvHabitosFumar.Name = "dgvHabitosFumar";
+            this.dgvHabitosFumar.Size = new System.Drawing.Size(489, 85);
+            this.dgvHabitosFumar.TabIndex = 18;
             // 
             // label72
             // 
             this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(245, 169);
+            this.label72.Location = new System.Drawing.Point(236, 134);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(108, 13);
             this.label72.TabIndex = 17;
@@ -2703,115 +2724,115 @@
             // label71
             // 
             this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(542, 170);
+            this.label71.Location = new System.Drawing.Point(534, 134);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(14, 13);
             this.label71.TabIndex = 16;
             this.label71.Text = "X";
             // 
-            // comboBox24
+            // cboComponenteTiempoFumaba
             // 
-            this.comboBox24.FormattingEnabled = true;
-            this.comboBox24.Location = new System.Drawing.Point(562, 166);
-            this.comboBox24.Name = "comboBox24";
-            this.comboBox24.Size = new System.Drawing.Size(105, 21);
-            this.comboBox24.TabIndex = 15;
+            this.cboComponenteTiempoFumaba.FormattingEnabled = true;
+            this.cboComponenteTiempoFumaba.Location = new System.Drawing.Point(554, 131);
+            this.cboComponenteTiempoFumaba.Name = "cboComponenteTiempoFumaba";
+            this.cboComponenteTiempoFumaba.Size = new System.Drawing.Size(105, 21);
+            this.cboComponenteTiempoFumaba.TabIndex = 15;
             // 
-            // comboBox25
+            // cboElementoFumaba
             // 
-            this.comboBox25.FormattingEnabled = true;
-            this.comboBox25.Location = new System.Drawing.Point(415, 166);
-            this.comboBox25.Name = "comboBox25";
-            this.comboBox25.Size = new System.Drawing.Size(121, 21);
-            this.comboBox25.TabIndex = 14;
+            this.cboElementoFumaba.FormattingEnabled = true;
+            this.cboElementoFumaba.Location = new System.Drawing.Point(407, 131);
+            this.cboElementoFumaba.Name = "cboElementoFumaba";
+            this.cboElementoFumaba.Size = new System.Drawing.Size(121, 21);
+            this.cboElementoFumaba.TabIndex = 14;
             // 
-            // textBox25
+            // txtCantidadFumaba
             // 
-            this.textBox25.Location = new System.Drawing.Point(358, 167);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(51, 20);
-            this.textBox25.TabIndex = 13;
+            this.txtCantidadFumaba.Location = new System.Drawing.Point(350, 131);
+            this.txtCantidadFumaba.Name = "txtCantidadFumaba";
+            this.txtCantidadFumaba.Size = new System.Drawing.Size(51, 20);
+            this.txtCantidadFumaba.TabIndex = 13;
             // 
-            // comboBox23
+            // cboDescripcionDelTiempoFumaba
             // 
-            this.comboBox23.FormattingEnabled = true;
-            this.comboBox23.Location = new System.Drawing.Point(126, 167);
-            this.comboBox23.Name = "comboBox23";
-            this.comboBox23.Size = new System.Drawing.Size(108, 21);
-            this.comboBox23.TabIndex = 11;
+            this.cboDescripcionDelTiempoFumaba.FormattingEnabled = true;
+            this.cboDescripcionDelTiempoFumaba.Location = new System.Drawing.Point(121, 131);
+            this.cboDescripcionDelTiempoFumaba.Name = "cboDescripcionDelTiempoFumaba";
+            this.cboDescripcionDelTiempoFumaba.Size = new System.Drawing.Size(108, 21);
+            this.cboDescripcionDelTiempoFumaba.TabIndex = 11;
             // 
-            // comboBox22
+            // cboElementosDelTiempoFumaba
             // 
-            this.comboBox22.FormattingEnabled = true;
-            this.comboBox22.Location = new System.Drawing.Point(320, 126);
-            this.comboBox22.Name = "comboBox22";
-            this.comboBox22.Size = new System.Drawing.Size(121, 21);
-            this.comboBox22.TabIndex = 10;
+            this.cboElementosDelTiempoFumaba.FormattingEnabled = true;
+            this.cboElementosDelTiempoFumaba.Location = new System.Drawing.Point(434, 97);
+            this.cboElementosDelTiempoFumaba.Name = "cboElementosDelTiempoFumaba";
+            this.cboElementosDelTiempoFumaba.Size = new System.Drawing.Size(121, 21);
+            this.cboElementosDelTiempoFumaba.TabIndex = 10;
             // 
-            // textBox24
+            // txtCantiTiempoDejoFumar
             // 
-            this.textBox24.Location = new System.Drawing.Point(214, 127);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(100, 20);
-            this.textBox24.TabIndex = 9;
+            this.txtCantiTiempoDejoFumar.Location = new System.Drawing.Point(328, 98);
+            this.txtCantiTiempoDejoFumar.Name = "txtCantiTiempoDejoFumar";
+            this.txtCantiTiempoDejoFumar.Size = new System.Drawing.Size(100, 20);
+            this.txtCantiTiempoDejoFumar.TabIndex = 9;
             // 
-            // checkBox10
+            // cbDejoFumar
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(9, 100);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(92, 17);
-            this.checkBox10.TabIndex = 8;
-            this.checkBox10.Text = "Dejó de fumar";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.cbDejoFumar.AutoSize = true;
+            this.cbDejoFumar.Location = new System.Drawing.Point(9, 100);
+            this.cbDejoFumar.Name = "cbDejoFumar";
+            this.cbDejoFumar.Size = new System.Drawing.Size(92, 17);
+            this.cbDejoFumar.TabIndex = 8;
+            this.cbDejoFumar.Text = "Dejó de fumar";
+            this.cbDejoFumar.UseVisualStyleBackColor = true;
             // 
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(6, 170);
+            this.label69.Location = new System.Drawing.Point(1, 134);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(114, 13);
             this.label69.TabIndex = 5;
             this.label69.Text = "Descripción del tiempo";
             // 
-            // textBox23
+            // txtCantidadAñosFumando
             // 
-            this.textBox23.Location = new System.Drawing.Point(534, 66);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(100, 20);
-            this.textBox23.TabIndex = 7;
+            this.txtCantidadAñosFumando.Location = new System.Drawing.Point(534, 66);
+            this.txtCantidadAñosFumando.Name = "txtCantidadAñosFumando";
+            this.txtCantidadAñosFumando.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidadAñosFumando.TabIndex = 7;
             // 
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(6, 131);
+            this.label68.Location = new System.Drawing.Point(120, 102);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(202, 13);
             this.label68.TabIndex = 4;
             this.label68.Text = "Tiempo aproximado en que dejó de fumar";
             // 
-            // comboBox21
+            // cboElementoQueFuma
             // 
-            this.comboBox21.FormattingEnabled = true;
-            this.comboBox21.Location = new System.Drawing.Point(265, 66);
-            this.comboBox21.Name = "comboBox21";
-            this.comboBox21.Size = new System.Drawing.Size(105, 21);
-            this.comboBox21.TabIndex = 6;
+            this.cboElementoQueFuma.FormattingEnabled = true;
+            this.cboElementoQueFuma.Location = new System.Drawing.Point(118, 66);
+            this.cboElementoQueFuma.Name = "cboElementoQueFuma";
+            this.cboElementoQueFuma.Size = new System.Drawing.Size(121, 21);
+            this.cboElementoQueFuma.TabIndex = 6;
             // 
-            // comboBox20
+            // cboComponenteTiempoFuma
             // 
-            this.comboBox20.FormattingEnabled = true;
-            this.comboBox20.Location = new System.Drawing.Point(118, 66);
-            this.comboBox20.Name = "comboBox20";
-            this.comboBox20.Size = new System.Drawing.Size(121, 21);
-            this.comboBox20.TabIndex = 5;
+            this.cboComponenteTiempoFuma.FormattingEnabled = true;
+            this.cboComponenteTiempoFuma.Location = new System.Drawing.Point(265, 65);
+            this.cboComponenteTiempoFuma.Name = "cboComponenteTiempoFuma";
+            this.cboComponenteTiempoFuma.Size = new System.Drawing.Size(121, 21);
+            this.cboComponenteTiempoFuma.TabIndex = 5;
             // 
-            // textBox22
+            // txtCantidadQueFuma
             // 
-            this.textBox22.Location = new System.Drawing.Point(61, 66);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(51, 20);
-            this.textBox22.TabIndex = 4;
+            this.txtCantidadQueFuma.Location = new System.Drawing.Point(61, 66);
+            this.txtCantidadQueFuma.Name = "txtCantidadQueFuma";
+            this.txtCantidadQueFuma.Size = new System.Drawing.Size(51, 20);
+            this.txtCantidadQueFuma.TabIndex = 4;
             // 
             // label64
             // 
@@ -2824,34 +2845,34 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.radioButton16);
-            this.panel5.Controls.Add(this.radioButton15);
+            this.panel5.Controls.Add(this.rbNoFuma);
+            this.panel5.Controls.Add(this.rbSiFuma);
             this.panel5.Location = new System.Drawing.Point(45, 19);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(150, 30);
             this.panel5.TabIndex = 3;
             // 
-            // radioButton16
+            // rbNoFuma
             // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Location = new System.Drawing.Point(109, 7);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(39, 17);
-            this.radioButton16.TabIndex = 5;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "No";
-            this.radioButton16.UseVisualStyleBackColor = true;
+            this.rbNoFuma.AutoSize = true;
+            this.rbNoFuma.Location = new System.Drawing.Point(109, 7);
+            this.rbNoFuma.Name = "rbNoFuma";
+            this.rbNoFuma.Size = new System.Drawing.Size(39, 17);
+            this.rbNoFuma.TabIndex = 5;
+            this.rbNoFuma.TabStop = true;
+            this.rbNoFuma.Text = "No";
+            this.rbNoFuma.UseVisualStyleBackColor = true;
             // 
-            // radioButton15
+            // rbSiFuma
             // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(3, 7);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(34, 17);
-            this.radioButton15.TabIndex = 4;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "Si";
-            this.radioButton15.UseVisualStyleBackColor = true;
+            this.rbSiFuma.AutoSize = true;
+            this.rbSiFuma.Location = new System.Drawing.Point(3, 7);
+            this.rbSiFuma.Name = "rbSiFuma";
+            this.rbSiFuma.Size = new System.Drawing.Size(34, 17);
+            this.rbSiFuma.TabIndex = 4;
+            this.rbSiFuma.TabStop = true;
+            this.rbSiFuma.Text = "Si";
+            this.rbSiFuma.UseVisualStyleBackColor = true;
             // 
             // label65
             // 
@@ -2894,33 +2915,33 @@
             // 
             // groupBox16
             // 
-            this.groupBox16.Controls.Add(this.button33);
-            this.groupBox16.Controls.Add(this.comboBox44);
-            this.groupBox16.Controls.Add(this.textBox35);
+            this.groupBox16.Controls.Add(this.btnAgregarHabitoMedicamento);
+            this.groupBox16.Controls.Add(this.cboElementoTiempoCancelacionMedicamento);
+            this.groupBox16.Controls.Add(this.txtCantTiempoCancelacionMedicamento);
             this.groupBox16.Controls.Add(this.label95);
             this.groupBox16.Controls.Add(this.textBox34);
             this.groupBox16.Controls.Add(this.label97);
-            this.groupBox16.Controls.Add(this.comboBox43);
-            this.groupBox16.Controls.Add(this.textBox31);
-            this.groupBox16.Controls.Add(this.textBox30);
+            this.groupBox16.Controls.Add(this.cboElementoTiempoMedicamento);
+            this.groupBox16.Controls.Add(this.txtCantidadTiempoConsumoMedicamento);
+            this.groupBox16.Controls.Add(this.txtMotivoConsumo);
             this.groupBox16.Controls.Add(this.label88);
             this.groupBox16.Controls.Add(this.label84);
-            this.groupBox16.Controls.Add(this.checkBox13);
+            this.groupBox16.Controls.Add(this.chbAutomedicado);
             this.groupBox16.Controls.Add(this.groupBox17);
             this.groupBox16.Controls.Add(this.button32);
-            this.groupBox16.Controls.Add(this.comboBox36);
-            this.groupBox16.Controls.Add(this.comboBox35);
-            this.groupBox16.Controls.Add(this.radioButton22);
-            this.groupBox16.Controls.Add(this.radioButton21);
+            this.groupBox16.Controls.Add(this.cboFrecuencia);
+            this.groupBox16.Controls.Add(this.cboPresentacionMedicamento);
+            this.groupBox16.Controls.Add(this.rbMedicamentoAnterior);
+            this.groupBox16.Controls.Add(this.rbMedicamentoActual);
             this.groupBox16.Controls.Add(this.button31);
-            this.groupBox16.Controls.Add(this.comboBox34);
+            this.groupBox16.Controls.Add(this.cboFormaAdministración);
             this.groupBox16.Controls.Add(this.button30);
             this.groupBox16.Controls.Add(this.button29);
             this.groupBox16.Controls.Add(this.button28);
-            this.groupBox16.Controls.Add(this.comboBox33);
-            this.groupBox16.Controls.Add(this.textBox28);
-            this.groupBox16.Controls.Add(this.comboBox32);
-            this.groupBox16.Controls.Add(this.comboBox31);
+            this.groupBox16.Controls.Add(this.cboUnidadMedida);
+            this.groupBox16.Controls.Add(this.txtConcentración);
+            this.groupBox16.Controls.Add(this.cboNombreComercial);
+            this.groupBox16.Controls.Add(this.cboNombreGenerico);
             this.groupBox16.Controls.Add(this.label90);
             this.groupBox16.Controls.Add(this.label89);
             this.groupBox16.Controls.Add(this.label85);
@@ -2935,29 +2956,29 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Consumo drogas Lícitas";
             // 
-            // button33
+            // btnAgregarHabitoMedicamento
             // 
-            this.button33.Location = new System.Drawing.Point(282, 337);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(122, 23);
-            this.button33.TabIndex = 69;
-            this.button33.Text = "Agregar medicamento";
-            this.button33.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoMedicamento.Location = new System.Drawing.Point(282, 337);
+            this.btnAgregarHabitoMedicamento.Name = "btnAgregarHabitoMedicamento";
+            this.btnAgregarHabitoMedicamento.Size = new System.Drawing.Size(122, 23);
+            this.btnAgregarHabitoMedicamento.TabIndex = 69;
+            this.btnAgregarHabitoMedicamento.Text = "Agregar medicamento";
+            this.btnAgregarHabitoMedicamento.UseVisualStyleBackColor = true;
             // 
-            // comboBox44
+            // cboElementoTiempoCancelacionMedicamento
             // 
-            this.comboBox44.FormattingEnabled = true;
-            this.comboBox44.Location = new System.Drawing.Point(537, 296);
-            this.comboBox44.Name = "comboBox44";
-            this.comboBox44.Size = new System.Drawing.Size(121, 21);
-            this.comboBox44.TabIndex = 68;
+            this.cboElementoTiempoCancelacionMedicamento.FormattingEnabled = true;
+            this.cboElementoTiempoCancelacionMedicamento.Location = new System.Drawing.Point(537, 296);
+            this.cboElementoTiempoCancelacionMedicamento.Name = "cboElementoTiempoCancelacionMedicamento";
+            this.cboElementoTiempoCancelacionMedicamento.Size = new System.Drawing.Size(121, 21);
+            this.cboElementoTiempoCancelacionMedicamento.TabIndex = 68;
             // 
-            // textBox35
+            // txtCantTiempoCancelacionMedicamento
             // 
-            this.textBox35.Location = new System.Drawing.Point(475, 296);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(56, 20);
-            this.textBox35.TabIndex = 67;
+            this.txtCantTiempoCancelacionMedicamento.Location = new System.Drawing.Point(475, 296);
+            this.txtCantTiempoCancelacionMedicamento.Name = "txtCantTiempoCancelacionMedicamento";
+            this.txtCantTiempoCancelacionMedicamento.Size = new System.Drawing.Size(56, 20);
+            this.txtCantTiempoCancelacionMedicamento.TabIndex = 67;
             // 
             // label95
             // 
@@ -2984,27 +3005,27 @@
             this.label97.TabIndex = 64;
             this.label97.Text = "Motivo de cancelación";
             // 
-            // comboBox43
+            // cboElementoTiempoMedicamento
             // 
-            this.comboBox43.FormattingEnabled = true;
-            this.comboBox43.Location = new System.Drawing.Point(537, 270);
-            this.comboBox43.Name = "comboBox43";
-            this.comboBox43.Size = new System.Drawing.Size(121, 21);
-            this.comboBox43.TabIndex = 63;
+            this.cboElementoTiempoMedicamento.FormattingEnabled = true;
+            this.cboElementoTiempoMedicamento.Location = new System.Drawing.Point(537, 270);
+            this.cboElementoTiempoMedicamento.Name = "cboElementoTiempoMedicamento";
+            this.cboElementoTiempoMedicamento.Size = new System.Drawing.Size(121, 21);
+            this.cboElementoTiempoMedicamento.TabIndex = 63;
             // 
-            // textBox31
+            // txtCantidadTiempoConsumoMedicamento
             // 
-            this.textBox31.Location = new System.Drawing.Point(475, 270);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(56, 20);
-            this.textBox31.TabIndex = 62;
+            this.txtCantidadTiempoConsumoMedicamento.Location = new System.Drawing.Point(475, 270);
+            this.txtCantidadTiempoConsumoMedicamento.Name = "txtCantidadTiempoConsumoMedicamento";
+            this.txtCantidadTiempoConsumoMedicamento.Size = new System.Drawing.Size(56, 20);
+            this.txtCantidadTiempoConsumoMedicamento.TabIndex = 62;
             // 
-            // textBox30
+            // txtMotivoConsumo
             // 
-            this.textBox30.Location = new System.Drawing.Point(177, 270);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(179, 20);
-            this.textBox30.TabIndex = 60;
+            this.txtMotivoConsumo.Location = new System.Drawing.Point(177, 270);
+            this.txtMotivoConsumo.Name = "txtMotivoConsumo";
+            this.txtMotivoConsumo.Size = new System.Drawing.Size(179, 20);
+            this.txtMotivoConsumo.TabIndex = 60;
             // 
             // label88
             // 
@@ -3024,39 +3045,39 @@
             this.label84.TabIndex = 58;
             this.label84.Text = "Motivo de consumir medicamento";
             // 
-            // checkBox13
+            // chbAutomedicado
             // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(345, 40);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(94, 17);
-            this.checkBox13.TabIndex = 57;
-            this.checkBox13.Text = "Automedicado";
-            this.checkBox13.UseVisualStyleBackColor = true;
+            this.chbAutomedicado.AutoSize = true;
+            this.chbAutomedicado.Location = new System.Drawing.Point(345, 40);
+            this.chbAutomedicado.Name = "chbAutomedicado";
+            this.chbAutomedicado.Size = new System.Drawing.Size(94, 17);
+            this.chbAutomedicado.TabIndex = 57;
+            this.chbAutomedicado.Text = "Automedicado";
+            this.chbAutomedicado.UseVisualStyleBackColor = true;
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.comboBox40);
-            this.groupBox17.Controls.Add(this.maskedTextBox4);
+            this.groupBox17.Controls.Add(this.cboPresentacionMedicamento1);
+            this.groupBox17.Controls.Add(this.mtbHora3);
             this.groupBox17.Controls.Add(this.label86);
-            this.groupBox17.Controls.Add(this.maskedTextBox3);
+            this.groupBox17.Controls.Add(this.mtbHora2);
             this.groupBox17.Controls.Add(this.label87);
-            this.groupBox17.Controls.Add(this.maskedTextBox5);
+            this.groupBox17.Controls.Add(this.mtbHora1);
             this.groupBox17.Controls.Add(this.label91);
             this.groupBox17.Controls.Add(this.label103);
-            this.groupBox17.Controls.Add(this.comboBox37);
+            this.groupBox17.Controls.Add(this.cboMomentoDia1);
             this.groupBox17.Controls.Add(this.label102);
-            this.groupBox17.Controls.Add(this.comboBox38);
-            this.groupBox17.Controls.Add(this.comboBox42);
-            this.groupBox17.Controls.Add(this.comboBox39);
-            this.groupBox17.Controls.Add(this.comboBox41);
+            this.groupBox17.Controls.Add(this.cboMomentoDia2);
+            this.groupBox17.Controls.Add(this.cboCantidadMedicamento3);
+            this.groupBox17.Controls.Add(this.cboMomentoDia3);
+            this.groupBox17.Controls.Add(this.cboCantidadMedicamento2);
             this.groupBox17.Controls.Add(this.label92);
-            this.groupBox17.Controls.Add(this.textBox29);
-            this.groupBox17.Controls.Add(this.textBox33);
+            this.groupBox17.Controls.Add(this.txtCantidadMedicamento1);
+            this.groupBox17.Controls.Add(this.txtCantidadMedicamento3);
             this.groupBox17.Controls.Add(this.label96);
             this.groupBox17.Controls.Add(this.label94);
             this.groupBox17.Controls.Add(this.label93);
-            this.groupBox17.Controls.Add(this.textBox32);
+            this.groupBox17.Controls.Add(this.txtcantidadMedicamento2);
             this.groupBox17.Location = new System.Drawing.Point(6, 154);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(647, 107);
@@ -3064,22 +3085,22 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Régimen de consumo";
             // 
-            // comboBox40
+            // cboPresentacionMedicamento1
             // 
-            this.comboBox40.FormattingEnabled = true;
-            this.comboBox40.Location = new System.Drawing.Point(355, 19);
-            this.comboBox40.Name = "comboBox40";
-            this.comboBox40.Size = new System.Drawing.Size(121, 21);
-            this.comboBox40.TabIndex = 46;
+            this.cboPresentacionMedicamento1.FormattingEnabled = true;
+            this.cboPresentacionMedicamento1.Location = new System.Drawing.Point(355, 19);
+            this.cboPresentacionMedicamento1.Name = "cboPresentacionMedicamento1";
+            this.cboPresentacionMedicamento1.Size = new System.Drawing.Size(121, 21);
+            this.cboPresentacionMedicamento1.TabIndex = 46;
             // 
-            // maskedTextBox4
+            // mtbHora3
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(531, 77);
-            this.maskedTextBox4.Mask = "00:00";
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(38, 20);
-            this.maskedTextBox4.TabIndex = 55;
-            this.maskedTextBox4.ValidatingType = typeof(System.DateTime);
+            this.mtbHora3.Location = new System.Drawing.Point(531, 77);
+            this.mtbHora3.Mask = "00:00";
+            this.mtbHora3.Name = "mtbHora3";
+            this.mtbHora3.Size = new System.Drawing.Size(38, 20);
+            this.mtbHora3.TabIndex = 55;
+            this.mtbHora3.ValidatingType = typeof(System.DateTime);
             // 
             // label86
             // 
@@ -3090,14 +3111,14 @@
             this.label86.TabIndex = 6;
             this.label86.Text = "Momento del día";
             // 
-            // maskedTextBox3
+            // mtbHora2
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(529, 45);
-            this.maskedTextBox3.Mask = "00:00";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(38, 20);
-            this.maskedTextBox3.TabIndex = 54;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            this.mtbHora2.Location = new System.Drawing.Point(529, 45);
+            this.mtbHora2.Mask = "00:00";
+            this.mtbHora2.Name = "mtbHora2";
+            this.mtbHora2.Size = new System.Drawing.Size(38, 20);
+            this.mtbHora2.TabIndex = 54;
+            this.mtbHora2.ValidatingType = typeof(System.DateTime);
             // 
             // label87
             // 
@@ -3108,14 +3129,14 @@
             this.label87.TabIndex = 7;
             this.label87.Text = "Momento del día";
             // 
-            // maskedTextBox5
+            // mtbHora1
             // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(528, 13);
-            this.maskedTextBox5.Mask = "00:00";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(38, 20);
-            this.maskedTextBox5.TabIndex = 53;
-            this.maskedTextBox5.ValidatingType = typeof(System.DateTime);
+            this.mtbHora1.Location = new System.Drawing.Point(528, 13);
+            this.mtbHora1.Mask = "00:00";
+            this.mtbHora1.Name = "mtbHora1";
+            this.mtbHora1.Size = new System.Drawing.Size(38, 20);
+            this.mtbHora1.TabIndex = 53;
+            this.mtbHora1.ValidatingType = typeof(System.DateTime);
             // 
             // label91
             // 
@@ -3135,13 +3156,13 @@
             this.label103.TabIndex = 50;
             this.label103.Text = "Hora";
             // 
-            // comboBox37
+            // cboMomentoDia1
             // 
-            this.comboBox37.FormattingEnabled = true;
-            this.comboBox37.Location = new System.Drawing.Point(93, 17);
-            this.comboBox37.Name = "comboBox37";
-            this.comboBox37.Size = new System.Drawing.Size(121, 21);
-            this.comboBox37.TabIndex = 26;
+            this.cboMomentoDia1.FormattingEnabled = true;
+            this.cboMomentoDia1.Location = new System.Drawing.Point(93, 17);
+            this.cboMomentoDia1.Name = "cboMomentoDia1";
+            this.cboMomentoDia1.Size = new System.Drawing.Size(121, 21);
+            this.cboMomentoDia1.TabIndex = 26;
             // 
             // label102
             // 
@@ -3152,37 +3173,37 @@
             this.label102.TabIndex = 49;
             this.label102.Text = "Hora";
             // 
-            // comboBox38
+            // cboMomentoDia2
             // 
-            this.comboBox38.FormattingEnabled = true;
-            this.comboBox38.Location = new System.Drawing.Point(93, 48);
-            this.comboBox38.Name = "comboBox38";
-            this.comboBox38.Size = new System.Drawing.Size(121, 21);
-            this.comboBox38.TabIndex = 27;
+            this.cboMomentoDia2.FormattingEnabled = true;
+            this.cboMomentoDia2.Location = new System.Drawing.Point(93, 48);
+            this.cboMomentoDia2.Name = "cboMomentoDia2";
+            this.cboMomentoDia2.Size = new System.Drawing.Size(121, 21);
+            this.cboMomentoDia2.TabIndex = 27;
             // 
-            // comboBox42
+            // cboCantidadMedicamento3
             // 
-            this.comboBox42.FormattingEnabled = true;
-            this.comboBox42.Location = new System.Drawing.Point(355, 77);
-            this.comboBox42.Name = "comboBox42";
-            this.comboBox42.Size = new System.Drawing.Size(121, 21);
-            this.comboBox42.TabIndex = 48;
+            this.cboCantidadMedicamento3.FormattingEnabled = true;
+            this.cboCantidadMedicamento3.Location = new System.Drawing.Point(355, 77);
+            this.cboCantidadMedicamento3.Name = "cboCantidadMedicamento3";
+            this.cboCantidadMedicamento3.Size = new System.Drawing.Size(121, 21);
+            this.cboCantidadMedicamento3.TabIndex = 48;
             // 
-            // comboBox39
+            // cboMomentoDia3
             // 
-            this.comboBox39.FormattingEnabled = true;
-            this.comboBox39.Location = new System.Drawing.Point(93, 77);
-            this.comboBox39.Name = "comboBox39";
-            this.comboBox39.Size = new System.Drawing.Size(121, 21);
-            this.comboBox39.TabIndex = 28;
+            this.cboMomentoDia3.FormattingEnabled = true;
+            this.cboMomentoDia3.Location = new System.Drawing.Point(93, 77);
+            this.cboMomentoDia3.Name = "cboMomentoDia3";
+            this.cboMomentoDia3.Size = new System.Drawing.Size(121, 21);
+            this.cboMomentoDia3.TabIndex = 28;
             // 
-            // comboBox41
+            // cboCantidadMedicamento2
             // 
-            this.comboBox41.FormattingEnabled = true;
-            this.comboBox41.Location = new System.Drawing.Point(356, 48);
-            this.comboBox41.Name = "comboBox41";
-            this.comboBox41.Size = new System.Drawing.Size(121, 21);
-            this.comboBox41.TabIndex = 47;
+            this.cboCantidadMedicamento2.FormattingEnabled = true;
+            this.cboCantidadMedicamento2.Location = new System.Drawing.Point(356, 48);
+            this.cboCantidadMedicamento2.Name = "cboCantidadMedicamento2";
+            this.cboCantidadMedicamento2.Size = new System.Drawing.Size(121, 21);
+            this.cboCantidadMedicamento2.TabIndex = 47;
             // 
             // label92
             // 
@@ -3193,19 +3214,19 @@
             this.label92.TabIndex = 29;
             this.label92.Text = "Cantidad";
             // 
-            // textBox29
+            // txtCantidadMedicamento1
             // 
-            this.textBox29.Location = new System.Drawing.Point(288, 20);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(62, 20);
-            this.textBox29.TabIndex = 33;
+            this.txtCantidadMedicamento1.Location = new System.Drawing.Point(288, 20);
+            this.txtCantidadMedicamento1.Name = "txtCantidadMedicamento1";
+            this.txtCantidadMedicamento1.Size = new System.Drawing.Size(62, 20);
+            this.txtCantidadMedicamento1.TabIndex = 33;
             // 
-            // textBox33
+            // txtCantidadMedicamento3
             // 
-            this.textBox33.Location = new System.Drawing.Point(288, 77);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(62, 20);
-            this.textBox33.TabIndex = 45;
+            this.txtCantidadMedicamento3.Location = new System.Drawing.Point(288, 77);
+            this.txtCantidadMedicamento3.Name = "txtCantidadMedicamento3";
+            this.txtCantidadMedicamento3.Size = new System.Drawing.Size(62, 20);
+            this.txtCantidadMedicamento3.TabIndex = 45;
             // 
             // label96
             // 
@@ -3235,13 +3256,13 @@
             this.label93.Text = "Cantidad";
             this.label93.Click += new System.EventHandler(this.label93_Click);
             // 
-            // textBox32
+            // txtcantidadMedicamento2
             // 
-            this.textBox32.Location = new System.Drawing.Point(288, 48);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(62, 20);
-            this.textBox32.TabIndex = 43;
-            this.textBox32.TextChanged += new System.EventHandler(this.textBox32_TextChanged);
+            this.txtcantidadMedicamento2.Location = new System.Drawing.Point(288, 48);
+            this.txtcantidadMedicamento2.Name = "txtcantidadMedicamento2";
+            this.txtcantidadMedicamento2.Size = new System.Drawing.Size(62, 20);
+            this.txtcantidadMedicamento2.TabIndex = 43;
+            this.txtcantidadMedicamento2.TextChanged += new System.EventHandler(this.textBox32_TextChanged);
             // 
             // button32
             // 
@@ -3252,43 +3273,43 @@
             this.button32.Text = "Añadir";
             this.button32.UseVisualStyleBackColor = true;
             // 
-            // comboBox36
+            // cboFrecuencia
             // 
-            this.comboBox36.FormattingEnabled = true;
-            this.comboBox36.Location = new System.Drawing.Point(345, 127);
-            this.comboBox36.Name = "comboBox36";
-            this.comboBox36.Size = new System.Drawing.Size(147, 21);
-            this.comboBox36.TabIndex = 23;
+            this.cboFrecuencia.FormattingEnabled = true;
+            this.cboFrecuencia.Location = new System.Drawing.Point(345, 127);
+            this.cboFrecuencia.Name = "cboFrecuencia";
+            this.cboFrecuencia.Size = new System.Drawing.Size(147, 21);
+            this.cboFrecuencia.TabIndex = 23;
             // 
-            // comboBox35
+            // cboPresentacionMedicamento
             // 
-            this.comboBox35.FormattingEnabled = true;
-            this.comboBox35.Location = new System.Drawing.Point(152, 127);
-            this.comboBox35.Name = "comboBox35";
-            this.comboBox35.Size = new System.Drawing.Size(117, 21);
-            this.comboBox35.TabIndex = 22;
+            this.cboPresentacionMedicamento.FormattingEnabled = true;
+            this.cboPresentacionMedicamento.Location = new System.Drawing.Point(152, 127);
+            this.cboPresentacionMedicamento.Name = "cboPresentacionMedicamento";
+            this.cboPresentacionMedicamento.Size = new System.Drawing.Size(117, 21);
+            this.cboPresentacionMedicamento.TabIndex = 22;
             // 
-            // radioButton22
+            // rbMedicamentoAnterior
             // 
-            this.radioButton22.AutoSize = true;
-            this.radioButton22.Location = new System.Drawing.Point(136, 40);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(193, 17);
-            this.radioButton22.TabIndex = 21;
-            this.radioButton22.TabStop = true;
-            this.radioButton22.Text = "Medicamento que dejó de consumir";
-            this.radioButton22.UseVisualStyleBackColor = true;
+            this.rbMedicamentoAnterior.AutoSize = true;
+            this.rbMedicamentoAnterior.Location = new System.Drawing.Point(136, 40);
+            this.rbMedicamentoAnterior.Name = "rbMedicamentoAnterior";
+            this.rbMedicamentoAnterior.Size = new System.Drawing.Size(193, 17);
+            this.rbMedicamentoAnterior.TabIndex = 21;
+            this.rbMedicamentoAnterior.TabStop = true;
+            this.rbMedicamentoAnterior.Text = "Medicamento que dejó de consumir";
+            this.rbMedicamentoAnterior.UseVisualStyleBackColor = true;
             // 
-            // radioButton21
+            // rbMedicamentoActual
             // 
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.Location = new System.Drawing.Point(9, 40);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(121, 17);
-            this.radioButton21.TabIndex = 20;
-            this.radioButton21.TabStop = true;
-            this.radioButton21.Text = "Medicamento actual";
-            this.radioButton21.UseVisualStyleBackColor = true;
+            this.rbMedicamentoActual.AutoSize = true;
+            this.rbMedicamentoActual.Location = new System.Drawing.Point(9, 40);
+            this.rbMedicamentoActual.Name = "rbMedicamentoActual";
+            this.rbMedicamentoActual.Size = new System.Drawing.Size(121, 17);
+            this.rbMedicamentoActual.TabIndex = 20;
+            this.rbMedicamentoActual.TabStop = true;
+            this.rbMedicamentoActual.Text = "Medicamento actual";
+            this.rbMedicamentoActual.UseVisualStyleBackColor = true;
             // 
             // button31
             // 
@@ -3299,13 +3320,13 @@
             this.button31.Text = "Añadir";
             this.button31.UseVisualStyleBackColor = true;
             // 
-            // comboBox34
+            // cboFormaAdministración
             // 
-            this.comboBox34.FormattingEnabled = true;
-            this.comboBox34.Location = new System.Drawing.Point(455, 100);
-            this.comboBox34.Name = "comboBox34";
-            this.comboBox34.Size = new System.Drawing.Size(117, 21);
-            this.comboBox34.TabIndex = 18;
+            this.cboFormaAdministración.FormattingEnabled = true;
+            this.cboFormaAdministración.Location = new System.Drawing.Point(455, 100);
+            this.cboFormaAdministración.Name = "cboFormaAdministración";
+            this.cboFormaAdministración.Size = new System.Drawing.Size(117, 21);
+            this.cboFormaAdministración.TabIndex = 18;
             // 
             // button30
             // 
@@ -3334,36 +3355,36 @@
             this.button28.Text = "Añadir";
             this.button28.UseVisualStyleBackColor = true;
             // 
-            // comboBox33
+            // cboUnidadMedida
             // 
-            this.comboBox33.FormattingEnabled = true;
-            this.comboBox33.Location = new System.Drawing.Point(488, 72);
-            this.comboBox33.Name = "comboBox33";
-            this.comboBox33.Size = new System.Drawing.Size(84, 21);
-            this.comboBox33.TabIndex = 14;
+            this.cboUnidadMedida.FormattingEnabled = true;
+            this.cboUnidadMedida.Location = new System.Drawing.Point(488, 72);
+            this.cboUnidadMedida.Name = "cboUnidadMedida";
+            this.cboUnidadMedida.Size = new System.Drawing.Size(84, 21);
+            this.cboUnidadMedida.TabIndex = 14;
             // 
-            // textBox28
+            // txtConcentración
             // 
-            this.textBox28.Location = new System.Drawing.Point(410, 72);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(72, 20);
-            this.textBox28.TabIndex = 13;
+            this.txtConcentración.Location = new System.Drawing.Point(410, 72);
+            this.txtConcentración.Name = "txtConcentración";
+            this.txtConcentración.Size = new System.Drawing.Size(72, 20);
+            this.txtConcentración.TabIndex = 13;
             // 
-            // comboBox32
+            // cboNombreComercial
             // 
-            this.comboBox32.FormattingEnabled = true;
-            this.comboBox32.Location = new System.Drawing.Point(104, 100);
-            this.comboBox32.Name = "comboBox32";
-            this.comboBox32.Size = new System.Drawing.Size(121, 21);
-            this.comboBox32.TabIndex = 12;
+            this.cboNombreComercial.FormattingEnabled = true;
+            this.cboNombreComercial.Location = new System.Drawing.Point(104, 100);
+            this.cboNombreComercial.Name = "cboNombreComercial";
+            this.cboNombreComercial.Size = new System.Drawing.Size(121, 21);
+            this.cboNombreComercial.TabIndex = 12;
             // 
-            // comboBox31
+            // cboNombreGenerico
             // 
-            this.comboBox31.FormattingEnabled = true;
-            this.comboBox31.Location = new System.Drawing.Point(104, 72);
-            this.comboBox31.Name = "comboBox31";
-            this.comboBox31.Size = new System.Drawing.Size(121, 21);
-            this.comboBox31.TabIndex = 11;
+            this.cboNombreGenerico.FormattingEnabled = true;
+            this.cboNombreGenerico.Location = new System.Drawing.Point(104, 72);
+            this.cboNombreGenerico.Name = "cboNombreGenerico";
+            this.cboNombreGenerico.Size = new System.Drawing.Size(121, 21);
+            this.cboNombreGenerico.TabIndex = 11;
             // 
             // label90
             // 
@@ -3430,18 +3451,18 @@
             // 
             // groupBox15
             // 
-            this.groupBox15.Controls.Add(this.dataGridView10);
-            this.groupBox15.Controls.Add(this.button27);
-            this.groupBox15.Controls.Add(this.textBox27);
-            this.groupBox15.Controls.Add(this.checkBox11);
-            this.groupBox15.Controls.Add(this.button26);
-            this.groupBox15.Controls.Add(this.checkBox12);
-            this.groupBox15.Controls.Add(this.comboBox30);
-            this.groupBox15.Controls.Add(this.comboBox29);
+            this.groupBox15.Controls.Add(this.dgvHabitosDrogasIlicitas);
+            this.groupBox15.Controls.Add(this.btnAgregarHabitoDrogaIlicita);
+            this.groupBox15.Controls.Add(this.txtCantidadTiempoConsumiendo);
+            this.groupBox15.Controls.Add(this.chbDejoConsumir);
+            this.groupBox15.Controls.Add(this.btnAñadirSustanciaDrogaIlicita);
+            this.groupBox15.Controls.Add(this.chbEnTratamiento);
+            this.groupBox15.Controls.Add(this.cboElementoTiempoDrogasIlicitas);
+            this.groupBox15.Controls.Add(this.cboSustanciaDrogaIlicita);
             this.groupBox15.Controls.Add(this.label79);
             this.groupBox15.Controls.Add(this.label78);
-            this.groupBox15.Controls.Add(this.radioButton19);
-            this.groupBox15.Controls.Add(this.radioButton20);
+            this.groupBox15.Controls.Add(this.rnNoConsumeDrogas);
+            this.groupBox15.Controls.Add(this.rbSiConsumeDrogas);
             this.groupBox15.Controls.Add(this.label70);
             this.groupBox15.Location = new System.Drawing.Point(6, 6);
             this.groupBox15.Name = "groupBox15";
@@ -3450,74 +3471,74 @@
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Consumo drogas ilícitas";
             // 
-            // dataGridView10
+            // dgvHabitosDrogasIlicitas
             // 
-            this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView10.Location = new System.Drawing.Point(177, 84);
-            this.dataGridView10.Name = "dataGridView10";
-            this.dataGridView10.Size = new System.Drawing.Size(490, 90);
-            this.dataGridView10.TabIndex = 20;
+            this.dgvHabitosDrogasIlicitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHabitosDrogasIlicitas.Location = new System.Drawing.Point(177, 84);
+            this.dgvHabitosDrogasIlicitas.Name = "dgvHabitosDrogasIlicitas";
+            this.dgvHabitosDrogasIlicitas.Size = new System.Drawing.Size(490, 90);
+            this.dgvHabitosDrogasIlicitas.TabIndex = 20;
             // 
-            // button27
+            // btnAgregarHabitoDrogaIlicita
             // 
-            this.button27.Location = new System.Drawing.Point(80, 84);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(91, 23);
-            this.button27.TabIndex = 19;
-            this.button27.Text = "Agregar droga";
-            this.button27.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoDrogaIlicita.Location = new System.Drawing.Point(80, 84);
+            this.btnAgregarHabitoDrogaIlicita.Name = "btnAgregarHabitoDrogaIlicita";
+            this.btnAgregarHabitoDrogaIlicita.Size = new System.Drawing.Size(91, 23);
+            this.btnAgregarHabitoDrogaIlicita.TabIndex = 19;
+            this.btnAgregarHabitoDrogaIlicita.Text = "Agregar droga";
+            this.btnAgregarHabitoDrogaIlicita.UseVisualStyleBackColor = true;
             // 
-            // textBox27
+            // txtCantidadTiempoConsumiendo
             // 
-            this.textBox27.Location = new System.Drawing.Point(443, 58);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(49, 20);
-            this.textBox27.TabIndex = 18;
+            this.txtCantidadTiempoConsumiendo.Location = new System.Drawing.Point(443, 58);
+            this.txtCantidadTiempoConsumiendo.Name = "txtCantidadTiempoConsumiendo";
+            this.txtCantidadTiempoConsumiendo.Size = new System.Drawing.Size(49, 20);
+            this.txtCantidadTiempoConsumiendo.TabIndex = 18;
             // 
-            // checkBox11
+            // chbDejoConsumir
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(6, 61);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(108, 17);
-            this.checkBox11.TabIndex = 15;
-            this.checkBox11.Text = "Dejó de consumir";
-            this.checkBox11.UseVisualStyleBackColor = true;
+            this.chbDejoConsumir.AutoSize = true;
+            this.chbDejoConsumir.Location = new System.Drawing.Point(6, 61);
+            this.chbDejoConsumir.Name = "chbDejoConsumir";
+            this.chbDejoConsumir.Size = new System.Drawing.Size(108, 17);
+            this.chbDejoConsumir.TabIndex = 15;
+            this.chbDejoConsumir.Text = "Dejó de consumir";
+            this.chbDejoConsumir.UseVisualStyleBackColor = true;
             // 
-            // button26
+            // btnAñadirSustanciaDrogaIlicita
             // 
-            this.button26.Location = new System.Drawing.Point(471, 25);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(64, 24);
-            this.button26.TabIndex = 17;
-            this.button26.Text = "Añadir";
-            this.button26.UseVisualStyleBackColor = true;
+            this.btnAñadirSustanciaDrogaIlicita.Location = new System.Drawing.Point(471, 25);
+            this.btnAñadirSustanciaDrogaIlicita.Name = "btnAñadirSustanciaDrogaIlicita";
+            this.btnAñadirSustanciaDrogaIlicita.Size = new System.Drawing.Size(64, 24);
+            this.btnAñadirSustanciaDrogaIlicita.TabIndex = 17;
+            this.btnAñadirSustanciaDrogaIlicita.Text = "Añadir";
+            this.btnAñadirSustanciaDrogaIlicita.UseVisualStyleBackColor = true;
             // 
-            // checkBox12
+            // chbEnTratamiento
             // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(135, 61);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(94, 17);
-            this.checkBox12.TabIndex = 16;
-            this.checkBox12.Text = "En tratamiento";
-            this.checkBox12.UseVisualStyleBackColor = true;
+            this.chbEnTratamiento.AutoSize = true;
+            this.chbEnTratamiento.Location = new System.Drawing.Point(135, 61);
+            this.chbEnTratamiento.Name = "chbEnTratamiento";
+            this.chbEnTratamiento.Size = new System.Drawing.Size(94, 17);
+            this.chbEnTratamiento.TabIndex = 16;
+            this.chbEnTratamiento.Text = "En tratamiento";
+            this.chbEnTratamiento.UseVisualStyleBackColor = true;
             // 
-            // comboBox30
+            // cboElementoTiempoDrogasIlicitas
             // 
-            this.comboBox30.FormattingEnabled = true;
-            this.comboBox30.Location = new System.Drawing.Point(498, 57);
-            this.comboBox30.Name = "comboBox30";
-            this.comboBox30.Size = new System.Drawing.Size(121, 21);
-            this.comboBox30.TabIndex = 14;
+            this.cboElementoTiempoDrogasIlicitas.FormattingEnabled = true;
+            this.cboElementoTiempoDrogasIlicitas.Location = new System.Drawing.Point(498, 57);
+            this.cboElementoTiempoDrogasIlicitas.Name = "cboElementoTiempoDrogasIlicitas";
+            this.cboElementoTiempoDrogasIlicitas.Size = new System.Drawing.Size(121, 21);
+            this.cboElementoTiempoDrogasIlicitas.TabIndex = 14;
             // 
-            // comboBox29
+            // cboSustanciaDrogaIlicita
             // 
-            this.comboBox29.FormattingEnabled = true;
-            this.comboBox29.Location = new System.Drawing.Point(337, 28);
-            this.comboBox29.Name = "comboBox29";
-            this.comboBox29.Size = new System.Drawing.Size(121, 21);
-            this.comboBox29.TabIndex = 13;
+            this.cboSustanciaDrogaIlicita.FormattingEnabled = true;
+            this.cboSustanciaDrogaIlicita.Location = new System.Drawing.Point(337, 28);
+            this.cboSustanciaDrogaIlicita.Name = "cboSustanciaDrogaIlicita";
+            this.cboSustanciaDrogaIlicita.Size = new System.Drawing.Size(121, 21);
+            this.cboSustanciaDrogaIlicita.TabIndex = 13;
             // 
             // label79
             // 
@@ -3537,27 +3558,27 @@
             this.label78.TabIndex = 11;
             this.label78.Text = "Sustancia";
             // 
-            // radioButton19
+            // rnNoConsumeDrogas
             // 
-            this.radioButton19.AutoSize = true;
-            this.radioButton19.Location = new System.Drawing.Point(181, 29);
-            this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(39, 17);
-            this.radioButton19.TabIndex = 10;
-            this.radioButton19.TabStop = true;
-            this.radioButton19.Text = "No";
-            this.radioButton19.UseVisualStyleBackColor = true;
+            this.rnNoConsumeDrogas.AutoSize = true;
+            this.rnNoConsumeDrogas.Location = new System.Drawing.Point(181, 29);
+            this.rnNoConsumeDrogas.Name = "rnNoConsumeDrogas";
+            this.rnNoConsumeDrogas.Size = new System.Drawing.Size(39, 17);
+            this.rnNoConsumeDrogas.TabIndex = 10;
+            this.rnNoConsumeDrogas.TabStop = true;
+            this.rnNoConsumeDrogas.Text = "No";
+            this.rnNoConsumeDrogas.UseVisualStyleBackColor = true;
             // 
-            // radioButton20
+            // rbSiConsumeDrogas
             // 
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.Location = new System.Drawing.Point(120, 29);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(34, 17);
-            this.radioButton20.TabIndex = 9;
-            this.radioButton20.TabStop = true;
-            this.radioButton20.Text = "Si";
-            this.radioButton20.UseVisualStyleBackColor = true;
+            this.rbSiConsumeDrogas.AutoSize = true;
+            this.rbSiConsumeDrogas.Location = new System.Drawing.Point(120, 29);
+            this.rbSiConsumeDrogas.Name = "rbSiConsumeDrogas";
+            this.rbSiConsumeDrogas.Size = new System.Drawing.Size(34, 17);
+            this.rbSiConsumeDrogas.TabIndex = 9;
+            this.rbSiConsumeDrogas.TabStop = true;
+            this.rbSiConsumeDrogas.Text = "Si";
+            this.rbSiConsumeDrogas.UseVisualStyleBackColor = true;
             // 
             // label70
             // 
@@ -3768,12 +3789,12 @@
             this.tabPage7.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosAlcoholismo)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosFumar)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tabPage8.ResumeLayout(false);
@@ -3783,7 +3804,7 @@
             this.groupBox17.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosDrogasIlicitas)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -3944,64 +3965,64 @@
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.ComboBox comboBox23;
-        private System.Windows.Forms.ComboBox comboBox22;
-        private System.Windows.Forms.TextBox textBox24;
-        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.ComboBox cboDescripcionDelTiempoFumaba;
+        private System.Windows.Forms.ComboBox cboElementosDelTiempoFumaba;
+        private System.Windows.Forms.TextBox txtCantiTiempoDejoFumar;
+        private System.Windows.Forms.CheckBox cbDejoFumar;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox txtCantidadAñosFumando;
         private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.ComboBox comboBox21;
-        private System.Windows.Forms.ComboBox comboBox20;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.ComboBox cboElementoQueFuma;
+        private System.Windows.Forms.ComboBox cboComponenteTiempoFuma;
+        private System.Windows.Forms.TextBox txtCantidadQueFuma;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.RadioButton radioButton16;
-        private System.Windows.Forms.RadioButton radioButton15;
+        private System.Windows.Forms.RadioButton rbNoFuma;
+        private System.Windows.Forms.RadioButton rbSiFuma;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.ComboBox comboBox24;
-        private System.Windows.Forms.ComboBox comboBox25;
-        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.ComboBox cboComponenteTiempoFumaba;
+        private System.Windows.Forms.ComboBox cboElementoFumaba;
+        private System.Windows.Forms.TextBox txtCantidadFumaba;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.RadioButton radioButton17;
-        private System.Windows.Forms.RadioButton radioButton18;
+        private System.Windows.Forms.RadioButton rbNoConsumeAlcohol;
+        private System.Windows.Forms.RadioButton rbSiConsumeAlcohol;
         private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.ComboBox comboBox28;
+        private System.Windows.Forms.ComboBox cboComponenteTiempoAlcoholismo;
         private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.ComboBox comboBox27;
-        private System.Windows.Forms.ComboBox comboBox26;
+        private System.Windows.Forms.TextBox txtCantidaConsume;
+        private System.Windows.Forms.ComboBox cboMedidaConsumeAlcohol;
+        private System.Windows.Forms.ComboBox cboTipoBebida;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Label label75;
         private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.DataGridView dataGridView8;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.DataGridView dataGridView9;
+        private System.Windows.Forms.Button brnAñadiTipoBebida;
+        private System.Windows.Forms.Button btnAgregarHabitoAlcoholismo;
+        private System.Windows.Forms.DataGridView dgvHabitosAlcoholismo;
+        private System.Windows.Forms.Button btnAgregarHabitoTabaquismo;
+        private System.Windows.Forms.DataGridView dgvHabitosFumar;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.RadioButton radioButton19;
-        private System.Windows.Forms.RadioButton radioButton20;
+        private System.Windows.Forms.RadioButton rnNoConsumeDrogas;
+        private System.Windows.Forms.RadioButton rbSiConsumeDrogas;
         private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.TextBox textBox27;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.ComboBox comboBox30;
-        private System.Windows.Forms.ComboBox comboBox29;
+        private System.Windows.Forms.TextBox txtCantidadTiempoConsumiendo;
+        private System.Windows.Forms.CheckBox chbDejoConsumir;
+        private System.Windows.Forms.Button btnAñadirSustanciaDrogaIlicita;
+        private System.Windows.Forms.CheckBox chbEnTratamiento;
+        private System.Windows.Forms.ComboBox cboElementoTiempoDrogasIlicitas;
+        private System.Windows.Forms.ComboBox cboSustanciaDrogaIlicita;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.DataGridView dataGridView10;
-        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.DataGridView dgvHabitosDrogasIlicitas;
+        private System.Windows.Forms.Button btnAgregarHabitoDrogaIlicita;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.ComboBox comboBox32;
-        private System.Windows.Forms.ComboBox comboBox31;
+        private System.Windows.Forms.ComboBox cboNombreComercial;
+        private System.Windows.Forms.ComboBox cboNombreGenerico;
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.Label label89;
         private System.Windows.Forms.Label label87;
@@ -4012,48 +4033,48 @@
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.ComboBox comboBox33;
-        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.ComboBox cboUnidadMedida;
+        private System.Windows.Forms.TextBox txtConcentración;
         private System.Windows.Forms.Button button31;
-        private System.Windows.Forms.ComboBox comboBox34;
+        private System.Windows.Forms.ComboBox cboFormaAdministración;
         private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.RadioButton radioButton22;
-        private System.Windows.Forms.RadioButton radioButton21;
-        private System.Windows.Forms.ComboBox comboBox35;
-        private System.Windows.Forms.ComboBox comboBox36;
+        private System.Windows.Forms.RadioButton rbMedicamentoAnterior;
+        private System.Windows.Forms.RadioButton rbMedicamentoActual;
+        private System.Windows.Forms.ComboBox cboPresentacionMedicamento;
+        private System.Windows.Forms.ComboBox cboFrecuencia;
         private System.Windows.Forms.Button button32;
-        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox txtCantidadMedicamento3;
         private System.Windows.Forms.Label label94;
-        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox txtcantidadMedicamento2;
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.Label label96;
-        private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.TextBox txtCantidadMedicamento1;
         private System.Windows.Forms.Label label92;
-        private System.Windows.Forms.ComboBox comboBox39;
-        private System.Windows.Forms.ComboBox comboBox38;
-        private System.Windows.Forms.ComboBox comboBox37;
+        private System.Windows.Forms.ComboBox cboMomentoDia3;
+        private System.Windows.Forms.ComboBox cboMomentoDia2;
+        private System.Windows.Forms.ComboBox cboMomentoDia1;
         private System.Windows.Forms.Label label91;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
+        private System.Windows.Forms.MaskedTextBox mtbHora3;
+        private System.Windows.Forms.MaskedTextBox mtbHora2;
+        private System.Windows.Forms.MaskedTextBox mtbHora1;
         private System.Windows.Forms.Label label103;
         private System.Windows.Forms.Label label102;
-        private System.Windows.Forms.ComboBox comboBox42;
-        private System.Windows.Forms.ComboBox comboBox41;
-        private System.Windows.Forms.ComboBox comboBox40;
-        private System.Windows.Forms.ComboBox comboBox43;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.ComboBox cboCantidadMedicamento3;
+        private System.Windows.Forms.ComboBox cboCantidadMedicamento2;
+        private System.Windows.Forms.ComboBox cboPresentacionMedicamento1;
+        private System.Windows.Forms.ComboBox cboElementoTiempoMedicamento;
+        private System.Windows.Forms.TextBox txtCantidadTiempoConsumoMedicamento;
+        private System.Windows.Forms.TextBox txtMotivoConsumo;
         private System.Windows.Forms.Label label88;
         private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.CheckBox chbAutomedicado;
         private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.ComboBox comboBox44;
-        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.ComboBox cboElementoTiempoCancelacionMedicamento;
+        private System.Windows.Forms.TextBox txtCantTiempoCancelacionMedicamento;
         private System.Windows.Forms.Label label95;
         private System.Windows.Forms.TextBox textBox34;
         private System.Windows.Forms.Label label97;
-        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button btnAgregarHabitoMedicamento;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataGridView dataGridView11;
@@ -4130,5 +4151,7 @@
         private System.Windows.Forms.Label label106;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.TextBox txtDescripcionMedida;
+        private System.Windows.Forms.Label label108;
     }
 }

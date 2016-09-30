@@ -343,6 +343,7 @@
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -3397,6 +3398,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnRegistraMedicamento);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(896, 30);
@@ -3408,12 +3410,22 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(6, 31);
+            this.button3.Location = new System.Drawing.Point(6, 32);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(264, 28);
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnRegistraMedicamento
+            // 
+            this.btnRegistraMedicamento.Location = new System.Drawing.Point(6, 70);
+            this.btnRegistraMedicamento.Name = "btnRegistraMedicamento";
+            this.btnRegistraMedicamento.Size = new System.Drawing.Size(264, 28);
+            this.btnRegistraMedicamento.TabIndex = 1;
+            this.btnRegistraMedicamento.Text = "Registrar Medicamento";
+            this.btnRegistraMedicamento.UseVisualStyleBackColor = true;
+            this.btnRegistraMedicamento.Click += new System.EventHandler(this.btnRegistraMedicamento_Click);
             // 
             // MenuPrincipal
             // 
@@ -3813,5 +3825,6 @@
         private System.Windows.Forms.TextBox txtTipoDocPaciente;
         private System.Windows.Forms.TextBox txtLocalidadPaciente;
         private System.Windows.Forms.TextBox txtBarrioPaciente;
+        private System.Windows.Forms.Button btnRegistraMedicamento;
     }
 }
