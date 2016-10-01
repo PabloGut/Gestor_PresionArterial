@@ -91,5 +91,26 @@ namespace GPA
             combo.ValueMember = valueMember;
             combo.DisplayMember = displayMember;
         }
+
+        private void btnAgregarHabitoMedicamento_Click(object sender, EventArgs e)
+        {
+           
+        }
+        public void registraMedicamento()
+        {
+            Medicamento medicamento = new Medicamento();
+
+            medicamento.nombreGenerico = txtNombreGenerico.Text;
+            medicamento.id_formaAdministración =Convert.ToInt32(cboFormaAdministración.SelectedValue);
+            medicamento.concentracion = Convert.ToInt32(txtConcentracion.Text);
+            medicamento.id_unidadMedida = Convert.ToInt32(cboUnidadMedida);
+            medicamento.id_presentacion = Convert.ToInt32(cboPresentacionMedicamento);
+            medicamento.cantidadComprimidos = Convert.ToInt32(txtCantidadComprimidos.Text);
+
+            NombreComercial nombreComercial = new NombreComercial();
+            nombreComercial.nombre = txtNombreComercial.Text;
+
+            MedicamentoLN.registrarMedicamento(medicamento, nombreComercial);
+        }
     }
 }

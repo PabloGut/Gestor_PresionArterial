@@ -15,5 +15,6 @@ namespace Entidades.Clases
         public int id_formaAdministración { set; get; }
         public int id_presentacion { set; get; }
         public int id_nombreComercial { set; get; }
+        public int cantidadComprimidos { set; get; }
     }
 }

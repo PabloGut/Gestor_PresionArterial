@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtCantidadComprimidos = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtConcentracion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadirPresentacionMedicamento = new System.Windows.Forms.Button();
             this.cboPresentacionMedicamento = new System.Windows.Forms.ComboBox();
             this.btnAñadirFormaAdministracion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombreComercial = new System.Windows.Forms.TextBox();
+            this.txtNombreGenerico = new System.Windows.Forms.TextBox();
             this.btnAgregarHabitoMedicamento = new System.Windows.Forms.Button();
             this.btnAñadirUnidadMedida = new System.Windows.Forms.Button();
             this.cboFormaAdministración = new System.Windows.Forms.ComboBox();
@@ -48,24 +48,24 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.label81 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvListaMedicamentos = new System.Windows.Forms.DataGridView();
             this.groupBox16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaMedicamentos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox16
             // 
-            this.groupBox16.Controls.Add(this.textBox4);
+            this.groupBox16.Controls.Add(this.txtCantidadComprimidos);
             this.groupBox16.Controls.Add(this.label3);
-            this.groupBox16.Controls.Add(this.textBox3);
+            this.groupBox16.Controls.Add(this.txtConcentracion);
             this.groupBox16.Controls.Add(this.label2);
-            this.groupBox16.Controls.Add(this.button3);
+            this.groupBox16.Controls.Add(this.btnCancelar);
             this.groupBox16.Controls.Add(this.btnAñadirPresentacionMedicamento);
             this.groupBox16.Controls.Add(this.cboPresentacionMedicamento);
             this.groupBox16.Controls.Add(this.btnAñadirFormaAdministracion);
             this.groupBox16.Controls.Add(this.label1);
-            this.groupBox16.Controls.Add(this.textBox2);
-            this.groupBox16.Controls.Add(this.textBox1);
+            this.groupBox16.Controls.Add(this.txtNombreComercial);
+            this.groupBox16.Controls.Add(this.txtNombreGenerico);
             this.groupBox16.Controls.Add(this.btnAgregarHabitoMedicamento);
             this.groupBox16.Controls.Add(this.btnAñadirUnidadMedida);
             this.groupBox16.Controls.Add(this.cboFormaAdministración);
@@ -81,12 +81,12 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Datos generales del medicamento";
             // 
-            // textBox4
+            // txtCantidadComprimidos
             // 
-            this.textBox4.Location = new System.Drawing.Point(519, 118);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(110, 20);
-            this.textBox4.TabIndex = 80;
+            this.txtCantidadComprimidos.Location = new System.Drawing.Point(519, 118);
+            this.txtCantidadComprimidos.Name = "txtCantidadComprimidos";
+            this.txtCantidadComprimidos.Size = new System.Drawing.Size(110, 20);
+            this.txtCantidadComprimidos.TabIndex = 80;
             // 
             // label3
             // 
@@ -97,12 +97,12 @@
             this.label3.TabIndex = 79;
             this.label3.Text = "Cantidad comprimidos";
             // 
-            // textBox3
+            // txtConcentracion
             // 
-            this.textBox3.Location = new System.Drawing.Point(485, 19);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(127, 20);
-            this.textBox3.TabIndex = 78;
+            this.txtConcentracion.Location = new System.Drawing.Point(485, 19);
+            this.txtConcentracion.Name = "txtConcentracion";
+            this.txtConcentracion.Size = new System.Drawing.Size(127, 20);
+            this.txtConcentracion.TabIndex = 78;
             // 
             // label2
             // 
@@ -113,14 +113,14 @@
             this.label2.TabIndex = 77;
             this.label2.Text = "Concentración";
             // 
-            // button3
+            // btnCancelar
             // 
-            this.button3.Location = new System.Drawing.Point(391, 161);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 23);
-            this.button3.TabIndex = 76;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(391, 161);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(122, 23);
+            this.btnCancelar.TabIndex = 76;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnAñadirPresentacionMedicamento
             // 
@@ -159,19 +159,19 @@
             this.label1.TabIndex = 72;
             this.label1.Text = "Unidad de medida";
             // 
-            // textBox2
+            // txtNombreComercial
             // 
-            this.textBox2.Location = new System.Drawing.Point(99, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(207, 20);
-            this.textBox2.TabIndex = 71;
+            this.txtNombreComercial.Location = new System.Drawing.Point(99, 65);
+            this.txtNombreComercial.Name = "txtNombreComercial";
+            this.txtNombreComercial.Size = new System.Drawing.Size(207, 20);
+            this.txtNombreComercial.TabIndex = 71;
             // 
-            // textBox1
+            // txtNombreGenerico
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(207, 20);
-            this.textBox1.TabIndex = 70;
+            this.txtNombreGenerico.Location = new System.Drawing.Point(99, 20);
+            this.txtNombreGenerico.Name = "txtNombreGenerico";
+            this.txtNombreGenerico.Size = new System.Drawing.Size(207, 20);
+            this.txtNombreGenerico.TabIndex = 70;
             // 
             // btnAgregarHabitoMedicamento
             // 
@@ -181,6 +181,7 @@
             this.btnAgregarHabitoMedicamento.TabIndex = 69;
             this.btnAgregarHabitoMedicamento.Text = "Agregar medicamento";
             this.btnAgregarHabitoMedicamento.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoMedicamento.Click += new System.EventHandler(this.btnAgregarHabitoMedicamento_Click);
             // 
             // btnAñadirUnidadMedida
             // 
@@ -244,27 +245,27 @@
             this.label81.TabIndex = 1;
             this.label81.Text = "Nombre genérico";
             // 
-            // dataGridView1
+            // dgvListaMedicamentos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 213);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(821, 150);
-            this.dataGridView1.TabIndex = 3;
+            this.dgvListaMedicamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaMedicamentos.Location = new System.Drawing.Point(12, 213);
+            this.dgvListaMedicamentos.Name = "dgvListaMedicamentos";
+            this.dgvListaMedicamentos.Size = new System.Drawing.Size(821, 150);
+            this.dgvListaMedicamentos.TabIndex = 3;
             // 
             // RegistrarMedicamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 394);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvListaMedicamentos);
             this.Controls.Add(this.groupBox16);
             this.Name = "RegistrarMedicamento";
             this.Text = "RegistrarMedicamento";
             this.Load += new System.EventHandler(this.RegistrarMedicamento_Load);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaMedicamentos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -272,8 +273,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNombreComercial;
+        private System.Windows.Forms.TextBox txtNombreGenerico;
         private System.Windows.Forms.Button btnAgregarHabitoMedicamento;
         private System.Windows.Forms.Button btnAñadirUnidadMedida;
         private System.Windows.Forms.ComboBox cboFormaAdministración;
@@ -282,15 +283,15 @@
         private System.Windows.Forms.Label label89;
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadirPresentacionMedicamento;
         private System.Windows.Forms.ComboBox cboPresentacionMedicamento;
         private System.Windows.Forms.Button btnAñadirFormaAdministracion;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtCantidadComprimidos;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtConcentracion;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvListaMedicamentos;
     }
 }

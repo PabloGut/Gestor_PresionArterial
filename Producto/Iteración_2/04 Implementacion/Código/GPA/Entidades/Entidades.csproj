@@ -64,6 +64,7 @@
     <Compile Include="Clases\Medicamento.cs" />
     <Compile Include="Clases\Medida.cs" />
     <Compile Include="Clases\ModificacionSintoma.cs" />
+    <Compile Include="Clases\NombreComercial.cs" />
     <Compile Include="Clases\Operacion.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\ParteDelCuerpo.cs" />
