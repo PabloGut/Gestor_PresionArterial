@@ -717,6 +717,29 @@ id_familiar int primary key identity,
 nombre text)
 
 
+create table UnidadMedidaXMedicamento(
+id_medicamento_fk int,
+id_unidadMedida_fk int,
+primary key(id_medicamento_fk,id_unidadMedida_fk),
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida))
+
+create table FormaAdministracionXMedicamento(
+id_medicamento_fk int,
+id_formaAdministracion_fk int,
+primary key(id_medicamento_fk,id_formaAdministracion_fk),
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion))
+
+create table PresentacionMedicamentoXMedicamento(
+id_medicamento_fk int,
+id_presentacionMedicamento_fk int,
+primary key(id_medicamento_fk,id_presentacionMedicamento_fk),
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento))
+
+
+
 
 
 

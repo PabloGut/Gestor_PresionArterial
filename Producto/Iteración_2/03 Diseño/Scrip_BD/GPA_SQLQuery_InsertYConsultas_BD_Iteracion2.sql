@@ -308,10 +308,150 @@ values('Hormigas')
 
 /*--------------------------*/
 
+/*-------Insert Medicamento-----*/
+insert into Medicamento(nombreGenerico)
+values('Penicilina')
+
+insert into Medicamento(nombreGenerico)
+values('Anestésicos locales')
+
+insert into Medicamento(nombreGenerico)
+values('Sulfamidas')
+
+insert into Medicamento(nombreGenerico)
+values('Relajantes musculares')
+
+insert into Medicamento(nombreGenerico)
+values('Insulina no humana')
+
+insert into Medicamento(nombreGenerico)
+values('Contrastes yodados')
+/*--------------------------*/
+
+/*-------Insert ElementoQueFuma-----*/
+insert into ElementoQueFuma(nombre)
+values('Cigarrillos')
+
+insert into ElementoQueFuma(nombre)
+values('Etiquetas')
+
+select * from ElementoDelTiempo
+
+/*--------------------------*/
+
+
+/*-------Insert ComponenteTiempo-----*/
+insert into ComponenteDelTiempo(nombre)
+values('Día')
+
+insert into ComponenteDelTiempo(nombre)
+values('Mes')
+
+insert into ComponenteDelTiempo(nombre)
+values('Año')
+/*--------------------------*/
+
+
+/*-------Insert TipoBebida-----*/
+insert into TipoBebida(nombre)
+values('Vino')
+
+insert into TipoBebida(nombre)
+values('Cerveza')
+
+insert into TipoBebida(nombre)
+values('Whisky')
+
+insert into TipoBebida(nombre)
+values('Tequila')
+
+insert into TipoBebida(nombre)
+values('Ron')
+
+insert into TipoBebida(nombre)
+values('Vodka')
+
+
+/*--------------------------*/
+
+/*-------Insert Medida-----*/
+insert into Medida(nombre, descripcion)
+values('Vaso largo','Su capacidad aproximada ronda los 235 y los 355 ml')
+
+insert into Medida(nombre, descripcion)
+values('Vaso corto','Su capacidad aproximada ronda los 30 y los 120 ml')
+
+alter table Medida
+add descripcion text
+/*--------------------------*/
+
+/*-------Insert SustanciasDrogasIlicitas-----*/
+insert into Sustancia(nombre)
+values('Cocaína')
+
+insert into Sustancia(nombre)
+values('Heroína')
+
+
+/*--------------------------*/
+
+/*-------Insert NombreComercial de medicamentos-----*/
+insert into NombreComercial(nombre)
+values('DIUREX')
+
+/*--------------------------*/
+
+/*-------Insert UnidadMedida-----*/
+insert into UnidadMedida(nombre,descripcion)
+values('g.','Gramos')
+insert into UnidadMedida(nombre,descripcion)
+values('mg.','Miligramos')
+select * from UnidadMedida
+/*--------------------------*/
+
+/*-------Insert FormaAdministracion-----*/
+insert into FormaAdministracion(nombre)
+values('Vía oral')
+
+insert into FormaAdministracion(nombre)
+values('Vía sublingual')
+
+insert into FormaAdministracion(nombre)
+values('Vía gastroentérica')
+
+insert into FormaAdministracion(nombre)
+values('Vía intravenosa')
+
+insert into FormaAdministracion(nombre)
+values('Vía intramuscular')
+
+insert into FormaAdministracion(nombre)
+values('Vía subcutánea')
+/*--------------------------*/
+
+
+/*-------Insert Medicamentos-----*/
+insert into Medicamento(nombreGenerico)
+values('HIDROCLOROTIAZIDA')
+
+/*--------------------------*/
+/*-------Insert PresentaciónMedicamento-----*/
+insert into PresentacionMedicamento(nombre)
+values('Comprimidos')
+
+/*--------------------------*/
+
+/*-------Insert Frecuencia-----*/
+insert into Frecuencia(nombre)
+values('Diaria')
+/*--------------------------*/
+
+
 /*-------Insert-----*/
 
 /*--------------------------*/
 
-alter table Traumatismos
-add descripcion text
+alter table Medicamento
+add cantidadComprimidos int
 
+select * from PresentacionMedicamento
