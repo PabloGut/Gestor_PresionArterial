@@ -55,6 +55,7 @@ namespace DAO
 
         public static Estado buscarEstadoPorNombre(string nombre)
         {
+            setCadenaConexion();
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
 

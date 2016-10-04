@@ -1,6 +1,27 @@
 Insert into TipoDocumento(nombre,descripcion)
 values ('DNI','Documento nacional de identidad')
 
+Insert into TipoDocumento(nombre,descripcion)
+values ('LE','Libreta de Enrolamiento')
+
+Insert into TipoDocumento(nombre,descripcion)
+values ('LC','Libreta Cívica')
+
+Insert into TipoDocumento(nombre,descripcion)
+values ('CI','Cédula de Identidad')
+
+Insert into TipoDocumento(nombre,descripcion)
+values ('PAS','Pasaporte')
+
+Insert into TipoDocumento(nombre,descripcion)
+values ('CDI','Clave de Identificación')
+
+Insert into TipoDocumento(nombre,descripcion)
+values ('CUIL','Clave Unica de Identificación Laboral')
+
+Insert into TipoDocumento(nombre,descripcion)
+values ('CUIT','Clave Unica de Identificación Tributaria')
+
 /*Insert de usuarios*/
 Insert into Usuario(nombre_usuario,contraseña,fecha_creacion)
 values ('JuanRod',PWDENCRYPT(123),'03/09/2016')
@@ -10,8 +31,6 @@ values ('MartinM',PWDENCRYPT(111),'03/09/2016')
 
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) 
 values ('LJ',PWDENCRYPT(102030),'16/06/2016')
-
-
 /*-----------------*/
 
 Insert into Estado(nombre,descripcion)
@@ -21,14 +40,13 @@ Insert into Localidad(nombre)
 values('Córdoba')
 
 Insert into Barrio(nombre,descripcion,id_localidad_fk)
-values('Las Margaritas','barrio de la zona norte de la ciudad de cordoba',8)
+values('Las Margaritas','barrio de la zona norte de la ciudad de cordoba',1)
 
 Insert into Domicilio(calle,numero,codigo_postal,piso ,departamento,id_barrio_fk)
-values ('Bv. Los Granaderos', '3000', '5008',null,null,9)
+values ('Bv. Los Granaderos', '3000', '5008',null,null,1)
 
 Insert into Domicilio(calle,numero,codigo_postal,piso ,departamento,id_barrio_fk)
-values ('Tuyutí', '210', '5008',null,null,9)
-select * from ProfesionalMedico
+values ('Tuyutí', '210', '5008',null,null,1)
 
 Insert into Especialidad(nombre, descripcion)
 values ('Nefrología','Parte de la medicina que se ocupa de la anatomía, la fisiología y las enfermedades del riñón.')
@@ -41,26 +59,24 @@ values('Femenino')
 
 /*-------Insert Médicos-----*/
 insert into ProfesionalMedico(id_tipoDoc_fk,nro_documento,nombre,apellido,fechaNacimiento,matricula,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,id_especialidad_fk)
-values ('8','15036547','Luis','Juncos','20/06/1950','222545','4760021','152568741','LuisJuncos@hotmail.com','24','1','6')
+values (1,'15036547','Luis','Juncos','20/06/1950','222545','4760021','152568741','LuisJuncos@hotmail.com',3,1,1)
 /*-------------------------*/
 
 /*-------Insert Pacientes-----*/
 Insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_nacimiento,edad,altura,peso,id_hc_fk,id_domicilio_fk,id_profesionalMedico_tipoDoc_fk,id_profesionalMedico_nroDoc_fk)
-values(8,'20258789','Juan','Rodriguez','7489523','152789800','juanRod@hotmail.com','22','1','10/03/1977','39',1.98,'72',null,'17','8','15036547')
+values(1,'20258789','Juan','Rodriguez','7489523','152789800','juanRod@hotmail.com',1,1,'10/03/1977','39',1.98,'72',null,1,1,'15036547')
 
 Insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_nacimiento,edad,altura,peso,id_hc_fk,id_domicilio_fk,id_profesionalMedico_tipoDoc_fk,id_profesionalMedico_nroDoc_fk)
-values(8,'20000325','Martín','Molina','74700000','152801200','martinM@hotmail.com','23','1','20/03/1977','35',1.65,'70',null,'18','8','15036547')
+values(1,'20000325','Martín','Molina','74700000','152801200','martinM@hotmail.com',2,1,'20/03/1977','35',1.65,'70',null,2,1,'15036547')
 /*--------------------------*/
 
 
-/*-------Insert Pacientes-----*/
+/*-------Insert Tipo síntoma-----*/
 insert into TipoSintoma(nombre)
 values('Dolor')
 
 insert into TipoSintoma(nombre)
 values('Molestia')
-
-select * from ParteDelCuerpo
 /*--------------------------*/
 
 /*-------Insert Parte del cuerpo-----*/
@@ -78,7 +94,6 @@ values('Espalda')
 
 insert into ParteDelCuerpo(nombre)
 values('Cintura')
-
 /*--------------------------*/
 
 /*-------Insert Carácter del dolor-----*/
@@ -108,7 +123,6 @@ values('Fulgurante')
 
 insert into CaracterDelDolor(nombre)
 values('Terebrante')
-
 /*--------------------------*/
 
 /*-------Insert Elementos del tiempo-----*/
@@ -120,12 +134,9 @@ values('Meses')
 
 insert into ElementoDelTiempo(nombre)
 values('Años')
-
-
 /*--------------------------*/
 
 /*-------Insert Descripción del tiempo-----*/
-
 insert into DescripcionDelTiempo(nombre)
 values('Antenoche')
 
@@ -134,7 +145,6 @@ values('Hace tres días')
 
 insert into DescripcionDelTiempo(nombre)
 values('La semana pasada')
-
 /*--------------------------*/
 
 /*-------Insert ModificaciónSíntoma-----*/
@@ -146,9 +156,6 @@ values('Disminuyendo')
 
 insert into ModificacionSintoma(nombre)
 values('No se modifica')
-
-select * from ElementoDeModificacion
-delete from ModificacionSintoma 
 /*--------------------------*/
 
 /*-------Insert ElementoDeModificacion-----*/
@@ -160,7 +167,6 @@ values('Posiciones corporales')
 /*--------------------------*/
 
 /*-------Insert TiposAntecedentesMórbidos-----*/
-
 insert into TiposAntecedentesMorbidos(nombre)
 values('Enfermedad')
 
@@ -239,8 +245,6 @@ values('Hermano')
 
 insert into Familiar(nombre)
 values('Hermana')
-
-
 /*--------------------------*/
 
 /*-------Insert Alimento-----*/
@@ -264,7 +268,6 @@ values('Trigo')
 
 insert into Alimento(nombre)
 values('Huevo')
-
 /*--------------------------*/
 
 /*-------Insert SustanciasAmbiente-----*/
@@ -279,7 +282,6 @@ values('Ácaros')
 
 insert into SustanciaAmbiente(nombre)
 values('Hongos')
-
 /*--------------------------*/
 
 /*-------Insert SustanciaContactoPiel-----*/
@@ -305,7 +307,6 @@ values('Avispas')
 
 insert into Insecto(nombre)
 values('Hormigas')
-
 /*--------------------------*/
 
 /*-------Insert Medicamento-----*/
@@ -334,9 +335,6 @@ values('Cigarrillos')
 
 insert into ElementoQueFuma(nombre)
 values('Etiquetas')
-
-select * from ElementoDelTiempo
-
 /*--------------------------*/
 
 
@@ -370,8 +368,6 @@ values('Ron')
 
 insert into TipoBebida(nombre)
 values('Vodka')
-
-
 /*--------------------------*/
 
 /*-------Insert Medida-----*/
@@ -380,9 +376,6 @@ values('Vaso largo','Su capacidad aproximada ronda los 235 y los 355 ml')
 
 insert into Medida(nombre, descripcion)
 values('Vaso corto','Su capacidad aproximada ronda los 30 y los 120 ml')
-
-alter table Medida
-add descripcion text
 /*--------------------------*/
 
 /*-------Insert SustanciasDrogasIlicitas-----*/
@@ -391,14 +384,11 @@ values('Cocaína')
 
 insert into Sustancia(nombre)
 values('Heroína')
-
-
 /*--------------------------*/
 
 /*-------Insert NombreComercial de medicamentos-----*/
 insert into NombreComercial(nombre)
 values('DIUREX')
-
 /*--------------------------*/
 
 /*-------Insert UnidadMedida-----*/
@@ -406,7 +396,6 @@ insert into UnidadMedida(nombre,descripcion)
 values('g.','Gramos')
 insert into UnidadMedida(nombre,descripcion)
 values('mg.','Miligramos')
-select * from UnidadMedida
 /*--------------------------*/
 
 /*-------Insert FormaAdministracion-----*/
@@ -429,16 +418,14 @@ insert into FormaAdministracion(nombre)
 values('Vía subcutánea')
 /*--------------------------*/
 
-
 /*-------Insert Medicamentos-----*/
 insert into Medicamento(nombreGenerico)
 values('HIDROCLOROTIAZIDA')
-
 /*--------------------------*/
+
 /*-------Insert PresentaciónMedicamento-----*/
 insert into PresentacionMedicamento(nombre)
 values('Comprimidos')
-
 /*--------------------------*/
 
 /*-------Insert Frecuencia-----*/
@@ -446,12 +433,6 @@ insert into Frecuencia(nombre)
 values('Diaria')
 /*--------------------------*/
 
-
 /*-------Insert-----*/
 
 /*--------------------------*/
-
-alter table Medicamento
-add cantidadComprimidos int
-
-select * from PresentacionMedicamento

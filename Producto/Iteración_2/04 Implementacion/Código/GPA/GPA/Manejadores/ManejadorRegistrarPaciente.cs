@@ -66,17 +66,17 @@ namespace GPA.Manejadores
             pantalla.presentarBarrios(barrios);
         }
 
-        public void altaPacienteConfirmada(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int edad, double altura, int peso)
+        public void altaPacienteConfirmada(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, DateTime fecha_nacimiento, int edad, double altura, int peso, ProfesionaMedico medico)
         {
             Usuario usuario=generarUsuarioYPassword(nombre, apellido);
             pantalla.presentarUsuario(usuario.nombre,usuario.pass);
-            crearPaciente(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, id_barrio, edad, altura, peso, usuario);
+            crearPaciente(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, calle, numero, piso, departamento, codigo_postal, id_barrio, fecha_nacimiento, edad, altura, peso, medico, usuario);
         }
 
-        public void crearPaciente(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int edad, double altura, int peso, Usuario usuario)
+        public void crearPaciente(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, DateTime fecha_nacimiento, int edad, double altura, int peso, ProfesionaMedico medico, Usuario usuario)
         {
             int id_estado=buscarEstadoDeAlta();
-            PacienteDAO.insertarPaciente(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, id_barrio, edad, altura, peso, usuario.nombre, usuario.pass, usuario.fechaCreacion, id_estado);
+            PacienteDAO.insertarPaciente(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, calle, numero, piso, departamento, codigo_postal, id_barrio, fecha_nacimiento, edad, altura, peso, medico, usuario.nombre, usuario.pass, usuario.fechaCreacion, id_estado);
             finCU("El paciente ha sido registrado exitosamente");
         }
 
@@ -98,7 +98,7 @@ namespace GPA.Manejadores
 
         public int verificarExistenciaUsuario(string nombre){
 
-            List<Usuario> usuarios = UsuarioDAO.buscarUsuarioPorNombre(nombre + "'[1-9]%'");
+            List<Usuario> usuarios = UsuarioDAO.buscarUsuarioPorNombre(nombre + "[1-9]%");
             int numeroUsuario=0;
             foreach (Usuario usuario in usuarios)
             {

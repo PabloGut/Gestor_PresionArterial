@@ -15,11 +15,13 @@ namespace GPA
     public partial class RegistrarPaciente : Form
     {
         private ManejadorRegistrarPaciente manejador;
-        
-        public RegistrarPaciente()
+        ProfesionaMedico medico { set; get; }
+
+        public RegistrarPaciente(ProfesionaMedico medicoLogueado)
         {
             InitializeComponent();
             opcionRegistrarPaciente();
+            medico = medicoLogueado;
         }
 
         public void habilitarPantalla()
@@ -125,22 +127,24 @@ namespace GPA
                 int telefono = Convert.ToInt32(txtTelefonoFijo.Text);
                 int nroCelular = Convert.ToInt32(txtNroCelular.Text);
                 string email = txtEmail.Text;
+                int id_sexo; if (radM.Checked) { id_sexo = 1; } else { id_sexo = 2; }
                 string calle = txtCalle.Text;
                 int numero = Convert.ToInt32(txtNroCalle.Text);
                 int piso = Convert.ToInt32(txtPiso.Text);
                 string departamento = txtDpto.Text;
                 int codigo_postal = Convert.ToInt32(txtCodigoPostal.Text);
                 Barrio barrio = (Barrio)cmbBarrio.Items[cmbBarrio.SelectedIndex];
-                int edad=DateTime.Today.Year-Convert.ToDateTime(txtFechaNacimiento.Text).Year;
+                DateTime fecha_nacimiento = Convert.ToDateTime(txtFechaNacimiento.Text);
+                int edad=DateTime.Today.Year-fecha_nacimiento.Year;
                 double altura = Convert.ToDouble(txtAltura.Text);
                 int peso = Convert.ToInt32(txtPeso.Text);
-                confirmacionNuevoPaciente(tipoDoc.id_tipoDoc,nro_documento,nombre,apellido,telefono,nroCelular,email,calle,numero,piso,departamento,codigo_postal,barrio.id_barrio,edad,altura,peso);
+                confirmacionNuevoPaciente(tipoDoc.id_tipoDoc,nro_documento,nombre,apellido,telefono,nroCelular,email,id_sexo,calle,numero,piso,departamento,codigo_postal,barrio.id_barrio,fecha_nacimiento,edad,altura,peso,medico);
             }
         }
 
-        public void confirmacionNuevoPaciente(int id_tipoDoc,int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int edad, double altura, int peso)
+        public void confirmacionNuevoPaciente(int id_tipoDoc,int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, DateTime fecha_nacimiento, int edad, double altura, int peso, ProfesionaMedico medico)
         {
-            manejador.altaPacienteConfirmada(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, id_barrio, edad, altura, peso);
+            manejador.altaPacienteConfirmada(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, calle, numero, piso, departamento, codigo_postal, id_barrio, fecha_nacimiento, edad, altura, peso, medico);
         }
 
         private void _cmbLocalidad_SelectedIndexChanged(object sender, EventArgs e)

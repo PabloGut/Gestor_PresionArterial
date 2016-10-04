@@ -342,8 +342,9 @@
             this.textBox44 = new System.Windows.Forms.TextBox();
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -397,7 +398,7 @@
             this.ediciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1148, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -407,7 +408,8 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarPacienteToolStripMenuItem,
             this.buscarPacienteToolStripMenuItem,
-            this.crearHistoriaClínicaToolStripMenuItem});
+            this.crearHistoriaClínicaToolStripMenuItem,
+            this.registrarProfesionalMédicoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -416,14 +418,14 @@
             // registrarPacienteToolStripMenuItem
             // 
             this.registrarPacienteToolStripMenuItem.Name = "registrarPacienteToolStripMenuItem";
-            this.registrarPacienteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.registrarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.registrarPacienteToolStripMenuItem.Text = "Registrar Paciente";
             this.registrarPacienteToolStripMenuItem.Click += new System.EventHandler(this.registrarPacienteToolStripMenuItem_Click);
             // 
             // buscarPacienteToolStripMenuItem
             // 
             this.buscarPacienteToolStripMenuItem.Name = "buscarPacienteToolStripMenuItem";
-            this.buscarPacienteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.buscarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.buscarPacienteToolStripMenuItem.Text = "Buscar Paciente";
             this.buscarPacienteToolStripMenuItem.Click += new System.EventHandler(this.buscarPacienteToolStripMenuItem_Click);
             // 
@@ -433,7 +435,7 @@
             this.consultarHistoriaClinicaToolStripMenuItem,
             this.agregarEstudioToolStripMenuItem});
             this.crearHistoriaClínicaToolStripMenuItem.Name = "crearHistoriaClínicaToolStripMenuItem";
-            this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.crearHistoriaClínicaToolStripMenuItem.Text = "Historia Clínica";
             this.crearHistoriaClínicaToolStripMenuItem.Click += new System.EventHandler(this.crearHistoriaClínicaToolStripMenuItem_Click);
             // 
@@ -3408,15 +3410,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones generales";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 32);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(264, 28);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Registrar Nuevo Paciente";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // btnRegistraMedicamento
             // 
             this.btnRegistraMedicamento.Location = new System.Drawing.Point(6, 70);
@@ -3427,11 +3420,27 @@
             this.btnRegistraMedicamento.UseVisualStyleBackColor = true;
             this.btnRegistraMedicamento.Click += new System.EventHandler(this.btnRegistraMedicamento_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 32);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(264, 28);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Registrar Nuevo Paciente";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // registrarProfesionalMédicoToolStripMenuItem
+            // 
+            this.registrarProfesionalMédicoToolStripMenuItem.Name = "registrarProfesionalMédicoToolStripMenuItem";
+            this.registrarProfesionalMédicoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.registrarProfesionalMédicoToolStripMenuItem.Text = "Registrar Profesional Médico";
+            this.registrarProfesionalMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarProfesionalMédicoToolStripMenuItem_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 689);
+            this.ClientSize = new System.Drawing.Size(1148, 689);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -3826,5 +3835,6 @@
         private System.Windows.Forms.TextBox txtLocalidadPaciente;
         private System.Windows.Forms.TextBox txtBarrioPaciente;
         private System.Windows.Forms.Button btnRegistraMedicamento;
+        private System.Windows.Forms.ToolStripMenuItem registrarProfesionalMédicoToolStripMenuItem;
     }
 }
