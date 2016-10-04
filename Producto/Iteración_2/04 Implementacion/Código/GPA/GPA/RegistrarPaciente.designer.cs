@@ -70,11 +70,15 @@
             this.lblTelefonoFijo = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.grbSexo = new System.Windows.Forms.GroupBox();
+            this.radM = new System.Windows.Forms.RadioButton();
+            this.radF = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.grbDocumento.SuspendLayout();
             this.grbAdicionales.SuspendLayout();
             this.grbDomicilio.SuspendLayout();
             this.grbPersonales.SuspendLayout();
+            this.grbSexo.SuspendLayout();
             this.SuspendLayout();
             // 
             // _txtNroDocumento
@@ -112,7 +116,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(331, 365);
+            this.btnSalir.Location = new System.Drawing.Point(332, 393);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 22;
@@ -122,7 +126,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(250, 365);
+            this.btnCancelar.Location = new System.Drawing.Point(251, 393);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 21;
@@ -132,7 +136,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(169, 365);
+            this.btnAceptar.Location = new System.Drawing.Point(170, 393);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 20;
@@ -148,7 +152,7 @@
             this.panel1.Controls.Add(this.grbPersonales);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(528, 338);
+            this.panel1.Size = new System.Drawing.Size(528, 375);
             this.panel1.TabIndex = 23;
             // 
             // grbDocumento
@@ -173,9 +177,9 @@
             this.grbAdicionales.Controls.Add(this._txtFechaNacimiento);
             this.grbAdicionales.Controls.Add(this.lblFechaNacimiento);
             this.grbAdicionales.Enabled = false;
-            this.grbAdicionales.Location = new System.Drawing.Point(12, 245);
+            this.grbAdicionales.Location = new System.Drawing.Point(12, 286);
             this.grbAdicionales.Name = "grbAdicionales";
-            this.grbAdicionales.Size = new System.Drawing.Size(504, 79);
+            this.grbAdicionales.Size = new System.Drawing.Size(504, 77);
             this.grbAdicionales.TabIndex = 2;
             this.grbAdicionales.TabStop = false;
             this.grbAdicionales.Text = "Datos Adicionales del Paciente";
@@ -250,7 +254,7 @@
             this.grbDomicilio.Enabled = false;
             this.grbDomicilio.Location = new System.Drawing.Point(278, 13);
             this.grbDomicilio.Name = "grbDomicilio";
-            this.grbDomicilio.Size = new System.Drawing.Size(238, 226);
+            this.grbDomicilio.Size = new System.Drawing.Size(238, 267);
             this.grbDomicilio.TabIndex = 1;
             this.grbDomicilio.TabStop = false;
             this.grbDomicilio.Text = "Datos del Domicilio";
@@ -372,6 +376,7 @@
             // 
             // grbPersonales
             // 
+            this.grbPersonales.Controls.Add(this.grbSexo);
             this.grbPersonales.Controls.Add(this._txtEmail);
             this.grbPersonales.Controls.Add(this._txtNroCelular);
             this.grbPersonales.Controls.Add(this._txtTelefonoFijo);
@@ -385,7 +390,7 @@
             this.grbPersonales.Enabled = false;
             this.grbPersonales.Location = new System.Drawing.Point(12, 91);
             this.grbPersonales.Name = "grbPersonales";
-            this.grbPersonales.Size = new System.Drawing.Size(260, 148);
+            this.grbPersonales.Size = new System.Drawing.Size(260, 189);
             this.grbPersonales.TabIndex = 0;
             this.grbPersonales.TabStop = false;
             this.grbPersonales.Text = "Datos Personales";
@@ -470,11 +475,44 @@
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Nombre:";
             // 
+            // grbSexo
+            // 
+            this.grbSexo.Controls.Add(this.radF);
+            this.grbSexo.Controls.Add(this.radM);
+            this.grbSexo.Location = new System.Drawing.Point(89, 140);
+            this.grbSexo.Name = "grbSexo";
+            this.grbSexo.Size = new System.Drawing.Size(156, 43);
+            this.grbSexo.TabIndex = 12;
+            this.grbSexo.TabStop = false;
+            this.grbSexo.Text = "Sexo";
+            // 
+            // radM
+            // 
+            this.radM.AutoSize = true;
+            this.radM.Location = new System.Drawing.Point(6, 19);
+            this.radM.Name = "radM";
+            this.radM.Size = new System.Drawing.Size(73, 17);
+            this.radM.TabIndex = 0;
+            this.radM.TabStop = true;
+            this.radM.Text = "Masculino";
+            this.radM.UseVisualStyleBackColor = true;
+            // 
+            // radF
+            // 
+            this.radF.AutoSize = true;
+            this.radF.Location = new System.Drawing.Point(85, 19);
+            this.radF.Name = "radF";
+            this.radF.Size = new System.Drawing.Size(71, 17);
+            this.radF.TabIndex = 1;
+            this.radF.TabStop = true;
+            this.radF.Text = "Femenino";
+            this.radF.UseVisualStyleBackColor = true;
+            // 
             // RegistrarPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 396);
+            this.ClientSize = new System.Drawing.Size(551, 428);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnCancelar);
@@ -492,6 +530,8 @@
             this.grbDomicilio.PerformLayout();
             this.grbPersonales.ResumeLayout(false);
             this.grbPersonales.PerformLayout();
+            this.grbSexo.ResumeLayout(false);
+            this.grbSexo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -642,5 +682,8 @@
         private System.Windows.Forms.Label lblTelefonoFijo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.GroupBox grbSexo;
+        private System.Windows.Forms.RadioButton radF;
+        private System.Windows.Forms.RadioButton radM;
     }
 }

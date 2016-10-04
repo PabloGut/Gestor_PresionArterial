@@ -28,3 +28,13 @@ D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Reposito
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\DAO.pdb
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\Entidades.exe
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\Entidades.pdb
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\DAO.exe.config
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\DAO.exe
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\DAO.pdb
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\Entidades.exe
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\Entidades.pdb
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.Properties.Resources.resources
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.csproj.GenerateResource.Cache
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.exe
+D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.pdb

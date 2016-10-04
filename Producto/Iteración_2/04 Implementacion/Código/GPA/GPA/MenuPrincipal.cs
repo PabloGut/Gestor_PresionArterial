@@ -61,7 +61,7 @@ namespace GPA
 
         private void registrarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegistrarPaciente rp = new RegistrarPaciente();
+            RegistrarPaciente rp = new RegistrarPaciente(medicoLogueado);
             rp.ShowDialog();
         }
 
@@ -346,6 +346,12 @@ namespace GPA
             RegistrarMedicamento formRegistrarMedicamento = new RegistrarMedicamento();
             formRegistrarMedicamento.ShowDialog();
 
+        }
+
+        private void registrarProfesionalMédicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarProfesionalMedico rpm = new RegistrarProfesionalMedico();
+            rpm.ShowDialog();
         }
     }
 }
