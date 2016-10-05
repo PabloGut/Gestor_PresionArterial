@@ -342,8 +342,8 @@
             this.textBox44 = new System.Windows.Forms.TextBox();
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -3408,15 +3408,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones generales";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 32);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(264, 28);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Registrar Nuevo Paciente";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // btnRegistraMedicamento
             // 
             this.btnRegistraMedicamento.Location = new System.Drawing.Point(6, 70);
@@ -3426,6 +3417,15 @@
             this.btnRegistraMedicamento.Text = "Registrar Medicamento";
             this.btnRegistraMedicamento.UseVisualStyleBackColor = true;
             this.btnRegistraMedicamento.Click += new System.EventHandler(this.btnRegistraMedicamento_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 32);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(264, 28);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Registrar Nuevo Paciente";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipal
             // 

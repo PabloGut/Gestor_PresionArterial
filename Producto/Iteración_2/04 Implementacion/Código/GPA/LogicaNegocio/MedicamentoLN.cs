@@ -19,5 +19,9 @@ namespace LogicaNegocio
         {
             MedicamentoDAO.registrarMedicamento(medicamento, nombreComercial);
         }
+        public static void registrarEspecificacionMedicamento(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoDAO.registrarEspecificacionMedicamento(especificacion);
+        }
     }
 }

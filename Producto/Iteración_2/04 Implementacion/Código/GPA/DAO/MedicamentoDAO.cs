@@ -65,12 +65,13 @@ namespace DAO
             cn.Close();
             return medicamentos;
         }
+      
         /*
-       * Método para registrar Medicamentos.
-       * Recibe como parámetro un objeto Medicamento y un objeto nombreComercial.
-       * Valor de retorno void.
-       */
-        public static void registrarMedicamento(Medicamento medicamento,NombreComercial nombreComercial)
+          * Método para registrar el nombre genérico de un medicamento.
+          * Recibe como parámetro un objeto Medicamento y un objeto nombreComercial.
+          * Valor de retorno void.
+         */
+        public static void registrarMedicamento(Medicamento medicamento, NombreComercial nombreComercial)
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
@@ -79,16 +80,12 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"insert into Medicamento(nombreGenerico,concentracion,id_unidadMedida_fk,id_formaAdministracion_fk,id_presentacionMedicamento_fk)
-                                    values(@nombreGenerico,@concentracion,@idUnidadMedida,@idFormaAdministracion,@idPresentacionMedicamento)";
+                string consulta = @"insert into Medicamento(nombreGenerico)
+                                    values(@nombreGenerico)";
 
                 SqlCommand cmd = new SqlCommand();
 
                 cmd.Parameters.AddWithValue("@nombreGenerico", medicamento.nombreGenerico);
-                cmd.Parameters.AddWithValue("@concentracion", medicamento.concentracion);
-                cmd.Parameters.AddWithValue("@idUnidadMedida", medicamento.id_unidadMedida);
-                cmd.Parameters.AddWithValue("@idFormaAdministracion", medicamento.id_formaAdministración);
-                cmd.Parameters.AddWithValue("@idPresentacionMedicamento", medicamento.id_presentacion);
 
                 tran = cn.BeginTransaction();
                 cmd.Connection = cn;
@@ -97,20 +94,15 @@ namespace DAO
                 cmd.Transaction = tran;
                 cmd.ExecuteNonQuery();
 
-                SqlCommand cmd1 = new SqlCommand("@@Identity", cn, tran);
+                SqlCommand cmd1 = new SqlCommand("select @@Identity", cn, tran);
 
                 medicamento.id_medicamento = Convert.ToInt32(cmd1.ExecuteScalar());
                 nombreComercial.id_medicamento_fk = medicamento.id_medicamento;
 
-                NombreComercialDAO.registrarNombreComercialDeMedicamento(nombreComercial,cn,tran);
+                NombreComercialDAO.registrarNombreComercialDeMedicamento(nombreComercial, cn, tran);
 
                 tran.Commit();
                 cn.Close();
-
-                registrarUnidadMedidaXMedicamento(medicamento);
-                registrarFormaAdministracionXMedicamento(medicamento);
-                registrarPresentacionXMedicamento(medicamento);
-
             }
             catch (Exception e)
             {
@@ -120,123 +112,9 @@ namespace DAO
                 }
                 throw new ApplicationException("Error: " + e.Message);
             }
-            
-        }
-        /*
-        * Método para registrar una unidad de medida por medicamento.
-        * Recibe como parámetro un objeto Medicamento.
-        * Valor de retorno void.
-        */
-        public static void registrarUnidadMedidaXMedicamento(Medicamento medicamento)
-        {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
-            
-            try
-            {
-                cn.Open();
-
-                string consulta = @"insert into UnidadMedidaXMedicamento(id_medicamento_fk,id_unidadMedida_fk,)
-                                    values(@idMedicamento,@idUnidadMedida)";
-
-                SqlCommand cmd = new SqlCommand();
-
-                cmd.Parameters.AddWithValue("@idMedicamento", medicamento.id_medicamento);
-                cmd.Parameters.AddWithValue("@idUnidadMedida", medicamento.id_unidadMedida);
-               
-                cmd.Connection = cn;
-                cmd.CommandText = consulta;
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                cn.Close();
-            }
-            catch (Exception e)
-            {
-                if (cn.State == ConnectionState.Open)
-                {
-                    cn.Close();
-                }
-                throw new ApplicationException("Error: " + e.Message);
-            }
-            
-        }
-        /*
-         * Método para registrar una forma de administracion de un medicamento.
-         * Recibe como parámetro un objeto Medicamento.
-         * Valor de retorno void.
-         */
-        public static void registrarFormaAdministracionXMedicamento(Medicamento medicamento)
-        {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
-
-            try
-            {
-                cn.Open();
-
-                string consulta = @"insert into FormaAdministracionXMedicamento(id_medicamento_fk,id_formaAdministracion_fk,)
-                                    values(@idMedicamento,@idFormaAdministracion)";
-
-                SqlCommand cmd = new SqlCommand();
-
-                cmd.Parameters.AddWithValue("@idMedicamento", medicamento.id_medicamento);
-                cmd.Parameters.AddWithValue("@idUnidadMedida", medicamento.id_formaAdministración);
-
-                cmd.Connection = cn;
-                cmd.CommandText = consulta;
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                cn.Close();
-            }
-            catch (Exception e)
-            {
-                if (cn.State == ConnectionState.Open)
-                {
-                    cn.Close();
-                }
-                throw new ApplicationException("Error: " + e.Message);
-            }
-
-        }
-        /*
-        * Método para registrar una forma de presentacion de un medicamento.
-        * Recibe como parámetro un objeto Medicamento.
-        * Valor de retorno void.
-        */
-        public static void registrarPresentacionXMedicamento(Medicamento medicamento)
-        {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
-
-            try
-            {
-                cn.Open();
-
-                string consulta = @"insert into PresentacionMedicamentoXMedicamento(id_medicamento_fk,id_presentacionMedicamento_fk)
-                                    values(@idMedicamento,@idPresentacionMedicamento)";
-
-                SqlCommand cmd = new SqlCommand();
-
-                cmd.Parameters.AddWithValue("@idMedicamento", medicamento.id_medicamento);
-                cmd.Parameters.AddWithValue("@odPresentacionMedicamento", medicamento.id_presentacion);
-
-                cmd.Connection = cn;
-                cmd.CommandText = consulta;
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                cn.Close();
-            }
-            catch (Exception e)
-            {
-                if (cn.State == ConnectionState.Open)
-                {
-                    cn.Close();
-                }
-                throw new ApplicationException("Error: " + e.Message);
-            }
-
         }
         
+      
 
     }
 }

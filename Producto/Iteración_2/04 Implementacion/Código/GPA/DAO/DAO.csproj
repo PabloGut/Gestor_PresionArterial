@@ -56,6 +56,7 @@
     <Compile Include="ElementoQueFumaDAO.cs" />
     <Compile Include="EnfermedadesDAO.cs" />
     <Compile Include="EspecialidadDAO.cs" />
+    <Compile Include="EspecificacionMedicamentoDAO.cs" />
     <Compile Include="EstadoDAO.cs" />
     <Compile Include="EstudioDAO.cs" />
     <Compile Include="FamiliarDAO.cs" />

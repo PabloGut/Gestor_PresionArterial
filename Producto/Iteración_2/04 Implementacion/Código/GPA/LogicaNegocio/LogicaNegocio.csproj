@@ -47,6 +47,7 @@
     <Compile Include="ElementoDeModificacionLN.cs" />
     <Compile Include="ElementoQueFumaLN.cs" />
     <Compile Include="EnfermedadLN.cs" />
+    <Compile Include="EspecificacionMedicamentoLN.cs" />
     <Compile Include="FamiliarLN.cs" />
     <Compile Include="FormaAdministracionLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="MedicamentoLN.cs" />
     <Compile Include="MedidaLN.cs" />
     <Compile Include="ModificacionSintomaLN.cs" />
+    <Compile Include="NombreComercialLN.cs" />
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />

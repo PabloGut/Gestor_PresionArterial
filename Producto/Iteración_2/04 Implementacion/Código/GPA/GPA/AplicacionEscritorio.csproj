@@ -98,6 +98,7 @@
     <Compile Include="Manejadores\ManejadorRegistrarLocalidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarPaciente.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarTipoDeDocumento.cs" />
+    <Compile Include="Manejadores\ManejadorActualizarMedicamento.cs" />
     <Compile Include="RegistrarBarrio.cs">
       <SubType>Form</SubType>
     </Compile>
