@@ -454,4 +454,4 @@ values('Diaria')
 alter table Medicamento
 add cantidadComprimidos int
 
-select * from PresentacionMedicamento
+select * from UnidadMedidaXMedicamento

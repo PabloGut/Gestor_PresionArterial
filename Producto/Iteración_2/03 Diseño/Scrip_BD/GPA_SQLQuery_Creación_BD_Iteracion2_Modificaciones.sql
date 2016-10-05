@@ -739,7 +739,19 @@ foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
 foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento))
 
 
-
+create table EspecificacionMedicamento(
+id_especificacion int identity,
+id_medicamento_fk int,
+concentracion int,
+id_unidadMedida_fk int,
+id_formaAdministracion_fk int,
+id_presentacionMedicamento_fk int,
+cantidadComprimidos int,
+primary key (id_especificacion,id_medicamento_fk),
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
+foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
+foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento))
 
 
 
