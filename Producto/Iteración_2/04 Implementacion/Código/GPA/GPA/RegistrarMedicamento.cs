@@ -16,7 +16,8 @@ namespace GPA
     public partial class RegistrarMedicamento : Form
     {
         public ManejadorActualizarMedicamento manejadorActualizarMedicamento;
-        private int idUltimoMedicamentoIngresado;
+        private int idMedicamento;
+        private int idNombreComercial;
 
         public RegistrarMedicamento()
         {
@@ -115,6 +116,7 @@ namespace GPA
             registraMedicamento();
             btnAgregarMedicamento.Enabled = false;
             txtNombreGenerico.ReadOnly = true;
+            btnAgregarNuevasEspecificaciones.Enabled = true;
         }
         /*
           * Método para cargar la especificación de un nuevo medicamento.
@@ -132,11 +134,13 @@ namespace GPA
 
             manejadorActualizarMedicamento.registrarMedicamento(medicamento, nombreComercial);
 
-            idUltimoMedicamentoIngresado = medicamento.id_medicamento;
+            idMedicamento = medicamento.id_medicamento;
 
             EspecificacionMedicamento especificación = new EspecificacionMedicamento();
 
-            especificación.id_medicamento_fk = idUltimoMedicamentoIngresado;
+            especificación.id_nombreComercial = nombreComercial.id_nombreComercial;
+
+            especificación.id_medicamento_fk = idMedicamento;
             especificación.id_formaAdministracion =Convert.ToInt32(cboFormaAdministración.SelectedValue);
             especificación.concentracion = Convert.ToInt32(txtConcentracion.Text);
             especificación.id_unidadMedida_fk = Convert.ToInt32(cboUnidadMedida.SelectedValue);
@@ -149,7 +153,7 @@ namespace GPA
         }
         public void registrarNuevaEspecificacionDeUnMedicamento()
         {
-            if(idUltimoMedicamentoIngresado >0)
+            if(idMedicamento >0)
             {
                 EspecificacionMedicamento medicamentoConNuevasEspecificaciones = new EspecificacionMedicamento();
 
@@ -159,16 +163,10 @@ namespace GPA
                 medicamentoConNuevasEspecificaciones.id_presentacionMedicamento = Convert.ToInt32(cboPresentacionMedicamento.SelectedValue);
                 medicamentoConNuevasEspecificaciones.cantidadComprimidos = Convert.ToInt32(txtCantidadComprimidos.Text);
 
-                medicamentoConNuevasEspecificaciones.id_medicamento_fk = idUltimoMedicamentoIngresado;
+                medicamentoConNuevasEspecificaciones.id_medicamento_fk = idMedicamento;
+                medicamentoConNuevasEspecificaciones.id_nombreComercial = idNombreComercial;
 
                 Boolean existeNombreComercial= manejadorActualizarMedicamento.existeNombreComercial(txtNombreComercial.Text);
-                Boolean existeEspecificacion= manejadorActualizarMedicamento.existeEspecificacion(medicamentoConNuevasEspecificaciones);
-               
-                if (existeEspecificacion == true)
-                {
-                    MessageBox.Show("Existe un medicamento con las especificaciones ingresadas!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
                 if (existeNombreComercial == false)
                 {
                     NombreComercial nombreComercial = new NombreComercial();
@@ -176,6 +174,19 @@ namespace GPA
                     nombreComercial.id_medicamento_fk = medicamentoConNuevasEspecificaciones.id_medicamento_fk;
 
                     manejadorActualizarMedicamento.registrarNombreComercialMedicamento(nombreComercial);
+                    medicamentoConNuevasEspecificaciones.id_nombreComercial = nombreComercial.id_nombreComercial;
+                }
+                else
+                {
+                    //Agregar busqueda de un nombre comercial obteniendo el id del mismo para asignarlo a la nueva especificacion.
+                    medicamentoConNuevasEspecificaciones.id_nombreComercial = manejadorActualizarMedicamento.idNombreMedicamento(txtNombreComercial.Text);
+                }
+                Boolean existeEspecificacion= manejadorActualizarMedicamento.existeEspecificacion(medicamentoConNuevasEspecificaciones);
+               
+                if (existeEspecificacion == true)
+                {
+                    MessageBox.Show("Existe un medicamento con las especificaciones ingresadas!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
 
                 manejadorActualizarMedicamento.registrarEspecificacionMedicamento(medicamentoConNuevasEspecificaciones);
@@ -186,10 +197,6 @@ namespace GPA
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (idUltimoMedicamentoIngresado == 0)
-            {
-                idUltimoMedicamentoIngresado=(int)dgvListaMedicamentos.CurrentRow.Cells["id_medicamento_fk"].Value;
-            }
             registrarNuevaEspecificacionDeUnMedicamento();
         }
 
@@ -200,9 +207,11 @@ namespace GPA
             txtNombreComercial.Clear();
             txtConcentracion.Clear();
             txtCantidadComprimidos.Clear();
-            idUltimoMedicamentoIngresado = 0;
+            idMedicamento = 0;
+            idNombreComercial = 0;
             btnAgregarMedicamento.Enabled = true;
             btnAgregarNuevasEspecificaciones.Enabled = false;
+            cargarDataGridView();
         }
         public void cargarDatosDeFilasDelDatagridViewAlFormulario()
         {
@@ -214,13 +223,94 @@ namespace GPA
             txtConcentracion.Text = Convert.ToString(dgvListaMedicamentos.CurrentRow.Cells["Concentración"].Value);
             txtCantidadComprimidos.Text = Convert.ToString(dgvListaMedicamentos.CurrentRow.Cells["Cantidad de comprimidos"].Value);
 
+            idMedicamento = (int)dgvListaMedicamentos.CurrentRow.Cells["id_medicamento_fk"].Value;
+            idNombreComercial = (int)dgvListaMedicamentos.CurrentRow.Cells["id_nombreComercial_fk"].Value;
+
             btnAgregarMedicamento.Enabled = false;
             btnAgregarNuevasEspecificaciones.Enabled = true;
+            txtNombreGenerico.ReadOnly = true;
             
         }
         private void dgvListaMedicamentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             cargarDatosDeFilasDelDatagridViewAlFormulario();
+        }
+
+        private void btnEditarEspecificacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditarEspecificacion_Click_1(object sender, EventArgs e)
+        {
+            editarEspecificacion();
+        }
+        public void editarEspecificacion()
+        {
+            EspecificacionMedicamento especificacion = new EspecificacionMedicamento();
+
+            especificacion.id_formaAdministracion = Convert.ToInt32(cboFormaAdministración.SelectedValue);
+            especificacion.concentracion = Convert.ToInt32(txtConcentracion.Text);
+            especificacion.id_unidadMedida_fk = Convert.ToInt32(cboUnidadMedida.SelectedValue);
+            especificacion.id_presentacionMedicamento = Convert.ToInt32(cboPresentacionMedicamento.SelectedValue);
+            especificacion.cantidadComprimidos = Convert.ToInt32(txtCantidadComprimidos.Text);
+
+            especificacion.id_medicamento_fk = idMedicamento;
+
+            especificacion.id_nombreComercial = manejadorActualizarMedicamento.idNombreMedicamento(txtNombreComercial.Text);
+
+            if (especificacion.id_nombreComercial != 0)
+            {
+                if (manejadorActualizarMedicamento.existeEspecificacion(especificacion) == false)
+                {
+                    manejadorActualizarMedicamento.actualizarEspecificacion(especificacion);
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe la especificacion!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado= MessageBox.Show("Desea eliminar la especificación?","Atención",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+            if (resultado == DialogResult.OK)
+            {
+                manejadorActualizarMedicamento.eliminarEspecificacion((int)dgvListaMedicamentos.CurrentRow.Cells["id_especificacion"].Value);
+                cargarDataGridView();
+
+            }
+            else
+            {
+                return;
+            }
+            
+
+            
+        }
+
+        private void btnBuscarEspecificacion_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNombreGenerico.Text) == false)
+            {
+                dgvListaMedicamentos.DataSource = manejadorActualizarMedicamento.mostrarEspecificacionMedicamento(txtNombreGenerico.Text);
+            }
+        }
+
+        private void txtNombreGenerico_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            if (string.IsNullOrEmpty(txtNombreGenerico.Text) == false)
+            {
+                dgvListaMedicamentos.DataSource = manejadorActualizarMedicamento.mostrarEspecificacionMedicamento(txtNombreGenerico.Text);
+            }*/
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

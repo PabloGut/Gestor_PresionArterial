@@ -19,6 +19,10 @@ namespace LogicaNegocio
         {
             return NombreComercialDAO.existeNombreComercial(nombreComercial);
         }
+        public static int idNombreComercial(string nombre)
+        {
+            return NombreComercialDAO.idNombreComercial(nombre);
+        }
 
     }
 }

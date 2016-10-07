@@ -46,6 +46,10 @@ namespace DAO
                 cmd.Transaction = tran;
                 cmd.ExecuteNonQuery();
 
+                SqlCommand cmd1 = new SqlCommand("Select @@Identity", cn, tran);
+
+                nombreComercial.id_nombreComercial = Convert.ToInt32(cmd1.ExecuteScalar());
+
                
             }
             catch (Exception e)
@@ -84,6 +88,8 @@ namespace DAO
                 cmd.CommandText = consulta;
                 cmd.ExecuteNonQuery();
 
+                SqlCommand cmd1 = new SqlCommand("Select @@Identity", cn);
+                nombreComercial.id_nombreComercial = Convert.ToInt32(cmd1.ExecuteScalar());
 
             }
             catch (Exception e)
@@ -139,6 +145,50 @@ namespace DAO
             }
             cn.Close();
             return existeNombre;
+        }
+        /*
+    * Método para obtener el id de un Nombrecomercial que se pasa por parámetro.
+    * Recibe como parámetro una cadena de caracteres que corresponde al nombre comercial.
+    * Valor de retorno int.
+    */
+        public static int idNombreComercial(string nombreComercial)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            int idNombreComercial = 0;
+            try
+            {
+                cn.Open();
+
+                string consulta = "select id_nombreComercial from NombreComercial where nombre like @nombreComercial";
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@nombreComercial", nombreComercial);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    if (dr.HasRows)
+                    {
+                        idNombreComercial= (int) dr["id_nombreComercial"];
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return idNombreComercial;
         }
     }
 }

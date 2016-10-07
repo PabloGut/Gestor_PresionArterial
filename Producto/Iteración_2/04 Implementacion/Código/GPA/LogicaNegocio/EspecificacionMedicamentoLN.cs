@@ -24,5 +24,41 @@ namespace LogicaNegocio
         {
             return EspecificacionMedicamentoDAO.existeEspecificacion(especificacion);
         }
+        public static Boolean existeUnidadMedidaXMedicamento(int idMedicamento,int idUnidadMedida, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.existeUnidadMedidaXMedicamento(idMedicamento, idUnidadMedida, idNombreComercial);
+        }
+        public static Boolean existeFormaAdministracionXMedicamento(int idMedicamento, int idFormaAdministracion, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.existeUnidadMedidaXMedicamento(idMedicamento, idFormaAdministracion, idNombreComercial);
+        }
+        public static Boolean existePresentacionMedicamentoXMedicamento(int idMedicamento, int idPresentacionMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.existeUnidadMedidaXMedicamento(idMedicamento, idPresentacionMedicamento, idNombreComercial);
+        }
+        public static void actualizarEspecificacion(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoDAO.actualizarEspecificacion(especificacion);
+        }
+        public static void actualizarUnidadMedidaXMedicamento(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoDAO.actualizarUnidadMedidaPorMedicamento(especificacion);
+        }
+        public static void actualizarFormaAdministracionXMedicamento(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoDAO.actualizarFormaAdministracionXMedicamento(especificacion);
+        }
+        public static void actualizarPresentacionMedicamentoXMedicamento(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoDAO.actualizarPresentacionMedicamentoXMedicamento(especificacion);
+        }
+        public static void eliminarEspecificacion(int idEspecificacion)
+        {
+            EspecificacionMedicamentoDAO.eliminarEspecificacion(idEspecificacion);
+        }
+        public static DataTable mostrarEspecificacionMedicamento(string nombreGenerico)
+        {
+            return EspecificacionMedicamentoDAO.mostrarEspecificacionMedicamento(nombreGenerico);
+        }
     }
 }

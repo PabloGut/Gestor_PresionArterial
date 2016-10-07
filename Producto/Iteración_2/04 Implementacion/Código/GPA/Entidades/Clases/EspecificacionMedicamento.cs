@@ -14,6 +14,7 @@ namespace Entidades.Clases
         public int id_unidadMedida_fk { set; get; }
         public int id_formaAdministracion { set; get; }
         public int id_presentacionMedicamento { set; get; }
+        public int id_nombreComercial { set; get; }
         public int cantidadComprimidos { set; get; }
 
     }
