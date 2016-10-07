@@ -317,3 +317,11 @@ values(22,1,22)
 insert into PresentacionMedicamentoXMedicamento(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk)
 values(22,1,23)
 
+ select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentración', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk,em.id_nombreComercial_fk
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um, FormaAdministracion fa, PresentacionMedicamento pm
+where m.id_medicamento= em.id_medicamento_fk and m.id_medicamento=nc.id_medicamento_fk
+and em.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_unidadMedida_fk=um.id_unidadMedida
+and em.id_formaAdministracion_fk=fa.id_formaAdministracion
+and em.id_presentacionMedicamento_fk= pm.id_presentacionMedicamento
+and m.nombreGenerico like 'N%'
