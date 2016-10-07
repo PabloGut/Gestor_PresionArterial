@@ -205,27 +205,115 @@ add descripcion text
 select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentracción', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um,UnidadMedidaXMedicamento umm, FormaAdministracion fa, FormaAdministracionXMedicamento fam, PresentacionMedicamento pm, PresentacionMedicamentoXMedicamento prem 
 where m.id_medicamento= em.id_medicamento_fk 
-and m.id_medicamento=nc.id_medicamento_fk and m.id_medicamento=umm.id_medicamento_fk and um.id_unidadMedida=umm.id_unidadMedida_fk
+and m.id_medicamento=nc.id_medicamento_fk and em.id_medicamento_fk=umm.id_medicamento_fk and um.id_unidadMedida=umm.id_unidadMedida_fk
 and m.id_medicamento=fam.id_medicamento_fk and fa.id_formaAdministracion=fam.id_formaAdministracion_fk
 and m.id_medicamento=prem.id_medicamento_fk and pm.id_presentacionMedicamento=prem.id_presentacionMedicamento_fk
 and em.concentracion='25' and em.id_unidadMedida_fk='2' and em.id_formaAdministracion_fk='1' and em.id_presentacionMedicamento_fk='1' and em.cantidadComprimidos='30'
 
-select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentración', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk
+--Obtiene resultado correcto------------------
+select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentración', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk,nc.id_nombreComercial
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um, FormaAdministracion fa, PresentacionMedicamento pm
 where m.id_medicamento= em.id_medicamento_fk and m.id_medicamento=nc.id_medicamento_fk
+and em.id_nombreComercial_fk=nc.id_nombreComercial
 and em.id_unidadMedida_fk=um.id_unidadMedida
 and em.id_formaAdministracion_fk=fa.id_formaAdministracion
 and em.id_presentacionMedicamento_fk= pm.id_presentacionMedicamento
+select * from UnidadMedidaXMedicamento
 
+select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentración', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk,nc.id_nombreComercial
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um, FormaAdministracion fa, PresentacionMedicamento pm
+where m.id_medicamento= em.id_medicamento_fk and m.id_medicamento=nc.id_medicamento_fk
+and em.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_unidadMedida_fk=um.id_unidadMedida
+and em.id_formaAdministracion_fk=fa.id_formaAdministracion
+and em.id_presentacionMedicamento_fk= pm.id_presentacionMedicamento
+and em.concentracion='30' and em.id_unidadMedida_fk='2' and em.id_formaAdministracion_fk='1' and em.id_presentacionMedicamento_fk='1' and em.cantidadComprimidos='30'
+
+---------------------------------------------------
+
+
+select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentración',um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um,FormaAdministracion fa, PresentacionMedicamento pm
+where m.id_medicamento= em.id_medicamento_fk and em.id_medicamento_fk=nc.id_medicamento_fk 
+and em.id_unidadMedida_fk=um.id_unidadMedida
+and em.id_formaAdministracion_fk=fa.id_formaAdministracion
+and em.id_presentacionMedicamento_fk=pm.id_presentacionMedicamento
+
+select * from Medicamento
+select * from NombreComercial
 select * from EspecificacionMedicamento
+select * from UnidadMedidaXMedicamento
 
+----delete from UnidadMedidaXMedicamento
+--delete from FormaAdministracionXMedicamento
+--delete from PresentacionMedicamentoXMedicamento
+
+delete  from Medicamento
+delete from EspecificacionMedicamento
 select m.nombreGenerico, um.nombre, m.id_medicamento
 from Medicamento m, UnidadMedidaXMedicamento umm, UnidadMedida um
 where m.id_medicamento=umm.id_medicamento_fk and um.id_unidadMedida=umm.id_unidadMedida_fk and m.nombreGenerico like 'Hidroclorotiazida'
 
 
-select * from EspecificacionMedicamento
+select * from PresentacionMedicamentoXMedicamento
 where id_medicamento_fk='10' and id_presentacionMedicamento_fk='1'
 
-select * from EspecificacionMedicamento
+select * from Medicamento
 --em.id_especificacion='2' and em.id_medicamento_fk='16' 
+
+
+select m.id_medicamento, m.nombreGenerico, em.id_especificacion, nc.nombre
+from Medicamento m, EspecificacionMedicamento em, NombreComercial nc
+where m.id_medicamento=em.id_medicamento_fk
+and m.id_medicamento=nc.id_medicamento_fk
+
+select * from UnidadMedidaXMedicamento
+select * from FormaAdministracionXMedicamento
+select * from PresentacionMedicamentoXMedicamento
+
+alter table UnidadMedidaXMedicamento
+add id_nombreComercial_fk int
+
+alter table UnidadMedidaXMedicamento
+drop column id_nombreComercial_fk
+
+alter table UnidadMedidaXMedicamento
+add id_nombreComercial_fk int primary key 
+
+select * from UnidadMedidaXMedicamento
+
+insert into UnidadMedidaXMedicamento(id_medicamento_fk,id_unidadMedida_fk,id_nombreComercial_fk)
+values(21,2,19)
+insert into UnidadMedidaXMedicamento(id_medicamento_fk,id_unidadMedida_fk,id_nombreComercial_fk)
+values(21,2,20)
+insert into UnidadMedidaXMedicamento(id_medicamento_fk,id_unidadMedida_fk,id_nombreComercial_fk)
+values(21,2,21)
+insert into UnidadMedidaXMedicamento(id_medicamento_fk,id_unidadMedida_fk,id_nombreComercial_fk)
+values(22,2,22)
+insert into UnidadMedidaXMedicamento(id_medicamento_fk,id_unidadMedida_fk,id_nombreComercial_fk)
+values(22,2,23)
+
+
+insert into FormaAdministracionXMedicamento(id_medicamento_fk,id_formaAdministracion_fk,id_nombreComercial_fk)
+values(21,1,19)
+insert into FormaAdministracionXMedicamento(id_medicamento_fk,id_formaAdministracion_fk,id_nombreComercial_fk)
+values(21,1,20)
+insert into FormaAdministracionXMedicamento(id_medicamento_fk,id_formaAdministracion_fk,id_nombreComercial_fk)
+values(21,2,21)
+insert into FormaAdministracionXMedicamento(id_medicamento_fk,id_formaAdministracion_fk,id_nombreComercial_fk)
+values(22,1,22)
+insert into FormaAdministracionXMedicamento(id_medicamento_fk,id_formaAdministracion_fk,id_nombreComercial_fk)
+values(22,1,23)
+
+
+insert into PresentacionMedicamentoXMedicamento(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk)
+values(21,1,19)
+insert into PresentacionMedicamentoXMedicamento(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk)
+values(21,1,20)
+insert into PresentacionMedicamentoXMedicamento(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk)
+values(21,1,21)
+insert into PresentacionMedicamentoXMedicamento(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk)
+values(22,1,22)
+insert into PresentacionMedicamentoXMedicamento(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk)
+values(22,1,23)
+

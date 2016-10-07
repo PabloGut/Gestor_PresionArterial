@@ -720,23 +720,29 @@ nombre text)
 create table UnidadMedidaXMedicamento(
 id_medicamento_fk int,
 id_unidadMedida_fk int,
-primary key(id_medicamento_fk,id_unidadMedida_fk),
+id_nombreComercial_fk int,
+primary key(id_medicamento_fk,id_unidadMedida_fk,id_nombreComercial_fk),
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
-foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida))
+foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 create table FormaAdministracionXMedicamento(
 id_medicamento_fk int,
 id_formaAdministracion_fk int,
-primary key(id_medicamento_fk,id_formaAdministracion_fk),
+id_nombreComercial_fk int,
+primary key(id_medicamento_fk,id_formaAdministracion_fk,id_nombreComercial_fk),
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
-foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion))
+foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 create table PresentacionMedicamentoXMedicamento(
 id_medicamento_fk int,
 id_presentacionMedicamento_fk int,
-primary key(id_medicamento_fk,id_presentacionMedicamento_fk),
+id_nombreComercial_fk int,
+primary key(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk),
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
-foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento))
+foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 
 create table EspecificacionMedicamento(
@@ -746,12 +752,14 @@ concentracion int,
 id_unidadMedida_fk int,
 id_formaAdministracion_fk int,
 id_presentacionMedicamento_fk int,
+id_nombreComercial_fk int,
 cantidadComprimidos int,
 primary key (id_especificacion,id_medicamento_fk),
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
 foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
 foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
-foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento))
+foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 
 
