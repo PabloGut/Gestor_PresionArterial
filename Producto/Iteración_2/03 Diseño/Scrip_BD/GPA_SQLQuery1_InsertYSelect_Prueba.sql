@@ -325,3 +325,43 @@ and em.id_unidadMedida_fk=um.id_unidadMedida
 and em.id_formaAdministracion_fk=fa.id_formaAdministracion
 and em.id_presentacionMedicamento_fk= pm.id_presentacionMedicamento
 and m.nombreGenerico like 'N%'
+
+
+
+select * from NombreComercial
+select * from UnidadMedidaXMedicamento
+select * from EspecificacionMedicamento
+select * from NombreComercial
+select * from Medicamento
+
+
+select m.nombreGenerico, um.nombre, m.id_medicamento
+from Medicamento m, UnidadMedidaXMedicamento umm,UnidadMedida um
+where m.id_medicamento=umm.id_medicamento_fk and um.id_unidadMedida=umm.id_unidadMedida_fk
+
+
+select * from Medicamento
+select * from UnidadMedidaXMedicamento
+select distinct em.*  from EspecificacionMedicamento em
+select * from EspecificacionMedicamento
+select * from NombreComercial
+
+
+select em.id_especificacion, m.nombreGenerico,nc.nombre, um.nombre
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, UnidadMedidaXMedicamento umm, UnidadMedida um
+where m.id_medicamento=em.id_medicamento_fk 
+and em.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_unidadMedida_fk=umm.id_unidadMedida_fk 
+and em.id_medicamento_fk=umm.id_medicamento_fk
+and em.id_nombreComercial_fk=umm.id_nombreComercial_fk
+and umm.id_unidadMedida_fk=um.id_unidadMedida
+and umm.id_medicamento_fk=m.id_medicamento
+and umm.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_medicamento_fk='21' and em.id_nombreComercial_fk='19'
+
+
+select m.nombreGenerico,nc.nombre
+from Medicamento m, NombreComercial nc
+where m.id_medicamento=nc.id_medicamento_fk
+and m.id_medicamento='21'
+
