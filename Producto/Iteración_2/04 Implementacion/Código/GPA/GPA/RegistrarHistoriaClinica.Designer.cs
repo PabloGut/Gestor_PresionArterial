@@ -3385,6 +3385,7 @@
             this.cboNombreGenerico.Name = "cboNombreGenerico";
             this.cboNombreGenerico.Size = new System.Drawing.Size(121, 21);
             this.cboNombreGenerico.TabIndex = 11;
+            this.cboNombreGenerico.SelectedIndexChanged += new System.EventHandler(this.cboNombreGenerico_SelectedIndexChanged);
             // 
             // label90
             // 

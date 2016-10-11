@@ -43,6 +43,7 @@ namespace GPA.Manejadores
         {
             return PacienteLN.existeHC(tipoDoc, nroDoc);
         }
+
        
     }
 }

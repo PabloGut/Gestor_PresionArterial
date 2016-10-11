@@ -190,5 +190,55 @@ namespace DAO
             cn.Close();
             return idNombreComercial;
         }
+        /*
+        * Método para obtener los nombres comerciales de un medicamento.
+        * Recibe como parámetro el id del medicamento.
+        * Valor de retorno lista de objetos NombreComercial.
+        */
+        public static List<NombreComercial> mostrarNombresComercialesDeMedicamento(int idMedicamento)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            List<NombreComercial> nombresComerciales = new List<NombreComercial>();
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select nc.nombre,nc.id_nombreComercial, m.nombreGenerico
+                                  from Medicamento m, NombreComercial nc
+                                  where m.id_medicamento= nc.id_medicamento_fk
+                                  and m.id_medicamento=@idMedicamento";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    nombresComerciales.Add(new NombreComercial()
+                                             {
+                                                 id_nombreComercial=(int)dr["id_nombreComercial"],
+                                                 nombre=dr["nombre"].ToString(),
+
+                                             });
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return nombresComerciales;
+        }
     }
 }

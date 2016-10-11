@@ -28,6 +28,7 @@ namespace GPA
         ManejadorRegistrarHabitosTabaquismo manejadorRegistrarHabitosTabaquismo;
         ManejadorRegistrarHabitoAlcoholismo manejadorRegistrarHabitosAlcoholismo;
         ManejadorRegistrarHabitosDrogasIlicitas manajadorRegistrarHabitosDrogasIlicitas;
+        ManejadorRegistrarDrogasLicitas manejadorRegistrarDrogasLicitas;
 
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
@@ -43,6 +44,7 @@ namespace GPA
             manejadorRegistrarHabitosTabaquismo = new ManejadorRegistrarHabitosTabaquismo();
             manejadorRegistrarHabitosAlcoholismo = new ManejadorRegistrarHabitoAlcoholismo();
             manajadorRegistrarHabitosDrogasIlicitas = new ManejadorRegistrarHabitosDrogasIlicitas();
+            manejadorRegistrarDrogasLicitas = new ManejadorRegistrarDrogasLicitas();
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
@@ -118,6 +120,7 @@ namespace GPA
 
             presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manajadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
+            presentarMedicamento(cboNombreGenerico, manejadorRegistrarDrogasLicitas.mostrarNombresMedicamento(),"id_medicamento", "nombreGenerico");
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -361,6 +364,7 @@ namespace GPA
             cargarCombo(combo, medidas, valueMember, displayMember);
             
         }
+        
         /*
        * Método para mostrar, las sustancias que son drogas ilicitas,  en el combobox.
        * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaDrogaIlicita, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
@@ -371,6 +375,14 @@ namespace GPA
         {
             cargarCombo(combo, sustancias, valueMember, displayMember);
 
+        }
+        public void presentarMedicamento(ComboBox combo, List<Medicamento> medicamento, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, medicamento, valueMember, displayMember);
+        }
+        public void presentarNombresComerciales(ComboBox combo, List<NombreComercial> nombresComerciales, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, nombresComerciales, valueMember, displayMember);
         }
         /*
          * Método para cargar un ComboBox.
@@ -571,6 +583,13 @@ namespace GPA
         private void label108_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboNombreGenerico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idMedicamento;
+            Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+           presentarNombresComerciales(cboNombreComercial, manejadorRegistrarDrogasLicitas.mostrarNombresComercialDeMedicamento(idMedicamento),"id_nombreComercial","nombre");
         }
     }
 }

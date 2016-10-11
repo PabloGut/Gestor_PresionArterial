@@ -23,6 +23,10 @@ namespace LogicaNegocio
         {
             return NombreComercialDAO.idNombreComercial(nombre);
         }
+        public static List<NombreComercial> mostrarNombresComercialesDeMedicamento(int idMedicamento)
+        {
+            return NombreComercialDAO.mostrarNombresComercialesDeMedicamento(idMedicamento);
+        }
 
     }
 }
