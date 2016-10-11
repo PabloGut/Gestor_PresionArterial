@@ -341,13 +341,14 @@ where m.id_medicamento=umm.id_medicamento_fk and um.id_unidadMedida=umm.id_unida
 
 
 select * from Medicamento
-select * from UnidadMedidaXMedicamento
+select * from FormaAdministracionXMedicamento
+select * from EspecificacionMedicamento
 select distinct em.*  from EspecificacionMedicamento em
 select * from EspecificacionMedicamento
 select * from NombreComercial
 
 
-select em.id_especificacion, m.nombreGenerico,nc.nombre, um.nombre
+select distinct um.id_unidadMedida,cast(um.nombre as varchar(max))
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, UnidadMedidaXMedicamento umm, UnidadMedida um
 where m.id_medicamento=em.id_medicamento_fk 
 and em.id_nombreComercial_fk=nc.id_nombreComercial
@@ -358,6 +359,31 @@ and umm.id_unidadMedida_fk=um.id_unidadMedida
 and umm.id_medicamento_fk=m.id_medicamento
 and umm.id_nombreComercial_fk=nc.id_nombreComercial
 and em.id_medicamento_fk='21' and em.id_nombreComercial_fk='19'
+
+select distinct fa.id_formaAdministracion,cast(fa.nombre as varchar(max)) as 'Forma de administración'
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, FormaAdministracionXMedicamento fam, FormaAdministracion fa
+where m.id_medicamento=em.id_medicamento_fk 
+and em.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_formaAdministracion_fk=fam.id_formaAdministracion_fk 
+and em.id_medicamento_fk=fam.id_medicamento_fk
+and em.id_nombreComercial_fk=fam.id_nombreComercial_fk
+and fam.id_formaAdministracion_fk=fa.id_formaAdministracion
+and fam.id_medicamento_fk=m.id_medicamento
+and fam.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_medicamento_fk='21' and em.id_nombreComercial_fk='25'
+
+select distinct pm.id_presentacionMedicamento,cast(pm.nombre as varchar(max)) as 'Presentación medicamento'
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, PresentacionMedicamentoXMedicamento pmm, PresentacionMedicamento pm
+where m.id_medicamento=em.id_medicamento_fk 
+and em.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_presentacionMedicamento_fk=pmm.id_presentacionMedicamento_fk 
+and em.id_medicamento_fk=pmm.id_medicamento_fk
+and em.id_nombreComercial_fk=pmm.id_nombreComercial_fk
+and pmm.id_presentacionMedicamento_fk=pm.id_presentacionMedicamento
+and pmm.id_medicamento_fk=m.id_medicamento
+and pmm.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_medicamento_fk='21' and em.id_nombreComercial_fk='25'
+
 
 
 select m.nombreGenerico,nc.nombre

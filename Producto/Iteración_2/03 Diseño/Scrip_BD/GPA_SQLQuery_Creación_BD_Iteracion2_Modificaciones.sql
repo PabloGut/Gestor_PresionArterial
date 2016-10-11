@@ -243,9 +243,9 @@ CREATE TABLE AlergiaMedicamento (
 id_alergiaMedicamento int primary key identity,
 fechaRegistro date not null,
 efectos text,
-id_medicamento_fk int not null,
+id_medicamentoAlergia_fk int not null,
 id_hc_fk int not null,
-foreign key (id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key (id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE NombrePorTipoAntecedenteMorbido (
@@ -762,4 +762,9 @@ foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id
 foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 
+create table MedicamentoAlergia(
+id_medicamentoAlergia int primary key identity,
+nombre text)
 
+
+select * from MedicamentoAlergia

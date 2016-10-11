@@ -309,22 +309,22 @@ values('Hormigas')
 /*--------------------------*/
 
 /*-------Insert Medicamento-----*/
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Penicilina')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Anestésicos locales')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Sulfamidas')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Relajantes musculares')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Insulina no humana')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Contrastes yodados')
 /*--------------------------*/
 
@@ -446,6 +446,17 @@ insert into Frecuencia(nombre)
 values('Diaria')
 /*--------------------------*/
 
+/*-------Insert MomentoDelDia-----*/
+insert into MomentoDelDia(nombre)
+values('Mañana')
+insert into MomentoDelDia(nombre)
+values('Tarde')
+insert into MomentoDelDia(nombre)
+values('Noche')
+
+
+/*--------------------------*/
+
 
 /*-------Insert-----*/
 
@@ -454,4 +465,10 @@ values('Diaria')
 alter table Medicamento
 add cantidadComprimidos int
 
-select * from UnidadMedidaXMedicamento
+select * from AlergiaMedicamento
+
+alter table AlergiaMedicamento
+add id_medicamentoAlergia_fk int
+
+alter table AlergiaMedicamento
+add foreign key(id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia)
