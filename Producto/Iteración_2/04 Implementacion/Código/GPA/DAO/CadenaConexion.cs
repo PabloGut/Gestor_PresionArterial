@@ -13,8 +13,8 @@ namespace DAO
 
         private CadenaConexion()
         {
-            //cadena = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_4;Integrated Security=True";
-            cadena = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\trunk\Producto\Iteración_2\04 Implementacion\GPA_BD_DePrueba\GPA_BD_4.mdf;Integrated Security=True;Connect Timeout=30";
+            cadena = "Data Source=PABLO\\SQLEXPRESS;Initial Catalog=GPA_BD_4;Integrated Security=True";
+            //cadena = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\trunk\Producto\Iteración_2\04 Implementacion\GPA_BD_DePrueba\GPA_BD_4.mdf;Integrated Security=True;Connect Timeout=30";
         }
         public static CadenaConexion getInstancia()
         {

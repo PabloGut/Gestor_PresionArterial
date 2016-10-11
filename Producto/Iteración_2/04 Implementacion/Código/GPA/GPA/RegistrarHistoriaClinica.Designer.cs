@@ -217,7 +217,7 @@
             this.label51 = new System.Windows.Forms.Label();
             this.btnAñadirMedicamento = new System.Windows.Forms.Button();
             this.txtEfectosAlergiasMedicamentos = new System.Windows.Forms.TextBox();
-            this.cboMedicamentos = new System.Windows.Forms.ComboBox();
+            this.cboMedicamentosAlergia = new System.Windows.Forms.ComboBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.rbNoAlergiaMedicamento = new System.Windows.Forms.RadioButton();
@@ -2223,7 +2223,7 @@
             this.groupBox9.Controls.Add(this.label51);
             this.groupBox9.Controls.Add(this.btnAñadirMedicamento);
             this.groupBox9.Controls.Add(this.txtEfectosAlergiasMedicamentos);
-            this.groupBox9.Controls.Add(this.cboMedicamentos);
+            this.groupBox9.Controls.Add(this.cboMedicamentosAlergia);
             this.groupBox9.Controls.Add(this.label50);
             this.groupBox9.Controls.Add(this.label49);
             this.groupBox9.Controls.Add(this.rbNoAlergiaMedicamento);
@@ -2279,13 +2279,13 @@
             this.txtEfectosAlergiasMedicamentos.Size = new System.Drawing.Size(484, 34);
             this.txtEfectosAlergiasMedicamentos.TabIndex = 11;
             // 
-            // cboMedicamentos
+            // cboMedicamentosAlergia
             // 
-            this.cboMedicamentos.FormattingEnabled = true;
-            this.cboMedicamentos.Location = new System.Drawing.Point(282, 15);
-            this.cboMedicamentos.Name = "cboMedicamentos";
-            this.cboMedicamentos.Size = new System.Drawing.Size(163, 21);
-            this.cboMedicamentos.TabIndex = 10;
+            this.cboMedicamentosAlergia.FormattingEnabled = true;
+            this.cboMedicamentosAlergia.Location = new System.Drawing.Point(282, 15);
+            this.cboMedicamentosAlergia.Name = "cboMedicamentosAlergia";
+            this.cboMedicamentosAlergia.Size = new System.Drawing.Size(163, 21);
+            this.cboMedicamentosAlergia.TabIndex = 10;
             // 
             // label50
             // 
@@ -2530,6 +2530,7 @@
             this.txtDescripcionMedida.Name = "txtDescripcionMedida";
             this.txtDescripcionMedida.Size = new System.Drawing.Size(372, 20);
             this.txtDescripcionMedida.TabIndex = 17;
+            this.txtDescripcionMedida.TextChanged += new System.EventHandler(this.txtDescripcionMedida_TextChanged);
             // 
             // btnAgregarHabitoAlcoholismo
             // 
@@ -2588,6 +2589,7 @@
             this.cboMedidaConsumeAlcohol.Name = "cboMedidaConsumeAlcohol";
             this.cboMedidaConsumeAlcohol.Size = new System.Drawing.Size(121, 21);
             this.cboMedidaConsumeAlcohol.TabIndex = 10;
+            this.cboMedidaConsumeAlcohol.SelectedIndexChanged += new System.EventHandler(this.cboMedidaConsumeAlcohol_SelectedIndexChanged);
             // 
             // cboTipoBebida
             // 
@@ -3377,6 +3379,7 @@
             this.cboNombreComercial.Name = "cboNombreComercial";
             this.cboNombreComercial.Size = new System.Drawing.Size(121, 21);
             this.cboNombreComercial.TabIndex = 12;
+            this.cboNombreComercial.SelectedIndexChanged += new System.EventHandler(this.cboNombreComercial_SelectedIndexChanged);
             // 
             // cboNombreGenerico
             // 
@@ -3951,7 +3954,7 @@
         private System.Windows.Forms.TabPage tpAlergias;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TextBox txtEfectosAlergiasMedicamentos;
-        private System.Windows.Forms.ComboBox cboMedicamentos;
+        private System.Windows.Forms.ComboBox cboMedicamentosAlergia;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.RadioButton rbNoAlergiaMedicamento;

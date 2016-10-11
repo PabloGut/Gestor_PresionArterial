@@ -26,10 +26,10 @@ namespace GPA.Manejadores
         {
             return InsectoLN.mostrarInsectos();
         }
-        public List<Medicamento> mostrarNombreMedicamentos()
+        public List<MedicamentoAlergia> mostrarMedicamentosQueProducenAlergias()
         {
-            return MedicamentoLN.mostrarNombreMedicamentos();
+            return MedicamentoAlergiaLN.mostrarMedicamentosQueProducenAlergia();
         }
-
+        
     }
 }

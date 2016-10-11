@@ -71,9 +71,11 @@
     <Compile Include="InsectoDAO.cs" />
     <Compile Include="InstitucionDAO.cs" />
     <Compile Include="LocalidadDAO.cs" />
+    <Compile Include="MedicamentoAlergiaDAO.cs" />
     <Compile Include="MedicamentoDAO.cs" />
     <Compile Include="MedidaDAO.cs" />
     <Compile Include="ModificacionSintomaDAO.cs" />
+    <Compile Include="MomentoDiaDAO.cs" />
     <Compile Include="NombreComercialDAO.cs" />
     <Compile Include="OperacionesDAO.cs" />
     <Compile Include="PacienteDAO.cs" />

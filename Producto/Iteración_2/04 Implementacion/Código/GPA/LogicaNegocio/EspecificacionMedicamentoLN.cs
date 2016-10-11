@@ -60,5 +60,17 @@ namespace LogicaNegocio
         {
             return EspecificacionMedicamentoDAO.mostrarEspecificacionMedicamento(nombreGenerico);
         }
+        public static List<UnidadDeMedida> mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.mostrarUnidadMedidaParaUnNombreGenericoYComercial(idMedicamento, idNombreComercial);
+        }
+        public static List<FormaAdministracion> mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.mostrarFormaAdministracionParaUnNombreGenericoYComercial(idMedicamento, idNombreComercial);
+        }
+        public static List<PresentacionMedicamento> mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.mostrarPresentacionMedicamentoParaUnNombreGenericoYComercial(idMedicamento, idNombreComercial);
+        }
     }
 }

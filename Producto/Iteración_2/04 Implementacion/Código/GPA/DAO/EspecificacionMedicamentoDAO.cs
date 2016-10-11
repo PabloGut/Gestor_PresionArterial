@@ -699,7 +699,179 @@ namespace DAO
             cn.Close();
             return dt;
         }
-        
+        /*
+       * Método mostrar las unidades de medida para un nombre genérico y comercial.
+       * No recibe parámetros.
+       * Retorna una lista de objetos UnidadMedida.
+       */
+        public static List<UnidadDeMedida> mostrarUnidadMedidaParaUnNombreGenericoYComercial(int idMedicamento, int idNombreComercial)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            List<UnidadDeMedida> unidadesMedida = new List<UnidadDeMedida>();
+            try
+            {
+                cn.Open();
 
+                string consulta = @"select um.id_unidadMedida,cast(um.nombre as varchar(max)) as 'nombre'
+                                  from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, UnidadMedidaXMedicamento umm, UnidadMedida um
+                                  where m.id_medicamento=em.id_medicamento_fk 
+                                  and em.id_nombreComercial_fk=nc.id_nombreComercial
+                                  and em.id_unidadMedida_fk=umm.id_unidadMedida_fk 
+                                  and em.id_medicamento_fk=umm.id_medicamento_fk
+                                  and em.id_nombreComercial_fk=umm.id_nombreComercial_fk
+                                  and umm.id_unidadMedida_fk=um.id_unidadMedida
+                                  and umm.id_medicamento_fk=m.id_medicamento
+                                  and umm.id_nombreComercial_fk=nc.id_nombreComercial
+                                  and em.id_medicamento_fk=@idMedicamento and em.id_nombreComercial_fk=@idNombreComercial";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                cmd.Parameters.AddWithValue("@idNombreComercial", idNombreComercial);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    unidadesMedida.Add(new UnidadDeMedida()
+                    {
+                        id_unidadMedida=(int)dr["id_unidadMedida"],
+                        nombre=dr["nombre"].ToString()
+                    });
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return unidadesMedida;
+        }
+        /*
+      * Método mostrar formas de administracion para un nombre genérico y comercial.
+      * No recibe parámetros.
+      * Retorna una lista de objetos FormaAdministracion.
+      */
+        public static List<FormaAdministracion> mostrarFormaAdministracionParaUnNombreGenericoYComercial(int idMedicamento, int idNombreComercial)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            List<FormaAdministracion> formasAdministracion = new List<FormaAdministracion>();
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select distinct fa.id_formaAdministracion,cast(fa.nombre as varchar(max)) as 'nombre'
+                                 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, FormaAdministracionXMedicamento fam, FormaAdministracion fa
+                                 where m.id_medicamento=em.id_medicamento_fk 
+                                 and em.id_nombreComercial_fk=nc.id_nombreComercial
+                                 and em.id_formaAdministracion_fk=fam.id_formaAdministracion_fk 
+                                 and em.id_medicamento_fk=fam.id_medicamento_fk
+                                 and em.id_nombreComercial_fk=fam.id_nombreComercial_fk
+                                 and fam.id_formaAdministracion_fk=fa.id_formaAdministracion
+                                 and fam.id_medicamento_fk=m.id_medicamento
+                                 and fam.id_nombreComercial_fk=nc.id_nombreComercial
+                                 and em.id_medicamento_fk=@idMedicamento and em.id_nombreComercial_fk=@idNombreComercial";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                cmd.Parameters.AddWithValue("@idNombreComercial", idNombreComercial);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    formasAdministracion.Add(new FormaAdministracion()
+                    {
+                        id_formaAdministracion = (int)dr["id_formaAdministracion"],
+                        nombre = dr["nombre"].ToString()
+                    });
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return formasAdministracion;
+        }
+        /*
+       * Método mostrar presentaciones del medicamento para un nombre genérico y comercial.
+       * No recibe parámetros.
+       * Retorna una lista de objetos PresentacionMedicamento.
+       */
+        public static List<PresentacionMedicamento> mostrarPresentacionMedicamentoParaUnNombreGenericoYComercial(int idMedicamento, int idNombreComercial)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            List<PresentacionMedicamento> presentacionesMedicamento = new List<PresentacionMedicamento>();
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select distinct pm.id_presentacionMedicamento,cast(pm.nombre as varchar(max)) as 'nombre'
+                                 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, PresentacionMedicamentoXMedicamento pmm, PresentacionMedicamento pm
+                                 where m.id_medicamento=em.id_medicamento_fk 
+                                 and em.id_nombreComercial_fk=nc.id_nombreComercial
+                                 and em.id_presentacionMedicamento_fk=pmm.id_presentacionMedicamento_fk 
+                                 and em.id_medicamento_fk=pmm.id_medicamento_fk
+                                 and em.id_nombreComercial_fk=pmm.id_nombreComercial_fk
+                                 and pmm.id_presentacionMedicamento_fk=pm.id_presentacionMedicamento
+                                 and pmm.id_medicamento_fk=m.id_medicamento
+                                 and pmm.id_nombreComercial_fk=nc.id_nombreComercial
+                                 and em.id_medicamento_fk=@idMedicamento and em.id_nombreComercial_fk=@idNombreComercial";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                cmd.Parameters.AddWithValue("@idNombreComercial", idNombreComercial);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    presentacionesMedicamento.Add(new PresentacionMedicamento()
+                    {
+                        id_presentacionMedicamento = (int)dr["id_presentacionMedicamento"],
+                        nombre = dr["nombre"].ToString()
+                    });
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return presentacionesMedicamento;
+        }
     }
 }

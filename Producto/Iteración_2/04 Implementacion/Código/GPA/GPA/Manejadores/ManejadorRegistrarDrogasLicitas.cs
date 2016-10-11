@@ -18,5 +18,21 @@ namespace GPA.Manejadores
         {
             return NombreComercialLN.mostrarNombresComercialesDeMedicamento(idMedicamento);
         }
+        public List<UnidadDeMedida> mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoLN.mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial);
+        }
+        public List<FormaAdministracion> mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoLN.mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial);
+        }
+        public List<PresentacionMedicamento> mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoLN.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial);
+        }
+        public List<MomentoDia> mostrarMomentosDelDia()
+        {
+            return MomentoDiaLN.mostrarMomentosDelDia();
+        }
     }
 }

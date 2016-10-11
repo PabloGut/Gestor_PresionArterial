@@ -96,7 +96,7 @@ namespace GPA
 
             presentarInsectos(cboInsectos, manejadorRegistrarAlergias.mostrarInsectos(), "id_insecto", "nombre");
 
-            presentarNombreMedicamentos(cboMedicamentos, manejadorRegistrarAlergias.mostrarNombreMedicamentos(), "id_medicamento", "nombreGenerico");
+            presentarNombreMedicamentosQueProducenAlergia(cboMedicamentosAlergia, manejadorRegistrarAlergias.mostrarMedicamentosQueProducenAlergias(), "idMedicamentoAlergia", "nombre");
 
             presentarNombreElementosQueFuma(cboElementoQueFuma, manejadorRegistrarHabitosTabaquismo.mostrarNombreElementoQueFuma(), "id_elementoQueFuma", "nombre");
 
@@ -121,6 +121,13 @@ namespace GPA
             presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manajadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
             presentarMedicamento(cboNombreGenerico, manejadorRegistrarDrogasLicitas.mostrarNombresMedicamento(),"id_medicamento", "nombreGenerico");
+
+            presentarMomentosDelDia(cboMomentoDia1, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
+
+            presentarMomentosDelDia(cboMomentoDia2, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
+
+            presentarMomentosDelDia(cboMomentoDia3, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
+            
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -319,9 +326,9 @@ namespace GPA
            * El valor de retorno es void.
            * Llama al método cargarCombo.
          */
-        public void presentarNombreMedicamentos(ComboBox combo, List<Medicamento> medicamentos, string valueMember, string displayMember)
+        public void presentarNombreMedicamentosQueProducenAlergia(ComboBox combo, List<MedicamentoAlergia> medicamentosAlergia, string valueMember, string displayMember)
         {
-            cargarCombo(combo, medicamentos, valueMember, displayMember);
+            cargarCombo(combo, medicamentosAlergia, valueMember, displayMember);
         }
         /*
           * Método para mostrar, los nombres de elementos utilizados para fumar,  en el combobox.
@@ -376,14 +383,67 @@ namespace GPA
             cargarCombo(combo, sustancias, valueMember, displayMember);
 
         }
+        /*
+        * Método para mostrar los nombres de medicamentos,  en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos Medicamento, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+        */
         public void presentarMedicamento(ComboBox combo, List<Medicamento> medicamento, string valueMember, string displayMember)
         {
             cargarCombo(combo, medicamento, valueMember, displayMember);
         }
+        /*
+          * Método para mostrar los nombres comerciales de los medicamentos,  en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos NombreComercial, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+          */
         public void presentarNombresComerciales(ComboBox combo, List<NombreComercial> nombresComerciales, string valueMember, string displayMember)
         {
             cargarCombo(combo, nombresComerciales, valueMember, displayMember);
         }
+        /*
+          * Método para presentar unidades de medida en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos UnidadMedida, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+         */
+        public void presentarUnidadMedida(ComboBox combo, List<UnidadDeMedida> unidadesDeMedida, string valueMember, string displayMember)
+        {
+            cargarCombo(cboUnidadMedida, unidadesDeMedida, valueMember, displayMember);
+        }
+        /*
+         * Método para presentar FormasAdministracion en el combobox.
+         * Recibe como parámetro la referencia del ComboBox, una lista de objetos FormaAdministracion, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+         * El valor de retorno es void.
+         * Llama al método cargarCombo.
+        */
+        public void presentarFormaAdministracion(ComboBox combo, List<FormaAdministracion> formasAdministracion, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, formasAdministracion, valueMember, displayMember);
+        }
+        /*
+        * Método para presentar presentaciones de medicamentos en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos PresentacionMedicamento, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+       */
+        public void presentarPresentacionMedicamento(ComboBox combo, List<PresentacionMedicamento> presentacionesMedicamento, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, presentacionesMedicamento, valueMember, displayMember);
+        }
+        /*
+           * Método para presentar presentaciones momentos del dia en el combobox.
+           * Recibe como parámetro la referencia del ComboBox, una lista de objetos MomentoDia, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+           * El valor de retorno es void.
+           * Llama al método cargarCombo.
+          */
+        public void presentarMomentosDelDia(ComboBox combo, List<MomentoDia> momentoDia, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, momentoDia, valueMember, displayMember);
+        }
+
         /*
          * Método para cargar un ComboBox.
          * Recibe como parámetro una referencia de un ComboBox, una lista genérica,  un string del valueMember y un string del displayMember.
@@ -590,6 +650,35 @@ namespace GPA
             int idMedicamento;
             Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
            presentarNombresComerciales(cboNombreComercial, manejadorRegistrarDrogasLicitas.mostrarNombresComercialDeMedicamento(idMedicamento),"id_nombreComercial","nombre");
+        }
+
+        private void cboMedidaConsumeAlcohol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Medida medida= (Medida)cboMedidaConsumeAlcohol.SelectedItem;
+            txtDescripcionMedida.Text = medida.descripcion;
+        }
+
+        private void txtDescripcionMedida_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboNombreComercial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentarDatosDeLaEspecificacion();
+        }
+        public void presentarDatosDeLaEspecificacion()
+        {
+            int idMedicamento;
+            int idNombreComercial;
+            Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+            Int32.TryParse(cboNombreComercial.SelectedValue.ToString(), out idNombreComercial);
+
+            presentarUnidadMedida(cboUnidadMedida, manejadorRegistrarDrogasLicitas.mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_unidadMedida", "nombre");
+
+            presentarFormaAdministracion(cboFormaAdministración, manejadorRegistrarDrogasLicitas.mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_formaAdministracion", "nombre");
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_presentacionMedicamento", "nombre");
         }
     }
 }

@@ -63,8 +63,10 @@
     <Compile Include="Clases\Institucion.cs" />
     <Compile Include="Clases\Localidad.cs" />
     <Compile Include="Clases\Medicamento.cs" />
+    <Compile Include="Clases\MedicamentoAlergia.cs" />
     <Compile Include="Clases\Medida.cs" />
     <Compile Include="Clases\ModificacionSintoma.cs" />
+    <Compile Include="Clases\MomentoDia.cs" />
     <Compile Include="Clases\NombreComercial.cs" />
     <Compile Include="Clases\Operacion.cs" />
     <Compile Include="Clases\Paciente.cs" />

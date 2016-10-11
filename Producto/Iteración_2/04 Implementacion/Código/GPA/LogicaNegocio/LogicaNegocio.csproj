@@ -52,9 +52,11 @@
     <Compile Include="FormaAdministracionLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
     <Compile Include="InsectoLN.cs" />
+    <Compile Include="MedicamentoAlergiaLN.cs" />
     <Compile Include="MedicamentoLN.cs" />
     <Compile Include="MedidaLN.cs" />
     <Compile Include="ModificacionSintomaLN.cs" />
+    <Compile Include="MomentoDiaLN.cs" />
     <Compile Include="NombreComercialLN.cs" />
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
