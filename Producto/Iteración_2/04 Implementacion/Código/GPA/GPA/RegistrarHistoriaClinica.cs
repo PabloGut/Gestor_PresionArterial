@@ -29,6 +29,7 @@ namespace GPA
         ManejadorRegistrarHabitoAlcoholismo manejadorRegistrarHabitosAlcoholismo;
         ManejadorRegistrarHabitosDrogasIlicitas manajadorRegistrarHabitosDrogasIlicitas;
         ManejadorRegistrarDrogasLicitas manejadorRegistrarDrogasLicitas;
+        ManejadorRegistrarHabitosActividadFisica manejadorRegistrarHabitosActividadFisica;
 
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
@@ -45,6 +46,8 @@ namespace GPA
             manejadorRegistrarHabitosAlcoholismo = new ManejadorRegistrarHabitoAlcoholismo();
             manajadorRegistrarHabitosDrogasIlicitas = new ManejadorRegistrarHabitosDrogasIlicitas();
             manejadorRegistrarDrogasLicitas = new ManejadorRegistrarDrogasLicitas();
+            manejadorRegistrarHabitosActividadFisica = new ManejadorRegistrarHabitosActividadFisica();
+
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
@@ -127,7 +130,30 @@ namespace GPA
             presentarMomentosDelDia(cboMomentoDia2, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
 
             presentarMomentosDelDia(cboMomentoDia3, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
-            
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento1, manejadorRegistrarDrogasLicitas.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento2, manejadorRegistrarDrogasLicitas.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento3, manejadorRegistrarDrogasLicitas.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+
+            presentarElementosDelTiempo(cboElementoTiempoMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+
+            presentarElementosDelTiempo(cboElementoTiempoCancelacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+            rbMedicamentoActual.Checked = true;
+
+            presentarFrecuenciasDeConsumo(cboFrecuencia, manejadorRegistrarDrogasLicitas.mostrarFrecuencias(), "id_frecuencia", "nombre");
+
+            presentarActividadFisica(cboActividadFisica, manejadorRegistrarHabitosActividadFisica.mostrarActividadFisica(), "id_actividadFisica", "nombre");
+
+            presentarGradosActividadFisica(cboGradoActividadFisica, manejadorRegistrarHabitosActividadFisica.mostrarGradosActividadFisica(), "id_gradoActividadFisica", "nombre");
+
+            presentarIntensidadesActividadFisica(cboIntensidad, manejadorRegistrarHabitosActividadFisica.mostrarIntensidadActividadFisica(), "id_intensidad", "nombre");
+
+            agregarColumnasSintomas();
+            agregarColumnaAntecedentes();
+            agregarColumnaAlergias();
+            agregarColumnaHabitos();
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -443,7 +469,46 @@ namespace GPA
         {
             cargarCombo(combo, momentoDia, valueMember, displayMember);
         }
-
+        /*
+           * Método para presentar frecuencias de consumo de medicamento en el combobox.
+           * Recibe como parámetro la referencia del ComboBox, una lista de objetos Frecuencia, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+           * El valor de retorno es void.
+           * Llama al método cargarCombo.
+          */
+        public void presentarFrecuenciasDeConsumo(ComboBox combo, List<Frecuencia> frecuencias, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, frecuencias, valueMember, displayMember);
+        }
+        /*
+          * Método para presentar las actividades física en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos ActividadFisica, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+         */
+        public void presentarActividadFisica(ComboBox combo, List<ActividadFisica> actividades, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, actividades, valueMember, displayMember);
+        }
+        /*
+        * Método para presentar los grados de actividad física en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos GradoActividadFisica, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+       */
+        public void presentarGradosActividadFisica(ComboBox combo, List<GradoActividadFisica> grados, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, grados, valueMember, displayMember);
+        }
+        /*
+       * Método para presentar intensidades de la actividad física en el combobox.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos IntensidadActividadFisica, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+       * El valor de retorno es void.
+       * Llama al método cargarCombo.
+      */
+        public void presentarIntensidadesActividadFisica(ComboBox combo, List<IntensidadActividadFisica> intensidades, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, intensidades, valueMember, displayMember);
+        }
         /*
          * Método para cargar un ComboBox.
          * Recibe como parámetro una referencia de un ComboBox, una lista genérica,  un string del valueMember y un string del displayMember.
@@ -624,10 +689,6 @@ namespace GPA
                  default:
                      break;
              }
-            
-                
-            
-            
         }
 
         private void rbSiOtraEnfermedad_CheckedChanged(object sender, EventArgs e)
@@ -680,5 +741,593 @@ namespace GPA
 
             presentarPresentacionMedicamento(cboPresentacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_presentacionMedicamento", "nombre");
         }
+
+        private void cboGradoActividadFisica_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GradoActividadFisica grado = (GradoActividadFisica)cboGradoActividadFisica.SelectedItem;
+            txtDescripcionGradoActividadFisica.Text = grado.descripcion;
+        }
+
+        private void btnAgregarSintoma_Click(object sender, EventArgs e)
+        {
+
+            cargarDatosDataGridViewSintomas();
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los sintomas.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewSintomas()
+        {
+            string caracterDolor = "No precisa";
+            string haciaDondeIrradia = "No precisa";
+            string fechaInicio = "No precisa";
+            string cantidadTiempoDeComienzo = "No precisa";
+            string cuandoComenzo = "No precisa";
+            string comoModificaSintoma = "No precisa";
+            string elementoModificacionSintoma = "No precisa";
+            string observaciones = "No precisa";
+
+            TipoSintoma nombreSintoma= (TipoSintoma) cboQueSienteElPaciente.SelectedItem;
+            ParteDelCuerpo parteCuerpo= (ParteDelCuerpo) cboParteCuerpo.SelectedItem;
+
+            if (rbSiDolor.Checked == true)
+            {
+                CaracterDelDolor caracter = (CaracterDelDolor)cboCaracterDolor.SelectedItem;
+                caracterDolor = caracter.nombre;
+            }
+            if (string.IsNullOrEmpty(txtHaciaDondeIrradia.Text) == false)
+            {
+                haciaDondeIrradia = txtHaciaDondeIrradia.Text;
+            }
+            if (string.IsNullOrEmpty(mtbFechaComienzoSintoma.ToString()) == false)
+            {
+                fechaInicio = mtbFechaComienzoSintoma.Text;
+            }
+            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false)
+            {
+                ElementoDelTiempo elementoTiempo = (ElementoDelTiempo)cboElementoTiempo.SelectedItem;
+                cantidadTiempoDeComienzo = txtCantTiempoInicioSintoma.Text + " " +elementoTiempo.nombre;
+            }
+            if (cboCuandoComenzo.SelectedIndex > -1)
+            {
+                DescripcionDelTiempo descripcion= (DescripcionDelTiempo) cboCuandoComenzo.SelectedItem;
+                cuandoComenzo = descripcion.nombre;
+            }
+            if (cboComoModificaSintoma.SelectedIndex > -1)
+            {
+                ModificacionSintoma modificacion = (ModificacionSintoma)cboComoModificaSintoma.SelectedItem;
+                comoModificaSintoma = modificacion.nombre;
+            }
+            if (cboElementoModificacion.SelectedIndex > -1)
+            {
+                ElementoDeModificacion elementoModificacion = (ElementoDeModificacion)cboElementoModificacion.SelectedItem;
+                elementoModificacionSintoma = elementoModificacion.nombre;
+            }
+            if (string.IsNullOrEmpty(txtObservaciones.Text) == false)
+            {
+                observaciones = txtObservaciones.Text;
+            }
+            dgvListaSintoma.Rows.Add(nombreSintoma.nombre,txtDescQueSientePaciente.Text,parteCuerpo.nombre,caracterDolor,haciaDondeIrradia,fechaInicio,cantidadTiempoDeComienzo,cuandoComenzo,comoModificaSintoma,elementoModificacionSintoma,observaciones);
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los Antecedentes Mórbidos.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAntecedentesMorbidos()
+        {
+            string tipoAntecedente = "No precisa";
+            string nombreDelTipoDeAntecedente = "No precisa";
+            string tratamiento = "No precisa";
+            string evolución = "No precisa";
+            string tiempo = "No precisa";
+            
+
+            if (cboTipoAntecedenteMorbido.SelectedIndex > -1)
+            {
+                TipoAntecedenteMorbido tipo = (TipoAntecedenteMorbido)cboTipoAntecedenteMorbido.SelectedItem;
+                tipoAntecedente = tipo.nombre;
+                switch (tipo.nombre)
+                {
+                    case "Enfermedad":
+                        Enfermedad enfermedadSeleccionada = (Enfermedad)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                        nombreDelTipoDeAntecedente = enfermedadSeleccionada.nombre;
+                        break;
+                    case "Operación":
+                        Operacion operacionSeleccionada = (Operacion)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                        nombreDelTipoDeAntecedente = operacionSeleccionada.nombre;
+                        break;
+                    case "Traumatismo":
+                        Traumatismo traumatismoSeleccionado = (Traumatismo)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                        nombreDelTipoDeAntecedente = traumatismoSeleccionado.nombre;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (string.IsNullOrEmpty(txtTratamientoAntecedenteMorbido.Text) == false)
+            {
+                tratamiento = txtTratamientoAntecedenteMorbido.Text;
+            }
+            if (string.IsNullOrEmpty(txtEvoluciónAntecedenteMorbido.Text) == false)
+            {
+                tratamiento = txtEvoluciónAntecedenteMorbido.Text;
+            }
+            if (string.IsNullOrEmpty(txtCantTiempoAntecedenteMorbido.Text) == false)
+            {
+                ElementoDelTiempo componente= (ElementoDelTiempo) cboTiempoOcurridoAntMorbido.SelectedItem;
+                tiempo = txtCantTiempoAntecedenteMorbido.Text + " " + componente.nombre;
+            }
+            dgvAntecedentesMorbidos.Rows.Add(tipoAntecedente,nombreDelTipoDeAntecedente, tratamiento, evolución, tiempo);
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los Antecedentes Patológicos Familiares.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAntecedentesPatologicosFamiliares()
+        {
+            string nombreFamiliar = "No precisa";
+            string viveFamiliar = "No precisa";
+            string enfermedades="";
+            string otraEnfermedad = "No precisa";
+            string causaMuerte = "No precisa";
+            string descripcionOtraEnfermedad="No precisa";
+            string observaciones = "No precisa";
+
+            List<string> listaEnfermedades = new List<string>();
+
+            if (cboFamiliar.SelectedIndex > -1)
+            {
+                Familiar familiar = (Familiar)cboFamiliar.SelectedItem;
+                nombreFamiliar = familiar.nombre;
+            }
+
+            if (rbSiViveFamiliar.Checked == true)
+            {
+                viveFamiliar = "Si";
+            }
+            else
+            {
+                viveFamiliar = "No";
+            }
+
+            if (chbAsma.Checked==true)
+            {
+                enfermedades = "Asma";
+                listaEnfermedades.Add("Asma");
+            }
+            if (chbDiabetes.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Diabetes";
+                listaEnfermedades.Add("Diabetes");
+            }
+            if (chbHipertensión.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Hipertensión" ;
+                listaEnfermedades.Add("Hipertensión");
+            }
+            if (chbAnemias.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Anemias";
+                listaEnfermedades.Add("Anemias");
+            }
+            if (chbTuberculosis.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Tuberculosis";
+                listaEnfermedades.Add("Tuberculosis");
+            }
+            if (chbLepra.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Lepra";
+                listaEnfermedades.Add("Lepra");
+            }
+            if (chbHepatitis.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Hepatitis";
+                listaEnfermedades.Add("Hepatitis");
+            }
+            if (chbParasitismo.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Parasitismo";
+                listaEnfermedades.Add("Parasitismo");
+            }
+            if (chbTranstornosNutricionales.Checked == true)
+            {
+                if (string.IsNullOrEmpty(enfermedades) == false)
+                {
+                    enfermedades += ", ";
+                }
+                enfermedades += "Trastornos nutricionales";
+                listaEnfermedades.Add("Trastornos nutricionales");
+            }
+
+            if (string.IsNullOrEmpty(enfermedades) == true)
+            {
+                enfermedades = "No precisa";
+            }
+            if (rbSiOtraEnfermedad.Checked == true)
+            {
+                otraEnfermedad = "Si";
+            }
+            else
+            {
+                otraEnfermedad = "No";
+            }
+            if (string.IsNullOrEmpty(txtDescripcionOtraEnfermedad.Text) == false)
+            {
+                descripcionOtraEnfermedad = txtDescripcionOtraEnfermedad.Text;
+            }
+            if (string.IsNullOrEmpty(txtCausaMuerte.Text) == false)
+            {
+                causaMuerte = txtCausaMuerte.Text;
+            }
+            if (string.IsNullOrEmpty(txtObservacionesAntecedentesPatologicosFamiliares.Text) == false)
+            {
+                observaciones = txtObservacionesAntecedentesPatologicosFamiliares.Text;
+            }
+            dgvAntecedentesPatologicosFamiliares.Rows.Add(nombreFamiliar, viveFamiliar, enfermedades, otraEnfermedad, descripcionOtraEnfermedad,causaMuerte,observaciones);
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los Alimentos.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaAlimentos()
+        {
+            string alergiaAlimento = "";
+            string alimento = "";
+            string efectos = "No precisa";
+
+            if (rbSiAlergicoAlimentos.Checked == true)
+            {
+                alergiaAlimento = "Si";
+            }
+            else
+            {
+                alergiaAlimento = "No";
+            }
+            Alimento alimentoSeleccionado = (Alimento)cboAlimentos.SelectedItem;
+            alimento = alimentoSeleccionado.nombre;
+
+            if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
+            {
+                efectos = txtEfectosAlergiaAlimentos.Text;
+            }
+            dgvAlergiasAlimentos.Rows.Add(alergiaAlimento, alimento, efectos);
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a las sustancias del ambiente que producen alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaSustanciaAmbiente()
+        {
+            string alergiaSustanciaAmbiente = "";
+            string sustancia = "";
+            string efectos = "No precisa";
+
+            if (rbSiAlergicoAlimentos.Checked == true)
+            {
+                alergiaSustanciaAmbiente = "Si";
+            }
+            else
+            {
+                alergiaSustanciaAmbiente = "No";
+            }
+            SustaciaAmbiente sustanciaAmbiente = (SustaciaAmbiente)cboSustanciaAmbiente.SelectedItem;
+            sustancia = sustanciaAmbiente.nombre;
+
+            if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
+            {
+                efectos = txtEfectosAlergiaSustanciaAmbiente.Text;
+            }
+            dgvAlergiasSustanciaAmbiente.Rows.Add(alergiaSustanciaAmbiente, sustancia, efectos);
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a las sustancias o meteriales que producen alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaSustanciaContactoPiel()
+        {
+            string alergiaSustanciaContactoPiel = "";
+            string sustancia = "";
+            string efectos = "No precisa";
+
+            if (rbSiAlergiaSustanciaContactoPiel.Checked == true)
+            {
+                alergiaSustanciaContactoPiel = "Si";
+            }
+            else
+            {
+                alergiaSustanciaContactoPiel = "No";
+            }
+            SustanciaContactoPiel sustanciaContactoPiel = (SustanciaContactoPiel)cboSustanciaContactoPiel.SelectedItem;
+            sustancia = sustanciaContactoPiel.nombre;
+
+            if (string.IsNullOrEmpty(txtEfectosAlergiaSustanciaContactoPiel.Text) == false)
+            {
+                efectos = txtEfectosAlergiaSustanciaContactoPiel.Text;
+            }
+            dgvAlergiasSustanciasContactoPiel.Rows.Add(alergiaSustanciaContactoPiel, sustancia, efectos);
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los insectos.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaInsectos()
+        {
+            string alergiaInsectos = "";
+            string insecto = "";
+            string efectos = "No precisa";
+
+            if (rbSiAlergiaInsecto.Checked == true)
+            {
+                alergiaInsectos = "Si";
+            }
+            else
+            {
+                alergiaInsectos = "No";
+            }
+            Insecto insectoSeleccionado = (Insecto)cboInsectos.SelectedItem;
+            insecto = insectoSeleccionado.nombre;
+
+            if (string.IsNullOrEmpty(txtEfectosAlergiaInsecto.Text) == false)
+            {
+                efectos = txtEfectosAlergiaInsecto.Text;
+            }
+            dgvAlergiasInsectos.Rows.Add(alergiaInsectos, insecto, efectos);
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a medicamentos que producen alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaMedicamentos()
+        {
+            string alergiaMedicamento = "";
+            string medicamento = "";
+            string efectos = "No precisa";
+
+            if (rbSiAlergiaMedicamento.Checked == true)
+            {
+                alergiaMedicamento = "Si";
+            }
+            else
+            {
+                alergiaMedicamento = "No";
+            }
+            MedicamentoAlergia medicamentoSeleccionado = (MedicamentoAlergia)cboMedicamentosAlergia.SelectedItem;
+            medicamento = medicamentoSeleccionado.nombre;
+
+            if (string.IsNullOrEmpty(txtEfectosAlergiasMedicamentos.Text) == false)
+            {
+                efectos = txtEfectosAlergiasMedicamentos.Text;
+            }
+            dgvAlergiasMedicamentos.Rows.Add(alergiaMedicamento, medicamento, efectos);
+        }
+        /*
+         * Método para cargar las columnas del DatagridView correspondiente a los sintomas.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void agregarColumnasSintomas()
+        {
+            string[] nombreColumnasSintomas = new string[11] { "Que siente el paciente", "Descripción de lo que siente","Parte del cuerpo donde siente la molestia","Caracter del dolor",
+                                                              "Hacia donde se irradia","Fecha de inicio síntoma","Cantidad de tiempo desde que comenzó","Descripción tiempo","Como se modifica", "Elemento que lo modifica","Observaciones"};
+
+            for (int i = 0; i < nombreColumnasSintomas.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasSintomas[i];
+                columna.Width = 200;
+                dgvListaSintoma.Columns.Add(columna);
+            }
+        }
+        /*
+        * Método para cargar las columnas de los DatagridView correspondiente a los antecedentes mórbidos y patológicos familiares.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void agregarColumnaAntecedentes()
+        {
+            string[] nombreColumnasAntecedenteMorbido = new string[5] { "Tipo", "Nombre", "Tratamiento", "Evolución", "Cuando ocurrio" };
+
+
+            for (int i = 0; i < nombreColumnasAntecedenteMorbido.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAntecedenteMorbido[i];
+                columna.Width = 200;
+                dgvAntecedentesMorbidos.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAntecedentesPatologicosFamiliares = new string[7] { "Familiar", "Vive Si/No", "Enfermedades que padece o padeció", "Otras enfermedades","Descripción", "Causa de muerte", "Observaciones" };
+
+
+            for (int i = 0; i < nombreColumnasAntecedentesPatologicosFamiliares.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAntecedentesPatologicosFamiliares[i];
+                columna.Width = 200;
+                dgvAntecedentesPatologicosFamiliares.Columns.Add(columna);
+            }
+        }
+        /*
+        * Método para cargar las columnas de los DatagridView correspondiente a las alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void agregarColumnaAlergias()
+        {
+            string[] nombreColumnasAlergiasAlimento = new string[3] { "Es alergico Si/No", "Alimento", "Efectos"};
+
+
+            for (int i = 0; i < nombreColumnasAlergiasAlimento.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasAlimento[i];
+                columna.Width = 200;
+                dgvAlergiasAlimentos.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasSustanciaDelAmbiente= new string[3] { "Es alergico Si/No", "Sustancia", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasSustanciaDelAmbiente.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasAlimento[i];
+                columna.Width = 200;
+                dgvAlergiasSustanciaAmbiente.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasSustanciaMaterialesContactoPiel = new string[3] { "Es alergico Si/No", "Sustancia o material", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasSustanciaMaterialesContactoPiel.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasSustanciaMaterialesContactoPiel[i];
+                columna.Width = 200;
+                dgvAlergiasSustanciasContactoPiel.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasPicaduraInsectos = new string[3] { "Es alergico Si/No", "Insecto", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasPicaduraInsectos.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasPicaduraInsectos[i];
+                columna.Width = 200;
+                dgvAlergiasInsectos.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasMedicamentos = new string[3] { "Es alergico Si/No", "Medicamento", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasMedicamentos.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasMedicamentos[i];
+                columna.Width = 200;
+                dgvAlergiasMedicamentos.Columns.Add(columna);
+            }
+
+
+        }
+        /*
+         * Método para cargar las columnas de los DatagridView correspondiente a los hábitos.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void agregarColumnaHabitos()
+        {
+            string[] nombreColumnasHabitoTabaquismo = new string[7] { "Fuma Si/No", "Cantidad", "Años fumando", "Dejó de fumar Si/No","Cantidad de tiempo que dejó de fumar",
+                                                                      "Descripción del tiempo", "Cantidad que fumaba"};
+
+            for (int i = 0; i < nombreColumnasHabitoTabaquismo.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoTabaquismo[i];
+                columna.Width = 200;
+                dgvHabitosFumar.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasHabitoBebidasAlcoholicas = new string[3] { "Consume alcohol Si/No", "Bebida", "Estimación de la cantidad de alcohol" };
+
+            for (int i = 0; i < nombreColumnasHabitoBebidasAlcoholicas.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoBebidasAlcoholicas[i];
+                columna.Width = 200;
+                dgvHabitosAlcoholismo.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasHabitoDrogasIlicitas = new string[5] { "Consume drogas Si/No", "Sustancia", "Dejo de consumir Si/No", "En Tratamiento Si/No","Cantidad de tiempo consumiento"};
+
+            for (int i = 0; i < nombreColumnasHabitoDrogasIlicitas.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoDrogasIlicitas[i];
+                columna.Width = 200;
+                dgvHabitosDrogasIlicitas.Columns.Add(columna);
+            }
+            string[] nombreColumnasHabitoActividadFisica = new string[3] { "Deporte o actividad", "Grado de la actividad ", "Intensidad"};
+
+            for (int i = 0; i < nombreColumnasHabitoActividadFisica.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoActividadFisica[i];
+                columna.Width = 200;
+                dgvHabitosActividadFisica.Columns.Add(columna);
+            }
+        }
+
+        private void btnAgregarAntecedenteMorbido_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAntecedentesMorbidos();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAntecedentesPatologicosFamiliares();
+        }
+
+        private void btnAgregarAlergiaAlimentos_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaAlimentos();
+        }
+
+        private void btnAgregarSustanciaContactoPiel_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaSustanciaContactoPiel();
+        }
+
+        private void btnAgregarSustanciaAmbiente_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaSustanciaAmbiente();
+        }
+
+        private void btnAgregarAlergiaInsecto_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaInsectos();
+        }
+
+        private void btnAgregarMedicamento_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaMedicamentos();
+        }
+
     }
 }

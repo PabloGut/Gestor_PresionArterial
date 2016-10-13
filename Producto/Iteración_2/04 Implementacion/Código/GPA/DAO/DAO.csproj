@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActividadFisicaDAO.cs" />
     <Compile Include="AlimentoDAO.cs" />
     <Compile Include="BarrioDAO.cs" />
     <Compile Include="CadenaConexion.cs" />
@@ -67,9 +68,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormaAdministracionDAO.cs" />
+    <Compile Include="FrecuenciaDAO.cs" />
+    <Compile Include="GradoActividadFisicaDAO.cs" />
     <Compile Include="HistoriaClinicaDAO.cs" />
     <Compile Include="InsectoDAO.cs" />
     <Compile Include="InstitucionDAO.cs" />
+    <Compile Include="IntensidadActividadFisicaDAO.cs" />
     <Compile Include="LocalidadDAO.cs" />
     <Compile Include="MedicamentoAlergiaDAO.cs" />
     <Compile Include="MedicamentoDAO.cs" />

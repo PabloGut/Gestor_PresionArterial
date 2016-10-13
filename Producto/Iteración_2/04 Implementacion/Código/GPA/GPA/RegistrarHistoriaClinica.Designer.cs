@@ -96,13 +96,13 @@
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button11 = new System.Windows.Forms.Button();
+            this.dgvAntecedentesMorbidos = new System.Windows.Forms.DataGridView();
+            this.btnAgregarAntecedenteMorbido = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtEvoluciónAntecedenteMorbido = new System.Windows.Forms.TextBox();
+            this.txtTratamientoAntecedenteMorbido = new System.Windows.Forms.TextBox();
+            this.txtCantTiempoAntecedenteMorbido = new System.Windows.Forms.TextBox();
             this.cboNombrePorTipoAntecedenteMorbido = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.cboTipoAntecedenteMorbido = new System.Windows.Forms.ComboBox();
@@ -142,13 +142,13 @@
             this.label31 = new System.Windows.Forms.Label();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtObservacionesAntecedentesPatologicosFamiliares = new System.Windows.Forms.TextBox();
             this.label107 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.rbNoOtraEnfermedad = new System.Windows.Forms.RadioButton();
             this.rbSiOtraEnfermedad = new System.Windows.Forms.RadioButton();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button14 = new System.Windows.Forms.Button();
+            this.dgvAntecedentesPatologicosFamiliares = new System.Windows.Forms.DataGridView();
+            this.btnAgregarAntecedentePatologicoFamiliar = new System.Windows.Forms.Button();
             this.txtCausaMuerte = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.txtDescripcionOtraEnfermedad = new System.Windows.Forms.TextBox();
@@ -307,9 +307,9 @@
             this.cboMomentoDia1 = new System.Windows.Forms.ComboBox();
             this.label102 = new System.Windows.Forms.Label();
             this.cboMomentoDia2 = new System.Windows.Forms.ComboBox();
-            this.cboCantidadMedicamento3 = new System.Windows.Forms.ComboBox();
+            this.cboPresentacionMedicamento3 = new System.Windows.Forms.ComboBox();
             this.cboMomentoDia3 = new System.Windows.Forms.ComboBox();
-            this.cboCantidadMedicamento2 = new System.Windows.Forms.ComboBox();
+            this.cboPresentacionMedicamento2 = new System.Windows.Forms.ComboBox();
             this.label92 = new System.Windows.Forms.Label();
             this.txtCantidadMedicamento1 = new System.Windows.Forms.TextBox();
             this.txtCantidadMedicamento3 = new System.Windows.Forms.TextBox();
@@ -354,13 +354,15 @@
             this.label70 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.txtDescripcionGradoActividadFisica = new System.Windows.Forms.TextBox();
+            this.lblDescripcionGradoActividad = new System.Windows.Forms.Label();
             this.button35 = new System.Windows.Forms.Button();
-            this.dataGridView11 = new System.Windows.Forms.DataGridView();
-            this.comboBox47 = new System.Windows.Forms.ComboBox();
-            this.comboBox46 = new System.Windows.Forms.ComboBox();
+            this.dgvHabitosActividadFisica = new System.Windows.Forms.DataGridView();
+            this.cboIntensidad = new System.Windows.Forms.ComboBox();
+            this.cboGradoActividadFisica = new System.Windows.Forms.ComboBox();
             this.label100 = new System.Windows.Forms.Label();
-            this.button34 = new System.Windows.Forms.Button();
-            this.comboBox45 = new System.Windows.Forms.ComboBox();
+            this.btnAñadirActividadFisica = new System.Windows.Forms.Button();
+            this.cboActividadFisica = new System.Windows.Forms.ComboBox();
             this.label99 = new System.Windows.Forms.Label();
             this.label98 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -380,12 +382,12 @@
             this.tabControl3.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.tabPage11.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesPatologicosFamiliares)).BeginInit();
             this.panel3.SuspendLayout();
             this.tpAlergias.SuspendLayout();
             this.tabControl4.SuspendLayout();
@@ -417,7 +419,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosDrogasIlicitas)).BeginInit();
             this.tabPage9.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -751,6 +753,7 @@
             this.btnAgregarSintoma.TabIndex = 22;
             this.btnAgregarSintoma.Text = "Agregar Síntoma";
             this.btnAgregarSintoma.UseVisualStyleBackColor = true;
+            this.btnAgregarSintoma.Click += new System.EventHandler(this.btnAgregarSintoma_Click);
             // 
             // btnAñadirElementoModificacion
             // 
@@ -1078,13 +1081,13 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.dataGridView2);
-            this.groupBox7.Controls.Add(this.button11);
+            this.groupBox7.Controls.Add(this.dgvAntecedentesMorbidos);
+            this.groupBox7.Controls.Add(this.btnAgregarAntecedenteMorbido);
             this.groupBox7.Controls.Add(this.button9);
             this.groupBox7.Controls.Add(this.button8);
-            this.groupBox7.Controls.Add(this.textBox7);
-            this.groupBox7.Controls.Add(this.textBox6);
-            this.groupBox7.Controls.Add(this.textBox5);
+            this.groupBox7.Controls.Add(this.txtEvoluciónAntecedenteMorbido);
+            this.groupBox7.Controls.Add(this.txtTratamientoAntecedenteMorbido);
+            this.groupBox7.Controls.Add(this.txtCantTiempoAntecedenteMorbido);
             this.groupBox7.Controls.Add(this.cboNombrePorTipoAntecedenteMorbido);
             this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.cboTipoAntecedenteMorbido);
@@ -1100,22 +1103,23 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Antecedentes Mórbidos";
             // 
-            // dataGridView2
+            // dgvAntecedentesMorbidos
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 156);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(671, 98);
-            this.dataGridView2.TabIndex = 15;
+            this.dgvAntecedentesMorbidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAntecedentesMorbidos.Location = new System.Drawing.Point(6, 156);
+            this.dgvAntecedentesMorbidos.Name = "dgvAntecedentesMorbidos";
+            this.dgvAntecedentesMorbidos.Size = new System.Drawing.Size(671, 98);
+            this.dgvAntecedentesMorbidos.TabIndex = 15;
             // 
-            // button11
+            // btnAgregarAntecedenteMorbido
             // 
-            this.button11.Location = new System.Drawing.Point(493, 114);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(172, 23);
-            this.button11.TabIndex = 14;
-            this.button11.Text = "Agregar antecedente mórbido";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnAgregarAntecedenteMorbido.Location = new System.Drawing.Point(493, 114);
+            this.btnAgregarAntecedenteMorbido.Name = "btnAgregarAntecedenteMorbido";
+            this.btnAgregarAntecedenteMorbido.Size = new System.Drawing.Size(172, 23);
+            this.btnAgregarAntecedenteMorbido.TabIndex = 14;
+            this.btnAgregarAntecedenteMorbido.Text = "Agregar antecedente mórbido";
+            this.btnAgregarAntecedenteMorbido.UseVisualStyleBackColor = true;
+            this.btnAgregarAntecedenteMorbido.Click += new System.EventHandler(this.btnAgregarAntecedenteMorbido_Click);
             // 
             // button9
             // 
@@ -1135,26 +1139,26 @@
             this.button8.Text = "Añadir";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // txtEvoluciónAntecedenteMorbido
             // 
-            this.textBox7.Location = new System.Drawing.Point(343, 74);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(334, 20);
-            this.textBox7.TabIndex = 10;
+            this.txtEvoluciónAntecedenteMorbido.Location = new System.Drawing.Point(343, 74);
+            this.txtEvoluciónAntecedenteMorbido.Name = "txtEvoluciónAntecedenteMorbido";
+            this.txtEvoluciónAntecedenteMorbido.Size = new System.Drawing.Size(334, 20);
+            this.txtEvoluciónAntecedenteMorbido.TabIndex = 10;
             // 
-            // textBox6
+            // txtTratamientoAntecedenteMorbido
             // 
-            this.textBox6.Location = new System.Drawing.Point(343, 31);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(334, 20);
-            this.textBox6.TabIndex = 9;
+            this.txtTratamientoAntecedenteMorbido.Location = new System.Drawing.Point(343, 31);
+            this.txtTratamientoAntecedenteMorbido.Name = "txtTratamientoAntecedenteMorbido";
+            this.txtTratamientoAntecedenteMorbido.Size = new System.Drawing.Size(334, 20);
+            this.txtTratamientoAntecedenteMorbido.TabIndex = 9;
             // 
-            // textBox5
+            // txtCantTiempoAntecedenteMorbido
             // 
-            this.textBox5.Location = new System.Drawing.Point(182, 117);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(60, 20);
-            this.textBox5.TabIndex = 8;
+            this.txtCantTiempoAntecedenteMorbido.Location = new System.Drawing.Point(182, 117);
+            this.txtCantTiempoAntecedenteMorbido.Name = "txtCantTiempoAntecedenteMorbido";
+            this.txtCantTiempoAntecedenteMorbido.Size = new System.Drawing.Size(60, 20);
+            this.txtCantTiempoAntecedenteMorbido.TabIndex = 8;
             // 
             // cboNombrePorTipoAntecedenteMorbido
             // 
@@ -1506,11 +1510,11 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txtObservacionesAntecedentesPatologicosFamiliares);
             this.panel2.Controls.Add(this.label107);
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.dataGridView3);
-            this.panel2.Controls.Add(this.button14);
+            this.panel2.Controls.Add(this.dgvAntecedentesPatologicosFamiliares);
+            this.panel2.Controls.Add(this.btnAgregarAntecedentePatologicoFamiliar);
             this.panel2.Controls.Add(this.txtCausaMuerte);
             this.panel2.Controls.Add(this.label47);
             this.panel2.Controls.Add(this.txtDescripcionOtraEnfermedad);
@@ -1529,13 +1533,13 @@
             this.panel2.Size = new System.Drawing.Size(690, 546);
             this.panel2.TabIndex = 2;
             // 
-            // textBox2
+            // txtObservacionesAntecedentesPatologicosFamiliares
             // 
-            this.textBox2.Location = new System.Drawing.Point(90, 323);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(564, 53);
-            this.textBox2.TabIndex = 19;
+            this.txtObservacionesAntecedentesPatologicosFamiliares.Location = new System.Drawing.Point(90, 323);
+            this.txtObservacionesAntecedentesPatologicosFamiliares.Multiline = true;
+            this.txtObservacionesAntecedentesPatologicosFamiliares.Name = "txtObservacionesAntecedentesPatologicosFamiliares";
+            this.txtObservacionesAntecedentesPatologicosFamiliares.Size = new System.Drawing.Size(564, 53);
+            this.txtObservacionesAntecedentesPatologicosFamiliares.TabIndex = 19;
             // 
             // label107
             // 
@@ -1578,22 +1582,23 @@
             this.rbSiOtraEnfermedad.UseVisualStyleBackColor = true;
             this.rbSiOtraEnfermedad.CheckedChanged += new System.EventHandler(this.rbSiOtraEnfermedad_CheckedChanged);
             // 
-            // dataGridView3
+            // dgvAntecedentesPatologicosFamiliares
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(9, 411);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(645, 126);
-            this.dataGridView3.TabIndex = 16;
+            this.dgvAntecedentesPatologicosFamiliares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAntecedentesPatologicosFamiliares.Location = new System.Drawing.Point(9, 411);
+            this.dgvAntecedentesPatologicosFamiliares.Name = "dgvAntecedentesPatologicosFamiliares";
+            this.dgvAntecedentesPatologicosFamiliares.Size = new System.Drawing.Size(645, 126);
+            this.dgvAntecedentesPatologicosFamiliares.TabIndex = 16;
             // 
-            // button14
+            // btnAgregarAntecedentePatologicoFamiliar
             // 
-            this.button14.Location = new System.Drawing.Point(285, 382);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(122, 23);
-            this.button14.TabIndex = 15;
-            this.button14.Text = "Agregar antecedente";
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnAgregarAntecedentePatologicoFamiliar.Location = new System.Drawing.Point(285, 382);
+            this.btnAgregarAntecedentePatologicoFamiliar.Name = "btnAgregarAntecedentePatologicoFamiliar";
+            this.btnAgregarAntecedentePatologicoFamiliar.Size = new System.Drawing.Size(122, 23);
+            this.btnAgregarAntecedentePatologicoFamiliar.TabIndex = 15;
+            this.btnAgregarAntecedentePatologicoFamiliar.Text = "Agregar antecedente";
+            this.btnAgregarAntecedentePatologicoFamiliar.UseVisualStyleBackColor = true;
+            this.btnAgregarAntecedentePatologicoFamiliar.Click += new System.EventHandler(this.button14_Click);
             // 
             // txtCausaMuerte
             // 
@@ -1871,6 +1876,7 @@
             this.btnAgregarAlergiaAlimentos.TabIndex = 15;
             this.btnAgregarAlergiaAlimentos.Text = "Agregar alimento";
             this.btnAgregarAlergiaAlimentos.UseVisualStyleBackColor = true;
+            this.btnAgregarAlergiaAlimentos.Click += new System.EventHandler(this.btnAgregarAlergiaAlimentos_Click);
             // 
             // dgvAlergiasAlimentos
             // 
@@ -1991,6 +1997,7 @@
             this.btnAgregarSustanciaAmbiente.TabIndex = 15;
             this.btnAgregarSustanciaAmbiente.Text = "Agregar sustancia";
             this.btnAgregarSustanciaAmbiente.UseVisualStyleBackColor = true;
+            this.btnAgregarSustanciaAmbiente.Click += new System.EventHandler(this.btnAgregarSustanciaAmbiente_Click);
             // 
             // dgvAlergiasSustanciaAmbiente
             // 
@@ -2124,6 +2131,7 @@
             this.btnAgregarSustanciaContactoPiel.TabIndex = 15;
             this.btnAgregarSustanciaContactoPiel.Text = "Agregar sustancia";
             this.btnAgregarSustanciaContactoPiel.UseVisualStyleBackColor = true;
+            this.btnAgregarSustanciaContactoPiel.Click += new System.EventHandler(this.btnAgregarSustanciaContactoPiel_Click);
             // 
             // dgvAlergiasSustanciasContactoPiel
             // 
@@ -2244,6 +2252,7 @@
             this.btnAgregarMedicamento.TabIndex = 15;
             this.btnAgregarMedicamento.Text = "Agregar medicamento";
             this.btnAgregarMedicamento.UseVisualStyleBackColor = true;
+            this.btnAgregarMedicamento.Click += new System.EventHandler(this.btnAgregarMedicamento_Click);
             // 
             // dgvAlergiasMedicamentos
             // 
@@ -2364,6 +2373,7 @@
             this.btnAgregarAlergiaInsecto.TabIndex = 15;
             this.btnAgregarAlergiaInsecto.Text = "Agregar insecto";
             this.btnAgregarAlergiaInsecto.UseVisualStyleBackColor = true;
+            this.btnAgregarAlergiaInsecto.Click += new System.EventHandler(this.btnAgregarAlergiaInsecto_Click);
             // 
             // dgvAlergiasInsectos
             // 
@@ -3070,9 +3080,9 @@
             this.groupBox17.Controls.Add(this.cboMomentoDia1);
             this.groupBox17.Controls.Add(this.label102);
             this.groupBox17.Controls.Add(this.cboMomentoDia2);
-            this.groupBox17.Controls.Add(this.cboCantidadMedicamento3);
+            this.groupBox17.Controls.Add(this.cboPresentacionMedicamento3);
             this.groupBox17.Controls.Add(this.cboMomentoDia3);
-            this.groupBox17.Controls.Add(this.cboCantidadMedicamento2);
+            this.groupBox17.Controls.Add(this.cboPresentacionMedicamento2);
             this.groupBox17.Controls.Add(this.label92);
             this.groupBox17.Controls.Add(this.txtCantidadMedicamento1);
             this.groupBox17.Controls.Add(this.txtCantidadMedicamento3);
@@ -3183,13 +3193,13 @@
             this.cboMomentoDia2.Size = new System.Drawing.Size(121, 21);
             this.cboMomentoDia2.TabIndex = 27;
             // 
-            // cboCantidadMedicamento3
+            // cboPresentacionMedicamento3
             // 
-            this.cboCantidadMedicamento3.FormattingEnabled = true;
-            this.cboCantidadMedicamento3.Location = new System.Drawing.Point(355, 77);
-            this.cboCantidadMedicamento3.Name = "cboCantidadMedicamento3";
-            this.cboCantidadMedicamento3.Size = new System.Drawing.Size(121, 21);
-            this.cboCantidadMedicamento3.TabIndex = 48;
+            this.cboPresentacionMedicamento3.FormattingEnabled = true;
+            this.cboPresentacionMedicamento3.Location = new System.Drawing.Point(355, 77);
+            this.cboPresentacionMedicamento3.Name = "cboPresentacionMedicamento3";
+            this.cboPresentacionMedicamento3.Size = new System.Drawing.Size(121, 21);
+            this.cboPresentacionMedicamento3.TabIndex = 48;
             // 
             // cboMomentoDia3
             // 
@@ -3199,13 +3209,13 @@
             this.cboMomentoDia3.Size = new System.Drawing.Size(121, 21);
             this.cboMomentoDia3.TabIndex = 28;
             // 
-            // cboCantidadMedicamento2
+            // cboPresentacionMedicamento2
             // 
-            this.cboCantidadMedicamento2.FormattingEnabled = true;
-            this.cboCantidadMedicamento2.Location = new System.Drawing.Point(356, 48);
-            this.cboCantidadMedicamento2.Name = "cboCantidadMedicamento2";
-            this.cboCantidadMedicamento2.Size = new System.Drawing.Size(121, 21);
-            this.cboCantidadMedicamento2.TabIndex = 47;
+            this.cboPresentacionMedicamento2.FormattingEnabled = true;
+            this.cboPresentacionMedicamento2.Location = new System.Drawing.Point(356, 48);
+            this.cboPresentacionMedicamento2.Name = "cboPresentacionMedicamento2";
+            this.cboPresentacionMedicamento2.Size = new System.Drawing.Size(121, 21);
+            this.cboPresentacionMedicamento2.TabIndex = 47;
             // 
             // label92
             // 
@@ -3606,13 +3616,15 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.txtDescripcionGradoActividadFisica);
+            this.panel7.Controls.Add(this.lblDescripcionGradoActividad);
             this.panel7.Controls.Add(this.button35);
-            this.panel7.Controls.Add(this.dataGridView11);
-            this.panel7.Controls.Add(this.comboBox47);
-            this.panel7.Controls.Add(this.comboBox46);
+            this.panel7.Controls.Add(this.dgvHabitosActividadFisica);
+            this.panel7.Controls.Add(this.cboIntensidad);
+            this.panel7.Controls.Add(this.cboGradoActividadFisica);
             this.panel7.Controls.Add(this.label100);
-            this.panel7.Controls.Add(this.button34);
-            this.panel7.Controls.Add(this.comboBox45);
+            this.panel7.Controls.Add(this.btnAñadirActividadFisica);
+            this.panel7.Controls.Add(this.cboActividadFisica);
             this.panel7.Controls.Add(this.label99);
             this.panel7.Controls.Add(this.label98);
             this.panel7.Location = new System.Drawing.Point(6, 6);
@@ -3620,64 +3632,82 @@
             this.panel7.Size = new System.Drawing.Size(673, 268);
             this.panel7.TabIndex = 3;
             // 
+            // txtDescripcionGradoActividadFisica
+            // 
+            this.txtDescripcionGradoActividadFisica.Location = new System.Drawing.Point(73, 91);
+            this.txtDescripcionGradoActividadFisica.Multiline = true;
+            this.txtDescripcionGradoActividadFisica.Name = "txtDescripcionGradoActividadFisica";
+            this.txtDescripcionGradoActividadFisica.Size = new System.Drawing.Size(238, 36);
+            this.txtDescripcionGradoActividadFisica.TabIndex = 8;
+            // 
+            // lblDescripcionGradoActividad
+            // 
+            this.lblDescripcionGradoActividad.AutoSize = true;
+            this.lblDescripcionGradoActividad.Location = new System.Drawing.Point(3, 91);
+            this.lblDescripcionGradoActividad.Name = "lblDescripcionGradoActividad";
+            this.lblDescripcionGradoActividad.Size = new System.Drawing.Size(63, 13);
+            this.lblDescripcionGradoActividad.TabIndex = 7;
+            this.lblDescripcionGradoActividad.Text = "Descripción";
+            // 
             // button35
             // 
-            this.button35.Location = new System.Drawing.Point(146, 128);
+            this.button35.Location = new System.Drawing.Point(145, 201);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(108, 23);
             this.button35.TabIndex = 6;
             this.button35.Text = "Agregar actividad";
             this.button35.UseVisualStyleBackColor = true;
             // 
-            // dataGridView11
+            // dgvHabitosActividadFisica
             // 
-            this.dataGridView11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView11.Location = new System.Drawing.Point(330, 19);
-            this.dataGridView11.Name = "dataGridView11";
-            this.dataGridView11.Size = new System.Drawing.Size(340, 246);
-            this.dataGridView11.TabIndex = 5;
+            this.dgvHabitosActividadFisica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHabitosActividadFisica.Location = new System.Drawing.Point(330, 19);
+            this.dgvHabitosActividadFisica.Name = "dgvHabitosActividadFisica";
+            this.dgvHabitosActividadFisica.Size = new System.Drawing.Size(340, 246);
+            this.dgvHabitosActividadFisica.TabIndex = 5;
             // 
-            // comboBox47
+            // cboIntensidad
             // 
-            this.comboBox47.FormattingEnabled = true;
-            this.comboBox47.Location = new System.Drawing.Point(190, 85);
-            this.comboBox47.Name = "comboBox47";
-            this.comboBox47.Size = new System.Drawing.Size(121, 21);
-            this.comboBox47.TabIndex = 4;
+            this.cboIntensidad.FormattingEnabled = true;
+            this.cboIntensidad.Location = new System.Drawing.Point(73, 150);
+            this.cboIntensidad.Name = "cboIntensidad";
+            this.cboIntensidad.Size = new System.Drawing.Size(157, 21);
+            this.cboIntensidad.TabIndex = 4;
             // 
-            // comboBox46
+            // cboGradoActividadFisica
             // 
-            this.comboBox46.FormattingEnabled = true;
-            this.comboBox46.Location = new System.Drawing.Point(146, 52);
-            this.comboBox46.Name = "comboBox46";
-            this.comboBox46.Size = new System.Drawing.Size(165, 21);
-            this.comboBox46.TabIndex = 3;
+            this.cboGradoActividadFisica.FormattingEnabled = true;
+            this.cboGradoActividadFisica.Location = new System.Drawing.Point(146, 52);
+            this.cboGradoActividadFisica.Name = "cboGradoActividadFisica";
+            this.cboGradoActividadFisica.Size = new System.Drawing.Size(165, 21);
+            this.cboGradoActividadFisica.TabIndex = 3;
+            this.cboGradoActividadFisica.SelectedIndexChanged += new System.EventHandler(this.cboGradoActividadFisica_SelectedIndexChanged);
             // 
             // label100
             // 
             this.label100.AutoSize = true;
-            this.label100.Location = new System.Drawing.Point(83, 88);
+            this.label100.Location = new System.Drawing.Point(3, 153);
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(56, 13);
             this.label100.TabIndex = 2;
             this.label100.Text = "Intensidad";
             // 
-            // button34
+            // btnAñadirActividadFisica
             // 
-            this.button34.Location = new System.Drawing.Point(236, 16);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(75, 23);
-            this.button34.TabIndex = 2;
-            this.button34.Text = "Añadir";
-            this.button34.UseVisualStyleBackColor = true;
+            this.btnAñadirActividadFisica.Location = new System.Drawing.Point(236, 16);
+            this.btnAñadirActividadFisica.Name = "btnAñadirActividadFisica";
+            this.btnAñadirActividadFisica.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirActividadFisica.TabIndex = 2;
+            this.btnAñadirActividadFisica.Text = "Añadir";
+            this.btnAñadirActividadFisica.UseVisualStyleBackColor = true;
             // 
-            // comboBox45
+            // cboActividadFisica
             // 
-            this.comboBox45.FormattingEnabled = true;
-            this.comboBox45.Location = new System.Drawing.Point(109, 16);
-            this.comboBox45.Name = "comboBox45";
-            this.comboBox45.Size = new System.Drawing.Size(121, 21);
-            this.comboBox45.TabIndex = 1;
+            this.cboActividadFisica.FormattingEnabled = true;
+            this.cboActividadFisica.Location = new System.Drawing.Point(109, 16);
+            this.cboActividadFisica.Name = "cboActividadFisica";
+            this.cboActividadFisica.Size = new System.Drawing.Size(121, 21);
+            this.cboActividadFisica.TabIndex = 1;
             // 
             // label99
             // 
@@ -3758,7 +3788,7 @@
             this.tabPage10.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.tabPage11.ResumeLayout(false);
@@ -3766,7 +3796,7 @@
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesPatologicosFamiliares)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tpAlergias.ResumeLayout(false);
@@ -3812,7 +3842,7 @@
             this.tabPage9.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3884,12 +3914,12 @@
         private System.Windows.Forms.Button btnAgregarSintoma;
         private System.Windows.Forms.TabPage tpAntecedentes;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnAgregarAntecedenteMorbido;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtEvoluciónAntecedenteMorbido;
+        private System.Windows.Forms.TextBox txtTratamientoAntecedenteMorbido;
+        private System.Windows.Forms.TextBox txtCantTiempoAntecedenteMorbido;
         private System.Windows.Forms.ComboBox cboNombrePorTipoAntecedenteMorbido;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.ComboBox cboTipoAntecedenteMorbido;
@@ -3922,7 +3952,7 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvAntecedentesMorbidos;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.CheckBox chbTranstornosNutricionales;
@@ -3948,8 +3978,8 @@
         private System.Windows.Forms.RadioButton rbNoOtraEnfermedad;
         private System.Windows.Forms.RadioButton rbSiOtraEnfermedad;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.DataGridView dgvAntecedentesPatologicosFamiliares;
+        private System.Windows.Forms.Button btnAgregarAntecedentePatologicoFamiliar;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TabPage tpAlergias;
         private System.Windows.Forms.GroupBox groupBox9;
@@ -4063,8 +4093,8 @@
         private System.Windows.Forms.MaskedTextBox mtbHora1;
         private System.Windows.Forms.Label label103;
         private System.Windows.Forms.Label label102;
-        private System.Windows.Forms.ComboBox cboCantidadMedicamento3;
-        private System.Windows.Forms.ComboBox cboCantidadMedicamento2;
+        private System.Windows.Forms.ComboBox cboPresentacionMedicamento3;
+        private System.Windows.Forms.ComboBox cboPresentacionMedicamento2;
         private System.Windows.Forms.ComboBox cboPresentacionMedicamento1;
         private System.Windows.Forms.ComboBox cboElementoTiempoMedicamento;
         private System.Windows.Forms.TextBox txtCantidadTiempoConsumoMedicamento;
@@ -4081,12 +4111,12 @@
         private System.Windows.Forms.Button btnAgregarHabitoMedicamento;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataGridView dataGridView11;
-        private System.Windows.Forms.ComboBox comboBox47;
-        private System.Windows.Forms.ComboBox comboBox46;
+        private System.Windows.Forms.DataGridView dgvHabitosActividadFisica;
+        private System.Windows.Forms.ComboBox cboIntensidad;
+        private System.Windows.Forms.ComboBox cboGradoActividadFisica;
         private System.Windows.Forms.Label label100;
-        private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.ComboBox comboBox45;
+        private System.Windows.Forms.Button btnAñadirActividadFisica;
+        private System.Windows.Forms.ComboBox cboActividadFisica;
         private System.Windows.Forms.Label label99;
         private System.Windows.Forms.Label label98;
         private System.Windows.Forms.Button button35;
@@ -4153,9 +4183,11 @@
         private System.Windows.Forms.ComboBox cboTipoPartoPostermino;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label106;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtObservacionesAntecedentesPatologicosFamiliares;
         private System.Windows.Forms.Label label107;
         private System.Windows.Forms.TextBox txtDescripcionMedida;
         private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.TextBox txtDescripcionGradoActividadFisica;
+        private System.Windows.Forms.Label lblDescripcionGradoActividad;
     }
 }

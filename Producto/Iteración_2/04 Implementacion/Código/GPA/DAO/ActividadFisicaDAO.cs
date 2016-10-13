@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    public class CaracterDelDolorDAO
+    public class ActividadFisicaDAO
     {
         private static string cadenaConexion;
 
@@ -23,20 +23,20 @@ namespace DAO
             return cadenaConexion;
         }
         /*
-       * Método para obtener los nombres de los tipos de dolores.
+       * Método para obtener los nombres de actividades físicas.
        * No recibe parámetros.
-       * Retorna una lista de objetos CaracterDelDolor.
+       * Retorna una lista de objetos ActividadFisica.
        */
-        public static List<CaracterDelDolor> mostrarCaracterDelDolor()
+        public static List<ActividadFisica> mostrarActividadFisica()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
-            List<CaracterDelDolor> caracterDolor = new List<CaracterDelDolor>();
+            List<ActividadFisica> actividades = new List<ActividadFisica>();
             try
             {
                 cn.Open();
 
-                string consulta = "select * from CaracterDelDolor";
+                string consulta = "select * from ActividadFisica";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.Text;
@@ -46,9 +46,9 @@ namespace DAO
 
                 while (dr.Read())
                 {
-                    caracterDolor.Add(new CaracterDelDolor()
+                    actividades.Add(new ActividadFisica()
                     {
-                        id_caracterDelDolor = (int)dr["id_caracterDelDolor"],
+                        id_actividadFisica = (int)dr["id_actividadFisica"],
                         nombre = dr["nombre"].ToString()
                     });
                 }
@@ -63,7 +63,7 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
             cn.Close();
-            return caracterDolor;
+            return actividades;
         }
     }
 }

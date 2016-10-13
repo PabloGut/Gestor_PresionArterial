@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActividadFisicaLN.cs" />
     <Compile Include="AlimentoLN.cs" />
     <Compile Include="CaracterDelDolorLN.cs" />
     <Compile Include="ComponenteDelTiempoLN.cs" />
@@ -50,8 +51,11 @@
     <Compile Include="EspecificacionMedicamentoLN.cs" />
     <Compile Include="FamiliarLN.cs" />
     <Compile Include="FormaAdministracionLN.cs" />
+    <Compile Include="FrecuenciaLN.cs" />
+    <Compile Include="GradoActividadFisicaLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
     <Compile Include="InsectoLN.cs" />
+    <Compile Include="IntensidadActividadFisicaLN.cs" />
     <Compile Include="MedicamentoAlergiaLN.cs" />
     <Compile Include="MedicamentoLN.cs" />
     <Compile Include="MedidaLN.cs" />

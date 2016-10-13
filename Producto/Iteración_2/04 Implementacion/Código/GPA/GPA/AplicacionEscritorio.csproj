@@ -93,6 +93,7 @@
     <Compile Include="Manejadores\ManejadorRegistrarEnfermedadActual.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEspecialidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHabitoAlcoholismo.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarHabitosActividadFisica.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHabitosDrogasIlicitas.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHabitosTabaquismo.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />

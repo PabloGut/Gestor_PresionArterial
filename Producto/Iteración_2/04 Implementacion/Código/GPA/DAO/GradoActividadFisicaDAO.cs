@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    public class CaracterDelDolorDAO
+    public class GradoActividadFisicaDAO
     {
         private static string cadenaConexion;
 
@@ -23,20 +23,20 @@ namespace DAO
             return cadenaConexion;
         }
         /*
-       * Método para obtener los nombres de los tipos de dolores.
+       * Método para obtener los nombres de los grados de actividad física.
        * No recibe parámetros.
-       * Retorna una lista de objetos CaracterDelDolor.
+       * Retorna una lista de objetos GradoActividadFisica.
        */
-        public static List<CaracterDelDolor> mostrarCaracterDelDolor()
+        public static List<GradoActividadFisica> mostrarGradosActividadFisica()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
-            List<CaracterDelDolor> caracterDolor = new List<CaracterDelDolor>();
+            List<GradoActividadFisica> gradosActividadFisica = new List<GradoActividadFisica>();
             try
             {
                 cn.Open();
 
-                string consulta = "select * from CaracterDelDolor";
+                string consulta = "select * from GradoActividad";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.Text;
@@ -46,10 +46,11 @@ namespace DAO
 
                 while (dr.Read())
                 {
-                    caracterDolor.Add(new CaracterDelDolor()
+                    gradosActividadFisica.Add(new GradoActividadFisica()
                     {
-                        id_caracterDelDolor = (int)dr["id_caracterDelDolor"],
-                        nombre = dr["nombre"].ToString()
+                        id_gradoActividadFisica = (int)dr["id_gradoActividad"],
+                        nombre = dr["nombre"].ToString(),
+                        descripcion=dr["descripcion"].ToString()
                     });
                 }
 
@@ -63,7 +64,7 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
             cn.Close();
-            return caracterDolor;
+            return gradosActividadFisica;
         }
     }
 }

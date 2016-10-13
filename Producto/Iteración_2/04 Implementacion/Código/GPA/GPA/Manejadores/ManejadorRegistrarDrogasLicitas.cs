@@ -34,5 +34,17 @@ namespace GPA.Manejadores
         {
             return MomentoDiaLN.mostrarMomentosDelDia();
         }
+        public List<PresentacionMedicamento> mostrarPresentacionesMedicamento()
+        {
+            return PresentacionMedicamentoLN.mostrarPresentacionesMedicamento();
+        }
+        public List<ElementoDelTiempo> mostrarElementosDelTiempo()
+        {
+            return ElementoDelTiempoLN.mostrarElementosDelTiempo();
+        }
+        public List<Frecuencia> mostrarFrecuencias()
+        {
+            return FrecuenciaLN.mostrarFrecuencias();
+        }
     }
 }

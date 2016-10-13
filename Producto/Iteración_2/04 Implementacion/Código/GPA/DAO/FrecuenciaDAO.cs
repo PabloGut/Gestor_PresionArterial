@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    public class CaracterDelDolorDAO
+    public class FrecuenciaDAO
     {
         private static string cadenaConexion;
 
@@ -23,20 +23,20 @@ namespace DAO
             return cadenaConexion;
         }
         /*
-       * Método para obtener los nombres de los tipos de dolores.
-       * No recibe parámetros.
-       * Retorna una lista de objetos CaracterDelDolor.
-       */
-        public static List<CaracterDelDolor> mostrarCaracterDelDolor()
+        * Método para obtener los nombres de las frencuencias de consumo de medicamentos.
+        * No recibe parámetros.
+        * Retorna una lista de objetos Frecuencia.
+        */
+        public static List<Frecuencia> mostrarFrecuencias()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
-            List<CaracterDelDolor> caracterDolor = new List<CaracterDelDolor>();
+            List<Frecuencia> frecuencias = new List<Frecuencia>();
             try
             {
                 cn.Open();
 
-                string consulta = "select * from CaracterDelDolor";
+                string consulta = "select * from Frecuencia";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.Text;
@@ -46,9 +46,9 @@ namespace DAO
 
                 while (dr.Read())
                 {
-                    caracterDolor.Add(new CaracterDelDolor()
+                    frecuencias.Add(new Frecuencia()
                     {
-                        id_caracterDelDolor = (int)dr["id_caracterDelDolor"],
+                        id_Frecuencia = (int)dr["id_frecuencia"],
                         nombre = dr["nombre"].ToString()
                     });
                 }
@@ -63,7 +63,7 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
             cn.Close();
-            return caracterDolor;
+            return frecuencias;
         }
     }
 }
