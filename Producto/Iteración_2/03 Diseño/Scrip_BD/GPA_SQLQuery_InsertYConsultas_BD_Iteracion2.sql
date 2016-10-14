@@ -457,6 +457,37 @@ values('Noche')
 
 /*--------------------------*/
 
+/*-------Insert ActividadFisica-----*/
+insert into ActividadFisica(nombre)
+values('Futbol')
+insert into ActividadFisica(nombre)
+values('Basquet')
+insert into ActividadFisica(nombre)
+values('Voley')
+/*--------------------------*/
+
+/*-------Insert GradoActividad-----*/
+insert into GradoActividad(nombre,descripcion)
+values('Bajo','Menos de 30 minutos de actividad física por semana.')
+insert into GradoActividad(nombre,descripcion)
+values('Medio','Correspondiente a 30 minutos de 3-5 veces por semana.')
+insert into GradoActividad(nombre,descripcion)
+values('Alto','Correspondiente a 30 minutos o mas de actividad física y más de 5 veces a la semana.')
+/*--------------------------*/
+
+/*-------Insert IntensidadActividadFisica-----*/
+insert into IntensidadActividadFisica(nombre)
+values('Muy suave')
+insert into IntensidadActividadFisica(nombre)
+values('Suave')
+insert into IntensidadActividadFisica(nombre)
+values('Moderado')
+insert into IntensidadActividadFisica(nombre)
+values('Intenso')
+insert into IntensidadActividadFisica(nombre)
+values('Máximo')
+
+/*--------------------------*/
 
 /*-------Insert-----*/
 

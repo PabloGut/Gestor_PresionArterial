@@ -391,3 +391,4 @@ from Medicamento m, NombreComercial nc
 where m.id_medicamento=nc.id_medicamento_fk
 and m.id_medicamento='21'
 
+select * from GradoActividad
