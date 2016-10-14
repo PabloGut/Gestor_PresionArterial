@@ -1139,6 +1139,161 @@ namespace GPA
             }
             dgvAlergiasMedicamentos.Rows.Add(alergiaMedicamento, medicamento, efectos);
         }
+        public void cargarDatosDataGridViewHabitoTabaquismo()
+        {
+            string fuma = "";
+            string cantidad = "";
+            string elemento = "";
+            string componente = "";
+            string añosFumando = "No precisa";
+            string dejoFumar = "No";
+            string cantTiempoDejoFumar = "";
+            string descripcionTiempoFumaba = "No precisa";
+            string elementoFumaba = "";
+            string componenteTiempoFumaba = "";
+            string cantidadFumaba = "";
+            if (rbSiFuma.Checked == true)
+            {
+                fuma = "Si";
+            }
+            else
+            {
+                fuma = "No";
+            }
+            if (string.IsNullOrEmpty(txtCantidadQueFuma.Text) == false)
+            {
+                ElementoQueFuma elementoSeleccionado = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
+                elemento = elementoSeleccionado.nombre;
+
+                ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoFuma.SelectedItem;
+                componente = componenteSeleccionado.nombre;
+
+                cantidad = txtCantidadQueFuma.Text + " " + elemento + " X " + " " + componente;
+            }
+
+            if (string.IsNullOrEmpty(txtCantidadAñosFumando.Text) == false)
+            {
+                añosFumando = txtCantidadAñosFumando.Text;
+            }
+            if (cbDejoFumar.Checked == true)
+            {
+                dejoFumar = "Si";
+            }
+
+            if (string.IsNullOrEmpty(txtCantiTiempoDejoFumar.Text) == false)
+            {
+                ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoFumaba.SelectedItem;
+                cantTiempoDejoFumar = txtCantiTiempoDejoFumar.Text + " " + elementoSeleccionado.nombre;
+            }
+
+            if (cboDescripcionDelTiempoFumaba.SelectedIndex > -1)
+            {
+                DescripcionDelTiempo descripcion=(DescripcionDelTiempo) cboDescripcionDelTiempoFumaba.SelectedItem;
+                descripcionTiempoFumaba = descripcion.nombre;
+            }
+
+            if (string.IsNullOrEmpty(txtCantidadFumaba.Text) == false)
+            {
+                ElementoQueFuma elementoSeleccionadoFumaba = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
+                elementoFumaba = elementoSeleccionadoFumaba.nombre;
+
+                ComponenteDelTiempo componenteSeleccionadoFumaba = (ComponenteDelTiempo)cboComponenteTiempoFumaba.SelectedItem;
+                componenteTiempoFumaba = componenteSeleccionadoFumaba.nombre;
+
+                cantidadFumaba = txtCantidadFumaba.Text + " " + elementoFumaba + " X " + " " + componenteSeleccionadoFumaba;
+            }
+            dgvHabitosFumar.Rows.Add(fuma, cantidad, añosFumando,dejoFumar,cantTiempoDejoFumar,descripcionTiempoFumaba,cantidadFumaba);
+        }
+        public void cargarDatosDataGridViewHabitoAlcoholismo()
+        {
+            string consumeAlcohol = "No";
+            string bebida = "";
+            string estimacionCantidad="";
+            string descripcion = "";
+            if (rbSiConsumeAlcohol.Checked == true)
+            {
+                consumeAlcohol = "Si";
+            }
+
+            TipoBebida bebidaSeleccionada = (TipoBebida)cboTipoBebida.SelectedItem;
+            bebida = bebidaSeleccionada.nombre;
+
+            if (string.IsNullOrEmpty(txtCantidadConsume.Text) == false)
+            {
+                Medida medidaSeleccionada = (Medida)cboMedidaConsumeAlcohol.SelectedItem;
+                ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoAlcoholismo.SelectedItem;
+
+                estimacionCantidad = txtCantidadConsume.Text + " " + medidaSeleccionada.nombre + " " + componenteSeleccionado.nombre;
+            }
+
+            if (string.IsNullOrEmpty(txtDescripcionMedida.Text) == false)
+            {
+                descripcion = txtDescripcionMedida.Text;
+            }
+
+            dgvHabitosAlcoholismo.Rows.Add(consumeAlcohol, bebida, estimacionCantidad, descripcion);
+        }
+        public void cargarDatosDataGridViewHabitosDrogasIlicitas()
+        {
+            string consumeDrogas = "No";
+            string sustancia = "";
+            string tiempoConsumiento = "";
+            string dejoConsumir = "No";
+            string enTratamiento = "No";
+
+            if (rbSiConsumeDrogas.Checked == true)
+            {
+                consumeDrogas = "Si";
+            }
+
+            SustanciaDrogaIlicita sustanciaSelecciona = (SustanciaDrogaIlicita)cboSustanciaDrogaIlicita.SelectedItem;
+            sustancia = sustanciaSelecciona.nombre;
+
+            if (string.IsNullOrEmpty(txtCantidadTiempoConsumiendo.Text) == false)
+            {
+                ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoTiempoDrogasIlicitas.SelectedItem;
+                tiempoConsumiento = txtCantidadTiempoConsumiendo.Text + " " + elementoSeleccionado.nombre;
+            }
+
+            if (chbDejoConsumir.Checked == true)
+            {
+                dejoConsumir = "Si";
+            }
+
+            if (chbEnTratamiento.Checked == true)
+            {
+                enTratamiento = "Si";
+            }
+
+            dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento, dejoConsumir);
+        }
+        public void cargarDatosDataGridViewHabitosActividadFisica()
+        {
+            string actividad = "";
+            string grado = "";
+            string intensidad = "";
+            string descripcion = "";
+
+            if (cboActividadFisica.SelectedIndex > -1)
+            {
+                ActividadFisica actividadFisica = (ActividadFisica)cboActividadFisica.SelectedItem;
+                actividad = actividadFisica.nombre;
+
+                GradoActividadFisica gradoActividad = (GradoActividadFisica)cboGradoActividadFisica.SelectedItem;
+                grado = gradoActividad.nombre;
+
+                IntensidadActividadFisica intensidadActividad = (IntensidadActividadFisica)cboIntensidad.SelectedItem;
+                intensidad = intensidadActividad.nombre;
+
+                if (string.IsNullOrEmpty(txtDescripcionGradoActividadFisica.Text) == false)
+                {
+                    descripcion = txtDescripcionGradoActividadFisica.Text;
+                }
+
+                dgvHabitosActividadFisica.Rows.Add(actividad, grado,descripcion,intensidad);
+            }
+
+        }
         /*
          * Método para cargar las columnas del DatagridView correspondiente a los sintomas.
          * No recibe valores por parámetro.
@@ -1264,7 +1419,7 @@ namespace GPA
                 dgvHabitosFumar.Columns.Add(columna);
             }
 
-            string[] nombreColumnasHabitoBebidasAlcoholicas = new string[3] { "Consume alcohol Si/No", "Bebida", "Estimación de la cantidad de alcohol" };
+            string[] nombreColumnasHabitoBebidasAlcoholicas = new string[4] { "Consume alcohol Si/No", "Bebida", "Estimación de la cantidad de alcohol","Descripcion de la medida" };
 
             for (int i = 0; i < nombreColumnasHabitoBebidasAlcoholicas.Length; i++)
             {
@@ -1283,7 +1438,7 @@ namespace GPA
                 columna.Width = 200;
                 dgvHabitosDrogasIlicitas.Columns.Add(columna);
             }
-            string[] nombreColumnasHabitoActividadFisica = new string[3] { "Deporte o actividad", "Grado de la actividad ", "Intensidad"};
+            string[] nombreColumnasHabitoActividadFisica = new string[4] { "Deporte o actividad", "Grado de la actividad ","Descripción", "Intensidad"};
 
             for (int i = 0; i < nombreColumnasHabitoActividadFisica.Length; i++)
             {
@@ -1327,6 +1482,26 @@ namespace GPA
         private void btnAgregarMedicamento_Click(object sender, EventArgs e)
         {
             cargarDatosDataGridViewAlergiaMedicamentos();
+        }
+
+        private void btnAgregarHabitoTabaquismo_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitoTabaquismo();
+        }
+
+        private void txtCantidadConsume_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarHabitoDrogaIlicita_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitosDrogasIlicitas();
+        }
+
+        private void btnAgregarHabitoActividadFisica_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitosActividadFisica();
         }
 
     }

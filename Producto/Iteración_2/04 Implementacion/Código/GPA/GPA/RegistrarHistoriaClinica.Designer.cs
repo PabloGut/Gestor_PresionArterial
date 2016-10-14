@@ -246,7 +246,7 @@
             this.brnAñadiTipoBebida = new System.Windows.Forms.Button();
             this.cboComponenteTiempoAlcoholismo = new System.Windows.Forms.ComboBox();
             this.label77 = new System.Windows.Forms.Label();
-            this.txtCantidaConsume = new System.Windows.Forms.TextBox();
+            this.txtCantidadConsume = new System.Windows.Forms.TextBox();
             this.cboMedidaConsumeAlcohol = new System.Windows.Forms.ComboBox();
             this.cboTipoBebida = new System.Windows.Forms.ComboBox();
             this.label76 = new System.Windows.Forms.Label();
@@ -356,7 +356,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtDescripcionGradoActividadFisica = new System.Windows.Forms.TextBox();
             this.lblDescripcionGradoActividad = new System.Windows.Forms.Label();
-            this.button35 = new System.Windows.Forms.Button();
+            this.btnAgregarHabitoActividadFisica = new System.Windows.Forms.Button();
             this.dgvHabitosActividadFisica = new System.Windows.Forms.DataGridView();
             this.cboIntensidad = new System.Windows.Forms.ComboBox();
             this.cboGradoActividadFisica = new System.Windows.Forms.ComboBox();
@@ -2509,7 +2509,7 @@
             this.groupBox14.Controls.Add(this.brnAñadiTipoBebida);
             this.groupBox14.Controls.Add(this.cboComponenteTiempoAlcoholismo);
             this.groupBox14.Controls.Add(this.label77);
-            this.groupBox14.Controls.Add(this.txtCantidaConsume);
+            this.groupBox14.Controls.Add(this.txtCantidadConsume);
             this.groupBox14.Controls.Add(this.cboMedidaConsumeAlcohol);
             this.groupBox14.Controls.Add(this.cboTipoBebida);
             this.groupBox14.Controls.Add(this.label76);
@@ -2585,12 +2585,13 @@
             this.label77.TabIndex = 12;
             this.label77.Text = "X";
             // 
-            // txtCantidaConsume
+            // txtCantidadConsume
             // 
-            this.txtCantidaConsume.Location = new System.Drawing.Point(348, 73);
-            this.txtCantidaConsume.Name = "txtCantidaConsume";
-            this.txtCantidaConsume.Size = new System.Drawing.Size(53, 20);
-            this.txtCantidaConsume.TabIndex = 11;
+            this.txtCantidadConsume.Location = new System.Drawing.Point(348, 73);
+            this.txtCantidadConsume.Name = "txtCantidadConsume";
+            this.txtCantidadConsume.Size = new System.Drawing.Size(53, 20);
+            this.txtCantidadConsume.TabIndex = 11;
+            this.txtCantidadConsume.TextChanged += new System.EventHandler(this.txtCantidadConsume_TextChanged);
             // 
             // cboMedidaConsumeAlcohol
             // 
@@ -2715,13 +2716,14 @@
             this.btnAgregarHabitoTabaquismo.TabIndex = 19;
             this.btnAgregarHabitoTabaquismo.Text = "Agregar hábito";
             this.btnAgregarHabitoTabaquismo.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoTabaquismo.Click += new System.EventHandler(this.btnAgregarHabitoTabaquismo_Click);
             // 
             // dgvHabitosFumar
             // 
             this.dgvHabitosFumar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHabitosFumar.Location = new System.Drawing.Point(4, 169);
             this.dgvHabitosFumar.Name = "dgvHabitosFumar";
-            this.dgvHabitosFumar.Size = new System.Drawing.Size(489, 85);
+            this.dgvHabitosFumar.Size = new System.Drawing.Size(489, 105);
             this.dgvHabitosFumar.TabIndex = 18;
             // 
             // label72
@@ -3501,6 +3503,7 @@
             this.btnAgregarHabitoDrogaIlicita.TabIndex = 19;
             this.btnAgregarHabitoDrogaIlicita.Text = "Agregar droga";
             this.btnAgregarHabitoDrogaIlicita.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoDrogaIlicita.Click += new System.EventHandler(this.btnAgregarHabitoDrogaIlicita_Click);
             // 
             // txtCantidadTiempoConsumiendo
             // 
@@ -3618,7 +3621,7 @@
             // 
             this.panel7.Controls.Add(this.txtDescripcionGradoActividadFisica);
             this.panel7.Controls.Add(this.lblDescripcionGradoActividad);
-            this.panel7.Controls.Add(this.button35);
+            this.panel7.Controls.Add(this.btnAgregarHabitoActividadFisica);
             this.panel7.Controls.Add(this.dgvHabitosActividadFisica);
             this.panel7.Controls.Add(this.cboIntensidad);
             this.panel7.Controls.Add(this.cboGradoActividadFisica);
@@ -3649,14 +3652,15 @@
             this.lblDescripcionGradoActividad.TabIndex = 7;
             this.lblDescripcionGradoActividad.Text = "Descripción";
             // 
-            // button35
+            // btnAgregarHabitoActividadFisica
             // 
-            this.button35.Location = new System.Drawing.Point(145, 201);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(108, 23);
-            this.button35.TabIndex = 6;
-            this.button35.Text = "Agregar actividad";
-            this.button35.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoActividadFisica.Location = new System.Drawing.Point(145, 201);
+            this.btnAgregarHabitoActividadFisica.Name = "btnAgregarHabitoActividadFisica";
+            this.btnAgregarHabitoActividadFisica.Size = new System.Drawing.Size(108, 23);
+            this.btnAgregarHabitoActividadFisica.TabIndex = 6;
+            this.btnAgregarHabitoActividadFisica.Text = "Agregar actividad";
+            this.btnAgregarHabitoActividadFisica.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoActividadFisica.Click += new System.EventHandler(this.btnAgregarHabitoActividadFisica_Click);
             // 
             // dgvHabitosActividadFisica
             // 
@@ -4028,7 +4032,7 @@
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.ComboBox cboComponenteTiempoAlcoholismo;
         private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.TextBox txtCantidaConsume;
+        private System.Windows.Forms.TextBox txtCantidadConsume;
         private System.Windows.Forms.ComboBox cboMedidaConsumeAlcohol;
         private System.Windows.Forms.ComboBox cboTipoBebida;
         private System.Windows.Forms.Label label76;
@@ -4119,7 +4123,7 @@
         private System.Windows.Forms.ComboBox cboActividadFisica;
         private System.Windows.Forms.Label label99;
         private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button btnAgregarHabitoActividadFisica;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.TabPage tabPage11;
