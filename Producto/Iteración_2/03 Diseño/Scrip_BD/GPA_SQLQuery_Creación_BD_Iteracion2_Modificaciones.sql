@@ -6,7 +6,13 @@ nro_hc integer NOT NULL,
 fecha_creación date NOT NULL,
 hora_creacion date not null,
 principalProblema varchar(20),
-fecha_inicio_atencion_con_profesional date not null)
+fecha_inicio_atencion_con_profesional date not null,
+id_tipodoc_profesionaMedico_fk int,
+id_nrodoc_profesionalMedico_fk int,
+id_tipodoc_paciente_fk int,
+id_nrodoc_paciente_fk int,
+foreign key(id_tipodoc_profesionaMedico_fk, id_nrodoc_profesionalMedico_fk) references ProfesionalMedico(id_tipodoc_fk,nro_documento),
+foreign key(id_tipodoc_paciente_fk, id_nrodoc_paciente_fk) references Paciente(id_tipoDoc_fk,nro_documento))
 
 CREATE TABLE Institucion(
 id_institucion integer PRIMARY KEY IDENTITY,
@@ -243,9 +249,9 @@ CREATE TABLE AlergiaMedicamento (
 id_alergiaMedicamento int primary key identity,
 fechaRegistro date not null,
 efectos text,
-id_medicamentoAlergia_fk int not null,
+id_medicamento_fk int not null,
 id_hc_fk int not null,
-foreign key (id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia),
+foreign key (id_medicamento_fk) references Medicamento(id_medicamento),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE NombrePorTipoAntecedenteMorbido (
@@ -602,35 +608,30 @@ CREATE TABLE CaracterDelDolor(
 id_caracterDelDolor int primary key identity,
 nombre date not null)
 
-CREATE TABLE DescripcionSintoma(
-id_descripcionDelSintoma int primary key identity,
-id_tipoSintoma_fk int not null,
-descripcion text,
-id_parteDelCuerpo_fk int,
-haciaDondeIrradia text,
-id_comoSeModifica_fk int,
-id_elementoDeModificacion_fk int,
-id_caracterDolor_fk int,
-estimacionIntensidad int,
-comoloAfecta text,
-queHaceParaAliviar text,
-foreign key (id_tipoSintoma_fk) references TipoSintoma(id_tipoSintoma),
-foreign key (id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
-foreign key (id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
-foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
-foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor))
-
 CREATE TABLE Sintoma(
 id_Sintoma int primary key identity,
 fechaInicioSintoma date,
 cantidadDeTiempo int,
 id_elementoDelTiempo_fk int,
 id_descripcionDelTiempo_fk int,
-id_descripcionSintoma_fk int,
-motivoConsulta text,
+id_tipoSintoma_fk int,
+descripcion text,
+id_parteDelCuerpo_fk int,
+haciaDondeIrradia text,
+id_comoSeModifica_fk int,
+id_elementoDeModificacion_fk int,
+id_caracterDolor_fk int,
+observaciones text,
+id_hc_fk int,
+fechaRegistro date,
 foreign key (id_elementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_descripcionDelTiempo_fk) references DescripcionDelTiempo(id_descripcionDelTiempo),
-foreign key (id_descripcionSintoma_fk) references DescripcionSintoma(id_descripcionDelSintoma))
+foreign key (id_tipoSintoma_fk) references TipoSintoma(id_tipoSintoma),
+foreign key (id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
+foreign key (id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
+foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
+foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE Extremidad(
 id_extremidad int primary key identity,
@@ -762,9 +763,4 @@ foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id
 foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 
-create table MedicamentoAlergia(
-id_medicamentoAlergia int primary key identity,
-nombre text)
 
-
-select * from MedicamentoAlergia
