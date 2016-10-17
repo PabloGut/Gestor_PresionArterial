@@ -24,8 +24,6 @@ id_institucion_fk integer not null,
 FOREIGN KEY (id_hc_fk) REFERENCES Historia_Clinica(id_hc),
 FOREIGN KEY (id_institucion_fk) REFERENCES Institucion(id_institucion))
 
-
-
 CREATE TABLE Localidad(
 id_localidad integer PRIMARY KEY IDENTITY,
 nombre varchar(50) not null)
@@ -46,7 +44,6 @@ piso integer,
 departamento varchar(20),
 id_barrio_fk integer not null,
 FOREIGN KEY (id_barrio_fk) REFERENCES Barrio(id_barrio))
-
 
 CREATE TABLE Laboratorio(
 id_laboratorio integer PRIMARY KEY IDENTITY,
@@ -86,7 +83,6 @@ valorHasta float not null,
 id_valorReferencia_fk integer not null,
 FOREIGN KEY (id_valorReferencia_fk) REFERENCES ValorReferencia(id_valorReferencia))
 
-
 create table TipoDocumento(
 id_tipoDoc int primary key identity,
 nombre varchar(100),
@@ -125,12 +121,14 @@ email varchar(100),
 id_usuario_fk int not null,
 id_estado_fk int not null,
 id_especialidad_fk int not null,
+id_domicilio_fk int not null,
 id_sexo_fk int,
 PRIMARY KEY (id_tipodoc_fk,nro_documento),
-foreign key(id_usuario_fk) references Usuario(id_usuario),
-foreign key (id_estado_fk) references Estado(id_estado),
-foreign key (id_especialidad_fk) references Especialidad(id_especialidad),
-foreign key (id_sexo_fk) references Sexo(id_sexo))
+FOREIGN KEY(id_usuario_fk) references Usuario(id_usuario),
+FOREIGN KEY (id_estado_fk) references Estado(id_estado),
+FOREIGN KEY (id_especialidad_fk) references Especialidad(id_especialidad),
+FOREIGN KEY (id_domicilio_fk) REFERENCES Domicilio(id_domicilio),
+FOREIGN KEY (id_sexo_fk) references Sexo(id_sexo))
 
 CREATE TABLE Paciente (
 id_tipoDoc_fk int not null,
@@ -231,8 +229,7 @@ nombreGenerico text,
 concentracion float,
 id_unidadMedida_fk int,
 id_formaAdministracion_fk int,
-id_presentacionMedicamento_fk int,
-cantidadComprimidos int)
+id_presentacionMedicamento_fk int)
 
 CREATE TABLE NombreComercial (
 id_nombreComercial int primary key identity,
@@ -720,20 +717,42 @@ nombre text)
 CREATE TABLE UnidadMedidaXMedicamento(
 id_medicamento_fk int,
 id_unidadMedida_fk int,
-primary key(id_medicamento_fk,id_unidadMedida_fk),
+id_nombreComercial_fk int,
+primary key(id_medicamento_fk,id_unidadMedida_fk,id_nombreComercial_fk),
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
-foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida))
+foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 CREATE TABLE FormaAdministracionXMedicamento(
 id_medicamento_fk int,
 id_formaAdministracion_fk int,
-primary key(id_medicamento_fk,id_formaAdministracion_fk),
+id_nombreComercial_fk int,
+primary key(id_medicamento_fk,id_formaAdministracion_fk,id_nombreComercial_fk),
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
-foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion))
+foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
 
 CREATE TABLE PresentacionMedicamentoXMedicamento(
 id_medicamento_fk int,
 id_presentacionMedicamento_fk int,
-primary key(id_medicamento_fk,id_presentacionMedicamento_fk),
+id_nombreComercial_fk int,
+primary key(id_medicamento_fk,id_presentacionMedicamento_fk,id_nombreComercial_fk),
 foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
-foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento))
+foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
+
+CREATE TABLE EspecificacionMedicamento(
+id_especificacion int identity,
+id_medicamento_fk int,
+concentracion int,
+id_unidadMedida_fk int,
+id_formaAdministracion_fk int,
+id_presentacionMedicamento_fk int,
+id_nombreComercial_fk int,
+cantidadComprimidos int,
+primary key (id_especificacion,id_medicamento_fk),
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
+foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
+foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))

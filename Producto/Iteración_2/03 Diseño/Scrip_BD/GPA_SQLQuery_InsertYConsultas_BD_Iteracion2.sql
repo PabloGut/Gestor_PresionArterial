@@ -1,27 +1,6 @@
 Insert into TipoDocumento(nombre,descripcion)
 values ('DNI','Documento nacional de identidad')
 
-Insert into TipoDocumento(nombre,descripcion)
-values ('LE','Libreta de Enrolamiento')
-
-Insert into TipoDocumento(nombre,descripcion)
-values ('LC','Libreta Cívica')
-
-Insert into TipoDocumento(nombre,descripcion)
-values ('CI','Cédula de Identidad')
-
-Insert into TipoDocumento(nombre,descripcion)
-values ('PAS','Pasaporte')
-
-Insert into TipoDocumento(nombre,descripcion)
-values ('CDI','Clave de Identificación')
-
-Insert into TipoDocumento(nombre,descripcion)
-values ('CUIL','Clave Unica de Identificación Laboral')
-
-Insert into TipoDocumento(nombre,descripcion)
-values ('CUIT','Clave Unica de Identificación Tributaria')
-
 /*Insert de usuarios*/
 Insert into Usuario(nombre_usuario,contraseña,fecha_creacion)
 values ('JuanRod',PWDENCRYPT(123),'03/09/2016')
@@ -48,6 +27,9 @@ values ('Bv. Los Granaderos', '3000', '5008',null,null,1)
 Insert into Domicilio(calle,numero,codigo_postal,piso ,departamento,id_barrio_fk)
 values ('Tuyutí', '210', '5008',null,null,1)
 
+Insert into Domicilio(calle,numero,codigo_postal,piso ,departamento,id_barrio_fk)
+values ('Juramento', '500', '5008',null,null,1)
+
 Insert into Especialidad(nombre, descripcion)
 values ('Nefrología','Parte de la medicina que se ocupa de la anatomía, la fisiología y las enfermedades del riñón.')
 
@@ -58,16 +40,16 @@ Insert into Sexo(nombre)
 values('Femenino')
 
 /*-------Insert Médicos-----*/
-insert into ProfesionalMedico(id_tipoDoc_fk,nro_documento,nombre,apellido,fechaNacimiento,matricula,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,id_especialidad_fk)
-values (1,'15036547','Luis','Juncos','20/06/1950','222545','4760021','152568741','LuisJuncos@hotmail.com',3,1,1)
+insert into ProfesionalMedico(id_tipoDoc_fk,nro_documento,nombre,apellido,fechaNacimiento,matricula,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,id_especialidad_fk,id_domicilio_fk,id_sexo_fk)
+values (1,'15036547','Luis','Juncos','20/06/1950','222545','4760021','152568741','LuisJuncos@hotmail.com',3,1,1,3,1)
 /*-------------------------*/
 
 /*-------Insert Pacientes-----*/
-Insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_nacimiento,edad,altura,peso,id_hc_fk,id_domicilio_fk,id_profesionalMedico_tipoDoc_fk,id_profesionalMedico_nroDoc_fk)
-values(1,'20258789','Juan','Rodriguez','7489523','152789800','juanRod@hotmail.com',1,1,'10/03/1977','39',1.98,'72',null,1,1,'15036547')
+Insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_nacimiento,edad,altura,peso,id_hc_fk,id_domicilio_fk,id_profesionalMedico_tipoDoc_fk,id_profesionalMedico_nroDoc_fk,id_sexo_fk)
+values(1,'20258789','Juan','Rodriguez','7489523','152789800','juanRod@hotmail.com',1,1,'10/03/1977','39',1.98,'72',null,1,1,'15036547',1)
 
-Insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_nacimiento,edad,altura,peso,id_hc_fk,id_domicilio_fk,id_profesionalMedico_tipoDoc_fk,id_profesionalMedico_nroDoc_fk)
-values(1,'20000325','Martín','Molina','74700000','152801200','martinM@hotmail.com',2,1,'20/03/1977','35',1.65,'70',null,2,1,'15036547')
+Insert into Paciente(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_nacimiento,edad,altura,peso,id_hc_fk,id_domicilio_fk,id_profesionalMedico_tipoDoc_fk,id_profesionalMedico_nroDoc_fk,id_sexo_fk)
+values(1,'20000325','Martín','Molina','74700000','152801200','martinM@hotmail.com',2,1,'20/03/1977','35',1.65,'70',null,2,1,'15036547',1)
 /*--------------------------*/
 
 
@@ -394,6 +376,7 @@ values('DIUREX')
 /*-------Insert UnidadMedida-----*/
 insert into UnidadMedida(nombre,descripcion)
 values('g.','Gramos')
+
 insert into UnidadMedida(nombre,descripcion)
 values('mg.','Miligramos')
 /*--------------------------*/
@@ -418,6 +401,7 @@ insert into FormaAdministracion(nombre)
 values('Vía subcutánea')
 /*--------------------------*/
 
+
 /*-------Insert Medicamentos-----*/
 insert into Medicamento(nombreGenerico)
 values('HIDROCLOROTIAZIDA')
@@ -431,8 +415,4 @@ values('Comprimidos')
 /*-------Insert Frecuencia-----*/
 insert into Frecuencia(nombre)
 values('Diaria')
-/*--------------------------*/
-
-/*-------Insert-----*/
-
 /*--------------------------*/
