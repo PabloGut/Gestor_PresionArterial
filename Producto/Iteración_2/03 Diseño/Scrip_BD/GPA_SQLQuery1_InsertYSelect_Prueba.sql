@@ -391,4 +391,27 @@ from Medicamento m, NombreComercial nc
 where m.id_medicamento=nc.id_medicamento_fk
 and m.id_medicamento='21'
 
-select * from GradoActividad
+select * from Sintoma
+
+alter table Sintoma 
+add id_tipoSintoma_fk int,
+descripcion text,
+id_parteDelCuerpo_fk int,
+haciaDondeIrradia text,
+id_comoSeModifica_fk int,
+id_elementoDeModificacion_fk int,
+id_caracterDolor_fk int,
+observaciones text
+
+alter table Sintoma
+add foreign key(id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
+foreign key(id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
+foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
+foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor)
+
+
+alter table Sintoma 
+add fechaRegistro date
+
+alter table Sintoma
+add foreign key(id_hc_fk) references Historia_Clinica(id_hc)
