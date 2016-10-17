@@ -21,9 +21,9 @@ namespace LogicaNegocio
         {
             return ProfesionalMedicoDAO.mostrarPacientesDelMedicoLogueado(tipodocMedico, nroDocMedico);
         }
-        public static void insertarProfesionalMédico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula, string nombre_usuario, string contraseña, DateTime fecha_creacion, int id_estado)
+        public static void insertarProfesionalMédico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, DateTime fecha_nacimiento, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula, string nombre_usuario, string contraseña, DateTime fecha_creacion, int id_estado)
         {
-            ProfesionalMedicoDAO.insertarProfesionalMédico(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula, nombre_usuario, contraseña, fecha_creacion, id_estado);
+            ProfesionalMedicoDAO.insertarProfesionalMédico(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, fecha_nacimiento, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula, nombre_usuario, contraseña, fecha_creacion, id_estado);
         }
         public static ProfesionaMedico buscarProfesionalMedicoPorTipoNroDocumento(int tipoDoc, long nroDoc)
         {

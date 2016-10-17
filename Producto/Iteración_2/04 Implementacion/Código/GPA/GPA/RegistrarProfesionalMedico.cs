@@ -138,6 +138,8 @@ namespace GPA
                 int telefono = Convert.ToInt32(txtTelefonoFijo.Text);
                 int nroCelular = Convert.ToInt32(txtNroCelular.Text);
                 string email = txtEmail.Text;
+                int id_sexo; if (radM.Checked) { id_sexo = 1; } else { id_sexo = 2; }
+                DateTime fecha_nacimiento = Convert.ToDateTime(txtFechaNacimiento.Text);
                 string calle = txtCalle.Text;
                 int numero = Convert.ToInt32(txtNroCalle.Text);
                 int piso = Convert.ToInt32(txtPiso.Text);
@@ -146,13 +148,13 @@ namespace GPA
                 Barrio barrio = (Barrio)cmbBarrio.Items[cmbBarrio.SelectedIndex];
                 Especialidad especialidad = (Especialidad)cmbEspecialidad.Items[cmbEspecialidad.SelectedIndex];
                 int matricula = Convert.ToInt32(txtMatriculaProfesional.Text);
-                confirmacionNuevoProfesionalMedico(tipoDoc.id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, barrio.id_barrio, especialidad.id_especialidad, matricula);
+                confirmacionNuevoProfesionalMedico(tipoDoc.id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, fecha_nacimiento, calle, numero, piso, departamento, codigo_postal, barrio.id_barrio, especialidad.id_especialidad, matricula);
             }
         }
 
-        public void confirmacionNuevoProfesionalMedico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula)
+        public void confirmacionNuevoProfesionalMedico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, DateTime fecha_nacimiento, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula)
         {
-            manejador.altaProfesionalMedicoConfirmada(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula);
+            manejador.altaProfesionalMedicoConfirmada(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, fecha_nacimiento, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula);
         }
 
         private void _cmbLocalidad_SelectedIndexChanged(object sender, EventArgs e)

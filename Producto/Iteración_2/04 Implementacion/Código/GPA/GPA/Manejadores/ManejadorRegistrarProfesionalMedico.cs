@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entidades.Clases;
-using DAO;
+using LogicaNegocio;
 
 namespace GPA.Manejadores
 {
@@ -23,7 +23,7 @@ namespace GPA.Manejadores
 
         public void mostrarTiposDocumento()
         {
-            pantalla.presentarTiposDocumento(TipoDocumentoDAO.buscarTiposDoc());
+            pantalla.presentarTiposDocumento(TipoDocumentoLN.mostrarTipoDocumento());
         }
 
         public void documentoIngresado(int id_tipoDoc, int nro_documento)
@@ -33,7 +33,7 @@ namespace GPA.Manejadores
 
         public void verificarExistenciaProfesionalMedico(int id_tipoDoc, int nro_documento)
         {
-            ProfesionaMedico profesional = ProfesionalMedicoDAO.buscarProfesionalMedicoPorTipoNroDocumento(id_tipoDoc, nro_documento);
+            ProfesionaMedico profesional = ProfesionalMedicoLN.buscarProfesionalMedicoPorTipoNroDocumento(id_tipoDoc, nro_documento);
             if (profesional != null)
             {
                 finCU("El profesional médico ya existe.\nNombre: " + profesional.nombre + "\nApellido: " + profesional.apellido);
@@ -51,7 +51,7 @@ namespace GPA.Manejadores
 
         public void mostrarLocalidades()
         {
-            localidades = LocalidadDAO.buscarLocalidades();
+            localidades = LocalidadLN.buscarLocalidades();
             pantalla.presentarLocalidades(localidades);
         }
 
@@ -62,7 +62,7 @@ namespace GPA.Manejadores
 
         public void mostrarBarriosDeLocalidad(Localidad localidad)
         {
-            barrios = BarrioDAO.buscarBarriosDeLocalidad(localidad.id_localidad);
+            barrios = BarrioLN.buscarBarriosDeLocalidad(localidad.id_localidad);
             pantalla.presentarBarrios(barrios);
         }
 
@@ -73,27 +73,27 @@ namespace GPA.Manejadores
 
         public void mostrarEspecialidades()
         {
-            especialidades = EspecialidadDAO.buscarEspecialidades();
+            especialidades = EspecialidadLN.buscarEspecialidades();
             pantalla.presentarEspecialidades(especialidades);
         }
 
-        public void altaProfesionalMedicoConfirmada(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula)
+        public void altaProfesionalMedicoConfirmada(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, DateTime fecha_nacimiento, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula)
         {
             Usuario usuario = generarUsuarioYPassword(nombre, apellido);
             pantalla.presentarUsuario(usuario.nombre, usuario.pass);
-            crearProfesionalMedico(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula, usuario);
+            crearProfesionalMedico(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, fecha_nacimiento, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula, usuario);
         }
 
-        public void crearProfesionalMedico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula, Usuario usuario)
+        public void crearProfesionalMedico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, DateTime fecha_nacimiento, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula, Usuario usuario)
         {
             int id_estado = buscarEstadoDeAlta();
-            ProfesionalMedicoDAO.insertarProfesionalMédico(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula, usuario.nombre, usuario.pass, usuario.fechaCreacion, id_estado);
+            ProfesionalMedicoLN.insertarProfesionalMédico(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, fecha_nacimiento, calle, numero, piso, departamento, codigo_postal, id_barrio, id_especialidad, matricula, usuario.nombre, usuario.pass, usuario.fechaCreacion, id_estado);
             finCU("El profesional médico ha sido registrado exitosamente");
         }
 
         public int buscarEstadoDeAlta()
         {
-            return EstadoDAO.buscarEstadoPorNombre("Activo").id_estado;
+            return EstadoLN.buscarEstadoPorNombre("Activo").id_estado;
         }
 
         public Usuario generarUsuarioYPassword(string nombre, string apellido)
@@ -109,7 +109,7 @@ namespace GPA.Manejadores
 
         public int verificarExistenciaUsuario(string nombre)
         {
-            List<Usuario> usuarios = UsuarioDAO.buscarUsuarioPorNombre(nombre + "[1-9]%");
+            List<Usuario> usuarios = UsuarioLN.buscarUsuarioPorNombre(nombre + "[1-9]%");
             int numeroUsuario = 0;
             foreach (Usuario usuario in usuarios)
             {

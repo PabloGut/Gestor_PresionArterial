@@ -128,13 +128,13 @@ namespace GPA
                 int nroCelular = Convert.ToInt32(txtNroCelular.Text);
                 string email = txtEmail.Text;
                 int id_sexo; if (radM.Checked) { id_sexo = 1; } else { id_sexo = 2; }
+                DateTime fecha_nacimiento = Convert.ToDateTime(txtFechaNacimiento.Text);
                 string calle = txtCalle.Text;
                 int numero = Convert.ToInt32(txtNroCalle.Text);
                 int piso = Convert.ToInt32(txtPiso.Text);
                 string departamento = txtDpto.Text;
                 int codigo_postal = Convert.ToInt32(txtCodigoPostal.Text);
                 Barrio barrio = (Barrio)cmbBarrio.Items[cmbBarrio.SelectedIndex];
-                DateTime fecha_nacimiento = Convert.ToDateTime(txtFechaNacimiento.Text);
                 int edad=DateTime.Today.Year-fecha_nacimiento.Year;
                 double altura = Convert.ToDouble(txtAltura.Text);
                 int peso = Convert.ToInt32(txtPeso.Text);

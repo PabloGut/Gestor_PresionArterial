@@ -149,14 +149,16 @@ namespace DAO
                 medico.mail = dr["email"].ToString();
             }
             cn.Close();
-            medico.especialidad = EspecialidadDAO.mostrarEspecialidad(medico.id_especialidad);
-            medico.tipoDoc = TipoDocumentoDAO.mostrarTipoDocumento(tipoDoc);
+            if(medico!=null){
+                medico.especialidad = EspecialidadDAO.mostrarEspecialidad(medico.id_especialidad);
+                medico.tipoDoc = TipoDocumentoDAO.mostrarTipoDocumento(tipoDoc);
+            }
             return medico;
 
 
         }
 
-        public static void insertarProfesionalMédico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula, string nombre_usuario, string contraseña, DateTime fecha_creacion, int id_estado)
+        public static void insertarProfesionalMédico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, DateTime fecha_nacimiento, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula, string nombre_usuario, string contraseña, DateTime fecha_creacion, int id_estado)
         {
             SqlConnection cn = new SqlConnection(cadenaConexion);
             SqlTransaction tran = null;
@@ -204,20 +206,22 @@ namespace DAO
                 cmd2.Transaction = tran;
                 int id_usuario = Convert.ToInt32(cmd2.ExecuteScalar());
 
-                string consultaInsertarProfesionalMedico = "INSERT INTO ProfesionalMedico (id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,id_especialidad_fk,matricula_profesional,id_domicilio_fk) VALUES (@paramId_tipoDoc_fk,@paramNro_documento,@paramNombre,@paramApellido,@paramTelefono,@paramNroCelular,@paramEmail,@paramId_usuario_fk,@paramId_estado_fk,@paramId_especialidad_fk,@paramMatricula_profesional,@paramId_domicilio_fk)";
+                string consultaInsertarProfesionalMedico = "INSERT INTO ProfesionalMedico (id_tipoDoc_fk,nro_documento,nombre,apellido,fechaNacimiento,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,id_especialidad_fk,matricula,id_sexo_fk,id_domicilio_fk) VALUES (@paramId_tipoDoc_fk,@paramNro_documento,@paramNombre,@paramApellido,@paramFechaNacimiento,@paramTelefono,@paramNroCelular,@paramEmail,@paramId_usuario_fk,@paramId_estado_fk,@paramId_especialidad_fk,@paramMatricula,@paramId_sexo_fk,@paramId_domicilio_fk)";
 
                 SqlCommand cmdInsertarProfesionalMedico = new SqlCommand();
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramId_tipoDoc_fk", id_tipoDoc);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramNro_documento", nro_documento);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramNombre", nombre);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramApellido", apellido);
+                cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramFechaNacimiento", fecha_nacimiento.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramTelefono", telefono);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramNroCelular", nroCelular);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramEmail", email);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramId_usuario_fk", id_usuario);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramId_estado_fk", id_estado);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramId_especialidad_fk", id_especialidad);
-                cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramMatricula_profesional", matricula);
+                cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramMatricula", matricula);
+                cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramId_sexo_fk", id_sexo);
                 cmdInsertarProfesionalMedico.Parameters.AddWithValue("@paramId_domicilio_fk", id_domicilio);
 
                 cmdInsertarProfesionalMedico.CommandText = consultaInsertarProfesionalMedico;

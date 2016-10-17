@@ -38,3 +38,13 @@ D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\De
 D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.csproj.GenerateResource.Cache
 D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.exe
 D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.pdb
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.Properties.Resources.resources
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.csproj.GenerateResource.Cache
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.exe
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\DAO.exe.config
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\DAO.exe
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\DAO.pdb
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\Entidades.exe
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\bin\Debug\Entidades.pdb
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\DAO\obj\Debug\DAO.pdb

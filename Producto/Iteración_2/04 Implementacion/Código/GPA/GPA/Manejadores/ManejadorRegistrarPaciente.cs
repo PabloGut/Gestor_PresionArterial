@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entidades.Clases;
-using DAO;
+using LogicaNegocio;
 
 namespace GPA.Manejadores
 {
@@ -22,7 +22,7 @@ namespace GPA.Manejadores
 
         public void mostrarTiposDocumento()
         {
-            pantalla.presentarTiposDocumento(TipoDocumentoDAO.buscarTiposDoc());
+            pantalla.presentarTiposDocumento(TipoDocumentoLN.mostrarTipoDocumento());
         }
 
         public void documentoIngresado(int id_tipoDoc, int nro_documento)
@@ -32,7 +32,7 @@ namespace GPA.Manejadores
 
         public void verificarExistenciaPaciente(int id_tipoDoc, int nro_documento)
         {
-            List<Paciente> pacientes=PacienteDAO.buscarPaciente(id_tipoDoc, nro_documento);
+            List<Paciente> pacientes=PacienteLN.buscarPaciente(id_tipoDoc, nro_documento);
             if (pacientes.Count != 0)
             {
                 Paciente paciente=pacientes.ElementAt(0);
@@ -51,7 +51,7 @@ namespace GPA.Manejadores
 
         public void mostrarLocalidades()
         {
-            localidades = LocalidadDAO.buscarLocalidades();
+            localidades = LocalidadLN.buscarLocalidades();
             pantalla.presentarLocalidades(localidades);
         }
 
@@ -62,7 +62,7 @@ namespace GPA.Manejadores
 
         public void mostrarBarriosDeLocalidad(Localidad localidad)
         {
-            barrios = BarrioDAO.buscarBarriosDeLocalidad(localidad.id_localidad);
+            barrios = BarrioLN.buscarBarriosDeLocalidad(localidad.id_localidad);
             pantalla.presentarBarrios(barrios);
         }
 
@@ -76,13 +76,13 @@ namespace GPA.Manejadores
         public void crearPaciente(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, DateTime fecha_nacimiento, int edad, double altura, int peso, ProfesionaMedico medico, Usuario usuario)
         {
             int id_estado=buscarEstadoDeAlta();
-            PacienteDAO.insertarPaciente(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, calle, numero, piso, departamento, codigo_postal, id_barrio, fecha_nacimiento, edad, altura, peso, medico, usuario.nombre, usuario.pass, usuario.fechaCreacion, id_estado);
+            PacienteLN.insertarPaciente(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, calle, numero, piso, departamento, codigo_postal, id_barrio, fecha_nacimiento, edad, altura, peso, medico, usuario.nombre, usuario.pass, usuario.fechaCreacion, id_estado);
             finCU("El paciente ha sido registrado exitosamente");
         }
 
         public int buscarEstadoDeAlta()
         {
-            return EstadoDAO.buscarEstadoPorNombre("Activo").id_estado;
+            return EstadoLN.buscarEstadoPorNombre("Activo").id_estado;
         }
 
         public Usuario generarUsuarioYPassword(string nombre, string apellido)
@@ -98,7 +98,7 @@ namespace GPA.Manejadores
 
         public int verificarExistenciaUsuario(string nombre){
 
-            List<Usuario> usuarios = UsuarioDAO.buscarUsuarioPorNombre(nombre + "[1-9]%");
+            List<Usuario> usuarios = UsuarioLN.buscarUsuarioPorNombre(nombre + "[1-9]%");
             int numeroUsuario=0;
             foreach (Usuario usuario in usuarios)
             {

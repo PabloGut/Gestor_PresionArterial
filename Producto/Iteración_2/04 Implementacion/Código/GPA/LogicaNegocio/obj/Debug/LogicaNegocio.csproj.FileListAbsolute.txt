@@ -16,3 +16,12 @@ D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNego
 D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
 D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.dll
 D:\repoClon\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\LogicaNegocio.dll
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\LogicaNegocio.pdb
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\DAO.exe
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\Entidades.exe
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\DAO.pdb
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\bin\Debug\Entidades.pdb
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.csprojResolveAssemblyReference.cache
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.dll
+D:\Gestor_PresionArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\LogicaNegocio\obj\Debug\LogicaNegocio.pdb
