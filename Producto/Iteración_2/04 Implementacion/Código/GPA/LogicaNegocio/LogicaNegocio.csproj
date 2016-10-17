@@ -65,6 +65,7 @@
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />
+    <Compile Include="SintomaLN.cs" />
     <Compile Include="SustanciaAmbienteLN.cs" />
     <Compile Include="SustanciaContactoPielLN.cs" />
     <Compile Include="SustanciaDrogaIlicitaLN.cs" />

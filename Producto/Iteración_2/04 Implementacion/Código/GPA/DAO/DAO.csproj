@@ -88,6 +88,7 @@
     <Compile Include="ProfesionalMedicoDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SintomaDAO.cs" />
     <Compile Include="SustanciaAmbienteDAO.cs" />
     <Compile Include="SustanciaContactoPielDAO.cs" />
     <Compile Include="SustanciaDrogaIlicitaDAO.cs" />

@@ -23,6 +23,9 @@ namespace Entidades.Clases
         public int id_elementoModificacion { set; get; }
         public int id_caracterDolor { set; get;}
         public string observaciones { set; get; }
+        public int id_hc { set; get; }
+        public DateTime fechaRegistro { set; get; }
+
 
 
     }

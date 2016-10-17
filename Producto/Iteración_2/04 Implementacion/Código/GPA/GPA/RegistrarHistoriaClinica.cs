@@ -658,7 +658,6 @@ namespace GPA
         {
 
         }
-
         private void rbSiDolor_CheckedChanged(object sender, EventArgs e)
         {
             cboCaracterDolor.Enabled = true;
@@ -750,7 +749,6 @@ namespace GPA
 
         private void btnAgregarSintoma_Click(object sender, EventArgs e)
         {
-
             cargarDatosDataGridViewSintomas();
         }
         /*
@@ -1139,6 +1137,11 @@ namespace GPA
             }
             dgvAlergiasMedicamentos.Rows.Add(alergiaMedicamento, medicamento, efectos);
         }
+        /*
+       * Método para cargar filas al DatagridView correspondiente a los hábitos de tabaquismo.
+       * No recibe valores por parámetro.
+       * El valor de retorno es void.
+      */
         public void cargarDatosDataGridViewHabitoTabaquismo()
         {
             string fuma = "";
@@ -1204,6 +1207,11 @@ namespace GPA
             }
             dgvHabitosFumar.Rows.Add(fuma, cantidad, añosFumando,dejoFumar,cantTiempoDejoFumar,descripcionTiempoFumaba,cantidadFumaba);
         }
+        /*
+      * Método para cargar filas al DatagridView correspondiente a los hábitos de alcoholismo.
+      * No recibe valores por parámetro.
+      * El valor de retorno es void.
+     */
         public void cargarDatosDataGridViewHabitoAlcoholismo()
         {
             string consumeAlcohol = "No";
@@ -1233,6 +1241,11 @@ namespace GPA
 
             dgvHabitosAlcoholismo.Rows.Add(consumeAlcohol, bebida, estimacionCantidad, descripcion);
         }
+        /*
+      * Método para cargar filas al DatagridView correspondiente a los hábitos de drogas Ilicitas.
+      * No recibe valores por parámetro.
+      * El valor de retorno es void.
+     */
         public void cargarDatosDataGridViewHabitosDrogasIlicitas()
         {
             string consumeDrogas = "No";
@@ -1267,6 +1280,11 @@ namespace GPA
 
             dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento, dejoConsumir);
         }
+        /*
+      * Método para cargar filas al DatagridView correspondiente a los hábitos de Actividad física.
+      * No recibe valores por parámetro.
+      * El valor de retorno es void.
+     */
         public void cargarDatosDataGridViewHabitosActividadFisica()
         {
             string actividad = "";
@@ -1447,6 +1465,35 @@ namespace GPA
                 columna.Width = 200;
                 dgvHabitosActividadFisica.Columns.Add(columna);
             }
+        }
+        /*
+         * Método para registrar la creación de la historia clínica del paciente. Registrar enfermedad actual, antecedentes y hábitos.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void registrarHistoriaClinica()
+        {
+            HistoriaClinica hc = new HistoriaClinica();
+
+            int idHc = 0;
+
+            hc.idtipodoc_paciente = paciente.id_tipoDoc;
+            hc.nrodoc_paciente = paciente.nroDoc;
+            hc.idtipodoc = paciente.id_tipodoc_medico;
+            hc.nrodoc = paciente.nrodoc_medico;
+
+            hc.fecha =Convert.ToDateTime(mtbFechaActual);
+            hc.hora = Convert.ToDateTime(mtbHoraActual);
+            hc.fechaInicioAtencion = Convert.ToDateTime(mtbFechaActual);
+
+            hc.motivoConsulta = txtmotivoConsulta.Text;
+
+            idHc=manejadorRegistrarHC.registrarHistoriaClinica(hc);
+
+
+
+
+
         }
 
         private void btnAgregarAntecedenteMorbido_Click(object sender, EventArgs e)

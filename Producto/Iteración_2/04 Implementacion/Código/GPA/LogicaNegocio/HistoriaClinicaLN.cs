@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades.Clases;
+using DAO;
+using System.Data;
 
 namespace LogicaNegocio
 {
@@ -25,6 +28,10 @@ namespace LogicaNegocio
         public static string mostrarHoraActual()
         {
             return DateTime.Now.ToShortTimeString();
+        }
+        public static int registrarHistoriaClinica(HistoriaClinica hc)
+        {
+            return HistoriaClinicaDAO.registrarHistoriaClinica(hc);
         }
     }
 }
