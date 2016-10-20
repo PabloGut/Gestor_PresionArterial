@@ -21,7 +21,7 @@ Insert into Estudio("fecha_estudio","doctorACargo",informe_estudio,id_hc_fk,id_i
 values ('15/06/2016','Diaz','Normal','1','1')
 
 select *
-from Historia_Clinica
+from TiposAntecedentesMorbidos
 
 
 
@@ -29,7 +29,7 @@ select *
 from Estudio
 
 select *
-from Usuario
+from TipoSintoma
 
 delete from Historia_Clinica
 where nro_hc=3
@@ -413,5 +413,16 @@ foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolo
 alter table Sintoma 
 add fechaRegistro date
 
-alter table Sintoma
-add foreign key(id_hc_fk) references Historia_Clinica(id_hc)
+alter table AntecedentesMorbidos
+add id_operacion_fk int, id_traumatismo_fk int, id_enfermedad_fk int
+
+alter table AntecedentesMorbidos
+add foreign key (id_operacion_fk) references Operaciones(id_operacion),
+foreign key (id_traumatismo_fk) references Traumatismos(id_traumatismo),
+foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad)
+
+alter table AntecedentesMorbidos
+add fechaRegistro
+
+drop table Aborto
+select * from Aborto

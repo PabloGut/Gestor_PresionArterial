@@ -212,8 +212,8 @@ nombre varchar(100) not null)
 CREATE TABLE AlergiaAlimento (
 id_alergiaAlimento int primary key identity,
 fechaRegistro date not null,
-efectos text,
 id_alimento_fk int not null,
+efectos text,
 id_hc_fk int not null,
 foreign key (id_alimento_fk) references Alimento(id_alimento),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
@@ -288,14 +288,21 @@ CREATE TABLE AntecedentesMorbidos(
 id_antecedenteMorbido int primary key identity,
 fechaRegistro date not null,
 id_tipoAntecedenteMorbido_fk int not null,
+id_enfermedad_fk int,
+id_operacion_fk int,
+id_traumatismo_fk int,
 cantidadTiempo int,
 id_elementoTiempo_fk int,
 evolucion text,
 tratamiento text,
-id_medicamento_fk int not null,
 id_hc_fk int not null,
 foreign key (id_tipoAntecedenteMorbido_fk) references TipoAntecedenteMorbido(id_tipoAntecedenteMorbido),
+foreign key (id_operacion_fk) references Operaciones(id_operacion),
+foreign key (id_traumatismo_fk) references Traumatismos(id_traumatismo),
+foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad),
+foreign key (id_elementoTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
+
 
 CREATE TABLE TipoAborto(
 id_TipoAborto int primary key identity,
@@ -312,9 +319,9 @@ CREATE TABLE Aborto(
 id_aborto int primary key identity,
 fechaRegistro date not null,
 cantidadTotal int,
-cantidadProvocados int,
+cantidadAbortoTipo1 int,
 id_TipoAborto1_fk int,
-cantidadEspontaneo int,
+cantidadAbortoTipo2 int,
 id_TipoAborto2_fk int,
 nroHijosVivos int,
 problemasAsociadosAlEmbarazo text,
@@ -329,10 +336,13 @@ cantidadEmbarazosPrematuros int,
 id_TipoParto1_fk int,
 cantidadEmbarazosATermino int,
 id_TipoParto2_fk int,
+cantidadEmbarazosPosTermino int,
+id_TipoParto3_fk int,
 id_Aborto_fk int,
 id_hc_fk int not null,
 foreign key (id_TipoParto1_fk) references TipoParto(id_tipoParto),
 foreign key (id_TipoParto2_fk) references TipoParto(id_tipoParto),
+foreign key (id_TipoParto3_fk) references TipoParto(id_tipoParto),
 foreign key (id_Aborto_fk) references Aborto(id_aborto),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
@@ -761,6 +771,21 @@ foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
 foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
 foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento),
 foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
+
+
+create table AntecedentesFamiliares(
+id_antecedenteFamiliar int primary key identity,
+fechaRegistro date,
+id_familiar_fk int,
+familiarVive varchar(20),
+enfermedades text,
+descripcionOtrasEnfermedades text,
+causaMuerte text,
+observaciones text,
+id_hc_fk int,
+foreign key (id_familiar_fk) references Familiar(id_familiar),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc))
+
 
 
 

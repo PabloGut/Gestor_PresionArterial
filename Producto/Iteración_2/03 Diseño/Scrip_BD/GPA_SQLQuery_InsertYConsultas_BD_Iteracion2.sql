@@ -53,7 +53,10 @@ values(8,'20000325','Martín','Molina','74700000','152801200','martinM@hotmail.co
 /*--------------------------*/
 
 
-/*-------Insert Pacientes-----*/
+/*-------InsertSintoma-----*/
+insert into TipoSintoma(nombre)
+values('--Seleccionar--')
+
 insert into TipoSintoma(nombre)
 values('Dolor')
 
@@ -61,9 +64,13 @@ insert into TipoSintoma(nombre)
 values('Molestia')
 
 select * from ParteDelCuerpo
+
 /*--------------------------*/
 
 /*-------Insert Parte del cuerpo-----*/
+insert into ParteDelCuerpo(nombre)
+values('--Seleccionar--')
+
 insert into ParteDelCuerpo(nombre)
 values('Cabeza')
 
@@ -79,9 +86,13 @@ values('Espalda')
 insert into ParteDelCuerpo(nombre)
 values('Cintura')
 
+
 /*--------------------------*/
 
 /*-------Insert Carácter del dolor-----*/
+insert into CaracterDelDolor(nombre)
+values('--Seleccionar--')
+
 insert into CaracterDelDolor(nombre)
 values('Cólico')
 
@@ -113,6 +124,9 @@ values('Terebrante')
 
 /*-------Insert Elementos del tiempo-----*/
 insert into ElementoDelTiempo(nombre)
+values('--Seleccionar--')
+
+insert into ElementoDelTiempo(nombre)
 values('Días')
 
 insert into ElementoDelTiempo(nombre)
@@ -127,6 +141,9 @@ values('Años')
 /*-------Insert Descripción del tiempo-----*/
 
 insert into DescripcionDelTiempo(nombre)
+values('--Seleccionar--')
+
+insert into DescripcionDelTiempo(nombre)
 values('Antenoche')
 
 insert into DescripcionDelTiempo(nombre)
@@ -138,6 +155,11 @@ values('La semana pasada')
 /*--------------------------*/
 
 /*-------Insert ModificaciónSíntoma-----*/
+
+
+insert into ModificacionSintoma(nombre)
+values('--Seleccionar--')
+
 insert into ModificacionSintoma(nombre)
 values('Aumentando')
 
@@ -147,11 +169,13 @@ values('Disminuyendo')
 insert into ModificacionSintoma(nombre)
 values('No se modifica')
 
-select * from ElementoDeModificacion
-delete from ModificacionSintoma 
 /*--------------------------*/
 
 /*-------Insert ElementoDeModificacion-----*/
+
+insert into ElementoDeModificacion(nombre)
+values('--Seleccionar--')
+
 insert into ElementoDeModificacion(nombre)
 values('Alimentos')
 
@@ -160,6 +184,7 @@ values('Posiciones corporales')
 /*--------------------------*/
 
 /*-------Insert TiposAntecedentesMórbidos-----*/
+delete from TipoAntecedenteMorbido
 
 insert into TiposAntecedentesMorbidos(nombre)
 values('Enfermedad')
@@ -212,6 +237,11 @@ values('Traumatismo de columna vertebral','3')
 /*--------------------------*/
 
 /*-------Insert TipoParto-----*/
+
+
+insert into TipoParto(nombre)
+values('--Seleccionar--')
+
 insert into TipoParto(nombre)
 values('Cesarea')
 
@@ -220,6 +250,11 @@ values('Natural')
 /*--------------------------*/
 
 /*-------Insert TipoAborto-----*/
+
+
+insert into TipoAborto(nombre)
+values('--Seleccionar--')
+
 insert into TipoAborto(nombre)
 values('Espontáneo')
 
@@ -228,6 +263,11 @@ values('Provocado')
 /*--------------------------*/
 
 /*-------Insert Familiar-----*/
+delete from Familiar
+
+insert into Familiar(nombre)
+values('--Seleccionar--')
+
 insert into Familiar(nombre)
 values('Madre')
 
@@ -244,6 +284,10 @@ values('Hermana')
 /*--------------------------*/
 
 /*-------Insert Alimento-----*/
+
+insert into Alimento(nombre)
+values('--Seleccionar--')
+
 insert into Alimento(nombre)
 values('Pescado')
 
@@ -268,6 +312,11 @@ values('Huevo')
 /*--------------------------*/
 
 /*-------Insert SustanciasAmbiente-----*/
+
+
+insert into SustanciaAmbiente(nombre)
+values('--Seleccionar--')
+
 insert into SustanciaAmbiente(nombre)
 values('Pólenes')
 
@@ -283,6 +332,11 @@ values('Hongos')
 /*--------------------------*/
 
 /*-------Insert SustanciaContactoPiel-----*/
+delete from SustanciaContactoPiel
+
+insert into SustanciaContactoPiel(nombre)
+values('--Seleccionar--')
+
 insert into SustanciaContactoPiel(nombre)
 values('Tinturas para cabello')
 
@@ -297,6 +351,11 @@ values('Shampoos')
 /*--------------------------*/
 
 /*-------Insert Insectos-----*/
+
+
+insert into Insecto(nombre)
+values('--Seleccionar--')
+
 insert into Insecto(nombre)
 values('Abejas')
 
@@ -309,6 +368,10 @@ values('Hormigas')
 /*--------------------------*/
 
 /*-------Insert Medicamento-----*/
+
+insert into MedicamentoAlergia(nombre)
+values('--Seleccionar--')
+
 insert into MedicamentoAlergia(nombre)
 values('Penicilina')
 
@@ -329,6 +392,11 @@ values('Contrastes yodados')
 /*--------------------------*/
 
 /*-------Insert ElementoQueFuma-----*/
+delete from ElementoQueFuma
+
+insert into ElementoQueFuma(nombre)
+values('--Seleccionar--')
+
 insert into ElementoQueFuma(nombre)
 values('Cigarrillos')
 
@@ -341,6 +409,11 @@ select * from ElementoDelTiempo
 
 
 /*-------Insert ComponenteTiempo-----*/
+
+
+insert into ComponenteDelTiempo(nombre)
+values('--Seleccionar--')
+
 insert into ComponenteDelTiempo(nombre)
 values('Día')
 
@@ -353,6 +426,10 @@ values('Año')
 
 
 /*-------Insert TipoBebida-----*/
+
+insert into TipoBebida(nombre)
+values('--Seleccionar--')
+
 insert into TipoBebida(nombre)
 values('Vino')
 
@@ -375,6 +452,11 @@ values('Vodka')
 /*--------------------------*/
 
 /*-------Insert Medida-----*/
+
+
+insert into Medida(nombre)
+values('--Seleccionar--')
+
 insert into Medida(nombre, descripcion)
 values('Vaso largo','Su capacidad aproximada ronda los 235 y los 355 ml')
 
@@ -386,6 +468,13 @@ add descripcion text
 /*--------------------------*/
 
 /*-------Insert SustanciasDrogasIlicitas-----*/
+
+insert into Sustancia(nombre)
+values('--Seleccionar--')
+
+insert into Sustancia(nombre)
+values('Cocaína')
+
 insert into Sustancia(nombre)
 values('Cocaína')
 
@@ -442,11 +531,20 @@ values('Comprimidos')
 /*--------------------------*/
 
 /*-------Insert Frecuencia-----*/
+
+
+insert into Frecuencia(nombre)
+values('--Seleccionar--')
+
 insert into Frecuencia(nombre)
 values('Diaria')
 /*--------------------------*/
 
 /*-------Insert MomentoDelDia-----*/
+
+
+insert into MomentoDelDia(nombre)
+values('--Seleccionar--')
 insert into MomentoDelDia(nombre)
 values('Mañana')
 insert into MomentoDelDia(nombre)
@@ -458,6 +556,10 @@ values('Noche')
 /*--------------------------*/
 
 /*-------Insert ActividadFisica-----*/
+
+
+insert into ActividadFisica(nombre)
+values('--Seleccionar--')
 insert into ActividadFisica(nombre)
 values('Futbol')
 insert into ActividadFisica(nombre)
@@ -467,6 +569,10 @@ values('Voley')
 /*--------------------------*/
 
 /*-------Insert GradoActividad-----*/
+
+
+insert into GradoActividad(nombre)
+values('--Seleccionar--')
 insert into GradoActividad(nombre,descripcion)
 values('Bajo','Menos de 30 minutos de actividad física por semana.')
 insert into GradoActividad(nombre,descripcion)
@@ -476,6 +582,10 @@ values('Alto','Correspondiente a 30 minutos o mas de actividad física y más de 5
 /*--------------------------*/
 
 /*-------Insert IntensidadActividadFisica-----*/
+delete from IntensidadActividadFisica
+
+insert into IntensidadActividadFisica(nombre)
+values('--Seleccionar--')
 insert into IntensidadActividadFisica(nombre)
 values('Muy suave')
 insert into IntensidadActividadFisica(nombre)
@@ -503,3 +613,5 @@ add id_medicamentoAlergia_fk int
 
 alter table AlergiaMedicamento
 add foreign key(id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia)
+
+drop table AlergiaAlimento
