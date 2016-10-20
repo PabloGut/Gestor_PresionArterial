@@ -44,8 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Aborto.cs" />
     <Compile Include="Clases\ActividadFisica.cs" />
+    <Compile Include="Clases\AlergiaAlimento.cs" />
     <Compile Include="Clases\Alimento.cs" />
+    <Compile Include="Clases\AntecedenteFamiliar.cs" />
+    <Compile Include="Clases\AntecedenteGinecoObstetrico.cs" />
+    <Compile Include="Clases\AntecedenteMorbido.cs" />
     <Compile Include="Clases\Barrio.cs" />
     <Compile Include="Clases\CaracterDelDolor.cs" />
     <Compile Include="Clases\DescripcionDelTiempo.cs" />

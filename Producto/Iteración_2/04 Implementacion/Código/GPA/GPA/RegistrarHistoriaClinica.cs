@@ -31,6 +31,11 @@ namespace GPA
         ManejadorRegistrarDrogasLicitas manejadorRegistrarDrogasLicitas;
         ManejadorRegistrarHabitosActividadFisica manejadorRegistrarHabitosActividadFisica;
 
+        List<Sintoma> listaSintomas;
+        List<AntecedenteMorbido> listaAntecedentesMorbidos;
+        AntecedenteGinecoObstetrico antecedenteGinecoObtetrico;
+        List<AntecedenteFamiliar> listaAntecedentesFamiliares;
+
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
             InitializeComponent();
@@ -48,6 +53,10 @@ namespace GPA
             manejadorRegistrarDrogasLicitas = new ManejadorRegistrarDrogasLicitas();
             manejadorRegistrarHabitosActividadFisica = new ManejadorRegistrarHabitosActividadFisica();
 
+            listaSintomas = new List<Sintoma>();
+            listaAntecedentesMorbidos = new List<AntecedenteMorbido>();
+            antecedenteGinecoObtetrico = null;
+            listaAntecedentesFamiliares = new List<AntecedenteFamiliar>();
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
@@ -154,6 +163,12 @@ namespace GPA
             agregarColumnaAntecedentes();
             agregarColumnaAlergias();
             agregarColumnaHabitos();
+
+            inicializarComponentes();
+        }
+        public void inicializarComponentes()
+        {
+            
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -758,6 +773,9 @@ namespace GPA
        */
         public void cargarDatosDataGridViewSintomas()
         {
+            Sintoma sintoma = new Sintoma();
+
+            string descripcionQueSiente = "No precisa";
             string caracterDolor = "No precisa";
             string haciaDondeIrradia = "No precisa";
             string fechaInicio = "No precisa";
@@ -767,47 +785,75 @@ namespace GPA
             string elementoModificacionSintoma = "No precisa";
             string observaciones = "No precisa";
 
-            TipoSintoma nombreSintoma= (TipoSintoma) cboQueSienteElPaciente.SelectedItem;
-            ParteDelCuerpo parteCuerpo= (ParteDelCuerpo) cboParteCuerpo.SelectedItem;
+            TipoSintoma nombreSintoma = (TipoSintoma)cboQueSienteElPaciente.SelectedItem;
+            sintoma.id_tipoSintoma = nombreSintoma.id_tipoSintoma;
+            
 
-            if (rbSiDolor.Checked == true)
+            ParteDelCuerpo parteCuerpo = (ParteDelCuerpo)cboParteCuerpo.SelectedItem;
+            sintoma.id_parteCuerpo = parteCuerpo.id_parteCuerpo;
+            
+            if (string.IsNullOrEmpty(txtDescQueSientePaciente.Text) == false)
+            {
+                descripcionQueSiente = txtDescQueSientePaciente.Text;
+            }
+            sintoma.descripcion = descripcionQueSiente;
+
+            if (rbSiDolor.Checked == true && cboCaracterDolor.SelectedIndex>0)
             {
                 CaracterDelDolor caracter = (CaracterDelDolor)cboCaracterDolor.SelectedItem;
                 caracterDolor = caracter.nombre;
+                sintoma.id_caracterDolor = caracter.id_caracterDelDolor;
             }
+
             if (string.IsNullOrEmpty(txtHaciaDondeIrradia.Text) == false)
             {
                 haciaDondeIrradia = txtHaciaDondeIrradia.Text;
             }
-            if (string.IsNullOrEmpty(mtbFechaComienzoSintoma.ToString()) == false)
+            sintoma.haciaDondeIrradia = haciaDondeIrradia;
+
+            if (mtbFechaComienzoSintoma.MaskFull==true)
             {
                 fechaInicio = mtbFechaComienzoSintoma.Text;
+                sintoma.fechaInicioSintoma = Convert.ToDateTime(mtbFechaComienzoSintoma.Text);
             }
-            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false)
+            
+            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false && cboElementoTiempo.SelectedIndex>0)
             {
                 ElementoDelTiempo elementoTiempo = (ElementoDelTiempo)cboElementoTiempo.SelectedItem;
                 cantidadTiempoDeComienzo = txtCantTiempoInicioSintoma.Text + " " +elementoTiempo.nombre;
+                sintoma.cantidadTiempo = Convert.ToInt32(txtCantTiempoInicioSintoma.Text);
+                sintoma.id_elementoTiempo = elementoTiempo.id_elementoDelTiempo;
             }
-            if (cboCuandoComenzo.SelectedIndex > -1)
+            if (cboCuandoComenzo.SelectedIndex > 0)
             {
                 DescripcionDelTiempo descripcion= (DescripcionDelTiempo) cboCuandoComenzo.SelectedItem;
                 cuandoComenzo = descripcion.nombre;
+                sintoma.id_descripcionDelTiempo = descripcion.id_descripcionDelTiempo;
             }
-            if (cboComoModificaSintoma.SelectedIndex > -1)
+            if (cboComoModificaSintoma.SelectedIndex > 0)
             {
                 ModificacionSintoma modificacion = (ModificacionSintoma)cboComoModificaSintoma.SelectedItem;
                 comoModificaSintoma = modificacion.nombre;
+                sintoma.id_modificacionSintoma = modificacion.id_modificacionSintoma;
             }
-            if (cboElementoModificacion.SelectedIndex > -1)
+            if (cboElementoModificacion.SelectedIndex > 0)
             {
                 ElementoDeModificacion elementoModificacion = (ElementoDeModificacion)cboElementoModificacion.SelectedItem;
                 elementoModificacionSintoma = elementoModificacion.nombre;
+                sintoma.id_elementoModificacion = elementoModificacion.id_elementoDeModificacion;
             }
             if (string.IsNullOrEmpty(txtObservaciones.Text) == false)
             {
                 observaciones = txtObservaciones.Text;
             }
-            dgvListaSintoma.Rows.Add(nombreSintoma.nombre,txtDescQueSientePaciente.Text,parteCuerpo.nombre,caracterDolor,haciaDondeIrradia,fechaInicio,cantidadTiempoDeComienzo,cuandoComenzo,comoModificaSintoma,elementoModificacionSintoma,observaciones);
+            sintoma.observaciones = observaciones;
+            sintoma.fechaRegistro =Convert.ToDateTime(mtbFechaActual.Text);
+
+            listaSintomas.Add(sintoma);
+
+            dgvListaSintoma.Rows.Add(nombreSintoma.nombre,descripcionQueSiente,parteCuerpo.nombre,caracterDolor,haciaDondeIrradia,fechaInicio,cantidadTiempoDeComienzo,cuandoComenzo,comoModificaSintoma,elementoModificacionSintoma,observaciones);
+            
+            
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los Antecedentes Mórbidos.
@@ -816,50 +862,68 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAntecedentesMorbidos()
         {
-            string tipoAntecedente = "No precisa";
-            string nombreDelTipoDeAntecedente = "No precisa";
-            string tratamiento = "No precisa";
-            string evolución = "No precisa";
-            string tiempo = "No precisa";
-            
-
-            if (cboTipoAntecedenteMorbido.SelectedIndex > -1)
+            if (rbPresentaAntecedentesMorbidos.Checked == true)
             {
-                TipoAntecedenteMorbido tipo = (TipoAntecedenteMorbido)cboTipoAntecedenteMorbido.SelectedItem;
-                tipoAntecedente = tipo.nombre;
-                switch (tipo.nombre)
+                AntecedenteMorbido antecedenteMorbido = new AntecedenteMorbido();
+
+                string tipoAntecedente = "No precisa";
+                string nombreDelTipoDeAntecedente = "No precisa";
+                string tratamiento = "No precisa";
+                string evolución = "No precisa";
+                string tiempo = "No precisa";
+
+                antecedenteMorbido.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                if (cboTipoAntecedenteMorbido.SelectedIndex > -1)
                 {
-                    case "Enfermedad":
-                        Enfermedad enfermedadSeleccionada = (Enfermedad)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
-                        nombreDelTipoDeAntecedente = enfermedadSeleccionada.nombre;
-                        break;
-                    case "Operación":
-                        Operacion operacionSeleccionada = (Operacion)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
-                        nombreDelTipoDeAntecedente = operacionSeleccionada.nombre;
-                        break;
-                    case "Traumatismo":
-                        Traumatismo traumatismoSeleccionado = (Traumatismo)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
-                        nombreDelTipoDeAntecedente = traumatismoSeleccionado.nombre;
-                        break;
-                    default:
-                        break;
+                    TipoAntecedenteMorbido tipo = (TipoAntecedenteMorbido)cboTipoAntecedenteMorbido.SelectedItem;
+                    tipoAntecedente = tipo.nombre;
+                    antecedenteMorbido.id_tipoAntecedenteMorbido = tipo.id_tipoAntecedenteMorbido;
+                    switch (tipo.nombre)
+                    {
+                        case "Enfermedad":
+                            Enfermedad enfermedadSeleccionada = (Enfermedad)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                            nombreDelTipoDeAntecedente = enfermedadSeleccionada.nombre;
+                            antecedenteMorbido.id_enfermedad = enfermedadSeleccionada.id_enfermedad;
+                            break;
+                        case "Operación":
+                            Operacion operacionSeleccionada = (Operacion)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                            nombreDelTipoDeAntecedente = operacionSeleccionada.nombre;
+                            antecedenteMorbido.id_operacion = operacionSeleccionada.id_operacion;
+                            break;
+                        case "Traumatismo":
+                            Traumatismo traumatismoSeleccionado = (Traumatismo)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                            nombreDelTipoDeAntecedente = traumatismoSeleccionado.nombre;
+                            antecedenteMorbido.id_traumatismo = traumatismoSeleccionado.id_traumatismo;
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
 
-            if (string.IsNullOrEmpty(txtTratamientoAntecedenteMorbido.Text) == false)
-            {
-                tratamiento = txtTratamientoAntecedenteMorbido.Text;
+                if (string.IsNullOrEmpty(txtTratamientoAntecedenteMorbido.Text) == false)
+                {
+                    tratamiento = txtTratamientoAntecedenteMorbido.Text;
+                }
+                antecedenteMorbido.tratamiento = tratamiento;
+
+                if (string.IsNullOrEmpty(txtEvoluciónAntecedenteMorbido.Text) == false)
+                {
+                    evolución = txtEvoluciónAntecedenteMorbido.Text;
+                }
+                antecedenteMorbido.evolución = evolución;
+
+                if (string.IsNullOrEmpty(txtCantTiempoAntecedenteMorbido.Text) == false)
+                {
+                    ElementoDelTiempo componente = (ElementoDelTiempo)cboTiempoOcurridoAntMorbido.SelectedItem;
+                    tiempo = txtCantTiempoAntecedenteMorbido.Text + " " + componente.nombre;
+                    antecedenteMorbido.id_elementoTiempo = componente.id_elementoDelTiempo;
+                    antecedenteMorbido.cantidadTiempo = Convert.ToInt32(txtCantTiempoAntecedenteMorbido.Text);
+                }
+
+                listaAntecedentesMorbidos.Add(antecedenteMorbido);
+                dgvAntecedentesMorbidos.Rows.Add(tipoAntecedente, nombreDelTipoDeAntecedente, tratamiento, evolución, tiempo);
             }
-            if (string.IsNullOrEmpty(txtEvoluciónAntecedenteMorbido.Text) == false)
-            {
-                tratamiento = txtEvoluciónAntecedenteMorbido.Text;
-            }
-            if (string.IsNullOrEmpty(txtCantTiempoAntecedenteMorbido.Text) == false)
-            {
-                ElementoDelTiempo componente= (ElementoDelTiempo) cboTiempoOcurridoAntMorbido.SelectedItem;
-                tiempo = txtCantTiempoAntecedenteMorbido.Text + " " + componente.nombre;
-            }
-            dgvAntecedentesMorbidos.Rows.Add(tipoAntecedente,nombreDelTipoDeAntecedente, tratamiento, evolución, tiempo);
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los Antecedentes Patológicos Familiares.
@@ -868,134 +932,139 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAntecedentesPatologicosFamiliares()
         {
-            string nombreFamiliar = "No precisa";
-            string viveFamiliar = "No precisa";
-            string enfermedades="";
-            string otraEnfermedad = "No precisa";
-            string causaMuerte = "No precisa";
-            string descripcionOtraEnfermedad="No precisa";
-            string observaciones = "No precisa";
+            if (cboFamiliar.SelectedIndex > 0)
+            {
+                AntecedenteFamiliar antecedente = new AntecedenteFamiliar();
 
-            List<string> listaEnfermedades = new List<string>();
+                string nombreFamiliar = "No precisa";
+                string viveFamiliar = "No precisa";
+                string enfermedades = "";
+                string otraEnfermedad = "No precisa";
+                string causaMuerte = "No precisa";
+                string descripcionOtraEnfermedad = "No precisa";
+                string observaciones = "No precisa";
 
-            if (cboFamiliar.SelectedIndex > -1)
-            {
-                Familiar familiar = (Familiar)cboFamiliar.SelectedItem;
-                nombreFamiliar = familiar.nombre;
-            }
+                
 
-            if (rbSiViveFamiliar.Checked == true)
-            {
-                viveFamiliar = "Si";
-            }
-            else
-            {
-                viveFamiliar = "No";
-            }
+                if (cboFamiliar.SelectedIndex > -1)
+                {
+                    Familiar familiar = (Familiar)cboFamiliar.SelectedItem;
+                    nombreFamiliar = familiar.nombre;
+                    antecedente.id_familiar = familiar.id_familiar;
+                }
 
-            if (chbAsma.Checked==true)
-            {
-                enfermedades = "Asma";
-                listaEnfermedades.Add("Asma");
-            }
-            if (chbDiabetes.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
+                if (rbSiViveFamiliar.Checked == true)
                 {
-                    enfermedades += ", ";
+                    viveFamiliar = "Si";
                 }
-                enfermedades += "Diabetes";
-                listaEnfermedades.Add("Diabetes");
-            }
-            if (chbHipertensión.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
+                else
                 {
-                    enfermedades += ", ";
+                    viveFamiliar = "No";
                 }
-                enfermedades += "Hipertensión" ;
-                listaEnfermedades.Add("Hipertensión");
-            }
-            if (chbAnemias.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
-                {
-                    enfermedades += ", ";
-                }
-                enfermedades += "Anemias";
-                listaEnfermedades.Add("Anemias");
-            }
-            if (chbTuberculosis.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
-                {
-                    enfermedades += ", ";
-                }
-                enfermedades += "Tuberculosis";
-                listaEnfermedades.Add("Tuberculosis");
-            }
-            if (chbLepra.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
-                {
-                    enfermedades += ", ";
-                }
-                enfermedades += "Lepra";
-                listaEnfermedades.Add("Lepra");
-            }
-            if (chbHepatitis.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
-                {
-                    enfermedades += ", ";
-                }
-                enfermedades += "Hepatitis";
-                listaEnfermedades.Add("Hepatitis");
-            }
-            if (chbParasitismo.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
-                {
-                    enfermedades += ", ";
-                }
-                enfermedades += "Parasitismo";
-                listaEnfermedades.Add("Parasitismo");
-            }
-            if (chbTranstornosNutricionales.Checked == true)
-            {
-                if (string.IsNullOrEmpty(enfermedades) == false)
-                {
-                    enfermedades += ", ";
-                }
-                enfermedades += "Trastornos nutricionales";
-                listaEnfermedades.Add("Trastornos nutricionales");
-            }
+                antecedente.familiarVive = viveFamiliar;
 
-            if (string.IsNullOrEmpty(enfermedades) == true)
-            {
-                enfermedades = "No precisa";
+                if (chbAsma.Checked == true)
+                {
+                    enfermedades = "Asma"; 
+                }
+                if (chbDiabetes.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Diabetes";
+                }
+                if (chbHipertensión.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Hipertensión";
+                }
+                if (chbAnemias.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Anemias";  
+                }
+                if (chbTuberculosis.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Tuberculosis";
+                }
+                if (chbLepra.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Lepra"; 
+                }
+                if (chbHepatitis.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Hepatitis";
+                }
+                if (chbParasitismo.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Parasitismo"; 
+                }
+                if (chbTranstornosNutricionales.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Trastornos nutricionales";
+                }
+                if (string.IsNullOrEmpty(enfermedades) == true)
+                {
+                    enfermedades = "No precisa";
+                }
+                antecedente.enfermedades = enfermedades;
+
+                if (rbSiOtraEnfermedad.Checked == true)
+                {
+                    otraEnfermedad = "Si";
+                }
+                else
+                {
+                    otraEnfermedad = "No";
+                }
+                if (string.IsNullOrEmpty(txtDescripcionOtraEnfermedad.Text) == false)
+                {
+                    descripcionOtraEnfermedad = txtDescripcionOtraEnfermedad.Text;    
+                }
+                antecedente.descripcionOtrasEnfermedades = descripcionOtraEnfermedad;
+
+                if (string.IsNullOrEmpty(txtCausaMuerte.Text) == false)
+                {
+                    causaMuerte = txtCausaMuerte.Text;
+                }
+                antecedente.causaMuerte = causaMuerte;
+
+                if (string.IsNullOrEmpty(txtObservacionesAntecedentesPatologicosFamiliares.Text) == false)
+                {
+                    observaciones = txtObservacionesAntecedentesPatologicosFamiliares.Text;
+                }
+                antecedente.observaciones = observaciones;
+                listaAntecedentesFamiliares.Add(antecedente);
+                dgvAntecedentesPatologicosFamiliares.Rows.Add(nombreFamiliar, viveFamiliar, enfermedades, otraEnfermedad, descripcionOtraEnfermedad, causaMuerte, observaciones);
             }
-            if (rbSiOtraEnfermedad.Checked == true)
-            {
-                otraEnfermedad = "Si";
-            }
-            else
-            {
-                otraEnfermedad = "No";
-            }
-            if (string.IsNullOrEmpty(txtDescripcionOtraEnfermedad.Text) == false)
-            {
-                descripcionOtraEnfermedad = txtDescripcionOtraEnfermedad.Text;
-            }
-            if (string.IsNullOrEmpty(txtCausaMuerte.Text) == false)
-            {
-                causaMuerte = txtCausaMuerte.Text;
-            }
-            if (string.IsNullOrEmpty(txtObservacionesAntecedentesPatologicosFamiliares.Text) == false)
-            {
-                observaciones = txtObservacionesAntecedentesPatologicosFamiliares.Text;
-            }
-            dgvAntecedentesPatologicosFamiliares.Rows.Add(nombreFamiliar, viveFamiliar, enfermedades, otraEnfermedad, descripcionOtraEnfermedad,causaMuerte,observaciones);
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los Alimentos.
@@ -1004,26 +1073,29 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaAlimentos()
         {
-            string alergiaAlimento = "";
-            string alimento = "";
-            string efectos = "No precisa";
+            if (rbSiAlergiaMedicamento.Checked == true)
+            {
+                string alergiaAlimento = "";
+                string alimento = "";
+                string efectos = "No precisa";
 
-            if (rbSiAlergicoAlimentos.Checked == true)
-            {
-                alergiaAlimento = "Si";
-            }
-            else
-            {
-                alergiaAlimento = "No";
-            }
-            Alimento alimentoSeleccionado = (Alimento)cboAlimentos.SelectedItem;
-            alimento = alimentoSeleccionado.nombre;
+                if (rbSiAlergicoAlimentos.Checked == true)
+                {
+                    alergiaAlimento = "Si";
+                }
+                else
+                {
+                    alergiaAlimento = "No";
+                }
+                Alimento alimentoSeleccionado = (Alimento)cboAlimentos.SelectedItem;
+                alimento = alimentoSeleccionado.nombre;
 
-            if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
-            {
-                efectos = txtEfectosAlergiaAlimentos.Text;
+                if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaAlimentos.Text;
+                }
+                dgvAlergiasAlimentos.Rows.Add(alergiaAlimento, alimento, efectos);
             }
-            dgvAlergiasAlimentos.Rows.Add(alergiaAlimento, alimento, efectos);
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a las sustancias del ambiente que producen alergias.
@@ -1490,12 +1562,132 @@ namespace GPA
 
             idHc=manejadorRegistrarHC.registrarHistoriaClinica(hc);
 
+            registrarEnfermedadActual(idHc);
 
+            registrarAntecedentesMorbidos(idHc);
 
+            registrarAntecedentesGinecoObstetricos(idHc);
 
+            registrarAntecedentesPatologicosFamiliares(idHc);
 
+           
         }
+        private void registrarEnfermedadActual(int idHc)
+        {   
+            if(listaSintomas.Count>0)
+            manejadorRegistrarEnfermedadActual.registrarSintomas(listaSintomas, idHc);
+        }
+        private void registrarAntecedentesMorbidos(int idHc)
+        {
+            if (listaAntecedentesMorbidos.Count > 0)
+            manejadorRegistrarAntecedentesMorbidos.registrarAntecedentesMorbidos(listaAntecedentesMorbidos,idHc);
+        }
+        /*
+         * Método para crear los objetos AntecedenteGinecoObstetrico y Aborto.
+         * No recibe parámetros.
+         * El valor de retorno es void.
+         */
+        private void AgregarAntecedenteGinecoObstetricos()
+        {
+            
+            if (rbSiTieneEmbarazos.Checked == true)
+            {
+                antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
 
+                antecedenteGinecoObtetrico.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazos.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazos = Convert.ToInt32(txtCantidadEmbarazos.Text);
+                
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazosPrematuro.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazosPrematuros = Convert.ToInt32(txtCantidadEmbarazosPrematuro.Text);
+                TipoParto tipoParto1Seleccionado = (TipoParto)cboTipoPartoPretermino.SelectedItem;
+                antecedenteGinecoObtetrico.id_tipoPartoPrematuro = tipoParto1Seleccionado.id_tipoParto;
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazosATermino = Convert.ToInt32(txtCantidadEmbarazosATermino.Text);
+                TipoParto tipoParto2Seleccionado = (TipoParto)cboTipoPartoATermino.SelectedItem;
+                antecedenteGinecoObtetrico.id_tipoPartoATermino = tipoParto2Seleccionado.id_tipoParto;
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazosPosTermino.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazosPosTermino = Convert.ToInt32(txtCantidadEmbarazosPosTermino.Text);
+                TipoParto tipoParto3Seleccionado = (TipoParto)cboTipoPartoPostermino.SelectedItem;
+                antecedenteGinecoObtetrico.id_tipoPartoPosTermino = tipoParto3Seleccionado.id_tipoParto;
+
+                if (rbSiTieneAbortos.Checked == true)
+                {
+                    Aborto aborto = new Aborto();
+
+                    aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
+
+                    aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+                    TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
+                    aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+
+                    TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
+                    aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
+                    aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+
+                    aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
+                    aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
+
+                    antecedenteGinecoObtetrico.aborto = aborto;
+                }
+            }
+            else
+            {
+                if (rbSiTieneAbortos.Checked == true)
+                {
+                    antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
+                    Aborto aborto = new Aborto();
+
+                    aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
+
+                    aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+                    TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
+                    aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+
+                    TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
+                    aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
+                    aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+
+                    aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
+                    aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
+
+                    antecedenteGinecoObtetrico.aborto = aborto;
+                }
+            }
+           
+            
+        }
+        /*
+         * Método para registrar los antecedentes ginecoObstetricos y aborto.
+         * Recibe como parámetro al idHc.
+         * Llama método registrarAntecedentesGinecoObstetricos del manejador registrar antecedentes ginecoObstetricos.
+         * El valor de retorno es void.
+         */
+        private void registrarAntecedentesGinecoObstetricos(int idHc)
+        {
+            if (antecedenteGinecoObtetrico != null)
+            {
+                antecedenteGinecoObtetrico.id_hc = idHc;
+                manejadorRegistrarAntecedentesGinecoObstetricos.registrarAntecedentesGinecoObstetricos(antecedenteGinecoObtetrico);
+            }
+        }
+        /*
+        * Método para registrar los antecedentes patologicos familiares.
+        * Recibe como parámetro al idHc.
+        * Llama método registrarAntecedentesFamiliares del manejador antecedentes patologicos familiares.
+        * El valor de retorno es void.
+        */
+        private void registrarAntecedentesPatologicosFamiliares(int idHc)
+        {
+            if (listaAntecedentesFamiliares.Count > 0)
+            {
+                manejadorRegistrarAntecedentesPatologicosFamiliares.registrarAntecedentesFamiliares(listaAntecedentesFamiliares, idHc);
+            }
+        }
         private void btnAgregarAntecedenteMorbido_Click(object sender, EventArgs e)
         {
             cargarDatosDataGridViewAntecedentesMorbidos();
@@ -1549,6 +1741,16 @@ namespace GPA
         private void btnAgregarHabitoActividadFisica_Click(object sender, EventArgs e)
         {
             cargarDatosDataGridViewHabitosActividadFisica();
+        }
+
+        private void btnAgregarAntecedenteGinecoObstetrico_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarAntecedenteGinecoObstetrico_Click_1(object sender, EventArgs e)
+        {
+            AgregarAntecedenteGinecoObstetricos();
         }
 
     }

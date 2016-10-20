@@ -40,7 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActividadFisicaLN.cs" />
+    <Compile Include="AlergiaAlimentoLN.cs" />
     <Compile Include="AlimentoLN.cs" />
+    <Compile Include="AntecedenteFamiliarLN.cs" />
+    <Compile Include="AntecedenteGinecoObstetricoLN.cs" />
+    <Compile Include="AntecedenteMorbidoLN.cs" />
     <Compile Include="CaracterDelDolorLN.cs" />
     <Compile Include="ComponenteDelTiempoLN.cs" />
     <Compile Include="DescripcionDelTiempoLN.cs" />

@@ -14,6 +14,10 @@ namespace GPA.Manejadores
         {
             return FamiliarLN.mostrarFamiliares();
         }
+        public void registrarAntecedentesFamiliares(List<AntecedenteFamiliar> antecedentes, int idHc)
+        {
+            AntecedenteFamiliarLN.registrarAntecedentesFamiliares(antecedentes, idHc);
+        }
        
     }
 }

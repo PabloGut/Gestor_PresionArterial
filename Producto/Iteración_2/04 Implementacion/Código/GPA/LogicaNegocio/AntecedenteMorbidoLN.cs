@@ -9,11 +9,11 @@ using System.Data;
 
 namespace LogicaNegocio
 {
-    public class SintomaLN
+    public class AntecedenteMorbidoLN
     {
-        public static void registrarSintomas(List<Sintoma> sintomas, int idHc)
+        public static void registrarAntecedentesMorbidos(List<AntecedenteMorbido> antecedentes, int idHc)
         {
-            SintomaDAO.registrarSintomas(sintomas, idHc);
+            AntecedenteMorbidoDAO.registrarAntecedenteMorbido(antecedentes, idHc);
         }
     }
 }

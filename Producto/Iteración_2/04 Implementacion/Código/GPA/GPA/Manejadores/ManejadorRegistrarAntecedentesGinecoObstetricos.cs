@@ -19,5 +19,10 @@ namespace GPA.Manejadores
         {
             return TipoAbortoLN.mostrarTiposDeAbortos();
         }
+        public void registrarAntecedentesGinecoObstetricos(AntecedenteGinecoObstetrico antecedente)
+        {
+            AntecedenteGinecoObstetricoLN.registrarAntecedenteGinecoObstetrico(antecedente);
+        }
+
     }
 }
