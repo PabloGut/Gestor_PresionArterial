@@ -47,12 +47,17 @@
     <Compile Include="Clases\Aborto.cs" />
     <Compile Include="Clases\ActividadFisica.cs" />
     <Compile Include="Clases\AlergiaAlimento.cs" />
+    <Compile Include="Clases\AlergiaInsecto.cs" />
+    <Compile Include="Clases\AlergiaMedicamento.cs" />
+    <Compile Include="Clases\AlergiaSustanciaAmbiente.cs" />
+    <Compile Include="Clases\AlergiaSustanciaContactoPiel.cs" />
     <Compile Include="Clases\Alimento.cs" />
     <Compile Include="Clases\AntecedenteFamiliar.cs" />
     <Compile Include="Clases\AntecedenteGinecoObstetrico.cs" />
     <Compile Include="Clases\AntecedenteMorbido.cs" />
     <Compile Include="Clases\Barrio.cs" />
     <Compile Include="Clases\CaracterDelDolor.cs" />
+    <Compile Include="Clases\DejoDeFumar.cs" />
     <Compile Include="Clases\DescripcionDelTiempo.cs" />
     <Compile Include="Clases\Domicilio.cs" />
     <Compile Include="Clases\ElementoDelTiempo.cs" />
@@ -64,6 +69,10 @@
     <Compile Include="Clases\Estado.cs" />
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\FormaAdministracion.cs" />
+    <Compile Include="Clases\HabitoAlcoholismo.cs" />
+    <Compile Include="Clases\HabitoDrogasIlicitas.cs" />
+    <Compile Include="Clases\HabitoMedicamento.cs" />
+    <Compile Include="Clases\HabitoTabaquismo.cs" />
     <Compile Include="Clases\HistoriaClinica.cs" />
     <Compile Include="Clases\Insecto.cs" />
     <Compile Include="Clases\Institucion.cs" />
@@ -81,6 +90,7 @@
     <Compile Include="Clases\Persona.cs" />
     <Compile Include="Clases\PresentacionMedicamento.cs" />
     <Compile Include="Clases\ProfesionaMedico.cs" />
+    <Compile Include="Clases\ProgramacionMedicamento.cs" />
     <Compile Include="Clases\Sintoma.cs" />
     <Compile Include="Clases\SustanciaContactoPiel.cs" />
     <Compile Include="Clases\SustanciaDrogaIlicita.cs" />

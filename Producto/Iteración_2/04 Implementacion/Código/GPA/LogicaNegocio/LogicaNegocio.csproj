@@ -41,6 +41,10 @@
   <ItemGroup>
     <Compile Include="ActividadFisicaLN.cs" />
     <Compile Include="AlergiaAlimentoLN.cs" />
+    <Compile Include="AlergiaInsectoLN.cs" />
+    <Compile Include="AlergiaMedicamentoLN.cs" />
+    <Compile Include="AlergiaSustanciaAmbienteLN.cs" />
+    <Compile Include="AlergiaSustanciaContactoPielLN.cs" />
     <Compile Include="AlimentoLN.cs" />
     <Compile Include="AntecedenteFamiliarLN.cs" />
     <Compile Include="AntecedenteGinecoObstetricoLN.cs" />
@@ -57,6 +61,9 @@
     <Compile Include="FormaAdministracionLN.cs" />
     <Compile Include="FrecuenciaLN.cs" />
     <Compile Include="GradoActividadFisicaLN.cs" />
+    <Compile Include="HabitoAlcoholismoLN.cs" />
+    <Compile Include="HabitoDrogasIlicitasLN.cs" />
+    <Compile Include="HabitoTabaquismoLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
     <Compile Include="InsectoLN.cs" />
     <Compile Include="IntensidadActividadFisicaLN.cs" />

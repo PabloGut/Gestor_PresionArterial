@@ -35,6 +35,12 @@ namespace GPA
         List<AntecedenteMorbido> listaAntecedentesMorbidos;
         AntecedenteGinecoObstetrico antecedenteGinecoObtetrico;
         List<AntecedenteFamiliar> listaAntecedentesFamiliares;
+        List<AlergiaAlimento> listaAlergiasAlimento;
+        List<AlergiaSustanciaAmbiente> listaAlergiasSustanciaAmbiente;
+        List<AlergiaSustanciaContactoPiel> listaAlergiaSustanciaContactoPiel;
+        List<AlergiaInsecto> listaAlergiaInsectos;
+        List<AlergiaMedicamento> listaAlergiaMedicamento;
+        
 
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
@@ -57,6 +63,11 @@ namespace GPA
             listaAntecedentesMorbidos = new List<AntecedenteMorbido>();
             antecedenteGinecoObtetrico = null;
             listaAntecedentesFamiliares = new List<AntecedenteFamiliar>();
+            listaAlergiasAlimento = null;
+            listaAlergiasSustanciaAmbiente = null;
+            listaAlergiaSustanciaContactoPiel = null;
+            listaAlergiaInsectos = null;
+            listaAlergiaMedicamento = null;
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
@@ -1073,8 +1084,14 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaAlimentos()
         {
+            
             if (rbSiAlergiaMedicamento.Checked == true)
-            {
+            {   
+                if(listaAlergiasAlimento==null)
+                listaAlergiasAlimento = new List<AlergiaAlimento>();
+
+                AlergiaAlimento alergia = new AlergiaAlimento();
+
                 string alergiaAlimento = "";
                 string alimento = "";
                 string efectos = "No precisa";
@@ -1089,11 +1106,18 @@ namespace GPA
                 }
                 Alimento alimentoSeleccionado = (Alimento)cboAlimentos.SelectedItem;
                 alimento = alimentoSeleccionado.nombre;
+                
 
                 if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
                 {
                     efectos = txtEfectosAlergiaAlimentos.Text;
                 }
+
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_alimento = alimentoSeleccionado.id_alimento;
+                alergia.efectos = efectos;
+
+                listaAlergiasAlimento.Add(alergia);
                 dgvAlergiasAlimentos.Rows.Add(alergiaAlimento, alimento, efectos);
             }
         }
@@ -1104,26 +1128,39 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaSustanciaAmbiente()
         {
-            string alergiaSustanciaAmbiente = "";
-            string sustancia = "";
-            string efectos = "No precisa";
+            if (rbSiAlergiaSustanciaAmbiente.Checked == true)
+            {
+                AlergiaSustanciaAmbiente alergia = new AlergiaSustanciaAmbiente();
 
-            if (rbSiAlergicoAlimentos.Checked == true)
-            {
-                alergiaSustanciaAmbiente = "Si";
-            }
-            else
-            {
-                alergiaSustanciaAmbiente = "No";
-            }
-            SustaciaAmbiente sustanciaAmbiente = (SustaciaAmbiente)cboSustanciaAmbiente.SelectedItem;
-            sustancia = sustanciaAmbiente.nombre;
+                if (listaAlergiasSustanciaAmbiente == null)
+                    listaAlergiasSustanciaAmbiente = new List<AlergiaSustanciaAmbiente>();
 
-            if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
-            {
-                efectos = txtEfectosAlergiaSustanciaAmbiente.Text;
+                string alergiaSustanciaAmbiente = "";
+                string sustancia = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergicoAlimentos.Checked == true)
+                {
+                    alergiaSustanciaAmbiente = "Si";
+                }
+                else
+                {
+                    alergiaSustanciaAmbiente = "No";
+                }
+                SustaciaAmbiente sustanciaAmbiente = (SustaciaAmbiente)cboSustanciaAmbiente.SelectedItem;
+                sustancia = sustanciaAmbiente.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaSustanciaAmbiente.Text;
+                }
+                alergia.fechaRegistro =Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_sustanciaAmbiente = sustanciaAmbiente.id_sustanciaAmbiente;
+                alergia.efectos = efectos;
+
+                listaAlergiasSustanciaAmbiente.Add(alergia);
+                dgvAlergiasSustanciaAmbiente.Rows.Add(alergiaSustanciaAmbiente, sustancia, efectos);
             }
-            dgvAlergiasSustanciaAmbiente.Rows.Add(alergiaSustanciaAmbiente, sustancia, efectos);
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a las sustancias o meteriales que producen alergias.
@@ -1132,26 +1169,39 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaSustanciaContactoPiel()
         {
-            string alergiaSustanciaContactoPiel = "";
-            string sustancia = "";
-            string efectos = "No precisa";
-
             if (rbSiAlergiaSustanciaContactoPiel.Checked == true)
             {
-                alergiaSustanciaContactoPiel = "Si";
-            }
-            else
-            {
-                alergiaSustanciaContactoPiel = "No";
-            }
-            SustanciaContactoPiel sustanciaContactoPiel = (SustanciaContactoPiel)cboSustanciaContactoPiel.SelectedItem;
-            sustancia = sustanciaContactoPiel.nombre;
+                AlergiaSustanciaContactoPiel alergia = new AlergiaSustanciaContactoPiel();
 
-            if (string.IsNullOrEmpty(txtEfectosAlergiaSustanciaContactoPiel.Text) == false)
-            {
-                efectos = txtEfectosAlergiaSustanciaContactoPiel.Text;
+                if (listaAlergiaSustanciaContactoPiel == null)
+                    listaAlergiaSustanciaContactoPiel = new List<AlergiaSustanciaContactoPiel>();
+
+                string alergiaSustanciaContactoPiel = "";
+                string sustancia = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergiaSustanciaContactoPiel.Checked == true)
+                {
+                    alergiaSustanciaContactoPiel = "Si";
+                }
+                else
+                {
+                    alergiaSustanciaContactoPiel = "No";
+                }
+                SustanciaContactoPiel sustanciaContactoPiel = (SustanciaContactoPiel)cboSustanciaContactoPiel.SelectedItem;
+                sustancia = sustanciaContactoPiel.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiaSustanciaContactoPiel.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaSustanciaContactoPiel.Text;
+                }
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_sustanciaContactoPiel = sustanciaContactoPiel.id_sustanciaContactoPiel;
+                alergia.efectos = efectos;
+
+                listaAlergiaSustanciaContactoPiel.Add(alergia);
+                dgvAlergiasSustanciasContactoPiel.Rows.Add(alergiaSustanciaContactoPiel, sustancia, efectos);
             }
-            dgvAlergiasSustanciasContactoPiel.Rows.Add(alergiaSustanciaContactoPiel, sustancia, efectos);
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los insectos.
@@ -1160,26 +1210,40 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaInsectos()
         {
-            string alergiaInsectos = "";
-            string insecto = "";
-            string efectos = "No precisa";
-
             if (rbSiAlergiaInsecto.Checked == true)
             {
-                alergiaInsectos = "Si";
-            }
-            else
-            {
-                alergiaInsectos = "No";
-            }
-            Insecto insectoSeleccionado = (Insecto)cboInsectos.SelectedItem;
-            insecto = insectoSeleccionado.nombre;
+                AlergiaInsecto alergia = new AlergiaInsecto();
 
-            if (string.IsNullOrEmpty(txtEfectosAlergiaInsecto.Text) == false)
-            {
-                efectos = txtEfectosAlergiaInsecto.Text;
+                if (listaAlergiaInsectos == null)
+                    listaAlergiaInsectos = new List<AlergiaInsecto>();
+
+                string alergiaInsectos = "";
+                string insecto = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergiaInsecto.Checked == true)
+                {
+                    alergiaInsectos = "Si";
+                }
+                else
+                {
+                    alergiaInsectos = "No";
+                }
+                Insecto insectoSeleccionado = (Insecto)cboInsectos.SelectedItem;
+                insecto = insectoSeleccionado.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiaInsecto.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaInsecto.Text;
+                }
+
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_insecto = insectoSeleccionado.id_insecto;
+                alergia.efectos = efectos;
+
+                listaAlergiaInsectos.Add(alergia);
+                dgvAlergiasInsectos.Rows.Add(alergiaInsectos, insecto, efectos);
             }
-            dgvAlergiasInsectos.Rows.Add(alergiaInsectos, insecto, efectos);
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a medicamentos que producen alergias.
@@ -1188,26 +1252,39 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaMedicamentos()
         {
-            string alergiaMedicamento = "";
-            string medicamento = "";
-            string efectos = "No precisa";
-
             if (rbSiAlergiaMedicamento.Checked == true)
             {
-                alergiaMedicamento = "Si";
-            }
-            else
-            {
-                alergiaMedicamento = "No";
-            }
-            MedicamentoAlergia medicamentoSeleccionado = (MedicamentoAlergia)cboMedicamentosAlergia.SelectedItem;
-            medicamento = medicamentoSeleccionado.nombre;
+                AlergiaMedicamento alergia = new AlergiaMedicamento();
 
-            if (string.IsNullOrEmpty(txtEfectosAlergiasMedicamentos.Text) == false)
-            {
-                efectos = txtEfectosAlergiasMedicamentos.Text;
+                if (listaAlergiaMedicamento == null)
+                    listaAlergiaMedicamento = new List<AlergiaMedicamento>();
+
+                string alergiaMedicamento = "";
+                string medicamento = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergiaMedicamento.Checked == true)
+                {
+                    alergiaMedicamento = "Si";
+                }
+                else
+                {
+                    alergiaMedicamento = "No";
+                }
+                MedicamentoAlergia medicamentoSeleccionado = (MedicamentoAlergia)cboMedicamentosAlergia.SelectedItem;
+                medicamento = medicamentoSeleccionado.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiasMedicamentos.Text) == false)
+                {
+                    efectos = txtEfectosAlergiasMedicamentos.Text;
+                }
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_MedicamentoAlergia = medicamentoSeleccionado.idMedicamentoAlergia;
+                alergia.efectos = efectos;
+
+                listaAlergiaMedicamento.Add(alergia);
+                dgvAlergiasMedicamentos.Rows.Add(alergiaMedicamento, medicamento, efectos);
             }
-            dgvAlergiasMedicamentos.Rows.Add(alergiaMedicamento, medicamento, efectos);
         }
         /*
        * Método para cargar filas al DatagridView correspondiente a los hábitos de tabaquismo.
@@ -1323,14 +1400,12 @@ namespace GPA
             string consumeDrogas = "No";
             string sustancia = "";
             string tiempoConsumiento = "";
-            string dejoConsumir = "No";
-            string enTratamiento = "No";
+       
 
             if (rbSiConsumeDrogas.Checked == true)
             {
                 consumeDrogas = "Si";
             }
-
             SustanciaDrogaIlicita sustanciaSelecciona = (SustanciaDrogaIlicita)cboSustanciaDrogaIlicita.SelectedItem;
             sustancia = sustanciaSelecciona.nombre;
 
@@ -1339,18 +1414,7 @@ namespace GPA
                 ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoTiempoDrogasIlicitas.SelectedItem;
                 tiempoConsumiento = txtCantidadTiempoConsumiendo.Text + " " + elementoSeleccionado.nombre;
             }
-
-            if (chbDejoConsumir.Checked == true)
-            {
-                dejoConsumir = "Si";
-            }
-
-            if (chbEnTratamiento.Checked == true)
-            {
-                enTratamiento = "Si";
-            }
-
-            dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento, dejoConsumir);
+            dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento);
         }
         /*
       * Método para cargar filas al DatagridView correspondiente a los hábitos de Actividad física.
@@ -1574,12 +1638,12 @@ namespace GPA
         }
         private void registrarEnfermedadActual(int idHc)
         {   
-            if(listaSintomas.Count>0)
+            if(listaSintomas!=null && listaSintomas.Count>0)
             manejadorRegistrarEnfermedadActual.registrarSintomas(listaSintomas, idHc);
         }
         private void registrarAntecedentesMorbidos(int idHc)
         {
-            if (listaAntecedentesMorbidos.Count > 0)
+            if (listaAntecedentesMorbidos!=null && listaAntecedentesMorbidos.Count > 0)
             manejadorRegistrarAntecedentesMorbidos.registrarAntecedentesMorbidos(listaAntecedentesMorbidos,idHc);
         }
         /*
@@ -1683,9 +1747,74 @@ namespace GPA
         */
         private void registrarAntecedentesPatologicosFamiliares(int idHc)
         {
-            if (listaAntecedentesFamiliares.Count > 0)
+            if (listaAntecedentesFamiliares!=null && listaAntecedentesFamiliares.Count > 0)
             {
                 manejadorRegistrarAntecedentesPatologicosFamiliares.registrarAntecedentesFamiliares(listaAntecedentesFamiliares, idHc);
+            }
+        }
+        /*
+        * Método para registrar las alergias a los alimentos.
+        * Recibe como parámetro al idHc.
+        * Llama método registrarAntecedentesAlergiaAlimento del manejador registrarAlergias.
+        * El valor de retorno es void.
+        */
+        private void registrarAlergiaAlimentos(int idHc)
+        {
+            if (listaAlergiasAlimento != null && listaAlergiasAlimento.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiasAlimento(listaAlergiasAlimento, idHc);
+            }
+        }
+        /*
+       * Método para registrar las alergias a las sustancias del ambiente.
+       * Recibe como parámetro al idHc.
+       * Llama método registrarAlergiaSustanciaDelAmbiente del manejador registrarAlergias.
+       * El valor de retorno es void.
+       */
+        private void registrarAlergiaSustanciaAmbiente(int idHc)
+        {
+            if (listaAlergiasSustanciaAmbiente != null && listaAlergiasSustanciaAmbiente.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaSustanciaDelAmbiente(listaAlergiasSustanciaAmbiente, idHc);
+            }
+        }
+        /*
+         * Método para registrar las alergias a las sustancias o materiales.
+         * Recibe como parámetro al idHc.
+         * Llama método registrarAlergiaSustanciaDelAmbiente del manejador registrarAlergias.
+         * El valor de retorno es void.
+        */
+        private void registrarAlergiaSustanciasContactoPiel(int idHc)
+        {
+            if (listaAlergiaSustanciaContactoPiel != null && listaAlergiaSustanciaContactoPiel.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaSustanciaDelAmbiente(listaAlergiasSustanciaAmbiente, idHc);
+            }
+        }
+        /*
+        * Método para registrar las alergias a insectos.
+        * Recibe como parámetro al idHc.
+        * Llama método registrarAlergiaInsectos del manejador registrarAlergias.
+        * El valor de retorno es void.
+       */
+        private void registrarAlergiaInsectos(int idHc)
+        {
+            if (listaAlergiaInsectos != null && listaAlergiaInsectos.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaInsectos(listaAlergiaInsectos, idHc);
+            }
+        }
+        /*
+       * Método para registrar las alergias a medicamentos.
+       * Recibe como parámetro al idHc.
+       * Llama método registrarAlergiaMedicamento del manejador registrarAlergias.
+       * El valor de retorno es void.
+        */
+        private void registrarAlergiaMedicamentos(int idHc)
+        {
+            if (listaAlergiaMedicamento != null && listaAlergiaMedicamento.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaMedicamento(listaAlergiaMedicamento, idHc);
             }
         }
         private void btnAgregarAntecedenteMorbido_Click(object sender, EventArgs e)
@@ -1751,6 +1880,11 @@ namespace GPA
         private void btnAgregarAntecedenteGinecoObstetrico_Click_1(object sender, EventArgs e)
         {
             AgregarAntecedenteGinecoObstetricos();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

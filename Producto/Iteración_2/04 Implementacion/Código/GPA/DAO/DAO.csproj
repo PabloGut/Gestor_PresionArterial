@@ -47,6 +47,10 @@
     <Compile Include="AbortoDAO.cs" />
     <Compile Include="ActividadFisicaDAO.cs" />
     <Compile Include="AlergiaAlimentoDAO.cs" />
+    <Compile Include="AlergiaInsectoDAO.cs" />
+    <Compile Include="AlergiaMedicamentoDAO.cs" />
+    <Compile Include="AlergiaSustanciaAmbienteDAO.cs" />
+    <Compile Include="AlergiaSustanciaContactoPielDAO.cs" />
     <Compile Include="AlimentoDAO.cs" />
     <Compile Include="AntecedenteFamiliarDAO.cs" />
     <Compile Include="AntecedenteMorbidoDAO.cs" />
@@ -55,6 +59,7 @@
     <Compile Include="CadenaConexion.cs" />
     <Compile Include="CaracterDelDolorDAO.cs" />
     <Compile Include="ComponeneteDelTiempoDAO.cs" />
+    <Compile Include="DejoDeFumarDAO.cs" />
     <Compile Include="DescripcionDelTiempoDAO.cs" />
     <Compile Include="DomicilioDAO.cs" />
     <Compile Include="ElementoDelTiempoDAO.cs" />
@@ -75,6 +80,10 @@
     <Compile Include="FormaAdministracionDAO.cs" />
     <Compile Include="FrecuenciaDAO.cs" />
     <Compile Include="GradoActividadFisicaDAO.cs" />
+    <Compile Include="HabitoAlcoholismoDAO.cs" />
+    <Compile Include="HabitoDrogasIlicitasDAO.cs" />
+    <Compile Include="HabitoMedicamentoDAO.cs" />
+    <Compile Include="HabitoTabaquismoDAO.cs" />
     <Compile Include="HistoriaClinicaDAO.cs" />
     <Compile Include="InsectoDAO.cs" />
     <Compile Include="InstitucionDAO.cs" />
@@ -92,6 +101,7 @@
     <Compile Include="PresentacionMedicamentoDAO.cs" />
     <Compile Include="ProfesionalMedicoDAO.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramacionMedicamentoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SintomaDAO.cs" />
     <Compile Include="SustanciaAmbienteDAO.cs" />
