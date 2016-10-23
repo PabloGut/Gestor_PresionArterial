@@ -245,13 +245,17 @@ nombre text,
 id_medicamento_fk int,
 foreign key (id_medicamento_fk) references Medicamento(id_medicamento))
 
+create table MedicamentoAlergia(
+id_medicamentoAlergia int primary key identity,
+nombre text)
+
 CREATE TABLE AlergiaMedicamento (
 id_alergiaMedicamento int primary key identity,
 fechaRegistro date not null,
 efectos text,
-id_medicamento_fk int not null,
+id_medicamentoAlergia_fk int not null,
 id_hc_fk int not null,
-foreign key (id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key (id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE NombrePorTipoAntecedenteMorbido (
@@ -358,7 +362,7 @@ CREATE TABLE ComponenteDelTiempo(
 id_componenteTiempo int primary key identity,
 nombre text)
 
-CREATE TABLE HabitosBebidasAlcoholicas(
+CREATE TABLE HabitosAlcoholismo(
 id_habitoBebidaAlcoholica int primary key identity,
 id_tipoBebida_fk int,
 fechaRegistro date not null,
@@ -385,8 +389,6 @@ id_sustancia_fk int,
 fechaRegistro date not null,
 tiempoConsumiendo int,
 id_ElementoDelTiempo_fk int,
-enTratamiento varchar(50),
-dejoConsumir varchar(50),
 id_hc_fk int not null,
 foreign key (id_sustancia_fk) references Sustancia(id_sustancia),
 foreign key (id_ElementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
@@ -424,7 +426,7 @@ CREATE TABLE ElementoQueFuma(
 id_elemento int primary key identity,
 nombre text)
 
-CREATE TABLE HabitosFumar(
+CREATE TABLE HabitosTabaquismo(
 id_habitoFumar int primary key identity,
 cantidad int,
 id_elementoQueFuma_fk int,
@@ -443,21 +445,24 @@ nombre text)
 CREATE TABLE DejoDeFumar(
 id_DejoDeFumar int primary key identity,
 cantidadTiempo int,
+id_elementoDelTiempo_fk int,
 id_descripcionTiempo_fk int,
 cantidadFumaba int,
-id_elementoDelTiempo_fk int,
-id_componenteTiempo_fk int,
 id_elementoQueFuma_fk int,
-id_habitoFumar_fk int not null,
+id_componenteTiempo_fk int,
+id_habitoTabaquismo_fk int not null,
 foreign key (id_descripcionTiempo_fk) references DescripcionDelTiempo(id_descripcionDelTiempo),
 foreign key (id_elementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_elementoQueFuma_fk) references ElementoQueFuma(id_elemento),
-foreign key (id_habitoFumar_fk) references HabitosFumar(id_habitoFumar))
+foreign key (id_componenteTiempo_fk) references ComponenteDelTiempo(id_componenteTiempo),
+foreign key (id_habitoTabaquismo_fk) references HabitosTabaquismo(id_habitoFumar))
 
 CREATE TABLE HabitosMedicamento(
 id_habitoMedicamento int primary key identity,
 id_hc_fk int not null,
+id_programacionMedicamento_fk int,
 fechaRegistro date not null,
+foreign key (id_programacionMedicamento_fk) references ProgramacionMedicamento(id_programacionMedicamento),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE TemperaturaPiel(
@@ -694,33 +699,55 @@ CREATE TABLE EstadoProgramacion(
 id_estadoProgramacion int primary key identity,
 nombre text)
 
-
 CREATE TABLE ProgramacionMedicamento(
 id_programacionMedicamento int primary key identity,
+id_especificacionMedicamento_fk int,
 id_medicamento_fk int,
 id_frecuencia_fk int,
-fechainicio date,
+fechaDesde date,
+fechaHasta date,
+id_momentoDia1_fk int,
+cantidadNumerador1 int,
+cantidadDenominador1 int,
+id_presentacionMedicamento1_fk int,
+hora1 date,
+id_momentoDia2_fk int,
+cantidadNumerador2 int,
+cantidadDenominador2 int,
+id_presentacionMedicamento2_fk int,
+hora2 date,
+id_momentoDia3_fk int,
+cantidadNumerador3 int,
+cantidadDenominador3 int,
+id_presentacionMedicamento3_fk int,
+hora3 date,
+motivoConsumo text,
 cantidadTiempoConsumo int,
 id_elementoDelTiempo1_fk int,
-motivoConsumo text,
-automedicado varchar(20),
 motivoCancelacionConsumo text,
 tiempoDeCancelacion int,
-id_elementoDelTiempo2_fk int,  
+id_elementoDelTiempo2_fk int, 
+automedicado varchar(20),
 id_estado_fk int,
 id_examenGeneral_fk int,
-foreign key (id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key (id_especificacionMedicamento_fk,id_medicamento_fk) references EspecificacionMedicamento(id_especificacion, id_medicamento_fk),
 foreign key (id_frecuencia_fk) references Frecuencia(id_frecuencia),
+foreign key (id_momentoDia1_fk) references MomentoDelDia(id_momentoDelDia),
+foreign key (id_presentacionMedicamento1_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key (id_momentoDia2_fk) references MomentoDelDia(id_momentoDelDia),
+foreign key (id_presentacionMedicamento2_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key (id_momentoDia3_fk) references MomentoDelDia(id_momentoDelDia),
+foreign key (id_presentacionMedicamento3_fk) references PresentacionMedicamento(id_presentacionMedicamento),
 foreign key (id_elementoDelTiempo1_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_elementoDelTiempo2_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_estado_fk) references EstadoProgramacion(id_EstadoProgramacion),
 foreign key (id_examenGeneral_fk) references ExamenGeneral(id_ExamenGeneral))
 
-Create table ProgramacionXMedicamento(
+/*Create table ProgramacionXMedicamento(
 id_programacionMedicamento_fk int not null,
 id_medicamento_fk int not null,
 foreign key(id_programacionMedicamento_fk) references ProgramacionMedicamento(id_programacionMedicamento),
-foreign key(id_medicamento_fk) references Medicamento(id_medicamento))
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento))*/
 
 
 create table Familiar(

@@ -424,5 +424,5 @@ foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad)
 alter table AntecedentesMorbidos
 add fechaRegistro
 
-drop table Aborto
-select * from Aborto
+drop table HabitosMedicamento
+select * from EspecificacionMedicamento
