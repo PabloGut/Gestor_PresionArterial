@@ -6,7 +6,13 @@ nro_hc integer NOT NULL,
 fecha_creación date NOT NULL,
 hora_creacion date not null,
 principalProblema varchar(20),
-fecha_inicio_atencion_con_profesional date not null)
+fecha_inicio_atencion_con_profesional date not null,
+id_tipodoc_profesionaMedico_fk int,
+id_nrodoc_profesionalMedico_fk int,
+id_tipodoc_paciente_fk int,
+id_nrodoc_paciente_fk int,
+foreign key(id_tipodoc_profesionaMedico_fk, id_nrodoc_profesionalMedico_fk) references ProfesionalMedico(id_tipodoc_fk,nro_documento),
+foreign key(id_tipodoc_paciente_fk, id_nrodoc_paciente_fk) references Paciente(id_tipoDoc_fk,nro_documento))
 
 CREATE TABLE Institucion(
 id_institucion integer PRIMARY KEY IDENTITY,
@@ -204,8 +210,8 @@ nombre varchar(100) not null)
 CREATE TABLE AlergiaAlimento (
 id_alergiaAlimento int primary key identity,
 fechaRegistro date not null,
-efectos text,
 id_alimento_fk int not null,
+efectos text,
 id_hc_fk int not null,
 foreign key (id_alimento_fk) references Alimento(id_alimento),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
@@ -273,20 +279,23 @@ nombre varchar(200) not null,
 id_tipoAntecedenteMorbido_fk int not null,
 foreign key (id_tipoAntecedenteMorbido_fk) references TiposAntecedentesMorbidos(id_tipoAntecedenteMorbido))
 
-
-
-
 CREATE TABLE AntecedentesMorbidos(
 id_antecedenteMorbido int primary key identity,
 fechaRegistro date not null,
 id_tipoAntecedenteMorbido_fk int not null,
+id_enfermedad_fk int,
+id_operacion_fk int,
+id_traumatismo_fk int,
 cantidadTiempo int,
 id_elementoTiempo_fk int,
 evolucion text,
 tratamiento text,
-id_medicamento_fk int not null,
 id_hc_fk int not null,
-foreign key (id_tipoAntecedenteMorbido_fk) references TiposAntecedentesMorbidos(id_tipoAntecedenteMorbido),
+foreign key (id_tipoAntecedenteMorbido_fk) references TipoAntecedenteMorbido(id_tipoAntecedenteMorbido),
+foreign key (id_operacion_fk) references Operaciones(id_operacion),
+foreign key (id_traumatismo_fk) references Traumatismos(id_traumatismo),
+foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad),
+foreign key (id_elementoTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE TipoAborto(
@@ -299,14 +308,13 @@ id_TipoParto int primary key identity,
 nombre text,
 descripcion text)
 
-
 CREATE TABLE Aborto(
 id_aborto int primary key identity,
 fechaRegistro date not null,
 cantidadTotal int,
-cantidadProvocados int,
+cantidadAbortoTipo1 int,
 id_TipoAborto1_fk int,
-cantidadEspontaneo int,
+cantidadAbortoTipo2 int,
 id_TipoAborto2_fk int,
 nroHijosVivos int,
 problemasAsociadosAlEmbarazo text,
@@ -321,10 +329,13 @@ cantidadEmbarazosPrematuros int,
 id_TipoParto1_fk int,
 cantidadEmbarazosATermino int,
 id_TipoParto2_fk int,
+cantidadEmbarazosPosTermino int,
+id_TipoParto3_fk int,
 id_Aborto_fk int,
 id_hc_fk int not null,
 foreign key (id_TipoParto1_fk) references TipoParto(id_tipoParto),
 foreign key (id_TipoParto2_fk) references TipoParto(id_tipoParto),
+foreign key (id_TipoParto3_fk) references TipoParto(id_tipoParto),
 foreign key (id_Aborto_fk) references Aborto(id_aborto),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
@@ -601,35 +612,30 @@ CREATE TABLE CaracterDelDolor(
 id_caracterDelDolor int primary key identity,
 nombre text)
 
-CREATE TABLE DescripcionSintoma(
-id_descripcionDelSintoma int primary key identity,
-id_tipoSintoma_fk int not null,
-descripcion text,
-id_parteDelCuerpo_fk int,
-haciaDondeIrradia text,
-id_comoSeModifica_fk int,
-id_elementoDeModificacion_fk int,
-id_caracterDolor_fk int,
-estimacionIntensidad int,
-comoloAfecta text,
-queHaceParaAliviar text,
-foreign key (id_tipoSintoma_fk) references TipoSintoma(id_tipoSintoma),
-foreign key (id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
-foreign key (id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
-foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
-foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor))
-
 CREATE TABLE Sintoma(
 id_Sintoma int primary key identity,
 fechaInicioSintoma date,
 cantidadDeTiempo int,
 id_elementoDelTiempo_fk int,
 id_descripcionDelTiempo_fk int,
-id_descripcionSintoma_fk int,
-motivoConsulta text,
+id_tipoSintoma_fk int,
+descripcion text,
+id_parteDelCuerpo_fk int,
+haciaDondeIrradia text,
+id_comoSeModifica_fk int,
+id_elementoDeModificacion_fk int,
+id_caracterDolor_fk int,
+observaciones text,
+id_hc_fk int,
+fechaRegistro date,
 foreign key (id_elementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_descripcionDelTiempo_fk) references DescripcionDelTiempo(id_descripcionDelTiempo),
-foreign key (id_descripcionSintoma_fk) references DescripcionSintoma(id_descripcionDelSintoma))
+foreign key (id_tipoSintoma_fk) references TipoSintoma(id_tipoSintoma),
+foreign key (id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
+foreign key (id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
+foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
+foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE Extremidad(
 id_extremidad int primary key identity,
@@ -756,3 +762,16 @@ foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
 foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
 foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento),
 foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
+
+CREATE TABLE AntecedentesFamiliares(
+id_antecedenteFamiliar int primary key identity,
+fechaRegistro date,
+id_familiar_fk int,
+familiarVive varchar(20),
+enfermedades text,
+descripcionOtrasEnfermedades text,
+causaMuerte text,
+observaciones text,
+id_hc_fk int,
+foreign key (id_familiar_fk) references Familiar(id_familiar),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc))
