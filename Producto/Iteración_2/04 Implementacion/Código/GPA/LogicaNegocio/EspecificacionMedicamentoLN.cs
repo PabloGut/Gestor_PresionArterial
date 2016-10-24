@@ -72,5 +72,18 @@ namespace LogicaNegocio
         {
             return EspecificacionMedicamentoDAO.mostrarPresentacionMedicamentoParaUnNombreGenericoYComercial(idMedicamento, idNombreComercial);
         }
+        public static List<int> mostrarConcentracionEspecificacion(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoDAO.mostrarConcentracionEspecificacionMedicamento(idMedicamento,idNombreComercial,idUnidadMedida,idPresentacion,idFormaAdministracion);
+        }
+        public static List<int> mostrarCantidadComprimidos(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoDAO.mostrarCantidadComprimidosEspecificacionMedicamento(idMedicamento, idNombreComercial, idUnidadMedida, idPresentacion, idFormaAdministracion);
+        }
+        public static void buscasIdEspecificacion(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoDAO.buscarIdEspecificacion(especificacion);
+        }
+        
     }
 }

@@ -57,12 +57,15 @@
     <Compile Include="ElementoQueFumaLN.cs" />
     <Compile Include="EnfermedadLN.cs" />
     <Compile Include="EspecificacionMedicamentoLN.cs" />
+    <Compile Include="EstadoProgramacionLN.cs" />
     <Compile Include="FamiliarLN.cs" />
     <Compile Include="FormaAdministracionLN.cs" />
     <Compile Include="FrecuenciaLN.cs" />
     <Compile Include="GradoActividadFisicaLN.cs" />
+    <Compile Include="HabitoActividadFisicaLN.cs" />
     <Compile Include="HabitoAlcoholismoLN.cs" />
     <Compile Include="HabitoDrogasIlicitasLN.cs" />
+    <Compile Include="HabitoMedicamentoLN.cs" />
     <Compile Include="HabitoTabaquismoLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
     <Compile Include="InsectoLN.cs" />

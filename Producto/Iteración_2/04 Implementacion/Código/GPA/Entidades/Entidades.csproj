@@ -67,8 +67,10 @@
     <Compile Include="Clases\Especialidad.cs" />
     <Compile Include="Clases\EspecificacionMedicamento.cs" />
     <Compile Include="Clases\Estado.cs" />
+    <Compile Include="Clases\EstadoProgramacion.cs" />
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\FormaAdministracion.cs" />
+    <Compile Include="Clases\HabitoActividadFisica.cs" />
     <Compile Include="Clases\HabitoAlcoholismo.cs" />
     <Compile Include="Clases\HabitoDrogasIlicitas.cs" />
     <Compile Include="Clases\HabitoMedicamento.cs" />

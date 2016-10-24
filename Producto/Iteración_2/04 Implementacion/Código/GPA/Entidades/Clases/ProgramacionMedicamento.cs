@@ -14,6 +14,7 @@ namespace Entidades.Clases
         public int id_frecuencia { set; get; }
         public DateTime fechaDesde { set; get; }
         public DateTime fechaHasta { set; get; }
+
         public int id_momentoDia1 { set; get; }
         public int cantidad1Numerador { set; get; }
         public int cantidad1Denominador { set; get; }

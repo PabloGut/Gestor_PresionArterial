@@ -23,5 +23,9 @@ namespace GPA.Manejadores
         {
             return IntensidadActividadFisicaLN.mostrarIntensidadesActividadFisica();
         }
+        public void registrarHabitosActividadFisica(List<HabitoActividadFisica> habitos, int idHc)
+        {
+            HabitoActividadFisicaLN.registrarHabitosActividadFisica(habitos, idHc);
+        }
     }
 }

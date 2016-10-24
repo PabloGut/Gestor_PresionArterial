@@ -33,5 +33,18 @@ namespace LogicaNegocio
         {
             return HistoriaClinicaDAO.registrarHistoriaClinica(hc);
         }
+        public static int buscarNroHistoriaClinica()
+        {
+            return HistoriaClinicaDAO.buscarNroHC();
+        }
+        public static int calcularSiguienteNroHc()
+        {
+            int ultimoNro = buscarNroHistoriaClinica();
+
+            int siguienteNroHc = ultimoNro + 1;
+
+            return siguienteNroHc;
+ 
+        }
     }
 }

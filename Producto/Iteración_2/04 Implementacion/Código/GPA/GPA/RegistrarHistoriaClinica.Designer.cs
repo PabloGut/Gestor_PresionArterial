@@ -291,6 +291,9 @@
             this.label67 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.cboCantidadComprimidos = new System.Windows.Forms.ComboBox();
+            this.cboConcentracion = new System.Windows.Forms.ComboBox();
+            this.CantidadComprimidos = new System.Windows.Forms.Label();
             this.label109 = new System.Windows.Forms.Label();
             this.rbNoConsumeMedicamentos = new System.Windows.Forms.RadioButton();
             this.rbSiConsumeMedicamentos = new System.Windows.Forms.RadioButton();
@@ -298,7 +301,7 @@
             this.cboElementoTiempoCancelacionMedicamento = new System.Windows.Forms.ComboBox();
             this.txtCantTiempoCancelacionMedicamento = new System.Windows.Forms.TextBox();
             this.label95 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.txtMotivoCancelacion = new System.Windows.Forms.TextBox();
             this.label97 = new System.Windows.Forms.Label();
             this.cboElementoTiempoMedicamento = new System.Windows.Forms.ComboBox();
             this.txtCantidadTiempoConsumoMedicamento = new System.Windows.Forms.TextBox();
@@ -307,6 +310,12 @@
             this.label84 = new System.Windows.Forms.Label();
             this.chbAutomedicado = new System.Windows.Forms.CheckBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.txtDenominadorCantidad3 = new System.Windows.Forms.TextBox();
+            this.txtNumeradorCantidad3 = new System.Windows.Forms.TextBox();
+            this.txtDenominadorCantidad1 = new System.Windows.Forms.TextBox();
+            this.txtNumeradorCantidad1 = new System.Windows.Forms.TextBox();
+            this.txtDenominadorCantidad2 = new System.Windows.Forms.TextBox();
+            this.txtNumeradorCantidad2 = new System.Windows.Forms.TextBox();
             this.cboPresentacionMedicamento1 = new System.Windows.Forms.ComboBox();
             this.mtbHora3 = new System.Windows.Forms.MaskedTextBox();
             this.label86 = new System.Windows.Forms.Label();
@@ -336,7 +345,6 @@
             this.button29 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.cboUnidadMedida = new System.Windows.Forms.ComboBox();
-            this.txtConcentración = new System.Windows.Forms.TextBox();
             this.cboNombreComercial = new System.Windows.Forms.ComboBox();
             this.cboNombreGenerico = new System.Windows.Forms.ComboBox();
             this.label90 = new System.Windows.Forms.Label();
@@ -374,12 +382,11 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.txtDenominadorCantidad2 = new System.Windows.Forms.TextBox();
-            this.txtNumeradorCantidad2 = new System.Windows.Forms.TextBox();
-            this.txtDenominadorCantidad1 = new System.Windows.Forms.TextBox();
-            this.txtNumeradorCantidad1 = new System.Windows.Forms.TextBox();
-            this.txtDenominadorCantidad3 = new System.Windows.Forms.TextBox();
-            this.txtNumeradorCantidad3 = new System.Windows.Forms.TextBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.rbNoActividadFisica = new System.Windows.Forms.RadioButton();
+            this.rbSiActividadFisica = new System.Windows.Forms.RadioButton();
+            this.label110 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -434,6 +441,8 @@
             this.tabPage9.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).BeginInit();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -2653,6 +2662,7 @@
             this.btnAgregarHabitoAlcoholismo.TabIndex = 16;
             this.btnAgregarHabitoAlcoholismo.Text = "Agregar hábito";
             this.btnAgregarHabitoAlcoholismo.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoAlcoholismo.Click += new System.EventHandler(this.btnAgregarHabitoAlcoholismo_Click);
             // 
             // dgvHabitosAlcoholismo
             // 
@@ -3032,14 +3042,16 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.panel10);
+            this.groupBox16.Controls.Add(this.cboCantidadComprimidos);
+            this.groupBox16.Controls.Add(this.cboConcentracion);
+            this.groupBox16.Controls.Add(this.CantidadComprimidos);
             this.groupBox16.Controls.Add(this.label109);
-            this.groupBox16.Controls.Add(this.rbNoConsumeMedicamentos);
-            this.groupBox16.Controls.Add(this.rbSiConsumeMedicamentos);
             this.groupBox16.Controls.Add(this.btnAgregarHabitoMedicamento);
             this.groupBox16.Controls.Add(this.cboElementoTiempoCancelacionMedicamento);
             this.groupBox16.Controls.Add(this.txtCantTiempoCancelacionMedicamento);
             this.groupBox16.Controls.Add(this.label95);
-            this.groupBox16.Controls.Add(this.textBox34);
+            this.groupBox16.Controls.Add(this.txtMotivoCancelacion);
             this.groupBox16.Controls.Add(this.label97);
             this.groupBox16.Controls.Add(this.cboElementoTiempoMedicamento);
             this.groupBox16.Controls.Add(this.txtCantidadTiempoConsumoMedicamento);
@@ -3059,7 +3071,6 @@
             this.groupBox16.Controls.Add(this.button29);
             this.groupBox16.Controls.Add(this.button28);
             this.groupBox16.Controls.Add(this.cboUnidadMedida);
-            this.groupBox16.Controls.Add(this.txtConcentración);
             this.groupBox16.Controls.Add(this.cboNombreComercial);
             this.groupBox16.Controls.Add(this.cboNombreGenerico);
             this.groupBox16.Controls.Add(this.label90);
@@ -3076,10 +3087,35 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Consumo drogas Lícitas";
             // 
+            // cboCantidadComprimidos
+            // 
+            this.cboCantidadComprimidos.FormattingEnabled = true;
+            this.cboCantidadComprimidos.Location = new System.Drawing.Point(476, 122);
+            this.cboCantidadComprimidos.Name = "cboCantidadComprimidos";
+            this.cboCantidadComprimidos.Size = new System.Drawing.Size(49, 21);
+            this.cboCantidadComprimidos.TabIndex = 76;
+            // 
+            // cboConcentracion
+            // 
+            this.cboConcentracion.FormattingEnabled = true;
+            this.cboConcentracion.Location = new System.Drawing.Point(416, 67);
+            this.cboConcentracion.Name = "cboConcentracion";
+            this.cboConcentracion.Size = new System.Drawing.Size(49, 21);
+            this.cboConcentracion.TabIndex = 75;
+            // 
+            // CantidadComprimidos
+            // 
+            this.CantidadComprimidos.AutoSize = true;
+            this.CantidadComprimidos.Location = new System.Drawing.Point(334, 127);
+            this.CantidadComprimidos.Name = "CantidadComprimidos";
+            this.CantidadComprimidos.Size = new System.Drawing.Size(110, 13);
+            this.CantidadComprimidos.TabIndex = 73;
+            this.CantidadComprimidos.Text = "Cantidad comprimidos";
+            // 
             // label109
             // 
             this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(188, 16);
+            this.label109.Location = new System.Drawing.Point(203, 16);
             this.label109.Name = "label109";
             this.label109.Size = new System.Drawing.Size(191, 13);
             this.label109.TabIndex = 72;
@@ -3088,7 +3124,7 @@
             // rbNoConsumeMedicamentos
             // 
             this.rbNoConsumeMedicamentos.AutoSize = true;
-            this.rbNoConsumeMedicamentos.Location = new System.Drawing.Point(437, 14);
+            this.rbNoConsumeMedicamentos.Location = new System.Drawing.Point(57, 5);
             this.rbNoConsumeMedicamentos.Name = "rbNoConsumeMedicamentos";
             this.rbNoConsumeMedicamentos.Size = new System.Drawing.Size(39, 17);
             this.rbNoConsumeMedicamentos.TabIndex = 71;
@@ -3099,7 +3135,7 @@
             // rbSiConsumeMedicamentos
             // 
             this.rbSiConsumeMedicamentos.AutoSize = true;
-            this.rbSiConsumeMedicamentos.Location = new System.Drawing.Point(385, 14);
+            this.rbSiConsumeMedicamentos.Location = new System.Drawing.Point(3, 5);
             this.rbSiConsumeMedicamentos.Name = "rbSiConsumeMedicamentos";
             this.rbSiConsumeMedicamentos.Size = new System.Drawing.Size(34, 17);
             this.rbSiConsumeMedicamentos.TabIndex = 70;
@@ -3115,18 +3151,19 @@
             this.btnAgregarHabitoMedicamento.TabIndex = 69;
             this.btnAgregarHabitoMedicamento.Text = "Agregar medicamento";
             this.btnAgregarHabitoMedicamento.UseVisualStyleBackColor = true;
+            this.btnAgregarHabitoMedicamento.Click += new System.EventHandler(this.btnAgregarHabitoMedicamento_Click);
             // 
             // cboElementoTiempoCancelacionMedicamento
             // 
             this.cboElementoTiempoCancelacionMedicamento.FormattingEnabled = true;
-            this.cboElementoTiempoCancelacionMedicamento.Location = new System.Drawing.Point(537, 296);
+            this.cboElementoTiempoCancelacionMedicamento.Location = new System.Drawing.Point(538, 309);
             this.cboElementoTiempoCancelacionMedicamento.Name = "cboElementoTiempoCancelacionMedicamento";
             this.cboElementoTiempoCancelacionMedicamento.Size = new System.Drawing.Size(121, 21);
             this.cboElementoTiempoCancelacionMedicamento.TabIndex = 68;
             // 
             // txtCantTiempoCancelacionMedicamento
             // 
-            this.txtCantTiempoCancelacionMedicamento.Location = new System.Drawing.Point(475, 296);
+            this.txtCantTiempoCancelacionMedicamento.Location = new System.Drawing.Point(476, 309);
             this.txtCantTiempoCancelacionMedicamento.Name = "txtCantTiempoCancelacionMedicamento";
             this.txtCantTiempoCancelacionMedicamento.Size = new System.Drawing.Size(56, 20);
             this.txtCantTiempoCancelacionMedicamento.TabIndex = 67;
@@ -3134,23 +3171,23 @@
             // label95
             // 
             this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(312, 299);
+            this.label95.Location = new System.Drawing.Point(313, 312);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(146, 13);
             this.label95.TabIndex = 66;
             this.label95.Text = "Tiempo desde la cancelación";
             // 
-            // textBox34
+            // txtMotivoCancelacion
             // 
-            this.textBox34.Location = new System.Drawing.Point(127, 296);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(179, 20);
-            this.textBox34.TabIndex = 65;
+            this.txtMotivoCancelacion.Location = new System.Drawing.Point(128, 309);
+            this.txtMotivoCancelacion.Name = "txtMotivoCancelacion";
+            this.txtMotivoCancelacion.Size = new System.Drawing.Size(179, 20);
+            this.txtMotivoCancelacion.TabIndex = 65;
             // 
             // label97
             // 
             this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(6, 299);
+            this.label97.Location = new System.Drawing.Point(7, 312);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(115, 13);
             this.label97.TabIndex = 64;
@@ -3159,21 +3196,21 @@
             // cboElementoTiempoMedicamento
             // 
             this.cboElementoTiempoMedicamento.FormattingEnabled = true;
-            this.cboElementoTiempoMedicamento.Location = new System.Drawing.Point(537, 270);
+            this.cboElementoTiempoMedicamento.Location = new System.Drawing.Point(538, 283);
             this.cboElementoTiempoMedicamento.Name = "cboElementoTiempoMedicamento";
             this.cboElementoTiempoMedicamento.Size = new System.Drawing.Size(121, 21);
             this.cboElementoTiempoMedicamento.TabIndex = 63;
             // 
             // txtCantidadTiempoConsumoMedicamento
             // 
-            this.txtCantidadTiempoConsumoMedicamento.Location = new System.Drawing.Point(475, 270);
+            this.txtCantidadTiempoConsumoMedicamento.Location = new System.Drawing.Point(476, 283);
             this.txtCantidadTiempoConsumoMedicamento.Name = "txtCantidadTiempoConsumoMedicamento";
             this.txtCantidadTiempoConsumoMedicamento.Size = new System.Drawing.Size(56, 20);
             this.txtCantidadTiempoConsumoMedicamento.TabIndex = 62;
             // 
             // txtMotivoConsumo
             // 
-            this.txtMotivoConsumo.Location = new System.Drawing.Point(177, 270);
+            this.txtMotivoConsumo.Location = new System.Drawing.Point(178, 283);
             this.txtMotivoConsumo.Name = "txtMotivoConsumo";
             this.txtMotivoConsumo.Size = new System.Drawing.Size(179, 20);
             this.txtMotivoConsumo.TabIndex = 60;
@@ -3181,7 +3218,7 @@
             // label88
             // 
             this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(362, 273);
+            this.label88.Location = new System.Drawing.Point(363, 286);
             this.label88.Name = "label88";
             this.label88.Size = new System.Drawing.Size(114, 13);
             this.label88.TabIndex = 59;
@@ -3190,7 +3227,7 @@
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(6, 273);
+            this.label84.Location = new System.Drawing.Point(7, 286);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(165, 13);
             this.label84.TabIndex = 58;
@@ -3232,12 +3269,55 @@
             this.groupBox17.Controls.Add(this.label96);
             this.groupBox17.Controls.Add(this.label94);
             this.groupBox17.Controls.Add(this.label93);
-            this.groupBox17.Location = new System.Drawing.Point(6, 154);
+            this.groupBox17.Location = new System.Drawing.Point(6, 170);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(647, 107);
             this.groupBox17.TabIndex = 56;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Régimen de consumo";
+            // 
+            // txtDenominadorCantidad3
+            // 
+            this.txtDenominadorCantidad3.Location = new System.Drawing.Point(398, 74);
+            this.txtDenominadorCantidad3.Name = "txtDenominadorCantidad3";
+            this.txtDenominadorCantidad3.Size = new System.Drawing.Size(32, 20);
+            this.txtDenominadorCantidad3.TabIndex = 62;
+            // 
+            // txtNumeradorCantidad3
+            // 
+            this.txtNumeradorCantidad3.Location = new System.Drawing.Point(360, 74);
+            this.txtNumeradorCantidad3.Name = "txtNumeradorCantidad3";
+            this.txtNumeradorCantidad3.Size = new System.Drawing.Size(32, 20);
+            this.txtNumeradorCantidad3.TabIndex = 61;
+            // 
+            // txtDenominadorCantidad1
+            // 
+            this.txtDenominadorCantidad1.Location = new System.Drawing.Point(398, 15);
+            this.txtDenominadorCantidad1.Name = "txtDenominadorCantidad1";
+            this.txtDenominadorCantidad1.Size = new System.Drawing.Size(32, 20);
+            this.txtDenominadorCantidad1.TabIndex = 60;
+            // 
+            // txtNumeradorCantidad1
+            // 
+            this.txtNumeradorCantidad1.Location = new System.Drawing.Point(360, 14);
+            this.txtNumeradorCantidad1.Name = "txtNumeradorCantidad1";
+            this.txtNumeradorCantidad1.Size = new System.Drawing.Size(32, 20);
+            this.txtNumeradorCantidad1.TabIndex = 59;
+            // 
+            // txtDenominadorCantidad2
+            // 
+            this.txtDenominadorCantidad2.Location = new System.Drawing.Point(398, 44);
+            this.txtDenominadorCantidad2.Name = "txtDenominadorCantidad2";
+            this.txtDenominadorCantidad2.Size = new System.Drawing.Size(32, 20);
+            this.txtDenominadorCantidad2.TabIndex = 58;
+            // 
+            // txtNumeradorCantidad2
+            // 
+            this.txtNumeradorCantidad2.Location = new System.Drawing.Point(360, 44);
+            this.txtNumeradorCantidad2.Name = "txtNumeradorCantidad2";
+            this.txtNumeradorCantidad2.Size = new System.Drawing.Size(32, 20);
+            this.txtNumeradorCantidad2.TabIndex = 57;
+            this.txtNumeradorCantidad2.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // cboPresentacionMedicamento1
             // 
@@ -3398,7 +3478,7 @@
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(498, 125);
+            this.button32.Location = new System.Drawing.Point(553, 148);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(75, 23);
             this.button32.TabIndex = 24;
@@ -3408,7 +3488,7 @@
             // cboFrecuencia
             // 
             this.cboFrecuencia.FormattingEnabled = true;
-            this.cboFrecuencia.Location = new System.Drawing.Point(345, 127);
+            this.cboFrecuencia.Location = new System.Drawing.Point(400, 150);
             this.cboFrecuencia.Name = "cboFrecuencia";
             this.cboFrecuencia.Size = new System.Drawing.Size(147, 21);
             this.cboFrecuencia.TabIndex = 23;
@@ -3420,6 +3500,7 @@
             this.cboPresentacionMedicamento.Name = "cboPresentacionMedicamento";
             this.cboPresentacionMedicamento.Size = new System.Drawing.Size(117, 21);
             this.cboPresentacionMedicamento.TabIndex = 22;
+            this.cboPresentacionMedicamento.SelectedIndexChanged += new System.EventHandler(this.cboPresentacionMedicamento_SelectedIndexChanged);
             // 
             // rbMedicamentoAnterior
             // 
@@ -3445,7 +3526,7 @@
             // 
             // button31
             // 
-            this.button31.Location = new System.Drawing.Point(578, 99);
+            this.button31.Location = new System.Drawing.Point(581, 94);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(75, 23);
             this.button31.TabIndex = 19;
@@ -3455,7 +3536,7 @@
             // cboFormaAdministración
             // 
             this.cboFormaAdministración.FormattingEnabled = true;
-            this.cboFormaAdministración.Location = new System.Drawing.Point(455, 100);
+            this.cboFormaAdministración.Location = new System.Drawing.Point(458, 95);
             this.cboFormaAdministración.Name = "cboFormaAdministración";
             this.cboFormaAdministración.Size = new System.Drawing.Size(117, 21);
             this.cboFormaAdministración.TabIndex = 18;
@@ -3480,7 +3561,7 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(578, 70);
+            this.button28.Location = new System.Drawing.Point(561, 65);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(75, 23);
             this.button28.TabIndex = 15;
@@ -3490,17 +3571,10 @@
             // cboUnidadMedida
             // 
             this.cboUnidadMedida.FormattingEnabled = true;
-            this.cboUnidadMedida.Location = new System.Drawing.Point(488, 72);
+            this.cboUnidadMedida.Location = new System.Drawing.Point(471, 67);
             this.cboUnidadMedida.Name = "cboUnidadMedida";
             this.cboUnidadMedida.Size = new System.Drawing.Size(84, 21);
             this.cboUnidadMedida.TabIndex = 14;
-            // 
-            // txtConcentración
-            // 
-            this.txtConcentración.Location = new System.Drawing.Point(410, 72);
-            this.txtConcentración.Name = "txtConcentración";
-            this.txtConcentración.Size = new System.Drawing.Size(72, 20);
-            this.txtConcentración.TabIndex = 13;
             // 
             // cboNombreComercial
             // 
@@ -3523,7 +3597,7 @@
             // label90
             // 
             this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(328, 104);
+            this.label90.Location = new System.Drawing.Point(334, 99);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(121, 13);
             this.label90.TabIndex = 10;
@@ -3541,7 +3615,7 @@
             // label85
             // 
             this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(279, 130);
+            this.label85.Location = new System.Drawing.Point(334, 153);
             this.label85.Name = "label85";
             this.label85.Size = new System.Drawing.Size(60, 13);
             this.label85.TabIndex = 5;
@@ -3550,7 +3624,7 @@
             // label83
             // 
             this.label83.AutoSize = true;
-            this.label83.Location = new System.Drawing.Point(328, 75);
+            this.label83.Location = new System.Drawing.Point(334, 70);
             this.label83.Name = "label83";
             this.label83.Size = new System.Drawing.Size(76, 13);
             this.label83.TabIndex = 3;
@@ -3715,6 +3789,8 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.panel11);
+            this.panel7.Controls.Add(this.label110);
             this.panel7.Controls.Add(this.txtDescripcionGradoActividadFisica);
             this.panel7.Controls.Add(this.lblDescripcionGradoActividad);
             this.panel7.Controls.Add(this.btnAgregarHabitoActividadFisica);
@@ -3733,7 +3809,7 @@
             // 
             // txtDescripcionGradoActividadFisica
             // 
-            this.txtDescripcionGradoActividadFisica.Location = new System.Drawing.Point(73, 91);
+            this.txtDescripcionGradoActividadFisica.Location = new System.Drawing.Point(74, 130);
             this.txtDescripcionGradoActividadFisica.Multiline = true;
             this.txtDescripcionGradoActividadFisica.Name = "txtDescripcionGradoActividadFisica";
             this.txtDescripcionGradoActividadFisica.Size = new System.Drawing.Size(238, 36);
@@ -3742,7 +3818,7 @@
             // lblDescripcionGradoActividad
             // 
             this.lblDescripcionGradoActividad.AutoSize = true;
-            this.lblDescripcionGradoActividad.Location = new System.Drawing.Point(3, 91);
+            this.lblDescripcionGradoActividad.Location = new System.Drawing.Point(4, 130);
             this.lblDescripcionGradoActividad.Name = "lblDescripcionGradoActividad";
             this.lblDescripcionGradoActividad.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcionGradoActividad.TabIndex = 7;
@@ -3750,7 +3826,7 @@
             // 
             // btnAgregarHabitoActividadFisica
             // 
-            this.btnAgregarHabitoActividadFisica.Location = new System.Drawing.Point(145, 201);
+            this.btnAgregarHabitoActividadFisica.Location = new System.Drawing.Point(146, 240);
             this.btnAgregarHabitoActividadFisica.Name = "btnAgregarHabitoActividadFisica";
             this.btnAgregarHabitoActividadFisica.Size = new System.Drawing.Size(108, 23);
             this.btnAgregarHabitoActividadFisica.TabIndex = 6;
@@ -3769,7 +3845,7 @@
             // cboIntensidad
             // 
             this.cboIntensidad.FormattingEnabled = true;
-            this.cboIntensidad.Location = new System.Drawing.Point(73, 150);
+            this.cboIntensidad.Location = new System.Drawing.Point(74, 189);
             this.cboIntensidad.Name = "cboIntensidad";
             this.cboIntensidad.Size = new System.Drawing.Size(157, 21);
             this.cboIntensidad.TabIndex = 4;
@@ -3777,7 +3853,7 @@
             // cboGradoActividadFisica
             // 
             this.cboGradoActividadFisica.FormattingEnabled = true;
-            this.cboGradoActividadFisica.Location = new System.Drawing.Point(146, 52);
+            this.cboGradoActividadFisica.Location = new System.Drawing.Point(147, 91);
             this.cboGradoActividadFisica.Name = "cboGradoActividadFisica";
             this.cboGradoActividadFisica.Size = new System.Drawing.Size(165, 21);
             this.cboGradoActividadFisica.TabIndex = 3;
@@ -3786,7 +3862,7 @@
             // label100
             // 
             this.label100.AutoSize = true;
-            this.label100.Location = new System.Drawing.Point(3, 153);
+            this.label100.Location = new System.Drawing.Point(4, 192);
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(56, 13);
             this.label100.TabIndex = 2;
@@ -3794,7 +3870,7 @@
             // 
             // btnAñadirActividadFisica
             // 
-            this.btnAñadirActividadFisica.Location = new System.Drawing.Point(236, 16);
+            this.btnAñadirActividadFisica.Location = new System.Drawing.Point(237, 55);
             this.btnAñadirActividadFisica.Name = "btnAñadirActividadFisica";
             this.btnAñadirActividadFisica.Size = new System.Drawing.Size(75, 23);
             this.btnAñadirActividadFisica.TabIndex = 2;
@@ -3804,7 +3880,7 @@
             // cboActividadFisica
             // 
             this.cboActividadFisica.FormattingEnabled = true;
-            this.cboActividadFisica.Location = new System.Drawing.Point(109, 16);
+            this.cboActividadFisica.Location = new System.Drawing.Point(110, 55);
             this.cboActividadFisica.Name = "cboActividadFisica";
             this.cboActividadFisica.Size = new System.Drawing.Size(121, 21);
             this.cboActividadFisica.TabIndex = 1;
@@ -3812,7 +3888,7 @@
             // label99
             // 
             this.label99.AutoSize = true;
-            this.label99.Location = new System.Drawing.Point(3, 55);
+            this.label99.Location = new System.Drawing.Point(4, 94);
             this.label99.Name = "label99";
             this.label99.Size = new System.Drawing.Size(137, 13);
             this.label99.TabIndex = 1;
@@ -3821,7 +3897,7 @@
             // label98
             // 
             this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(3, 19);
+            this.label98.Location = new System.Drawing.Point(4, 58);
             this.label98.Name = "label98";
             this.label98.Size = new System.Drawing.Size(100, 13);
             this.label98.TabIndex = 0;
@@ -3855,48 +3931,54 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
-            // txtDenominadorCantidad2
+            // panel10
             // 
-            this.txtDenominadorCantidad2.Location = new System.Drawing.Point(398, 44);
-            this.txtDenominadorCantidad2.Name = "txtDenominadorCantidad2";
-            this.txtDenominadorCantidad2.Size = new System.Drawing.Size(32, 20);
-            this.txtDenominadorCantidad2.TabIndex = 58;
+            this.panel10.Controls.Add(this.rbNoConsumeMedicamentos);
+            this.panel10.Controls.Add(this.rbSiConsumeMedicamentos);
+            this.panel10.Location = new System.Drawing.Point(400, 8);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(99, 26);
+            this.panel10.TabIndex = 77;
             // 
-            // txtNumeradorCantidad2
+            // rbNoActividadFisica
             // 
-            this.txtNumeradorCantidad2.Location = new System.Drawing.Point(360, 44);
-            this.txtNumeradorCantidad2.Name = "txtNumeradorCantidad2";
-            this.txtNumeradorCantidad2.Size = new System.Drawing.Size(32, 20);
-            this.txtNumeradorCantidad2.TabIndex = 57;
-            this.txtNumeradorCantidad2.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.rbNoActividadFisica.AutoSize = true;
+            this.rbNoActividadFisica.Location = new System.Drawing.Point(52, 4);
+            this.rbNoActividadFisica.Name = "rbNoActividadFisica";
+            this.rbNoActividadFisica.Size = new System.Drawing.Size(39, 17);
+            this.rbNoActividadFisica.TabIndex = 12;
+            this.rbNoActividadFisica.TabStop = true;
+            this.rbNoActividadFisica.Text = "No";
+            this.rbNoActividadFisica.UseVisualStyleBackColor = true;
             // 
-            // txtDenominadorCantidad1
+            // rbSiActividadFisica
             // 
-            this.txtDenominadorCantidad1.Location = new System.Drawing.Point(398, 15);
-            this.txtDenominadorCantidad1.Name = "txtDenominadorCantidad1";
-            this.txtDenominadorCantidad1.Size = new System.Drawing.Size(32, 20);
-            this.txtDenominadorCantidad1.TabIndex = 60;
+            this.rbSiActividadFisica.AutoSize = true;
+            this.rbSiActividadFisica.Location = new System.Drawing.Point(7, 4);
+            this.rbSiActividadFisica.Name = "rbSiActividadFisica";
+            this.rbSiActividadFisica.Size = new System.Drawing.Size(34, 17);
+            this.rbSiActividadFisica.TabIndex = 11;
+            this.rbSiActividadFisica.TabStop = true;
+            this.rbSiActividadFisica.Text = "Si";
+            this.rbSiActividadFisica.UseVisualStyleBackColor = true;
             // 
-            // txtNumeradorCantidad1
+            // label110
             // 
-            this.txtNumeradorCantidad1.Location = new System.Drawing.Point(360, 14);
-            this.txtNumeradorCantidad1.Name = "txtNumeradorCantidad1";
-            this.txtNumeradorCantidad1.Size = new System.Drawing.Size(32, 20);
-            this.txtNumeradorCantidad1.TabIndex = 59;
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(4, 25);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(129, 13);
+            this.label110.TabIndex = 13;
+            this.label110.Text = "¿Realiza actividad física?";
             // 
-            // txtDenominadorCantidad3
+            // panel11
             // 
-            this.txtDenominadorCantidad3.Location = new System.Drawing.Point(398, 74);
-            this.txtDenominadorCantidad3.Name = "txtDenominadorCantidad3";
-            this.txtDenominadorCantidad3.Size = new System.Drawing.Size(32, 20);
-            this.txtDenominadorCantidad3.TabIndex = 62;
-            // 
-            // txtNumeradorCantidad3
-            // 
-            this.txtNumeradorCantidad3.Location = new System.Drawing.Point(360, 74);
-            this.txtNumeradorCantidad3.Name = "txtNumeradorCantidad3";
-            this.txtNumeradorCantidad3.Size = new System.Drawing.Size(32, 20);
-            this.txtNumeradorCantidad3.TabIndex = 61;
+            this.panel11.Controls.Add(this.rbNoActividadFisica);
+            this.panel11.Controls.Add(this.rbSiActividadFisica);
+            this.panel11.Location = new System.Drawing.Point(139, 19);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(92, 30);
+            this.panel11.TabIndex = 14;
             // 
             // RegistrarHistoriaClínica
             // 
@@ -3990,6 +4072,10 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4212,7 +4298,6 @@
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.ComboBox cboUnidadMedida;
-        private System.Windows.Forms.TextBox txtConcentración;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.ComboBox cboFormaAdministración;
         private System.Windows.Forms.Button button30;
@@ -4247,7 +4332,7 @@
         private System.Windows.Forms.ComboBox cboElementoTiempoCancelacionMedicamento;
         private System.Windows.Forms.TextBox txtCantTiempoCancelacionMedicamento;
         private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.TextBox txtMotivoCancelacion;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.Button btnAgregarHabitoMedicamento;
         private System.Windows.Forms.TabPage tabPage9;
@@ -4348,5 +4433,13 @@
         private System.Windows.Forms.TextBox txtNumeradorCantidad1;
         private System.Windows.Forms.TextBox txtDenominadorCantidad2;
         private System.Windows.Forms.TextBox txtNumeradorCantidad2;
+        private System.Windows.Forms.Label CantidadComprimidos;
+        private System.Windows.Forms.ComboBox cboConcentracion;
+        private System.Windows.Forms.ComboBox cboCantidadComprimidos;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.RadioButton rbNoActividadFisica;
+        private System.Windows.Forms.RadioButton rbSiActividadFisica;
+        private System.Windows.Forms.Label label110;
     }
 }

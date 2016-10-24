@@ -70,36 +70,50 @@ namespace DAO
             }
             return idHc;
         }
-        /*
+        
         public static int buscarNroHC()
         {
             setCadenaConexion();
-            int nro = -1;
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            cn.Open();
-            SqlCommand cmd = new SqlCommand();
-            String consulta = "SELECT TOP 1 nro_hc FROM Historia_Clinica ORDER BY id_hc DESC";
+            int nro = 0;
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
 
-            cmd.CommandText = consulta;
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = cn;
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            if(dr.HasRows)
+            try
             {
-                while (dr.Read())
+                cn.Open();
+                SqlCommand cmd = new SqlCommand();
+                String consulta = "SELECT TOP 1 nro_hc FROM Historia_Clinica ORDER BY id_hc DESC";
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.HasRows)
                 {
-                   nro = (int)dr["nro_hc"];
-                    
+                    while (dr.Read())
+                    {
+                        nro = (int)dr["nro_hc"];
+
+                    }
+                    cn.Close();
+                    return nro;
                 }
-                cn.Close();
-                return nro;
+                else
+                {
+                    return nro;
+                }
             }
-            else{
-                return nro;
-            }                     
+            catch(Exception e)
+            {
+                if(cn.State== ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error: " + e.Message);
+            }
         }
+        /*
         public static int insertarHC(HistoriaClinica hc)
         {
             SqlConnection cn = new SqlConnection(cadenaConexion);
@@ -130,6 +144,7 @@ namespace DAO
             cn.Close();
             return idhc;
         }
+
         public static HistoriaClinica mostrarHistoriaClinica(Paciente paciente)
         {
             setCadenaConexion();

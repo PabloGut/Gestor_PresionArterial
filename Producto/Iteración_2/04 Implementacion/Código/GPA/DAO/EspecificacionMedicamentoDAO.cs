@@ -713,7 +713,7 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"select um.id_unidadMedida,cast(um.nombre as varchar(max)) as 'nombre'
+                string consulta = @"select distinct um.id_unidadMedida,cast(um.nombre as varchar(max)) as 'nombre'
                                   from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, UnidadMedidaXMedicamento umm, UnidadMedida um
                                   where m.id_medicamento=em.id_medicamento_fk 
                                   and em.id_nombreComercial_fk=nc.id_nombreComercial
@@ -872,6 +872,154 @@ namespace DAO
             }
             cn.Close();
             return presentacionesMedicamento;
+        }
+
+        public static List<int> mostrarConcentracionEspecificacionMedicamento(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            
+            List<int> concetracionMedicamento = new List<int>();
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select concentracion from EspecificacionMedicamento
+                                  where id_medicamento_fk=@idMedicamento
+                                  and id_nombreComercial_fk=@idNombreComercial
+                                  and id_unidadMedida_fk=@idUnidadMedida
+                                  and id_formaAdministracion_fk=@idFormaAdministracion
+                                  and id_presentacionMedicamento_fk=@idPresentacion";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                cmd.Parameters.AddWithValue("@idNombreComercial", idNombreComercial);
+                cmd.Parameters.AddWithValue("@idUnidadMedida", idUnidadMedida);
+                cmd.Parameters.AddWithValue("@idFormaAdministracion", idFormaAdministracion);
+                cmd.Parameters.AddWithValue("@idPresentacion", idPresentacion);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {   
+                    concetracionMedicamento.Add((int)dr["concentracion"]);
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return concetracionMedicamento;
+        }
+        public static List<int> mostrarCantidadComprimidosEspecificacionMedicamento(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            List<int> cantidadComprimidos = new List<int>();
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select cantidadComprimidos from EspecificacionMedicamento
+                                  where id_medicamento_fk=@idMedicamento
+                                  and id_nombreComercial_fk=@idNombreComercial
+                                  and id_unidadMedida_fk=@idUnidadMedida
+                                  and id_formaAdministracion_fk=@idFormaAdministracion
+                                  and id_presentacionMedicamento_fk=@idPresentacion";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idMedicamento", idMedicamento);
+                cmd.Parameters.AddWithValue("@idNombreComercial", idNombreComercial);
+                cmd.Parameters.AddWithValue("@idUnidadMedida", idUnidadMedida);
+                cmd.Parameters.AddWithValue("@idFormaAdministracion", idFormaAdministracion);
+                cmd.Parameters.AddWithValue("@idPresentacion", idPresentacion);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    cantidadComprimidos.Add((int)dr["cantidadComprimidos"]);
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return cantidadComprimidos;
+        }
+        public static void buscarIdEspecificacion(EspecificacionMedicamento especificacionBuscada)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select idEspecificacion from EspecificacionMedicamento
+                                  where id_medicamento_fk=@idMedicamento
+                                  and id_nombreComercial_fk=@idNombreComercial
+                                  and id_unidadMedida_fk=@idUnidadMedida
+                                  and id_formaAdministracion_fk=@idFormaAdministracion
+                                  and id_presentacionMedicamento_fk=@idPresentacion
+                                  and concentracion=@concentracion and cantidadComprimidos=@cantidadComprimidos";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idMedicamento", especificacionBuscada.id_medicamento_fk);
+                cmd.Parameters.AddWithValue("@idNombreComercial", especificacionBuscada.id_nombreComercial);
+                cmd.Parameters.AddWithValue("@idUnidadMedida", especificacionBuscada.id_unidadMedida_fk);
+                cmd.Parameters.AddWithValue("@idFormaAdministracion", especificacionBuscada.id_formaAdministracion);
+                cmd.Parameters.AddWithValue("@idPresentacion", especificacionBuscada.id_presentacionMedicamento);
+                cmd.Parameters.AddWithValue("@concentracion", especificacionBuscada.concentracion);
+                cmd.Parameters.AddWithValue("@cantidadComprimidos", especificacionBuscada.cantidadComprimidos);
+
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {   
+                    especificacionBuscada.id_especificacion=(int)dr["id_especificacion"];
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
         }
     }
 }

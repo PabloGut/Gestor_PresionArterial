@@ -69,6 +69,7 @@
     <Compile Include="EspecialidadDAO.cs" />
     <Compile Include="EspecificacionMedicamentoDAO.cs" />
     <Compile Include="EstadoDAO.cs" />
+    <Compile Include="EstadoProgramacionDAO.cs" />
     <Compile Include="EstudioDAO.cs" />
     <Compile Include="FamiliarDAO.cs" />
     <Compile Include="Form1.cs">
@@ -80,6 +81,7 @@
     <Compile Include="FormaAdministracionDAO.cs" />
     <Compile Include="FrecuenciaDAO.cs" />
     <Compile Include="GradoActividadFisicaDAO.cs" />
+    <Compile Include="HabitoActividadFisicaDAO.cs" />
     <Compile Include="HabitoAlcoholismoDAO.cs" />
     <Compile Include="HabitoDrogasIlicitasDAO.cs" />
     <Compile Include="HabitoMedicamentoDAO.cs" />

@@ -46,5 +46,25 @@ namespace GPA.Manejadores
         {
             return FrecuenciaLN.mostrarFrecuencias();
         }
+        public int buscarIdEstado(string nombreEstado)
+        {
+            return EstadoProgramacionLN.buscarIdEstado(nombreEstado);
+        }
+        public List<int> mostrarConcentracionMedicamento(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoLN.mostrarConcentracionEspecificacion(idMedicamento, idNombreComercial, idUnidadMedida, idPresentacion, idFormaAdministracion);
+        }
+        public List<int> mostrarCantidadComrpimidos(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoLN.mostrarCantidadComprimidos(idMedicamento, idNombreComercial, idUnidadMedida, idPresentacion, idFormaAdministracion);
+        }
+        public void buscarIdEspecificacion(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoLN.buscasIdEspecificacion(especificacion);
+        }
+        public void registrarHabitosDrogasLicitas(List<HabitoMedicamento> habitos, int idHc)
+        {
+            HabitoMedicamentoLN.registrarHabitosMedicamento(habitos, idHc);
+        }
     }
 }

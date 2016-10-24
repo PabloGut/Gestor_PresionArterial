@@ -27,20 +27,28 @@ namespace GPA
         ManejadorRegistrarAlergias manejadorRegistrarAlergias;
         ManejadorRegistrarHabitosTabaquismo manejadorRegistrarHabitosTabaquismo;
         ManejadorRegistrarHabitoAlcoholismo manejadorRegistrarHabitosAlcoholismo;
-        ManejadorRegistrarHabitosDrogasIlicitas manajadorRegistrarHabitosDrogasIlicitas;
+        ManejadorRegistrarHabitosDrogasIlicitas manejadorRegistrarHabitosDrogasIlicitas;
         ManejadorRegistrarDrogasLicitas manejadorRegistrarDrogasLicitas;
         ManejadorRegistrarHabitosActividadFisica manejadorRegistrarHabitosActividadFisica;
 
         List<Sintoma> listaSintomas;
+
         List<AntecedenteMorbido> listaAntecedentesMorbidos;
         AntecedenteGinecoObstetrico antecedenteGinecoObtetrico;
+
         List<AntecedenteFamiliar> listaAntecedentesFamiliares;
+
         List<AlergiaAlimento> listaAlergiasAlimento;
         List<AlergiaSustanciaAmbiente> listaAlergiasSustanciaAmbiente;
         List<AlergiaSustanciaContactoPiel> listaAlergiaSustanciaContactoPiel;
         List<AlergiaInsecto> listaAlergiaInsectos;
         List<AlergiaMedicamento> listaAlergiaMedicamento;
-        
+
+        List<HabitoTabaquismo> listaHabitosTabaquismo;
+        List<HabitoAlcoholismo> listaHabitosAlcoholismo;
+        List<HabitoDrogasIlicitas> listaHabitosDrogasIlicitas;
+        List<HabitoMedicamento> listaHabitosMedicamentos;
+        List<HabitoActividadFisica> listaHabitosActividadFisica;
 
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
@@ -55,7 +63,7 @@ namespace GPA
             manejadorRegistrarAlergias = new ManejadorRegistrarAlergias();
             manejadorRegistrarHabitosTabaquismo = new ManejadorRegistrarHabitosTabaquismo();
             manejadorRegistrarHabitosAlcoholismo = new ManejadorRegistrarHabitoAlcoholismo();
-            manajadorRegistrarHabitosDrogasIlicitas = new ManejadorRegistrarHabitosDrogasIlicitas();
+            manejadorRegistrarHabitosDrogasIlicitas = new ManejadorRegistrarHabitosDrogasIlicitas();
             manejadorRegistrarDrogasLicitas = new ManejadorRegistrarDrogasLicitas();
             manejadorRegistrarHabitosActividadFisica = new ManejadorRegistrarHabitosActividadFisica();
 
@@ -68,6 +76,11 @@ namespace GPA
             listaAlergiaSustanciaContactoPiel = null;
             listaAlergiaInsectos = null;
             listaAlergiaMedicamento = null;
+            listaHabitosTabaquismo = null;
+            listaHabitosAlcoholismo = null;
+            listaHabitosDrogasIlicitas = null;
+            listaHabitosMedicamentos = null;
+            listaHabitosActividadFisica = null;
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
@@ -139,9 +152,9 @@ namespace GPA
 
             presentarMedidasBebidasAlcoholicas(cboMedidaConsumeAlcohol, manejadorRegistrarHabitosAlcoholismo.mostrarMedidasBebidasAlcoholicas(), "id_medida", "nombre");
 
-            presentarSustanciasDrogasIlicitas(cboSustanciaDrogaIlicita, manajadorRegistrarHabitosDrogasIlicitas.mostrarSustanciasDrogasIlicitas(), "id_sustancia", "nombre");
+            presentarSustanciasDrogasIlicitas(cboSustanciaDrogaIlicita, manejadorRegistrarHabitosDrogasIlicitas.mostrarSustanciasDrogasIlicitas(), "id_sustancia", "nombre");
 
-            presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manajadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+            presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manejadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
             presentarMedicamento(cboNombreGenerico, manejadorRegistrarDrogasLicitas.mostrarNombresMedicamento(),"id_medicamento", "nombreGenerico");
 
@@ -765,6 +778,13 @@ namespace GPA
             presentarFormaAdministracion(cboFormaAdministración, manejadorRegistrarDrogasLicitas.mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_formaAdministracion", "nombre");
 
             presentarPresentacionMedicamento(cboPresentacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_presentacionMedicamento", "nombre");
+
+            UnidadDeMedida unidad= (UnidadDeMedida) cboUnidadMedida.SelectedItem;
+            PresentacionMedicamento presentacion= (PresentacionMedicamento) cboPresentacionMedicamento.SelectedItem;
+            FormaAdministracion formaAdministracion= (FormaAdministracion) cboFormaAdministración.SelectedItem;
+
+            cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+            cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
         }
 
         private void cboGradoActividadFisica_SelectedIndexChanged(object sender, EventArgs e)
@@ -1294,67 +1314,91 @@ namespace GPA
         public void cargarDatosDataGridViewHabitoTabaquismo()
         {
             string fuma = "";
-            string cantidad = "";
-            string elemento = "";
-            string componente = "";
+            string cantidad = "No precisa";
+            string elemento = "No precisa";
+            string componente = "No precisa";
             string añosFumando = "No precisa";
-            string dejoFumar = "No";
-            string cantTiempoDejoFumar = "";
+            string dejoFumar = "No precisa";
+            string cantTiempoDejoFumar = "No precisa";
             string descripcionTiempoFumaba = "No precisa";
-            string elementoFumaba = "";
-            string componenteTiempoFumaba = "";
-            string cantidadFumaba = "";
+            string elementoFumaba = "No precisa";
+            string componenteTiempoFumaba = "No precisa";
+            string cantidadFumaba = "No precisa";
+
+            if (listaHabitosTabaquismo == null)
+                listaHabitosTabaquismo = new List<HabitoTabaquismo>();
+
+            HabitoTabaquismo habitoTabaquismo = new HabitoTabaquismo();
+            DejoDeFumar dejoDeFumar = null;
+
             if (rbSiFuma.Checked == true)
             {
                 fuma = "Si";
+                
+                if (string.IsNullOrEmpty(txtCantidadQueFuma.Text) == false)
+                {
+                    ElementoQueFuma elementoSeleccionado = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
+                    elemento = elementoSeleccionado.nombre;
+
+                    habitoTabaquismo.cantidad = Convert.ToInt32(txtCantidadQueFuma.Text);
+                    habitoTabaquismo.id_elementoQueFuma = elementoSeleccionado.id_elementoQueFuma;
+
+                    ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoFuma.SelectedItem;
+                    componente = componenteSeleccionado.nombre;
+
+                    habitoTabaquismo.id_componenteTiempo = componenteSeleccionado.id_componenteTiempo;
+
+                    cantidad = txtCantidadQueFuma.Text + " " + elemento + " X " + " " + componente;
+                }
+
+                if (string.IsNullOrEmpty(txtCantidadAñosFumando.Text) == false)
+                {
+                    añosFumando = txtCantidadAñosFumando.Text;
+                    habitoTabaquismo.añosFumando = Convert.ToInt32(txtCantidadAñosFumando.Text);
+                }
             }
             else
             {
                 fuma = "No";
+
+                if (cbDejoFumar.Checked == true)
+                {
+                    dejoFumar = "Si";
+                    dejoDeFumar = new DejoDeFumar();
+
+                    if (string.IsNullOrEmpty(txtCantiTiempoDejoFumar.Text) == false)
+                    {
+                        ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoFumaba.SelectedItem;
+                        dejoDeFumar.cantidad = Convert.ToInt32(txtCantiTiempoDejoFumar.Text);
+                        dejoDeFumar.id_elementoTiempo = elementoSeleccionado.id_elementoDelTiempo;
+                        cantTiempoDejoFumar = txtCantiTiempoDejoFumar.Text + " " + elementoSeleccionado.nombre;
+                    }
+
+                    if (cboDescripcionDelTiempoFumaba.SelectedIndex > -1)
+                    {
+                        DescripcionDelTiempo descripcion = (DescripcionDelTiempo)cboDescripcionDelTiempoFumaba.SelectedItem;
+                        dejoDeFumar.id_descripcionTiempo = descripcion.id_descripcionDelTiempo;
+                        descripcionTiempoFumaba = descripcion.nombre;
+                    }
+
+                    if (string.IsNullOrEmpty(txtCantidadFumaba.Text) == false)
+                    {
+                        ElementoQueFuma elementoSeleccionadoFumaba = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
+                        elementoFumaba = elementoSeleccionadoFumaba.nombre;
+                        dejoDeFumar.cantidadFumaba = Convert.ToInt32(txtCantidadFumaba.Text);
+                        dejoDeFumar.id_elementoQueFuma = elementoSeleccionadoFumaba.id_elementoQueFuma;
+
+                        ComponenteDelTiempo componenteSeleccionadoFumaba = (ComponenteDelTiempo)cboComponenteTiempoFumaba.SelectedItem;
+                        componenteTiempoFumaba = componenteSeleccionadoFumaba.nombre;
+                        dejoDeFumar.id_componenteTiempo = componenteSeleccionadoFumaba.id_componenteTiempo;
+
+                        cantidadFumaba = txtCantidadFumaba.Text + " " + elementoFumaba + " X " + " " + componenteSeleccionadoFumaba;
+                    }
+                    habitoTabaquismo.dejoDeFumar = dejoDeFumar;
+                }
             }
-            if (string.IsNullOrEmpty(txtCantidadQueFuma.Text) == false)
-            {
-                ElementoQueFuma elementoSeleccionado = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
-                elemento = elementoSeleccionado.nombre;
-
-                ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoFuma.SelectedItem;
-                componente = componenteSeleccionado.nombre;
-
-                cantidad = txtCantidadQueFuma.Text + " " + elemento + " X " + " " + componente;
-            }
-
-            if (string.IsNullOrEmpty(txtCantidadAñosFumando.Text) == false)
-            {
-                añosFumando = txtCantidadAñosFumando.Text;
-            }
-            if (cbDejoFumar.Checked == true)
-            {
-                dejoFumar = "Si";
-            }
-
-            if (string.IsNullOrEmpty(txtCantiTiempoDejoFumar.Text) == false)
-            {
-                ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoFumaba.SelectedItem;
-                cantTiempoDejoFumar = txtCantiTiempoDejoFumar.Text + " " + elementoSeleccionado.nombre;
-            }
-
-            if (cboDescripcionDelTiempoFumaba.SelectedIndex > -1)
-            {
-                DescripcionDelTiempo descripcion=(DescripcionDelTiempo) cboDescripcionDelTiempoFumaba.SelectedItem;
-                descripcionTiempoFumaba = descripcion.nombre;
-            }
-
-            if (string.IsNullOrEmpty(txtCantidadFumaba.Text) == false)
-            {
-                ElementoQueFuma elementoSeleccionadoFumaba = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
-                elementoFumaba = elementoSeleccionadoFumaba.nombre;
-
-                ComponenteDelTiempo componenteSeleccionadoFumaba = (ComponenteDelTiempo)cboComponenteTiempoFumaba.SelectedItem;
-                componenteTiempoFumaba = componenteSeleccionadoFumaba.nombre;
-
-                cantidadFumaba = txtCantidadFumaba.Text + " " + elementoFumaba + " X " + " " + componenteSeleccionadoFumaba;
-            }
-            dgvHabitosFumar.Rows.Add(fuma, cantidad, añosFumando,dejoFumar,cantTiempoDejoFumar,descripcionTiempoFumaba,cantidadFumaba);
+            listaHabitosTabaquismo.Add(habitoTabaquismo);
+            dgvHabitosFumar.Rows.Add(fuma, cantidad, añosFumando, dejoFumar, cantTiempoDejoFumar, descripcionTiempoFumaba, cantidadFumaba);
         }
         /*
       * Método para cargar filas al DatagridView correspondiente a los hábitos de alcoholismo.
@@ -1363,32 +1407,45 @@ namespace GPA
      */
         public void cargarDatosDataGridViewHabitoAlcoholismo()
         {
-            string consumeAlcohol = "No";
-            string bebida = "";
-            string estimacionCantidad="";
-            string descripcion = "";
             if (rbSiConsumeAlcohol.Checked == true)
             {
-                consumeAlcohol = "Si";
+                if (listaHabitosAlcoholismo == null)
+                    listaHabitosAlcoholismo = new List<HabitoAlcoholismo>();
+
+                HabitoAlcoholismo habitoAlcoholismo = new HabitoAlcoholismo();
+
+                string consumeAlcohol = "No";
+                string bebida = "";
+                string estimacionCantidad = "";
+                string descripcion = "";
+                if (rbSiConsumeAlcohol.Checked == true)
+                {
+                    consumeAlcohol = "Si";
+                }
+
+                TipoBebida bebidaSeleccionada = (TipoBebida)cboTipoBebida.SelectedItem;
+                bebida = bebidaSeleccionada.nombre;
+                habitoAlcoholismo.id_tipoBebida = bebidaSeleccionada.id_tipoBebida;
+
+                if (string.IsNullOrEmpty(txtCantidadConsume.Text) == false)
+                {
+                    Medida medidaSeleccionada = (Medida)cboMedidaConsumeAlcohol.SelectedItem;
+                    habitoAlcoholismo.id_medida = medidaSeleccionada.id_medida;
+                    ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoAlcoholismo.SelectedItem;
+                    habitoAlcoholismo.id_componenteTiempo = componenteSeleccionado.id_componenteTiempo;
+                    habitoAlcoholismo.cantidad = Convert.ToInt32(txtCantidadConsume.Text);
+
+                    estimacionCantidad = txtCantidadConsume.Text + " " + medidaSeleccionada.nombre + " " + componenteSeleccionado.nombre;
+                }
+
+                if (string.IsNullOrEmpty(txtDescripcionMedida.Text) == false)
+                {
+                    descripcion = txtDescripcionMedida.Text;
+                }
+
+                listaHabitosAlcoholismo.Add(habitoAlcoholismo);
+                dgvHabitosAlcoholismo.Rows.Add(consumeAlcohol, bebida, estimacionCantidad, descripcion);
             }
-
-            TipoBebida bebidaSeleccionada = (TipoBebida)cboTipoBebida.SelectedItem;
-            bebida = bebidaSeleccionada.nombre;
-
-            if (string.IsNullOrEmpty(txtCantidadConsume.Text) == false)
-            {
-                Medida medidaSeleccionada = (Medida)cboMedidaConsumeAlcohol.SelectedItem;
-                ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoAlcoholismo.SelectedItem;
-
-                estimacionCantidad = txtCantidadConsume.Text + " " + medidaSeleccionada.nombre + " " + componenteSeleccionado.nombre;
-            }
-
-            if (string.IsNullOrEmpty(txtDescripcionMedida.Text) == false)
-            {
-                descripcion = txtDescripcionMedida.Text;
-            }
-
-            dgvHabitosAlcoholismo.Rows.Add(consumeAlcohol, bebida, estimacionCantidad, descripcion);
         }
         /*
       * Método para cargar filas al DatagridView correspondiente a los hábitos de drogas Ilicitas.
@@ -1397,24 +1454,162 @@ namespace GPA
      */
         public void cargarDatosDataGridViewHabitosDrogasIlicitas()
         {
-            string consumeDrogas = "No";
-            string sustancia = "";
-            string tiempoConsumiento = "";
-       
-
             if (rbSiConsumeDrogas.Checked == true)
             {
-                consumeDrogas = "Si";
-            }
-            SustanciaDrogaIlicita sustanciaSelecciona = (SustanciaDrogaIlicita)cboSustanciaDrogaIlicita.SelectedItem;
-            sustancia = sustanciaSelecciona.nombre;
+                if (listaHabitosDrogasIlicitas == null)
+                    listaHabitosDrogasIlicitas = new List<HabitoDrogasIlicitas>();
 
-            if (string.IsNullOrEmpty(txtCantidadTiempoConsumiendo.Text) == false)
-            {
-                ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoTiempoDrogasIlicitas.SelectedItem;
-                tiempoConsumiento = txtCantidadTiempoConsumiendo.Text + " " + elementoSeleccionado.nombre;
+                HabitoDrogasIlicitas habitoDrogasIlicitas = new HabitoDrogasIlicitas();
+
+                string consumeDrogas = "No";
+                string sustancia = "";
+                string tiempoConsumiento = "";
+
+
+                if (rbSiConsumeDrogas.Checked == true)
+                {
+                    consumeDrogas = "Si";
+                }
+                SustanciaDrogaIlicita sustanciaSelecciona = (SustanciaDrogaIlicita)cboSustanciaDrogaIlicita.SelectedItem;
+                habitoDrogasIlicitas.id_sustancia = sustanciaSelecciona.id_sustancia;
+                sustancia = sustanciaSelecciona.nombre;
+
+                if (string.IsNullOrEmpty(txtCantidadTiempoConsumiendo.Text) == false)
+                {
+                    ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoTiempoDrogasIlicitas.SelectedItem;
+                    habitoDrogasIlicitas.tiempoConsumiendo = Convert.ToInt32(txtCantidadTiempoConsumiendo.Text);
+                    habitoDrogasIlicitas.id_elementoTiempo = elementoSeleccionado.id_elementoDelTiempo;
+
+                    tiempoConsumiento = txtCantidadTiempoConsumiendo.Text + " " + elementoSeleccionado.nombre;
+                }
+                listaHabitosDrogasIlicitas.Add(habitoDrogasIlicitas);
+                dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento);
             }
-            dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento);
+        }
+        /*
+         * Método para crear y cargar los objetos HabitoActividadFisica a una lista.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void cargarDatosHabitosDrogasLicitas()
+        {
+            if (rbSiConsumeMedicamentos.Checked == true)
+            {
+                if (listaHabitosMedicamentos == null)
+                    listaHabitosMedicamentos = new List<HabitoMedicamento>();
+
+                HabitoMedicamento habitoMedicamento = new HabitoMedicamento();
+                ProgramacionMedicamento programacion= new ProgramacionMedicamento();
+
+                EspecificacionMedicamento especificacion = new EspecificacionMedicamento();
+
+                Medicamento medicamentoSeleccionado = (Medicamento)cboNombreGenerico.SelectedItem;
+                especificacion.id_medicamento_fk = medicamentoSeleccionado.id_medicamento;
+
+                NombreComercial nombreComercialSeleccionado = (NombreComercial)cboNombreComercial.SelectedItem;
+                especificacion.id_nombreComercial = nombreComercialSeleccionado.id_nombreComercial;
+
+                int concentracionSeleccionada = (int)cboConcentracion.SelectedItem;
+                especificacion.concentracion = concentracionSeleccionada;
+                UnidadDeMedida unidadMedidaSeleccionada = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+                especificacion.id_unidadMedida_fk = unidadMedidaSeleccionada.id_unidadMedida;
+
+                PresentacionMedicamento presentacionSeleccionada = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+                especificacion.id_presentacionMedicamento = presentacionSeleccionada.id_presentacionMedicamento;
+
+                FormaAdministracion formaAdmSeleccionada = (FormaAdministracion)cboFormaAdministración.SelectedItem;
+                especificacion.id_formaAdministracion = formaAdmSeleccionada.id_formaAdministracion;
+
+                int cantidadComprimidosSeleccionada = (int)cboCantidadComprimidos.SelectedItem;
+                especificacion.cantidadComprimidos = cantidadComprimidosSeleccionada;
+
+                manejadorRegistrarDrogasLicitas.buscarIdEspecificacion(especificacion);
+
+                programacion.id_especificacionMedicamento = especificacion.id_especificacion;
+                programacion.id_medicamento = especificacion.id_medicamento_fk;
+
+                Frecuencia frecuenciaSeleccionada = (Frecuencia)cboFrecuencia.SelectedItem;
+                programacion.id_frecuencia = frecuenciaSeleccionada.id_Frecuencia;
+                
+
+                if(cboMomentoDia1.SelectedIndex > 0)
+                {
+                    MomentoDia momentoDia1 = (MomentoDia)cboMomentoDia1.SelectedItem;
+                    programacion.id_momentoDia1 = momentoDia1.idMomentoDia;
+
+                    programacion.cantidad1Numerador = Convert.ToInt32(txtNumeradorCantidad1.Text);
+
+                    if (string.IsNullOrEmpty(txtDenominadorCantidad1.Text) == false)
+                    {
+                        programacion.cantidad1Denominador = Convert.ToInt32(txtDenominadorCantidad1.Text);
+                    }
+
+                    PresentacionMedicamento presentacionSeleccionada1 = (PresentacionMedicamento)cboPresentacionMedicamento1.SelectedItem;
+                    programacion.id_presentacionMedicamento1 = presentacionSeleccionada1.id_presentacionMedicamento;
+
+                    programacion.hora1 = Convert.ToDateTime(mtbHora1.Text);
+                }
+
+                if (cboMomentoDia2.SelectedIndex > 0)
+                {
+                    MomentoDia momentoDia2 = (MomentoDia)cboMomentoDia2.SelectedItem;
+                    programacion.id_momentoDia2 = momentoDia2.idMomentoDia;
+
+                    programacion.cantidad2Numerador = Convert.ToInt32(txtNumeradorCantidad2.Text);
+
+                    if (string.IsNullOrEmpty(txtDenominadorCantidad2.Text) == false)
+                    {
+                        programacion.cantidad2Denominador = Convert.ToInt32(txtDenominadorCantidad2.Text);
+                    }
+
+                    PresentacionMedicamento presentacionSeleccionada2 = (PresentacionMedicamento)cboPresentacionMedicamento2.SelectedItem;
+                    programacion.id_presentacionMedicamento2 = presentacionSeleccionada2.id_presentacionMedicamento;
+
+                    programacion.hora2 = Convert.ToDateTime(mtbHora2.Text);
+                }
+
+                if (cboMomentoDia3.SelectedIndex > 0)
+                {
+                    MomentoDia momentoDia3 = (MomentoDia)cboMomentoDia3.SelectedItem;
+                    programacion.id_momentoDia3 = momentoDia3.idMomentoDia;
+
+                    programacion.cantidad3Numerador = Convert.ToInt32(txtNumeradorCantidad3.Text);
+
+                    if (string.IsNullOrEmpty(txtDenominadorCantidad3.Text) == false)
+                        programacion.cantidad3Denominador = Convert.ToInt32(txtDenominadorCantidad3.Text);
+                    
+
+                    PresentacionMedicamento presentacionSeleccionada3 = (PresentacionMedicamento)cboPresentacionMedicamento3.SelectedItem;
+                    programacion.id_presentacionMedicamento3 = presentacionSeleccionada3.id_presentacionMedicamento;
+
+                    programacion.hora3 = Convert.ToDateTime(mtbHora3.Text);
+                }
+
+                if (string.IsNullOrEmpty(txtMotivoConsumo.Text) == false)
+                    programacion.motivoConsumo = txtMotivoConsumo.Text;
+
+                if (rbMedicamentoActual.Checked == true)
+                {
+                    programacion.cantidadTiempoConsumo = Convert.ToInt32(txtCantidadTiempoConsumoMedicamento.Text);
+                    ElementoDelTiempo elementoTiempoConsumo = (ElementoDelTiempo)cboElementoTiempoMedicamento.SelectedItem;
+                    programacion.id_elementoTiempo1 = elementoTiempoConsumo.id_elementoDelTiempo;
+
+                    programacion.id_estado = manejadorRegistrarDrogasLicitas.buscarIdEstado("Activa");
+                }
+
+                if (rbMedicamentoAnterior.Checked == true)
+                {
+                    programacion.motivoCancelacion = txtMotivoCancelacion.Text;
+
+                    programacion.cantidadCancelacion =Convert.ToInt32(txtCantTiempoCancelacionMedicamento.Text);
+                    ElementoDelTiempo elementoTiempoCancelacion = (ElementoDelTiempo)cboElementoTiempoCancelacionMedicamento.SelectedItem;
+                    programacion.id_elementoTiempo2 = elementoTiempoCancelacion.id_elementoDelTiempo;
+
+                }
+                habitoMedicamento.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                habitoMedicamento.programacion = programacion;
+                listaHabitosMedicamentos.Add(habitoMedicamento);
+            }
         }
         /*
       * Método para cargar filas al DatagridView correspondiente a los hábitos de Actividad física.
@@ -1428,23 +1623,37 @@ namespace GPA
             string intensidad = "";
             string descripcion = "";
 
-            if (cboActividadFisica.SelectedIndex > -1)
-            {
-                ActividadFisica actividadFisica = (ActividadFisica)cboActividadFisica.SelectedItem;
-                actividad = actividadFisica.nombre;
-
-                GradoActividadFisica gradoActividad = (GradoActividadFisica)cboGradoActividadFisica.SelectedItem;
-                grado = gradoActividad.nombre;
-
-                IntensidadActividadFisica intensidadActividad = (IntensidadActividadFisica)cboIntensidad.SelectedItem;
-                intensidad = intensidadActividad.nombre;
-
-                if (string.IsNullOrEmpty(txtDescripcionGradoActividadFisica.Text) == false)
+            if (rbSiActividadFisica.Checked == true)
+            {   
+                
+                if (cboActividadFisica.SelectedIndex > -1)
                 {
-                    descripcion = txtDescripcionGradoActividadFisica.Text;
-                }
+                    if (listaHabitosActividadFisica == null)
+                        listaHabitosActividadFisica = new List<HabitoActividadFisica>();
 
-                dgvHabitosActividadFisica.Rows.Add(actividad, grado,descripcion,intensidad);
+                    HabitoActividadFisica habito = new HabitoActividadFisica();
+
+                    ActividadFisica actividadFisica = (ActividadFisica)cboActividadFisica.SelectedItem;
+                    actividad = actividadFisica.nombre;
+                    habito.id_actividadFisica = actividadFisica.id_actividadFisica;
+
+                    GradoActividadFisica gradoActividad = (GradoActividadFisica)cboGradoActividadFisica.SelectedItem;
+                    grado = gradoActividad.nombre;
+                    habito.id_gradoActividadFisica = gradoActividad.id_gradoActividadFisica;
+
+                    IntensidadActividadFisica intensidadActividad = (IntensidadActividadFisica)cboIntensidad.SelectedItem;
+                    intensidad = intensidadActividad.nombre;
+                    habito.id_intensidad = intensidadActividad.id_intensidad;
+
+                    if (string.IsNullOrEmpty(txtDescripcionGradoActividadFisica.Text) == false)
+                    {
+                        descripcion = txtDescripcionGradoActividadFisica.Text;
+                    }
+                    habito.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                    listaHabitosActividadFisica.Add(habito);
+                    dgvHabitosActividadFisica.Rows.Add(actividad, grado, descripcion, intensidad);
+                }
             }
 
         }
@@ -1618,6 +1827,8 @@ namespace GPA
             hc.idtipodoc = paciente.id_tipodoc_medico;
             hc.nrodoc = paciente.nrodoc_medico;
 
+            hc.nro_hc = manejadorRegistrarHC.calcularSiguienteNroHc();
+
             hc.fecha =Convert.ToDateTime(mtbFechaActual);
             hc.hora = Convert.ToDateTime(mtbHoraActual);
             hc.fechaInicioAtencion = Convert.ToDateTime(mtbFechaActual);
@@ -1633,6 +1844,16 @@ namespace GPA
             registrarAntecedentesGinecoObstetricos(idHc);
 
             registrarAntecedentesPatologicosFamiliares(idHc);
+
+            registrarHabitosTabaquismo(idHc);
+
+            registrarHabitosAlcoholismo(idHc);
+
+            registrarHabitoDrogasIlicitas(idHc);
+
+            registrarHabitosDrogasLicitas(idHc);
+
+            registrarHabitosActividadFisica(idHc);
 
            
         }
@@ -1817,6 +2038,31 @@ namespace GPA
                 manejadorRegistrarAlergias.registrarAlergiaMedicamento(listaAlergiaMedicamento, idHc);
             }
         }
+        private void registrarHabitosTabaquismo(int idHc)
+        {
+            if (listaHabitosTabaquismo != null && listaHabitosTabaquismo.Count > 0)
+                manejadorRegistrarHabitosTabaquismo.registrarHabitosTabaquismo(listaHabitosTabaquismo, idHc);
+        }
+        private void registrarHabitosAlcoholismo(int idHc)
+        {
+            if (listaHabitosAlcoholismo != null && listaHabitosAlcoholismo.Count > 0)
+                manejadorRegistrarHabitosAlcoholismo.registrarHabitosAlcoholismo(listaHabitosAlcoholismo, idHc);
+        }
+        private void registrarHabitoDrogasIlicitas(int idHc)
+        {
+            if (listaHabitosDrogasIlicitas != null && listaHabitosDrogasIlicitas.Count > 0)
+                manejadorRegistrarHabitosDrogasIlicitas.registrarHabitoDrogasIlicitas(listaHabitosDrogasIlicitas, idHc);
+        }
+        private void registrarHabitosDrogasLicitas(int idHc)
+        {
+            if (listaHabitosMedicamentos != null && listaHabitosMedicamentos.Count > 0)
+                manejadorRegistrarDrogasLicitas.registrarHabitosDrogasLicitas(listaHabitosMedicamentos, idHc); 
+        }
+        private void registrarHabitosActividadFisica(int idHc)
+        {
+            if (listaHabitosActividadFisica != null && listaHabitosActividadFisica.Count > 0)
+                manejadorRegistrarHabitosActividadFisica.registrarHabitosActividadFisica(listaHabitosActividadFisica, idHc);
+        }
         private void btnAgregarAntecedenteMorbido_Click(object sender, EventArgs e)
         {
             cargarDatosDataGridViewAntecedentesMorbidos();
@@ -1887,5 +2133,22 @@ namespace GPA
 
         }
 
+        private void btnAgregarHabitoAlcoholismo_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitoAlcoholismo();
+        }
+
+        private void btnAgregarHabitoMedicamento_Click(object sender, EventArgs e)
+        {
+            cargarDatosHabitosDrogasLicitas();
+        }
+
+        private void cboPresentacionMedicamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+       
     }
 }
