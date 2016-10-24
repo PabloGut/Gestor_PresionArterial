@@ -599,6 +599,14 @@ values('Máximo')
 
 /*--------------------------*/
 
+/*-------Insert EstadoProgramacion-----*/
+insert into EstadoProgramacion(nombre)
+values('Activa')
+insert into EstadoProgramacion(nombre)
+values('Cancelada')
+
+/*--------------------------*/
+
 /*-------Insert-----*/
 
 /*--------------------------*/
