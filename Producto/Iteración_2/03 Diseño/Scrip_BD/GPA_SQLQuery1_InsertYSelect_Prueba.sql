@@ -370,7 +370,7 @@ and em.id_nombreComercial_fk=fam.id_nombreComercial_fk
 and fam.id_formaAdministracion_fk=fa.id_formaAdministracion
 and fam.id_medicamento_fk=m.id_medicamento
 and fam.id_nombreComercial_fk=nc.id_nombreComercial
-and em.id_medicamento_fk='21' and em.id_nombreComercial_fk='25'
+and em.id_medicamento_fk='22' and em.id_nombreComercial_fk='22'
 
 select distinct pm.id_presentacionMedicamento,cast(pm.nombre as varchar(max)) as 'Presentación medicamento'
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, PresentacionMedicamentoXMedicamento pmm, PresentacionMedicamento pm
@@ -391,7 +391,7 @@ from Medicamento m, NombreComercial nc
 where m.id_medicamento=nc.id_medicamento_fk
 and m.id_medicamento='21'
 
-select * from Sintoma
+select * from FormaAdministracionXMedicamento
 
 alter table Sintoma 
 add id_tipoSintoma_fk int,
@@ -424,5 +424,12 @@ foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad)
 alter table AntecedentesMorbidos
 add fechaRegistro
 
-drop table HabitosMedicamento
-select * from EspecificacionMedicamento
+drop table HabitosActividadFisica
+select * from UnidadMedida
+
+select concentracion, id_especificacion from EspecificacionMedicamento
+where id_medicamento_fk='24'
+and id_nombreComercial_fk='28'
+and id_unidadMedida_fk='1'
+and id_formaAdministracion_fk='6'
+and id_presentacionMedicamento_fk='1'
