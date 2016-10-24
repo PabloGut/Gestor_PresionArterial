@@ -623,3 +623,4 @@ alter table AlergiaMedicamento
 add foreign key(id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia)
 
 drop table AlergiaAlimento
+
