@@ -456,3 +456,10 @@ values('Intenso')
 insert into IntensidadActividadFisica(nombre)
 values('Máximo')
 /*--------------------------*/
+
+/*-------Insert EstadoProgramacion-----*/
+insert into EstadoProgramacion(nombre)
+values('Activa')
+insert into EstadoProgramacion(nombre)
+values('Cancelada')
+/*--------------------------*/
