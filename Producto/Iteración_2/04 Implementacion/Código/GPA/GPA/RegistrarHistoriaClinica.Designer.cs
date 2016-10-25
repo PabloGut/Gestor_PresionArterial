@@ -291,12 +291,13 @@
             this.label67 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.rbNoConsumeMedicamentos = new System.Windows.Forms.RadioButton();
+            this.rbSiConsumeMedicamentos = new System.Windows.Forms.RadioButton();
             this.cboCantidadComprimidos = new System.Windows.Forms.ComboBox();
             this.cboConcentracion = new System.Windows.Forms.ComboBox();
             this.CantidadComprimidos = new System.Windows.Forms.Label();
             this.label109 = new System.Windows.Forms.Label();
-            this.rbNoConsumeMedicamentos = new System.Windows.Forms.RadioButton();
-            this.rbSiConsumeMedicamentos = new System.Windows.Forms.RadioButton();
             this.btnAgregarHabitoMedicamento = new System.Windows.Forms.Button();
             this.cboElementoTiempoCancelacionMedicamento = new System.Windows.Forms.ComboBox();
             this.txtCantTiempoCancelacionMedicamento = new System.Windows.Forms.TextBox();
@@ -363,11 +364,15 @@
             this.cboSustanciaDrogaIlicita = new System.Windows.Forms.ComboBox();
             this.label79 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
-            this.rnNoConsumeDrogas = new System.Windows.Forms.RadioButton();
+            this.rbNoConsumeDrogas = new System.Windows.Forms.RadioButton();
             this.rbSiConsumeDrogas = new System.Windows.Forms.RadioButton();
             this.label70 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.rbNoActividadFisica = new System.Windows.Forms.RadioButton();
+            this.rbSiActividadFisica = new System.Windows.Forms.RadioButton();
+            this.label110 = new System.Windows.Forms.Label();
             this.txtDescripcionGradoActividadFisica = new System.Windows.Forms.TextBox();
             this.lblDescripcionGradoActividad = new System.Windows.Forms.Label();
             this.btnAgregarHabitoActividadFisica = new System.Windows.Forms.Button();
@@ -382,11 +387,6 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.rbNoActividadFisica = new System.Windows.Forms.RadioButton();
-            this.rbSiActividadFisica = new System.Windows.Forms.RadioButton();
-            this.label110 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -435,14 +435,14 @@
             this.panel5.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBox16.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosDrogasIlicitas)).BeginInit();
             this.tabPage9.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).BeginInit();
-            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -1138,6 +1138,7 @@
             this.rbNoPresentaAntecedentesMorbidos.TabStop = true;
             this.rbNoPresentaAntecedentesMorbidos.Text = "No presenta antecedentes";
             this.rbNoPresentaAntecedentesMorbidos.UseVisualStyleBackColor = true;
+            this.rbNoPresentaAntecedentesMorbidos.CheckedChanged += new System.EventHandler(this.rbNoPresentaAntecedentesMorbidos_CheckedChanged);
             // 
             // rbPresentaAntecedentesMorbidos
             // 
@@ -1149,6 +1150,7 @@
             this.rbPresentaAntecedentesMorbidos.TabStop = true;
             this.rbPresentaAntecedentesMorbidos.Text = "Presenta antecedentes";
             this.rbPresentaAntecedentesMorbidos.UseVisualStyleBackColor = true;
+            this.rbPresentaAntecedentesMorbidos.CheckedChanged += new System.EventHandler(this.rbPresentaAntecedentesMorbidos_CheckedChanged);
             // 
             // dgvAntecedentesMorbidos
             // 
@@ -2136,6 +2138,7 @@
             this.btnAñadirSustanciaAmbiente.TabIndex = 12;
             this.btnAñadirSustanciaAmbiente.Text = "Añadir";
             this.btnAñadirSustanciaAmbiente.UseVisualStyleBackColor = true;
+            this.btnAñadirSustanciaAmbiente.Click += new System.EventHandler(this.btnAñadirSustanciaAmbiente_Click);
             // 
             // txtEfectosAlergiaSustanciaAmbiente
             // 
@@ -3087,6 +3090,37 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Consumo drogas Lícitas";
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.rbNoConsumeMedicamentos);
+            this.panel10.Controls.Add(this.rbSiConsumeMedicamentos);
+            this.panel10.Location = new System.Drawing.Point(400, 8);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(99, 26);
+            this.panel10.TabIndex = 77;
+            // 
+            // rbNoConsumeMedicamentos
+            // 
+            this.rbNoConsumeMedicamentos.AutoSize = true;
+            this.rbNoConsumeMedicamentos.Location = new System.Drawing.Point(57, 5);
+            this.rbNoConsumeMedicamentos.Name = "rbNoConsumeMedicamentos";
+            this.rbNoConsumeMedicamentos.Size = new System.Drawing.Size(39, 17);
+            this.rbNoConsumeMedicamentos.TabIndex = 71;
+            this.rbNoConsumeMedicamentos.TabStop = true;
+            this.rbNoConsumeMedicamentos.Text = "No";
+            this.rbNoConsumeMedicamentos.UseVisualStyleBackColor = true;
+            // 
+            // rbSiConsumeMedicamentos
+            // 
+            this.rbSiConsumeMedicamentos.AutoSize = true;
+            this.rbSiConsumeMedicamentos.Location = new System.Drawing.Point(3, 5);
+            this.rbSiConsumeMedicamentos.Name = "rbSiConsumeMedicamentos";
+            this.rbSiConsumeMedicamentos.Size = new System.Drawing.Size(34, 17);
+            this.rbSiConsumeMedicamentos.TabIndex = 70;
+            this.rbSiConsumeMedicamentos.TabStop = true;
+            this.rbSiConsumeMedicamentos.Text = "Si";
+            this.rbSiConsumeMedicamentos.UseVisualStyleBackColor = true;
+            // 
             // cboCantidadComprimidos
             // 
             this.cboCantidadComprimidos.FormattingEnabled = true;
@@ -3120,28 +3154,6 @@
             this.label109.Size = new System.Drawing.Size(191, 13);
             this.label109.TabIndex = 72;
             this.label109.Text = "¿Consume o consumió medicamentos?";
-            // 
-            // rbNoConsumeMedicamentos
-            // 
-            this.rbNoConsumeMedicamentos.AutoSize = true;
-            this.rbNoConsumeMedicamentos.Location = new System.Drawing.Point(57, 5);
-            this.rbNoConsumeMedicamentos.Name = "rbNoConsumeMedicamentos";
-            this.rbNoConsumeMedicamentos.Size = new System.Drawing.Size(39, 17);
-            this.rbNoConsumeMedicamentos.TabIndex = 71;
-            this.rbNoConsumeMedicamentos.TabStop = true;
-            this.rbNoConsumeMedicamentos.Text = "No";
-            this.rbNoConsumeMedicamentos.UseVisualStyleBackColor = true;
-            // 
-            // rbSiConsumeMedicamentos
-            // 
-            this.rbSiConsumeMedicamentos.AutoSize = true;
-            this.rbSiConsumeMedicamentos.Location = new System.Drawing.Point(3, 5);
-            this.rbSiConsumeMedicamentos.Name = "rbSiConsumeMedicamentos";
-            this.rbSiConsumeMedicamentos.Size = new System.Drawing.Size(34, 17);
-            this.rbSiConsumeMedicamentos.TabIndex = 70;
-            this.rbSiConsumeMedicamentos.TabStop = true;
-            this.rbSiConsumeMedicamentos.Text = "Si";
-            this.rbSiConsumeMedicamentos.UseVisualStyleBackColor = true;
             // 
             // btnAgregarHabitoMedicamento
             // 
@@ -3667,7 +3679,7 @@
             this.groupBox15.Controls.Add(this.cboSustanciaDrogaIlicita);
             this.groupBox15.Controls.Add(this.label79);
             this.groupBox15.Controls.Add(this.label78);
-            this.groupBox15.Controls.Add(this.rnNoConsumeDrogas);
+            this.groupBox15.Controls.Add(this.rbNoConsumeDrogas);
             this.groupBox15.Controls.Add(this.rbSiConsumeDrogas);
             this.groupBox15.Controls.Add(this.label70);
             this.groupBox15.Location = new System.Drawing.Point(6, 6);
@@ -3745,16 +3757,16 @@
             this.label78.TabIndex = 11;
             this.label78.Text = "Sustancia";
             // 
-            // rnNoConsumeDrogas
+            // rbNoConsumeDrogas
             // 
-            this.rnNoConsumeDrogas.AutoSize = true;
-            this.rnNoConsumeDrogas.Location = new System.Drawing.Point(181, 29);
-            this.rnNoConsumeDrogas.Name = "rnNoConsumeDrogas";
-            this.rnNoConsumeDrogas.Size = new System.Drawing.Size(39, 17);
-            this.rnNoConsumeDrogas.TabIndex = 10;
-            this.rnNoConsumeDrogas.TabStop = true;
-            this.rnNoConsumeDrogas.Text = "No";
-            this.rnNoConsumeDrogas.UseVisualStyleBackColor = true;
+            this.rbNoConsumeDrogas.AutoSize = true;
+            this.rbNoConsumeDrogas.Location = new System.Drawing.Point(181, 29);
+            this.rbNoConsumeDrogas.Name = "rbNoConsumeDrogas";
+            this.rbNoConsumeDrogas.Size = new System.Drawing.Size(39, 17);
+            this.rbNoConsumeDrogas.TabIndex = 10;
+            this.rbNoConsumeDrogas.TabStop = true;
+            this.rbNoConsumeDrogas.Text = "No";
+            this.rbNoConsumeDrogas.UseVisualStyleBackColor = true;
             // 
             // rbSiConsumeDrogas
             // 
@@ -3806,6 +3818,46 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(673, 268);
             this.panel7.TabIndex = 3;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.rbNoActividadFisica);
+            this.panel11.Controls.Add(this.rbSiActividadFisica);
+            this.panel11.Location = new System.Drawing.Point(139, 19);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(92, 30);
+            this.panel11.TabIndex = 14;
+            // 
+            // rbNoActividadFisica
+            // 
+            this.rbNoActividadFisica.AutoSize = true;
+            this.rbNoActividadFisica.Location = new System.Drawing.Point(52, 4);
+            this.rbNoActividadFisica.Name = "rbNoActividadFisica";
+            this.rbNoActividadFisica.Size = new System.Drawing.Size(39, 17);
+            this.rbNoActividadFisica.TabIndex = 12;
+            this.rbNoActividadFisica.TabStop = true;
+            this.rbNoActividadFisica.Text = "No";
+            this.rbNoActividadFisica.UseVisualStyleBackColor = true;
+            // 
+            // rbSiActividadFisica
+            // 
+            this.rbSiActividadFisica.AutoSize = true;
+            this.rbSiActividadFisica.Location = new System.Drawing.Point(7, 4);
+            this.rbSiActividadFisica.Name = "rbSiActividadFisica";
+            this.rbSiActividadFisica.Size = new System.Drawing.Size(34, 17);
+            this.rbSiActividadFisica.TabIndex = 11;
+            this.rbSiActividadFisica.TabStop = true;
+            this.rbSiActividadFisica.Text = "Si";
+            this.rbSiActividadFisica.UseVisualStyleBackColor = true;
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(4, 25);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(129, 13);
+            this.label110.TabIndex = 13;
+            this.label110.Text = "¿Realiza actividad física?";
             // 
             // txtDescripcionGradoActividadFisica
             // 
@@ -3931,55 +3983,6 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.rbNoConsumeMedicamentos);
-            this.panel10.Controls.Add(this.rbSiConsumeMedicamentos);
-            this.panel10.Location = new System.Drawing.Point(400, 8);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(99, 26);
-            this.panel10.TabIndex = 77;
-            // 
-            // rbNoActividadFisica
-            // 
-            this.rbNoActividadFisica.AutoSize = true;
-            this.rbNoActividadFisica.Location = new System.Drawing.Point(52, 4);
-            this.rbNoActividadFisica.Name = "rbNoActividadFisica";
-            this.rbNoActividadFisica.Size = new System.Drawing.Size(39, 17);
-            this.rbNoActividadFisica.TabIndex = 12;
-            this.rbNoActividadFisica.TabStop = true;
-            this.rbNoActividadFisica.Text = "No";
-            this.rbNoActividadFisica.UseVisualStyleBackColor = true;
-            // 
-            // rbSiActividadFisica
-            // 
-            this.rbSiActividadFisica.AutoSize = true;
-            this.rbSiActividadFisica.Location = new System.Drawing.Point(7, 4);
-            this.rbSiActividadFisica.Name = "rbSiActividadFisica";
-            this.rbSiActividadFisica.Size = new System.Drawing.Size(34, 17);
-            this.rbSiActividadFisica.TabIndex = 11;
-            this.rbSiActividadFisica.TabStop = true;
-            this.rbSiActividadFisica.Text = "Si";
-            this.rbSiActividadFisica.UseVisualStyleBackColor = true;
-            // 
-            // label110
-            // 
-            this.label110.AutoSize = true;
-            this.label110.Location = new System.Drawing.Point(4, 25);
-            this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(129, 13);
-            this.label110.TabIndex = 13;
-            this.label110.Text = "¿Realiza actividad física?";
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.rbNoActividadFisica);
-            this.panel11.Controls.Add(this.rbSiActividadFisica);
-            this.panel11.Location = new System.Drawing.Point(139, 19);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(92, 30);
-            this.panel11.TabIndex = 14;
-            // 
             // RegistrarHistoriaClínica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4063,6 +4066,8 @@
             this.tabPage8.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.groupBox15.ResumeLayout(false);
@@ -4071,11 +4076,9 @@
             this.tabPage9.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).EndInit();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitosActividadFisica)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4272,7 +4275,7 @@
         private System.Windows.Forms.Button btnAgregarHabitoTabaquismo;
         private System.Windows.Forms.DataGridView dgvHabitosFumar;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.RadioButton rnNoConsumeDrogas;
+        private System.Windows.Forms.RadioButton rbNoConsumeDrogas;
         private System.Windows.Forms.RadioButton rbSiConsumeDrogas;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.TextBox txtCantidadTiempoConsumiendo;

@@ -40,18 +40,87 @@ namespace DAO
 
                 foreach (Sintoma sintoma in sintomas)
                 {
-                    cmd.Parameters.AddWithValue("@fechaInicioSintoma", sintoma.fechaInicioSintoma);
-                    cmd.Parameters.AddWithValue("@cantidadTiempo", sintoma.cantidadTiempo);
-                    cmd.Parameters.AddWithValue("@idElementoTiempo", sintoma.id_elementoTiempo);
-                    cmd.Parameters.AddWithValue("@idDescripcionTiempo", sintoma.id_descripcionDelTiempo);
+                    if (sintoma.fechaInicioSintoma.Equals("01/01/0001 0:00:00") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@fechaInicioSintoma", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@fechaInicioSintoma", sintoma.fechaInicioSintoma);
+                    }
+                    if (sintoma.cantidadTiempo == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@cantidadTiempo", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@idElementoTiempo", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@cantidadTiempo", sintoma.cantidadTiempo);
+                        cmd.Parameters.AddWithValue("@idElementoTiempo", sintoma.id_elementoTiempo);
+                    }
+                    if (sintoma.id_descripcionDelTiempo == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@idDescripcionTiempo", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@idDescripcionTiempo", sintoma.id_descripcionDelTiempo);
+                    }
+                    
                     cmd.Parameters.AddWithValue("@idTipoSintoma", sintoma.id_tipoSintoma);
                     cmd.Parameters.AddWithValue("@descripcion", sintoma.descripcion);
-                    cmd.Parameters.AddWithValue("@idParteCuerpo", sintoma.id_parteCuerpo);
-                    cmd.Parameters.AddWithValue("@haciaDondeIrradia", sintoma.haciaDondeIrradia);
-                    cmd.Parameters.AddWithValue("@idComoModifica", sintoma.id_modificacionSintoma);
-                    cmd.Parameters.AddWithValue("@idElementoModificacion", sintoma.id_elementoModificacion);
-                    cmd.Parameters.AddWithValue("@idCaracterDolor", sintoma.id_caracterDolor);
-                    cmd.Parameters.AddWithValue("@observaciones", sintoma.observaciones);
+
+                    if (sintoma.id_parteCuerpo == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@idParteCuerpo", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@idParteCuerpo", sintoma.id_parteCuerpo);
+                    }
+                    if (sintoma.haciaDondeIrradia.Equals("No precisa")==true)
+                    {
+                        cmd.Parameters.AddWithValue("@haciaDondeIrradia", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@haciaDondeIrradia", sintoma.haciaDondeIrradia);
+                    }
+                    if (sintoma.id_modificacionSintoma == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@idComoModifica", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@idComoModifica", sintoma.id_modificacionSintoma);
+                    }
+                    if (sintoma.id_elementoModificacion == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@idElementoModificacion", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@idElementoModificacion", sintoma.id_elementoModificacion);
+                    }
+
+                    if (sintoma.id_caracterDolor == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@idCaracterDolor", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@idCaracterDolor", sintoma.id_caracterDolor);
+                    }
+
+                    if (sintoma.observaciones.Equals("No precisa") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@observaciones", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@observaciones", sintoma.observaciones);
+                    }
+                    
                     cmd.Parameters.AddWithValue("@idHc", idHc);
                     cmd.Parameters.AddWithValue("@fechaRegistro", sintoma.fechaRegistro);
 

@@ -980,7 +980,7 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"select idEspecificacion from EspecificacionMedicamento
+                string consulta = @"select id_especificacion from EspecificacionMedicamento
                                   where id_medicamento_fk=@idMedicamento
                                   and id_nombreComercial_fk=@idNombreComercial
                                   and id_unidadMedida_fk=@idUnidadMedida

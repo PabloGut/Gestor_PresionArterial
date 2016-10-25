@@ -42,6 +42,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@fechaRegistro", antecedente.fechaRegistro);
                     cmd.Parameters.AddWithValue("@idTipoAntecedenteMorbido", antecedente.id_tipoAntecedenteMorbido);
+
                     if (antecedente.id_enfermedad == 0)
                     {
                         cmd.Parameters.AddWithValue("@idEnfermedad", DBNull.Value);
@@ -69,8 +70,25 @@ namespace DAO
                     
                     cmd.Parameters.AddWithValue("@cantidadTiempo", antecedente.cantidadTiempo);
                     cmd.Parameters.AddWithValue("@idElementoTiempo", antecedente.id_elementoTiempo);
-                    cmd.Parameters.AddWithValue("@evolucion", antecedente.evolución);
-                    cmd.Parameters.AddWithValue("@tratamiento", antecedente.tratamiento);
+
+                    if (antecedente.evolución.Equals("No precisa") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@evolucion",DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@evolucion", antecedente.evolución);
+                    }
+
+                    if (antecedente.tratamiento.Equals("No precisa") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@tratamiento", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@tratamiento", antecedente.tratamiento);
+                    }
+
                     cmd.Parameters.AddWithValue("@idHc", idHc);
 
                     cmd.ExecuteNonQuery();

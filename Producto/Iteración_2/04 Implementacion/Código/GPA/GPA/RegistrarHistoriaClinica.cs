@@ -68,9 +68,9 @@ namespace GPA
             manejadorRegistrarHabitosActividadFisica = new ManejadorRegistrarHabitosActividadFisica();
 
             listaSintomas = new List<Sintoma>();
-            listaAntecedentesMorbidos = new List<AntecedenteMorbido>();
+            listaAntecedentesMorbidos = null;
             antecedenteGinecoObtetrico = null;
-            listaAntecedentesFamiliares = new List<AntecedenteFamiliar>();
+            listaAntecedentesFamiliares = null;
             listaAlergiasAlimento = null;
             listaAlergiasSustanciaAmbiente = null;
             listaAlergiaSustanciaContactoPiel = null;
@@ -85,7 +85,7 @@ namespace GPA
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
             habilitarDeshabilitarTabPageYBotones(false);
-            rbSiDolor.Checked = true;
+            
             presentarDatosPacienteYMedico();
 
             presentarFechaYHoraActual();
@@ -119,10 +119,7 @@ namespace GPA
             presentarTiposAborto(cboTipoAborto2, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeAbortos(), "id_tipoAborto", "nombre");
 
             presentarFamiliares(cboFamiliar, manejadorRegistrarAntecedentesPatologicosFamiliares.mostrarFamiliares(), "id_familiar", "nombre");
-            rbSiViveFamiliar.Checked = true;
-            rbNoOtraEnfermedad.Checked = true;
-            txtDescripcionOtraEnfermedad.Enabled=false;
-            txtCausaMuerte.Enabled = false;
+          
 
             presentarAlimentos(cboAlimentos, manejadorRegistrarAlergias.mostrarAlimentos(), "id_alimento", "nombre");
 
@@ -192,6 +189,29 @@ namespace GPA
         }
         public void inicializarComponentes()
         {
+         
+            rbNoDolor.Checked = true;
+
+            rbNoPresentaAntecedentesMorbidos.Checked = true;
+            rbNoTieneEmbarazos.Checked = true;
+            rbNoTieneAbortos.Checked = true;
+
+            rbSiViveFamiliar.Checked = true;
+            rbNoOtraEnfermedad.Checked = true;
+            txtDescripcionOtraEnfermedad.Enabled = false;
+            txtCausaMuerte.Enabled = false;
+
+            rbNoAlergicoAlimentos.Checked = true;
+            rbNoAlergiaSustanciaAmbiente.Checked = true;
+            rbNoAlergiaSustanciaContactoPiel.Checked = true;
+            rbNoAlergiaInsecto.Checked = true;
+            rbNoAlergiaMedicamento.Checked = true;
+
+            rbNoFuma.Checked = true;
+            rbNoConsumeAlcohol.Checked = true;
+            rbNoConsumeDrogas.Checked = true;
+            rbNoConsumeMedicamentos.Checked = true;
+            rbNoActividadFisica.Checked = true;
             
         }
         /*
@@ -695,7 +715,7 @@ namespace GPA
 
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
-
+            registrarHistoriaClinica();
         }
         private void rbSiDolor_CheckedChanged(object sender, EventArgs e)
         {
@@ -896,6 +916,8 @@ namespace GPA
             if (rbPresentaAntecedentesMorbidos.Checked == true)
             {
                 AntecedenteMorbido antecedenteMorbido = new AntecedenteMorbido();
+                if (listaAntecedentesMorbidos == null)
+                    listaAntecedentesMorbidos = new List<AntecedenteMorbido>();
 
                 string tipoAntecedente = "No precisa";
                 string nombreDelTipoDeAntecedente = "No precisa";
@@ -966,6 +988,8 @@ namespace GPA
             if (cboFamiliar.SelectedIndex > 0)
             {
                 AntecedenteFamiliar antecedente = new AntecedenteFamiliar();
+                if (listaAntecedentesFamiliares == null)
+                    listaAntecedentesFamiliares = new List<AntecedenteFamiliar>();
 
                 string nombreFamiliar = "No precisa";
                 string viveFamiliar = "No precisa";
@@ -974,15 +998,10 @@ namespace GPA
                 string causaMuerte = "No precisa";
                 string descripcionOtraEnfermedad = "No precisa";
                 string observaciones = "No precisa";
-
                 
-
-                if (cboFamiliar.SelectedIndex > -1)
-                {
-                    Familiar familiar = (Familiar)cboFamiliar.SelectedItem;
-                    nombreFamiliar = familiar.nombre;
-                    antecedente.id_familiar = familiar.id_familiar;
-                }
+                Familiar familiar = (Familiar)cboFamiliar.SelectedItem;
+                nombreFamiliar = familiar.nombre;
+                antecedente.id_familiar = familiar.id_familiar;
 
                 if (rbSiViveFamiliar.Checked == true)
                 {
@@ -1105,7 +1124,7 @@ namespace GPA
         public void cargarDatosDataGridViewAlergiaAlimentos()
         {
             
-            if (rbSiAlergiaMedicamento.Checked == true)
+            if (rbSiAlergicoAlimentos.Checked == true && cboAlimentos.SelectedIndex > 0 )
             {   
                 if(listaAlergiasAlimento==null)
                 listaAlergiasAlimento = new List<AlergiaAlimento>();
@@ -1148,7 +1167,7 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaSustanciaAmbiente()
         {
-            if (rbSiAlergiaSustanciaAmbiente.Checked == true)
+            if (rbSiAlergiaSustanciaAmbiente.Checked == true && cboSustanciaAmbiente.SelectedIndex > 0)
             {
                 AlergiaSustanciaAmbiente alergia = new AlergiaSustanciaAmbiente();
 
@@ -1170,7 +1189,7 @@ namespace GPA
                 SustaciaAmbiente sustanciaAmbiente = (SustaciaAmbiente)cboSustanciaAmbiente.SelectedItem;
                 sustancia = sustanciaAmbiente.nombre;
 
-                if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
+                if (string.IsNullOrEmpty(txtEfectosAlergiaSustanciaAmbiente.Text) == false)
                 {
                     efectos = txtEfectosAlergiaSustanciaAmbiente.Text;
                 }
@@ -1189,7 +1208,7 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaSustanciaContactoPiel()
         {
-            if (rbSiAlergiaSustanciaContactoPiel.Checked == true)
+            if (rbSiAlergiaSustanciaContactoPiel.Checked == true && cboSustanciaContactoPiel.SelectedIndex > 0)
             {
                 AlergiaSustanciaContactoPiel alergia = new AlergiaSustanciaContactoPiel();
 
@@ -1200,14 +1219,9 @@ namespace GPA
                 string sustancia = "";
                 string efectos = "No precisa";
 
-                if (rbSiAlergiaSustanciaContactoPiel.Checked == true)
-                {
-                    alergiaSustanciaContactoPiel = "Si";
-                }
-                else
-                {
-                    alergiaSustanciaContactoPiel = "No";
-                }
+                alergiaSustanciaContactoPiel = "Si";
+                
+            
                 SustanciaContactoPiel sustanciaContactoPiel = (SustanciaContactoPiel)cboSustanciaContactoPiel.SelectedItem;
                 sustancia = sustanciaContactoPiel.nombre;
 
@@ -1230,7 +1244,7 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaInsectos()
         {
-            if (rbSiAlergiaInsecto.Checked == true)
+            if (rbSiAlergiaInsecto.Checked == true && cboInsectos.SelectedIndex > 0)
             {
                 AlergiaInsecto alergia = new AlergiaInsecto();
 
@@ -1272,7 +1286,7 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaMedicamentos()
         {
-            if (rbSiAlergiaMedicamento.Checked == true)
+            if (rbSiAlergiaMedicamento.Checked == true && cboMedicamentosAlergia.SelectedIndex > 0)
             {
                 AlergiaMedicamento alergia = new AlergiaMedicamento();
 
@@ -1356,6 +1370,7 @@ namespace GPA
                     añosFumando = txtCantidadAñosFumando.Text;
                     habitoTabaquismo.añosFumando = Convert.ToInt32(txtCantidadAñosFumando.Text);
                 }
+                habitoTabaquismo.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
             }
             else
             {
@@ -1368,13 +1383,13 @@ namespace GPA
 
                     if (string.IsNullOrEmpty(txtCantiTiempoDejoFumar.Text) == false)
                     {
-                        ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoFumaba.SelectedItem;
+                        ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementosDelTiempoFumaba.SelectedItem;
                         dejoDeFumar.cantidad = Convert.ToInt32(txtCantiTiempoDejoFumar.Text);
                         dejoDeFumar.id_elementoTiempo = elementoSeleccionado.id_elementoDelTiempo;
                         cantTiempoDejoFumar = txtCantiTiempoDejoFumar.Text + " " + elementoSeleccionado.nombre;
                     }
 
-                    if (cboDescripcionDelTiempoFumaba.SelectedIndex > -1)
+                    if (cboDescripcionDelTiempoFumaba.SelectedIndex > 0)
                     {
                         DescripcionDelTiempo descripcion = (DescripcionDelTiempo)cboDescripcionDelTiempoFumaba.SelectedItem;
                         dejoDeFumar.id_descripcionTiempo = descripcion.id_descripcionDelTiempo;
@@ -1396,7 +1411,9 @@ namespace GPA
                     }
                     habitoTabaquismo.dejoDeFumar = dejoDeFumar;
                 }
+                habitoTabaquismo.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
             }
+
             listaHabitosTabaquismo.Add(habitoTabaquismo);
             dgvHabitosFumar.Rows.Add(fuma, cantidad, añosFumando, dejoFumar, cantTiempoDejoFumar, descripcionTiempoFumaba, cantidadFumaba);
         }
@@ -2146,6 +2163,21 @@ namespace GPA
         private void cboPresentacionMedicamento_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAñadirSustanciaAmbiente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbNoPresentaAntecedentesMorbidos_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rbPresentaAntecedentesMorbidos_CheckedChanged(object sender, EventArgs e)
+        {
+          
         }
 
 
