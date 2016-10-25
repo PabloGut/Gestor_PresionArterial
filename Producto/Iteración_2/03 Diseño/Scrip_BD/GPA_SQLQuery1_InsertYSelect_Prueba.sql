@@ -26,7 +26,7 @@ from TiposAntecedentesMorbidos
 
 
 select *
-from Estudio
+from TipoSintoma
 
 select *
 from TipoSintoma
