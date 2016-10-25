@@ -16,31 +16,34 @@ namespace GPA
         public ProfesionaMedico medicoLogueado{set;get;}
         public Paciente pacienteSeleccionado{set;get;}
         ManejadorConsultarPaciente manejadorConsultarPaciente;
+        ManejadorRegistrarAtencionMedicaEnConsultorio manejadorRegistrarAtencionMedicaEnConsultorio;
 
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
             medicoLogueado=pmLogueado;
             manejadorConsultarPaciente = new ManejadorConsultarPaciente();
-
+            manejadorRegistrarAtencionMedicaEnConsultorio = new ManejadorRegistrarAtencionMedicaEnConsultorio();
         }
+
         public MenuPrincipal()
         {
             InitializeComponent();
-            
-
         }
+
         private void historiaClínicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
+
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-
             cargarComboTipoDocumento();
             dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
             dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
+            manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
+            //cargarDatosRegistrarAtencionEnConsultorio();
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -188,7 +191,6 @@ namespace GPA
         private void btnSeleccionaPaciente_Click(object sender, EventArgs e)
         {
             presentarPaciente();
-
         }
         /*
          * Método para tomar el tipo y número de documento del paciente seleccionado del datagridview, obtener el objeto correspondiente al paciente y llamar al método para mostrar los datos en el formulario.
@@ -333,6 +335,12 @@ namespace GPA
                 txtEmailMedico.Enabled = valor;
                 txtNroCelularMedico.Enabled = valor;
             }
+        }
+
+        public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres)
+        {
+            Utilidades.deshabilitarLosControles(tabPage4);
+            Utilidades.cargarCombo(comboBox3, caracteres, "id_caracterDelDolor", "nombre");
         }
 
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)

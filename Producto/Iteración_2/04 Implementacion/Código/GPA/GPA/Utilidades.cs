@@ -46,11 +46,27 @@ namespace GPA
             }
         }
 
+        public static void deshabilitarLosControles(Control form)
+        {
+            foreach (Control control in form.Controls)
+            {
+                deshabilitarLosControles(control);
+                if (control is ContainerControl){}else{control.Enabled = false;}
+            }
+        }
+
         public static string stringAleatorio()
         {
             string strAl = Path.GetRandomFileName();
             strAl = strAl.Replace(".", ""); // Para remover el .
             return strAl;
+        }
+
+        public static void cargarCombo<T>(ComboBox combo, List<T> lista, string valueMember, string displayMember)
+        {
+            combo.DataSource = lista;
+            combo.ValueMember = valueMember;
+            combo.DisplayMember = displayMember;
         }
     }
 }
