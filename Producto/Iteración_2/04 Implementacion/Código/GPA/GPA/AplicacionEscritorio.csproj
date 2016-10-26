@@ -88,6 +88,7 @@
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesGinecoObstetricos.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesMorbidos.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesPatologicosFamiliares.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarAtencionMedicaEnConsultorio.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarBarrio.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarDrogasLicitas.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEnfermedadActual.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarLocalidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarPaciente.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarProfesionalMedico.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarTipoDeDocumento.cs" />
     <Compile Include="Manejadores\ManejadorActualizarMedicamento.cs" />
     <Compile Include="RegistrarBarrio.cs">

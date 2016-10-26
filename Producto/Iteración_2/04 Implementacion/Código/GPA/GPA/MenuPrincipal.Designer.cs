@@ -344,6 +344,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -407,7 +408,8 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarPacienteToolStripMenuItem,
             this.buscarPacienteToolStripMenuItem,
-            this.crearHistoriaClínicaToolStripMenuItem});
+            this.crearHistoriaClínicaToolStripMenuItem,
+            this.registrarProfesionalMédicoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -416,14 +418,14 @@
             // registrarPacienteToolStripMenuItem
             // 
             this.registrarPacienteToolStripMenuItem.Name = "registrarPacienteToolStripMenuItem";
-            this.registrarPacienteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.registrarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.registrarPacienteToolStripMenuItem.Text = "Registrar Paciente";
             this.registrarPacienteToolStripMenuItem.Click += new System.EventHandler(this.registrarPacienteToolStripMenuItem_Click);
             // 
             // buscarPacienteToolStripMenuItem
             // 
             this.buscarPacienteToolStripMenuItem.Name = "buscarPacienteToolStripMenuItem";
-            this.buscarPacienteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.buscarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.buscarPacienteToolStripMenuItem.Text = "Buscar Paciente";
             this.buscarPacienteToolStripMenuItem.Click += new System.EventHandler(this.buscarPacienteToolStripMenuItem_Click);
             // 
@@ -433,7 +435,7 @@
             this.consultarHistoriaClinicaToolStripMenuItem,
             this.agregarEstudioToolStripMenuItem});
             this.crearHistoriaClínicaToolStripMenuItem.Name = "crearHistoriaClínicaToolStripMenuItem";
-            this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.crearHistoriaClínicaToolStripMenuItem.Text = "Historia Clínica";
             this.crearHistoriaClínicaToolStripMenuItem.Click += new System.EventHandler(this.crearHistoriaClínicaToolStripMenuItem_Click);
             // 
@@ -3427,6 +3429,13 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // registrarProfesionalMédicoToolStripMenuItem
+            // 
+            this.registrarProfesionalMédicoToolStripMenuItem.Name = "registrarProfesionalMédicoToolStripMenuItem";
+            this.registrarProfesionalMédicoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.registrarProfesionalMédicoToolStripMenuItem.Text = "Registrar Profesional Médico";
+            this.registrarProfesionalMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarProfesionalMédicoToolStripMenuItem_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3826,5 +3835,6 @@
         private System.Windows.Forms.TextBox txtLocalidadPaciente;
         private System.Windows.Forms.TextBox txtBarrioPaciente;
         private System.Windows.Forms.Button btnRegistraMedicamento;
+        private System.Windows.Forms.ToolStripMenuItem registrarProfesionalMédicoToolStripMenuItem;
     }
 }

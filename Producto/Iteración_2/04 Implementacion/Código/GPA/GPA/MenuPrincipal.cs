@@ -16,13 +16,14 @@ namespace GPA
         public ProfesionaMedico medicoLogueado{set;get;}
         public Paciente pacienteSeleccionado{set;get;}
         ManejadorConsultarPaciente manejadorConsultarPaciente;
+        ManejadorRegistrarAtencionMedicaEnConsultorio manejadorRegistrarAtencionMedicaEnConsultorio;
 
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
             medicoLogueado=pmLogueado;
             manejadorConsultarPaciente = new ManejadorConsultarPaciente();
-
+            manejadorRegistrarAtencionMedicaEnConsultorio = new ManejadorRegistrarAtencionMedicaEnConsultorio();
         }
         public MenuPrincipal()
         {
@@ -41,6 +42,7 @@ namespace GPA
             dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
             dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
+            manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -61,7 +63,7 @@ namespace GPA
 
         private void registrarPacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegistrarPaciente rp = new RegistrarPaciente();
+            RegistrarPaciente rp = new RegistrarPaciente(medicoLogueado);
             rp.ShowDialog();
         }
 
@@ -335,6 +337,12 @@ namespace GPA
             }
         }
 
+        public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres)
+        {
+            Utilidades.deshabilitarLosControles(tabPage4);
+            Utilidades.cargarCombo(comboBox3, caracteres, "id_caracterDelDolor", "nombre");
+        }
+
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)
         {
             RegistrarHistoriaClínica regHC = new RegistrarHistoriaClínica(medicoLogueado,pacienteSeleccionado);
@@ -346,6 +354,12 @@ namespace GPA
             RegistrarMedicamento formRegistrarMedicamento = new RegistrarMedicamento();
             formRegistrarMedicamento.ShowDialog();
 
+        }
+
+        private void registrarProfesionalMédicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarProfesionalMedico rpm = new RegistrarProfesionalMedico();
+            rpm.ShowDialog();
         }
     }
 }
