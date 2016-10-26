@@ -170,7 +170,7 @@ namespace GPA
             presentarElementosDelTiempo(cboElementoTiempoMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
             presentarElementosDelTiempo(cboElementoTiempoCancelacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
-            rbMedicamentoActual.Checked = true;
+            
 
             presentarFrecuenciasDeConsumo(cboFrecuencia, manejadorRegistrarDrogasLicitas.mostrarFrecuencias(), "id_frecuencia", "nombre");
 
@@ -211,6 +211,7 @@ namespace GPA
             rbNoConsumeAlcohol.Checked = true;
             rbNoConsumeDrogas.Checked = true;
             rbNoConsumeMedicamentos.Checked = true;
+            rbMedicamentoActual.Checked = true;
             rbNoActividadFisica.Checked = true;
             
         }
@@ -993,7 +994,7 @@ namespace GPA
 
                 string nombreFamiliar = "No precisa";
                 string viveFamiliar = "No precisa";
-                string enfermedades = "";
+                string enfermedades = "No precisa";
                 string otraEnfermedad = "No precisa";
                 string causaMuerte = "No precisa";
                 string descripcionOtraEnfermedad = "No precisa";
@@ -1112,6 +1113,7 @@ namespace GPA
                     observaciones = txtObservacionesAntecedentesPatologicosFamiliares.Text;
                 }
                 antecedente.observaciones = observaciones;
+                antecedente.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 listaAntecedentesFamiliares.Add(antecedente);
                 dgvAntecedentesPatologicosFamiliares.Rows.Add(nombreFamiliar, viveFamiliar, enfermedades, otraEnfermedad, descripcionOtraEnfermedad, causaMuerte, observaciones);
             }
@@ -1623,6 +1625,14 @@ namespace GPA
                     programacion.id_elementoTiempo2 = elementoTiempoCancelacion.id_elementoDelTiempo;
 
                 }
+                if (chbAutomedicado.Checked == true)
+                {
+                    programacion.automedicamento = "Si";
+                }
+                else
+                {
+                    programacion.automedicamento = "No";
+                }
                 habitoMedicamento.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 habitoMedicamento.programacion = programacion;
                 listaHabitosMedicamentos.Add(habitoMedicamento);
@@ -1846,9 +1856,9 @@ namespace GPA
 
             hc.nro_hc = manejadorRegistrarHC.calcularSiguienteNroHc();
 
-            hc.fecha =Convert.ToDateTime(mtbFechaActual);
-            hc.hora = Convert.ToDateTime(mtbHoraActual);
-            hc.fechaInicioAtencion = Convert.ToDateTime(mtbFechaActual);
+            hc.fecha =Convert.ToDateTime(mtbFechaActual.Text);
+            hc.hora = Convert.ToDateTime(mtbHoraActual.Text);
+            hc.fechaInicioAtencion = Convert.ToDateTime(mtbFechaActual.Text);
 
             hc.motivoConsulta = txtmotivoConsulta.Text;
 
@@ -1872,6 +1882,8 @@ namespace GPA
 
             registrarHabitosActividadFisica(idHc);
 
+            manejadorRegistrarHC.asignarHCAPaciente(paciente.id_tipoDoc, paciente.nroDoc, idHc);
+
            
         }
         private void registrarEnfermedadActual(int idHc)
@@ -1891,7 +1903,7 @@ namespace GPA
          */
         private void AgregarAntecedenteGinecoObstetricos()
         {
-            
+            string problemasEmbarazo = "No precisa";
             if (rbSiTieneEmbarazos.Checked == true)
             {
                 antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
@@ -1904,18 +1916,30 @@ namespace GPA
 
                 if(string.IsNullOrEmpty(txtCantidadEmbarazosPrematuro.Text)==false)
                 antecedenteGinecoObtetrico.cantidadEmbarazosPrematuros = Convert.ToInt32(txtCantidadEmbarazosPrematuro.Text);
-                TipoParto tipoParto1Seleccionado = (TipoParto)cboTipoPartoPretermino.SelectedItem;
-                antecedenteGinecoObtetrico.id_tipoPartoPrematuro = tipoParto1Seleccionado.id_tipoParto;
+
+                if (cboTipoPartoPretermino.SelectedIndex > 0)
+                {
+                    TipoParto tipoParto1Seleccionado = (TipoParto)cboTipoPartoPretermino.SelectedItem;
+                    antecedenteGinecoObtetrico.id_tipoPartoPrematuro = tipoParto1Seleccionado.id_tipoParto;
+                }
 
                 if(string.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text)==false)
                 antecedenteGinecoObtetrico.cantidadEmbarazosATermino = Convert.ToInt32(txtCantidadEmbarazosATermino.Text);
-                TipoParto tipoParto2Seleccionado = (TipoParto)cboTipoPartoATermino.SelectedItem;
-                antecedenteGinecoObtetrico.id_tipoPartoATermino = tipoParto2Seleccionado.id_tipoParto;
+
+                if (cboTipoPartoATermino.SelectedIndex > 0)
+                {
+                    TipoParto tipoParto2Seleccionado = (TipoParto)cboTipoPartoATermino.SelectedItem;
+                    antecedenteGinecoObtetrico.id_tipoPartoATermino = tipoParto2Seleccionado.id_tipoParto;
+                }
 
                 if(string.IsNullOrEmpty(txtCantidadEmbarazosPosTermino.Text)==false)
                 antecedenteGinecoObtetrico.cantidadEmbarazosPosTermino = Convert.ToInt32(txtCantidadEmbarazosPosTermino.Text);
-                TipoParto tipoParto3Seleccionado = (TipoParto)cboTipoPartoPostermino.SelectedItem;
-                antecedenteGinecoObtetrico.id_tipoPartoPosTermino = tipoParto3Seleccionado.id_tipoParto;
+
+                if (cboTipoPartoPostermino.SelectedIndex > 0)
+                {
+                    TipoParto tipoParto3Seleccionado = (TipoParto)cboTipoPartoPostermino.SelectedItem;
+                    antecedenteGinecoObtetrico.id_tipoPartoPosTermino = tipoParto3Seleccionado.id_tipoParto;
+                }
 
                 if (rbSiTieneAbortos.Checked == true)
                 {
@@ -1923,15 +1947,22 @@ namespace GPA
 
                     aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
 
-                    aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
-                    TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
-                    aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
-
-                    TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
-                    aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
-                    aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+                    if (string.IsNullOrEmpty(txtCantidadTipoAborto1.Text) == false)
+                    {
+                        aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+                        TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
+                        aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+                    }
+                    if (string.IsNullOrEmpty(txtCantidadTipoAborto2.Text) == false)
+                    {
+                        TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
+                        aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
+                        aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+                    }
 
                     aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
+                    
+                    if(string.IsNullOrEmpty(txtProblemasEmbarazo.Text)==false)
                     aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
 
                     antecedenteGinecoObtetrico.aborto = aborto;
@@ -1955,7 +1986,9 @@ namespace GPA
                     aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
 
                     aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
-                    aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
+
+                    if(string.IsNullOrEmpty( txtProblemasEmbarazo.Text)==false)
+                        aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
 
                     antecedenteGinecoObtetrico.aborto = aborto;
                 }

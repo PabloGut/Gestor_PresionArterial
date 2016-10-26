@@ -770,7 +770,7 @@
             // 
             // btnAgregarSintoma
             // 
-            this.btnAgregarSintoma.Location = new System.Drawing.Point(291, 400);
+            this.btnAgregarSintoma.Location = new System.Drawing.Point(292, 403);
             this.btnAgregarSintoma.Name = "btnAgregarSintoma";
             this.btnAgregarSintoma.Size = new System.Drawing.Size(132, 23);
             this.btnAgregarSintoma.TabIndex = 22;

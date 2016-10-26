@@ -25,28 +25,35 @@ namespace DAO
         public static void registrarSintomas(List<Sintoma> sintomas, int idHc)
         {
             setCadenaConexion();
-            SqlConnection cn = new SqlConnection();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
             try
             {
                 cn.Open();
-
+                tran = cn.BeginTransaction();
                 string consulta = @"insert into Sintoma(fechaInicioSintoma,cantidadDeTiempo,id_elementoDelTiempo_fk,id_descripcionDelTiempo_fk,id_tipoSintoma_fk,descripcion,id_parteDelCuerpo_fk,haciaDondeIrradia,id_comoSeModifica_fk,id_elementoDeModificacion_fk,id_caracterDolor_fk,observaciones,id_hc_fk,fechaRegistro)
                                   values(@fechaInicioSintoma,@cantidadTiempo,@idElementoTiempo,@idDescripcionTiempo,@idTipoSintoma,@descripcion,@idParteCuerpo,@haciaDondeIrradia,@idComoModifica,@idElementoModificacion,@idCaracterDolor,@observaciones,@idHc,@fechaRegistro)";
 
                 SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
 
                 foreach (Sintoma sintoma in sintomas)
                 {
-                    if (sintoma.fechaInicioSintoma.Equals("01/01/0001 0:00:00") == true)
+                    cmd.Parameters.Clear();
+
+                    DateTime fecha = Convert.ToDateTime("01/01/0001 0:00:00");
+
+                    if (DateTime.Compare(fecha, sintoma.fechaInicioSintoma) == 0)
                     {
                         cmd.Parameters.AddWithValue("@fechaInicioSintoma", DBNull.Value);
                     }
                     else
                     {
-                        cmd.Parameters.AddWithValue("@fechaInicioSintoma", sintoma.fechaInicioSintoma);
+                        cmd.Parameters.AddWithValue("@fechaInicioSintoma", sintoma.fechaInicioSintoma.ToShortDateString());
                     }
                     if (sintoma.cantidadTiempo == 0)
                     {
@@ -122,10 +129,12 @@ namespace DAO
                     }
                     
                     cmd.Parameters.AddWithValue("@idHc", idHc);
-                    cmd.Parameters.AddWithValue("@fechaRegistro", sintoma.fechaRegistro);
+                    cmd.Parameters.AddWithValue("@fechaRegistro", sintoma.fechaRegistro.ToShortDateString());
 
                     cmd.ExecuteNonQuery();
                 }
+
+                tran.Commit();
                 cn.Close();
             }
             catch (Exception e)
@@ -133,10 +142,10 @@ namespace DAO
                 if (cn.State == ConnectionState.Open)
                 {
                     cn.Close();
+                    tran.Rollback();
                 }
                 throw new ApplicationException("Error:" + e.Message);
-            }
-            
+            } 
         }
     }
 }

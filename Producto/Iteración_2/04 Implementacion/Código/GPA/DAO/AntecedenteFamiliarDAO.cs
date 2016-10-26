@@ -43,10 +43,42 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@fechaRegistro", antecedente.fechaRegistro);
                     cmd.Parameters.AddWithValue("@idFamilizar", antecedente.id_familiar);
                     cmd.Parameters.AddWithValue("@familiarVive", antecedente.familiarVive);
-                    cmd.Parameters.AddWithValue("@enfermedades", antecedente.enfermedades);
-                    cmd.Parameters.AddWithValue("@descripcionOtrasEnfermedades", antecedente.descripcionOtrasEnfermedades);
-                    cmd.Parameters.AddWithValue("@causaMuerte", antecedente.causaMuerte);
-                    cmd.Parameters.AddWithValue("@observaciones", antecedente.observaciones);
+
+                    if (antecedente.enfermedades.Equals("No precisa") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@enfermedades", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@enfermedades", antecedente.enfermedades);
+                    }
+
+                    if (antecedente.descripcionOtrasEnfermedades.Equals("No precisa") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@descripcionOtrasEnfermedades", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@descripcionOtrasEnfermedades", antecedente.descripcionOtrasEnfermedades);
+                    }
+
+                    if (antecedente.causaMuerte.Equals("No precisa") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@causaMuerte", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@causaMuerte", antecedente.causaMuerte);
+                    }
+                    if (antecedente.observaciones.Equals("No precisa") == true)
+                    {
+                        cmd.Parameters.AddWithValue("@observaciones", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@observaciones", antecedente.observaciones);
+                    }
+
                     cmd.Parameters.AddWithValue("@idHc", antecedente.idHc);
 
                     cmd.ExecuteNonQuery();

@@ -35,6 +35,7 @@
             this.crearHistoriaClínicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarEstudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ediciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -344,7 +345,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -453,6 +454,13 @@
             this.agregarEstudioToolStripMenuItem.Text = "Agregar Estudio";
             this.agregarEstudioToolStripMenuItem.Click += new System.EventHandler(this.agregarEstudioToolStripMenuItem_Click);
             // 
+            // registrarProfesionalMédicoToolStripMenuItem
+            // 
+            this.registrarProfesionalMédicoToolStripMenuItem.Name = "registrarProfesionalMédicoToolStripMenuItem";
+            this.registrarProfesionalMédicoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.registrarProfesionalMédicoToolStripMenuItem.Text = "Registrar Profesional Médico";
+            this.registrarProfesionalMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarProfesionalMédicoToolStripMenuItem_Click);
+            // 
             // ediciónToolStripMenuItem
             // 
             this.ediciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -557,6 +565,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnActualizar);
             this.panel2.Controls.Add(this.txtNombreApellidoPaciente);
             this.panel2.Controls.Add(this.btnBuscar);
             this.panel2.Controls.Add(this.cboTipoDocPaciente);
@@ -3429,12 +3438,15 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // registrarProfesionalMédicoToolStripMenuItem
+            // btnActualizar
             // 
-            this.registrarProfesionalMédicoToolStripMenuItem.Name = "registrarProfesionalMédicoToolStripMenuItem";
-            this.registrarProfesionalMédicoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.registrarProfesionalMédicoToolStripMenuItem.Text = "Registrar Profesional Médico";
-            this.registrarProfesionalMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarProfesionalMédicoToolStripMenuItem_Click);
+            this.btnActualizar.Location = new System.Drawing.Point(500, 87);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 5;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // MenuPrincipal
             // 
@@ -3836,5 +3848,6 @@
         private System.Windows.Forms.TextBox txtBarrioPaciente;
         private System.Windows.Forms.Button btnRegistraMedicamento;
         private System.Windows.Forms.ToolStripMenuItem registrarProfesionalMédicoToolStripMenuItem;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

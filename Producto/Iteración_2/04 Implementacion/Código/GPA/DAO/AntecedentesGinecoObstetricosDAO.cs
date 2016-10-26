@@ -49,13 +49,41 @@ namespace DAO
 
                 cmd.Parameters.AddWithValue("@fechaRegistro", antecedentesGinecoObstetricos.fechaRegistro);
                 cmd.Parameters.AddWithValue("@cantidadEmbarazos", antecedentesGinecoObstetricos.cantidadEmbarazos);
-                cmd.Parameters.AddWithValue("@cantidadEmbarazosPrematuros", antecedentesGinecoObstetricos.cantidadEmbarazosPrematuros);
-                cmd.Parameters.AddWithValue("@idTipoParto1", antecedentesGinecoObstetricos.id_tipoPartoPrematuro);
-                cmd.Parameters.AddWithValue("@cantidadEmbarazosATermino", antecedentesGinecoObstetricos.cantidadEmbarazosATermino);
-                cmd.Parameters.AddWithValue("@idTipoParto2", antecedentesGinecoObstetricos.id_tipoPartoATermino);
-                cmd.Parameters.AddWithValue("@cantidadEmbarazosPosTermino", antecedentesGinecoObstetricos.cantidadEmbarazosPosTermino);
-                cmd.Parameters.AddWithValue("@idTipoParto3", antecedentesGinecoObstetricos.id_tipoPartoPosTermino);
 
+                if (antecedentesGinecoObstetricos.cantidadEmbarazosPrematuros == 0)
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEmbarazosPrematuros", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@idTipoParto1", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEmbarazosPrematuros", antecedentesGinecoObstetricos.cantidadEmbarazosPrematuros);
+                    cmd.Parameters.AddWithValue("@idTipoParto1", antecedentesGinecoObstetricos.id_tipoPartoPrematuro);
+                }
+
+                if (antecedentesGinecoObstetricos.cantidadEmbarazosATermino == 0)
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEmbarazosATermino", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@idTipoParto2", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEmbarazosATermino", antecedentesGinecoObstetricos.cantidadEmbarazosATermino);
+                    cmd.Parameters.AddWithValue("@idTipoParto2", antecedentesGinecoObstetricos.id_tipoPartoATermino);
+                }
+
+                if (antecedentesGinecoObstetricos.cantidadEmbarazosPosTermino == 0)
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEmbarazosPosTermino", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@idTipoParto3", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEmbarazosPosTermino", antecedentesGinecoObstetricos.cantidadEmbarazosPosTermino);
+                    cmd.Parameters.AddWithValue("@idTipoParto3", antecedentesGinecoObstetricos.id_tipoPartoPosTermino);
+                }
+               
+                
                 if (antecedentesGinecoObstetricos.id_aborto == 0)
                 {
                     cmd.Parameters.AddWithValue("@idAborto", DBNull.Value);

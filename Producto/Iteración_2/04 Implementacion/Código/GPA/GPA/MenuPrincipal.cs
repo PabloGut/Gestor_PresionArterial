@@ -39,7 +39,8 @@ namespace GPA
         {
 
             cargarComboTipoDocumento();
-            dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+            //dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+            cargarDataGridPacientesDelProfesional();
             dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
             manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
@@ -55,7 +56,10 @@ namespace GPA
             cboTipoDocPaciente.ValueMember = "id_tipoDoc";
             cboTipoDocPaciente.DisplayMember = "nombre";
         }
-
+        private void cargarDataGridPacientesDelProfesional()
+        {
+            dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+        }
         private void crearHistoriaClínicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -360,6 +364,11 @@ namespace GPA
         {
             RegistrarProfesionalMedico rpm = new RegistrarProfesionalMedico();
             rpm.ShowDialog();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            cargarDataGridPacientesDelProfesional();
         }
     }
 }

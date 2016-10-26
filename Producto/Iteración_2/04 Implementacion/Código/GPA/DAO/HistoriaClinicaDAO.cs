@@ -28,34 +28,38 @@ namespace DAO
             setCadenaConexion();
             SqlConnection cn= new SqlConnection(getCadenaConexion());
             int idHc;
+            SqlTransaction tran = null;
             try
             {
                 cn.Open();
 
-                string consulta = @"insert into Historia_Clinica(nro_hc,fecha_creación,hora_creacion,principalProblema, fecha_inicio_atencion_con_profesional, id_tipodoc_profesionaMedico_fk, id_nrodoc_profesionalMedico_fk,id_tipodoc_paciente_fk, id_nrodoc_paciente_fk)
-                                  values(@nroHc,@fechaCreacion,@horaCreacion,@principalProblema,@fechaInicioAtencionConProfesional,@idTipoDocProfesional,@idNroDocProfesional,@idTipoDocPaciente,@nroDocPaciente)";
-
+                string consulta = @"insert into Historia_Clinica(nro_hc,fecha_creación,principalProblema, fecha_inicio_atencion_con_profesional, id_tipodoc_profesionaMedico_fk, id_nrodoc_profesionalMedico_fk,id_tipodoc_paciente_fk, id_nrodoc_paciente_fk,hora_creacion)
+                                  values(@nroHc,@fechaCreacion,@principalProblema,@fechaInicioAtencionConProfesional,@idTipoDocProfesional,@idNroDocProfesional,@idTipoDocPaciente,@nroDocPaciente,@horaCreacion)";
+                
+                tran = cn.BeginTransaction();
                 SqlCommand cmd = new SqlCommand();
                 
                 cmd.Parameters.AddWithValue("@nroHc", hc.nro_hc);
                 cmd.Parameters.AddWithValue("@fechaCreacion", hc.fecha);
-                cmd.Parameters.AddWithValue("@horaCreacion", hc.hora);
                 cmd.Parameters.AddWithValue("@principalProblema", hc.motivoConsulta);
                 cmd.Parameters.AddWithValue("@fechaInicioAtencionConProfesional", hc.fechaInicioAtencion);
                 cmd.Parameters.AddWithValue("@idTipoDocProfesional", hc.idtipodoc);
                 cmd.Parameters.AddWithValue("@idNroDocProfesional", hc.nrodoc);
                 cmd.Parameters.AddWithValue("@idTipoDocPaciente", hc.idtipodoc_paciente);
                 cmd.Parameters.AddWithValue("@nroDocPaciente", hc.nrodoc_paciente);
+                cmd.Parameters.AddWithValue("@horaCreacion", hc.hora);
 
                 cmd.Connection = cn;
+                cmd.Transaction = tran;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
 
-                SqlCommand cmd1 = new SqlCommand("select @@Identity", cn);
+                SqlCommand cmd1 = new SqlCommand("select @@Identity", cn,tran);
 
                 idHc =Convert.ToInt32(cmd1.ExecuteScalar());
 
+                tran.Commit();
                 cn.Close();
 
             }
@@ -65,6 +69,7 @@ namespace DAO
                 if (cn.State == ConnectionState.Open)
                 {
                     cn.Close();
+                    tran.Rollback();
                 }
                 throw new ApplicationException("Error: " + e.Message);
             }

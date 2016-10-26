@@ -49,9 +49,8 @@ namespace GPA.Manejadores
         }
         public int calcularSiguienteNroHc()
         {
-            return calcularSiguienteNroHc();
+            return HistoriaClinicaLN.calcularSiguienteNroHc();
         }
 
-       
     }
 }

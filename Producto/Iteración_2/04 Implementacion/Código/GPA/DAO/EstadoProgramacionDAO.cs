@@ -33,9 +33,12 @@ namespace DAO
                 cn.Open();
 
                 string consulta = @"select id_estadoProgramacion from EstadoProgramacion
-                                   where nombre=@nombre";
+                                   where nombre like @nombre";
 
                 SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
