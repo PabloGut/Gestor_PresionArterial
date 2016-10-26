@@ -122,7 +122,7 @@ namespace DAO
             cn.Close();
         }
 
-        public static void insertarPaciente(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int edad, double altura, int peso, string nombre_usuario, string contraseña, DateTime fecha_creacion, int id_estado)
+        public static void insertarPaciente(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, DateTime fecha_nacimiento, int edad, double altura, int peso, ProfesionaMedico medico, string nombre_usuario, string contraseña, DateTime fecha_creacion, int id_estado)
         {
             SqlConnection cn = new SqlConnection(cadenaConexion);
             SqlTransaction tran = null;
@@ -131,7 +131,7 @@ namespace DAO
                 cn.Open();
                 tran = cn.BeginTransaction();
 
-                string consultaInsertarDomicilio = "INSERT INTO Domicilio (calle,numero,codigo_postal,piso,departamento,id_barrio) VALUES (@paramCalle,@paramNumero,@paramCodigo_postal,@paramPiso,@paramDepartamento,@paramId_barrio)";
+                string consultaInsertarDomicilio = "INSERT INTO Domicilio (calle,numero,codigo_postal,piso,departamento,id_barrio_fk) VALUES (@paramCalle,@paramNumero,@paramCodigo_postal,@paramPiso,@paramDepartamento,@paramId_barrio_fk)";
 
                 SqlCommand cmdInsertarDomicilio = new SqlCommand();
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramCalle", calle);
@@ -139,7 +139,7 @@ namespace DAO
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramCodigo_postal", codigo_postal);
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramPiso", piso);
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramDepartamento", departamento);
-                cmdInsertarDomicilio.Parameters.AddWithValue("@paramId_barrio", id_barrio);
+                cmdInsertarDomicilio.Parameters.AddWithValue("@paramId_barrio_fk", id_barrio);
 
                 cmdInsertarDomicilio.CommandText = consultaInsertarDomicilio;
                 cmdInsertarDomicilio.CommandType = CommandType.Text;
@@ -152,12 +152,12 @@ namespace DAO
                 cmd1.Transaction = tran;
                 int id_domicilio = Convert.ToInt32(cmd1.ExecuteScalar());
 
-                string consultaInsertarUsuario = "INSERT INTO Usuario (nombre_usuario,contraseña,fecha_creacion) VALUES (@paramNombre_usuario,ENCRYPTBYPASSPHRASE('clave',@paramContraseña),@paramFecha_creacion)";
+                string consultaInsertarUsuario = "INSERT INTO Usuario (nombre_usuario,contraseña,fecha_creacion) VALUES (@paramNombre_usuario,PWDENCRYPT(@paramContraseña),@paramFecha_creacion)";
 
                 SqlCommand cmdInsertarUsuario = new SqlCommand();
                 cmdInsertarUsuario.Parameters.AddWithValue("@paramNombre_usuario", nombre_usuario);
                 cmdInsertarUsuario.Parameters.AddWithValue("@paramContraseña", contraseña);
-                cmdInsertarUsuario.Parameters.AddWithValue("@paramFecha_creacion", Convert.ToString(fecha_creacion));
+                cmdInsertarUsuario.Parameters.AddWithValue("@paramFecha_creacion", fecha_creacion.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
 
                 cmdInsertarUsuario.CommandText = consultaInsertarUsuario;
                 cmdInsertarUsuario.CommandType = CommandType.Text;
@@ -170,7 +170,7 @@ namespace DAO
                 cmd2.Transaction = tran;
                 int id_usuario = Convert.ToInt32(cmd2.ExecuteScalar());
 
-                string consultaInsertarPaciente = "INSERT INTO Paciente (id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_inicio_tratamiento,edad,altura,peso,id_domicilio_fk) VALUES (@paramId_tipoDoc_fk,@paramNro_documento,@paramNombre,@paramApellido,@paramTelefono,@paramNroCelular,@paramEmail,@paramId_usuario_fk,@paramId_estado_fk,@paramFecha_inicio_tratamiento,@paramEdad,@paramAltura,@paramPeso,@paramId_domicilio_fk)";
+                string consultaInsertarPaciente = "INSERT INTO Paciente (id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,fecha_nacimiento,edad,altura,peso,id_domicilio_fk,id_profesionalMedico_tipoDoc_fk,id_profesionalMedico_nroDoc_fk,id_sexo_fk) VALUES (@paramId_tipoDoc_fk,@paramNro_documento,@paramNombre,@paramApellido,@paramTelefono,@paramNroCelular,@paramEmail,@paramId_usuario_fk,@paramId_estado_fk,@paramFecha_nacimiento,@paramEdad,@paramAltura,@paramPeso,@paramId_domicilio_fk,@paramId_profesionalMedico_tipoDoc_fk,@paramId_profesionalMedico_nroDoc_fk,@paramId_sexo_fk)";
 
                 SqlCommand cmdInsertarPaciente = new SqlCommand();
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramId_tipoDoc_fk", id_tipoDoc);
@@ -182,11 +182,14 @@ namespace DAO
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramEmail", email);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramId_usuario_fk", id_usuario);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramId_estado_fk", id_estado);
-                cmdInsertarPaciente.Parameters.AddWithValue("@paramFecha_inicio_tratamiento", Convert.ToString(DateTime.Today));
+                cmdInsertarPaciente.Parameters.AddWithValue("@paramFecha_nacimiento", fecha_nacimiento.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramEdad", edad);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramAltura", altura);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramPeso", peso);
                 cmdInsertarPaciente.Parameters.AddWithValue("@paramId_domicilio_fk", id_domicilio);
+                cmdInsertarPaciente.Parameters.AddWithValue("@paramId_profesionalMedico_tipoDoc_fk", medico.id_tipoDoc);
+                cmdInsertarPaciente.Parameters.AddWithValue("@paramId_profesionalMedico_nroDoc_fk", medico.nroDoc);
+                cmdInsertarPaciente.Parameters.AddWithValue("@paramId_sexo_fk", id_sexo);
 
                 cmdInsertarPaciente.CommandText = consultaInsertarPaciente;
                 cmdInsertarPaciente.CommandType = CommandType.Text;

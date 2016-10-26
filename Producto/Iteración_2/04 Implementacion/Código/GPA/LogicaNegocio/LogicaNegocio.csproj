@@ -49,6 +49,7 @@
     <Compile Include="AntecedenteFamiliarLN.cs" />
     <Compile Include="AntecedenteGinecoObstetricoLN.cs" />
     <Compile Include="AntecedenteMorbidoLN.cs" />
+    <Compile Include="BarrioLN.cs" />
     <Compile Include="CaracterDelDolorLN.cs" />
     <Compile Include="ComponenteDelTiempoLN.cs" />
     <Compile Include="DescripcionDelTiempoLN.cs" />
@@ -56,7 +57,9 @@
     <Compile Include="ElementoDeModificacionLN.cs" />
     <Compile Include="ElementoQueFumaLN.cs" />
     <Compile Include="EnfermedadLN.cs" />
+    <Compile Include="EspecialidadLN.cs" />
     <Compile Include="EspecificacionMedicamentoLN.cs" />
+    <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />
     <Compile Include="FamiliarLN.cs" />
     <Compile Include="FormaAdministracionLN.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="HistoriaClinicaLN.cs" />
     <Compile Include="InsectoLN.cs" />
     <Compile Include="IntensidadActividadFisicaLN.cs" />
+    <Compile Include="LocalidadLN.cs" />
     <Compile Include="MedicamentoAlergiaLN.cs" />
     <Compile Include="MedicamentoLN.cs" />
     <Compile Include="MedidaLN.cs" />
