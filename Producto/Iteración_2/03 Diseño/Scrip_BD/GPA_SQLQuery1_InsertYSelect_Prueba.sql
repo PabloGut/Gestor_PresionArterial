@@ -421,8 +421,8 @@ add foreign key (id_operacion_fk) references Operaciones(id_operacion),
 foreign key (id_traumatismo_fk) references Traumatismos(id_traumatismo),
 foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad)
 
-alter table AntecedentesMorbidos
-add fechaRegistro
+alter table ProfesionalMedico
+add foreign key (id_domicilio_fk) references Domicilio(id_domicilio)
 
 drop table HabitosActividadFisica
 select * from UnidadMedida

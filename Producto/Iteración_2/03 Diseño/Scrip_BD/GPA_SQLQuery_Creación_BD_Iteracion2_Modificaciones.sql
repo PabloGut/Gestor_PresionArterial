@@ -132,11 +132,13 @@ id_usuario_fk int not null,
 id_estado_fk int not null,
 id_especialidad_fk int not null,
 id_sexo_fk int,
+id_domicilio_fk int,
 PRIMARY KEY (id_tipodoc_fk,nro_documento),
 foreign key(id_usuario_fk) references Usuario(id_usuario),
 foreign key (id_estado_fk) references Estado(id_estado),
 foreign key (id_especialidad_fk) references Especialidad(id_especialidad),
-foreign key (id_sexo_fk) references Sexo(id_sexo))
+foreign key (id_sexo_fk) references Sexo(id_sexo),
+foreign key (id_domicilio_fk) references Domicilio(id_domicilio))
 
 CREATE TABLE Paciente (
 id_tipoDoc_fk int not null,
