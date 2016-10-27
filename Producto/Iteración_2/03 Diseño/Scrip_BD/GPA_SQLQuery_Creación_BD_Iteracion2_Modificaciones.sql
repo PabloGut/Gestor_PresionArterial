@@ -302,7 +302,7 @@ id_elementoTiempo_fk int,
 evolucion text,
 tratamiento text,
 id_hc_fk int not null,
-foreign key (id_tipoAntecedenteMorbido_fk) references TipoAntecedenteMorbido(id_tipoAntecedenteMorbido),
+foreign key (id_tipoAntecedenteMorbido_fk) references TiposAntecedentesMorbidos(id_tipoAntecedenteMorbido),
 foreign key (id_operacion_fk) references Operaciones(id_operacion),
 foreign key (id_traumatismo_fk) references Traumatismos(id_traumatismo),
 foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad),
@@ -323,7 +323,6 @@ descripcion text)
 
 CREATE TABLE Aborto(
 id_aborto int primary key identity,
-fechaRegistro date not null,
 cantidadTotal int,
 cantidadAbortoTipo1 int,
 id_TipoAborto1_fk int,
