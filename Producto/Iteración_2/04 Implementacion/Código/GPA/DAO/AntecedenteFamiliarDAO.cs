@@ -25,7 +25,7 @@ namespace DAO
         public static void registrarAntecedentesFamiliares(List<AntecedenteFamiliar> antecedentesFamiliares, int idHc)
         {
             setCadenaConexion();
-            SqlConnection cn = new SqlConnection();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
             try
             {
                 cn.Open();
@@ -40,6 +40,8 @@ namespace DAO
 
                 foreach (AntecedenteFamiliar antecedente in antecedentesFamiliares)
                 {
+                    cmd.Parameters.Clear();
+
                     cmd.Parameters.AddWithValue("@fechaRegistro", antecedente.fechaRegistro);
                     cmd.Parameters.AddWithValue("@idFamilizar", antecedente.id_familiar);
                     cmd.Parameters.AddWithValue("@familiarVive", antecedente.familiarVive);
@@ -79,7 +81,7 @@ namespace DAO
                         cmd.Parameters.AddWithValue("@observaciones", antecedente.observaciones);
                     }
 
-                    cmd.Parameters.AddWithValue("@idHc", antecedente.idHc);
+                    cmd.Parameters.AddWithValue("@idHc", idHc);
 
                     cmd.ExecuteNonQuery();
                 }

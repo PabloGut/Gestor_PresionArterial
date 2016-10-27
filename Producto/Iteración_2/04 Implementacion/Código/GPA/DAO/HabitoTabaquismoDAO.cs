@@ -43,12 +43,31 @@ namespace DAO
 
                 foreach (HabitoTabaquismo habito in habitosTabaquismo)
                 {
-                    cmd.Parameters.AddWithValue("@cantidad", habito.cantidad);
-                    cmd.Parameters.AddWithValue("@idElementoQueFuma", habito.id_elementoQueFuma);
-                    cmd.Parameters.AddWithValue("@idComponenteDelTiempo", habito.id_componenteTiempo);
-                    cmd.Parameters.AddWithValue("@añosFumando", habito.añosFumando);
+                    cmd.Parameters.Clear();
+
+                    if (habito.cantidad == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@cantidad", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@idElementoQueFuma", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@idComponenteDelTiempo", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@cantidad", habito.cantidad);
+                        cmd.Parameters.AddWithValue("@idElementoQueFuma", habito.id_elementoQueFuma);
+                        cmd.Parameters.AddWithValue("@idComponenteDelTiempo", habito.id_componenteTiempo);
+                    }
+                    if (habito.añosFumando == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@añosFumando", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@añosFumando", habito.añosFumando);
+                    }
+
                     cmd.Parameters.AddWithValue("@fechaRegistro", habito.fechaRegistro);
-                    cmd.Parameters.AddWithValue("@idHc", habito.id_hc);
+                    cmd.Parameters.AddWithValue("@idHc", idHc);
 
                     cmd.ExecuteNonQuery();
 

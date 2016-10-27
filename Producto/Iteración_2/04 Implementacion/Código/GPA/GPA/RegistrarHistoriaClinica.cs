@@ -994,7 +994,7 @@ namespace GPA
 
                 string nombreFamiliar = "No precisa";
                 string viveFamiliar = "No precisa";
-                string enfermedades = "No precisa";
+                string enfermedades = "";
                 string otraEnfermedad = "No precisa";
                 string causaMuerte = "No precisa";
                 string descripcionOtraEnfermedad = "No precisa";
@@ -1180,7 +1180,7 @@ namespace GPA
                 string sustancia = "";
                 string efectos = "No precisa";
 
-                if (rbSiAlergicoAlimentos.Checked == true)
+                if (rbSiAlergiaSustanciaAmbiente.Checked == true)
                 {
                     alergiaSustanciaAmbiente = "Si";
                 }
@@ -1400,7 +1400,7 @@ namespace GPA
 
                     if (string.IsNullOrEmpty(txtCantidadFumaba.Text) == false)
                     {
-                        ElementoQueFuma elementoSeleccionadoFumaba = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
+                        ElementoQueFuma elementoSeleccionadoFumaba = (ElementoQueFuma)cboElementoFumaba.SelectedItem;
                         elementoFumaba = elementoSeleccionadoFumaba.nombre;
                         dejoDeFumar.cantidadFumaba = Convert.ToInt32(txtCantidadFumaba.Text);
                         dejoDeFumar.id_elementoQueFuma = elementoSeleccionadoFumaba.id_elementoQueFuma;
@@ -1409,7 +1409,7 @@ namespace GPA
                         componenteTiempoFumaba = componenteSeleccionadoFumaba.nombre;
                         dejoDeFumar.id_componenteTiempo = componenteSeleccionadoFumaba.id_componenteTiempo;
 
-                        cantidadFumaba = txtCantidadFumaba.Text + " " + elementoFumaba + " X " + " " + componenteSeleccionadoFumaba;
+                        cantidadFumaba = txtCantidadFumaba.Text + " " + elementoFumaba + " X " + " " + componenteSeleccionadoFumaba.nombre;
                     }
                     habitoTabaquismo.dejoDeFumar = dejoDeFumar;
                 }
@@ -1872,6 +1872,16 @@ namespace GPA
 
             registrarAntecedentesPatologicosFamiliares(idHc);
 
+            registrarAlergiaAlimentos(idHc);
+
+            registrarAlergiaSustanciaAmbiente(idHc);
+
+            registrarAlergiaSustanciasContactoPiel(idHc);
+
+            registrarAlergiaInsectos(idHc);
+
+            registrarAlergiaMedicamentos(idHc);
+
             registrarHabitosTabaquismo(idHc);
 
             registrarHabitosAlcoholismo(idHc);
@@ -1883,6 +1893,8 @@ namespace GPA
             registrarHabitosActividadFisica(idHc);
 
             manejadorRegistrarHC.asignarHCAPaciente(paciente.id_tipoDoc, paciente.nroDoc, idHc);
+
+
 
            
         }
@@ -1972,7 +1984,10 @@ namespace GPA
             {
                 if (rbSiTieneAbortos.Checked == true)
                 {
+
                     antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
+                    antecedenteGinecoObtetrico.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
                     Aborto aborto = new Aborto();
 
                     aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
@@ -2059,7 +2074,7 @@ namespace GPA
         {
             if (listaAlergiaSustanciaContactoPiel != null && listaAlergiaSustanciaContactoPiel.Count > 0)
             {
-                manejadorRegistrarAlergias.registrarAlergiaSustanciaDelAmbiente(listaAlergiasSustanciaAmbiente, idHc);
+                manejadorRegistrarAlergias.registrarAlergiaSustanciaContactoPiel(listaAlergiaSustanciaContactoPiel, idHc);
             }
         }
         /*

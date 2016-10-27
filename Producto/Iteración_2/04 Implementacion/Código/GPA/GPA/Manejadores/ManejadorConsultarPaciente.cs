@@ -38,6 +38,17 @@ namespace GPA.Manejadores
             return PacienteLN.mostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, tipoDocPaciente, nroDocPaciente, nombreYApellidoPaciente); 
         }
         /*
+       * Método para buscar los pacientes que cumplen con los parámetros ingresados.
+        * Llama al método mostrarPacienteBuscadoDelProfesional de la capa lógica de negocio.
+       * Recibe como parámetros tipoDocMedico, nroDocMedico relacionados al ProfesionalMedico.
+       * Recibe como parámetro nombreYApellidoPaciente relacionados al Paciente que está siendo buscado.
+       * Retorna un dataTable
+       */
+        public DataTable mostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, string nombreYApellidoPaciente)
+        {
+            return PacienteLN.mostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, nombreYApellidoPaciente);
+        }
+        /*
          * Método para mostrar los tipos de documentos.
          * Llama al método mostrarTipoDocumento de la capa lógica de negocio.
          * No recibe parámetros.

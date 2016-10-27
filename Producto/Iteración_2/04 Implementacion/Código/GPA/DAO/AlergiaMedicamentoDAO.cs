@@ -30,7 +30,7 @@ namespace DAO
         public static void registrarAlergiaMedicamento(List<AlergiaMedicamento> alergiaMedicamento, int idHc)
         {
             setCadenaConexion();
-            SqlConnection cn = new SqlConnection();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
             try
             {
                 cn.Open();
@@ -45,10 +45,19 @@ namespace DAO
 
                 foreach (AlergiaMedicamento alergia in alergiaMedicamento)
                 {
+                    cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@fechaRegistro", alergia.fechaRegistro);
-                    cmd.Parameters.AddWithValue("@efectos", alergia.efectos);
+                    if (string.IsNullOrEmpty(alergia.efectos) == true)
+                    {
+                        cmd.Parameters.AddWithValue("@efectos",DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@efectos", alergia.efectos);
+                    }
+                   
                     cmd.Parameters.AddWithValue("@idMedicamentoAlergia", alergia.id_MedicamentoAlergia);
-                    cmd.Parameters.AddWithValue("@idHc", alergia.id_hc);
+                    cmd.Parameters.AddWithValue("@idHc", idHc);
 
                     cmd.ExecuteNonQuery();
                 }

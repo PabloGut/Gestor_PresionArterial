@@ -319,6 +319,64 @@ namespace DAO
            
         }
         /*
+         * Método para buscar los pacientes que cumplen con los parámetros ingresados.
+         * Recibe como parámetros tipoDocMedico, nroDocMedico relacionados al ProfesionalMedico.
+         * Recibe como parámetro nombreYApellidoPaciente relacionados al Paciente que está siendo buscado.
+         * Retorna un dataTable
+         */
+        public static DataTable mostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, string nombreYApellidoPaciente)
+        {
+
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt;
+            SqlDataAdapter da;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', td.nombre as 'TipoDocumento', p.nro_documento as 'Número de documento', p.id_tipoDoc_fk, d.calle, d.numero, b.nombre as 'Barrio', l.nombre as 'Localidad', e.nombre as Estado, s.nombre as 'Sexo'
+                                    from Paciente p, TipoDocumento td, Domicilio d, Barrio b, Localidad l, ProfesionalMedico pm, Especialidad es, Estado e, Sexo s
+                                    where p.id_profesionalMedico_tipoDoc_fk=@tipoDocMedico and p.id_profesionalMedico_nroDoc_fk=@nroDocMedico
+                                    and p.id_tipoDoc_fk=td.id_tipoDoc and p.id_domicilio_fk=d.id_domicilio 
+                                    and d.id_barrio_fk=b.id_barrio and b.id_localidad_fk=l.id_localidad
+                                    and p.id_sexo_fk=s.id_sexo and p.id_estado_fk=e.id_estado
+                                    and p.nombre+' '+p.apellido like '%'+@nombreYApellidoPaciente+'%'";
+
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@tipoDocMedico", tipoDocMedico);
+                cmd.Parameters.AddWithValue("@nroDocMedico", nroDocMedico);
+                cmd.Parameters.AddWithValue("@nombreYApellidoPaciente", nombreYApellidoPaciente);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                dt = new DataTable();
+                da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            if (dt != null)
+            {
+                return dt;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        /*
          * Método para obtener los datos de un Paciente.
          * Recibe como parámetro el tipo de documento, número de documento, nombre y apellido del paciente.
          * Retorna un objeto Paciente.
@@ -361,7 +419,7 @@ namespace DAO
                     paciente.nroCelular = Convert.ToInt64(dr["nroCelular"].ToString());
                     paciente.mail = dr["email"].ToString();
                     paciente.fechaNacimiento = Convert.ToDateTime(dr["fecha_nacimiento"].ToString());
-                    //paciente.altura =Convert.ToInt32(dr["altura"].ToString());
+                    paciente.altura =Convert.ToInt32(dr["altura"].ToString());
                     paciente.peso = (int)dr["peso"];
                     paciente.id_domicilio = (int)dr["id_domicilio_fk"];
                     paciente.id_tipodoc_medico = (int)dr["id_profesionalMedico_tipoDoc_fk"];

@@ -27,22 +27,42 @@ namespace DAO
             int idAborto;
             try
             {
-                string consulta = @"insert into Aborto(fechaRegistro,cantidadTotal,cantidadProvocados, id_TipoAborto1_fk, cantidadEspontaneos, id_TipoAborto2_fk,nroHijosVivos,problemasAsociadosAlEmbarazo)
-                                  values(@fechaRegistro,@cantidadTotal,@cantidadProvocados,@iTipoAborto1,@cantidadEspontaneos,@idTipoAborto2,@nroHijosVivos,@problemasAsociadosAlEmbarazo)";
+                string consulta = @"insert into Aborto(cantidadTotal,cantidadProvocados, id_TipoAborto1_fk, cantidadEspontaneo, id_TipoAborto2_fk,nroHijosVivos,problemasAsociadosAlEmbarazo)
+                                  values(@cantidadTotal,@cantidadProvocados,@iTipoAborto1,@cantidadEspontaneos,@idTipoAborto2,@nroHijosVivos,@problemasAsociadosAlEmbarazo)";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.Transaction=tran;
                 cmd.CommandText = consulta;
                 
-                cmd.Parameters.AddWithValue("@fechaRegistro", aborto.fechaRegistro);
+                
                 cmd.Parameters.AddWithValue("@cantidadTotal", aborto.cantidadTotal);
-                cmd.Parameters.AddWithValue("@cantidadProvocados", aborto.cantidadAbortoTipo1);
-                cmd.Parameters.AddWithValue("@iTipoAborto1", aborto.id_tipoAborto1);
-                cmd.Parameters.AddWithValue("@cantidadEspontaneos", aborto.cantidadAbortoTipo2);
-                cmd.Parameters.AddWithValue("@idTipoAborto2", aborto.id_tipoAborto2);
+                if (aborto.cantidadAbortoTipo1 == 0)
+                {
+                    cmd.Parameters.AddWithValue("@cantidadProvocados", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@iTipoAborto1", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@cantidadProvocados", aborto.cantidadAbortoTipo1);
+                    cmd.Parameters.AddWithValue("@iTipoAborto1", aborto.id_tipoAborto1);
+                }
+
+                if (aborto.cantidadAbortoTipo2 == 0)
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEspontaneos", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@idTipoAborto2", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@cantidadEspontaneos", aborto.cantidadAbortoTipo2);
+                    cmd.Parameters.AddWithValue("@idTipoAborto2", aborto.id_tipoAborto2);
+                }
+                
                 cmd.Parameters.AddWithValue("@nroHijosVivos", aborto.nroHijosVivos);
-                cmd.Parameters.AddWithValue("@problemasAsociadosAlEmbarazo", aborto.problemasEmbarazo);
+
+                if (string.IsNullOrEmpty(aborto.problemasEmbarazo)==true)
+                    cmd.Parameters.AddWithValue("@problemasAsociadosAlEmbarazo", aborto.problemasEmbarazo);
 
                 cmd.ExecuteNonQuery();
 

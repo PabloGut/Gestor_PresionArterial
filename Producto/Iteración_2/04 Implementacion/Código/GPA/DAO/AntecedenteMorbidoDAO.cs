@@ -25,12 +25,12 @@ namespace DAO
         public static void registrarAntecedenteMorbido(List<AntecedenteMorbido> antecedentesMorbidos,int idHc)
         {
             setCadenaConexion();
-            SqlConnection cn = new SqlConnection();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
             try
             {
                 cn.Open();
 
-                string consulta = @"insert into AntecedentesMorbidos(fechaRegistro,id_tipoAntecedenteMorbido,id_enfermedad_fk,id_operacion_fk,id_traumatismo_fk,cantidadTiempo,id_elementoTiempo_fk,evolucion,tratamiento,id_hc_fk)
+                string consulta = @"insert into AntecedentesMorbidos(fechaRegistro,id_tipoAntecedenteMorbido_fk,id_enfermedad_fk,id_operacion_fk,id_traumatismo_fk,cantidadTiempo,id_elementoTiempo_fk,evolucion,tratamiento,id_hc_fk)
                                   values(@fechaRegistro,@idTipoAntecedenteMorbido,@idEnfermedad,@idOperacion,@idTraumatismo,@cantidadTiempo,@idElementoTiempo,@evolucion,@tratamiento,@idHc)";
 
                 SqlCommand cmd = new SqlCommand();
@@ -40,6 +40,8 @@ namespace DAO
 
                 foreach (AntecedenteMorbido antecedente in antecedentesMorbidos)
                 {
+                    cmd.Parameters.Clear();
+
                     cmd.Parameters.AddWithValue("@fechaRegistro", antecedente.fechaRegistro);
                     cmd.Parameters.AddWithValue("@idTipoAntecedenteMorbido", antecedente.id_tipoAntecedenteMorbido);
 
