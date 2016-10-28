@@ -218,7 +218,7 @@ and em.id_nombreComercial_fk=nc.id_nombreComercial
 and em.id_unidadMedida_fk=um.id_unidadMedida
 and em.id_formaAdministracion_fk=fa.id_formaAdministracion
 and em.id_presentacionMedicamento_fk= pm.id_presentacionMedicamento
-select * from UnidadMedidaXMedicamento
+select * from FormaAdministracion
 
 select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentración', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk,nc.id_nombreComercial
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um, FormaAdministracion fa, PresentacionMedicamento pm
@@ -424,14 +424,14 @@ foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad)
 alter table ProfesionalMedico
 add foreign key (id_domicilio_fk) references Domicilio(id_domicilio)
 
-drop table Historia_Clinica
+drop table ProgramacionMedicamento
 select * from UnidadMedida
 
-select concentracion, id_especificacion from EspecificacionMedicamento
-where id_medicamento_fk='24'
-and id_nombreComercial_fk='28'
-and id_unidadMedida_fk='1'
-and id_formaAdministracion_fk='6'
+select concentracion,cantidadComprimidos, id_especificacion from EspecificacionMedicamento
+where id_medicamento_fk='21'
+and id_nombreComercial_fk='19'
+and id_unidadMedida_fk='2'
+and id_formaAdministracion_fk='1'
 and id_presentacionMedicamento_fk='1'
 
 alter table Historia_Clinica
@@ -442,28 +442,39 @@ add foreign key(id_tipodoc_paciente_fk, id_nrodoc_paciente_fk) references Pacien
 delete from Historia_Clinica
 
 select * from Historia_Clinica
+select * from HabitosActividadFisica
 select * from HabitosTabaquismo
-delete from Historia_Clinica where id_hc=22
-delete from AntecedentesMorbidos where id_hc_fk= 13
+select * from Paciente
+delete from Historia_Clinica where id_hc=55
+delete from HabitosTabaquismo where id_hc_fk=30
+
+select * from ProgramacionMedicamento
+
+delete from HabitosTabaquismo
+
 
 delete from Sintoma 
 
+drop table HabitosMedicamento
+drop table ProgramacionMedicamento
 
-drop table AntecedentesMorbidos
 select * from Historia_Clinica
-select * from TiposAntecedentesMorbidos
-select * from AlergiaSustanciaContactoPiel
-select * from Paciente
+select * from HabitosMedicamento
+select * from HabitosTabaquismo
+select * from Sustancia
 
+update Paciente
+set id_hc_fk= null
+where  id_hc_fk= '37'
 
 alter table Historia_Clinica
-alter column hora_creacion time
+alter column principalProblema text
 
-alter table Historia_Clinica
-drop column hora_creacion 
+alter table HabitosDrogasIlicitas
+drop column dejoConsumir 
 
 alter table Aborto
 drop column fechaRegistro 
 
-alter table Historia_Clinica
-add hora_creacion time 
+alter table HabitosDrogasIlicitas
+add foreign key (id_hc_fk) references Historia_Clinica(id_hc)
