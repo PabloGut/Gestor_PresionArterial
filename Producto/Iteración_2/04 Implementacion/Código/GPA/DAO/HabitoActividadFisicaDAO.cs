@@ -34,7 +34,7 @@ namespace DAO
 
 
 
-                string consulta = @"insert into HabitosActividadFisica(id_actividadFisica_fk,id_gradoActividadFisica_fk,id_intensidad_fk,fechaRegistro,id_hc)
+                string consulta = @"insert into HabitosActividadFisica(id_actividadFisica_fk,id_gradoActividadFisica_fk,id_intensidad_fk,fechaRegistro,id_hc_fk)
                                   values(@idActividadFisica,@idGradoActividad,@idIntensidad,@fechaRegistro,@idHc)";
 
                 SqlCommand cmd = new SqlCommand();
@@ -45,6 +45,8 @@ namespace DAO
 
                 foreach (HabitoActividadFisica habito in habitosActividadFisica)
                 {
+                    cmd.Parameters.Clear();
+
                     cmd.Parameters.AddWithValue("@idActividadFisica", habito.id_actividadFisica);
                     cmd.Parameters.AddWithValue("@idGradoActividad", habito.id_gradoActividadFisica);
                     cmd.Parameters.AddWithValue("@idIntensidad", habito.id_intensidad);

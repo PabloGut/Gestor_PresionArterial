@@ -26,28 +26,30 @@ namespace DAO
         {
             try
             {
-                string consulta = @"insert into ProgramacionMedicamento(id_especifiacionMedicamento_fk,id_medicamento_fk,id_frecuencia_fk,fechaDesde,fechaHasta,
+                string consulta = @"insert into ProgramacionMedicamento(id_especificacionMedicamento_fk,id_medicamento_fk,id_frecuencia_fk,fechaDesde,fechaHasta,
                                   id_momentoDia1_fk,cantidadNumerador1,cantidadDenominador1,id_presentacionMedicamento1_fk,hora1,
-                                  id_momentoDia2_fk,cantidadNumerador2,cantidadDenominador2,id_presentacionMedicamento2_fk,hora2,
-                                  id_momentoDia3_fk,cantidadNumerador3,cantidadDenominador3,id_presentacionMedicamento3_fk,hora3,
-                                  motivoConsumo,cantidadTiempoConsumo,id_elementoTiempo1_fk,motivoCancelacionConsumo,tiempoDeCancelacion,id_elemenoTiempo2_fk,
-                                  automedicado,id_estado_fk,examenGeneral)
-                                  values(@id_especifiacionMedicamento_fk,@id_medicamento_fk,@id_frecuencia_fk,@fechaDesde,@fechaHasta,
-                                  @id_momentoDia1_fk,@cantidadNumerador1,cantidadDenominador1,id_presentacionMedicamento1_fk,hora1,
-                                  @id_momentoDia2_fk,@cantidadNumerador2,cantidadDenominador2,id_presentacionMedicamento2_fk,hora2,  
-                                  @id_momentoDia3_fk,@cantidadNumerador3,cantidadDenominador3,id_presentacionMedicamento3_fk,hora3,
-                                  @motivoConsumo,@cantidadTiempoConsumo,@id_elementoTiempo1_fk,@motivoCancelacionConsumo,@tiempoDeCancelacion,@id_elementoTiempo2_fk,
-                                  @automedicado,@id_estado_fk,@idExamenGeneral)";
+                                  id_momentoDia2_fk,cantidadNumerador2,cantidadDenominador2,id_presentacionMedicamento2_fk,hora2, 
+                                  id_momentoDia3_fk,cantidadNumerador3,cantidadDenominador3,id_presentacionMedicamento3_fk,hora3, 
+                                  motivoConsumo,cantidadTiempoConsumo,id_elementoDelTiempo1_fk,motivoCancelacionConsumo,tiempoDeCancelacion,id_elementoDelTiempo2_fk, automedicado,id_estado_fk,id_examenGeneral_fk) 
+                                  values(@id_especificacionMedicamento_fk,@id_medicamento_fk,@id_frecuencia_fk,@fechaDesde,@fechaHasta,
+                                  @id_momentoDia1_fk,@cantidadNumerador1,@cantidadDenominador1,@id_presentacionMedicamento1_fk,@hora1,
+                                  @id_momentoDia2_fk,@cantidadNumerador2,@cantidadDenominador2,@id_presentacionMedicamento2_fk,@hora2,
+                                  @id_momentoDia3_fk,@cantidadNumerador3,@cantidadDenominador3,@id_presentacionMedicamento3_fk,@hora3,
+                                  @motivoConsumo,@cantidadTiempoConsumo,@id_elementoDelTiempo1_fk,@motivoCancelacionConsumo,@tiempoDeCancelacion,@id_elementoDelTiempo2_fk, @automedicado,@id_estado_fk,@idExamenGeneral)";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
                 cmd.Transaction = tran;
                 cmd.CommandText = consulta;
 
-                cmd.Parameters.AddWithValue("@id_especifiacionMedicamento_fk", programacion.id_especificacionMedicamento);
+                cmd.Parameters.AddWithValue("@id_especificacionMedicamento_fk", programacion.id_especificacionMedicamento);
                 cmd.Parameters.AddWithValue("@id_medicamento_fk", programacion.id_medicamento);
                 cmd.Parameters.AddWithValue("@id_frecuencia_fk", programacion.id_frecuencia);
-                if (programacion.fechaDesde.Equals("") == true)
+
+                DateTime fecha = Convert.ToDateTime("01/01/0001 0:00:00");
+
+                if (DateTime.Compare(fecha,programacion.fechaDesde)==0)
                 {
                     cmd.Parameters.AddWithValue("@fechaDesde", DBNull.Value);
                 }
@@ -55,7 +57,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@fechaDesde", programacion.fechaDesde);
                 }
-                if (programacion.fechaHasta.Equals("") == true)
+                if (DateTime.Compare(fecha,programacion.fechaHasta)==0)
                 {
                     cmd.Parameters.AddWithValue("@fechaHasta", DBNull.Value);
                 }
@@ -116,7 +118,7 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@hora3", programacion.hora3);
                 }
 
-                if (programacion.motivoConsumo.Equals("") == true)
+                if (string.IsNullOrEmpty(programacion.motivoConsumo)== true)
                 {
                     cmd.Parameters.AddWithValue("@motivoConsumo", DBNull.Value);
                 }
@@ -128,16 +130,16 @@ namespace DAO
                 if (programacion.cantidadTiempoConsumo == 0)
                 {
                     cmd.Parameters.AddWithValue("@cantidadTiempoConsumo", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@id_elementoTiempo1_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_elementoDelTiempo1_fk", DBNull.Value);
                     
                 }
                 else
                 {
                     cmd.Parameters.AddWithValue("@cantidadTiempoConsumo", programacion.cantidadTiempoConsumo);
-                    cmd.Parameters.AddWithValue("@id_elementoTiempo1_fk", programacion.id_elementoTiempo1);
+                    cmd.Parameters.AddWithValue("@id_elementoDelTiempo1_fk", programacion.id_elementoTiempo1);
                 }
 
-                if (programacion.motivoCancelacion.Equals("") == true)
+                if (string.IsNullOrEmpty(programacion.motivoCancelacion) == true)
                 {
                     cmd.Parameters.AddWithValue("@motivoCancelacionConsumo", DBNull.Value);
                 }
@@ -148,12 +150,12 @@ namespace DAO
 
                 if (programacion.id_elementoTiempo2 == 0)
                 {
-                    cmd.Parameters.AddWithValue("@id_elementoTiempo2_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_elementoDelTiempo2_fk", DBNull.Value);
                     cmd.Parameters.AddWithValue("@tiempoDeCancelacion", DBNull.Value);
                 }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@id_elementoTiempo2_fk", programacion.id_elementoTiempo2);
+                    cmd.Parameters.AddWithValue("@id_elementoDelTiempo2_fk", programacion.id_elementoTiempo2);
                     cmd.Parameters.AddWithValue("@tiempoDeCancelacion", programacion.cantidadCancelacion);
                 }
                 
@@ -173,7 +175,7 @@ namespace DAO
                 cmd.ExecuteNonQuery();
 
                 SqlCommand cmd1 = new SqlCommand("Select @@Identity", cn, tran);
-                programacion.id_programacionMedicamento = Convert.ToInt32(cmd.ExecuteScalar());
+                programacion.id_programacionMedicamento = Convert.ToInt32(cmd1.ExecuteScalar());
                 
             }
             catch (Exception e)

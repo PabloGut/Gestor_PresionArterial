@@ -32,9 +32,7 @@ namespace DAO
                 cn.Open();
                 tran = cn.BeginTransaction();
 
-
-
-                string consulta = @"insert into HabitosMedicamentos(id_hc_fk,id_programacionMedicamento_fk,fechaRegistro)
+                string consulta = @"insert into HabitosMedicamento(id_hc_fk,id_programacionMedicamento_fk,fechaRegistro)
                                   values(@idHc,@idProgramacionMedicamento,@fechaRegistro)";
 
                 SqlCommand cmd = new SqlCommand();
@@ -45,6 +43,7 @@ namespace DAO
 
                 foreach (HabitoMedicamento habito in habitosMedicamento)
                 {
+                    
                     ProgramacionMedicamentoDAO.registrarProgramacionMedicamento(habito.programacion, tran, cn);
 
                     cmd.Parameters.AddWithValue("@idHc", idHc);
@@ -52,6 +51,8 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@fechaRegistro", habito.fechaRegistro);
 
                     cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
                 }
                 tran.Commit();
                 cn.Close();

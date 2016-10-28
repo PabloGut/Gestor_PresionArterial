@@ -1454,14 +1454,14 @@ namespace GPA
                     habitoAlcoholismo.id_componenteTiempo = componenteSeleccionado.id_componenteTiempo;
                     habitoAlcoholismo.cantidad = Convert.ToInt32(txtCantidadConsume.Text);
 
-                    estimacionCantidad = txtCantidadConsume.Text + " " + medidaSeleccionada.nombre + " " + componenteSeleccionado.nombre;
+                    estimacionCantidad = txtCantidadConsume.Text + " " + medidaSeleccionada.nombre + " X " + componenteSeleccionado.nombre;
                 }
 
                 if (string.IsNullOrEmpty(txtDescripcionMedida.Text) == false)
                 {
                     descripcion = txtDescripcionMedida.Text;
                 }
-
+                habitoAlcoholismo.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 listaHabitosAlcoholismo.Add(habitoAlcoholismo);
                 dgvHabitosAlcoholismo.Rows.Add(consumeAlcohol, bebida, estimacionCantidad, descripcion);
             }
@@ -1501,6 +1501,8 @@ namespace GPA
 
                     tiempoConsumiento = txtCantidadTiempoConsumiendo.Text + " " + elementoSeleccionado.nombre;
                 }
+                habitoDrogasIlicitas.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
                 listaHabitosDrogasIlicitas.Add(habitoDrogasIlicitas);
                 dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento);
             }
@@ -1819,7 +1821,7 @@ namespace GPA
                 dgvHabitosAlcoholismo.Columns.Add(columna);
             }
 
-            string[] nombreColumnasHabitoDrogasIlicitas = new string[5] { "Consume drogas Si/No", "Sustancia", "Dejo de consumir Si/No", "En Tratamiento Si/No","Cantidad de tiempo consumiento"};
+            string[] nombreColumnasHabitoDrogasIlicitas = new string[3] { "Consume drogas Si/No", "Sustancia","Cantidad de tiempo consumiento"};
 
             for (int i = 0; i < nombreColumnasHabitoDrogasIlicitas.Length; i++)
             {
@@ -1893,6 +1895,8 @@ namespace GPA
             registrarHabitosActividadFisica(idHc);
 
             manejadorRegistrarHC.asignarHCAPaciente(paciente.id_tipoDoc, paciente.nroDoc, idHc);
+
+            MessageBox.Show("La historia clínica se registró correctamente!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
 
@@ -2226,6 +2230,49 @@ namespace GPA
         private void rbPresentaAntecedentesMorbidos_CheckedChanged(object sender, EventArgs e)
         {
           
+        }
+
+        private void cboUnidadMedida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboConcentracion.SelectedIndex < 0)
+            {
+                int idMedicamento;
+                int idNombreComercial;
+                Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+                Int32.TryParse(cboNombreComercial.SelectedValue.ToString(), out idNombreComercial);
+
+                UnidadDeMedida unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+                PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+                FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
+                
+                if (unidad != null && presentacion != null && formaAdministracion != null)
+                {
+                    cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                    cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                }
+            }
+
+        }
+
+        private void cboFormaAdministración_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboConcentracion.SelectedIndex < 0)
+            {
+                int idMedicamento;
+                int idNombreComercial;
+                Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+                Int32.TryParse(cboNombreComercial.SelectedValue.ToString(), out idNombreComercial);
+
+                UnidadDeMedida unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+                PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+                FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
+
+                if (unidad != null && presentacion != null && formaAdministracion != null)
+                {
+                    cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                    cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                }
+            }
         }
 
 

@@ -3552,6 +3552,7 @@
             this.cboFormaAdministración.Name = "cboFormaAdministración";
             this.cboFormaAdministración.Size = new System.Drawing.Size(117, 21);
             this.cboFormaAdministración.TabIndex = 18;
+            this.cboFormaAdministración.SelectedIndexChanged += new System.EventHandler(this.cboFormaAdministración_SelectedIndexChanged);
             // 
             // button30
             // 
@@ -3587,6 +3588,7 @@
             this.cboUnidadMedida.Name = "cboUnidadMedida";
             this.cboUnidadMedida.Size = new System.Drawing.Size(84, 21);
             this.cboUnidadMedida.TabIndex = 14;
+            this.cboUnidadMedida.SelectedIndexChanged += new System.EventHandler(this.cboUnidadMedida_SelectedIndexChanged);
             // 
             // cboNombreComercial
             // 

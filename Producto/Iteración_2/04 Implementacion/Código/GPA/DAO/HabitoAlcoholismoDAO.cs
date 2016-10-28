@@ -32,7 +32,7 @@ namespace DAO
                 cn.Open();
                 tran = cn.BeginTransaction();
 
-                string consulta = @"insert into HabitoAlcoholismo(id_tipoBebido_fk,fechaRegistro,cantidad,id_medida_fk,id_componenteTiempo_fk,id_hc_fk)
+                string consulta = @"insert into HabitosAlcoholismo(id_tipoBebida_fk,fechaRegistro,cantidad,id_medida_fk,id_componenteTiempo_fk,id_hc_fk)
                                   values(@idTipoBebido,@fechaRegistro,@cantidad,@idMedida,@idComponenteTiempo,@idHc)";
 
                 SqlCommand cmd = new SqlCommand();
@@ -43,12 +43,14 @@ namespace DAO
 
                 foreach (HabitoAlcoholismo habito in habitosAlcoholismo)
                 {
+                    cmd.Parameters.Clear();
+
                     cmd.Parameters.AddWithValue("@idTipoBebido", habito.id_tipoBebida);
                     cmd.Parameters.AddWithValue("@fechaRegistro", habito.fechaRegistro);
                     cmd.Parameters.AddWithValue("@cantidad", habito.cantidad);
                     cmd.Parameters.AddWithValue("@idMedida", habito.id_medida);
                     cmd.Parameters.AddWithValue("@idComponenteTiempo", habito.id_componenteTiempo);
-                    cmd.Parameters.AddWithValue("@idHc", habito.id_hc);
+                    cmd.Parameters.AddWithValue("@idHc", idHc);
 
                     cmd.ExecuteNonQuery();
                 }
