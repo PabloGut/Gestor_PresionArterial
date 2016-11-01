@@ -15,8 +15,10 @@ namespace GPA
     {
         public ProfesionaMedico medicoLogueado{set;get;}
         public Paciente pacienteSeleccionado{set;get;}
+
         ManejadorConsultarPaciente manejadorConsultarPaciente;
         ManejadorRegistrarAtencionMedicaEnConsultorio manejadorRegistrarAtencionMedicaEnConsultorio;
+        ManejadorConsultarHC manejadorConsultarHc;
 
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
@@ -24,6 +26,7 @@ namespace GPA
             medicoLogueado=pmLogueado;
             manejadorConsultarPaciente = new ManejadorConsultarPaciente();
             manejadorRegistrarAtencionMedicaEnConsultorio = new ManejadorRegistrarAtencionMedicaEnConsultorio();
+            manejadorConsultarHc = null;
         }
         public MenuPrincipal()
         {
@@ -375,6 +378,63 @@ namespace GPA
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             cargarDataGridPacientesDelProfesional();
+        }
+
+        private void btnVerHistoriaClinica_Click(object sender, EventArgs e)
+        {
+            verHistoriaClinica();
+        }
+        private void verHistoriaClinica()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No se seleccionó el paciente que recibe atención médica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            manejadorConsultarHc = new ManejadorConsultarHC();
+            
+            DataSet ds = manejadorConsultarHc.mostrarHistoriaClinica(pacienteSeleccionado);
+            DataTable dtHc = ds.Tables["HistoriaClinica"];
+
+            if (dtHc.Rows.Count > 0)
+            {
+                txtNroHistoriaClinica.Text = dtHc.Rows[0]["nro_hc"].ToString();
+                mtbFechaCreacionHc.Text = dtHc.Rows[0]["fecha_creación"].ToString();
+                mtbHoraCreacionHc.Text = dtHc.Rows[0]["hora_creacion"].ToString();
+                mtbFechaInicioAntecionHc.Text = dtHc.Rows[0]["fecha_inicio_atencion_con_profesional"].ToString();
+                if (string.IsNullOrEmpty(dtHc.Rows[0]["principalProblema"].ToString()) == false)
+                {
+                    txtMotivoPrimeraConsulta.Text = dtHc.Rows[0]["principalProblema"].ToString();
+                }
+                else
+                {
+                    txtMotivoPrimeraConsulta.Text = "No precisa";
+                }
+               
+            }
+            
+            DataTable dtAntecedentesMorbidos = ds.Tables["AntecedentesMorbidos"];
+
+            if (dtAntecedentesMorbidos.Rows.Count > 0)
+            {
+                dgvAntecedentesMorbidos.DataSource = dtAntecedentesMorbidos;
+                dgvAntecedentesMorbidos.Columns["id_tipoAntecedenteMorbido_fk"].Visible = false;
+                dgvAntecedentesMorbidos.Columns["Nombre de la enfermedad"].Width = 300;
+
+            }
+            else
+            {
+                DataGridViewColumn columna = new DataGridViewTextBoxColumn();
+                columna.Width = 500; 
+                dgvAntecedentesMorbidos.Columns.Add(columna);
+
+                DataGridViewRow fila = new DataGridViewRow();
+
+                dgvAntecedentesMorbidos.Rows.Add(fila);
+
+                dgvAntecedentesMorbidos.Rows[0].Cells[0].Value = "No se encontraron resultados";
+            }
+            dgvAntecedentesMorbidos.AllowUserToAddRows = false;
         }
     }
 }

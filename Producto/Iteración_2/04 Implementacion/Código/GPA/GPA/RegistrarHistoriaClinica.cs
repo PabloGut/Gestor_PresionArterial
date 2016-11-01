@@ -2275,6 +2275,11 @@ namespace GPA
             }
         }
 
+        private void cboNombrePorTipoAntecedenteMorbido_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
        
     }

@@ -1216,6 +1216,7 @@
             this.cboNombrePorTipoAntecedenteMorbido.Name = "cboNombrePorTipoAntecedenteMorbido";
             this.cboNombrePorTipoAntecedenteMorbido.Size = new System.Drawing.Size(121, 21);
             this.cboNombrePorTipoAntecedenteMorbido.TabIndex = 1;
+            this.cboNombrePorTipoAntecedenteMorbido.SelectedIndexChanged += new System.EventHandler(this.cboNombrePorTipoAntecedenteMorbido_SelectedIndexChanged);
             // 
             // label30
             // 

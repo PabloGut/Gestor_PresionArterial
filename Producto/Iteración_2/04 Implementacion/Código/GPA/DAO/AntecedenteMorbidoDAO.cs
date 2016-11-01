@@ -106,5 +106,49 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static DataTable mostrarAntecedentesMorbidosDeHc(int idHc)
+        {
+             setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            
+            try
+            {
+
+                cn.Open();
+
+                string consulta = @"select am.fechaRegistro as 'Fecha de registro', am.id_tipoAntecedenteMorbido_fk, tam.nombre as 'Tipo de Antecedente Morbido', enf.nombre as 'Nombre de la enfermedad'
+                                  from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf
+                                  where hc.id_hc= am.id_hc_fk and hc.id_hc= @idHc and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+                                  and am.id_enfermedad_fk=enf.id_enfermedad";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+                
+                
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable("AntecedentesMorbidos");
+                da.Fill(dt);
+               
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            return dt;
+
+
+        }
+        
     }
 }

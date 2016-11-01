@@ -118,7 +118,57 @@ namespace DAO
                 throw new ApplicationException("Error: " + e.Message);
             }
         }
-        /*
+
+        public static DataSet mostrarHistoriaClinica(Paciente paciente)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            DataSet ds = null;
+
+            try
+            {
+
+                cn.Open();
+
+                string consulta = "select * from Historia_Clinica where id_tipodoc_paciente_fk=@idtipodoc and id_nrodoc_paciente_fk=@nrodocumento";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idtipodoc", paciente.id_tipoDoc);
+                cmd.Parameters.AddWithValue("@nrodocumento", paciente.nroDoc);
+                
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable("HistoriaClinica");
+                da.Fill(dt);
+                ds = new DataSet();
+                ds.Tables.Add(dt);
+               
+                cn.Close();
+
+                int idHc= (int) dt.Rows[0]["id_hc"];
+
+                ds.Tables.Add(mostrarAntecedentesMorbidos(idHc));
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            return ds;
+        }
+        private static DataTable mostrarAntecedentesMorbidos(int idHc)
+        {
+            return AntecedenteMorbidoDAO.mostrarAntecedentesMorbidosDeHc(idHc);
+        }
+     /*
         public static int insertarHC(HistoriaClinica hc)
         {
             SqlConnection cn = new SqlConnection(cadenaConexion);
@@ -149,52 +199,7 @@ namespace DAO
             cn.Close();
             return idhc;
         }
+        */
 
-        public static HistoriaClinica mostrarHistoriaClinica(Paciente paciente)
-        {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            cn.Open();
-
-            HistoriaClinica hc=null;
-
-            string consulta = "select * from Historia_Clinica where id_tipodoc_paciente_fk=@idtipodoc and nro_doc_paciente_fk=@nrodocumento";
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("@idtipodoc", paciente.id_tipoDoc);
-            cmd.Parameters.AddWithValue("@nrodocumento", paciente.nroDoc);
-            cmd.CommandText = consulta;
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = cn;
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            if (dr.HasRows)
-            {
-                while (dr.Read())
-                {
-                    hc = new HistoriaClinica();
-
-                    int idhc = (int)dr["id_hc"];
-                    int nrohc = (int)dr["nro_hc"];
-                    DateTime fecha = Convert.ToDateTime(dr["fecha_creación"]);
-                    string diagnostico = dr["diagnostico"].ToString();
-                    string antecedentes = dr["antecedentes"].ToString();
-                    DateTime fechaInicioAtencion = Convert.ToDateTime(dr["fecha_inicio_atencion_con_profesional"].ToString());
-
-                    hc.id_hc = idhc;
-                    hc.nro_hc = nrohc;
-                    hc.fecha = fecha;
-                    hc.diagnostico = diagnostico;
-                    hc.antecedentes = antecedentes;
-                    hc.fechaInicioAtencion = fechaInicioAtencion;
-
-                }
-            }
-            cn.Close();
-            return hc;
-               
-          
-            }*/
     }
 }
