@@ -19,7 +19,7 @@ namespace GPA.Manejadores
 
         public void mostrarTiposDeDatos()
         {
-            pantalla.presentarAtencionEnConsultorio(CaracterDelDolorLN.mostrarCaracterDelDolor());
+            pantalla.presentarAtencionEnConsultorio(CaracterDelDolorLN.mostrarCaracterDelDolor(), ExtremidadLN.mostrarExtremidades(), PosicionLN.mostrarPosiciones(), SitioMedicionLN.mostrarSitiosDeMedicion(), MomentoDiaLN.mostrarMomentosDelDia());
         }
     }
 }

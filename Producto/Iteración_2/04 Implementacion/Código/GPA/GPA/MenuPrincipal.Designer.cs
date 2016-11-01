@@ -48,6 +48,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvPacientesDelProfesionalLogueado = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.txtNombreApellidoPaciente = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.cboTipoDocPaciente = new System.Windows.Forms.ComboBox();
@@ -345,7 +346,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -578,6 +578,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(852, 122);
             this.panel2.TabIndex = 0;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(500, 87);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 5;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // txtNombreApellidoPaciente
             // 
@@ -3437,16 +3447,6 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Location = new System.Drawing.Point(500, 87);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnActualizar.TabIndex = 5;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // MenuPrincipal
             // 

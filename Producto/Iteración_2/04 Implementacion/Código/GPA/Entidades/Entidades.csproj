@@ -69,6 +69,7 @@
     <Compile Include="Clases\Estado.cs" />
     <Compile Include="Clases\EstadoProgramacion.cs" />
     <Compile Include="Clases\Estudio.cs" />
+    <Compile Include="Clases\Extremidad.cs" />
     <Compile Include="Clases\FormaAdministracion.cs" />
     <Compile Include="Clases\HabitoActividadFisica.cs" />
     <Compile Include="Clases\HabitoAlcoholismo.cs" />
@@ -90,10 +91,12 @@
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\ParteDelCuerpo.cs" />
     <Compile Include="Clases\Persona.cs" />
+    <Compile Include="Clases\Posicion.cs" />
     <Compile Include="Clases\PresentacionMedicamento.cs" />
     <Compile Include="Clases\ProfesionaMedico.cs" />
     <Compile Include="Clases\ProgramacionMedicamento.cs" />
     <Compile Include="Clases\Sintoma.cs" />
+    <Compile Include="Clases\SitioMedicion.cs" />
     <Compile Include="Clases\SustanciaContactoPiel.cs" />
     <Compile Include="Clases\SustanciaDrogaIlicita.cs" />
     <Compile Include="Clases\TipoAborto.cs" />

@@ -347,10 +347,14 @@ namespace GPA
             }
         }
 
-        public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres)
+        public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres, List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
         {
             Utilidades.deshabilitarLosControles(tabPage4);
             Utilidades.cargarCombo(comboBox3, caracteres, "id_caracterDelDolor", "nombre");
+            Utilidades.cargarCombo(comboBox34, extremidades, "id_extremidad", "nombre");
+            Utilidades.cargarCombo(comboBox35, posiciones, "id_posicion", "nombre");
+            Utilidades.cargarCombo(comboBox36, sitios, "id_sitioMedicion", "nombre");
+            Utilidades.cargarCombo(comboBox37, momentos, "idMomentoDia", "nombre");
         }
 
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)

@@ -61,6 +61,7 @@
     <Compile Include="EspecificacionMedicamentoLN.cs" />
     <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />
+    <Compile Include="ExtremidadLN.cs" />
     <Compile Include="FamiliarLN.cs" />
     <Compile Include="FormaAdministracionLN.cs" />
     <Compile Include="FrecuenciaLN.cs" />
@@ -82,8 +83,10 @@
     <Compile Include="NombreComercialLN.cs" />
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
+    <Compile Include="PosicionLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />
     <Compile Include="SintomaLN.cs" />
+    <Compile Include="SitioMedicionLN.cs" />
     <Compile Include="SustanciaAmbienteLN.cs" />
     <Compile Include="SustanciaContactoPielLN.cs" />
     <Compile Include="SustanciaDrogaIlicitaLN.cs" />
