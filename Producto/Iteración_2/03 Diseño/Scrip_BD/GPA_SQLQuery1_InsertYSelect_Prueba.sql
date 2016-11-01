@@ -478,3 +478,36 @@ drop column fechaRegistro
 
 alter table HabitosDrogasIlicitas
 add foreign key (id_hc_fk) references Historia_Clinica(id_hc)
+
+select * from Paciente where id_hc_fk=57
+select * from AntecedentesMorbidos
+
+select * from Operaciones
+
+
+select hc.nro_hc, hc.fecha_inicio_atencion_con_profesional,hc.principalProblema 'Motivo de la primera consulta'
+from Paciente p, Historia_Clinica hc, AntecedentesMorbidos am
+where p.id_hc_fk=hc.id_hc and id_tipoDoc_fk=8 and nro_documento=20258789
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk
+from Historia_Clinica hc, AntecedentesMorbidos am
+where hc.id_hc= am.id_hc_fk and am.id_hc_fk='57'
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, enf.nombre
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_enfermedad_fk=enf.id_enfermedad 
+
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, ope.nombre
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Operaciones ope
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_operacion_fk=ope.id_operacion 
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, trau.nombre
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Traumatismos trau
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_traumatismo_fk=trau.id_traumatismo
+
+
+select * from Historia_Clinica
