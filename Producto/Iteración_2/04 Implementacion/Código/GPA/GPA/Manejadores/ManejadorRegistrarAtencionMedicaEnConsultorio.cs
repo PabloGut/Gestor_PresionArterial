@@ -11,7 +11,7 @@ namespace GPA.Manejadores
     public class ManejadorRegistrarAtencionMedicaEnConsultorio
     {
         private MenuPrincipal pantalla;
-
+        /*
         public void registrarAtencionMedicaEnConsultorio(MenuPrincipal mp){
             pantalla=mp;
             mostrarTiposDeDatos();
@@ -21,5 +21,6 @@ namespace GPA.Manejadores
         {
             pantalla.presentarAtencionEnConsultorio(CaracterDelDolorLN.mostrarCaracterDelDolor());
         }
+         * */
     }
 }

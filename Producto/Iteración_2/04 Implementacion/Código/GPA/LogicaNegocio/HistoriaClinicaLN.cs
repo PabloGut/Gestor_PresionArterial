@@ -46,9 +46,10 @@ namespace LogicaNegocio
             return siguienteNroHc;
  
         }
-        public static DataSet mostrarHistoriaClinica(Paciente paciente)
+        public static HistoriaClinica mostrarHistoriaClinica(Paciente paciente)
         {
             return HistoriaClinicaDAO.mostrarHistoriaClinica(paciente);
         }
+       
     }
 }

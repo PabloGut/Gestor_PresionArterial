@@ -15,6 +15,7 @@ namespace GPA
     {
         public ProfesionaMedico medicoLogueado{set;get;}
         public Paciente pacienteSeleccionado{set;get;}
+        public HistoriaClinica hc { set; get; }
 
         ManejadorConsultarPaciente manejadorConsultarPaciente;
         ManejadorRegistrarAtencionMedicaEnConsultorio manejadorRegistrarAtencionMedicaEnConsultorio;
@@ -46,7 +47,7 @@ namespace GPA
             cargarDataGridPacientesDelProfesional();
             dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
-            manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
+            //manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -383,6 +384,7 @@ namespace GPA
         private void btnVerHistoriaClinica_Click(object sender, EventArgs e)
         {
             verHistoriaClinica();
+            
         }
         private void verHistoriaClinica()
         {
@@ -392,40 +394,40 @@ namespace GPA
                 return;
             }
             manejadorConsultarHc = new ManejadorConsultarHC();
-            
-            DataSet ds = manejadorConsultarHc.mostrarHistoriaClinica(pacienteSeleccionado);
-            DataTable dtHc = ds.Tables["HistoriaClinica"];
+            hc = manejadorConsultarHc.mostrarHistoriaClinica(pacienteSeleccionado);
 
-            if (dtHc.Rows.Count > 0)
+            txtNroHistoriaClinica.Text = Convert.ToString(hc.nro_hc);
+            mtbFechaCreacionHc.Text = Convert.ToString(hc.fecha);
+            mtbHoraCreacionHc.Text = Convert.ToString(hc.hora.ToShortTimeString());
+            mtbFechaInicioAntecionHc.Text = Convert.ToString(hc.fechaInicioAtencion);
+            txtMotivoPrimeraConsulta.Text = hc.motivoConsulta;
+
+           
+        }
+
+        private void btnEnfermedades_Click(object sender, EventArgs e)
+        {
+            cargarEnfermedadesEnDatagridView();
+        }
+        public void cargarEnfermedadesEnDatagridView()
+        {
+            dgvAntecedentesMorbidos.Rows.Clear();
+            dgvAntecedentesMorbidos.Columns.Clear();
+            DataTable dataTable = manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
+
+            if (dataTable.Rows.Count > 0)
             {
-                txtNroHistoriaClinica.Text = dtHc.Rows[0]["nro_hc"].ToString();
-                mtbFechaCreacionHc.Text = dtHc.Rows[0]["fecha_creación"].ToString();
-                mtbHoraCreacionHc.Text = dtHc.Rows[0]["hora_creacion"].ToString();
-                mtbFechaInicioAntecionHc.Text = dtHc.Rows[0]["fecha_inicio_atencion_con_profesional"].ToString();
-                if (string.IsNullOrEmpty(dtHc.Rows[0]["principalProblema"].ToString()) == false)
-                {
-                    txtMotivoPrimeraConsulta.Text = dtHc.Rows[0]["principalProblema"].ToString();
-                }
-                else
-                {
-                    txtMotivoPrimeraConsulta.Text = "No precisa";
-                }
-               
-            }
-            
-            DataTable dtAntecedentesMorbidos = ds.Tables["AntecedentesMorbidos"];
+                Utilidades.agregarColumnaAntecedentesMorbidos(dgvAntecedentesMorbidos);
 
-            if (dtAntecedentesMorbidos.Rows.Count > 0)
-            {
-                dgvAntecedentesMorbidos.DataSource = dtAntecedentesMorbidos;
-                dgvAntecedentesMorbidos.Columns["id_tipoAntecedenteMorbido_fk"].Visible = false;
-                dgvAntecedentesMorbidos.Columns["Nombre de la enfermedad"].Width = 300;
-
+                for (int i = 0; i < dataTable.Rows.Count ; i++)
+                {
+                    dgvAntecedentesMorbidos.Rows.Add(dataTable.Rows[i]["Fecha de registro"].ToString(), dataTable.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dataTable.Rows[i]["Nombre de la enfermedad"].ToString(), dataTable.Rows[i]["Evolución"].ToString(), dataTable.Rows[i]["Tratamiento"].ToString(), dataTable.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
+                }
             }
             else
             {
                 DataGridViewColumn columna = new DataGridViewTextBoxColumn();
-                columna.Width = 500; 
+                columna.Width = 500;
                 dgvAntecedentesMorbidos.Columns.Add(columna);
 
                 DataGridViewRow fila = new DataGridViewRow();
@@ -434,7 +436,35 @@ namespace GPA
 
                 dgvAntecedentesMorbidos.Rows[0].Cells[0].Value = "No se encontraron resultados";
             }
-            dgvAntecedentesMorbidos.AllowUserToAddRows = false;
+        }
+        private void btnTraumatismos_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = manejadorConsultarHc.mostrarAntecedentesMorbidosTraumatismos(hc.id_hc);
+            dgvAntecedentesMorbidos.Rows.Clear();
+            dgvAntecedentesMorbidos.Columns.Clear();
+            if (dataTable.Rows.Count > 0)
+            {   
+                if(dgvAntecedentesMorbidos.Columns.Count==0)
+                    Utilidades.agregarColumnaAntecedentesMorbidos(dgvAntecedentesMorbidos);
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    dgvAntecedentesMorbidos.Rows.Add(dataTable.Rows[i]["Fecha de registro"].ToString(), dataTable.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dataTable.Rows[i]["Nombre del traumatismo"].ToString(), dataTable.Rows[i]["Evolución"].ToString(), dataTable.Rows[i]["Tratamiento"].ToString(), dataTable.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
+                }
+               
+            }
+            else
+            {
+                DataGridViewColumn columna = new DataGridViewTextBoxColumn();
+                columna.Width = 500;
+                dgvAntecedentesMorbidos.Columns.Add(columna);
+
+                DataGridViewRow fila = new DataGridViewRow();
+
+                dgvAntecedentesMorbidos.Rows.Add(fila);
+
+                dgvAntecedentesMorbidos.Rows[0].Cells[0].Value = "No se encontraron resultados";
+            }
         }
     }
 }

@@ -119,17 +119,13 @@ namespace DAO
             }
         }
 
-        public static DataSet mostrarHistoriaClinica(Paciente paciente)
+        public static HistoriaClinica mostrarHistoriaClinica(Paciente paciente)
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
-            DataTable dt = null;
-            SqlDataAdapter da = null;
-            DataSet ds = null;
-
+            HistoriaClinica historiaClinica=null;
             try
             {
-
                 cn.Open();
 
                 string consulta = "select * from Historia_Clinica where id_tipodoc_paciente_fk=@idtipodoc and id_nrodoc_paciente_fk=@nrodocumento";
@@ -142,17 +138,22 @@ namespace DAO
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
 
-                da = new SqlDataAdapter(cmd);
-                dt = new DataTable("HistoriaClinica");
-                da.Fill(dt);
-                ds = new DataSet();
-                ds.Tables.Add(dt);
-               
+                SqlDataReader dr= cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    historiaClinica = new HistoriaClinica();
+
+                    historiaClinica.id_hc = (int)dr["id_hc"];
+                    historiaClinica.nro_hc = (int)dr["nro_hc"];
+                    historiaClinica.fecha = Convert.ToDateTime(dr["fecha_creación"].ToString());
+                    historiaClinica.hora = Convert.ToDateTime(dr["hora_creacion"].ToString());
+                    historiaClinica.motivoConsulta = dr["principalProblema"].ToString();
+                    historiaClinica.fechaInicioAtencion =Convert.ToDateTime(dr["fecha_inicio_atencion_con_profesional"].ToString());
+
+                }
                 cn.Close();
 
-                int idHc= (int) dt.Rows[0]["id_hc"];
-
-                ds.Tables.Add(mostrarAntecedentesMorbidos(idHc));
             }
             catch (Exception e)
             {
@@ -162,11 +163,7 @@ namespace DAO
                 }
                 throw new ApplicationException("Error:" + e.Message);
             }
-            return ds;
-        }
-        private static DataTable mostrarAntecedentesMorbidos(int idHc)
-        {
-            return AntecedenteMorbidoDAO.mostrarAntecedentesMorbidosDeHc(idHc);
+            return historiaClinica;
         }
      /*
         public static int insertarHC(HistoriaClinica hc)

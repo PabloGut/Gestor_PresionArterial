@@ -112,9 +112,9 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnVerHistoriaClinica = new System.Windows.Forms.Button();
             this.label106 = new System.Windows.Forms.Label();
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
-            this.label105 = new System.Windows.Forms.Label();
             this.dgvAntecedentesMorbidos = new System.Windows.Forms.DataGridView();
             this.mtbFechaInicioAntecionHc = new System.Windows.Forms.MaskedTextBox();
             this.mtbHoraCreacionHc = new System.Windows.Forms.MaskedTextBox();
@@ -360,7 +360,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnVerHistoriaClinica = new System.Windows.Forms.Button();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnEnfermedades = new System.Windows.Forms.Button();
+            this.btnOperaciones = new System.Windows.Forms.Button();
+            this.btnTraumatismos = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -407,6 +410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1186,11 +1190,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox12);
             this.tabPage3.Controls.Add(this.btnVerHistoriaClinica);
             this.tabPage3.Controls.Add(this.label106);
             this.tabPage3.Controls.Add(this.dataGridView7);
-            this.tabPage3.Controls.Add(this.label105);
-            this.tabPage3.Controls.Add(this.dgvAntecedentesMorbidos);
             this.tabPage3.Controls.Add(this.mtbFechaInicioAntecionHc);
             this.tabPage3.Controls.Add(this.mtbHoraCreacionHc);
             this.tabPage3.Controls.Add(this.mtbFechaCreacionHc);
@@ -1209,10 +1212,20 @@
             this.tabPage3.Text = "Historia Clínica";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnVerHistoriaClinica
+            // 
+            this.btnVerHistoriaClinica.Location = new System.Drawing.Point(198, 19);
+            this.btnVerHistoriaClinica.Name = "btnVerHistoriaClinica";
+            this.btnVerHistoriaClinica.Size = new System.Drawing.Size(116, 23);
+            this.btnVerHistoriaClinica.TabIndex = 16;
+            this.btnVerHistoriaClinica.Text = "Ver historia clínica";
+            this.btnVerHistoriaClinica.UseVisualStyleBackColor = true;
+            this.btnVerHistoriaClinica.Click += new System.EventHandler(this.btnVerHistoriaClinica_Click);
+            // 
             // label106
             // 
             this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(7, 410);
+            this.label106.Location = new System.Drawing.Point(7, 454);
             this.label106.Name = "label106";
             this.label106.Size = new System.Drawing.Size(44, 13);
             this.label106.TabIndex = 15;
@@ -1221,24 +1234,15 @@
             // dataGridView7
             // 
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Location = new System.Drawing.Point(10, 426);
+            this.dataGridView7.Location = new System.Drawing.Point(10, 480);
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.Size = new System.Drawing.Size(421, 120);
             this.dataGridView7.TabIndex = 14;
             // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(7, 246);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(119, 13);
-            this.label105.TabIndex = 13;
-            this.label105.Text = "Antecedentes Mórbidos";
-            // 
             // dgvAntecedentesMorbidos
             // 
             this.dgvAntecedentesMorbidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAntecedentesMorbidos.Location = new System.Drawing.Point(10, 262);
+            this.dgvAntecedentesMorbidos.Location = new System.Drawing.Point(6, 64);
             this.dgvAntecedentesMorbidos.Name = "dgvAntecedentesMorbidos";
             this.dgvAntecedentesMorbidos.Size = new System.Drawing.Size(421, 120);
             this.dgvAntecedentesMorbidos.TabIndex = 12;
@@ -1275,7 +1279,7 @@
             this.txtMotivoPrimeraConsulta.Location = new System.Drawing.Point(10, 183);
             this.txtMotivoPrimeraConsulta.Multiline = true;
             this.txtMotivoPrimeraConsulta.Name = "txtMotivoPrimeraConsulta";
-            this.txtMotivoPrimeraConsulta.Size = new System.Drawing.Size(421, 48);
+            this.txtMotivoPrimeraConsulta.Size = new System.Drawing.Size(435, 48);
             this.txtMotivoPrimeraConsulta.TabIndex = 8;
             // 
             // txtNroHistoriaClinica
@@ -3602,15 +3606,47 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnVerHistoriaClinica
+            // groupBox12
             // 
-            this.btnVerHistoriaClinica.Location = new System.Drawing.Point(198, 19);
-            this.btnVerHistoriaClinica.Name = "btnVerHistoriaClinica";
-            this.btnVerHistoriaClinica.Size = new System.Drawing.Size(116, 23);
-            this.btnVerHistoriaClinica.TabIndex = 16;
-            this.btnVerHistoriaClinica.Text = "Ver historia clínica";
-            this.btnVerHistoriaClinica.UseVisualStyleBackColor = true;
-            this.btnVerHistoriaClinica.Click += new System.EventHandler(this.btnVerHistoriaClinica_Click);
+            this.groupBox12.Controls.Add(this.btnTraumatismos);
+            this.groupBox12.Controls.Add(this.btnOperaciones);
+            this.groupBox12.Controls.Add(this.btnEnfermedades);
+            this.groupBox12.Controls.Add(this.dgvAntecedentesMorbidos);
+            this.groupBox12.Location = new System.Drawing.Point(10, 241);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(435, 210);
+            this.groupBox12.TabIndex = 17;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Antecedentes Morbidos";
+            // 
+            // btnEnfermedades
+            // 
+            this.btnEnfermedades.Location = new System.Drawing.Point(6, 28);
+            this.btnEnfermedades.Name = "btnEnfermedades";
+            this.btnEnfermedades.Size = new System.Drawing.Size(75, 23);
+            this.btnEnfermedades.TabIndex = 13;
+            this.btnEnfermedades.Text = "Enfermedades";
+            this.btnEnfermedades.UseVisualStyleBackColor = true;
+            this.btnEnfermedades.Click += new System.EventHandler(this.btnEnfermedades_Click);
+            // 
+            // btnOperaciones
+            // 
+            this.btnOperaciones.Location = new System.Drawing.Point(178, 28);
+            this.btnOperaciones.Name = "btnOperaciones";
+            this.btnOperaciones.Size = new System.Drawing.Size(75, 23);
+            this.btnOperaciones.TabIndex = 14;
+            this.btnOperaciones.Text = "Operaciones";
+            this.btnOperaciones.UseVisualStyleBackColor = true;
+            // 
+            // btnTraumatismos
+            // 
+            this.btnTraumatismos.Location = new System.Drawing.Point(87, 28);
+            this.btnTraumatismos.Name = "btnTraumatismos";
+            this.btnTraumatismos.Size = new System.Drawing.Size(85, 23);
+            this.btnTraumatismos.TabIndex = 15;
+            this.btnTraumatismos.Text = "Traumatismos";
+            this.btnTraumatismos.UseVisualStyleBackColor = true;
+            this.btnTraumatismos.Click += new System.EventHandler(this.btnTraumatismos_Click);
             // 
             // MenuPrincipal
             // 
@@ -3692,6 +3728,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4029,8 +4066,11 @@
         private System.Windows.Forms.Label label100;
         private System.Windows.Forms.Label label106;
         private System.Windows.Forms.DataGridView dataGridView7;
-        private System.Windows.Forms.Label label105;
         private System.Windows.Forms.DataGridView dgvAntecedentesMorbidos;
         private System.Windows.Forms.Button btnVerHistoriaClinica;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button btnTraumatismos;
+        private System.Windows.Forms.Button btnOperaciones;
+        private System.Windows.Forms.Button btnEnfermedades;
     }
 }

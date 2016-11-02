@@ -68,5 +68,19 @@ namespace GPA
             combo.ValueMember = valueMember;
             combo.DisplayMember = displayMember;
         }
+        public static void agregarColumnaAntecedentesMorbidos(DataGridView dgv)
+        {
+            string[] nombreColumnasAntecedenteMorbido = new string[6] { "Fecha de registro","Tipo", "Nombre", "Tratamiento", "Evolución", "Cantidad de tiempo en que ocurrió" };
+
+
+            for (int i = 0; i < nombreColumnasAntecedenteMorbido.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAntecedenteMorbido[i];
+                columna.Width = 200;
+                dgv.Columns.Add(columna);
+            }
+
+        }
     }
 }

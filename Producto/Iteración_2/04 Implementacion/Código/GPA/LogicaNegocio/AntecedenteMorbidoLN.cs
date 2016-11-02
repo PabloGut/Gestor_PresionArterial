@@ -15,5 +15,17 @@ namespace LogicaNegocio
         {
             AntecedenteMorbidoDAO.registrarAntecedenteMorbido(antecedentes, idHc);
         }
+        public static DataTable mostrarAntecedentesMorbidosEnfermedades(int idHc)
+        {
+            return AntecedenteMorbidoDAO.mostrarAntecedentesMorbidosEnfermedadesDeHc(idHc);
+        }
+        public static DataTable mostrarAntecedentesMorbidosOperaciones(int idHc)
+        {
+            return AntecedenteMorbidoDAO.mostrarAntecedentesMorbidosOperacionesDeHc(idHc);
+        }
+        public static DataTable mostrarAntecedentesMorbidosTraumatismos(int idHc)
+        {
+            return AntecedenteMorbidoDAO.mostrarAntecedentesMorbidosTraumatismosDeHc(idHc);
+        }
     }
 }

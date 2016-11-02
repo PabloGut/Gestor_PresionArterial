@@ -284,6 +284,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="obj\Debug\" />
     <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
