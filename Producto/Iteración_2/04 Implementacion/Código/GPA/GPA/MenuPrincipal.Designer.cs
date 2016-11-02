@@ -112,10 +112,13 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnVerHistoriaClinica = new System.Windows.Forms.Button();
-            this.label106 = new System.Windows.Forms.Label();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnTraumatismos = new System.Windows.Forms.Button();
+            this.btnOperaciones = new System.Windows.Forms.Button();
+            this.btnEnfermedades = new System.Windows.Forms.Button();
             this.dgvAntecedentesMorbidos = new System.Windows.Forms.DataGridView();
+            this.btnVerHistoriaClinica = new System.Windows.Forms.Button();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.mtbFechaInicioAntecionHc = new System.Windows.Forms.MaskedTextBox();
             this.mtbHoraCreacionHc = new System.Windows.Forms.MaskedTextBox();
             this.mtbFechaCreacionHc = new System.Windows.Forms.MaskedTextBox();
@@ -360,10 +363,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.btnEnfermedades = new System.Windows.Forms.Button();
-            this.btnOperaciones = new System.Windows.Forms.Button();
-            this.btnTraumatismos = new System.Windows.Forms.Button();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.btnEmbarazos = new System.Windows.Forms.Button();
+            this.btnAbortos = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -379,8 +381,9 @@
             this.grbDomicilio.SuspendLayout();
             this.grbPersonales.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
+            this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -410,7 +413,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1190,10 +1193,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox13);
             this.tabPage3.Controls.Add(this.groupBox12);
             this.tabPage3.Controls.Add(this.btnVerHistoriaClinica);
-            this.tabPage3.Controls.Add(this.label106);
-            this.tabPage3.Controls.Add(this.dataGridView7);
             this.tabPage3.Controls.Add(this.mtbFechaInicioAntecionHc);
             this.tabPage3.Controls.Add(this.mtbHoraCreacionHc);
             this.tabPage3.Controls.Add(this.mtbFechaCreacionHc);
@@ -1212,6 +1214,57 @@
             this.tabPage3.Text = "Historia Clínica";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.btnTraumatismos);
+            this.groupBox12.Controls.Add(this.btnOperaciones);
+            this.groupBox12.Controls.Add(this.btnEnfermedades);
+            this.groupBox12.Controls.Add(this.dgvAntecedentesMorbidos);
+            this.groupBox12.Location = new System.Drawing.Point(10, 224);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(435, 193);
+            this.groupBox12.TabIndex = 17;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Antecedentes Morbidos";
+            // 
+            // btnTraumatismos
+            // 
+            this.btnTraumatismos.Location = new System.Drawing.Point(87, 28);
+            this.btnTraumatismos.Name = "btnTraumatismos";
+            this.btnTraumatismos.Size = new System.Drawing.Size(85, 23);
+            this.btnTraumatismos.TabIndex = 15;
+            this.btnTraumatismos.Text = "Traumatismos";
+            this.btnTraumatismos.UseVisualStyleBackColor = true;
+            this.btnTraumatismos.Click += new System.EventHandler(this.btnTraumatismos_Click);
+            // 
+            // btnOperaciones
+            // 
+            this.btnOperaciones.Location = new System.Drawing.Point(178, 28);
+            this.btnOperaciones.Name = "btnOperaciones";
+            this.btnOperaciones.Size = new System.Drawing.Size(75, 23);
+            this.btnOperaciones.TabIndex = 14;
+            this.btnOperaciones.Text = "Operaciones";
+            this.btnOperaciones.UseVisualStyleBackColor = true;
+            this.btnOperaciones.Click += new System.EventHandler(this.btnOperaciones_Click);
+            // 
+            // btnEnfermedades
+            // 
+            this.btnEnfermedades.Location = new System.Drawing.Point(6, 28);
+            this.btnEnfermedades.Name = "btnEnfermedades";
+            this.btnEnfermedades.Size = new System.Drawing.Size(75, 23);
+            this.btnEnfermedades.TabIndex = 13;
+            this.btnEnfermedades.Text = "Enfermedades";
+            this.btnEnfermedades.UseVisualStyleBackColor = true;
+            this.btnEnfermedades.Click += new System.EventHandler(this.btnEnfermedades_Click);
+            // 
+            // dgvAntecedentesMorbidos
+            // 
+            this.dgvAntecedentesMorbidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAntecedentesMorbidos.Location = new System.Drawing.Point(6, 64);
+            this.dgvAntecedentesMorbidos.Name = "dgvAntecedentesMorbidos";
+            this.dgvAntecedentesMorbidos.Size = new System.Drawing.Size(421, 120);
+            this.dgvAntecedentesMorbidos.TabIndex = 12;
+            // 
             // btnVerHistoriaClinica
             // 
             this.btnVerHistoriaClinica.Location = new System.Drawing.Point(198, 19);
@@ -1222,30 +1275,13 @@
             this.btnVerHistoriaClinica.UseVisualStyleBackColor = true;
             this.btnVerHistoriaClinica.Click += new System.EventHandler(this.btnVerHistoriaClinica_Click);
             // 
-            // label106
-            // 
-            this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(7, 454);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(44, 13);
-            this.label106.TabIndex = 15;
-            this.label106.Text = "Alergias";
-            // 
             // dataGridView7
             // 
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Location = new System.Drawing.Point(10, 480);
+            this.dataGridView7.Location = new System.Drawing.Point(6, 60);
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.Size = new System.Drawing.Size(421, 120);
             this.dataGridView7.TabIndex = 14;
-            // 
-            // dgvAntecedentesMorbidos
-            // 
-            this.dgvAntecedentesMorbidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAntecedentesMorbidos.Location = new System.Drawing.Point(6, 64);
-            this.dgvAntecedentesMorbidos.Name = "dgvAntecedentesMorbidos";
-            this.dgvAntecedentesMorbidos.Size = new System.Drawing.Size(421, 120);
-            this.dgvAntecedentesMorbidos.TabIndex = 12;
             // 
             // mtbFechaInicioAntecionHc
             // 
@@ -1276,7 +1312,7 @@
             // 
             // txtMotivoPrimeraConsulta
             // 
-            this.txtMotivoPrimeraConsulta.Location = new System.Drawing.Point(10, 183);
+            this.txtMotivoPrimeraConsulta.Location = new System.Drawing.Point(10, 170);
             this.txtMotivoPrimeraConsulta.Multiline = true;
             this.txtMotivoPrimeraConsulta.Name = "txtMotivoPrimeraConsulta";
             this.txtMotivoPrimeraConsulta.Size = new System.Drawing.Size(435, 48);
@@ -1292,7 +1328,7 @@
             // label104
             // 
             this.label104.AutoSize = true;
-            this.label104.Location = new System.Drawing.Point(7, 167);
+            this.label104.Location = new System.Drawing.Point(7, 154);
             this.label104.Name = "label104";
             this.label104.Size = new System.Drawing.Size(128, 13);
             this.label104.TabIndex = 4;
@@ -3606,47 +3642,35 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // groupBox12
+            // groupBox13
             // 
-            this.groupBox12.Controls.Add(this.btnTraumatismos);
-            this.groupBox12.Controls.Add(this.btnOperaciones);
-            this.groupBox12.Controls.Add(this.btnEnfermedades);
-            this.groupBox12.Controls.Add(this.dgvAntecedentesMorbidos);
-            this.groupBox12.Location = new System.Drawing.Point(10, 241);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(435, 210);
-            this.groupBox12.TabIndex = 17;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Antecedentes Morbidos";
+            this.groupBox13.Controls.Add(this.btnAbortos);
+            this.groupBox13.Controls.Add(this.btnEmbarazos);
+            this.groupBox13.Controls.Add(this.dataGridView7);
+            this.groupBox13.Location = new System.Drawing.Point(10, 423);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(435, 186);
+            this.groupBox13.TabIndex = 18;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Antecedentes GinecoObstetricos";
             // 
-            // btnEnfermedades
+            // btnEmbarazos
             // 
-            this.btnEnfermedades.Location = new System.Drawing.Point(6, 28);
-            this.btnEnfermedades.Name = "btnEnfermedades";
-            this.btnEnfermedades.Size = new System.Drawing.Size(75, 23);
-            this.btnEnfermedades.TabIndex = 13;
-            this.btnEnfermedades.Text = "Enfermedades";
-            this.btnEnfermedades.UseVisualStyleBackColor = true;
-            this.btnEnfermedades.Click += new System.EventHandler(this.btnEnfermedades_Click);
+            this.btnEmbarazos.Location = new System.Drawing.Point(6, 31);
+            this.btnEmbarazos.Name = "btnEmbarazos";
+            this.btnEmbarazos.Size = new System.Drawing.Size(75, 23);
+            this.btnEmbarazos.TabIndex = 15;
+            this.btnEmbarazos.Text = "Embarazos";
+            this.btnEmbarazos.UseVisualStyleBackColor = true;
             // 
-            // btnOperaciones
+            // btnAbortos
             // 
-            this.btnOperaciones.Location = new System.Drawing.Point(178, 28);
-            this.btnOperaciones.Name = "btnOperaciones";
-            this.btnOperaciones.Size = new System.Drawing.Size(75, 23);
-            this.btnOperaciones.TabIndex = 14;
-            this.btnOperaciones.Text = "Operaciones";
-            this.btnOperaciones.UseVisualStyleBackColor = true;
-            // 
-            // btnTraumatismos
-            // 
-            this.btnTraumatismos.Location = new System.Drawing.Point(87, 28);
-            this.btnTraumatismos.Name = "btnTraumatismos";
-            this.btnTraumatismos.Size = new System.Drawing.Size(85, 23);
-            this.btnTraumatismos.TabIndex = 15;
-            this.btnTraumatismos.Text = "Traumatismos";
-            this.btnTraumatismos.UseVisualStyleBackColor = true;
-            this.btnTraumatismos.Click += new System.EventHandler(this.btnTraumatismos_Click);
+            this.btnAbortos.Location = new System.Drawing.Point(87, 31);
+            this.btnAbortos.Name = "btnAbortos";
+            this.btnAbortos.Size = new System.Drawing.Size(75, 23);
+            this.btnAbortos.TabIndex = 16;
+            this.btnAbortos.Text = "Abortos";
+            this.btnAbortos.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipal
             // 
@@ -3685,8 +3709,9 @@
             this.grbPersonales.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
+            this.groupBox12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -3728,7 +3753,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4064,7 +4089,6 @@
         private System.Windows.Forms.Label label102;
         private System.Windows.Forms.Label label101;
         private System.Windows.Forms.Label label100;
-        private System.Windows.Forms.Label label106;
         private System.Windows.Forms.DataGridView dataGridView7;
         private System.Windows.Forms.DataGridView dgvAntecedentesMorbidos;
         private System.Windows.Forms.Button btnVerHistoriaClinica;
@@ -4072,5 +4096,8 @@
         private System.Windows.Forms.Button btnTraumatismos;
         private System.Windows.Forms.Button btnOperaciones;
         private System.Windows.Forms.Button btnEnfermedades;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button btnAbortos;
+        private System.Windows.Forms.Button btnEmbarazos;
     }
 }

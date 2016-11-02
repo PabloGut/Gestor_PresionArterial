@@ -80,7 +80,18 @@ namespace GPA
                 columna.Width = 200;
                 dgv.Columns.Add(columna);
             }
+        }
+        public static void mostrarFilaNoSeEncontraronResultados(DataGridView dgv)
+        {
+            DataGridViewColumn columna = new DataGridViewTextBoxColumn();
+            columna.Width = 500;
+            dgv.Columns.Add(columna);
 
+            DataGridViewRow fila = new DataGridViewRow();
+
+            dgv.Rows.Add(fila);
+
+            dgv.Rows[0].Cells[0].Value = "No se encontraron resultados";
         }
     }
 }

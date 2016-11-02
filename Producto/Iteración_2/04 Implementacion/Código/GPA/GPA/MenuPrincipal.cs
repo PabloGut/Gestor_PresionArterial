@@ -406,8 +406,9 @@ namespace GPA
         }
 
         private void btnEnfermedades_Click(object sender, EventArgs e)
-        {
-            cargarEnfermedadesEnDatagridView();
+        {   
+            DataTable dt= manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
+            presentarAntecedentesMorbidosEnDataGridView(dgvAntecedentesMorbidos, dt);
         }
         public void cargarEnfermedadesEnDatagridView()
         {
@@ -421,49 +422,60 @@ namespace GPA
 
                 for (int i = 0; i < dataTable.Rows.Count ; i++)
                 {
-                    dgvAntecedentesMorbidos.Rows.Add(dataTable.Rows[i]["Fecha de registro"].ToString(), dataTable.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dataTable.Rows[i]["Nombre de la enfermedad"].ToString(), dataTable.Rows[i]["Evolución"].ToString(), dataTable.Rows[i]["Tratamiento"].ToString(), dataTable.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
+                    string evolucion = dataTable.Rows[i]["Evolución"].ToString();
+                    string tratamiento = dataTable.Rows[i]["Tratamiento"].ToString();
+
+                    if (string.IsNullOrEmpty(evolucion) == true)
+                        evolucion = "No precisa";
+
+                    if (string.IsNullOrEmpty(tratamiento) == true)
+                        tratamiento = "No precisa";
+
+                    dgvAntecedentesMorbidos.Rows.Add(dataTable.Rows[i]["Fecha de registro"].ToString(), dataTable.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dataTable.Rows[i]["Nombre de la enfermedad"].ToString(), evolucion, tratamiento, dataTable.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
                 }
             }
             else
             {
-                DataGridViewColumn columna = new DataGridViewTextBoxColumn();
-                columna.Width = 500;
-                dgvAntecedentesMorbidos.Columns.Add(columna);
-
-                DataGridViewRow fila = new DataGridViewRow();
-
-                dgvAntecedentesMorbidos.Rows.Add(fila);
-
-                dgvAntecedentesMorbidos.Rows[0].Cells[0].Value = "No se encontraron resultados";
+                Utilidades.mostrarFilaNoSeEncontraronResultados(dgvAntecedentesMorbidos);
             }
         }
         private void btnTraumatismos_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = manejadorConsultarHc.mostrarAntecedentesMorbidosTraumatismos(hc.id_hc);
-            dgvAntecedentesMorbidos.Rows.Clear();
-            dgvAntecedentesMorbidos.Columns.Clear();
-            if (dataTable.Rows.Count > 0)
-            {   
-                if(dgvAntecedentesMorbidos.Columns.Count==0)
-                    Utilidades.agregarColumnaAntecedentesMorbidos(dgvAntecedentesMorbidos);
+            DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosTraumatismos(hc.id_hc);
+            presentarAntecedentesMorbidosEnDataGridView(dgvAntecedentesMorbidos, dt);
+        }
 
-                for (int i = 0; i < dataTable.Rows.Count; i++)
+        private void btnOperaciones_Click(object sender, EventArgs e)
+        {
+            DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosOperaciones(hc.id_hc);
+            presentarAntecedentesMorbidosEnDataGridView(dgvAntecedentesMorbidos, dt);
+        }
+        public void presentarAntecedentesMorbidosEnDataGridView(DataGridView dgv,DataTable dt)
+        {
+            dgv.Rows.Clear();
+            dgv.Columns.Clear();
+
+            if (dt.Rows.Count > 0)
+            {
+                Utilidades.agregarColumnaAntecedentesMorbidos(dgv);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    dgvAntecedentesMorbidos.Rows.Add(dataTable.Rows[i]["Fecha de registro"].ToString(), dataTable.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dataTable.Rows[i]["Nombre del traumatismo"].ToString(), dataTable.Rows[i]["Evolución"].ToString(), dataTable.Rows[i]["Tratamiento"].ToString(), dataTable.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
+                    string evolucion = dt.Rows[i]["Evolución"].ToString();
+                    string tratamiento = dt.Rows[i]["Tratamiento"].ToString();
+
+                    if (string.IsNullOrEmpty(evolucion) == true)
+                        evolucion = "No precisa";
+
+                    if (string.IsNullOrEmpty(tratamiento) == true)
+                        tratamiento = "No precisa";
+
+                    dgvAntecedentesMorbidos.Rows.Add(dt.Rows[i]["Fecha de registro"].ToString(), dt.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dt.Rows[i]["Nombre"].ToString(), evolucion, tratamiento, dt.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
                 }
-               
             }
             else
             {
-                DataGridViewColumn columna = new DataGridViewTextBoxColumn();
-                columna.Width = 500;
-                dgvAntecedentesMorbidos.Columns.Add(columna);
-
-                DataGridViewRow fila = new DataGridViewRow();
-
-                dgvAntecedentesMorbidos.Rows.Add(fila);
-
-                dgvAntecedentesMorbidos.Rows[0].Cells[0].Value = "No se encontraron resultados";
+                Utilidades.mostrarFilaNoSeEncontraronResultados(dgvAntecedentesMorbidos);
             }
         }
     }

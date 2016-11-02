@@ -118,7 +118,7 @@ namespace DAO
 
                 cn.Open();
 
-                string consulta = @"select am.fechaRegistro as 'Fecha de registro', am.id_tipoAntecedenteMorbido_fk, tam.nombre as 'Tipo de Antecedente Mórbido', enf.nombre as 'Nombre de la enfermedad', am.evolucion as 'Evolución', am.tratamiento as 'Tratamiento',CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
+                string consulta = @"select am.fechaRegistro as 'Fecha de registro', am.id_tipoAntecedenteMorbido_fk, tam.nombre as 'Tipo de Antecedente Mórbido', enf.nombre as 'Nombre', am.evolucion as 'Evolución', am.tratamiento as 'Tratamiento',CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
                                   from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf,ElementoDelTiempo et
                                   where hc.id_hc= am.id_hc_fk and hc.id_hc= @idHc and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
                                   and am.id_enfermedad_fk=enf.id_enfermedad
@@ -160,7 +160,7 @@ namespace DAO
 
                 cn.Open();
 
-                string consulta = @"select am.fechaRegistro as 'Fecha de registro', am.id_tipoAntecedenteMorbido_fk, tam.nombre as 'Tipo de Antecedente Mórbido', trau.nombre as 'Nombre del traumatismo', am.evolucion as 'Evolución', am.tratamiento as 'Tratamiento',CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
+                string consulta = @"select am.fechaRegistro as 'Fecha de registro', am.id_tipoAntecedenteMorbido_fk, tam.nombre as 'Tipo de Antecedente Mórbido', trau.nombre as 'Nombre', am.evolucion as 'Evolución', am.tratamiento as 'Tratamiento',CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
                                   from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Traumatismos trau,ElementoDelTiempo et
                                   where hc.id_hc= am.id_hc_fk and hc.id_hc= @idHc and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
                                   and am.id_traumatismo_fk=trau.id_traumatismo
@@ -201,10 +201,11 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, ope.nombre, am.evolucion, am.tratamiento
-                                  from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Operaciones ope
+                string consulta = @"select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, ope.nombre as 'Nombre', am.evolucion, am.tratamiento,CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
+                                  from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Operaciones ope,ElementoDelTiempo et
                                   where hc.id_hc= am.id_hc_fk and hc.id_hc= @idHc and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
-                                  and am.id_operacion_fk=ope.id_operacion ";
+                                  and am.id_operacion_fk=ope.id_operacion 
+                                  and am.id_elementoTiempo_fk=et.id_elementoDelTiempo";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.AddWithValue("@idHc", idHc);

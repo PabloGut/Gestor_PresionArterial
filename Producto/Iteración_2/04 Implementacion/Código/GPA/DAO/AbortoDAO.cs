@@ -61,8 +61,15 @@ namespace DAO
                 
                 cmd.Parameters.AddWithValue("@nroHijosVivos", aborto.nroHijosVivos);
 
-                if (string.IsNullOrEmpty(aborto.problemasEmbarazo)==true)
+                if (string.IsNullOrEmpty(aborto.problemasEmbarazo) == true)
+                {
+                    cmd.Parameters.AddWithValue("@problemasAsociadosAlEmbarazo", DBNull.Value);
+                }
+                else
+                {
                     cmd.Parameters.AddWithValue("@problemasAsociadosAlEmbarazo", aborto.problemasEmbarazo);
+                }
+                   
 
                 cmd.ExecuteNonQuery();
 
