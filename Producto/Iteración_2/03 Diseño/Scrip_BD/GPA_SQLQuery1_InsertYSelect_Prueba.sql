@@ -445,7 +445,7 @@ select * from Historia_Clinica
 select * from HabitosActividadFisica
 select * from HabitosTabaquismo
 select * from Paciente
-delete from Historia_Clinica where id_hc=55
+delete from Historia_Clinica where id_hc=58
 delete from HabitosTabaquismo where id_hc_fk=30
 
 select * from ProgramacionMedicamento
@@ -522,3 +522,14 @@ from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam
 where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
 and am.id_enfermedad_fk=enf.id_enfermedad 
 and am.id_elementoTiempo_fk=et.id_elementoDelTiempo
+
+
+select ag.fechaRegistro, ag.cantidadEmbarazos,CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino'
+from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2, TipoParto tp3
+where hc.id_hc=ag.id_hc_fk and hc.id_hc='18'
+and ag.id_TipoParto1_fk=tp1.id_TipoParto
+and ag.id_TipoParto2_fk=tp2.id_TipoParto
+and ag.id_TipoParto3_fk=tp3.id_TipoParto
+and not (tp1.id_TipoParto is null and tp2.id_TipoParto is null and tp3.id_TipoParto is null)
+
+select * from AntecedentesGinecoObstetricos
