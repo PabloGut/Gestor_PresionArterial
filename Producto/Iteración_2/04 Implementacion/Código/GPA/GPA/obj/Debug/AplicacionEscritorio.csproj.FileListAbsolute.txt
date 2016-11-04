@@ -118,7 +118,6 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branc
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.ActualizarUnidadMedida.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.ConsultarEstudio.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.ConsultarHistoriaClínica.resources
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.Form1.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarBarrio.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarEspecialidad.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarHistoriaClínica.resources
@@ -145,3 +144,4 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branc
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\bin\Debug\LogicaNegocio.pdb
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.exe
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.frmInformacionHistoriaClinica.resources

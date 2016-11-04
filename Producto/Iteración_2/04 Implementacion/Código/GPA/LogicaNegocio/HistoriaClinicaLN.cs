@@ -50,6 +50,10 @@ namespace LogicaNegocio
         {
             return HistoriaClinicaDAO.mostrarHistoriaClinica(paciente);
         }
+        public static int mostrarIdHc(int idTipoDoc, long nroDoc)
+        {
+            return HistoriaClinicaDAO.buscarIdHc(idTipoDoc, nroDoc);
+        }
        
     }
 }

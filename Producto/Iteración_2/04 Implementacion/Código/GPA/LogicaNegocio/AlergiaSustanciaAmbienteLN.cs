@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             AlergiaSustanciaAmbienteDAO.registrarAlergiaSustanciasDelAmbiente(alergiaSustanciaAmbiente, idHc);
         }
+        public static DataTable mostrarAlergiasSustanciaAmbiente(int idHc)
+        {
+            return AlergiaSustanciaAmbienteDAO.mostrarAlegiasSustanciasDelAmbiente(idHc);
+        }
     }
 }

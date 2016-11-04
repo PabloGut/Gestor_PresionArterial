@@ -51,6 +51,10 @@ namespace GPA.Manejadores
         {
             return HistoriaClinicaLN.calcularSiguienteNroHc();
         }
+        public int mostrarIdHc(int tipoDoc, long nroDoc)
+        {
+            return HistoriaClinicaLN.mostrarIdHc(tipoDoc, nroDoc);
+        }
 
     }
 }

@@ -361,13 +361,15 @@ namespace GPA
         {
             RegistrarHistoriaClínica regHC = new RegistrarHistoriaClínica(medicoLogueado,pacienteSeleccionado);
             regHC.ShowDialog();
+            
         }
 
         private void btnRegistraMedicamento_Click(object sender, EventArgs e)
         {
             RegistrarMedicamento formRegistrarMedicamento = new RegistrarMedicamento();
             formRegistrarMedicamento.ShowDialog();
-
+            ManejadorRegistrarHC manejador = new ManejadorRegistrarHC();
+            pacienteSeleccionado.id_hc=manejador.mostrarIdHc(pacienteSeleccionado.id_tipoDoc, pacienteSeleccionado.nroDoc);
         }
 
         private void registrarProfesionalMédicoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -406,77 +408,122 @@ namespace GPA
         }
 
         private void btnEnfermedades_Click(object sender, EventArgs e)
-        {   
-            DataTable dt= manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
-            presentarAntecedentesMorbidosEnDataGridView(dgvAntecedentesMorbidos, dt);
-        }
-        public void cargarEnfermedadesEnDatagridView()
         {
-            dgvAntecedentesMorbidos.Rows.Clear();
-            dgvAntecedentesMorbidos.Columns.Clear();
-            DataTable dataTable = manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
-
-            if (dataTable.Rows.Count > 0)
-            {
-                Utilidades.agregarColumnaAntecedentesMorbidos(dgvAntecedentesMorbidos);
-
-                for (int i = 0; i < dataTable.Rows.Count ; i++)
-                {
-                    string evolucion = dataTable.Rows[i]["Evolución"].ToString();
-                    string tratamiento = dataTable.Rows[i]["Tratamiento"].ToString();
-
-                    if (string.IsNullOrEmpty(evolucion) == true)
-                        evolucion = "No precisa";
-
-                    if (string.IsNullOrEmpty(tratamiento) == true)
-                        tratamiento = "No precisa";
-
-                    dgvAntecedentesMorbidos.Rows.Add(dataTable.Rows[i]["Fecha de registro"].ToString(), dataTable.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dataTable.Rows[i]["Nombre de la enfermedad"].ToString(), evolucion, tratamiento, dataTable.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
-                }
-            }
-            else
-            {
-                Utilidades.mostrarFilaNoSeEncontraronResultados(dgvAntecedentesMorbidos);
-            }
+            DataTable dt= manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
         }
         private void btnTraumatismos_Click(object sender, EventArgs e)
         {
             DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosTraumatismos(hc.id_hc);
-            presentarAntecedentesMorbidosEnDataGridView(dgvAntecedentesMorbidos, dt);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
         }
 
         private void btnOperaciones_Click(object sender, EventArgs e)
         {
             DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosOperaciones(hc.id_hc);
-            presentarAntecedentesMorbidosEnDataGridView(dgvAntecedentesMorbidos, dt);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
         }
-        public void presentarAntecedentesMorbidosEnDataGridView(DataGridView dgv,DataTable dt)
+        private void btnEmbarazosAbortos_Click(object sender, EventArgs e)
         {
-            dgv.Rows.Clear();
-            dgv.Columns.Clear();
-
-            if (dt.Rows.Count > 0)
-            {
-                Utilidades.agregarColumnaAntecedentesMorbidos(dgv);
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    string evolucion = dt.Rows[i]["Evolución"].ToString();
-                    string tratamiento = dt.Rows[i]["Tratamiento"].ToString();
-
-                    if (string.IsNullOrEmpty(evolucion) == true)
-                        evolucion = "No precisa";
-
-                    if (string.IsNullOrEmpty(tratamiento) == true)
-                        tratamiento = "No precisa";
-
-                    dgvAntecedentesMorbidos.Rows.Add(dt.Rows[i]["Fecha de registro"].ToString(), dt.Rows[i]["Tipo de Antecedente Mórbido"].ToString(), dt.Rows[i]["Nombre"].ToString(), evolucion, tratamiento, dt.Rows[i]["Cantidad de tiempo en que ocurrió"].ToString());
-                }
-            }
-            else
-            {
-                Utilidades.mostrarFilaNoSeEncontraronResultados(dgvAntecedentesMorbidos);
-            }
+            DataTable dt = manejadorConsultarHc.mostrarAntecedentesGinecoObstetricos(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesGinecoObstetricos);
         }
+
+        private void btnAbortos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAlergiaAlimentos_Click(object sender, EventArgs e)
+        {
+            DataTable dt = manejadorConsultarHc.mostrarAlergiasAlimentos(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
+        }
+        private void dgvAntecedentesMorbidos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
+        }
+        private void presentarInformacionAlergias(DataGridView dgv)
+        {
+            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+            String cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+            cadena += "\r\nNombre del alérgeno: " + Convert.ToString(dgv.CurrentRow.Cells["Nombre del alérgeno"].Value);
+            cadena += "\r\nEfectos de la alergia: " +Convert.ToString(dgv.CurrentRow.Cells["Efectos de la alergia"].Value);
+
+            frmInformacionHistoriaClinica form = new frmInformacionHistoriaClinica(cadena);
+            form.ShowDialog();
+            form.Dispose();
+        }
+        private void presentarInformacionAntecedentesMorbidos(DataGridView dgv)
+        {
+            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+            String cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+            cadena += "\r\nTipo de antecedente mórbido: " + Convert.ToString(dgv.CurrentRow.Cells["Tipo de Antecedente Mórbido"].Value);
+            cadena += "\r\nNombre:" + Convert.ToString(dgv.CurrentRow.Cells["Nombre"].Value);
+            cadena += "\r\nEvolución:" + Convert.ToString(dgv.CurrentRow.Cells["Evolución"].Value);
+            cadena += "\r\nTratamiento:" + Convert.ToString(dgv.CurrentRow.Cells["Tratamiento"].Value);
+
+            frmInformacionHistoriaClinica form = new frmInformacionHistoriaClinica(cadena);
+            form.ShowDialog();
+            form.Dispose();
+        }
+        private void presentarInformacionAntecedentesGinecoObstetricos(DataGridView dgv)
+        {
+            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+            String cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+            cadena += "\r\nCantidad de embarazos: " + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de embarazos"].Value);
+            cadena += "\r\nCantidad de embarazos prematuros:" + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de embarazos prematuros"].Value);
+            cadena += "\r\nCantidad de embarazos a término:" + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de embarazos a término"].Value);
+            cadena += "\r\nCantidad de embarazos postérmino:" + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de embarazos postérmino"].Value);
+            cadena += "\r\nCantidad de abortos:" + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de abortos"].Value);
+            cadena += "\r\nAbortos provocados:" + Convert.ToString(dgv.CurrentRow.Cells["Abortos provocados"].Value);
+            cadena += "\r\nAbortos espontaneos:" + Convert.ToString(dgv.CurrentRow.Cells["Abortos espontaneos"].Value);
+            cadena += "\r\nNúmero de hijos vivos:" + Convert.ToString(dgv.CurrentRow.Cells["Número de hijos vivos"].Value);
+            cadena += "\r\nProblemas asociados al embarazo:" + Convert.ToString(dgv.CurrentRow.Cells["Problemas asociados al embarazo"].Value);
+            frmInformacionHistoriaClinica form = new frmInformacionHistoriaClinica(cadena);
+            form.ShowDialog();
+            form.Dispose();
+        }
+        private void dgvAlergias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           presentarInformacionAlergias(dgvAlergias);
+        }
+
+        private void btnAlergiaSustanciaAmbiente_Click(object sender, EventArgs e)
+        {
+            DataTable dt = manejadorConsultarHc.mostrarAlergiasSustanciasAmbiente(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
+        }
+
+        private void btnAlergiaSustanciaContactoPiel_Click(object sender, EventArgs e)
+        {
+            DataTable dt = manejadorConsultarHc.mostrarAlergiasSustanciaContactoPiel(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
+        }
+
+        private void btnAlergiaInsectos_Click(object sender, EventArgs e)
+        {
+            DataTable dt = manejadorConsultarHc.mostrarAlergiasInsectos(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
+        }
+
+        private void btnAlergiaMedicamentos_Click(object sender, EventArgs e)
+        {
+            DataTable dt = manejadorConsultarHc.mostrarAlergiasMedicamentos(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
+        }
+
+        private void dgvAntecedentesMorbidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvAntecedentesGinecoObstetricos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            presentarInformacionAntecedentesGinecoObstetricos(dgvAntecedentesGinecoObstetricos);
+        }
+        
+        
+        
     }
 }

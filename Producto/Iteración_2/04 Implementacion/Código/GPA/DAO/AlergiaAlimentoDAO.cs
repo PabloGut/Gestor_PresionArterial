@@ -73,5 +73,45 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static DataTable mostrarAlegiasAlimentos(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select aa.fechaRegistro as 'Fecha de registro', a.nombre as 'Nombre del alérgeno', aa.efectos as 'Efectos de la alergia'
+                                  from AlergiaAlimento aa,Alimento a
+                                  where id_hc_fk=@idHc
+                                  and aa.id_alimento_fk=a.id_alimento";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+
+                da.Fill(dt);
+                cn.Close();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            return dt;
+        }
     }
 }

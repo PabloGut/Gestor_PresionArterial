@@ -28,6 +28,30 @@ namespace GPA.Manejadores
         {
             return AntecedenteMorbidoLN.mostrarAntecedentesMorbidosTraumatismos(idHc);
         }
+        public DataTable mostrarAntecedentesGinecoObstetricos(int idHc)
+        {
+            return AntecedenteGinecoObstetricoLN.mostrarAntecedenteGinecoObtetrico(idHc);
+        }
+        public DataTable mostrarAlergiasAlimentos(int idHc)
+        {
+            return AlergiaAlimentoLN.mostrarAlergiasAlimentos(idHc);
+        }
+        public DataTable mostrarAlergiasSustanciasAmbiente(int idHc)
+        {
+            return AlergiaSustanciaAmbienteLN.mostrarAlergiasSustanciaAmbiente(idHc);
+        }
+        public DataTable mostrarAlergiasSustanciaContactoPiel(int idHc)
+        {
+            return AlergiaSustanciaContactoPielLN.mostrarAlergiasSustanciaContactoPiel(idHc);
+        }
+        public DataTable mostrarAlergiasInsectos(int idHc)
+        {
+            return AlergiaInsectoLN.mostrarAlergiasInsectos(idHc);
+        }
+        public DataTable mostrarAlergiasMedicamentos(int idHc)
+        {
+            return AlergiaMedicamentoLN.mostrarAlergiasMedicamentos(idHc);
+        }
 
     }
 }

@@ -79,11 +79,11 @@
     <Compile Include="ConsultarHistoriaClínica.Designer.cs">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="PresentarInformacionHistoriaClinica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PresentarInformacionHistoriaClinica.Designer.cs">
+      <DependentUpon>PresentarInformacionHistoriaClinica.cs</DependentUpon>
     </Compile>
     <Compile Include="Manejadores\ManejadorConsultarHC.cs" />
     <Compile Include="Manejadores\ManejadorConsultarPaciente.cs" />
@@ -205,8 +205,8 @@
     <EmbeddedResource Include="ConsultarHistoriaClínica.resx">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="PresentarInformacionHistoriaClinica.resx">
+      <DependentUpon>PresentarInformacionHistoriaClinica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarBarrio.resx">
       <DependentUpon>RegistrarBarrio.cs</DependentUpon>

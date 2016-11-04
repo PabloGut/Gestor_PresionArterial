@@ -305,6 +305,7 @@
             this.dgvListaMedicamentos.Size = new System.Drawing.Size(799, 214);
             this.dgvListaMedicamentos.TabIndex = 3;
             this.dgvListaMedicamentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaMedicamentos_CellClick);
+            this.dgvListaMedicamentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaMedicamentos_CellContentClick);
             // 
             // RegistrarMedicamento
             // 

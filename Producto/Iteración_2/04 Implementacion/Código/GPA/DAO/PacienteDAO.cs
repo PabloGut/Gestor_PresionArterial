@@ -390,7 +390,7 @@ namespace DAO
             try
             {
                 cn.Open();
-                String consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', p.telefono, p.nroCelular, p.email, p.fecha_nacimiento, p.altura, p.peso, p.id_domicilio_fk, p.id_profesionalMedico_tipoDoc_fk, p.id_profesionalMedico_nroDoc_fk
+                String consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', p.telefono, p.nroCelular, p.email, p.fecha_nacimiento, p.altura, p.peso, p.id_domicilio_fk, p.id_profesionalMedico_tipoDoc_fk, p.id_profesionalMedico_nroDoc_fk, p.id_hc_fk
                                     from Paciente p
                                     where p.id_profesionalMedico_tipoDoc_fk=@tipoDocMedico and p.id_profesionalMedico_nroDoc_fk=@nroDocMedico
                                     and p.id_tipoDoc_fk=@tipoDocPaciente and p.nro_documento=@nroDocPaciente";
@@ -424,6 +424,11 @@ namespace DAO
                     paciente.id_domicilio = (int)dr["id_domicilio_fk"];
                     paciente.id_tipodoc_medico = (int)dr["id_profesionalMedico_tipoDoc_fk"];
                     paciente.nrodoc_medico = Convert.ToInt64(dr["id_profesionalMedico_nroDoc_fk"].ToString());
+
+                    if (string.IsNullOrEmpty(dr["id_hc_fk"].ToString()) == false)
+                    {
+                        paciente.id_hc =(int)dr["id_hc_fk"];
+                    }
                 }
 
             }

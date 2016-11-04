@@ -312,5 +312,10 @@ namespace GPA
             this.Close();
         }
 
+        private void dgvListaMedicamentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }

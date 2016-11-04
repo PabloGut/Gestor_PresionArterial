@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             AlergiaInsectoDAO.registrarAlergiaInsecto(alergiaInsecto, idHc);
         }
+        public static DataTable mostrarAlergiasInsectos(int idHc)
+        {
+            return AlergiaInsectoDAO.mostrarAlegiasInsectos(idHc);
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data;
 
 namespace GPA
 {
@@ -83,6 +84,9 @@ namespace GPA
         }
         public static void mostrarFilaNoSeEncontraronResultados(DataGridView dgv)
         {
+            dgv.DataSource = null;
+            dgv.Refresh();
+
             DataGridViewColumn columna = new DataGridViewTextBoxColumn();
             columna.Width = 500;
             dgv.Columns.Add(columna);
@@ -92,6 +96,25 @@ namespace GPA
             dgv.Rows.Add(fila);
 
             dgv.Rows[0].Cells[0].Value = "No se encontraron resultados";
+        }
+        public static void presentarDatosEnDataGridView(DataTable dt, DataGridView dgv)
+        {
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                if (dgv.Columns.Count > 0)
+                {
+                    dgv.Columns.Clear();
+                }
+                dgv.DataSource = dt;
+            }
+            else
+            {
+                if (dgv.Columns.Count > 0)
+                {
+                    dgv.Columns.Clear();
+                }
+                Utilidades.mostrarFilaNoSeEncontraronResultados(dgv);
+            }
         }
     }
 }

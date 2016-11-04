@@ -109,5 +109,101 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+
+        public static AntecedenteGinecoObstetrico obtenerAntecedenteGinecoObstetrico(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            AntecedenteGinecoObstetrico antecedente = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = "Select * from AntecedentesGinecoObstetricos where id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    antecedente = new AntecedenteGinecoObstetrico();
+                    antecedente.id_antecedenteGinecoObstetrico = Convert.ToInt32(dr["id_antecedenteGinecoObstetrico"]);
+                    antecedente.fechaRegistro = Convert.ToDateTime(dr["fechaRegistro"].ToString());
+                    antecedente.cantidadEmbarazos = Convert.ToInt32(dr["cantidadEmbarazos"]);
+                    antecedente.cantidadEmbarazosPrematuros = Convert.ToInt32(dr["cantidadEmbarazosPrematuros"]);
+                    antecedente.id_tipoPartoPrematuro = Convert.ToInt32(dr["id_TipoParto1_fk"]);
+                    antecedente.cantidadEmbarazosATermino = Convert.ToInt32(dr["cantidadEmbarazosATermino"]);
+                    antecedente.id_tipoPartoATermino = Convert.ToInt32(dr["id_TipoParto2_fk"]);
+                    antecedente.cantidadEmbarazosPosTermino = Convert.ToInt32(dr["cantidadEmbarazosPosTermino"]);
+                    antecedente.id_tipoPartoPosTermino = Convert.ToInt32(dr["id_TipoParto3_fk"]);
+                    antecedente.id_aborto = Convert.ToInt32(dr["id_Aborto_fk"]);
+                    antecedente.id_hc = Convert.ToInt32(dr["id_hc_fk"]);
+                }
+                cn.Close();
+                
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error: " + e.Message);
+            }
+            return antecedente;
+        }
+        public static DataTable mostrarAntecedenteGinecoObstetrico(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlDataAdapter da = null;
+            DataTable dt = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select ag.fechaRegistro as 'Fecha de registro', ag.cantidadEmbarazos as 'Cantidad de embarazos',CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino', ab.cantidadTotal as 'Cantidad de abortos',CONCAT(ab.cantidadProvocados,' Aborto/s ',ta2.nombre) as 'Abortos provocados', CONCAT(ab.cantidadEspontaneo,' Aborto/s ',ta1.nombre) as 'Abortos espontaneos', ab.nroHijosVivos as 'Número de hijos vivos',ab.problemasAsociadosAlEmbarazo as 'Problemas asociados al embarazo' 
+                                  from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2, TipoParto tp3, Aborto ab, TipoAborto ta1,TipoAborto ta2
+                                  where hc.id_hc=ag.id_hc_fk and hc.id_hc=@idHc
+                                  and ag.id_TipoParto1_fk=tp1.id_TipoParto
+                                  and ag.id_TipoParto2_fk=tp2.id_TipoParto
+                                  and ag.id_TipoParto3_fk=tp3.id_TipoParto
+                                  and ag.id_Aborto_fk=ab.id_aborto
+                                  and ab.id_TipoAborto1_fk=ta1.id_TipoAborto
+                                  and ab.id_TipoAborto2_fk=ta2.id_TipoAborto";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                dt = new DataTable();
+                da = new SqlDataAdapter(cmd);
+
+                da.Fill(dt);
+
+                cn.Close();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error: " + e.Message);
+            }
+            return dt;
+        }
+
     }
 }

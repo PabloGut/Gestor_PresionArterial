@@ -165,6 +165,50 @@ namespace DAO
             }
             return historiaClinica;
         }
+        public static int buscarIdHc(int tipoDoc, long nroDoc )
+        {
+            setCadenaConexion();
+            int nro = 0;
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand();
+                String consulta = "select id_hc from Historia_Clinica where id_tipodoc_fk=@idTipoDocPaciente and id_nrodoc_paciente_fk=@idNroDoc";
+
+                cmd.Parameters.AddWithValue("@idTipoDocPaciente", tipoDoc);
+                cmd.Parameters.AddWithValue("@idNroDoc", nroDoc);
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        nro = (int)dr["id_hc"];
+                    }
+                    cn.Close();
+                    return nro;
+                }
+                else
+                {
+                    return nro;
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error: " + e.Message);
+            }
+        }
      /*
         public static int insertarHC(HistoriaClinica hc)
         {
