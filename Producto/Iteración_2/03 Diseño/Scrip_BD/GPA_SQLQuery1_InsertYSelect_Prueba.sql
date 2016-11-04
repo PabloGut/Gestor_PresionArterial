@@ -515,7 +515,7 @@ from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam
 where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
 and am.id_enfermedad_fk=enf.id_enfermedad 
 
-select * from Historia_Clinica
+select * from AntecedentesGinecoObstetricos
 
 select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, enf.nombre, am.tratamiento, am.evolucion,CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
 from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf,ElementoDelTiempo et
@@ -530,6 +530,55 @@ where hc.id_hc=ag.id_hc_fk and hc.id_hc='18'
 and ag.id_TipoParto1_fk=tp1.id_TipoParto
 and ag.id_TipoParto2_fk=tp2.id_TipoParto
 and ag.id_TipoParto3_fk=tp3.id_TipoParto
-and not (tp1.id_TipoParto is null and tp2.id_TipoParto is null and tp3.id_TipoParto is null)
 
-select * from AntecedentesGinecoObstetricos
+
+select ag.fechaRegistro, ag.cantidadEmbarazos,CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término'
+from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2,TipoParto tp3
+where hc.id_hc=ag.id_hc_fk and hc.id_hc='59'
+and ag.id_TipoParto1_fk=tp1.id_TipoParto
+and ag.id_TipoParto2_fk=tp2.id_TipoParto
+and ag.id_TipoParto3_fk=tp3.id_TipoParto
+and ISNULL(ag.id_TipoParto3_fk,0)=0
+
+select * from Historia_Clinica
+
+select * from AntecedentesMorbidos
+
+select ag.fechaRegistro, ag.cantidadEmbarazos,CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino', ab.cantidadTotal as 'Cantidad de abortos',CONCAT(ab.cantidadProvocados,' Aborto/s ',ta2.nombre) as 'Abortos provocados', CONCAT(ab.cantidadEspontaneo,' Aborto/s ',ta1.nombre) as 'Abortos espontaneos', ab.nroHijosVivos as 'Numero de hijos vivos',ab.problemasAsociadosAlEmbarazo as 'Problemas asociados al embarazo' 
+from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2, TipoParto tp3, Aborto ab, TipoAborto ta1,TipoAborto ta2
+where hc.id_hc=ag.id_hc_fk and hc.id_hc='18'
+and ag.id_TipoParto1_fk=tp1.id_TipoParto
+and ag.id_TipoParto2_fk=tp2.id_TipoParto
+and ag.id_TipoParto3_fk=tp3.id_TipoParto
+and ag.id_Aborto_fk=ab.id_aborto
+and ab.id_TipoAborto1_fk=ta1.id_TipoAborto
+and ab.id_TipoAborto2_fk=ta2.id_TipoAborto
+
+select aa.fechaRegistro as 'Fecha de registro', a.nombre as 'Nombre del alimento', aa.efectos as 'Efectos de la alergia'
+from AlergiaAlimento aa,Alimento a
+where id_hc_fk='23'
+and aa.id_alimento_fk=a.id_alimento
+
+select asa.fechaRegistro as 'Fecha de registro', sa.nombre as 'Nombre de la sustancia', asa.efectos as 'Efectos de la alergia'
+from AlergiaSustanciaAmbiente asa, SustanciaAmbiente sa
+where asa.id_hc_fk='24'
+and asa.id_sustanciaAmbiente_fk=sa.id_sustanciaAmbiente
+
+select * from AlergiaInsecto
+
+select ascp.fechaRegistro as 'Fecha de registro', scp.nombre as 'Nombre de la sustancia', ascp.efectos as 'Efectos de la alergia'
+from AlergiaSustanciaContactoPiel ascp, SustanciaContactoPiel scp
+where ascp.id_hc_fk='25'
+and ascp.id_sustanciaContactoPiel_fk=scp.id_sustanciaContactoPiel
+
+select am.fechaRegistro as 'Fecha de registro', ma.nombre as 'Nombre del medicamento', am.efectos as 'Efectos de la alergia'
+from AlergiaMedicamento am, MedicamentoAlergia ma
+where am.id_hc_fk='57'
+and am.id_medicamentoAlergia_fk=ma.id_medicamentoAlergia
+
+select ai.fechaRegistro as 'Fecha de registro', ins.nombre as 'Nombre del insecto', ai.efectos as 'Efectos de la alergia'
+from AlergiaInsecto ai, Insecto ins
+where ai.id_hc_fk='57'
+and ai.id_insecto_fk=ins.id_insecto
+
+select * from Paciente
