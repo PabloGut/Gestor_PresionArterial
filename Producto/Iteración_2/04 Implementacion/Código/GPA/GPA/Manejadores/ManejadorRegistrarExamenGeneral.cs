@@ -18,5 +18,17 @@ namespace GPA.Manejadores
         {
             return TamañoLN.mostrarTamañosGanglios();
         }
+        public List<EscalaPulso> mostrarEscalaPulso()
+        {
+            return EscalaPulsoLN.mostrarEscalaPulso();
+        }
+        public List<Pulso> mostrarPulsos()
+        {
+            return PulsoLN.mostrarPulsos();
+        }
+        public List<Consistencia> mostrarConsistencia()
+        {
+            return ConsistenciaLN.mostrarConsistencia();
+        }
     }
 }

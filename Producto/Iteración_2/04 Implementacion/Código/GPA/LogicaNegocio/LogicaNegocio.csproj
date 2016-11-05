@@ -52,11 +52,13 @@
     <Compile Include="BarrioLN.cs" />
     <Compile Include="CaracterDelDolorLN.cs" />
     <Compile Include="ComponenteDelTiempoLN.cs" />
+    <Compile Include="ConsistenciaLN.cs" />
     <Compile Include="DescripcionDelTiempoLN.cs" />
     <Compile Include="ElementoDelTiempoLN.cs" />
     <Compile Include="ElementoDeModificacionLN.cs" />
     <Compile Include="ElementoQueFumaLN.cs" />
     <Compile Include="EnfermedadLN.cs" />
+    <Compile Include="EscalaPulsoLN.cs" />
     <Compile Include="EspecialidadLN.cs" />
     <Compile Include="EspecificacionMedicamentoLN.cs" />
     <Compile Include="EstadoLN.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />
+    <Compile Include="PulsoLN.cs" />
     <Compile Include="SintomaLN.cs" />
     <Compile Include="SustanciaAmbienteLN.cs" />
     <Compile Include="SustanciaContactoPielLN.cs" />

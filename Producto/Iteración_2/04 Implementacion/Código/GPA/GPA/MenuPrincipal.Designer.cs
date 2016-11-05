@@ -223,18 +223,18 @@
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.btnAgregarRegionEstudiada = new System.Windows.Forms.Button();
+            this.dgvRegionesEstudiadas = new System.Windows.Forms.DataGridView();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
-            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.txtLesionCompromisoGangleo = new System.Windows.Forms.TextBox();
             this.label49 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chbProcesoInflamatorio = new System.Windows.Forms.CheckBox();
+            this.rbPlanosProfundos = new System.Windows.Forms.RadioButton();
+            this.rbMovilizarConDedos = new System.Windows.Forms.RadioButton();
+            this.rbTiendeConfluir = new System.Windows.Forms.RadioButton();
+            this.rbLimitesPrecisos = new System.Windows.Forms.RadioButton();
+            this.chbSensiblePalpacion = new System.Windows.Forms.CheckBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.cboConsistencia = new System.Windows.Forms.ComboBox();
@@ -254,34 +254,10 @@
             this.textBox33 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.txtObservacionesPulsoArterial = new System.Windows.Forms.TextBox();
             this.label62 = new System.Windows.Forms.Label();
-            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.txtAuscultacionPulsos = new System.Windows.Forms.TextBox();
             this.label61 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.comboBox17 = new System.Windows.Forms.ComboBox();
-            this.comboBox18 = new System.Windows.Forms.ComboBox();
-            this.comboBox19 = new System.Windows.Forms.ComboBox();
-            this.comboBox20 = new System.Windows.Forms.ComboBox();
-            this.comboBox21 = new System.Windows.Forms.ComboBox();
-            this.comboBox23 = new System.Windows.Forms.ComboBox();
-            this.comboBox27 = new System.Windows.Forms.ComboBox();
-            this.comboBox26 = new System.Windows.Forms.ComboBox();
-            this.comboBox16 = new System.Windows.Forms.ComboBox();
-            this.comboBox22 = new System.Windows.Forms.ComboBox();
-            this.comboBox25 = new System.Windows.Forms.ComboBox();
-            this.comboBox24 = new System.Windows.Forms.ComboBox();
-            this.comboBox15 = new System.Windows.Forms.ComboBox();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
@@ -373,6 +349,38 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.cboPI1 = new System.Windows.Forms.ComboBox();
+            this.cboPI2 = new System.Windows.Forms.ComboBox();
+            this.cboPI3 = new System.Windows.Forms.ComboBox();
+            this.cboPI4 = new System.Windows.Forms.ComboBox();
+            this.cboPI5 = new System.Windows.Forms.ComboBox();
+            this.cboPI6 = new System.Windows.Forms.ComboBox();
+            this.cboPI7 = new System.Windows.Forms.ComboBox();
+            this.cboPD1 = new System.Windows.Forms.ComboBox();
+            this.cboPD2 = new System.Windows.Forms.ComboBox();
+            this.cboPD3 = new System.Windows.Forms.ComboBox();
+            this.cboPD4 = new System.Windows.Forms.ComboBox();
+            this.cboPD5 = new System.Windows.Forms.ComboBox();
+            this.cboPD6 = new System.Windows.Forms.ComboBox();
+            this.cboPD7 = new System.Windows.Forms.ComboBox();
+            this.cboPD8 = new System.Windows.Forms.ComboBox();
+            this.cboPI8 = new System.Windows.Forms.ComboBox();
+            this.cboPulso8 = new System.Windows.Forms.ComboBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cboPulso7 = new System.Windows.Forms.ComboBox();
+            this.cboPulso6 = new System.Windows.Forms.ComboBox();
+            this.cboPulso5 = new System.Windows.Forms.ComboBox();
+            this.cboPulso4 = new System.Windows.Forms.ComboBox();
+            this.cboPulso3 = new System.Windows.Forms.ComboBox();
+            this.cboPulso2 = new System.Windows.Forms.ComboBox();
+            this.cboPulso1 = new System.Windows.Forms.ComboBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label53 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -410,12 +418,11 @@
             this.panel7.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegionesEstudiadas)).BeginInit();
             this.tabPage8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
@@ -427,6 +434,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -2324,18 +2334,16 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.button4);
-            this.panel8.Controls.Add(this.dataGridView2);
-            this.panel8.Controls.Add(this.textBox30);
+            this.panel8.Controls.Add(this.panel12);
+            this.panel8.Controls.Add(this.panel11);
+            this.panel8.Controls.Add(this.btnAgregarRegionEstudiada);
+            this.panel8.Controls.Add(this.dgvRegionesEstudiadas);
+            this.panel8.Controls.Add(this.txtObservaciones);
             this.panel8.Controls.Add(this.label50);
-            this.panel8.Controls.Add(this.textBox29);
+            this.panel8.Controls.Add(this.txtLesionCompromisoGangleo);
             this.panel8.Controls.Add(this.label49);
-            this.panel8.Controls.Add(this.checkBox2);
-            this.panel8.Controls.Add(this.radioButton5);
-            this.panel8.Controls.Add(this.radioButton6);
-            this.panel8.Controls.Add(this.radioButton4);
-            this.panel8.Controls.Add(this.radioButton3);
-            this.panel8.Controls.Add(this.checkBox1);
+            this.panel8.Controls.Add(this.chbProcesoInflamatorio);
+            this.panel8.Controls.Add(this.chbSensiblePalpacion);
             this.panel8.Controls.Add(this.txtDescripcion);
             this.panel8.Controls.Add(this.label48);
             this.panel8.Controls.Add(this.cboConsistencia);
@@ -2352,30 +2360,30 @@
             this.panel8.Size = new System.Drawing.Size(838, 574);
             this.panel8.TabIndex = 1;
             // 
-            // button4
+            // btnAgregarRegionEstudiada
             // 
-            this.button4.Location = new System.Drawing.Point(349, 423);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(163, 23);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Agregar territorio examinado";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAgregarRegionEstudiada.Location = new System.Drawing.Point(349, 423);
+            this.btnAgregarRegionEstudiada.Name = "btnAgregarRegionEstudiada";
+            this.btnAgregarRegionEstudiada.Size = new System.Drawing.Size(163, 23);
+            this.btnAgregarRegionEstudiada.TabIndex = 22;
+            this.btnAgregarRegionEstudiada.Text = "Agregar territorio examinado";
+            this.btnAgregarRegionEstudiada.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgvRegionesEstudiadas
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(67, 459);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(740, 112);
-            this.dataGridView2.TabIndex = 21;
+            this.dgvRegionesEstudiadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegionesEstudiadas.Location = new System.Drawing.Point(67, 459);
+            this.dgvRegionesEstudiadas.Name = "dgvRegionesEstudiadas";
+            this.dgvRegionesEstudiadas.Size = new System.Drawing.Size(740, 112);
+            this.dgvRegionesEstudiadas.TabIndex = 21;
             // 
-            // textBox30
+            // txtObservaciones
             // 
-            this.textBox30.Location = new System.Drawing.Point(122, 375);
-            this.textBox30.Multiline = true;
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(713, 42);
-            this.textBox30.TabIndex = 20;
+            this.txtObservaciones.Location = new System.Drawing.Point(122, 375);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(713, 42);
+            this.txtObservaciones.TabIndex = 20;
             // 
             // label50
             // 
@@ -2387,13 +2395,13 @@
             this.label50.TabIndex = 19;
             this.label50.Text = "Observaciones:";
             // 
-            // textBox29
+            // txtLesionCompromisoGangleo
             // 
-            this.textBox29.Location = new System.Drawing.Point(365, 322);
-            this.textBox29.Multiline = true;
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(470, 47);
-            this.textBox29.TabIndex = 18;
+            this.txtLesionCompromisoGangleo.Location = new System.Drawing.Point(365, 322);
+            this.txtLesionCompromisoGangleo.Multiline = true;
+            this.txtLesionCompromisoGangleo.Name = "txtLesionCompromisoGangleo";
+            this.txtLesionCompromisoGangleo.Size = new System.Drawing.Size(470, 47);
+            this.txtLesionCompromisoGangleo.TabIndex = 18;
             // 
             // label49
             // 
@@ -2405,75 +2413,75 @@
             this.label49.TabIndex = 17;
             this.label49.Text = "Lesión desde la cual surge el compromiso del gangleo:";
             // 
-            // checkBox2
+            // chbProcesoInflamatorio
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(282, 267);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(437, 21);
-            this.checkBox2.TabIndex = 16;
-            this.checkBox2.Text = "Se acompaña de un proceso inflamatorio que compromete la piel";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chbProcesoInflamatorio.AutoSize = true;
+            this.chbProcesoInflamatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbProcesoInflamatorio.Location = new System.Drawing.Point(294, 249);
+            this.chbProcesoInflamatorio.Name = "chbProcesoInflamatorio";
+            this.chbProcesoInflamatorio.Size = new System.Drawing.Size(437, 21);
+            this.chbProcesoInflamatorio.TabIndex = 16;
+            this.chbProcesoInflamatorio.Text = "Se acompaña de un proceso inflamatorio que compromete la piel";
+            this.chbProcesoInflamatorio.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbPlanosProfundos
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(535, 210);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(209, 21);
-            this.radioButton5.TabIndex = 15;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Adherida a planos profundos";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rbPlanosProfundos.AutoSize = true;
+            this.rbPlanosProfundos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbPlanosProfundos.Location = new System.Drawing.Point(255, 7);
+            this.rbPlanosProfundos.Name = "rbPlanosProfundos";
+            this.rbPlanosProfundos.Size = new System.Drawing.Size(209, 21);
+            this.rbPlanosProfundos.TabIndex = 15;
+            this.rbPlanosProfundos.TabStop = true;
+            this.rbPlanosProfundos.Text = "Adherida a planos profundos";
+            this.rbPlanosProfundos.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // rbMovilizarConDedos
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(282, 210);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(246, 21);
-            this.radioButton6.TabIndex = 14;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Se pueden movilizar con los dedos";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.rbMovilizarConDedos.AutoSize = true;
+            this.rbMovilizarConDedos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMovilizarConDedos.Location = new System.Drawing.Point(3, 7);
+            this.rbMovilizarConDedos.Name = "rbMovilizarConDedos";
+            this.rbMovilizarConDedos.Size = new System.Drawing.Size(246, 21);
+            this.rbMovilizarConDedos.TabIndex = 14;
+            this.rbMovilizarConDedos.TabStop = true;
+            this.rbMovilizarConDedos.Text = "Se pueden movilizar con los dedos";
+            this.rbMovilizarConDedos.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rbTiendeConfluir
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(535, 150);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(132, 21);
-            this.radioButton4.TabIndex = 13;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Tiende a confluir";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rbTiendeConfluir.AutoSize = true;
+            this.rbTiendeConfluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTiendeConfluir.Location = new System.Drawing.Point(258, 3);
+            this.rbTiendeConfluir.Name = "rbTiendeConfluir";
+            this.rbTiendeConfluir.Size = new System.Drawing.Size(132, 21);
+            this.rbTiendeConfluir.TabIndex = 13;
+            this.rbTiendeConfluir.TabStop = true;
+            this.rbTiendeConfluir.Text = "Tiende a confluir";
+            this.rbTiendeConfluir.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbLimitesPrecisos
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(282, 150);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(209, 21);
-            this.radioButton3.TabIndex = 12;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Se palpa con límites precisos";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbLimitesPrecisos.AutoSize = true;
+            this.rbLimitesPrecisos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbLimitesPrecisos.Location = new System.Drawing.Point(3, 3);
+            this.rbLimitesPrecisos.Name = "rbLimitesPrecisos";
+            this.rbLimitesPrecisos.Size = new System.Drawing.Size(209, 21);
+            this.rbLimitesPrecisos.TabIndex = 12;
+            this.rbLimitesPrecisos.TabStop = true;
+            this.rbLimitesPrecisos.Text = "Se palpa con límites precisos";
+            this.rbLimitesPrecisos.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // chbSensiblePalpacion
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(67, 151);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(173, 21);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Sensible a la palpación";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chbSensiblePalpacion.AutoSize = true;
+            this.chbSensiblePalpacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbSensiblePalpacion.Location = new System.Drawing.Point(67, 151);
+            this.chbSensiblePalpacion.Name = "chbSensiblePalpacion";
+            this.chbSensiblePalpacion.Size = new System.Drawing.Size(173, 21);
+            this.chbSensiblePalpacion.TabIndex = 11;
+            this.chbSensiblePalpacion.Text = "Sensible a la palpación";
+            this.chbSensiblePalpacion.UseVisualStyleBackColor = true;
             // 
             // txtDescripcion
             // 
@@ -2651,22 +2659,22 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.textBox32);
+            this.panel10.Controls.Add(this.txtObservacionesPulsoArterial);
             this.panel10.Controls.Add(this.label62);
-            this.panel10.Controls.Add(this.textBox31);
+            this.panel10.Controls.Add(this.txtAuscultacionPulsos);
             this.panel10.Controls.Add(this.label61);
             this.panel10.Location = new System.Drawing.Point(468, 15);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(365, 351);
             this.panel10.TabIndex = 1;
             // 
-            // textBox32
+            // txtObservacionesPulsoArterial
             // 
-            this.textBox32.Location = new System.Drawing.Point(3, 190);
-            this.textBox32.Multiline = true;
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(359, 88);
-            this.textBox32.TabIndex = 3;
+            this.txtObservacionesPulsoArterial.Location = new System.Drawing.Point(3, 190);
+            this.txtObservacionesPulsoArterial.Multiline = true;
+            this.txtObservacionesPulsoArterial.Name = "txtObservacionesPulsoArterial";
+            this.txtObservacionesPulsoArterial.Size = new System.Drawing.Size(359, 88);
+            this.txtObservacionesPulsoArterial.TabIndex = 3;
             // 
             // label62
             // 
@@ -2678,13 +2686,13 @@
             this.label62.TabIndex = 2;
             this.label62.Text = "Observaciones";
             // 
-            // textBox31
+            // txtAuscultacionPulsos
             // 
-            this.textBox31.Location = new System.Drawing.Point(3, 43);
-            this.textBox31.Multiline = true;
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(359, 88);
-            this.textBox31.TabIndex = 1;
+            this.txtAuscultacionPulsos.Location = new System.Drawing.Point(3, 43);
+            this.txtAuscultacionPulsos.Multiline = true;
+            this.txtAuscultacionPulsos.Name = "txtAuscultacionPulsos";
+            this.txtAuscultacionPulsos.Size = new System.Drawing.Size(359, 88);
+            this.txtAuscultacionPulsos.TabIndex = 1;
             // 
             // label61
             // 
@@ -2695,239 +2703,6 @@
             this.label61.Size = new System.Drawing.Size(175, 17);
             this.label61.TabIndex = 0;
             this.label61.Text = "Auscultación de los pulsos";
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.comboBox17);
-            this.panel9.Controls.Add(this.comboBox18);
-            this.panel9.Controls.Add(this.comboBox19);
-            this.panel9.Controls.Add(this.comboBox20);
-            this.panel9.Controls.Add(this.comboBox21);
-            this.panel9.Controls.Add(this.comboBox23);
-            this.panel9.Controls.Add(this.comboBox27);
-            this.panel9.Controls.Add(this.comboBox26);
-            this.panel9.Controls.Add(this.comboBox16);
-            this.panel9.Controls.Add(this.comboBox22);
-            this.panel9.Controls.Add(this.comboBox25);
-            this.panel9.Controls.Add(this.comboBox24);
-            this.panel9.Controls.Add(this.comboBox15);
-            this.panel9.Controls.Add(this.comboBox14);
-            this.panel9.Controls.Add(this.label60);
-            this.panel9.Controls.Add(this.label59);
-            this.panel9.Controls.Add(this.label58);
-            this.panel9.Controls.Add(this.label57);
-            this.panel9.Controls.Add(this.label56);
-            this.panel9.Controls.Add(this.label55);
-            this.panel9.Controls.Add(this.label54);
-            this.panel9.Controls.Add(this.label53);
-            this.panel9.Controls.Add(this.label52);
-            this.panel9.Location = new System.Drawing.Point(6, 15);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(456, 351);
-            this.panel9.TabIndex = 0;
-            // 
-            // comboBox17
-            // 
-            this.comboBox17.FormattingEnabled = true;
-            this.comboBox17.Location = new System.Drawing.Point(300, 301);
-            this.comboBox17.Name = "comboBox17";
-            this.comboBox17.Size = new System.Drawing.Size(149, 24);
-            this.comboBox17.TabIndex = 35;
-            // 
-            // comboBox18
-            // 
-            this.comboBox18.FormattingEnabled = true;
-            this.comboBox18.Location = new System.Drawing.Point(300, 260);
-            this.comboBox18.Name = "comboBox18";
-            this.comboBox18.Size = new System.Drawing.Size(149, 24);
-            this.comboBox18.TabIndex = 34;
-            // 
-            // comboBox19
-            // 
-            this.comboBox19.FormattingEnabled = true;
-            this.comboBox19.Location = new System.Drawing.Point(300, 218);
-            this.comboBox19.Name = "comboBox19";
-            this.comboBox19.Size = new System.Drawing.Size(149, 24);
-            this.comboBox19.TabIndex = 33;
-            // 
-            // comboBox20
-            // 
-            this.comboBox20.FormattingEnabled = true;
-            this.comboBox20.Location = new System.Drawing.Point(300, 172);
-            this.comboBox20.Name = "comboBox20";
-            this.comboBox20.Size = new System.Drawing.Size(149, 24);
-            this.comboBox20.TabIndex = 32;
-            // 
-            // comboBox21
-            // 
-            this.comboBox21.FormattingEnabled = true;
-            this.comboBox21.Location = new System.Drawing.Point(300, 132);
-            this.comboBox21.Name = "comboBox21";
-            this.comboBox21.Size = new System.Drawing.Size(149, 24);
-            this.comboBox21.TabIndex = 31;
-            // 
-            // comboBox23
-            // 
-            this.comboBox23.FormattingEnabled = true;
-            this.comboBox23.Location = new System.Drawing.Point(300, 90);
-            this.comboBox23.Name = "comboBox23";
-            this.comboBox23.Size = new System.Drawing.Size(149, 24);
-            this.comboBox23.TabIndex = 30;
-            // 
-            // comboBox27
-            // 
-            this.comboBox27.FormattingEnabled = true;
-            this.comboBox27.Location = new System.Drawing.Point(300, 44);
-            this.comboBox27.Name = "comboBox27";
-            this.comboBox27.Size = new System.Drawing.Size(149, 24);
-            this.comboBox27.TabIndex = 29;
-            // 
-            // comboBox26
-            // 
-            this.comboBox26.FormattingEnabled = true;
-            this.comboBox26.Location = new System.Drawing.Point(128, 301);
-            this.comboBox26.Name = "comboBox26";
-            this.comboBox26.Size = new System.Drawing.Size(149, 24);
-            this.comboBox26.TabIndex = 28;
-            // 
-            // comboBox16
-            // 
-            this.comboBox16.FormattingEnabled = true;
-            this.comboBox16.Location = new System.Drawing.Point(128, 260);
-            this.comboBox16.Name = "comboBox16";
-            this.comboBox16.Size = new System.Drawing.Size(149, 24);
-            this.comboBox16.TabIndex = 26;
-            // 
-            // comboBox22
-            // 
-            this.comboBox22.FormattingEnabled = true;
-            this.comboBox22.Location = new System.Drawing.Point(128, 218);
-            this.comboBox22.Name = "comboBox22";
-            this.comboBox22.Size = new System.Drawing.Size(149, 24);
-            this.comboBox22.TabIndex = 22;
-            // 
-            // comboBox25
-            // 
-            this.comboBox25.FormattingEnabled = true;
-            this.comboBox25.Location = new System.Drawing.Point(128, 172);
-            this.comboBox25.Name = "comboBox25";
-            this.comboBox25.Size = new System.Drawing.Size(149, 24);
-            this.comboBox25.TabIndex = 21;
-            // 
-            // comboBox24
-            // 
-            this.comboBox24.FormattingEnabled = true;
-            this.comboBox24.Location = new System.Drawing.Point(128, 132);
-            this.comboBox24.Name = "comboBox24";
-            this.comboBox24.Size = new System.Drawing.Size(149, 24);
-            this.comboBox24.TabIndex = 20;
-            // 
-            // comboBox15
-            // 
-            this.comboBox15.FormattingEnabled = true;
-            this.comboBox15.Location = new System.Drawing.Point(128, 90);
-            this.comboBox15.Name = "comboBox15";
-            this.comboBox15.Size = new System.Drawing.Size(149, 24);
-            this.comboBox15.TabIndex = 11;
-            // 
-            // comboBox14
-            // 
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Location = new System.Drawing.Point(128, 44);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(149, 24);
-            this.comboBox14.TabIndex = 10;
-            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.comboBox14_SelectedIndexChanged);
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(348, 21);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(66, 17);
-            this.label60.TabIndex = 9;
-            this.label60.Text = "Izquierda";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(166, 21);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(62, 17);
-            this.label59.TabIndex = 8;
-            this.label59.Text = "Derecha";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(6, 302);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(61, 17);
-            this.label58.TabIndex = 7;
-            this.label58.Text = "P. Pedio";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label57.Location = new System.Drawing.Point(6, 261);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(120, 17);
-            this.label57.TabIndex = 6;
-            this.label57.Text = "P. Tibial Posterior";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(6, 219);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(76, 17);
-            this.label56.TabIndex = 5;
-            this.label56.Text = "P. Popliteo";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.Location = new System.Drawing.Point(6, 173);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(76, 17);
-            this.label55.TabIndex = 4;
-            this.label55.Text = "P. Femoral";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(6, 133);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(65, 17);
-            this.label54.TabIndex = 3;
-            this.label54.Text = "P. Radial";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(6, 91);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(85, 17);
-            this.label53.TabIndex = 2;
-            this.label53.Text = "P. Branquial";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(6, 45);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(86, 17);
-            this.label52.TabIndex = 1;
-            this.label52.Text = "P. Carotídeo";
             // 
             // tabPage9
             // 
@@ -2943,6 +2718,8 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.comboBox1);
+            this.groupBox9.Controls.Add(this.label53);
             this.groupBox9.Controls.Add(this.dataGridView6);
             this.groupBox9.Controls.Add(this.button19);
             this.groupBox9.Controls.Add(this.groupBox11);
@@ -2981,9 +2758,9 @@
             this.Column15,
             this.Column16,
             this.Column17});
-            this.dataGridView6.Location = new System.Drawing.Point(349, 99);
+            this.dataGridView6.Location = new System.Drawing.Point(349, 134);
             this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(483, 179);
+            this.dataGridView6.Size = new System.Drawing.Size(483, 144);
             this.dataGridView6.TabIndex = 20;
             // 
             // Column11
@@ -3081,15 +2858,15 @@
             // 
             // textBox49
             // 
-            this.textBox49.Location = new System.Drawing.Point(684, 61);
+            this.textBox49.Location = new System.Drawing.Point(772, 61);
             this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(72, 23);
+            this.textBox49.Size = new System.Drawing.Size(60, 23);
             this.textBox49.TabIndex = 17;
             // 
             // label97
             // 
             this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(635, 64);
+            this.label97.Location = new System.Drawing.Point(723, 64);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(43, 17);
             this.label97.TabIndex = 16;
@@ -3097,7 +2874,7 @@
             // 
             // textBox48
             // 
-            this.textBox48.Location = new System.Drawing.Point(477, 61);
+            this.textBox48.Location = new System.Drawing.Point(577, 61);
             this.textBox48.Name = "textBox48";
             this.textBox48.Size = new System.Drawing.Size(72, 23);
             this.textBox48.TabIndex = 15;
@@ -3105,7 +2882,7 @@
             // label95
             // 
             this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(555, 64);
+            this.label95.Location = new System.Drawing.Point(655, 64);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(48, 17);
             this.label95.TabIndex = 14;
@@ -3114,7 +2891,7 @@
             // label96
             // 
             this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(307, 64);
+            this.label96.Location = new System.Drawing.Point(407, 64);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(170, 17);
             this.label96.TabIndex = 13;
@@ -3122,7 +2899,7 @@
             // 
             // textBox47
             // 
-            this.textBox47.Location = new System.Drawing.Point(175, 61);
+            this.textBox47.Location = new System.Drawing.Point(576, 101);
             this.textBox47.Name = "textBox47";
             this.textBox47.Size = new System.Drawing.Size(72, 23);
             this.textBox47.TabIndex = 12;
@@ -3138,7 +2915,7 @@
             // label93
             // 
             this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(253, 64);
+            this.label93.Location = new System.Drawing.Point(654, 104);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(48, 17);
             this.label93.TabIndex = 9;
@@ -3156,7 +2933,7 @@
             // label90
             // 
             this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(6, 64);
+            this.label90.Location = new System.Drawing.Point(407, 104);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(161, 17);
             this.label90.TabIndex = 6;
@@ -3165,7 +2942,7 @@
             // comboBox36
             // 
             this.comboBox36.FormattingEnabled = true;
-            this.comboBox36.Location = new System.Drawing.Point(551, 22);
+            this.comboBox36.Location = new System.Drawing.Point(675, 22);
             this.comboBox36.Name = "comboBox36";
             this.comboBox36.Size = new System.Drawing.Size(157, 24);
             this.comboBox36.TabIndex = 5;
@@ -3173,7 +2950,7 @@
             // comboBox35
             // 
             this.comboBox35.FormattingEnabled = true;
-            this.comboBox35.Location = new System.Drawing.Point(284, 22);
+            this.comboBox35.Location = new System.Drawing.Point(409, 22);
             this.comboBox35.Name = "comboBox35";
             this.comboBox35.Size = new System.Drawing.Size(140, 24);
             this.comboBox35.TabIndex = 4;
@@ -3183,13 +2960,13 @@
             this.comboBox34.FormattingEnabled = true;
             this.comboBox34.Location = new System.Drawing.Point(90, 22);
             this.comboBox34.Name = "comboBox34";
-            this.comboBox34.Size = new System.Drawing.Size(121, 24);
+            this.comboBox34.Size = new System.Drawing.Size(246, 24);
             this.comboBox34.TabIndex = 3;
             // 
             // label89
             // 
             this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(430, 25);
+            this.label89.Location = new System.Drawing.Point(554, 25);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(115, 17);
             this.label89.TabIndex = 2;
@@ -3198,7 +2975,7 @@
             // label88
             // 
             this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(217, 25);
+            this.label88.Location = new System.Drawing.Point(342, 25);
             this.label88.Name = "label88";
             this.label88.Size = new System.Drawing.Size(61, 17);
             this.label88.TabIndex = 1;
@@ -3774,6 +3551,298 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.rbLimitesPrecisos);
+            this.panel11.Controls.Add(this.rbTiendeConfluir);
+            this.panel11.Location = new System.Drawing.Point(294, 151);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(425, 27);
+            this.panel11.TabIndex = 23;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.rbMovilizarConDedos);
+            this.panel12.Controls.Add(this.rbPlanosProfundos);
+            this.panel12.Location = new System.Drawing.Point(294, 197);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(471, 31);
+            this.panel12.TabIndex = 24;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(166, 6);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(62, 17);
+            this.label59.TabIndex = 8;
+            this.label59.Text = "Derecha";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(348, 6);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(66, 17);
+            this.label60.TabIndex = 9;
+            this.label60.Text = "Izquierda";
+            // 
+            // cboPI1
+            // 
+            this.cboPI1.FormattingEnabled = true;
+            this.cboPI1.Location = new System.Drawing.Point(128, 29);
+            this.cboPI1.Name = "cboPI1";
+            this.cboPI1.Size = new System.Drawing.Size(149, 24);
+            this.cboPI1.TabIndex = 10;
+            this.cboPI1.SelectedIndexChanged += new System.EventHandler(this.comboBox14_SelectedIndexChanged);
+            // 
+            // cboPI2
+            // 
+            this.cboPI2.FormattingEnabled = true;
+            this.cboPI2.Location = new System.Drawing.Point(128, 75);
+            this.cboPI2.Name = "cboPI2";
+            this.cboPI2.Size = new System.Drawing.Size(149, 24);
+            this.cboPI2.TabIndex = 11;
+            // 
+            // cboPI3
+            // 
+            this.cboPI3.FormattingEnabled = true;
+            this.cboPI3.Location = new System.Drawing.Point(128, 117);
+            this.cboPI3.Name = "cboPI3";
+            this.cboPI3.Size = new System.Drawing.Size(149, 24);
+            this.cboPI3.TabIndex = 20;
+            // 
+            // cboPI4
+            // 
+            this.cboPI4.FormattingEnabled = true;
+            this.cboPI4.Location = new System.Drawing.Point(128, 157);
+            this.cboPI4.Name = "cboPI4";
+            this.cboPI4.Size = new System.Drawing.Size(149, 24);
+            this.cboPI4.TabIndex = 21;
+            // 
+            // cboPI5
+            // 
+            this.cboPI5.FormattingEnabled = true;
+            this.cboPI5.Location = new System.Drawing.Point(128, 203);
+            this.cboPI5.Name = "cboPI5";
+            this.cboPI5.Size = new System.Drawing.Size(149, 24);
+            this.cboPI5.TabIndex = 22;
+            // 
+            // cboPI6
+            // 
+            this.cboPI6.FormattingEnabled = true;
+            this.cboPI6.Location = new System.Drawing.Point(128, 245);
+            this.cboPI6.Name = "cboPI6";
+            this.cboPI6.Size = new System.Drawing.Size(149, 24);
+            this.cboPI6.TabIndex = 26;
+            // 
+            // cboPI7
+            // 
+            this.cboPI7.FormattingEnabled = true;
+            this.cboPI7.Location = new System.Drawing.Point(128, 286);
+            this.cboPI7.Name = "cboPI7";
+            this.cboPI7.Size = new System.Drawing.Size(149, 24);
+            this.cboPI7.TabIndex = 28;
+            // 
+            // cboPD1
+            // 
+            this.cboPD1.FormattingEnabled = true;
+            this.cboPD1.Location = new System.Drawing.Point(300, 29);
+            this.cboPD1.Name = "cboPD1";
+            this.cboPD1.Size = new System.Drawing.Size(149, 24);
+            this.cboPD1.TabIndex = 29;
+            // 
+            // cboPD2
+            // 
+            this.cboPD2.FormattingEnabled = true;
+            this.cboPD2.Location = new System.Drawing.Point(300, 75);
+            this.cboPD2.Name = "cboPD2";
+            this.cboPD2.Size = new System.Drawing.Size(149, 24);
+            this.cboPD2.TabIndex = 30;
+            // 
+            // cboPD3
+            // 
+            this.cboPD3.FormattingEnabled = true;
+            this.cboPD3.Location = new System.Drawing.Point(300, 117);
+            this.cboPD3.Name = "cboPD3";
+            this.cboPD3.Size = new System.Drawing.Size(149, 24);
+            this.cboPD3.TabIndex = 31;
+            // 
+            // cboPD4
+            // 
+            this.cboPD4.FormattingEnabled = true;
+            this.cboPD4.Location = new System.Drawing.Point(300, 157);
+            this.cboPD4.Name = "cboPD4";
+            this.cboPD4.Size = new System.Drawing.Size(149, 24);
+            this.cboPD4.TabIndex = 32;
+            // 
+            // cboPD5
+            // 
+            this.cboPD5.FormattingEnabled = true;
+            this.cboPD5.Location = new System.Drawing.Point(300, 203);
+            this.cboPD5.Name = "cboPD5";
+            this.cboPD5.Size = new System.Drawing.Size(149, 24);
+            this.cboPD5.TabIndex = 33;
+            // 
+            // cboPD6
+            // 
+            this.cboPD6.FormattingEnabled = true;
+            this.cboPD6.Location = new System.Drawing.Point(300, 245);
+            this.cboPD6.Name = "cboPD6";
+            this.cboPD6.Size = new System.Drawing.Size(149, 24);
+            this.cboPD6.TabIndex = 34;
+            // 
+            // cboPD7
+            // 
+            this.cboPD7.FormattingEnabled = true;
+            this.cboPD7.Location = new System.Drawing.Point(300, 286);
+            this.cboPD7.Name = "cboPD7";
+            this.cboPD7.Size = new System.Drawing.Size(149, 24);
+            this.cboPD7.TabIndex = 35;
+            // 
+            // cboPD8
+            // 
+            this.cboPD8.FormattingEnabled = true;
+            this.cboPD8.Location = new System.Drawing.Point(300, 324);
+            this.cboPD8.Name = "cboPD8";
+            this.cboPD8.Size = new System.Drawing.Size(149, 24);
+            this.cboPD8.TabIndex = 36;
+            // 
+            // cboPI8
+            // 
+            this.cboPI8.FormattingEnabled = true;
+            this.cboPI8.Location = new System.Drawing.Point(128, 324);
+            this.cboPI8.Name = "cboPI8";
+            this.cboPI8.Size = new System.Drawing.Size(149, 24);
+            this.cboPI8.TabIndex = 37;
+            // 
+            // cboPulso8
+            // 
+            this.cboPulso8.FormattingEnabled = true;
+            this.cboPulso8.Location = new System.Drawing.Point(9, 324);
+            this.cboPulso8.Name = "cboPulso8";
+            this.cboPulso8.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso8.TabIndex = 38;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.label52);
+            this.panel9.Controls.Add(this.cboPulso1);
+            this.panel9.Controls.Add(this.cboPulso2);
+            this.panel9.Controls.Add(this.cboPulso3);
+            this.panel9.Controls.Add(this.cboPulso4);
+            this.panel9.Controls.Add(this.cboPulso5);
+            this.panel9.Controls.Add(this.cboPulso6);
+            this.panel9.Controls.Add(this.cboPulso7);
+            this.panel9.Controls.Add(this.cboPulso8);
+            this.panel9.Controls.Add(this.cboPI8);
+            this.panel9.Controls.Add(this.cboPD8);
+            this.panel9.Controls.Add(this.cboPD7);
+            this.panel9.Controls.Add(this.cboPD6);
+            this.panel9.Controls.Add(this.cboPD5);
+            this.panel9.Controls.Add(this.cboPD4);
+            this.panel9.Controls.Add(this.cboPD3);
+            this.panel9.Controls.Add(this.cboPD2);
+            this.panel9.Controls.Add(this.cboPD1);
+            this.panel9.Controls.Add(this.cboPI7);
+            this.panel9.Controls.Add(this.cboPI6);
+            this.panel9.Controls.Add(this.cboPI5);
+            this.panel9.Controls.Add(this.cboPI4);
+            this.panel9.Controls.Add(this.cboPI3);
+            this.panel9.Controls.Add(this.cboPI2);
+            this.panel9.Controls.Add(this.cboPI1);
+            this.panel9.Controls.Add(this.label60);
+            this.panel9.Controls.Add(this.label59);
+            this.panel9.Location = new System.Drawing.Point(6, 15);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(456, 351);
+            this.panel9.TabIndex = 0;
+            // 
+            // cboPulso7
+            // 
+            this.cboPulso7.FormattingEnabled = true;
+            this.cboPulso7.Location = new System.Drawing.Point(9, 286);
+            this.cboPulso7.Name = "cboPulso7";
+            this.cboPulso7.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso7.TabIndex = 39;
+            // 
+            // cboPulso6
+            // 
+            this.cboPulso6.FormattingEnabled = true;
+            this.cboPulso6.Location = new System.Drawing.Point(9, 245);
+            this.cboPulso6.Name = "cboPulso6";
+            this.cboPulso6.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso6.TabIndex = 40;
+            // 
+            // cboPulso5
+            // 
+            this.cboPulso5.FormattingEnabled = true;
+            this.cboPulso5.Location = new System.Drawing.Point(9, 203);
+            this.cboPulso5.Name = "cboPulso5";
+            this.cboPulso5.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso5.TabIndex = 41;
+            // 
+            // cboPulso4
+            // 
+            this.cboPulso4.FormattingEnabled = true;
+            this.cboPulso4.Location = new System.Drawing.Point(9, 156);
+            this.cboPulso4.Name = "cboPulso4";
+            this.cboPulso4.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso4.TabIndex = 42;
+            // 
+            // cboPulso3
+            // 
+            this.cboPulso3.FormattingEnabled = true;
+            this.cboPulso3.Location = new System.Drawing.Point(9, 117);
+            this.cboPulso3.Name = "cboPulso3";
+            this.cboPulso3.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso3.TabIndex = 43;
+            // 
+            // cboPulso2
+            // 
+            this.cboPulso2.FormattingEnabled = true;
+            this.cboPulso2.Location = new System.Drawing.Point(9, 75);
+            this.cboPulso2.Name = "cboPulso2";
+            this.cboPulso2.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso2.TabIndex = 44;
+            // 
+            // cboPulso1
+            // 
+            this.cboPulso1.FormattingEnabled = true;
+            this.cboPulso1.Location = new System.Drawing.Point(9, 29);
+            this.cboPulso1.Name = "cboPulso1";
+            this.cboPulso1.Size = new System.Drawing.Size(103, 24);
+            this.cboPulso1.TabIndex = 45;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(28, 6);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(43, 17);
+            this.label52.TabIndex = 46;
+            this.label52.Text = "Pulso";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(90, 61);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(246, 24);
+            this.comboBox1.TabIndex = 22;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(7, 64);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(70, 17);
+            this.label53.TabIndex = 21;
+            this.label53.Text = "Ubicacion";
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3838,15 +3907,13 @@
             this.tabPage7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegionesEstudiadas)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
@@ -3862,6 +3929,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4034,9 +4107,9 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.RadioButton rbTiendeConfluir;
+        private System.Windows.Forms.RadioButton rbLimitesPrecisos;
+        private System.Windows.Forms.CheckBox chbSensiblePalpacion;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.ComboBox cboConsistencia;
@@ -4046,44 +4119,20 @@
         private System.Windows.Forms.ComboBox cboTamañoGanglio;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.ComboBox cboUbicacionGanglio;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.Button btnAgregarRegionEstudiada;
+        private System.Windows.Forms.DataGridView dgvRegionesEstudiadas;
+        private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.TextBox txtLesionCompromisoGangleo;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.CheckBox chbProcesoInflamatorio;
+        private System.Windows.Forms.RadioButton rbPlanosProfundos;
+        private System.Windows.Forms.RadioButton rbMovilizarConDedos;
         private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.ComboBox comboBox24;
-        private System.Windows.Forms.ComboBox comboBox15;
-        private System.Windows.Forms.ComboBox comboBox14;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.ComboBox comboBox26;
-        private System.Windows.Forms.ComboBox comboBox16;
-        private System.Windows.Forms.ComboBox comboBox22;
-        private System.Windows.Forms.ComboBox comboBox25;
-        private System.Windows.Forms.ComboBox comboBox17;
-        private System.Windows.Forms.ComboBox comboBox18;
-        private System.Windows.Forms.ComboBox comboBox19;
-        private System.Windows.Forms.ComboBox comboBox20;
-        private System.Windows.Forms.ComboBox comboBox21;
-        private System.Windows.Forms.ComboBox comboBox23;
-        private System.Windows.Forms.ComboBox comboBox27;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox txtObservacionesPulsoArterial;
         private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.TextBox txtAuscultacionPulsos;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -4214,5 +4263,37 @@
         private System.Windows.Forms.Button btnAlergiaAlimentos;
         private System.Windows.Forms.DataGridView dgvAlergias;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.ComboBox cboPulso1;
+        private System.Windows.Forms.ComboBox cboPulso2;
+        private System.Windows.Forms.ComboBox cboPulso3;
+        private System.Windows.Forms.ComboBox cboPulso4;
+        private System.Windows.Forms.ComboBox cboPulso5;
+        private System.Windows.Forms.ComboBox cboPulso6;
+        private System.Windows.Forms.ComboBox cboPulso7;
+        private System.Windows.Forms.ComboBox cboPulso8;
+        private System.Windows.Forms.ComboBox cboPI8;
+        private System.Windows.Forms.ComboBox cboPD8;
+        private System.Windows.Forms.ComboBox cboPD7;
+        private System.Windows.Forms.ComboBox cboPD6;
+        private System.Windows.Forms.ComboBox cboPD5;
+        private System.Windows.Forms.ComboBox cboPD4;
+        private System.Windows.Forms.ComboBox cboPD3;
+        private System.Windows.Forms.ComboBox cboPD2;
+        private System.Windows.Forms.ComboBox cboPD1;
+        private System.Windows.Forms.ComboBox cboPI7;
+        private System.Windows.Forms.ComboBox cboPI6;
+        private System.Windows.Forms.ComboBox cboPI5;
+        private System.Windows.Forms.ComboBox cboPI4;
+        private System.Windows.Forms.ComboBox cboPI3;
+        private System.Windows.Forms.ComboBox cboPI2;
+        private System.Windows.Forms.ComboBox cboPI1;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label53;
     }
 }

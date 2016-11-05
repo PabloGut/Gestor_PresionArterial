@@ -63,6 +63,13 @@ namespace GPA
             presentarUbicacionGanglio();
             presentarTamañosGanglio();
             presentarAproximacionNúmericaDeTamaño();
+            presentarEscalaPulso();
+            presentarTiposDePulso();
+            presentarConsistencia();
+            
+           
+
+
 
         }
         private void presentarTipoSintomas()
@@ -101,6 +108,10 @@ namespace GPA
         {
             Utilidades.cargarCombo(cboTamañoGanglio, manejadorRegistrarExamenGeneral.mostrarTamañoGanglio(), "id_tamaño", "nombre");
         }
+        public void presentarConsistencia()
+        {
+            Utilidades.cargarCombo(cboConsistencia, manejadorRegistrarExamenGeneral.mostrarConsistencia(), "id_consistencia", "nombre");
+        }
         public void presentarAproximacionNúmericaDeTamaño()
         {
            
@@ -112,6 +123,36 @@ namespace GPA
                 cboAproximacionNumerica.Items.Add(nro);
             }
             cboAproximacionNumerica.SelectedIndex = 0;
+        }
+        public void presentarEscalaPulso()
+        {
+            Utilidades.cargarCombo(cboPI1, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD1, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPI2, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD2, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPI3, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD3, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPI4, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD4, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPI5, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD5, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPI6, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD6, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPI7, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD7, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPI8, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            Utilidades.cargarCombo(cboPD8, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+        }
+        public void presentarTiposDePulso()
+        {
+            Utilidades.cargarCombo(cboPulso1, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+            Utilidades.cargarCombo(cboPulso2, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+            Utilidades.cargarCombo(cboPulso3, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+            Utilidades.cargarCombo(cboPulso4, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+            Utilidades.cargarCombo(cboPulso5, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+            Utilidades.cargarCombo(cboPulso6, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+            Utilidades.cargarCombo(cboPulso7, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+            Utilidades.cargarCombo(cboPulso8, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
