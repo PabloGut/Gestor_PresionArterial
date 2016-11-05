@@ -599,7 +599,7 @@ CREATE TABLE Consulta(
 id_consulta int primary key identity,
 nroConsulta int not null,
 fechaConsulta date,
-horaConsulta date,
+horaConsulta time,
 motivoConsulta text,
 id_examenGeneral_fk int,
 foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
@@ -813,6 +813,7 @@ observaciones text,
 id_hc_fk int,
 foreign key (id_familiar_fk) references Familiar(id_familiar),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
+
 
 
 
