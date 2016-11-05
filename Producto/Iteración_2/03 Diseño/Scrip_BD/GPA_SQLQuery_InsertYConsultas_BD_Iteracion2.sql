@@ -651,26 +651,79 @@ values('Grande')
 
 /*-------Insert Consistencia-----*/
 insert into Consistencia(nombre)
-values('--Elástica (Normal)--')
+values('--Seleccionar--')
+insert into Consistencia(nombre)
+values('Elástica (Normal)')
 insert into Consistencia(nombre)
 values('Muy duro')
 insert into Consistencia(nombre)
 values('Muy blando')
 insert into Consistencia(nombre)
 values('Muy blando')
-
-
 /*--------------------------*/
 
+/*-------Insert Escala Pulso-----*/
+insert into EscalaPulso(nombre)
+values('--Seleccionar--')
+insert into EscalaPulso(nombre)
+values('No se palpan')
+insert into EscalaPulso(nombre)
+values('Se palpan disminuidos')
+insert into EscalaPulso(nombre)
+values('Se palpan normales')
+insert into EscalaPulso(nombre)
+values('Se palpan aumentados')
+insert into EscalaPulso(nombre)
+values('Se palpan muy aumentados')
+/*--------------------------*/
+
+/*-------Insert Escala Pulso-----*/
+insert into Pulso(nombre)
+values('--Seleccionar--')
+insert into Pulso(nombre)
+values('P. Carotídeo')
+insert into Pulso(nombre)
+values('P. Axilar')
+insert into Pulso(nombre)
+values('P. Branquial')
+insert into Pulso(nombre)
+values('P. Radial')
+insert into Pulso(nombre)
+values('P. Femoral')
+insert into Pulso(nombre)
+values('P. Poplíteo')
+insert into Pulso(nombre)
+values('P. Tibial Posterior')
+insert into Pulso(nombre)
+values('P. Pedio')
+/*--------------------------*/
+/*-------Insert Extremidad-----*/
+insert into Extremidad(nombre)
+values('Miembro Superior')
+insert into Extremidad(nombre)
+values('Miembro Inferior')
+/*--------------------------*/
+
+/*-------Insert UbicacionExtremidad-----*/
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Antebrazo',1)
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Brazo',1)
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Pantorrilla',2)
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Muslo',2)
+select * from Extremidad
+/*--------------------------*/
 
 /*-------Insert-----*/
 
 /*--------------------------*/
 
-alter table Medicamento
-add cantidadComprimidos int
+alter table EscalaPulso
+alter column nombre text
 
-select * from AlergiaMedicamento
+select * from EscalaPulso
 
 alter table AlergiaMedicamento
 add id_medicamentoAlergia_fk int
@@ -678,5 +731,10 @@ add id_medicamentoAlergia_fk int
 alter table AlergiaMedicamento
 add foreign key(id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia)
 
-drop table AlergiaAlimento
+drop table DetallePulsoArterial
+drop table PulsoArterial
+drop table EscalaPulso
+drop table Pulso
 
+delete from Extremidad
+DBCC CHECKIDENT('Extremidad',RESEED,0)

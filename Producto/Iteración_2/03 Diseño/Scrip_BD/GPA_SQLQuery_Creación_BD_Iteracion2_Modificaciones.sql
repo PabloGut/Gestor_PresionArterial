@@ -545,30 +545,30 @@ foreign key (id_tamaño_fk) references Tamaño(id_tamaño),
 foreign key (id_consistencia_fk) references Consistencia(id_consistencia),
 foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
 
-CREATE TABLE EscalaPulso(
-id_escalaPulso int primary key identity,
-nombre int)
-
 CREATE TABLE Pulso(
 id_Pulso int primary key identity,
-nombre int)
+nombre text)
 
-CREATE TABLE DetallePulsoArterial(
-id_detallePulsoArterial int primary key identity,
-id_derecha_fk int,
-id_izquierda_fk int,
-id_pulso_fk int,
-foreign key (id_derecha_fk) references EscalaPulso(id_escalaPulso),
-foreign key (id_izquierda_fk) references EscalaPulso(id_escalaPulso),
-foreign key (id_pulso_fk) references Pulso(id_pulso))
+CREATE TABLE EscalaPulso(
+id_escalaPulso int primary key identity,
+nombre text)
 
 CREATE TABLE PulsoArterial(
 id_pulsoArterial int primary key identity,
-id_detallePulso_fk int,
 ausculacion text,
-observaciones text,
-foreign key (id_detallePulso_fk) references DetallePulsoArterial(id_detallePulsoArterial))
+observaciones text)
 
+CREATE TABLE DetallePulsoArterial(
+id_pulsoArterial int,
+id_detallePulsoArterial int identity,
+id_derecha_fk int,
+id_izquierda_fk int,
+id_pulso_fk int,
+primary key(id_pulsoArterial,id_detallePulsoArterial),
+foreign key (id_pulsoArterial) references PulsoArterial(id_pulsoArterial),
+foreign key (id_derecha_fk) references EscalaPulso(id_escalaPulso),
+foreign key (id_izquierda_fk) references EscalaPulso(id_escalaPulso),
+foreign key (id_pulso_fk) references Pulso(id_pulso))
 
 CREATE TABLE RazonamientoDiagnostico(
 id_razonamiento int primary key identity,
