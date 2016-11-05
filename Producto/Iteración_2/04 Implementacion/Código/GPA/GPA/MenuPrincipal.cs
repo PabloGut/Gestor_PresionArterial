@@ -20,6 +20,8 @@ namespace GPA
         ManejadorConsultarPaciente manejadorConsultarPaciente;
         ManejadorRegistrarAtencionMedicaEnConsultorio manejadorRegistrarAtencionMedicaEnConsultorio;
         ManejadorConsultarHC manejadorConsultarHc;
+        ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
+        ManejadorRegistrarExamenGeneral manejadorRegistrarExamenGeneral;
 
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
@@ -28,6 +30,8 @@ namespace GPA
             manejadorConsultarPaciente = new ManejadorConsultarPaciente();
             manejadorRegistrarAtencionMedicaEnConsultorio = new ManejadorRegistrarAtencionMedicaEnConsultorio();
             manejadorConsultarHc = null;
+            manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
+            manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
         }
         public MenuPrincipal()
         {
@@ -48,6 +52,66 @@ namespace GPA
             dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
             //manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
+
+            presentarTipoSintomas();
+            presentarParteDelCuerpo();
+            presentarCaracterDolor();
+            presentarElementoTiempoEnfermedadActual();
+            presentarDescripcionTiempo();
+            presentarComoModificaSintoma();
+            presentarElementoModificacion();
+            presentarUbicacionGanglio();
+            presentarTamañosGanglio();
+            presentarAproximacionNúmericaDeTamaño();
+
+        }
+        private void presentarTipoSintomas()
+        {
+            Utilidades.cargarCombo(cboQueSienteElPaciente, manejadorRegistrarEnfermedadActual.mostrarTiposSintomas(), "id_TipoSintoma", "nombre");
+        }
+        private void presentarParteDelCuerpo()
+        {
+            Utilidades.cargarCombo(cboParteCuerpo, manejadorRegistrarEnfermedadActual.mostrarPartesDelCuerpoHumano(), "id_parteCuerpo", "nombre");
+        }
+        private void presentarCaracterDolor()
+        {
+            Utilidades.cargarCombo(cboCaracterDolor, manejadorRegistrarEnfermedadActual.mostrarCaracterDelDolor(), "id_caracterDelDolor", "nombre");
+        }
+        private void presentarElementoTiempoEnfermedadActual()
+        {
+            Utilidades.cargarCombo(cboElementoTiempo, manejadorRegistrarEnfermedadActual.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+        }
+        private void presentarDescripcionTiempo()
+        {
+            Utilidades.cargarCombo(cboCuandoComenzo, manejadorRegistrarEnfermedadActual.mostrarDescripcionesDelTiempo(), "id_descripcionDelTiempo", "nombre");
+        }
+        private void presentarComoModificaSintoma()
+        {
+            Utilidades.cargarCombo(cboComoModificaSintoma, manejadorRegistrarEnfermedadActual.mostrarModificacionesDelSintoma(), "id_modificacionSintoma", "nombre");
+        }
+        private void presentarElementoModificacion()
+        {
+            Utilidades.cargarCombo(cboElementoModificacion, manejadorRegistrarEnfermedadActual.mostrarElementosDeModificacion(), "id_elementoDeModificacion", "nombre");
+        }
+        public void presentarUbicacionGanglio()
+        {
+            Utilidades.cargarCombo(cboUbicacionGanglio, manejadorRegistrarExamenGeneral.mostrarUbicaciones(), "id_ubicacion", "nombre");
+        }
+        public void presentarTamañosGanglio()
+        {
+            Utilidades.cargarCombo(cboTamañoGanglio, manejadorRegistrarExamenGeneral.mostrarTamañoGanglio(), "id_tamaño", "nombre");
+        }
+        public void presentarAproximacionNúmericaDeTamaño()
+        {
+           
+            int nro = 0;
+            cboAproximacionNumerica.Items.Add("--Seleccionar--");
+            for (int i = 0; i < 10; i++)
+            {
+                nro++;
+                cboAproximacionNumerica.Items.Add(nro);
+            }
+            cboAproximacionNumerica.SelectedIndex = 0;
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -354,7 +418,7 @@ namespace GPA
         public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres)
         {
             Utilidades.deshabilitarLosControles(tabPage4);
-            Utilidades.cargarCombo(comboBox3, caracteres, "id_caracterDelDolor", "nombre");
+            Utilidades.cargarCombo(cboCaracterDolor, caracteres, "id_caracterDelDolor", "nombre");
         }
 
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)

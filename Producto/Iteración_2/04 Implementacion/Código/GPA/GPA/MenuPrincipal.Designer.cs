@@ -146,33 +146,33 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.cboElementoModificacion = new System.Windows.Forms.ComboBox();
+            this.txtObservacionesSintoma = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cboComoModificaSintoma = new System.Windows.Forms.ComboBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cboCuandoComenzo = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.cboElementoTiempo = new System.Windows.Forms.ComboBox();
+            this.mtbFechaInicioSintoma = new System.Windows.Forms.MaskedTextBox();
+            this.txtHaciaDondeIrradia = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.txtCantidadTiempoInicioSintoma = new System.Windows.Forms.TextBox();
+            this.cboCaracterDolor = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbNoDolor = new System.Windows.Forms.RadioButton();
+            this.rbSiDolor = new System.Windows.Forms.RadioButton();
             this.button10 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboParteCuerpo = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.txtDescripcionDeLoQueSiente = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.cboQueSienteElPaciente = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -235,15 +235,15 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
+            this.cboConsistencia = new System.Windows.Forms.ComboBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.cboAproximacionNumerica = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.cboTamañoGanglio = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.cboUbicacionGanglio = new System.Windows.Forms.ComboBox();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
@@ -1529,33 +1529,33 @@
             this.groupBox6.Controls.Add(this.button12);
             this.groupBox6.Controls.Add(this.button7);
             this.groupBox6.Controls.Add(this.button6);
-            this.groupBox6.Controls.Add(this.comboBox7);
-            this.groupBox6.Controls.Add(this.textBox11);
+            this.groupBox6.Controls.Add(this.cboElementoModificacion);
+            this.groupBox6.Controls.Add(this.txtObservacionesSintoma);
             this.groupBox6.Controls.Add(this.button5);
-            this.groupBox6.Controls.Add(this.comboBox6);
+            this.groupBox6.Controls.Add(this.cboComoModificaSintoma);
             this.groupBox6.Controls.Add(this.button8);
-            this.groupBox6.Controls.Add(this.comboBox5);
+            this.groupBox6.Controls.Add(this.cboCuandoComenzo);
             this.groupBox6.Controls.Add(this.label25);
-            this.groupBox6.Controls.Add(this.comboBox4);
-            this.groupBox6.Controls.Add(this.maskedTextBox3);
-            this.groupBox6.Controls.Add(this.textBox12);
+            this.groupBox6.Controls.Add(this.cboElementoTiempo);
+            this.groupBox6.Controls.Add(this.mtbFechaInicioSintoma);
+            this.groupBox6.Controls.Add(this.txtHaciaDondeIrradia);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.button9);
-            this.groupBox6.Controls.Add(this.textBox13);
-            this.groupBox6.Controls.Add(this.comboBox3);
+            this.groupBox6.Controls.Add(this.txtCantidadTiempoInicioSintoma);
+            this.groupBox6.Controls.Add(this.cboCaracterDolor);
             this.groupBox6.Controls.Add(this.label23);
-            this.groupBox6.Controls.Add(this.radioButton2);
-            this.groupBox6.Controls.Add(this.radioButton1);
+            this.groupBox6.Controls.Add(this.rbNoDolor);
+            this.groupBox6.Controls.Add(this.rbSiDolor);
             this.groupBox6.Controls.Add(this.button10);
             this.groupBox6.Controls.Add(this.label22);
-            this.groupBox6.Controls.Add(this.comboBox1);
+            this.groupBox6.Controls.Add(this.cboParteCuerpo);
             this.groupBox6.Controls.Add(this.label20);
-            this.groupBox6.Controls.Add(this.textBox14);
+            this.groupBox6.Controls.Add(this.txtDescripcionDeLoQueSiente);
             this.groupBox6.Controls.Add(this.button11);
             this.groupBox6.Controls.Add(this.label21);
             this.groupBox6.Controls.Add(this.label19);
             this.groupBox6.Controls.Add(this.label18);
-            this.groupBox6.Controls.Add(this.comboBox8);
+            this.groupBox6.Controls.Add(this.cboQueSienteElPaciente);
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Controls.Add(this.label26);
@@ -1604,21 +1604,21 @@
             this.button6.Text = "Añadir";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // comboBox7
+            // cboElementoModificacion
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(595, 291);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 24);
-            this.comboBox7.TabIndex = 20;
+            this.cboElementoModificacion.FormattingEnabled = true;
+            this.cboElementoModificacion.Location = new System.Drawing.Point(595, 291);
+            this.cboElementoModificacion.Name = "cboElementoModificacion";
+            this.cboElementoModificacion.Size = new System.Drawing.Size(121, 24);
+            this.cboElementoModificacion.TabIndex = 20;
             // 
-            // textBox11
+            // txtObservacionesSintoma
             // 
-            this.textBox11.Location = new System.Drawing.Point(118, 324);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(588, 35);
-            this.textBox11.TabIndex = 17;
+            this.txtObservacionesSintoma.Location = new System.Drawing.Point(118, 324);
+            this.txtObservacionesSintoma.Multiline = true;
+            this.txtObservacionesSintoma.Name = "txtObservacionesSintoma";
+            this.txtObservacionesSintoma.Size = new System.Drawing.Size(588, 35);
+            this.txtObservacionesSintoma.TabIndex = 17;
             // 
             // button5
             // 
@@ -1629,13 +1629,13 @@
             this.button5.Text = "Añadir";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // comboBox6
+            // cboComoModificaSintoma
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(158, 287);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 24);
-            this.comboBox6.TabIndex = 18;
+            this.cboComoModificaSintoma.FormattingEnabled = true;
+            this.cboComoModificaSintoma.Location = new System.Drawing.Point(158, 287);
+            this.cboComoModificaSintoma.Name = "cboComoModificaSintoma";
+            this.cboComoModificaSintoma.Size = new System.Drawing.Size(121, 24);
+            this.cboComoModificaSintoma.TabIndex = 18;
             // 
             // button8
             // 
@@ -1646,13 +1646,13 @@
             this.button8.Text = "Añadir";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // comboBox5
+            // cboCuandoComenzo
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(158, 251);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 24);
-            this.comboBox5.TabIndex = 16;
+            this.cboCuandoComenzo.FormattingEnabled = true;
+            this.cboCuandoComenzo.Location = new System.Drawing.Point(158, 251);
+            this.cboCuandoComenzo.Name = "cboCuandoComenzo";
+            this.cboCuandoComenzo.Size = new System.Drawing.Size(121, 24);
+            this.cboCuandoComenzo.TabIndex = 16;
             // 
             // label25
             // 
@@ -1663,29 +1663,29 @@
             this.label25.TabIndex = 13;
             this.label25.Text = "Observaciones";
             // 
-            // comboBox4
+            // cboElementoTiempo
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(553, 215);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(118, 24);
-            this.comboBox4.TabIndex = 15;
+            this.cboElementoTiempo.FormattingEnabled = true;
+            this.cboElementoTiempo.Location = new System.Drawing.Point(553, 215);
+            this.cboElementoTiempo.Name = "cboElementoTiempo";
+            this.cboElementoTiempo.Size = new System.Drawing.Size(118, 24);
+            this.cboElementoTiempo.TabIndex = 15;
             // 
-            // maskedTextBox3
+            // mtbFechaInicioSintoma
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(267, 215);
-            this.maskedTextBox3.Mask = "00/00/0000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(100, 23);
-            this.maskedTextBox3.TabIndex = 14;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            this.mtbFechaInicioSintoma.Location = new System.Drawing.Point(267, 215);
+            this.mtbFechaInicioSintoma.Mask = "00/00/0000";
+            this.mtbFechaInicioSintoma.Name = "mtbFechaInicioSintoma";
+            this.mtbFechaInicioSintoma.Size = new System.Drawing.Size(100, 23);
+            this.mtbFechaInicioSintoma.TabIndex = 14;
+            this.mtbFechaInicioSintoma.ValidatingType = typeof(System.DateTime);
             // 
-            // textBox12
+            // txtHaciaDondeIrradia
             // 
-            this.textBox12.Location = new System.Drawing.Point(172, 180);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(456, 23);
-            this.textBox12.TabIndex = 11;
+            this.txtHaciaDondeIrradia.Location = new System.Drawing.Point(172, 180);
+            this.txtHaciaDondeIrradia.Name = "txtHaciaDondeIrradia";
+            this.txtHaciaDondeIrradia.Size = new System.Drawing.Size(456, 23);
+            this.txtHaciaDondeIrradia.TabIndex = 11;
             // 
             // label24
             // 
@@ -1705,20 +1705,20 @@
             this.button9.Text = "Añadir";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // textBox13
+            // txtCantidadTiempoInicioSintoma
             // 
-            this.textBox13.Location = new System.Drawing.Point(506, 215);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(41, 23);
-            this.textBox13.TabIndex = 12;
+            this.txtCantidadTiempoInicioSintoma.Location = new System.Drawing.Point(506, 215);
+            this.txtCantidadTiempoInicioSintoma.Name = "txtCantidadTiempoInicioSintoma";
+            this.txtCantidadTiempoInicioSintoma.Size = new System.Drawing.Size(41, 23);
+            this.txtCantidadTiempoInicioSintoma.TabIndex = 12;
             // 
-            // comboBox3
+            // cboCaracterDolor
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(410, 147);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(137, 24);
-            this.comboBox3.TabIndex = 9;
+            this.cboCaracterDolor.FormattingEnabled = true;
+            this.cboCaracterDolor.Location = new System.Drawing.Point(410, 147);
+            this.cboCaracterDolor.Name = "cboCaracterDolor";
+            this.cboCaracterDolor.Size = new System.Drawing.Size(137, 24);
+            this.cboCaracterDolor.TabIndex = 9;
             // 
             // label23
             // 
@@ -1729,27 +1729,27 @@
             this.label23.TabIndex = 11;
             this.label23.Text = "¿Cómo se modifica?";
             // 
-            // radioButton2
+            // rbNoDolor
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(199, 148);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(44, 21);
-            this.radioButton2.TabIndex = 8;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbNoDolor.AutoSize = true;
+            this.rbNoDolor.Location = new System.Drawing.Point(199, 148);
+            this.rbNoDolor.Name = "rbNoDolor";
+            this.rbNoDolor.Size = new System.Drawing.Size(44, 21);
+            this.rbNoDolor.TabIndex = 8;
+            this.rbNoDolor.TabStop = true;
+            this.rbNoDolor.Text = "No";
+            this.rbNoDolor.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbSiDolor
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(134, 148);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(38, 21);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Si";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbSiDolor.AutoSize = true;
+            this.rbSiDolor.Location = new System.Drawing.Point(134, 148);
+            this.rbSiDolor.Name = "rbSiDolor";
+            this.rbSiDolor.Size = new System.Drawing.Size(38, 21);
+            this.rbSiDolor.TabIndex = 7;
+            this.rbSiDolor.TabStop = true;
+            this.rbSiDolor.Text = "Si";
+            this.rbSiDolor.UseVisualStyleBackColor = true;
             // 
             // button10
             // 
@@ -1769,13 +1769,13 @@
             this.label22.TabIndex = 10;
             this.label22.Text = "¿Cuándo comenzó?";
             // 
-            // comboBox1
+            // cboParteCuerpo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(302, 103);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(142, 24);
-            this.comboBox1.TabIndex = 5;
+            this.cboParteCuerpo.FormattingEnabled = true;
+            this.cboParteCuerpo.Location = new System.Drawing.Point(302, 103);
+            this.cboParteCuerpo.Name = "cboParteCuerpo";
+            this.cboParteCuerpo.Size = new System.Drawing.Size(142, 24);
+            this.cboParteCuerpo.TabIndex = 5;
             // 
             // label20
             // 
@@ -1786,13 +1786,13 @@
             this.label20.TabIndex = 8;
             this.label20.Text = "Fecha";
             // 
-            // textBox14
+            // txtDescripcionDeLoQueSiente
             // 
-            this.textBox14.Location = new System.Drawing.Point(199, 63);
-            this.textBox14.Multiline = true;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(429, 29);
-            this.textBox14.TabIndex = 4;
+            this.txtDescripcionDeLoQueSiente.Location = new System.Drawing.Point(199, 63);
+            this.txtDescripcionDeLoQueSiente.Multiline = true;
+            this.txtDescripcionDeLoQueSiente.Name = "txtDescripcionDeLoQueSiente";
+            this.txtDescripcionDeLoQueSiente.Size = new System.Drawing.Size(429, 29);
+            this.txtDescripcionDeLoQueSiente.TabIndex = 4;
             // 
             // button11
             // 
@@ -1830,13 +1830,13 @@
             this.label18.TabIndex = 6;
             this.label18.Text = "¿Hacia donde se irradia?";
             // 
-            // comboBox8
+            // cboQueSienteElPaciente
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(178, 24);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(102, 24);
-            this.comboBox8.TabIndex = 2;
+            this.cboQueSienteElPaciente.FormattingEnabled = true;
+            this.cboQueSienteElPaciente.Location = new System.Drawing.Point(178, 24);
+            this.cboQueSienteElPaciente.Name = "cboQueSienteElPaciente";
+            this.cboQueSienteElPaciente.Size = new System.Drawing.Size(102, 24);
+            this.cboQueSienteElPaciente.TabIndex = 2;
             // 
             // label16
             // 
@@ -1913,7 +1913,7 @@
             this.maskedTextBox2.Location = new System.Drawing.Point(705, 29);
             this.maskedTextBox2.Mask = "00:00";
             this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(106, 23);
+            this.maskedTextBox2.Size = new System.Drawing.Size(45, 23);
             this.maskedTextBox2.TabIndex = 6;
             this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
             // 
@@ -1922,7 +1922,7 @@
             this.maskedTextBox1.Location = new System.Drawing.Point(418, 29);
             this.maskedTextBox1.Mask = "00/00/0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(140, 23);
+            this.maskedTextBox1.Size = new System.Drawing.Size(83, 23);
             this.maskedTextBox1.TabIndex = 5;
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
             // 
@@ -2336,15 +2336,15 @@
             this.panel8.Controls.Add(this.radioButton4);
             this.panel8.Controls.Add(this.radioButton3);
             this.panel8.Controls.Add(this.checkBox1);
-            this.panel8.Controls.Add(this.textBox27);
+            this.panel8.Controls.Add(this.txtDescripcion);
             this.panel8.Controls.Add(this.label48);
-            this.panel8.Controls.Add(this.comboBox13);
+            this.panel8.Controls.Add(this.cboConsistencia);
             this.panel8.Controls.Add(this.label47);
-            this.panel8.Controls.Add(this.comboBox12);
+            this.panel8.Controls.Add(this.cboAproximacionNumerica);
             this.panel8.Controls.Add(this.label46);
-            this.panel8.Controls.Add(this.comboBox11);
+            this.panel8.Controls.Add(this.cboTamañoGanglio);
             this.panel8.Controls.Add(this.label45);
-            this.panel8.Controls.Add(this.comboBox10);
+            this.panel8.Controls.Add(this.cboUbicacionGanglio);
             this.panel8.Controls.Add(this.label44);
             this.panel8.Controls.Add(this.label43);
             this.panel8.Location = new System.Drawing.Point(6, 3);
@@ -2475,12 +2475,12 @@
             this.checkBox1.Text = "Sensible a la palpación";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox27
+            // txtDescripcion
             // 
-            this.textBox27.Location = new System.Drawing.Point(349, 106);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(397, 20);
-            this.textBox27.TabIndex = 10;
+            this.txtDescripcion.Location = new System.Drawing.Point(349, 106);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(397, 20);
+            this.txtDescripcion.TabIndex = 10;
             // 
             // label48
             // 
@@ -2492,13 +2492,13 @@
             this.label48.TabIndex = 9;
             this.label48.Text = "Descripción";
             // 
-            // comboBox13
+            // cboConsistencia
             // 
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(101, 103);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(139, 21);
-            this.comboBox13.TabIndex = 8;
+            this.cboConsistencia.FormattingEnabled = true;
+            this.cboConsistencia.Location = new System.Drawing.Point(101, 103);
+            this.cboConsistencia.Name = "cboConsistencia";
+            this.cboConsistencia.Size = new System.Drawing.Size(139, 21);
+            this.cboConsistencia.TabIndex = 8;
             // 
             // label47
             // 
@@ -2510,13 +2510,13 @@
             this.label47.TabIndex = 7;
             this.label47.Text = "Consistencia:";
             // 
-            // comboBox12
+            // cboAproximacionNumerica
             // 
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Location = new System.Drawing.Point(673, 50);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(73, 21);
-            this.comboBox12.TabIndex = 6;
+            this.cboAproximacionNumerica.FormattingEnabled = true;
+            this.cboAproximacionNumerica.Location = new System.Drawing.Point(673, 50);
+            this.cboAproximacionNumerica.Name = "cboAproximacionNumerica";
+            this.cboAproximacionNumerica.Size = new System.Drawing.Size(120, 21);
+            this.cboAproximacionNumerica.TabIndex = 6;
             // 
             // label46
             // 
@@ -2528,13 +2528,13 @@
             this.label46.TabIndex = 5;
             this.label46.Text = "Aproximación numérica";
             // 
-            // comboBox11
+            // cboTamañoGanglio
             // 
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(349, 50);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(139, 21);
-            this.comboBox11.TabIndex = 4;
+            this.cboTamañoGanglio.FormattingEnabled = true;
+            this.cboTamañoGanglio.Location = new System.Drawing.Point(349, 50);
+            this.cboTamañoGanglio.Name = "cboTamañoGanglio";
+            this.cboTamañoGanglio.Size = new System.Drawing.Size(139, 21);
+            this.cboTamañoGanglio.TabIndex = 4;
             // 
             // label45
             // 
@@ -2546,13 +2546,13 @@
             this.label45.TabIndex = 3;
             this.label45.Text = "Tamaño:";
             // 
-            // comboBox10
+            // cboUbicacionGanglio
             // 
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(79, 50);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(161, 21);
-            this.comboBox10.TabIndex = 2;
+            this.cboUbicacionGanglio.FormattingEnabled = true;
+            this.cboUbicacionGanglio.Location = new System.Drawing.Point(79, 50);
+            this.cboUbicacionGanglio.Name = "cboUbicacionGanglio";
+            this.cboUbicacionGanglio.Size = new System.Drawing.Size(161, 21);
+            this.cboUbicacionGanglio.TabIndex = 2;
             // 
             // label44
             // 
@@ -3963,33 +3963,33 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.ComboBox cboElementoModificacion;
+        private System.Windows.Forms.TextBox txtObservacionesSintoma;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cboComoModificaSintoma;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cboCuandoComenzo;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.ComboBox cboElementoTiempo;
+        private System.Windows.Forms.MaskedTextBox mtbFechaInicioSintoma;
+        private System.Windows.Forms.TextBox txtHaciaDondeIrradia;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.TextBox txtCantidadTiempoInicioSintoma;
+        private System.Windows.Forms.ComboBox cboCaracterDolor;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbNoDolor;
+        private System.Windows.Forms.RadioButton rbSiDolor;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboParteCuerpo;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox txtDescripcionDeLoQueSiente;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox cboQueSienteElPaciente;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label26;
@@ -4037,15 +4037,15 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.ComboBox comboBox13;
+        private System.Windows.Forms.ComboBox cboConsistencia;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.ComboBox comboBox12;
+        private System.Windows.Forms.ComboBox cboAproximacionNumerica;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.ComboBox comboBox11;
+        private System.Windows.Forms.ComboBox cboTamañoGanglio;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.ComboBox cboUbicacionGanglio;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox textBox30;

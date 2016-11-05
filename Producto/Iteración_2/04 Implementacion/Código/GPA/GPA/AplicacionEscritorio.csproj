@@ -79,6 +79,7 @@
     <Compile Include="ConsultarHistoriaClínica.Designer.cs">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manejadores\ManejadorRegistrarExamenGeneral.cs" />
     <Compile Include="PresentarInformacionHistoriaClinica.cs">
       <SubType>Form</SubType>
     </Compile>

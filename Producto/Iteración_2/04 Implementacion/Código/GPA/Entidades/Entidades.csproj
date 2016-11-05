@@ -96,6 +96,7 @@
     <Compile Include="Clases\Sintoma.cs" />
     <Compile Include="Clases\SustanciaContactoPiel.cs" />
     <Compile Include="Clases\SustanciaDrogaIlicita.cs" />
+    <Compile Include="Clases\Tamaño.cs" />
     <Compile Include="Clases\TipoAborto.cs" />
     <Compile Include="Clases\TipoAntecedenteMorbido.cs" />
     <Compile Include="Clases\TipoBebida.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Clases\TipoParto.cs" />
     <Compile Include="Clases\TipoSintoma.cs" />
     <Compile Include="Clases\Traumatismo.cs" />
+    <Compile Include="Clases\Ubicacion.cs" />
     <Compile Include="Clases\UnidadDeMedida.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\Familiar.cs" />

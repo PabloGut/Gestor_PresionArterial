@@ -87,6 +87,7 @@
     <Compile Include="SustanciaAmbienteLN.cs" />
     <Compile Include="SustanciaContactoPielLN.cs" />
     <Compile Include="SustanciaDrogaIlicitaLN.cs" />
+    <Compile Include="TamañoLN.cs" />
     <Compile Include="TipoAbortoLN.cs" />
     <Compile Include="TipoAntecedenteMorbidoLN.cs" />
     <Compile Include="TipoBebidaLN.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="TipoPartoLN.cs" />
     <Compile Include="TipoSintomaLN.cs" />
     <Compile Include="TraumatismoLN.cs" />
+    <Compile Include="UbicacionLN.cs" />
     <Compile Include="UnidadMedidaLN.cs" />
     <Compile Include="UsuarioLN.cs" />
     <Compile Include="PacienteLN.cs" />
