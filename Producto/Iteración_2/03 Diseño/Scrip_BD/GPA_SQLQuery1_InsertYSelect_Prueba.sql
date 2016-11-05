@@ -455,7 +455,7 @@ delete from HabitosTabaquismo
 
 delete from Sintoma 
 
-drop table HabitosMedicamento
+drop table Consulta
 drop table ProgramacionMedicamento
 
 select * from Historia_Clinica
@@ -582,3 +582,4 @@ where ai.id_hc_fk='57'
 and ai.id_insecto_fk=ins.id_insecto
 
 select * from Paciente
+

@@ -607,6 +607,62 @@ values('Cancelada')
 
 /*--------------------------*/
 
+/*-------Insert Ubicación-----*/
+insert into Ubicacion(nombre)
+values('--Seleccionar--')
+insert into Ubicacion(nombre)
+values('Región Occipital')
+insert into Ubicacion(nombre)
+values('Región Mastoídeas')
+insert into Ubicacion(nombre)
+values('Región Preauriculares')
+insert into Ubicacion(nombre)
+values('Región Submandibulares')
+insert into Ubicacion(nombre)
+values('Región Cervical Anterior')
+insert into Ubicacion(nombre)
+values('Región Cervical Lateral')
+insert into Ubicacion(nombre)
+values('Región Cervical Posterior')
+insert into Ubicacion(nombre)
+values('Huecos Supraclaviculares')
+insert into Ubicacion(nombre)
+values('Región Epitroclear derecha')
+insert into Ubicacion(nombre)
+values('Región Epitroclear izquierda')
+insert into Ubicacion(nombre)
+values('Axíla derecha')
+insert into Ubicacion(nombre)
+values('Axíla izquierda')
+insert into Ubicacion(nombre)
+values('Regiónes Inguinal derecha')
+insert into Ubicacion(nombre)
+values('Regiónes Inguinal izquierda')
+/*--------------------------*/
+
+/*-------Insert Ubicación-----*/
+insert into Tamaño(nombre)
+values('--Seleccionar--')
+insert into Tamaño(nombre)
+values('Normal')
+insert into Tamaño(nombre)
+values('Grande')
+/*--------------------------*/
+
+/*-------Insert Consistencia-----*/
+insert into Consistencia(nombre)
+values('--Elástica (Normal)--')
+insert into Consistencia(nombre)
+values('Muy duro')
+insert into Consistencia(nombre)
+values('Muy blando')
+insert into Consistencia(nombre)
+values('Muy blando')
+
+
+/*--------------------------*/
+
+
 /*-------Insert-----*/
 
 /*--------------------------*/
