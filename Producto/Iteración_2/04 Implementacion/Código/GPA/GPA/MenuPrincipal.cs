@@ -347,16 +347,6 @@ namespace GPA
             }
         }
 
-        public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres, List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
-        {
-            Utilidades.deshabilitarLosControles(tabPage4);
-            Utilidades.cargarCombo(comboBox3, caracteres, "id_caracterDelDolor", "nombre");
-            Utilidades.cargarCombo(comboBox34, extremidades, "id_extremidad", "nombre");
-            Utilidades.cargarCombo(comboBox35, posiciones, "id_posicion", "nombre");
-            Utilidades.cargarCombo(comboBox36, sitios, "id_sitioMedicion", "nombre");
-            Utilidades.cargarCombo(comboBox37, momentos, "idMomentoDia", "nombre");
-        }
-
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)
         {
             RegistrarHistoriaClínica regHC = new RegistrarHistoriaClínica(medicoLogueado,pacienteSeleccionado);
@@ -380,5 +370,61 @@ namespace GPA
         {
             cargarDataGridPacientesDelProfesional();
         }
+
+        public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres, List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
+        {
+            Utilidades.deshabilitarLosControles(tabPage4);
+            Utilidades.cargarCombo(comboBox3, caracteres, "id_caracterDelDolor", "nombre");
+            Utilidades.cargarCombo(comboBox34, extremidades, "id_extremidad", "nombre");
+            Utilidades.cargarCombo(comboBox35, posiciones, "id_posicion", "nombre");
+            Utilidades.cargarCombo(comboBox36, sitios, "id_sitioMedicion", "nombre");
+            Utilidades.cargarCombo(comboBox37, momentos, "idMomentoDia", "nombre");
+            manejadorRegistrarAtencionMedicaEnConsultorio.buscarClasificacionesDePresionArterial();
+        }
+
+        private void comboBox34_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            manejadorRegistrarAtencionMedicaEnConsultorio.mostrarUbicacionesDeExtremidad(Convert.ToInt32(comboBox34.SelectedValue));
+        }
+
+        public void presentarUbicacionesExtremidadDeExtremidad(List<UbicacionExtremidad> ubicaciones)
+        {
+            Utilidades.cargarCombo(comboBox1, ubicaciones, "id_ubicacionExtremidad", "nombre");
+        }
+
+        /*Agrega una medición de presión arterial a la grilla*/
+        private void button19_Click(object sender, EventArgs e)
+        {
+
+            Extremidad extremidad = (Extremidad)comboBox34.SelectedItem;
+            UbicacionExtremidad ubicacion = (UbicacionExtremidad)comboBox1.SelectedItem;
+            Posicion posicion = (Posicion)comboBox35.SelectedItem;
+            SitioMedicion sitio = (SitioMedicion)comboBox36.SelectedItem;
+            MomentoDia momento = (MomentoDia)comboBox37.SelectedItem;
+
+            if (dataGridView6.RowCount == 1)
+            {
+                comboBox34.Enabled = false;
+                comboBox1.Enabled = false;
+                comboBox35.Enabled = false;
+                comboBox36.Enabled = false;
+                comboBox37.Enabled = false;
+                manejadorRegistrarAtencionMedicaEnConsultorio.registrarMedicion(DateTime.Today, DateTime.Now, posicion, ubicacion, sitio, momento);
+            }
+
+            dataGridView6.Rows.Add(DateTime.Today.ToShortDateString(), DateTime.Now.ToShortTimeString(), extremidad.nombre, ubicacion.nombre, posicion.nombre, sitio.nombre, textBox47.Text, textBox48.Text, textBox49.Text, momento.nombre);
+            DetalleMedicionPresionArterial detalle = new DetalleMedicionPresionArterial();
+            detalle.hora = DateTime.Now; detalle.pulso = Convert.ToInt32(textBox49.Text); detalle.valorMinimo = Convert.ToInt32(textBox47.Text); detalle.valorMaximo = Convert.ToInt32(textBox48.Text);
+            manejadorRegistrarAtencionMedicaEnConsultorio.registrarDetalleDeMedicion(detalle);
+        }
+        
+        public void presentarCalculosPresionArterial(string promedio, string categoria, string rangoValorMaximo, string rangoValorMinimo)
+        {
+            label92.Text = promedio;
+            label94.Text = categoria;
+            label98.Text = rangoValorMaximo;
+            label99.Text = rangoValorMinimo;
+        }
+
     }
 }
