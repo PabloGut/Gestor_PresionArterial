@@ -22,5 +22,9 @@ namespace GPA.Manejadores
             pantalla.presentarAtencionEnConsultorio(CaracterDelDolorLN.mostrarCaracterDelDolor());
         }
          * */
+        public void registrarSintomas(List<Sintoma> sintomas, int idConsulta)
+        {
+            SintomaLN.registrarSintomasDeConsulta(sintomas, idConsulta);
+        }
     }
 }

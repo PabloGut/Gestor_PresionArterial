@@ -116,5 +116,15 @@ namespace GPA
                 Utilidades.mostrarFilaNoSeEncontraronResultados(dgv);
             }
         }
+        public static void agregarColumnasDataGridView(DataGridView dgv, List<String> nombreColumnas)
+        {
+            for (int i = 0; i < nombreColumnas.Count ; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnas[i];
+                columna.Width = 200;
+                dgv.Columns.Add(columna);
+            }
+        }
     }
 }

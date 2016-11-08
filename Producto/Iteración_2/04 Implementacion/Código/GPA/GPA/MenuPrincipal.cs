@@ -23,6 +23,9 @@ namespace GPA
         ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
         ManejadorRegistrarExamenGeneral manejadorRegistrarExamenGeneral;
 
+        List<Sintoma> listaSintoma;
+        List<SistemaLinfatico> listaTerritoriosExaminados;
+
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
@@ -32,6 +35,9 @@ namespace GPA
             manejadorConsultarHc = null;
             manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
             manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
+            
+            listaTerritoriosExaminados = null;
+            listaSintoma = null;
         }
         public MenuPrincipal()
         {
@@ -66,6 +72,8 @@ namespace GPA
             presentarEscalaPulso();
             presentarTiposDePulso();
             presentarConsistencia();
+
+            agregarColumnasSistemaLinfatico();
             
            
 
@@ -627,7 +635,311 @@ namespace GPA
         {
             presentarInformacionAntecedentesGinecoObstetricos(dgvAntecedentesGinecoObstetricos);
         }
-        
+
+        private void btnAgregarRegionEstudiada_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewSistemaLinfatico();
+            
+        }
+        private void agregarColumnasSistemaLinfatico()
+        {
+            List<String> nombreColumnas = new List<string>();
+            nombreColumnas.Add("Ubicación");
+            nombreColumnas.Add("Tamaño");
+            nombreColumnas.Add("Aproximación numérica");
+            nombreColumnas.Add("Consistencia");
+            nombreColumnas.Add("Descripción");
+            nombreColumnas.Add("Sensible a la palpación");
+            nombreColumnas.Add("Se palpa con límites preciso");
+            nombreColumnas.Add("Tiende a confluir");
+            nombreColumnas.Add("Se puede movilizar con los dedos");
+            nombreColumnas.Add("Adherida a planos profundos");
+            nombreColumnas.Add("Se acompaña de un proceso inflamatorio que compromete la piel");
+            nombreColumnas.Add("Lesión");
+            nombreColumnas.Add("Observaciones");
+
+            Utilidades.agregarColumnasDataGridView(dgvRegionesEstudiadas, nombreColumnas);
+        }
+        private void cargarDatosDataGridViewSistemaLinfatico()
+        {
+            string ubicacion;
+            string tamaño;
+            int aproximacionNumerica;
+            string consistencia;
+            string descripcion = "No precisa";
+            string sensiblePalpacion = "No";
+            string limitesPrecisos="No";
+            string tiendeConfluir="No";
+            string movilizaConDedos="No";
+            string planosProfundos="No";
+            string procesoInflamatorio = "No";
+            string lesion = "No precisa";
+            string observaciones = "No precisa";
+
+            listaTerritoriosExaminados = new List<SistemaLinfatico>();
+            SistemaLinfatico sistemaLinfatico = new SistemaLinfatico();
+
+            Ubicacion ubicacionSeleccionada = (Ubicacion)cboUbicacionGanglio.SelectedItem;
+            ubicacion = ubicacionSeleccionada.nombre;
+
+            Tamaño tamañoSeleccionado = (Tamaño)cboTamañoGanglio.SelectedItem;
+            tamaño = tamañoSeleccionado.nombre;
+
+            aproximacionNumerica = Convert.ToInt32(cboAproximacionNumerica.SelectedItem.ToString());
+
+            Consistencia consistenciaSeleccionada = (Consistencia)cboConsistencia.SelectedItem;
+            consistencia = consistenciaSeleccionada.nombre;
+
+            if (string.IsNullOrEmpty(txtDescripcion.Text) == false)
+            {
+                descripcion = txtDescripcion.Text;
+            }
+
+            if (chbSensiblePalpacion.Checked == true)
+            {
+                sensiblePalpacion = "Si";
+            }
+
+            if (rbLimitesPrecisos.Checked == true)
+            {
+                limitesPrecisos = "Si";
+            }
+            else
+            {
+                if (rbTiendeConfluir.Checked == true)
+                {
+                    tiendeConfluir = "Si";
+                }
+            }
+
+            if(rbMovilizarConDedos.Checked==true)
+            {
+                movilizaConDedos="Si";
+            }
+            else
+            {
+                if(rbPlanosProfundos.Checked==true)
+                {
+                    planosProfundos="Si";
+                }
+            }
+            if (chbProcesoInflamatorio.Checked == true)
+            {
+                procesoInflamatorio = "Si";
+            }
+
+            if (String.IsNullOrEmpty(txtLesionCompromisoGangleo.Text) == false)
+            {
+                lesion = txtLesionCompromisoGangleo.Text;
+            }
+
+            if (String.IsNullOrEmpty(txtObservaciones.Text) == false)
+            {
+                observaciones = txtObservaciones.Text;
+            }
+
+            sistemaLinfatico.id_ubicacion=ubicacionSeleccionada.id_ubicacion;
+            sistemaLinfatico.id_tamaño=tamañoSeleccionado.id_tamaño;
+            sistemaLinfatico.aproximacionNumerica=aproximacionNumerica;
+            sistemaLinfatico.id_consistencia=consistenciaSeleccionada.id_consistencia;
+            sistemaLinfatico.descripcion=descripcion;
+            sistemaLinfatico.sensiblePalpacion=sensiblePalpacion;
+            sistemaLinfatico.sePalpaConLimitesPrecisos=limitesPrecisos;
+            sistemaLinfatico.tiendeAConfluir=tiendeConfluir;
+            sistemaLinfatico.sensiblePalpacion=sensiblePalpacion;
+            sistemaLinfatico.sePalpaConLimitesPrecisos=limitesPrecisos;
+            sistemaLinfatico.tiendeAConfluir=tiendeConfluir;
+            sistemaLinfatico.sePuedeMovilizarConDedos=movilizaConDedos;
+            sistemaLinfatico.adheridaPlanosProfundos=planosProfundos;
+            sistemaLinfatico.procesoInflamatorioComprometeLaPiel=procesoInflamatorio;
+            sistemaLinfatico.lesion=lesion;
+            sistemaLinfatico.observaciones=observaciones;
+
+            dgvRegionesEstudiadas.Rows.Add(ubicacion, tamaño, aproximacionNumerica, consistencia, descripcion, sensiblePalpacion, limitesPrecisos, tiendeConfluir,movilizaConDedos,planosProfundos, procesoInflamatorio, lesion, observaciones);
+            listaTerritoriosExaminados.Add(sistemaLinfatico);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void cargarDatosDataGridViewSintomas()
+        {
+            Sintoma sintoma = new Sintoma();
+            listaSintoma = new List<Sintoma>();
+
+            string descripcionQueSiente = "No precisa";
+            string caracterDolor = "No precisa";
+            string haciaDondeIrradia = "No precisa";
+            string fechaInicio = "No precisa";
+            string cantidadTiempoDeComienzo = "No precisa";
+            string cuandoComenzo = "No precisa";
+            string comoModificaSintoma = "No precisa";
+            string elementoModificacionSintoma = "No precisa";
+            string observaciones = "No precisa";
+
+            TipoSintoma nombreSintoma = (TipoSintoma)cboQueSienteElPaciente.SelectedItem;
+            sintoma.id_tipoSintoma = nombreSintoma.id_tipoSintoma;
+
+
+            ParteDelCuerpo parteCuerpo = (ParteDelCuerpo)cboParteCuerpo.SelectedItem;
+            sintoma.id_parteCuerpo = parteCuerpo.id_parteCuerpo;
+
+            if (string.IsNullOrEmpty(txtDescQueSientePaciente.Text) == false)
+            {
+                descripcionQueSiente = txtDescQueSientePaciente.Text;
+            }
+            sintoma.descripcion = descripcionQueSiente;
+
+            if (rbSiDolor.Checked == true && cboCaracterDolor.SelectedIndex > 0)
+            {
+                CaracterDelDolor caracter = (CaracterDelDolor)cboCaracterDolor.SelectedItem;
+                caracterDolor = caracter.nombre;
+                sintoma.id_caracterDolor = caracter.id_caracterDelDolor;
+            }
+
+            if (string.IsNullOrEmpty(txtHaciaDondeIrradia.Text) == false)
+            {
+                haciaDondeIrradia = txtHaciaDondeIrradia.Text;
+            }
+            sintoma.haciaDondeIrradia = haciaDondeIrradia;
+
+            if (mtbFechaComienzoSintoma.MaskFull == true)
+            {
+                fechaInicio = mtbFechaComienzoSintoma.Text;
+                sintoma.fechaInicioSintoma = Convert.ToDateTime(mtbFechaComienzoSintoma.Text);
+            }
+
+            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false && cboElementoTiempo.SelectedIndex > 0)
+            {
+                ElementoDelTiempo elementoTiempo = (ElementoDelTiempo)cboElementoTiempo.SelectedItem;
+                cantidadTiempoDeComienzo = txtCantTiempoInicioSintoma.Text + " " + elementoTiempo.nombre;
+                sintoma.cantidadTiempo = Convert.ToInt32(txtCantTiempoInicioSintoma.Text);
+                sintoma.id_elementoTiempo = elementoTiempo.id_elementoDelTiempo;
+            }
+            if (cboCuandoComenzo.SelectedIndex > 0)
+            {
+                DescripcionDelTiempo descripcion = (DescripcionDelTiempo)cboCuandoComenzo.SelectedItem;
+                cuandoComenzo = descripcion.nombre;
+                sintoma.id_descripcionDelTiempo = descripcion.id_descripcionDelTiempo;
+            }
+            if (cboComoModificaSintoma.SelectedIndex > 0)
+            {
+                ModificacionSintoma modificacion = (ModificacionSintoma)cboComoModificaSintoma.SelectedItem;
+                comoModificaSintoma = modificacion.nombre;
+                sintoma.id_modificacionSintoma = modificacion.id_modificacionSintoma;
+            }
+            if (cboElementoModificacion.SelectedIndex > 0)
+            {
+                ElementoDeModificacion elementoModificacion = (ElementoDeModificacion)cboElementoModificacion.SelectedItem;
+                elementoModificacionSintoma = elementoModificacion.nombre;
+                sintoma.id_elementoModificacion = elementoModificacion.id_elementoDeModificacion;
+            }
+            if (string.IsNullOrEmpty(txtObservaciones.Text) == false)
+            {
+                observaciones = txtObservaciones.Text;
+            }
+            sintoma.observaciones = observaciones;
+            sintoma.fechaRegistro = Convert.ToDateTime(mtbFechaConsulta.Text);
+
+            listaSintoma.Add(sintoma);
+        }
+
+        private void btnRegistrarAtención_Click(object sender, EventArgs e)
+        {
+            //Metodo para registrar datos generales de la consulta que retorne el idConsulta.
+            int idConsulta = 0;
+            //Metodo para registrar Sintomas.
+            registrarEnfermedadActual(idConsulta);
+            //Metodo para registrar examen general que retorne el idExamen general. Solamente primera parte paso 1.
+            int idExamenGeneral=0;
+            //Método registrar sistema linfático.
+            registrarSistemaLinfatico(idExamenGeneral);
+            
+        }
+        private void registrarSistemaLinfatico(int idExamenGeneral)
+        {
+            if (listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
+                manejadorRegistrarExamenGeneral.registrarSistemaLinfatico(listaTerritoriosExaminados, idExamenGeneral);
+        }
+        private void registrarEnfermedadActual(int idConsulta)
+        {
+            if (listaSintoma != null && listaSintoma.Count > 0)
+                manejadorRegistrarAtencionMedicaEnConsultorio.registrarSintomas(listaSintoma, idConsulta);
+        }
+        private void registrarPulsoArterial(int idExamenGeneral)
+        {
+            PulsoArterial pulso = new PulsoArterial();
+
+            if (String.IsNullOrEmpty(txtAuscultacionPulsos.Text) == true)
+            {
+                pulso.auscultacion = "No precisa";
+            }
+            else
+            {
+                pulso.auscultacion = txtAuscultacionPulsos.Text;
+            }
+
+            if (String.IsNullOrEmpty(txtObservaciones.Text) == true)
+            {
+                pulso.observaciones = "No precisa";
+            }
+            else
+            {
+                pulso.auscultacion = txtObservaciones.Text;
+            }
+
+            List<DetallePulsoArterial> detalles = new List<DetallePulsoArterial>();
+
+            if (cboPulso1.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+                
+                Pulso pulsoSeleccionado=(Pulso) cboPulso1.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI1.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD1.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+
+            if (cboPulso2.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso2.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI2.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD2.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+
+            if (cboPulso3.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso3.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI3.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD3.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+           
+        }
         
         
     }

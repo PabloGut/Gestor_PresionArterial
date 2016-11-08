@@ -839,7 +839,6 @@ namespace GPA
 
             TipoSintoma nombreSintoma = (TipoSintoma)cboQueSienteElPaciente.SelectedItem;
             sintoma.id_tipoSintoma = nombreSintoma.id_tipoSintoma;
-            
 
             ParteDelCuerpo parteCuerpo = (ParteDelCuerpo)cboParteCuerpo.SelectedItem;
             sintoma.id_parteCuerpo = parteCuerpo.id_parteCuerpo;
@@ -872,7 +871,6 @@ namespace GPA
             if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false && cboElementoTiempo.SelectedIndex>0)
             {
                 ElementoDelTiempo elementoTiempo = (ElementoDelTiempo)cboElementoTiempo.SelectedItem;
-                cantidadTiempoDeComienzo = txtCantTiempoInicioSintoma.Text + " " +elementoTiempo.nombre;
                 sintoma.cantidadTiempo = Convert.ToInt32(txtCantTiempoInicioSintoma.Text);
                 sintoma.id_elementoTiempo = elementoTiempo.id_elementoDelTiempo;
             }

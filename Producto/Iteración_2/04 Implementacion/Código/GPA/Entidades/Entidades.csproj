@@ -71,6 +71,7 @@
     <Compile Include="Clases\Estado.cs" />
     <Compile Include="Clases\EstadoProgramacion.cs" />
     <Compile Include="Clases\Estudio.cs" />
+    <Compile Include="Clases\ExamenGeneral.cs" />
     <Compile Include="Clases\FormaAdministracion.cs" />
     <Compile Include="Clases\HabitoActividadFisica.cs" />
     <Compile Include="Clases\HabitoAlcoholismo.cs" />
@@ -95,7 +96,9 @@
     <Compile Include="Clases\PresentacionMedicamento.cs" />
     <Compile Include="Clases\ProfesionaMedico.cs" />
     <Compile Include="Clases\ProgramacionMedicamento.cs" />
+    <Compile Include="Clases\PulsoArterial.cs" />
     <Compile Include="Clases\Sintoma.cs" />
+    <Compile Include="Clases\SistemaLinfatico.cs" />
     <Compile Include="Clases\SustanciaContactoPiel.cs" />
     <Compile Include="Clases\SustanciaDrogaIlicita.cs" />
     <Compile Include="Clases\Tamaño.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\Familiar.cs" />
     <Compile Include="Clases\ComponenteDelTiempo.cs" />
+    <Compile Include="Clases\DetallePulsoArterial.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

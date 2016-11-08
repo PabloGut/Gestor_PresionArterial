@@ -30,5 +30,13 @@ namespace GPA.Manejadores
         {
             return ConsistenciaLN.mostrarConsistencia();
         }
+        public void registrarSistemaLinfatico(List<SistemaLinfatico> territoriosExaminados, int idExamenGeneral)
+        {
+            SistemaLinfaticoLN.registrarSistemaLinfatico(territoriosExaminados, idExamenGeneral);
+        }
+        public int registrarPulsoArterial(PulsoArterial pulsoArterial)
+        {
+            return PulsoArterialLN.registrarPulsoArterial(pulsoArterial);
+        }
     }
 }

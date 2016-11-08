@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             SintomaDAO.registrarSintomas(sintomas, idHc);
         }
+        public static void registrarSintomasDeConsulta(List<Sintoma> sintomas, int idConsulta)
+        {
+            SintomaDAO.registrarSintomasDeConsulta(sintomas, idConsulta);
+        }
     }
 }
