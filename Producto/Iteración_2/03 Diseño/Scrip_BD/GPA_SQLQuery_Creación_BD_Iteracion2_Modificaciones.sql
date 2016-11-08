@@ -640,6 +640,7 @@ id_caracterDolor_fk int,
 observaciones text,
 id_hc_fk int,
 fechaRegistro date,
+id_consulta_fk int,
 foreign key (id_elementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_descripcionDelTiempo_fk) references DescripcionDelTiempo(id_descripcionDelTiempo),
 foreign key (id_tipoSintoma_fk) references TipoSintoma(id_tipoSintoma),
@@ -647,7 +648,8 @@ foreign key (id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
 foreign key (id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
 foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
 foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor),
-foreign key (id_hc_fk) references Historia_Clinica(id_hc))
+foreign key (id_hc_fk) references Historia_Clinica(id_hc),
+foreign key (id_consulta_fk) references Consulta(id_consulta))
 
 CREATE TABLE Extremidad(
 id_extremidad int primary key identity,

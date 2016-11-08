@@ -581,5 +581,17 @@ from AlergiaInsecto ai, Insecto ins
 where ai.id_hc_fk='57'
 and ai.id_insecto_fk=ins.id_insecto
 
-select * from Paciente
+select * from SistemaLinfatico
+
+alter table Sintoma
+add id_consulta_fk int
+
+alter table Sintoma
+add foreign key (id_consulta_fk) references Consulta(id_consulta)
+
+alter table ExamenGeneral
+add id_pulsoArterial_fk int
+
+alter table ExamenGeneral
+add foreign key(id_pulsoArterial_fk) references PulsoArterial(id_pulsoArterial)
 
