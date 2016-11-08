@@ -681,18 +681,30 @@ nombre text)
 CREATE TABLE MedicionDePrecionArterial(
 id_medicion int primary key identity,
 fecha date,
-horaInicio date,
+horaInicio time,
 id_extremidad_fk int,
 id_posicion_fk int,
 id_clasificacion_fk int,
 id_momentoDelDia_fk int,
 promedio float,  
 id_sitioMedicion_fk int,
+id_examenGeneral_fk int,
 foreign key (id_extremidad_fk) references Extremidad(id_extremidad),
 foreign key (id_posicion_fk) references Posicion(id_posicion),
 foreign key (id_clasificacion_fk) references ClasificacionPresionArterial(id_clasificacion),
 foreign key (id_momentoDelDia_fk) references MomentoDelDia(id_momentoDelDia),
-foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion))
+foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion),
+foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
+
+CREATE TABLE DetalleMedicionPresionArterial(
+id_nroMedicion int,
+id_medicion_fk int,
+hora time,
+pulso int,
+valorMaximo int,
+valorMinimo int,
+primary key (id_nroMedicion,id_medicion_fk),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
 
 CREATE TABLE Frecuencia(
 id_frecuencia int primary key identity,
