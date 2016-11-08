@@ -57,9 +57,11 @@
     <Compile Include="Clases\AntecedenteMorbido.cs" />
     <Compile Include="Clases\Barrio.cs" />
     <Compile Include="Clases\CaracterDelDolor.cs" />
+    <Compile Include="Clases\ClasificacionPresionArterial.cs" />
     <Compile Include="Clases\Consistencia.cs" />
     <Compile Include="Clases\DejoDeFumar.cs" />
     <Compile Include="Clases\DescripcionDelTiempo.cs" />
+    <Compile Include="Clases\DetalleMedicionPresionArterial.cs" />
     <Compile Include="Clases\Domicilio.cs" />
     <Compile Include="Clases\ElementoDelTiempo.cs" />
     <Compile Include="Clases\ElementoDeModificacion.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Clases\EstadoProgramacion.cs" />
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\ExamenGeneral.cs" />
+    <Compile Include="Clases\Extremidad.cs" />
     <Compile Include="Clases\FormaAdministracion.cs" />
     <Compile Include="Clases\HabitoActividadFisica.cs" />
     <Compile Include="Clases\HabitoAlcoholismo.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Clases\Localidad.cs" />
     <Compile Include="Clases\Medicamento.cs" />
     <Compile Include="Clases\MedicamentoAlergia.cs" />
+    <Compile Include="Clases\MedicionDePresionArterial.cs" />
     <Compile Include="Clases\Medida.cs" />
     <Compile Include="Clases\ModificacionSintoma.cs" />
     <Compile Include="Clases\MomentoDia.cs" />
@@ -93,15 +97,19 @@
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\ParteDelCuerpo.cs" />
     <Compile Include="Clases\Persona.cs" />
+    <Compile Include="Clases\Piel.cs" />
+    <Compile Include="Clases\Posicion.cs" />
     <Compile Include="Clases\PresentacionMedicamento.cs" />
     <Compile Include="Clases\ProfesionaMedico.cs" />
     <Compile Include="Clases\ProgramacionMedicamento.cs" />
     <Compile Include="Clases\PulsoArterial.cs" />
     <Compile Include="Clases\Sintoma.cs" />
     <Compile Include="Clases\SistemaLinfatico.cs" />
+    <Compile Include="Clases\SitioMedicion.cs" />
     <Compile Include="Clases\SustanciaContactoPiel.cs" />
     <Compile Include="Clases\SustanciaDrogaIlicita.cs" />
     <Compile Include="Clases\Tamaño.cs" />
+    <Compile Include="Clases\TemperaturaPiel.cs" />
     <Compile Include="Clases\TipoAborto.cs" />
     <Compile Include="Clases\TipoAntecedenteMorbido.cs" />
     <Compile Include="Clases\TipoBebida.cs" />
@@ -110,6 +118,7 @@
     <Compile Include="Clases\TipoSintoma.cs" />
     <Compile Include="Clases\Traumatismo.cs" />
     <Compile Include="Clases\Ubicacion.cs" />
+    <Compile Include="Clases\UbicacionExtremidad.cs" />
     <Compile Include="Clases\UnidadDeMedida.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\Familiar.cs" />
