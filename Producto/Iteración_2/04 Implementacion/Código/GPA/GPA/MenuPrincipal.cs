@@ -57,7 +57,7 @@ namespace GPA
             cargarDataGridPacientesDelProfesional();
             dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
-            //manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
+            manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
 
             presentarTipoSintomas();
             presentarParteDelCuerpo();
@@ -464,10 +464,13 @@ namespace GPA
             }
         }
 
-        public void presentarAtencionEnConsultorio(List<CaracterDelDolor> caracteres)
+        public void presentarAtencionEnConsultorio(List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
         {
-            Utilidades.deshabilitarLosControles(tabPage4);
-            Utilidades.cargarCombo(cboCaracterDolor, caracteres, "id_caracterDelDolor", "nombre");
+            Utilidades.cargarCombo(cmbExtremidadPresionArterial, extremidades, "id_extremidad", "nombre");
+            Utilidades.cargarCombo(cmbPosicionPresionArterial, posiciones, "id_posicion", "nombre");
+            Utilidades.cargarCombo(cmbSitioMedicionPresionArterial, sitios, "id_sitioMedicion", "nombre");
+            Utilidades.cargarCombo(cmbMomentoDiaPresionArterial, momentos, "idMomentoDia", "nombre");
+            manejadorRegistrarAtencionMedicaEnConsultorio.buscarClasificacionesDePresionArterial();
         }
 
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)
@@ -938,9 +941,52 @@ namespace GPA
 
                 detalles.Add(detalle);
             }
-           
+
         }
-        
-        
+
+        private void cmbExtremidadPresionArterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           manejadorRegistrarAtencionMedicaEnConsultorio.mostrarUbicacionesDeExtremidad(Convert.ToInt32(cmbExtremidadPresionArterial.SelectedValue));
+        }
+
+
+        public void presentarUbicacionesExtremidadDeExtremidad(List<UbicacionExtremidad> ubicaciones)
+        {
+            Utilidades.cargarCombo(cmbUbicacionPresionArterial, ubicaciones, "id_ubicacionExtremidad", "nombre");
+        }
+
+        /*Agrega una medición de presión arterial a la grilla*/
+        private void btnAgregarPresionArterial_Click(object sender, EventArgs e)
+        {
+            Extremidad extremidad = (Extremidad)cmbExtremidadPresionArterial.SelectedItem;
+            UbicacionExtremidad ubicacion = (UbicacionExtremidad)cmbUbicacionPresionArterial.SelectedItem;
+            Posicion posicion = (Posicion)cmbPosicionPresionArterial.SelectedItem;
+            SitioMedicion sitio = (SitioMedicion)cmbSitioMedicionPresionArterial.SelectedItem;
+            MomentoDia momento = (MomentoDia)cmbMomentoDiaPresionArterial.SelectedItem;
+
+            if (dgvPresionArterial.RowCount == 1)
+            {
+                cmbExtremidadPresionArterial.Enabled = false;
+                cmbUbicacionPresionArterial.Enabled = false;
+                cmbPosicionPresionArterial.Enabled = false;
+                cmbSitioMedicionPresionArterial.Enabled = false;
+                cmbMomentoDiaPresionArterial.Enabled = false;
+                manejadorRegistrarAtencionMedicaEnConsultorio.registrarMedicion(DateTime.Today, DateTime.Now, posicion, ubicacion, sitio, momento);
+            }
+
+            dgvPresionArterial.Rows.Add(DateTime.Today.ToShortDateString(), DateTime.Now.ToShortTimeString(), extremidad.nombre, ubicacion.nombre, posicion.nombre, sitio.nombre, txtSistolicaPresionArterial.Text+"mmHg", txtDiastolicaPresionArterial.Text+"mmHg", txtPulsoPresionArterial.Text, momento.nombre);
+            DetalleMedicionPresionArterial detalle = new DetalleMedicionPresionArterial();
+            detalle.hora = DateTime.Now; detalle.pulso = Convert.ToInt32(txtPulsoPresionArterial.Text); detalle.valorMinimo = Convert.ToInt32(txtSistolicaPresionArterial.Text); detalle.valorMaximo = Convert.ToInt32(txtDiastolicaPresionArterial.Text);
+            manejadorRegistrarAtencionMedicaEnConsultorio.registrarDetalleDeMedicion(detalle);
+        }
+
+        public void presentarCalculosPresionArterial(string promedio, string categoria, string rangoValorMaximo, string rangoValorMinimo)
+        {
+            lblPromedioPresionArterial.Text = promedio;
+            lblCategoriaPresionArterial.Text = categoria;
+            lblValorMaxPresionArterial.Text = rangoValorMaximo;
+            lblValorMinPresionArterial.Text = rangoValorMinimo;
+        }
+
     }
 }

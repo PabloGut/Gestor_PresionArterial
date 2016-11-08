@@ -65,9 +65,9 @@ namespace GPA
         
         public static void cargarCombo<T>(ComboBox combo, List<T> lista, string valueMember, string displayMember)
         {
-            combo.DataSource = lista;
             combo.ValueMember = valueMember;
             combo.DisplayMember = displayMember;
+            combo.DataSource = lista;
         }
         public static void agregarColumnaAntecedentesMorbidos(DataGridView dgv)
         {
