@@ -63,6 +63,7 @@
     <Compile Include="ConsistenciaDAO.cs" />
     <Compile Include="DejoDeFumarDAO.cs" />
     <Compile Include="DescripcionDelTiempoDAO.cs" />
+    <Compile Include="DetalleMedicionPresionArterialDAO.cs" />
     <Compile Include="DetallePulsoArterialDAO.cs" />
     <Compile Include="DomicilioDAO.cs" />
     <Compile Include="ElementoDelTiempoDAO.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="LocalidadDAO.cs" />
     <Compile Include="MedicamentoAlergiaDAO.cs" />
     <Compile Include="MedicamentoDAO.cs" />
+    <Compile Include="MedicionDePresionArterialDAO.cs" />
     <Compile Include="MedidaDAO.cs" />
     <Compile Include="ModificacionSintomaDAO.cs" />
     <Compile Include="MomentoDiaDAO.cs" />

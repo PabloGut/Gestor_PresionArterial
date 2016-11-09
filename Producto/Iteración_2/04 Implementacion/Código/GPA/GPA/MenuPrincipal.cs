@@ -58,6 +58,7 @@ namespace GPA
             dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
             TextBoxSoloLectura(true);
             manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
+            manejadorRegistrarExamenGeneral.registrarExamenGeneral(this);
 
             presentarTipoSintomas();
             presentarParteDelCuerpo();
@@ -464,13 +465,13 @@ namespace GPA
             }
         }
 
-        public void presentarAtencionEnConsultorio(List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
+        public void presentarExamenGeneral(List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
         {
             Utilidades.cargarCombo(cmbExtremidadPresionArterial, extremidades, "id_extremidad", "nombre");
             Utilidades.cargarCombo(cmbPosicionPresionArterial, posiciones, "id_posicion", "nombre");
             Utilidades.cargarCombo(cmbSitioMedicionPresionArterial, sitios, "id_sitioMedicion", "nombre");
             Utilidades.cargarCombo(cmbMomentoDiaPresionArterial, momentos, "idMomentoDia", "nombre");
-            manejadorRegistrarAtencionMedicaEnConsultorio.buscarClasificacionesDePresionArterial();
+            manejadorRegistrarExamenGeneral.buscarClasificacionesDePresionArterial();
         }
 
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)
@@ -858,6 +859,7 @@ namespace GPA
             int idExamenGeneral=0;
             //Método registrar sistema linfático.
             registrarSistemaLinfatico(idExamenGeneral);
+            registrarPresionArterial();
             
         }
         private void registrarSistemaLinfatico(int idExamenGeneral)
@@ -946,7 +948,7 @@ namespace GPA
 
         private void cmbExtremidadPresionArterial_SelectedIndexChanged(object sender, EventArgs e)
         {
-           manejadorRegistrarAtencionMedicaEnConsultorio.mostrarUbicacionesDeExtremidad(Convert.ToInt32(cmbExtremidadPresionArterial.SelectedValue));
+           manejadorRegistrarExamenGeneral.mostrarUbicacionesDeExtremidad(Convert.ToInt32(cmbExtremidadPresionArterial.SelectedValue));
         }
 
 
@@ -971,13 +973,12 @@ namespace GPA
                 cmbPosicionPresionArterial.Enabled = false;
                 cmbSitioMedicionPresionArterial.Enabled = false;
                 cmbMomentoDiaPresionArterial.Enabled = false;
-                manejadorRegistrarAtencionMedicaEnConsultorio.registrarMedicion(DateTime.Today, DateTime.Now, posicion, ubicacion, sitio, momento);
+                manejadorRegistrarExamenGeneral.registrarMedicion(DateTime.Today, DateTime.Now, posicion, ubicacion, sitio, momento);
             }
 
             dgvPresionArterial.Rows.Add(DateTime.Today.ToShortDateString(), DateTime.Now.ToShortTimeString(), extremidad.nombre, ubicacion.nombre, posicion.nombre, sitio.nombre, txtSistolicaPresionArterial.Text+"mmHg", txtDiastolicaPresionArterial.Text+"mmHg", txtPulsoPresionArterial.Text, momento.nombre);
-            DetalleMedicionPresionArterial detalle = new DetalleMedicionPresionArterial();
-            detalle.hora = DateTime.Now; detalle.pulso = Convert.ToInt32(txtPulsoPresionArterial.Text); detalle.valorMinimo = Convert.ToInt32(txtSistolicaPresionArterial.Text); detalle.valorMaximo = Convert.ToInt32(txtDiastolicaPresionArterial.Text);
-            manejadorRegistrarAtencionMedicaEnConsultorio.registrarDetalleDeMedicion(detalle);
+            DateTime hora = DateTime.Now; int pulso = Convert.ToInt32(txtPulsoPresionArterial.Text); int valorMinimo = Convert.ToInt32(txtSistolicaPresionArterial.Text); int valorMaximo = Convert.ToInt32(txtDiastolicaPresionArterial.Text);
+            manejadorRegistrarExamenGeneral.registrarDetalleDeMedicion(hora, pulso, valorMinimo, valorMaximo);
         }
 
         public void presentarCalculosPresionArterial(string promedio, string categoria, string rangoValorMaximo, string rangoValorMinimo)
@@ -986,6 +987,11 @@ namespace GPA
             lblCategoriaPresionArterial.Text = categoria;
             lblValorMaxPresionArterial.Text = rangoValorMaximo;
             lblValorMinPresionArterial.Text = rangoValorMinimo;
+        }
+
+        private void registrarPresionArterial()
+        {
+                manejadorRegistrarExamenGeneral.registrarMedicionDePresionArterial();
         }
 
     }

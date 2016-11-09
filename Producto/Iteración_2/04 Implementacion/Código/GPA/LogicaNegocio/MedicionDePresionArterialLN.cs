@@ -44,5 +44,10 @@ namespace LogicaNegocio
             }
             return totalDiastolica / cantMediciones;
         }
+
+        public static int registrarMedicionDePresionArterial(MedicionDePresionArterial medicion)
+        {
+            return MedicionDePresionArterialDAO.registrarMedicionDePresionArterial(medicion);
+        }
     }
 }
