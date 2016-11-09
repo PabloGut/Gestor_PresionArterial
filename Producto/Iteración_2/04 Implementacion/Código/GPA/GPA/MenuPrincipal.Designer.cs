@@ -354,33 +354,33 @@
             this.textBox35 = new System.Windows.Forms.TextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.button17 = new System.Windows.Forms.Button();
+            this.btnRegistrarAtención = new System.Windows.Forms.Button();
+            this.btnRegistrarMedicacion = new System.Windows.Forms.Button();
             this.label86 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.btnAnalisisLaboratorio = new System.Windows.Forms.Button();
+            this.btnEstudio = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox33 = new System.Windows.Forms.ComboBox();
-            this.comboBox32 = new System.Windows.Forms.ComboBox();
+            this.cboAnalisiLaboratorio = new System.Windows.Forms.ComboBox();
+            this.cboEstudio = new System.Windows.Forms.ComboBox();
             this.label84 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
+            this.dgvDiagnosticos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox46 = new System.Windows.Forms.TextBox();
+            this.txtDiagnostico = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.AgregarHipotesisInicial = new System.Windows.Forms.Button();
+            this.dgvHipotesis = new System.Windows.Forms.DataGridView();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox45 = new System.Windows.Forms.TextBox();
+            this.txtHipotesisInicial = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
-            this.textBox44 = new System.Windows.Forms.TextBox();
+            this.txtConceptoInicial = new System.Windows.Forms.TextBox();
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnRegistrarAtención = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -435,8 +435,8 @@
             this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHipotesis)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -3579,13 +3579,13 @@
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.btnRegistrarAtención);
-            this.groupBox15.Controls.Add(this.button17);
+            this.groupBox15.Controls.Add(this.btnRegistrarMedicacion);
             this.groupBox15.Controls.Add(this.label86);
-            this.groupBox15.Controls.Add(this.button16);
-            this.groupBox15.Controls.Add(this.button15);
+            this.groupBox15.Controls.Add(this.btnAnalisisLaboratorio);
+            this.groupBox15.Controls.Add(this.btnEstudio);
             this.groupBox15.Controls.Add(this.dataGridView4);
-            this.groupBox15.Controls.Add(this.comboBox33);
-            this.groupBox15.Controls.Add(this.comboBox32);
+            this.groupBox15.Controls.Add(this.cboAnalisiLaboratorio);
+            this.groupBox15.Controls.Add(this.cboEstudio);
             this.groupBox15.Controls.Add(this.label84);
             this.groupBox15.Controls.Add(this.label83);
             this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3596,41 +3596,51 @@
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Exámenes complementarios a realizar";
             // 
-            // button17
+            // btnRegistrarAtención
             // 
-            this.button17.Location = new System.Drawing.Point(164, 132);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(178, 26);
-            this.button17.TabIndex = 27;
-            this.button17.Text = "Registrar Medicación";
-            this.button17.UseVisualStyleBackColor = true;
+            this.btnRegistrarAtención.Location = new System.Drawing.Point(119, 248);
+            this.btnRegistrarAtención.Name = "btnRegistrarAtención";
+            this.btnRegistrarAtención.Size = new System.Drawing.Size(247, 26);
+            this.btnRegistrarAtención.TabIndex = 28;
+            this.btnRegistrarAtención.Text = "Registrar Atención en Consultorio";
+            this.btnRegistrarAtención.UseVisualStyleBackColor = true;
+            this.btnRegistrarAtención.Click += new System.EventHandler(this.btnRegistrarAtención_Click);
+            // 
+            // btnRegistrarMedicacion
+            // 
+            this.btnRegistrarMedicacion.Location = new System.Drawing.Point(159, 205);
+            this.btnRegistrarMedicacion.Name = "btnRegistrarMedicacion";
+            this.btnRegistrarMedicacion.Size = new System.Drawing.Size(178, 26);
+            this.btnRegistrarMedicacion.TabIndex = 27;
+            this.btnRegistrarMedicacion.Text = "Registrar Medicación";
+            this.btnRegistrarMedicacion.UseVisualStyleBackColor = true;
             // 
             // label86
             // 
             this.label86.AutoSize = true;
-            this.label86.Location = new System.Drawing.Point(6, 137);
+            this.label86.Location = new System.Drawing.Point(1, 210);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(144, 17);
             this.label86.TabIndex = 26;
             this.label86.Text = "Medicación a recetar:";
             // 
-            // button16
+            // btnAnalisisLaboratorio
             // 
-            this.button16.Location = new System.Drawing.Point(348, 77);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(130, 26);
-            this.button16.TabIndex = 25;
-            this.button16.Text = "Añadir";
-            this.button16.UseVisualStyleBackColor = true;
+            this.btnAnalisisLaboratorio.Location = new System.Drawing.Point(348, 113);
+            this.btnAnalisisLaboratorio.Name = "btnAnalisisLaboratorio";
+            this.btnAnalisisLaboratorio.Size = new System.Drawing.Size(130, 26);
+            this.btnAnalisisLaboratorio.TabIndex = 25;
+            this.btnAnalisisLaboratorio.Text = "Añadir";
+            this.btnAnalisisLaboratorio.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // btnEstudio
             // 
-            this.button15.Location = new System.Drawing.Point(348, 22);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(130, 26);
-            this.button15.TabIndex = 24;
-            this.button15.Text = "Añadir";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnEstudio.Location = new System.Drawing.Point(348, 22);
+            this.btnEstudio.Name = "btnEstudio";
+            this.btnEstudio.Size = new System.Drawing.Size(130, 26);
+            this.btnEstudio.TabIndex = 24;
+            this.btnEstudio.Text = "Añadir";
+            this.btnEstudio.UseVisualStyleBackColor = true;
             // 
             // dataGridView4
             // 
@@ -3648,26 +3658,26 @@
             this.Column10.Name = "Column10";
             this.Column10.Width = 200;
             // 
-            // comboBox33
+            // cboAnalisiLaboratorio
             // 
-            this.comboBox33.FormattingEnabled = true;
-            this.comboBox33.Location = new System.Drawing.Point(159, 79);
-            this.comboBox33.Name = "comboBox33";
-            this.comboBox33.Size = new System.Drawing.Size(183, 24);
-            this.comboBox33.TabIndex = 22;
+            this.cboAnalisiLaboratorio.FormattingEnabled = true;
+            this.cboAnalisiLaboratorio.Location = new System.Drawing.Point(159, 115);
+            this.cboAnalisiLaboratorio.Name = "cboAnalisiLaboratorio";
+            this.cboAnalisiLaboratorio.Size = new System.Drawing.Size(183, 24);
+            this.cboAnalisiLaboratorio.TabIndex = 22;
             // 
-            // comboBox32
+            // cboEstudio
             // 
-            this.comboBox32.FormattingEnabled = true;
-            this.comboBox32.Location = new System.Drawing.Point(66, 24);
-            this.comboBox32.Name = "comboBox32";
-            this.comboBox32.Size = new System.Drawing.Size(276, 24);
-            this.comboBox32.TabIndex = 21;
+            this.cboEstudio.FormattingEnabled = true;
+            this.cboEstudio.Location = new System.Drawing.Point(66, 24);
+            this.cboEstudio.Name = "cboEstudio";
+            this.cboEstudio.Size = new System.Drawing.Size(276, 24);
+            this.cboEstudio.TabIndex = 21;
             // 
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(5, 82);
+            this.label84.Location = new System.Drawing.Point(5, 118);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(148, 17);
             this.label84.TabIndex = 20;
@@ -3684,15 +3694,15 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.button18);
-            this.groupBox10.Controls.Add(this.dataGridView5);
-            this.groupBox10.Controls.Add(this.textBox46);
+            this.groupBox10.Controls.Add(this.btnAgregarDiagnostico);
+            this.groupBox10.Controls.Add(this.dgvDiagnosticos);
+            this.groupBox10.Controls.Add(this.txtDiagnostico);
             this.groupBox10.Controls.Add(this.label85);
-            this.groupBox10.Controls.Add(this.button14);
-            this.groupBox10.Controls.Add(this.dataGridView3);
-            this.groupBox10.Controls.Add(this.textBox45);
+            this.groupBox10.Controls.Add(this.AgregarHipotesisInicial);
+            this.groupBox10.Controls.Add(this.dgvHipotesis);
+            this.groupBox10.Controls.Add(this.txtHipotesisInicial);
             this.groupBox10.Controls.Add(this.label81);
-            this.groupBox10.Controls.Add(this.textBox44);
+            this.groupBox10.Controls.Add(this.txtConceptoInicial);
             this.groupBox10.Controls.Add(this.label80);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(6, 6);
@@ -3702,24 +3712,24 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Razonamiento Diagnóstico";
             // 
-            // button18
+            // btnAgregarDiagnostico
             // 
-            this.button18.Location = new System.Drawing.Point(433, 161);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(130, 26);
-            this.button18.TabIndex = 18;
-            this.button18.Text = "Agregar";
-            this.button18.UseVisualStyleBackColor = true;
+            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(433, 161);
+            this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
+            this.btnAgregarDiagnostico.Size = new System.Drawing.Size(130, 26);
+            this.btnAgregarDiagnostico.TabIndex = 18;
+            this.btnAgregarDiagnostico.Text = "Agregar";
+            this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
             // 
-            // dataGridView5
+            // dgvDiagnosticos
             // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDiagnosticos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this.dataGridView5.Location = new System.Drawing.Point(6, 161);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(422, 109);
-            this.dataGridView5.TabIndex = 15;
+            this.dgvDiagnosticos.Location = new System.Drawing.Point(6, 161);
+            this.dgvDiagnosticos.Name = "dgvDiagnosticos";
+            this.dgvDiagnosticos.Size = new System.Drawing.Size(422, 109);
+            this.dgvDiagnosticos.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -3727,13 +3737,13 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 215;
             // 
-            // textBox46
+            // txtDiagnostico
             // 
-            this.textBox46.Location = new System.Drawing.Point(164, 109);
-            this.textBox46.Multiline = true;
-            this.textBox46.Name = "textBox46";
-            this.textBox46.Size = new System.Drawing.Size(399, 46);
-            this.textBox46.TabIndex = 14;
+            this.txtDiagnostico.Location = new System.Drawing.Point(164, 109);
+            this.txtDiagnostico.Multiline = true;
+            this.txtDiagnostico.Name = "txtDiagnostico";
+            this.txtDiagnostico.Size = new System.Drawing.Size(399, 46);
+            this.txtDiagnostico.TabIndex = 14;
             // 
             // label85
             // 
@@ -3745,25 +3755,25 @@
             this.label85.TabIndex = 13;
             this.label85.Text = "Diagnósticos definitivos:\r\n";
             // 
-            // button14
+            // AgregarHipotesisInicial
             // 
-            this.button14.Location = new System.Drawing.Point(434, 77);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(130, 26);
-            this.button14.TabIndex = 2;
-            this.button14.Text = "Agregar";
-            this.button14.UseVisualStyleBackColor = true;
+            this.AgregarHipotesisInicial.Location = new System.Drawing.Point(434, 77);
+            this.AgregarHipotesisInicial.Name = "AgregarHipotesisInicial";
+            this.AgregarHipotesisInicial.Size = new System.Drawing.Size(130, 26);
+            this.AgregarHipotesisInicial.TabIndex = 2;
+            this.AgregarHipotesisInicial.Text = "Agregar";
+            this.AgregarHipotesisInicial.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dgvHipotesis
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvHipotesis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHipotesis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column9});
-            this.dataGridView3.Location = new System.Drawing.Point(569, 35);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(262, 120);
-            this.dataGridView3.TabIndex = 4;
-            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
+            this.dgvHipotesis.Location = new System.Drawing.Point(569, 35);
+            this.dgvHipotesis.Name = "dgvHipotesis";
+            this.dgvHipotesis.Size = new System.Drawing.Size(262, 120);
+            this.dgvHipotesis.TabIndex = 4;
+            this.dgvHipotesis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // Column9
             // 
@@ -3771,12 +3781,12 @@
             this.Column9.Name = "Column9";
             this.Column9.Width = 215;
             // 
-            // textBox45
+            // txtHipotesisInicial
             // 
-            this.textBox45.Location = new System.Drawing.Point(135, 79);
-            this.textBox45.Name = "textBox45";
-            this.textBox45.Size = new System.Drawing.Size(293, 23);
-            this.textBox45.TabIndex = 3;
+            this.txtHipotesisInicial.Location = new System.Drawing.Point(135, 79);
+            this.txtHipotesisInicial.Name = "txtHipotesisInicial";
+            this.txtHipotesisInicial.Size = new System.Drawing.Size(293, 23);
+            this.txtHipotesisInicial.TabIndex = 3;
             // 
             // label81
             // 
@@ -3788,13 +3798,13 @@
             this.label81.TabIndex = 2;
             this.label81.Text = "Hipotesis Inicial de:";
             // 
-            // textBox44
+            // txtConceptoInicial
             // 
-            this.textBox44.Location = new System.Drawing.Point(119, 35);
-            this.textBox44.Multiline = true;
-            this.textBox44.Name = "textBox44";
-            this.textBox44.Size = new System.Drawing.Size(445, 38);
-            this.textBox44.TabIndex = 1;
+            this.txtConceptoInicial.Location = new System.Drawing.Point(119, 35);
+            this.txtConceptoInicial.Multiline = true;
+            this.txtConceptoInicial.Name = "txtConceptoInicial";
+            this.txtConceptoInicial.Size = new System.Drawing.Size(445, 38);
+            this.txtConceptoInicial.TabIndex = 1;
             // 
             // label80
             // 
@@ -3836,16 +3846,6 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnRegistrarAtención
-            // 
-            this.btnRegistrarAtención.Location = new System.Drawing.Point(119, 209);
-            this.btnRegistrarAtención.Name = "btnRegistrarAtención";
-            this.btnRegistrarAtención.Size = new System.Drawing.Size(247, 26);
-            this.btnRegistrarAtención.TabIndex = 28;
-            this.btnRegistrarAtención.Text = "Registrar Atención en Consultorio";
-            this.btnRegistrarAtención.UseVisualStyleBackColor = true;
-            this.btnRegistrarAtención.Click += new System.EventHandler(this.btnRegistrarAtención_Click);
             // 
             // MenuPrincipal
             // 
@@ -3938,8 +3938,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHipotesis)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -4182,18 +4182,18 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.TextBox textBox45;
+        private System.Windows.Forms.DataGridView dgvHipotesis;
+        private System.Windows.Forms.TextBox txtHipotesisInicial;
         private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.TextBox textBox44;
+        private System.Windows.Forms.TextBox txtConceptoInicial;
         private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button AgregarHipotesisInicial;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.TextBox textBox46;
+        private System.Windows.Forms.DataGridView dgvDiagnosticos;
+        private System.Windows.Forms.TextBox txtDiagnostico;
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button btnAgregarDiagnostico;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label99;
@@ -4290,14 +4290,14 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button btnRegistrarMedicacion;
         private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btnAnalisisLaboratorio;
+        private System.Windows.Forms.Button btnEstudio;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.ComboBox comboBox33;
-        private System.Windows.Forms.ComboBox comboBox32;
+        private System.Windows.Forms.ComboBox cboAnalisiLaboratorio;
+        private System.Windows.Forms.ComboBox cboEstudio;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Button btnRegistrarAtención;

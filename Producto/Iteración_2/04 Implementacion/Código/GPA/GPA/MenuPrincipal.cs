@@ -855,6 +855,8 @@ namespace GPA
             int idExamenGeneral=0;
             //Método registrar sistema linfático.
             registrarSistemaLinfatico(idExamenGeneral);
+
+            registrarPulsoArterial(idExamenGeneral);
             
         }
         private void registrarSistemaLinfatico(int idExamenGeneral)
@@ -938,6 +940,89 @@ namespace GPA
 
                 detalles.Add(detalle);
             }
+
+            if (cboPulso4.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso4.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI4.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD4.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+
+            if (cboPulso5.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso5.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI5.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD5.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+
+            if (cboPulso6.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso6.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI6.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD6.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+
+            if (cboPulso7.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso7.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI7.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD7.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+
+            if (cboPulso8.SelectedIndex > 0)
+            {
+                DetallePulsoArterial detalle = new DetallePulsoArterial();
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso8.SelectedItem;
+                detalle.id_pulso = pulsoSeleccionado.id_pulso;
+
+                EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI8.SelectedItem;
+                detalle.id_izquierda = escalaSeleccionadaI.id_escalaPulso;
+
+                EscalaPulso escalaSeleccionadaD = (EscalaPulso)cboPD8.SelectedItem;
+                detalle.id_derecha = escalaSeleccionadaD.id_escalaPulso;
+
+                detalles.Add(detalle);
+            }
+
+            pulso.detalles = detalles;
+            manejadorRegistrarExamenGeneral.registrarPulsoArterial(pulso);
            
         }
         

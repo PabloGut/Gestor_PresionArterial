@@ -572,27 +572,53 @@ foreign key (id_pulso_fk) references Pulso(id_pulso))
 
 CREATE TABLE RazonamientoDiagnostico(
 id_razonamiento int primary key identity,
-conceptoInicial text,
-ausculacion text,
-observaciones text)
+conceptoInicial text)
 
 CREATE TABLE EstadoHipotesis(
 id_estadoHipotesis int primary key identity,
 nombre text)
 
 CREATE TABLE HipotesisInicial(
-id_hipotesis int primary key identity,
+id_razonamientoDiagnostico_fk int,
+id_hipotesis int identity,
 descripcion text,
 id_estadoHipotesis_fk int,
-id_razonamientoDiagnostico_fk int,
 motivoDescartar text,
-foreign key (id_estadoHipotesis_fk) references EstadoHipotesis(id_estadoHipotesis),
-foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
+primary key (id_hipotesis,id_razonamientoDiagnostico_fk),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_estadoHipotesis_fk) references EstadoHipotesis(id_estadoHipotesis))
 
 CREATE TABLE DiagnosticoDefinitivo(
-id_diagnostico int primary key identity,
+id_razonamientoDiagnostico_fk int,
+id_diagnostico int identity,
 descripcion text,
-evolucion text)
+evolucion text
+primary key (id_diagnostico,id_razonamientoDiagnostico_fk),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
+
+create table NombreEstudio(
+id_nombreEstudio int primary key identity,
+nombre text,
+descricpcion text)
+
+create table AnalisisLaboratorio(
+id_analisis int primary key identity,
+nombre text,
+descripcion text)
+
+create table NombreEstudioXRazonamientoDiagnostico(
+id_razonamiento_fk int,
+id_nombreEstudio_fk int,
+primary key(id_razonamiento_fk,id_nombreEstudio_fk),
+foreign key (id_razonamiento_fk) references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_nombreEstudio_fk) references NombreEstudio(id_nombreEstudio))
+
+create table AnalisisLaboratorioXRazonamientoDiagnostico(
+id_razonamiento_fk int,
+id_analisis int,
+primary key(id_razonamiento_fk,id_analisis),
+foreign key (id_razonamiento_fk) references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_analisis) references AnalisisLaboratorio(id_analisis))
 
 
 CREATE TABLE Consulta(
