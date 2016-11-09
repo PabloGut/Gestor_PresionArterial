@@ -755,6 +755,12 @@ add minimaDesde int
 alter table ClasificacionPresionArterial
 add minimaHasta int
 
+alter table ExamenGeneral
+add id_medicion_fk int
+
+alter table ExamenGeneral
+add foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion)
+
 alter table MedicionDePrecionArterial
 drop column horaInicio
 
