@@ -768,12 +768,6 @@ alter table MedicionDePrecionArterial
 add horaInicio time
 
 alter table MedicionDePrecionArterial
-add id_examenGeneral_fk int
-
-alter table MedicionDePrecionArterial
-add foreign key(id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral)
-
-alter table MedicionDePrecionArterial
 drop constraint FK__MedicionD__id_ex__0A688BB1 
 
 alter table MedicionDePrecionArterial

@@ -493,6 +493,8 @@ talla int,
 id_piel_fk int,
 descripcionComoRespira text,
 observacionesRespiracion text,
+id_medicion_fk,
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion),
 foreign key (id_piel_fk) references Piel(id_piel))
 
 CREATE TABLE SitioMedicionTemperatura(
@@ -688,13 +690,11 @@ id_clasificacion_fk int,
 id_momentoDelDia_fk int,
 promedio float,  
 id_sitioMedicion_fk int,
-id_examenGeneral_fk int,
 foreign key (id_extremidad_fk) references Extremidad(id_extremidad),
 foreign key (id_posicion_fk) references Posicion(id_posicion),
 foreign key (id_clasificacion_fk) references ClasificacionPresionArterial(id_clasificacion),
 foreign key (id_momentoDelDia_fk) references MomentoDelDia(id_momentoDelDia),
-foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion),
-foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
+foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion))
 
 CREATE TABLE DetalleMedicionPresionArterial(
 id_nroMedicion int,
