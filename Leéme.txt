@@ -1,0 +1,4 @@
+-Agregar al diagrama de clases el atributo "ValorMaximo" a la clase "DetalleMedicion".
+-Agregar al diagrama de clases una asociación de "MediciónDePresiónArterial" a "UbicaciónExtremidad" con multiplicidad 1 y eliminar la conexión de "MediciónDePresiónArterial" con "Extremidad".
+-Hay que agregar la columna "Momento del día", "Ubicación de extremidad" y "Pulso" a la grilla del paso 4 con los nombres "Column18", "Column19" y "Column20" respectivamente.
+-En el form, en las propiedades de los controles, agregar los eventos "button19_Click" a la acción Click y "comboBox34_SelectedIndexChanged" a la acción SelectedIndexChanged.
