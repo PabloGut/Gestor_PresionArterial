@@ -18,5 +18,12 @@ namespace Entidades.Clases
         public int talla { set; get; }
         public string descripcionComoRespira { set; get; }
         public string observacionesRespiracion { set; get; }
+        public int id_piel { set; get; }
+        public int id_razonamiento { set; get; }
+        public int id_pulso { set; get; }
+        public List<SistemaLinfatico> territoriosExaminados { set; get; }
+        public PulsoArterial pulso { set; get; }
+        public RazonamientoDiagnostico razonamiento { set; get;}
+
     }
 }

@@ -26,5 +26,21 @@ namespace GPA.Manejadores
         {
             SintomaLN.registrarSintomasDeConsulta(sintomas, idConsulta);
         }
+        public string mostrarFechaActual()
+        {
+            return ConsultaLN.mostrarFechaActual();
+        }
+        public string mostrarHoraActual()
+        {
+            return ConsultaLN.mostrarHoraActual();
+        }
+        public int calcularNroConsulta(int idHc)
+        {
+            return ConsultaLN.calcularSiguinteNroConsulta(idHc);
+        }
+        public void registrarConsultaYExamenGeneral(Consulta consulta)
+        {
+            ConsultaLN.registrarConsultaYExamenGeneral(consulta);
+        }
     }
 }

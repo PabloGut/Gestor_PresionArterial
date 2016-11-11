@@ -36,6 +36,7 @@
             this.consultarHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarEstudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarNuevaConsultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ediciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,7 +144,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnVerSintomas = new System.Windows.Forms.Button();
-            this.btnAgregarSintomas = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.cboElementoModificacion = new System.Windows.Forms.ComboBox();
             this.txtObservacionesSintoma = new System.Windows.Forms.TextBox();
@@ -178,10 +178,10 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtMotivoConsulta = new System.Windows.Forms.TextBox();
+            this.mtbHoraConsulta = new System.Windows.Forms.MaskedTextBox();
             this.mtbFechaConsulta = new System.Windows.Forms.MaskedTextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtNroConsulta = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -215,7 +215,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.txtConsistenciaYEstadoPsiquico = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.FacieOExpresióndeFisonomia = new System.Windows.Forms.TextBox();
+            this.txtFacieOExpresióndeFisonomia = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtMarchaYDeambulacion = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -354,15 +354,18 @@
             this.textBox35 = new System.Windows.Forms.TextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.txtIndicacionesAnalisisARealizar = new System.Windows.Forms.TextBox();
+            this.txtIndicacionesEstudioARealizar = new System.Windows.Forms.TextBox();
             this.btnRegistrarAtención = new System.Windows.Forms.Button();
             this.btnRegistrarMedicacion = new System.Windows.Forms.Button();
             this.label86 = new System.Windows.Forms.Label();
-            this.btnAnalisisLaboratorio = new System.Windows.Forms.Button();
-            this.btnEstudio = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboAnalisiLaboratorio = new System.Windows.Forms.ComboBox();
-            this.cboEstudio = new System.Windows.Forms.ComboBox();
+            this.btnAnalisisLaboratorioARealizar = new System.Windows.Forms.Button();
+            this.btnEstudioARealizar = new System.Windows.Forms.Button();
+            this.dgvExamenesARealizar = new System.Windows.Forms.DataGridView();
+            this.cboAnalisiLaboratorioARealizar = new System.Windows.Forms.ComboBox();
+            this.cboEstudioARealizar = new System.Windows.Forms.ComboBox();
             this.label84 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -381,6 +384,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnAgregarSintoma = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -433,7 +437,7 @@
             this.groupBox8.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExamenesARealizar)).BeginInit();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHipotesis)).BeginInit();
@@ -459,7 +463,8 @@
             this.registrarPacienteToolStripMenuItem,
             this.buscarPacienteToolStripMenuItem,
             this.crearHistoriaClínicaToolStripMenuItem,
-            this.registrarProfesionalMédicoToolStripMenuItem});
+            this.registrarProfesionalMédicoToolStripMenuItem,
+            this.generarNuevaConsultaToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -509,6 +514,13 @@
             this.registrarProfesionalMédicoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.registrarProfesionalMédicoToolStripMenuItem.Text = "Registrar Profesional Médico";
             this.registrarProfesionalMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarProfesionalMédicoToolStripMenuItem_Click);
+            // 
+            // generarNuevaConsultaToolStripMenuItem
+            // 
+            this.generarNuevaConsultaToolStripMenuItem.Name = "generarNuevaConsultaToolStripMenuItem";
+            this.generarNuevaConsultaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.generarNuevaConsultaToolStripMenuItem.Text = "Generar nueva consulta";
+            this.generarNuevaConsultaToolStripMenuItem.Click += new System.EventHandler(this.generarNuevaConsultaToolStripMenuItem_Click);
             // 
             // ediciónToolStripMenuItem
             // 
@@ -1536,8 +1548,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnAgregarSintoma);
             this.groupBox6.Controls.Add(this.btnVerSintomas);
-            this.groupBox6.Controls.Add(this.btnAgregarSintomas);
             this.groupBox6.Controls.Add(this.button6);
             this.groupBox6.Controls.Add(this.cboElementoModificacion);
             this.groupBox6.Controls.Add(this.txtObservacionesSintoma);
@@ -1586,16 +1598,6 @@
             this.btnVerSintomas.TabIndex = 23;
             this.btnVerSintomas.Text = "Ver Síntomas";
             this.btnVerSintomas.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarSintomas
-            // 
-            this.btnAgregarSintomas.Location = new System.Drawing.Point(158, 365);
-            this.btnAgregarSintomas.Name = "btnAgregarSintomas";
-            this.btnAgregarSintomas.Size = new System.Drawing.Size(132, 29);
-            this.btnAgregarSintomas.TabIndex = 22;
-            this.btnAgregarSintomas.Text = "Agregar Síntoma";
-            this.btnAgregarSintomas.UseVisualStyleBackColor = true;
-            this.btnAgregarSintomas.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -1887,10 +1889,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox10);
-            this.groupBox2.Controls.Add(this.maskedTextBox2);
+            this.groupBox2.Controls.Add(this.txtMotivoConsulta);
+            this.groupBox2.Controls.Add(this.mtbHoraConsulta);
             this.groupBox2.Controls.Add(this.mtbFechaConsulta);
-            this.groupBox2.Controls.Add(this.textBox9);
+            this.groupBox2.Controls.Add(this.txtNroConsulta);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
@@ -1902,22 +1904,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos generales";
             // 
-            // textBox10
+            // txtMotivoConsulta
             // 
-            this.textBox10.Location = new System.Drawing.Point(9, 108);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(831, 54);
-            this.textBox10.TabIndex = 7;
+            this.txtMotivoConsulta.Location = new System.Drawing.Point(9, 108);
+            this.txtMotivoConsulta.Multiline = true;
+            this.txtMotivoConsulta.Name = "txtMotivoConsulta";
+            this.txtMotivoConsulta.Size = new System.Drawing.Size(831, 54);
+            this.txtMotivoConsulta.TabIndex = 7;
             // 
-            // maskedTextBox2
+            // mtbHoraConsulta
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(705, 29);
-            this.maskedTextBox2.Mask = "00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(45, 23);
-            this.maskedTextBox2.TabIndex = 6;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.mtbHoraConsulta.Location = new System.Drawing.Point(705, 29);
+            this.mtbHoraConsulta.Mask = "00:00";
+            this.mtbHoraConsulta.Name = "mtbHoraConsulta";
+            this.mtbHoraConsulta.Size = new System.Drawing.Size(45, 23);
+            this.mtbHoraConsulta.TabIndex = 6;
+            this.mtbHoraConsulta.ValidatingType = typeof(System.DateTime);
             // 
             // mtbFechaConsulta
             // 
@@ -1928,12 +1930,12 @@
             this.mtbFechaConsulta.TabIndex = 5;
             this.mtbFechaConsulta.ValidatingType = typeof(System.DateTime);
             // 
-            // textBox9
+            // txtNroConsulta
             // 
-            this.textBox9.Location = new System.Drawing.Point(147, 29);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(103, 23);
-            this.textBox9.TabIndex = 4;
+            this.txtNroConsulta.Location = new System.Drawing.Point(147, 29);
+            this.txtNroConsulta.Name = "txtNroConsulta";
+            this.txtNroConsulta.Size = new System.Drawing.Size(103, 23);
+            this.txtNroConsulta.TabIndex = 4;
             // 
             // label11
             // 
@@ -2022,7 +2024,7 @@
             this.panel6.Controls.Add(this.label31);
             this.panel6.Controls.Add(this.txtConsistenciaYEstadoPsiquico);
             this.panel6.Controls.Add(this.label30);
-            this.panel6.Controls.Add(this.FacieOExpresióndeFisonomia);
+            this.panel6.Controls.Add(this.txtFacieOExpresióndeFisonomia);
             this.panel6.Controls.Add(this.label29);
             this.panel6.Controls.Add(this.txtMarchaYDeambulacion);
             this.panel6.Controls.Add(this.label15);
@@ -2269,13 +2271,13 @@
             this.label30.TabIndex = 4;
             this.label30.Text = "Facie o expresión de fisonomía";
             // 
-            // FacieOExpresióndeFisonomia
+            // txtFacieOExpresióndeFisonomia
             // 
-            this.FacieOExpresióndeFisonomia.Location = new System.Drawing.Point(26, 142);
-            this.FacieOExpresióndeFisonomia.Multiline = true;
-            this.FacieOExpresióndeFisonomia.Name = "FacieOExpresióndeFisonomia";
-            this.FacieOExpresióndeFisonomia.Size = new System.Drawing.Size(771, 35);
-            this.FacieOExpresióndeFisonomia.TabIndex = 5;
+            this.txtFacieOExpresióndeFisonomia.Location = new System.Drawing.Point(26, 142);
+            this.txtFacieOExpresióndeFisonomia.Multiline = true;
+            this.txtFacieOExpresióndeFisonomia.Name = "txtFacieOExpresióndeFisonomia";
+            this.txtFacieOExpresióndeFisonomia.Size = new System.Drawing.Size(771, 35);
+            this.txtFacieOExpresióndeFisonomia.TabIndex = 5;
             // 
             // label29
             // 
@@ -3578,14 +3580,18 @@
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.label55);
+            this.groupBox15.Controls.Add(this.label54);
+            this.groupBox15.Controls.Add(this.txtIndicacionesAnalisisARealizar);
+            this.groupBox15.Controls.Add(this.txtIndicacionesEstudioARealizar);
             this.groupBox15.Controls.Add(this.btnRegistrarAtención);
             this.groupBox15.Controls.Add(this.btnRegistrarMedicacion);
             this.groupBox15.Controls.Add(this.label86);
-            this.groupBox15.Controls.Add(this.btnAnalisisLaboratorio);
-            this.groupBox15.Controls.Add(this.btnEstudio);
-            this.groupBox15.Controls.Add(this.dataGridView4);
-            this.groupBox15.Controls.Add(this.cboAnalisiLaboratorio);
-            this.groupBox15.Controls.Add(this.cboEstudio);
+            this.groupBox15.Controls.Add(this.btnAnalisisLaboratorioARealizar);
+            this.groupBox15.Controls.Add(this.btnEstudioARealizar);
+            this.groupBox15.Controls.Add(this.dgvExamenesARealizar);
+            this.groupBox15.Controls.Add(this.cboAnalisiLaboratorioARealizar);
+            this.groupBox15.Controls.Add(this.cboEstudioARealizar);
             this.groupBox15.Controls.Add(this.label84);
             this.groupBox15.Controls.Add(this.label83);
             this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3595,6 +3601,40 @@
             this.groupBox15.TabIndex = 2;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Exámenes complementarios a realizar";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(5, 139);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(86, 17);
+            this.label55.TabIndex = 32;
+            this.label55.Text = "Indicaciones";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(5, 51);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(86, 17);
+            this.label54.TabIndex = 31;
+            this.label54.Text = "Indicaciones";
+            // 
+            // txtIndicacionesAnalisisARealizar
+            // 
+            this.txtIndicacionesAnalisisARealizar.Location = new System.Drawing.Point(8, 159);
+            this.txtIndicacionesAnalisisARealizar.Multiline = true;
+            this.txtIndicacionesAnalisisARealizar.Name = "txtIndicacionesAnalisisARealizar";
+            this.txtIndicacionesAnalisisARealizar.Size = new System.Drawing.Size(470, 40);
+            this.txtIndicacionesAnalisisARealizar.TabIndex = 30;
+            // 
+            // txtIndicacionesEstudioARealizar
+            // 
+            this.txtIndicacionesEstudioARealizar.Location = new System.Drawing.Point(6, 72);
+            this.txtIndicacionesEstudioARealizar.Multiline = true;
+            this.txtIndicacionesEstudioARealizar.Name = "txtIndicacionesEstudioARealizar";
+            this.txtIndicacionesEstudioARealizar.Size = new System.Drawing.Size(470, 34);
+            this.txtIndicacionesEstudioARealizar.TabIndex = 29;
             // 
             // btnRegistrarAtención
             // 
@@ -3608,7 +3648,7 @@
             // 
             // btnRegistrarMedicacion
             // 
-            this.btnRegistrarMedicacion.Location = new System.Drawing.Point(159, 205);
+            this.btnRegistrarMedicacion.Location = new System.Drawing.Point(151, 205);
             this.btnRegistrarMedicacion.Name = "btnRegistrarMedicacion";
             this.btnRegistrarMedicacion.Size = new System.Drawing.Size(178, 26);
             this.btnRegistrarMedicacion.TabIndex = 27;
@@ -3624,60 +3664,54 @@
             this.label86.TabIndex = 26;
             this.label86.Text = "Medicación a recetar:";
             // 
-            // btnAnalisisLaboratorio
+            // btnAnalisisLaboratorioARealizar
             // 
-            this.btnAnalisisLaboratorio.Location = new System.Drawing.Point(348, 113);
-            this.btnAnalisisLaboratorio.Name = "btnAnalisisLaboratorio";
-            this.btnAnalisisLaboratorio.Size = new System.Drawing.Size(130, 26);
-            this.btnAnalisisLaboratorio.TabIndex = 25;
-            this.btnAnalisisLaboratorio.Text = "Añadir";
-            this.btnAnalisisLaboratorio.UseVisualStyleBackColor = true;
+            this.btnAnalisisLaboratorioARealizar.Location = new System.Drawing.Point(348, 112);
+            this.btnAnalisisLaboratorioARealizar.Name = "btnAnalisisLaboratorioARealizar";
+            this.btnAnalisisLaboratorioARealizar.Size = new System.Drawing.Size(130, 26);
+            this.btnAnalisisLaboratorioARealizar.TabIndex = 25;
+            this.btnAnalisisLaboratorioARealizar.Text = "Añadir";
+            this.btnAnalisisLaboratorioARealizar.UseVisualStyleBackColor = true;
+            this.btnAnalisisLaboratorioARealizar.Click += new System.EventHandler(this.btnAnalisisLaboratorioARealizar_Click);
             // 
-            // btnEstudio
+            // btnEstudioARealizar
             // 
-            this.btnEstudio.Location = new System.Drawing.Point(348, 22);
-            this.btnEstudio.Name = "btnEstudio";
-            this.btnEstudio.Size = new System.Drawing.Size(130, 26);
-            this.btnEstudio.TabIndex = 24;
-            this.btnEstudio.Text = "Añadir";
-            this.btnEstudio.UseVisualStyleBackColor = true;
+            this.btnEstudioARealizar.Location = new System.Drawing.Point(348, 22);
+            this.btnEstudioARealizar.Name = "btnEstudioARealizar";
+            this.btnEstudioARealizar.Size = new System.Drawing.Size(130, 26);
+            this.btnEstudioARealizar.TabIndex = 24;
+            this.btnEstudioARealizar.Text = "Añadir";
+            this.btnEstudioARealizar.UseVisualStyleBackColor = true;
+            this.btnEstudioARealizar.Click += new System.EventHandler(this.btnEstudioARealizar_Click);
             // 
-            // dataGridView4
+            // dgvExamenesARealizar
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column10});
-            this.dataGridView4.Location = new System.Drawing.Point(484, 22);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(347, 252);
-            this.dataGridView4.TabIndex = 23;
+            this.dgvExamenesARealizar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExamenesARealizar.Location = new System.Drawing.Point(555, 22);
+            this.dgvExamenesARealizar.Name = "dgvExamenesARealizar";
+            this.dgvExamenesARealizar.Size = new System.Drawing.Size(276, 252);
+            this.dgvExamenesARealizar.TabIndex = 23;
             // 
-            // Column10
+            // cboAnalisiLaboratorioARealizar
             // 
-            this.Column10.HeaderText = "Examenes a realizar";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 200;
+            this.cboAnalisiLaboratorioARealizar.FormattingEnabled = true;
+            this.cboAnalisiLaboratorioARealizar.Location = new System.Drawing.Point(159, 114);
+            this.cboAnalisiLaboratorioARealizar.Name = "cboAnalisiLaboratorioARealizar";
+            this.cboAnalisiLaboratorioARealizar.Size = new System.Drawing.Size(183, 24);
+            this.cboAnalisiLaboratorioARealizar.TabIndex = 22;
             // 
-            // cboAnalisiLaboratorio
+            // cboEstudioARealizar
             // 
-            this.cboAnalisiLaboratorio.FormattingEnabled = true;
-            this.cboAnalisiLaboratorio.Location = new System.Drawing.Point(159, 115);
-            this.cboAnalisiLaboratorio.Name = "cboAnalisiLaboratorio";
-            this.cboAnalisiLaboratorio.Size = new System.Drawing.Size(183, 24);
-            this.cboAnalisiLaboratorio.TabIndex = 22;
-            // 
-            // cboEstudio
-            // 
-            this.cboEstudio.FormattingEnabled = true;
-            this.cboEstudio.Location = new System.Drawing.Point(66, 24);
-            this.cboEstudio.Name = "cboEstudio";
-            this.cboEstudio.Size = new System.Drawing.Size(276, 24);
-            this.cboEstudio.TabIndex = 21;
+            this.cboEstudioARealizar.FormattingEnabled = true;
+            this.cboEstudioARealizar.Location = new System.Drawing.Point(66, 24);
+            this.cboEstudioARealizar.Name = "cboEstudioARealizar";
+            this.cboEstudioARealizar.Size = new System.Drawing.Size(276, 24);
+            this.cboEstudioARealizar.TabIndex = 21;
             // 
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(5, 118);
+            this.label84.Location = new System.Drawing.Point(5, 117);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(148, 17);
             this.label84.TabIndex = 20;
@@ -3720,15 +3754,16 @@
             this.btnAgregarDiagnostico.TabIndex = 18;
             this.btnAgregarDiagnostico.Text = "Agregar";
             this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
+            this.btnAgregarDiagnostico.Click += new System.EventHandler(this.btnAgregarDiagnostico_Click);
             // 
             // dgvDiagnosticos
             // 
             this.dgvDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiagnosticos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this.dgvDiagnosticos.Location = new System.Drawing.Point(6, 161);
+            this.dgvDiagnosticos.Location = new System.Drawing.Point(164, 161);
             this.dgvDiagnosticos.Name = "dgvDiagnosticos";
-            this.dgvDiagnosticos.Size = new System.Drawing.Size(422, 109);
+            this.dgvDiagnosticos.Size = new System.Drawing.Size(260, 109);
             this.dgvDiagnosticos.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn1
@@ -3763,6 +3798,7 @@
             this.AgregarHipotesisInicial.TabIndex = 2;
             this.AgregarHipotesisInicial.Text = "Agregar";
             this.AgregarHipotesisInicial.UseVisualStyleBackColor = true;
+            this.AgregarHipotesisInicial.Click += new System.EventHandler(this.AgregarHipotesisInicial_Click);
             // 
             // dgvHipotesis
             // 
@@ -3846,6 +3882,16 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarSintoma
+            // 
+            this.btnAgregarSintoma.Location = new System.Drawing.Point(158, 365);
+            this.btnAgregarSintoma.Name = "btnAgregarSintoma";
+            this.btnAgregarSintoma.Size = new System.Drawing.Size(132, 29);
+            this.btnAgregarSintoma.TabIndex = 24;
+            this.btnAgregarSintoma.Text = "Agregar Síntoma";
+            this.btnAgregarSintoma.UseVisualStyleBackColor = true;
+            this.btnAgregarSintoma.Click += new System.EventHandler(this.btnAgregarSintoma_Click);
             // 
             // MenuPrincipal
             // 
@@ -3935,7 +3981,7 @@
             this.tabPage10.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExamenesARealizar)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).EndInit();
@@ -4029,10 +4075,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.TextBox txtMotivoConsulta;
+        private System.Windows.Forms.MaskedTextBox mtbHoraConsulta;
         private System.Windows.Forms.MaskedTextBox mtbFechaConsulta;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtNroConsulta;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -4040,7 +4086,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button btnAgregarSintomas;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ComboBox cboElementoModificacion;
         private System.Windows.Forms.TextBox txtObservacionesSintoma;
@@ -4089,7 +4134,7 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox txtConsistenciaYEstadoPsiquico;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox FacieOExpresióndeFisonomia;
+        private System.Windows.Forms.TextBox txtFacieOExpresióndeFisonomia;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txtMarchaYDeambulacion;
         private System.Windows.Forms.TextBox textBox24;
@@ -4292,14 +4337,19 @@
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Button btnRegistrarMedicacion;
         private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.Button btnAnalisisLaboratorio;
-        private System.Windows.Forms.Button btnEstudio;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.ComboBox cboAnalisiLaboratorio;
-        private System.Windows.Forms.ComboBox cboEstudio;
+        private System.Windows.Forms.Button btnAnalisisLaboratorioARealizar;
+        private System.Windows.Forms.Button btnEstudioARealizar;
+        private System.Windows.Forms.DataGridView dgvExamenesARealizar;
+        private System.Windows.Forms.ComboBox cboAnalisiLaboratorioARealizar;
+        private System.Windows.Forms.ComboBox cboEstudioARealizar;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Button btnRegistrarAtención;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox txtIndicacionesAnalisisARealizar;
+        private System.Windows.Forms.TextBox txtIndicacionesEstudioARealizar;
+        private System.Windows.Forms.ToolStripMenuItem generarNuevaConsultaToolStripMenuItem;
+        private System.Windows.Forms.Button btnAgregarSintoma;
     }
 }

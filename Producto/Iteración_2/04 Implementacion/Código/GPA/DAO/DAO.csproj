@@ -52,6 +52,7 @@
     <Compile Include="AlergiaSustanciaAmbienteDAO.cs" />
     <Compile Include="AlergiaSustanciaContactoPielDAO.cs" />
     <Compile Include="AlimentoDAO.cs" />
+    <Compile Include="AnalisisLaboratorioDAO.cs" />
     <Compile Include="AntecedenteFamiliarDAO.cs" />
     <Compile Include="AntecedenteMorbidoDAO.cs" />
     <Compile Include="AntecedentesGinecoObstetricosDAO.cs" />
@@ -60,9 +61,11 @@
     <Compile Include="CaracterDelDolorDAO.cs" />
     <Compile Include="ComponeneteDelTiempoDAO.cs" />
     <Compile Include="ConsistenciaDAO.cs" />
+    <Compile Include="ConsultaDAO.cs" />
     <Compile Include="DejoDeFumarDAO.cs" />
     <Compile Include="DescripcionDelTiempoDAO.cs" />
     <Compile Include="DetallePulsoArterialDAO.cs" />
+    <Compile Include="DiagnosticoDAO.cs" />
     <Compile Include="DomicilioDAO.cs" />
     <Compile Include="ElementoDelTiempoDAO.cs" />
     <Compile Include="ElementoDeModificacionDAO.cs" />
@@ -72,8 +75,11 @@
     <Compile Include="EspecialidadDAO.cs" />
     <Compile Include="EspecificacionMedicamentoDAO.cs" />
     <Compile Include="EstadoDAO.cs" />
+    <Compile Include="EstadoHipotesisDAO.cs" />
     <Compile Include="EstadoProgramacionDAO.cs" />
     <Compile Include="EstudioDAO.cs" />
+    <Compile Include="EstudioDiagnosticoPorImagenDAO.cs" />
+    <Compile Include="ExamenGeneralDAO.cs" />
     <Compile Include="FamiliarDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -89,6 +95,7 @@
     <Compile Include="HabitoDrogasIlicitasDAO.cs" />
     <Compile Include="HabitoMedicamentoDAO.cs" />
     <Compile Include="HabitoTabaquismoDAO.cs" />
+    <Compile Include="HipotesisInicialDAO.cs" />
     <Compile Include="HistoriaClinicaDAO.cs" />
     <Compile Include="InsectoDAO.cs" />
     <Compile Include="InstitucionDAO.cs" />
@@ -100,6 +107,7 @@
     <Compile Include="ModificacionSintomaDAO.cs" />
     <Compile Include="MomentoDiaDAO.cs" />
     <Compile Include="NombreComercialDAO.cs" />
+    <Compile Include="NombreEstudioDAO.cs" />
     <Compile Include="OperacionesDAO.cs" />
     <Compile Include="PacienteDAO.cs" />
     <Compile Include="ParteDelCuerpoDAO.cs" />
@@ -108,8 +116,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="ProgramacionMedicamentoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PruebaDeLaboratorioDAO.cs" />
     <Compile Include="PulsoArterialDAO.cs" />
     <Compile Include="PulsoDAO.cs" />
+    <Compile Include="RazonamientoDiagnosticoDAO.cs" />
     <Compile Include="SintomaDAO.cs" />
     <Compile Include="SistemaLinfaticoDAO.cs" />
     <Compile Include="SustanciaAmbienteDAO.cs" />

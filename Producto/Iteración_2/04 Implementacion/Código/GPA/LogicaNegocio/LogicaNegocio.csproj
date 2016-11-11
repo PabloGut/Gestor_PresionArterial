@@ -46,6 +46,7 @@
     <Compile Include="AlergiaSustanciaAmbienteLN.cs" />
     <Compile Include="AlergiaSustanciaContactoPielLN.cs" />
     <Compile Include="AlimentoLN.cs" />
+    <Compile Include="AnalisisLaboratorioLN.cs" />
     <Compile Include="AntecedenteFamiliarLN.cs" />
     <Compile Include="AntecedenteGinecoObstetricoLN.cs" />
     <Compile Include="AntecedenteMorbidoLN.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="CaracterDelDolorLN.cs" />
     <Compile Include="ComponenteDelTiempoLN.cs" />
     <Compile Include="ConsistenciaLN.cs" />
+    <Compile Include="ConsultaLN.cs" />
     <Compile Include="DescripcionDelTiempoLN.cs" />
     <Compile Include="ElementoDelTiempoLN.cs" />
     <Compile Include="ElementoDeModificacionLN.cs" />
@@ -61,8 +63,10 @@
     <Compile Include="EscalaPulsoLN.cs" />
     <Compile Include="EspecialidadLN.cs" />
     <Compile Include="EspecificacionMedicamentoLN.cs" />
+    <Compile Include="EstadoHipotesisLN.cs" />
     <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />
+    <Compile Include="ExamenGeneralLN.cs" />
     <Compile Include="FamiliarLN.cs" />
     <Compile Include="FormaAdministracionLN.cs" />
     <Compile Include="FrecuenciaLN.cs" />
@@ -82,11 +86,13 @@
     <Compile Include="ModificacionSintomaLN.cs" />
     <Compile Include="MomentoDiaLN.cs" />
     <Compile Include="NombreComercialLN.cs" />
+    <Compile Include="NombreEstudioLN.cs" />
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />
     <Compile Include="PulsoArterialLN.cs" />
     <Compile Include="PulsoLN.cs" />
+    <Compile Include="RazonamientoDiagnosticoLN.cs" />
     <Compile Include="SintomaLN.cs" />
     <Compile Include="SistemaLinfaticoLN.cs" />
     <Compile Include="SustanciaAmbienteLN.cs" />

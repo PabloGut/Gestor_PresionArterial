@@ -23,8 +23,18 @@ namespace GPA
         ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
         ManejadorRegistrarExamenGeneral manejadorRegistrarExamenGeneral;
 
+        RazonamientoDiagnostico razonamiento;
+        List<HipotesisInicial> hipotesis;
+        List<Diagnostico> diagnosticos;
+        List<EstudioDiagnosticoPorImagen> listaEstudios;
+        List<PruebasDeLaboratorio> listaPrubasLaboratorio;
+
+        Consulta consulta;
         List<Sintoma> listaSintoma;
+
+        ExamenGeneral examen;
         List<SistemaLinfatico> listaTerritoriosExaminados;
+        PulsoArterial pulso;
 
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
@@ -35,9 +45,18 @@ namespace GPA
             manejadorConsultarHc = null;
             manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
             manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
-            
+
+            razonamiento = null;
+            consulta = null;
+            examen = null;
             listaTerritoriosExaminados = null;
             listaSintoma = null;
+            listaTerritoriosExaminados = null;
+            hipotesis = null;
+            diagnosticos = null;
+            listaEstudios = null;
+            listaPrubasLaboratorio = null;
+            pulso = null;
         }
         public MenuPrincipal()
         {
@@ -74,8 +93,11 @@ namespace GPA
             presentarConsistencia();
 
             agregarColumnasSistemaLinfatico();
+            agregarColumnasExamenesARealizar();
+
+            presentarEstudiosYAnalisis();
+
             
-           
 
 
 
@@ -161,6 +183,17 @@ namespace GPA
             Utilidades.cargarCombo(cboPulso6, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
             Utilidades.cargarCombo(cboPulso7, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
             Utilidades.cargarCombo(cboPulso8, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
+        }
+        public void presentarEstudiosYAnalisis()
+        {
+            Utilidades.cargarCombo(cboEstudioARealizar, manejadorRegistrarExamenGeneral.mostrarNombreEstudios(), "id_nombreEstudio", "nombre");
+            Utilidades.cargarCombo(cboAnalisiLaboratorioARealizar, manejadorRegistrarExamenGeneral.mostrarAnalisisLaboratorio(), "id_analisis", "nombre");
+
+        }
+        public void presentarFechaYHoraActual()
+        {
+            mtbFechaConsulta.Text = manejadorRegistrarAtencionMedicaEnConsultorio.mostrarFechaActual();
+            mtbHoraConsulta.Text = manejadorRegistrarAtencionMedicaEnConsultorio.mostrarHoraActual();
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -499,6 +532,7 @@ namespace GPA
         private void btnVerHistoriaClinica_Click(object sender, EventArgs e)
         {
             verHistoriaClinica();
+           
             
         }
         private void verHistoriaClinica()
@@ -519,7 +553,20 @@ namespace GPA
 
            
         }
+        public void generarNuevaConsulta()
+        {
+            if (pacienteSeleccionado != null && hc != null)
+            {
+                txtNroConsulta.Text = Convert.ToString(manejadorRegistrarAtencionMedicaEnConsultorio.calcularNroConsulta(hc.id_hc));
+                presentarFechaYHoraActual();
 
+            }
+            else
+            {
+                MessageBox.Show("No seleccionó ningún paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
         private void btnEnfermedades_Click(object sender, EventArgs e)
         {
             DataTable dt= manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
@@ -659,6 +706,15 @@ namespace GPA
             nombreColumnas.Add("Observaciones");
 
             Utilidades.agregarColumnasDataGridView(dgvRegionesEstudiadas, nombreColumnas);
+        }
+        private void agregarColumnasExamenesARealizar()
+        {
+            List<string> nombresColumnas = new List<string>();
+
+            nombresColumnas.Add("Examen a realizar");
+            nombresColumnas.Add("Indicaciones");
+            Utilidades.agregarColumnasDataGridView(dgvExamenesARealizar, nombresColumnas);
+
         }
         private void cargarDatosDataGridViewSistemaLinfatico()
         {
@@ -847,31 +903,27 @@ namespace GPA
 
         private void btnRegistrarAtención_Click(object sender, EventArgs e)
         {
-            //Metodo para registrar datos generales de la consulta que retorne el idConsulta.
-            int idConsulta = 0;
-            //Metodo para registrar Sintomas.
-            registrarEnfermedadActual(idConsulta);
-            //Metodo para registrar examen general que retorne el idExamen general. Solamente primera parte paso 1.
-            int idExamenGeneral=0;
-            //Método registrar sistema linfático.
-            registrarSistemaLinfatico(idExamenGeneral);
-
-            registrarPulsoArterial(idExamenGeneral);
+            registrarExamenGeneralYConsulta();
+            /*int idRazonamientoDiagnostico = registrarRazonamientoDiagnostico();
             
+            int idExamenGeneral = registrarExamenGeneral(idRazonamientoDiagnostico);
+
+            registrarSistemaLinfatico(idExamenGeneral);
+            
+            registrarPulsoArterial(idExamenGeneral);
+
+            registrarConsulta(idExamenGeneral);*/
+
+
         }
         private void registrarSistemaLinfatico(int idExamenGeneral)
         {
             if (listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
                 manejadorRegistrarExamenGeneral.registrarSistemaLinfatico(listaTerritoriosExaminados, idExamenGeneral);
         }
-        private void registrarEnfermedadActual(int idConsulta)
+        private void registrarPulsoArterial()
         {
-            if (listaSintoma != null && listaSintoma.Count > 0)
-                manejadorRegistrarAtencionMedicaEnConsultorio.registrarSintomas(listaSintoma, idConsulta);
-        }
-        private void registrarPulsoArterial(int idExamenGeneral)
-        {
-            PulsoArterial pulso = new PulsoArterial();
+            pulso = new PulsoArterial();
 
             if (String.IsNullOrEmpty(txtAuscultacionPulsos.Text) == true)
             {
@@ -1022,10 +1074,360 @@ namespace GPA
             }
 
             pulso.detalles = detalles;
-            manejadorRegistrarExamenGeneral.registrarPulsoArterial(pulso);
-           
         }
-        
+
+        private void AgregarHipotesisInicial_Click(object sender, EventArgs e)
+        {
+            cargarDatosDgvHipotesisInicial();
+        }
+        private void cargarDatosDgvHipotesisInicial()
+        {
+            if (string.IsNullOrEmpty(txtHipotesisInicial.Text) == false)
+            {
+                if (hipotesis == null)
+                    hipotesis = new List<HipotesisInicial>();
+
+                HipotesisInicial hi = new HipotesisInicial();
+
+                dgvHipotesis.Rows.Add(txtHipotesisInicial.Text);
+                hi.descripcion = txtHipotesisInicial.Text;
+                hi.id_estadoH = manejadorRegistrarExamenGeneral.mostrarIdEstadoHipotesis("No rechazada");
+                hipotesis.Add(hi);
+                txtHipotesisInicial.Clear();
+            }
+        }
+        private void btnAgregarDiagnostico_Click(object sender, EventArgs e)
+        {
+            cargarDatosDgvDiagnosticos();
+        }
+        private void cargarDatosDgvDiagnosticos()
+        {
+            if (string.IsNullOrEmpty(txtDiagnostico.Text) == false)
+            {
+                if (diagnosticos == null)
+                    diagnosticos = new List<Diagnostico>();
+
+                Diagnostico di = new Diagnostico();
+
+                dgvDiagnosticos.Rows.Add(txtDiagnostico.Text);
+                di.descripcion = txtDiagnostico.Text;
+                diagnosticos.Add(di);
+                txtDiagnostico.Clear();
+            }
+        }
+        private void btnEstudioARealizar_Click(object sender, EventArgs e)
+        {
+            cargarDatosDgvEstudioARealizar();
+        }
+        private void cargarDatosDgvEstudioARealizar()
+        {
+            string estudio;
+            string indicaciones = "No precisa";
+            if (cboEstudioARealizar.SelectedIndex > 0)
+            {
+                NombreEstudio nombreSeleccionado = (NombreEstudio)cboEstudioARealizar.SelectedItem;
+                estudio = nombreSeleccionado.nombre;
+
+                if (string.IsNullOrEmpty(txtIndicacionesEstudioARealizar.Text) == false)
+                {
+                    indicaciones = txtIndicacionesEstudioARealizar.Text;
+                }
+
+                if (listaEstudios == null)
+                    listaEstudios = new List<EstudioDiagnosticoPorImagen>();
+
+                EstudioDiagnosticoPorImagen estudioD = new EstudioDiagnosticoPorImagen();
+
+                estudioD.id_nombreEstudio = nombreSeleccionado.id_nombreEstudio;
+                estudioD.indicaciones = indicaciones;
+                listaEstudios.Add(estudioD);
+
+                dgvExamenesARealizar.Rows.Add(estudio, indicaciones);
+            }
+        }
+        private void btnAnalisisLaboratorioARealizar_Click(object sender, EventArgs e)
+        {
+            cargarDatosDgvAnalisisLaboratorioARealizar();
+        }
+        private void cargarDatosDgvAnalisisLaboratorioARealizar()
+        {
+            string analisis;
+            string indicaciones = "No precisa";
+            if (cboEstudioARealizar.SelectedIndex > 0)
+            {
+                AnalisisLaboratorio analisisSeleccionado = (AnalisisLaboratorio)cboAnalisiLaboratorioARealizar.SelectedItem;
+                analisis = analisisSeleccionado.nombre;
+
+                if (string.IsNullOrEmpty(txtIndicacionesEstudioARealizar.Text) == false)
+                {
+                    indicaciones = txtIndicacionesEstudioARealizar.Text;
+                }
+
+                if (listaPrubasLaboratorio == null)
+                    listaPrubasLaboratorio = new List<PruebasDeLaboratorio>();
+
+                PruebasDeLaboratorio prueba = new PruebasDeLaboratorio();
+
+                prueba.id_analisis = analisisSeleccionado.id_analisis;
+                prueba.indicaciones = indicaciones;
+
+                listaPrubasLaboratorio.Add(prueba);
+                dgvExamenesARealizar.Rows.Add(analisis, indicaciones);
+            }
+        }
+        public void registrarRazonamientoDiagnostico()
+        {
+            razonamiento = new RazonamientoDiagnostico();
+
+            if (string.IsNullOrEmpty(txtConceptoInicial.Text) == false)
+            {
+                razonamiento.conceptoInicial = txtConceptoInicial.Text;
+            }
+
+            if (hipotesis != null && hipotesis.Count > 0)
+                razonamiento.hipotesis = hipotesis;
+
+            if (diagnosticos != null && diagnosticos.Count > 0)
+                razonamiento.diagnosticos = diagnosticos;
+
+            if (listaEstudios != null && listaEstudios.Count > 0)
+                razonamiento.estudios = listaEstudios;
+
+            if (listaPrubasLaboratorio != null && listaPrubasLaboratorio.Count > 0)
+                razonamiento.pruebas = listaPrubasLaboratorio;
+
+            //int id=manejadorRegistrarExamenGeneral.registrarRazonamientoDiagnostico(razonamiento);
+
+            //return id;
+        }
+        public void registrarExamenGeneral()
+        {
+            examen = new ExamenGeneral();
+
+            if (string.IsNullOrEmpty(txtPosicionYDecubito.Text) == false)
+            {
+                examen.posicionYDecubito = txtPosicionYDecubito.Text;
+            }
+            else
+            {
+                examen.posicionYDecubito = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtMarchaYDeambulacion.Text) == false)
+            {
+                examen.marchaYDeambulacion = txtMarchaYDeambulacion.Text;
+            }
+            else
+            {
+                examen.marchaYDeambulacion = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtFacieOExpresióndeFisonomia.Text) == false)
+            {
+                examen.facieExpresionFisonomia = txtFacieOExpresióndeFisonomia.Text;
+            }
+            else
+            {
+                examen.facieExpresionFisonomia = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtConsistenciaYEstadoPsiquico.Text) == false)
+            {
+                examen.concienciaEstadoPsiquico = txtConsistenciaYEstadoPsiquico.Text;
+            }
+            else
+            {
+                examen.concienciaEstadoPsiquico = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtConstitucionYEstadoNutritivo.Text) == false)
+            {
+                examen.constitucionEstadoNutritivo = txtConstitucionYEstadoNutritivo.Text;
+            }
+            else
+            {
+                examen.constitucionEstadoNutritivo = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtPeso.Text) == false)
+            {
+                examen.peso = Convert.ToInt32(txtPeso.Text);
+            }
+
+            if (string.IsNullOrEmpty(txtAltura.Text) == false)
+            {
+                examen.talla = Convert.ToInt32(txtAltura.Text);
+            }
+        }
+        public void registrarConsulta()
+        {
+            consulta = new Consulta();
+
+            consulta.nroConsulta = Convert.ToInt32(txtNroConsulta.Text);
+            consulta.fecha = Convert.ToDateTime(mtbFechaConsulta.Text);
+            consulta.hora = Convert.ToDateTime(mtbHoraConsulta.Text);
+            consulta.motivoConsulta = txtMotivoConsulta.Text;
+            consulta.id_hc = hc.id_hc;
+
+            if (listaSintoma != null && listaSintoma.Count > 0)
+                consulta.sintoma = listaSintoma;
+        }
+
+        private void generarNuevaConsultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            generarNuevaConsulta();
+            cargarDatosDeEjemplo();
+        }
+        private void cargarDatosDeEjemplo()
+        {
+            txtMotivoConsulta.Text = "Consulta por valores elevados de presión arterial obtenidos en un examen médico de rutina realizado en una institución educativa";
+            txtPosicionYDecubito.Text = "Posición activa, sin alteraciones";
+            txtMarchaYDeambulacion.Text = "Deambulación normal";
+            txtFacieOExpresióndeFisonomia.Text = "Facie no carcaterística";
+            txtConsistenciaYEstadoPsiquico.Text = "Conciente, orientada en el tiempo y espacio";
+            txtConstitucionYEstadoNutritivo.Text = "Constitución mesomorfa, pero impresiona que ha bajado de peso";
+            txtPeso.Text = "47";
+            txtAltura.Text = "175";
+
+            cboUbicacionGanglio.SelectedIndex = 1;
+            cboTamañoGanglio.SelectedIndex = 1;
+            cboTamañoGanglio.SelectedIndex = 2;
+            cboConsistencia.SelectedIndex = 1;
+            chbSensiblePalpacion.Checked = true;
+            chbProcesoInflamatorio.Checked = true;
+            rbLimitesPrecisos.Checked = true;
+            rbPlanosProfundos.Checked = true;
+            cboAproximacionNumerica.SelectedIndex = 2;
+
+            cboPulso1.SelectedIndex = 1;
+            cboPI1.SelectedIndex = 3;
+            cboPD1.SelectedIndex = 3;
+
+            cboPulso2.SelectedIndex = 2;
+            cboPI2.SelectedIndex = 3;
+            cboPD2.SelectedIndex = 3;
+
+
+
+            cboQueSienteElPaciente.SelectedIndex = 1;
+            txtDescQueSientePaciente.Text = "Dolor de cabeza";
+            cboParteCuerpo.SelectedIndex = 1;
+            rbSiDolor.Checked = true;
+            cboCaracterDolor.SelectedIndex = 1;
+            txtCantTiempoInicioSintoma.Text = "5";
+            cboElementoTiempo.SelectedIndex = 1;
+
+
+            txtConceptoInicial.Text = "Paciente con valores elevados de presión arterial en el consultorio y en un exámen de rutina";
+            txtHipotesisInicial.Text = "Hipertensión arterial escencial";
+        }
+        public void registrarExamenGeneralYConsulta()
+        {
+            //Codigo para registrar exáme general y consulta con una sola transaccion en DAO.
+            registrarRazonamientoDiagnostico();
+
+            registrarExamenGeneral();
+
+            if (examen!=null && listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
+                examen.territoriosExaminados = listaTerritoriosExaminados;
+
+            registrarPulsoArterial();
+
+            examen.pulso = pulso;
+
+            examen.razonamiento = razonamiento;
+
+            registrarConsulta();
+
+            consulta.examen = examen;
+
+            manejadorRegistrarAtencionMedicaEnConsultorio.registrarConsultaYExamenGeneral(consulta);
+
+        }
+
+        private void btnAgregarSintoma_Click(object sender, EventArgs e)
+        {
+            cargarSintomas();
+        }
+        private void cargarSintomas()
+        {
+            Sintoma sintoma = new Sintoma();
+            listaSintoma = new List<Sintoma>();
+
+            string descripcionQueSiente = "No precisa";
+            string caracterDolor = "No precisa";
+            string haciaDondeIrradia = "No precisa";
+            string fechaInicio = "No precisa";
+            string cantidadTiempoDeComienzo = "No precisa";
+            string cuandoComenzo = "No precisa";
+            string comoModificaSintoma = "No precisa";
+            string elementoModificacionSintoma = "No precisa";
+            string observaciones = "No precisa";
+
+            TipoSintoma nombreSintoma = (TipoSintoma)cboQueSienteElPaciente.SelectedItem;
+            sintoma.id_tipoSintoma = nombreSintoma.id_tipoSintoma;
+
+            ParteDelCuerpo parteCuerpo = (ParteDelCuerpo)cboParteCuerpo.SelectedItem;
+            sintoma.id_parteCuerpo = parteCuerpo.id_parteCuerpo;
+
+            if (string.IsNullOrEmpty(txtDescQueSientePaciente.Text) == false)
+            {
+                descripcionQueSiente = txtDescQueSientePaciente.Text;
+            }
+            sintoma.descripcion = descripcionQueSiente;
+
+            if (rbSiDolor.Checked == true && cboCaracterDolor.SelectedIndex > 0)
+            {
+                CaracterDelDolor caracter = (CaracterDelDolor)cboCaracterDolor.SelectedItem;
+                caracterDolor = caracter.nombre;
+                sintoma.id_caracterDolor = caracter.id_caracterDelDolor;
+            }
+
+            if (string.IsNullOrEmpty(txtHaciaDondeIrradia.Text) == false)
+            {
+                haciaDondeIrradia = txtHaciaDondeIrradia.Text;
+            }
+            sintoma.haciaDondeIrradia = haciaDondeIrradia;
+
+            if (mtbFechaComienzoSintoma.MaskFull == true)
+            {
+                fechaInicio = mtbFechaComienzoSintoma.Text;
+                sintoma.fechaInicioSintoma = Convert.ToDateTime(mtbFechaComienzoSintoma.Text);
+            }
+
+            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false && cboElementoTiempo.SelectedIndex > 0)
+            {
+                ElementoDelTiempo elementoTiempo = (ElementoDelTiempo)cboElementoTiempo.SelectedItem;
+                sintoma.cantidadTiempo = Convert.ToInt32(txtCantTiempoInicioSintoma.Text);
+                sintoma.id_elementoTiempo = elementoTiempo.id_elementoDelTiempo;
+            }
+            if (cboCuandoComenzo.SelectedIndex > 0)
+            {
+                DescripcionDelTiempo descripcion = (DescripcionDelTiempo)cboCuandoComenzo.SelectedItem;
+                cuandoComenzo = descripcion.nombre;
+                sintoma.id_descripcionDelTiempo = descripcion.id_descripcionDelTiempo;
+            }
+            if (cboComoModificaSintoma.SelectedIndex > 0)
+            {
+                ModificacionSintoma modificacion = (ModificacionSintoma)cboComoModificaSintoma.SelectedItem;
+                comoModificaSintoma = modificacion.nombre;
+                sintoma.id_modificacionSintoma = modificacion.id_modificacionSintoma;
+            }
+            if (cboElementoModificacion.SelectedIndex > 0)
+            {
+                ElementoDeModificacion elementoModificacion = (ElementoDeModificacion)cboElementoModificacion.SelectedItem;
+                elementoModificacionSintoma = elementoModificacion.nombre;
+                sintoma.id_elementoModificacion = elementoModificacion.id_elementoDeModificacion;
+            }
+            if (string.IsNullOrEmpty(txtObservaciones.Text) == false)
+            {
+                observaciones = txtObservaciones.Text;
+            }
+            sintoma.observaciones = observaciones;
+            sintoma.fechaRegistro = Convert.ToDateTime(mtbFechaConsulta.Text);
+
+            listaSintoma.Add(sintoma);
+        }
         
     }
 }

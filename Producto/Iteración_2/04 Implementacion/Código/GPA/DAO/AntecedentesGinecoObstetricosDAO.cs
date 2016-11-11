@@ -134,14 +134,58 @@ namespace DAO
                     antecedente = new AntecedenteGinecoObstetrico();
                     antecedente.id_antecedenteGinecoObstetrico = Convert.ToInt32(dr["id_antecedenteGinecoObstetrico"]);
                     antecedente.fechaRegistro = Convert.ToDateTime(dr["fechaRegistro"].ToString());
-                    antecedente.cantidadEmbarazos = Convert.ToInt32(dr["cantidadEmbarazos"]);
-                    antecedente.cantidadEmbarazosPrematuros = Convert.ToInt32(dr["cantidadEmbarazosPrematuros"]);
-                    antecedente.id_tipoPartoPrematuro = Convert.ToInt32(dr["id_TipoParto1_fk"]);
-                    antecedente.cantidadEmbarazosATermino = Convert.ToInt32(dr["cantidadEmbarazosATermino"]);
-                    antecedente.id_tipoPartoATermino = Convert.ToInt32(dr["id_TipoParto2_fk"]);
-                    antecedente.cantidadEmbarazosPosTermino = Convert.ToInt32(dr["cantidadEmbarazosPosTermino"]);
-                    antecedente.id_tipoPartoPosTermino = Convert.ToInt32(dr["id_TipoParto3_fk"]);
-                    antecedente.id_aborto = Convert.ToInt32(dr["id_Aborto_fk"]);
+
+                    if (dr["cantidadEmbarazos"] == DBNull.Value)
+                    {
+                        antecedente.cantidadEmbarazos = 0;
+                    }
+                    else
+                    {
+                        antecedente.cantidadEmbarazos = Convert.ToInt32(dr["cantidadEmbarazos"]);
+                    }
+
+                    if (dr["cantidadEmbarazosPrematuros"] == DBNull.Value)
+                    {
+                        antecedente.cantidadEmbarazosPrematuros = 0;
+                        antecedente.id_tipoPartoPrematuro=0;
+                    }
+                    else
+                    {
+                        antecedente.cantidadEmbarazosPrematuros = Convert.ToInt32(dr["cantidadEmbarazosPrematuros"]);
+                        antecedente.id_tipoPartoPrematuro = Convert.ToInt32(dr["id_TipoParto1_fk"]);
+                    }
+
+                    if (dr["cantidadEmbarazosATermino"] == DBNull.Value)
+                    {
+                        antecedente.cantidadEmbarazosATermino = 0;
+                        antecedente.id_tipoPartoATermino=0;
+                    }
+                    else
+                    {
+                        antecedente.cantidadEmbarazosATermino = Convert.ToInt32(dr["cantidadEmbarazosATermino"]);
+                        antecedente.id_tipoPartoATermino = Convert.ToInt32(dr["id_TipoParto2_fk"]);
+                    }
+
+                    if (dr["cantidadEmbarazosPosTermino"] == DBNull.Value)
+                    {
+                        antecedente.cantidadEmbarazosPosTermino =0;
+                        antecedente.id_tipoPartoPosTermino = 0;
+                    }
+                    else
+                    {
+                        antecedente.cantidadEmbarazosPosTermino = Convert.ToInt32(dr["cantidadEmbarazosPosTermino"]);
+                        antecedente.id_tipoPartoPosTermino = Convert.ToInt32(dr["id_TipoParto3_fk"]);
+                    }
+
+                    if (dr["id_Aborto_fk"] == DBNull.Value)
+                    {
+                        antecedente.id_aborto = 0;
+                    }
+                    else
+                    {
+                        antecedente.id_aborto = Convert.ToInt32(dr["id_Aborto_fk"]);
+                    }
+                    
                     antecedente.id_hc = Convert.ToInt32(dr["id_hc_fk"]);
                 }
                 cn.Close();

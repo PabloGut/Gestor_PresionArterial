@@ -88,5 +88,60 @@ namespace DAO
             return pulsoArterial.id_pulsoArterial;
 
         }
+        public static int registrarPulsoArterial(PulsoArterial pulsoArterial, SqlTransaction tran, SqlConnection cn)
+        {
+            string consulta = "insert into PulsoArterial(auscultacion,observaciones) values (@auscultacion,@observaciones)";
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand();
+
+                if (string.IsNullOrEmpty(pulsoArterial.auscultacion) == true)
+                {
+                    cmd.Parameters.AddWithValue("@auscultacion", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@auscultacion", pulsoArterial.auscultacion);
+                }
+
+                if (string.IsNullOrEmpty(pulsoArterial.observaciones) == true)
+                {
+                    cmd.Parameters.AddWithValue("@observaciones", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@observaciones", pulsoArterial.observaciones);
+                }
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                cmd.Transaction = tran;
+
+                cmd.ExecuteNonQuery();
+
+                SqlCommand cmd1 = new SqlCommand("select IDENT_CURRENT('PulsoArterial')", cn, tran);
+                pulsoArterial.id_pulsoArterial = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                foreach (DetallePulsoArterial detalle in pulsoArterial.detalles)
+                {
+                    detalle.id_pulsoArterial = pulsoArterial.id_pulsoArterial;
+                    DetallePulsoArterialDAO.registrarDetallesPulsoArterial(detalle, tran, cn);
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                throw new ApplicationException("Error: " + e.Message);
+            }
+            return pulsoArterial.id_pulsoArterial;
+
+        }
     }
 }

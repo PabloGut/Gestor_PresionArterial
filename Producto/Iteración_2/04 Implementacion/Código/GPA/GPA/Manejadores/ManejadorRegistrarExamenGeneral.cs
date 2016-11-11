@@ -30,6 +30,10 @@ namespace GPA.Manejadores
         {
             return ConsistenciaLN.mostrarConsistencia();
         }
+        public int registrarExamenGeneral(ExamenGeneral examen)
+        {
+            return ExamenGeneralLN.registrarExamenGeneral(examen);
+        }
         public void registrarSistemaLinfatico(List<SistemaLinfatico> territoriosExaminados, int idExamenGeneral)
         {
             SistemaLinfaticoLN.registrarSistemaLinfatico(territoriosExaminados, idExamenGeneral);
@@ -37,6 +41,22 @@ namespace GPA.Manejadores
         public int registrarPulsoArterial(PulsoArterial pulsoArterial)
         {
             return PulsoArterialLN.registrarPulsoArterial(pulsoArterial);
+        }
+        public List<NombreEstudio> mostrarNombreEstudios()
+        {
+            return NombreEstudioLN.mostrarNombreEstudios();
+        }
+        public List<AnalisisLaboratorio> mostrarAnalisisLaboratorio()
+        {
+            return AnalisisLaboratorioLN.mostrarAnalisisLaboratorio();
+        }
+        public int mostrarIdEstadoHipotesis(string nombreEstado)
+        {
+            return EstadoHipotesisLN.mostrarIdEstadoHipotesis(nombreEstado);
+        }
+        public int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamiento)
+        {
+            return RazonamientoDiagnosticoLN.registrarRazonamientoDiagnostico(razonamiento);
         }
     }
 }
