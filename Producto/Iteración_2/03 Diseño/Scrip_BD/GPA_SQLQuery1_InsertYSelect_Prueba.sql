@@ -26,7 +26,7 @@ from TiposAntecedentesMorbidos
 
 
 select *
-from TipoSintoma
+from EstadoHipotesis
 
 select *
 from TipoSintoma
@@ -586,6 +586,12 @@ select * from SistemaLinfatico
 alter table Sintoma
 add id_consulta_fk int
 
+alter table Consulta
+add id_hc_fk int not null
+
+alter table Consulta
+add foreign key (id_hc_fk) references Historia_Clinica(id_hc)
+
 alter table Sintoma
 add foreign key (id_consulta_fk) references Consulta(id_consulta)
 
@@ -595,3 +601,26 @@ add id_pulsoArterial_fk int
 alter table ExamenGeneral
 add foreign key(id_pulsoArterial_fk) references PulsoArterial(id_pulsoArterial)
 
+drop table HipotesisInicial
+drop table DiagnosticoDefinitivo
+drop table RazonamientoDiagnostico
+
+alter table ExamenGeneral
+add id_razonamiento_fk int
+
+alter table ExamenGeneral
+add foreign key(id_razonamiento_fk) references RazonamientoDiagnostico(id_razonamiento)
+
+select * from Consulta
+
+sp_rename 'PulsoArterial.ausculacion', 'auscultacion' --Cambia nombre de columna
+
+select * from PulsoArterial
+select * from DetallePulsoArterial
+select * from ExamenGeneral
+select @@IDENTITY
+select SCOPE_IDENTITY()
+select IDENT_CURRENT('Consulta')
+select IDENT_CURRENT('RazonamientoDiagnostico')
+select IDENT_CURRENT('PulsoArterial')
+select IDENT_CURRENT('ExamenGeneral')

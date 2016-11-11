@@ -716,6 +716,38 @@ values('Muslo',2)
 select * from Extremidad
 /*--------------------------*/
 
+
+/*-------Insert AnalisisLaboratorio-----*/
+insert into AnalisisLaboratorio(nombre)
+values('--Seleccionar--')
+insert into AnalisisLaboratorio(nombre)
+values('Hemoglobina')
+insert into AnalisisLaboratorio(nombre)
+values('Glucemia en ayunas')
+insert into AnalisisLaboratorio(nombre)
+values('Triglicéridos')
+/*--------------------------*/
+
+/*-------Insert EstudiosDiagnosticoPorImagenes-----*/
+insert into NombreEstudio(nombre)
+values('--Seleccionar--')
+insert into NombreEstudio(nombre)
+values('Ecografía Renal')
+insert into NombreEstudio(nombre)
+values('Electrocardiograma')
+insert into NombreEstudio(nombre)
+values('Radiografía de Tórax')
+/*--------------------------*/
+
+/*-------Insert EstadoHipotesis-----*/
+insert into EstadoHipotesis(nombre)
+values('--Seleccionar--')
+insert into EstadoHipotesis(nombre)
+values('Rechazada')
+insert into EstadoHipotesis(nombre)
+values('No Rechazada')
+/*--------------------------*/
+
 /*-------Insert-----*/
 
 /*--------------------------*/
@@ -723,7 +755,7 @@ select * from Extremidad
 alter table EscalaPulso
 alter column nombre text
 
-select * from EscalaPulso
+select * from HipotesisInicial
 
 alter table AlergiaMedicamento
 add id_medicamentoAlergia_fk int
@@ -736,5 +768,16 @@ drop table PulsoArterial
 drop table EscalaPulso
 drop table Pulso
 
-delete from Extremidad
-DBCC CHECKIDENT('Extremidad',RESEED,0)
+delete from AnalisisLaboratorio
+delete from NombreEstudio
+delete from EstadoHipotesis
+
+DBCC CHECKIDENT('AnalisisLaboratorio',RESEED,0)
+DBCC CHECKIDENT('NombreEstudio',RESEED,0)
+DBCC CHECKIDENT('EstadoHipotesis',RESEED,0)
+
+select * from Usuario
+
+select @@IDENTITY
+select SCOPE_IDENTITY()
+select IDENT_CURRENT('RazonamientoDiagnostico')
