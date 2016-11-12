@@ -781,3 +781,90 @@ select * from Usuario
 select @@IDENTITY
 select SCOPE_IDENTITY()
 select IDENT_CURRENT('RazonamientoDiagnostico')
+
+CREATE TABLE DetalleMedicionPresionArterial(
+id_nroMedicion int,
+id_medicion_fk int,
+hora time,
+pulso int,
+valorMaximo int,
+valorMinimo int,
+primary key (id_nroMedicion,id_medicion_fk),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
+
+alter table ClasificacionPresionArterial
+drop column nombre
+
+alter table ClasificacionPresionArterial
+add categoria text
+
+alter table ClasificacionPresionArterial
+add maximaDesde int
+
+alter table ClasificacionPresionArterial
+add maximaHasta int
+
+alter table ClasificacionPresionArterial
+add minimaDesde int
+
+alter table ClasificacionPresionArterial
+add minimaHasta int
+
+alter table ExamenGeneral
+add id_medicion_fk int
+
+alter table ExamenGeneral
+add foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion)
+
+alter table MedicionDePrecionArterial
+drop column horaInicio
+
+alter table MedicionDePrecionArterial
+add horaInicio time
+
+alter table MedicionDePrecionArterial
+drop constraint FK__MedicionD__id_ex__0A688BB1 
+
+alter table MedicionDePrecionArterial
+drop column id_extremidad_fk
+
+alter table MedicionDePrecionArterial
+add id_ubicacionExtremidad_fk int
+
+alter table MedicionDePrecionArterial
+add foreign key(id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad)
+
+/*-------Insert Posicion-----*/
+insert into Posicion(nombre)
+values('--Seleccionar--')
+insert into Posicion(nombre)
+values('Acostado')
+insert into Posicion(nombre)
+values('De pie')
+insert into Posicion(nombre)
+values('Sentado')
+/*--------------------------*/
+
+/*-------Insert SitioMedicion-----*/
+insert into SitioMedicion(nombre)
+values('--Seleccionar--')
+insert into SitioMedicion(nombre)
+values('Consultorio')
+insert into SitioMedicion(nombre)
+values('Hogar')
+/*--------------------------*/
+
+/*-------Insert-----*/
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('Hipotensión',0,90,0,60)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('Normal',120,129,80,84)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('Limítrofe',130,139,85,89)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('HTA grado o nivel 1',140,159,90,99)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('HTA grado o nivel 2',160,999,100,999)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('HTA sistólica o aislada',140,999,0,90)
+/*--------------------------*/

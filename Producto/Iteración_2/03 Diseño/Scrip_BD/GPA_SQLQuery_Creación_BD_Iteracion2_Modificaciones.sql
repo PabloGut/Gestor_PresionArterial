@@ -495,9 +495,11 @@ descripcionComoRespira text,
 observacionesRespiracion text,
 id_pulsoArterial_fk int,
 id_razonamientoDiagnostico_fk int,
+id_medicion_fk int,
 foreign key (id_piel_fk) references Piel(id_piel),
 foreign key (id_pulsoArterial_fk) references PulsoArterial(id_pulsoArterial),
-foreign key (id_razonamientoDiagnostico_fk)references RazonamientoDiagnostico(id_razonamiento))
+foreign key (id_razonamientoDiagnostico_fk)references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
 
 CREATE TABLE SitioMedicionTemperatura(
 id_sitioMedicionTemperatura int primary key identity,
@@ -702,7 +704,11 @@ nombre text)
 
 CREATE TABLE ClasificacionPresionArterial(
 id_clasificacion int primary key identity,
-nombre text)
+categoria text,
+maximaDesde int,
+maximaHasta int,
+minimaDesde int,
+minimaHasta int)
 
 CREATE TABLE MomentoDelDia(
 id_momentoDelDia int primary key identity,
@@ -712,22 +718,31 @@ CREATE TABLE SitioMedicion(
 id_sitioMedicion int primary key identity,
 nombre text)
 
-
 CREATE TABLE MedicionDePrecionArterial(
 id_medicion int primary key identity,
 fecha date,
-horaInicio date,
-id_extremidad_fk int,
+horaInicio time,
+id_ubicacionExtremidad_fk int,
 id_posicion_fk int,
 id_clasificacion_fk int,
 id_momentoDelDia_fk int,
 promedio float,  
 id_sitioMedicion_fk int,
-foreign key (id_extremidad_fk) references Extremidad(id_extremidad),
+foreign key (id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad),
 foreign key (id_posicion_fk) references Posicion(id_posicion),
 foreign key (id_clasificacion_fk) references ClasificacionPresionArterial(id_clasificacion),
 foreign key (id_momentoDelDia_fk) references MomentoDelDia(id_momentoDelDia),
 foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion))
+
+CREATE TABLE DetalleMedicionPresionArterial(
+id_nroMedicion int,
+id_medicion_fk int,
+hora time,
+pulso int,
+valorMaximo int,
+valorMinimo int,
+primary key (id_nroMedicion,id_medicion_fk),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
 
 CREATE TABLE Frecuencia(
 id_frecuencia int primary key identity,
