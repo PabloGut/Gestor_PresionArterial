@@ -135,8 +135,14 @@ namespace DAO
                     examen.id_pulso = PulsoArterialDAO.registrarPulsoArterial(examen.pulso, tran, cn);
                 }
 
-                string consulta = @"insert into ExamenGeneral(posicionYdecubito,marchaYDeambulacion,facieExpresionFisonomia, concienciaEstadoPsiquico, constitucionEstadoNutritivo, peso,talla,id_pulsoArterial_fk,id_razonamiento_fk)
-                                  values(@posicionYdecubito,@marchaYDeambulacion,@facieExpresionFisonomia,@concienciaEstadoPsiquico,@constitucionEstadoNutritivo,@peso,@talla,@id_pulsoArterial_fk,@id_razonamiento_fk)";
+                int id_medicion_fk=0;
+                if (examen.medicion != null)
+                {
+                    id_medicion_fk = MedicionDePresionArterialDAO.registrarMedicionDePresionArterial(examen.medicion, tran, cn);
+                }
+
+                string consulta = @"insert into ExamenGeneral(posicionYdecubito,marchaYDeambulacion,facieExpresionFisonomia, concienciaEstadoPsiquico, constitucionEstadoNutritivo, peso,talla,id_pulsoArterial_fk,id_razonamiento_fk,id_medicion_fk)
+                                  values(@posicionYdecubito,@marchaYDeambulacion,@facieExpresionFisonomia,@concienciaEstadoPsiquico,@constitucionEstadoNutritivo,@peso,@talla,@id_pulsoArterial_fk,@id_razonamiento_fk,@id_medicion_fk)";
 
                 SqlCommand cmd = new SqlCommand();
 
@@ -204,6 +210,15 @@ namespace DAO
                 else
                 {
                     cmd.Parameters.AddWithValue("@id_pulsoArterial_fk", examen.id_pulso);
+                }
+
+                if (id_medicion_fk == 0)
+                {
+                    cmd.Parameters.AddWithValue("@id_medicion_fk", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_medicion_fk", id_medicion_fk);
                 }
 
                 cmd.Connection = cn;

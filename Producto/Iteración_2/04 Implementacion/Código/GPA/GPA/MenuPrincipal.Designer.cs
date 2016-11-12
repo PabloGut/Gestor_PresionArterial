@@ -143,6 +143,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarSintoma = new System.Windows.Forms.Button();
             this.btnVerSintomas = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.cboElementoModificacion = new System.Windows.Forms.ComboBox();
@@ -289,38 +290,31 @@
             this.label59 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button19 = new System.Windows.Forms.Button();
+            this.cmbUbicacionPresionArterial = new System.Windows.Forms.ComboBox();
+            this.lblUbicacionPresionArterial = new System.Windows.Forms.Label();
+            this.dgvPresionArterial = new System.Windows.Forms.DataGridView();
+            this.btnAgregarPresionArterial = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.label99 = new System.Windows.Forms.Label();
-            this.label98 = new System.Windows.Forms.Label();
-            this.label94 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
-            this.textBox49 = new System.Windows.Forms.TextBox();
-            this.label97 = new System.Windows.Forms.Label();
-            this.textBox48 = new System.Windows.Forms.TextBox();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
-            this.textBox47 = new System.Windows.Forms.TextBox();
-            this.comboBox37 = new System.Windows.Forms.ComboBox();
-            this.label93 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
-            this.comboBox36 = new System.Windows.Forms.ComboBox();
-            this.comboBox35 = new System.Windows.Forms.ComboBox();
-            this.comboBox34 = new System.Windows.Forms.ComboBox();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
-            this.label87 = new System.Windows.Forms.Label();
+            this.lblValorMinPresionArterial = new System.Windows.Forms.Label();
+            this.lblValorMaxPresionArterial = new System.Windows.Forms.Label();
+            this.lblCategoriaPresionArterial = new System.Windows.Forms.Label();
+            this.lblPromedioPresionArterial = new System.Windows.Forms.Label();
+            this.txtPulsoPresionArterial = new System.Windows.Forms.TextBox();
+            this.lblPulsoPresionArterial = new System.Windows.Forms.Label();
+            this.txtDiastolicaPresionArterial = new System.Windows.Forms.TextBox();
+            this.lblMmHgDiastolicaPresionArterial = new System.Windows.Forms.Label();
+            this.lblDiastolicaPresionArterial = new System.Windows.Forms.Label();
+            this.txtSistolicaPresionArterial = new System.Windows.Forms.TextBox();
+            this.cmbMomentoDiaPresionArterial = new System.Windows.Forms.ComboBox();
+            this.lblMmHgSistolicaPresionArterial = new System.Windows.Forms.Label();
+            this.lblMomentoDiaPresionArterial = new System.Windows.Forms.Label();
+            this.lblSistolicaPresionArterial = new System.Windows.Forms.Label();
+            this.cmbSitioMedicionPresionArterial = new System.Windows.Forms.ComboBox();
+            this.cmbPosicionPresionArterial = new System.Windows.Forms.ComboBox();
+            this.cmbExtremidadPresionArterial = new System.Windows.Forms.ComboBox();
+            this.lblSitioMedicionPresionArterial = new System.Windows.Forms.Label();
+            this.lblPosicionPresionArterial = new System.Windows.Forms.Label();
+            this.lblExtremidadPresionArterial = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox43 = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
@@ -384,7 +378,16 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnAgregarSintoma = new System.Windows.Forms.Button();
+            this.fechaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.extremidadPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ubicacionPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.posicionPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sitioPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sistolicaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diastolicaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pulsoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.momentoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -432,7 +435,7 @@
             this.panel9.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPresionArterial)).BeginInit();
             this.groupBox11.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabPage10.SuspendLayout();
@@ -1589,6 +1592,16 @@
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Enfermedad Actual";
+            // 
+            // btnAgregarSintoma
+            // 
+            this.btnAgregarSintoma.Location = new System.Drawing.Point(158, 365);
+            this.btnAgregarSintoma.Name = "btnAgregarSintoma";
+            this.btnAgregarSintoma.Size = new System.Drawing.Size(132, 29);
+            this.btnAgregarSintoma.TabIndex = 24;
+            this.btnAgregarSintoma.Text = "Agregar Síntoma";
+            this.btnAgregarSintoma.UseVisualStyleBackColor = true;
+            this.btnAgregarSintoma.Click += new System.EventHandler(this.btnAgregarSintoma_Click);
             // 
             // btnVerSintomas
             // 
@@ -2988,27 +3001,27 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.comboBox1);
-            this.groupBox9.Controls.Add(this.label53);
-            this.groupBox9.Controls.Add(this.dataGridView6);
-            this.groupBox9.Controls.Add(this.button19);
+            this.groupBox9.Controls.Add(this.cmbUbicacionPresionArterial);
+            this.groupBox9.Controls.Add(this.lblUbicacionPresionArterial);
+            this.groupBox9.Controls.Add(this.dgvPresionArterial);
+            this.groupBox9.Controls.Add(this.btnAgregarPresionArterial);
             this.groupBox9.Controls.Add(this.groupBox11);
-            this.groupBox9.Controls.Add(this.textBox49);
-            this.groupBox9.Controls.Add(this.label97);
-            this.groupBox9.Controls.Add(this.textBox48);
-            this.groupBox9.Controls.Add(this.label95);
-            this.groupBox9.Controls.Add(this.label96);
-            this.groupBox9.Controls.Add(this.textBox47);
-            this.groupBox9.Controls.Add(this.comboBox37);
-            this.groupBox9.Controls.Add(this.label93);
-            this.groupBox9.Controls.Add(this.label91);
-            this.groupBox9.Controls.Add(this.label90);
-            this.groupBox9.Controls.Add(this.comboBox36);
-            this.groupBox9.Controls.Add(this.comboBox35);
-            this.groupBox9.Controls.Add(this.comboBox34);
-            this.groupBox9.Controls.Add(this.label89);
-            this.groupBox9.Controls.Add(this.label88);
-            this.groupBox9.Controls.Add(this.label87);
+            this.groupBox9.Controls.Add(this.txtPulsoPresionArterial);
+            this.groupBox9.Controls.Add(this.lblPulsoPresionArterial);
+            this.groupBox9.Controls.Add(this.txtDiastolicaPresionArterial);
+            this.groupBox9.Controls.Add(this.lblMmHgDiastolicaPresionArterial);
+            this.groupBox9.Controls.Add(this.lblDiastolicaPresionArterial);
+            this.groupBox9.Controls.Add(this.txtSistolicaPresionArterial);
+            this.groupBox9.Controls.Add(this.cmbMomentoDiaPresionArterial);
+            this.groupBox9.Controls.Add(this.lblMmHgSistolicaPresionArterial);
+            this.groupBox9.Controls.Add(this.lblMomentoDiaPresionArterial);
+            this.groupBox9.Controls.Add(this.lblSistolicaPresionArterial);
+            this.groupBox9.Controls.Add(this.cmbSitioMedicionPresionArterial);
+            this.groupBox9.Controls.Add(this.cmbPosicionPresionArterial);
+            this.groupBox9.Controls.Add(this.cmbExtremidadPresionArterial);
+            this.groupBox9.Controls.Add(this.lblSitioMedicionPresionArterial);
+            this.groupBox9.Controls.Add(this.lblPosicionPresionArterial);
+            this.groupBox9.Controls.Add(this.lblExtremidadPresionArterial);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(9, 293);
             this.groupBox9.Name = "groupBox9";
@@ -3017,89 +3030,58 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Presión arterial";
             // 
-            // comboBox1
+            // cmbUbicacionPresionArterial
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(90, 61);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(246, 24);
-            this.comboBox1.TabIndex = 22;
+            this.cmbUbicacionPresionArterial.FormattingEnabled = true;
+            this.cmbUbicacionPresionArterial.Location = new System.Drawing.Point(90, 61);
+            this.cmbUbicacionPresionArterial.Name = "cmbUbicacionPresionArterial";
+            this.cmbUbicacionPresionArterial.Size = new System.Drawing.Size(246, 24);
+            this.cmbUbicacionPresionArterial.TabIndex = 22;
             // 
-            // label53
+            // lblUbicacionPresionArterial
             // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(7, 64);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(70, 17);
-            this.label53.TabIndex = 21;
-            this.label53.Text = "Ubicacion";
+            this.lblUbicacionPresionArterial.AutoSize = true;
+            this.lblUbicacionPresionArterial.Location = new System.Drawing.Point(7, 64);
+            this.lblUbicacionPresionArterial.Name = "lblUbicacionPresionArterial";
+            this.lblUbicacionPresionArterial.Size = new System.Drawing.Size(70, 17);
+            this.lblUbicacionPresionArterial.TabIndex = 21;
+            this.lblUbicacionPresionArterial.Text = "Ubicacion";
             // 
-            // dataGridView6
+            // dgvPresionArterial
             // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16,
-            this.Column17});
-            this.dataGridView6.Location = new System.Drawing.Point(349, 134);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(483, 144);
-            this.dataGridView6.TabIndex = 20;
+            this.dgvPresionArterial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPresionArterial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fechaPA,
+            this.horaPA,
+            this.extremidadPA,
+            this.ubicacionPA,
+            this.posicionPA,
+            this.sitioPA,
+            this.sistolicaPA,
+            this.diastolicaPA,
+            this.pulsoPA,
+            this.momentoPA});
+            this.dgvPresionArterial.Location = new System.Drawing.Point(349, 134);
+            this.dgvPresionArterial.Name = "dgvPresionArterial";
+            this.dgvPresionArterial.Size = new System.Drawing.Size(483, 144);
+            this.dgvPresionArterial.TabIndex = 20;
             // 
-            // Column11
+            // btnAgregarPresionArterial
             // 
-            this.Column11.HeaderText = "Fecha";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Hora";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Extremidad";
-            this.Column13.Name = "Column13";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Posición";
-            this.Column14.Name = "Column14";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "Sitio de medición";
-            this.Column15.Name = "Column15";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "Presión Sistólica";
-            this.Column16.Name = "Column16";
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "Presión Diastólica";
-            this.Column17.Name = "Column17";
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(260, 99);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(76, 33);
-            this.button19.TabIndex = 19;
-            this.button19.Text = "Agregar";
-            this.button19.UseVisualStyleBackColor = true;
+            this.btnAgregarPresionArterial.Location = new System.Drawing.Point(260, 99);
+            this.btnAgregarPresionArterial.Name = "btnAgregarPresionArterial";
+            this.btnAgregarPresionArterial.Size = new System.Drawing.Size(76, 33);
+            this.btnAgregarPresionArterial.TabIndex = 19;
+            this.btnAgregarPresionArterial.Text = "Agregar";
+            this.btnAgregarPresionArterial.UseVisualStyleBackColor = true;
+            this.btnAgregarPresionArterial.Click += new System.EventHandler(this.btnAgregarPresionArterial_Click);
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.label99);
-            this.groupBox11.Controls.Add(this.label98);
-            this.groupBox11.Controls.Add(this.label94);
-            this.groupBox11.Controls.Add(this.label92);
+            this.groupBox11.Controls.Add(this.lblValorMinPresionArterial);
+            this.groupBox11.Controls.Add(this.lblValorMaxPresionArterial);
+            this.groupBox11.Controls.Add(this.lblCategoriaPresionArterial);
+            this.groupBox11.Controls.Add(this.lblPromedioPresionArterial);
             this.groupBox11.Location = new System.Drawing.Point(6, 134);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(330, 144);
@@ -3107,175 +3089,176 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Clasificación";
             // 
-            // label99
+            // lblValorMinPresionArterial
             // 
-            this.label99.AutoSize = true;
-            this.label99.Location = new System.Drawing.Point(6, 113);
-            this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(137, 17);
-            this.label99.TabIndex = 19;
-            this.label99.Text = "Rango valor mínimo:";
+            this.lblValorMinPresionArterial.AutoSize = true;
+            this.lblValorMinPresionArterial.Location = new System.Drawing.Point(6, 113);
+            this.lblValorMinPresionArterial.Name = "lblValorMinPresionArterial";
+            this.lblValorMinPresionArterial.Size = new System.Drawing.Size(137, 17);
+            this.lblValorMinPresionArterial.TabIndex = 19;
+            this.lblValorMinPresionArterial.Text = "Rango valor mínimo:";
             // 
-            // label98
+            // lblValorMaxPresionArterial
             // 
-            this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(6, 84);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(140, 17);
-            this.label98.TabIndex = 2;
-            this.label98.Text = "Rango valor máximo:";
+            this.lblValorMaxPresionArterial.AutoSize = true;
+            this.lblValorMaxPresionArterial.Location = new System.Drawing.Point(6, 84);
+            this.lblValorMaxPresionArterial.Name = "lblValorMaxPresionArterial";
+            this.lblValorMaxPresionArterial.Size = new System.Drawing.Size(140, 17);
+            this.lblValorMaxPresionArterial.TabIndex = 2;
+            this.lblValorMaxPresionArterial.Text = "Rango valor máximo:";
             // 
-            // label94
+            // lblCategoriaPresionArterial
             // 
-            this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(6, 56);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(73, 17);
-            this.label94.TabIndex = 1;
-            this.label94.Text = "Categoría:";
+            this.lblCategoriaPresionArterial.AutoSize = true;
+            this.lblCategoriaPresionArterial.Location = new System.Drawing.Point(6, 56);
+            this.lblCategoriaPresionArterial.Name = "lblCategoriaPresionArterial";
+            this.lblCategoriaPresionArterial.Size = new System.Drawing.Size(73, 17);
+            this.lblCategoriaPresionArterial.TabIndex = 1;
+            this.lblCategoriaPresionArterial.Text = "Categoría:";
             // 
-            // label92
+            // lblPromedioPresionArterial
             // 
-            this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(6, 29);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(72, 17);
-            this.label92.TabIndex = 0;
-            this.label92.Text = "Promedio:";
+            this.lblPromedioPresionArterial.AutoSize = true;
+            this.lblPromedioPresionArterial.Location = new System.Drawing.Point(6, 29);
+            this.lblPromedioPresionArterial.Name = "lblPromedioPresionArterial";
+            this.lblPromedioPresionArterial.Size = new System.Drawing.Size(72, 17);
+            this.lblPromedioPresionArterial.TabIndex = 0;
+            this.lblPromedioPresionArterial.Text = "Promedio:";
             // 
-            // textBox49
+            // txtPulsoPresionArterial
             // 
-            this.textBox49.Location = new System.Drawing.Point(772, 61);
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(60, 23);
-            this.textBox49.TabIndex = 17;
+            this.txtPulsoPresionArterial.Location = new System.Drawing.Point(772, 61);
+            this.txtPulsoPresionArterial.Name = "txtPulsoPresionArterial";
+            this.txtPulsoPresionArterial.Size = new System.Drawing.Size(60, 23);
+            this.txtPulsoPresionArterial.TabIndex = 17;
             // 
-            // label97
+            // lblPulsoPresionArterial
             // 
-            this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(723, 64);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(43, 17);
-            this.label97.TabIndex = 16;
-            this.label97.Text = "Pulso";
+            this.lblPulsoPresionArterial.AutoSize = true;
+            this.lblPulsoPresionArterial.Location = new System.Drawing.Point(723, 64);
+            this.lblPulsoPresionArterial.Name = "lblPulsoPresionArterial";
+            this.lblPulsoPresionArterial.Size = new System.Drawing.Size(43, 17);
+            this.lblPulsoPresionArterial.TabIndex = 16;
+            this.lblPulsoPresionArterial.Text = "Pulso";
             // 
-            // textBox48
+            // txtDiastolicaPresionArterial
             // 
-            this.textBox48.Location = new System.Drawing.Point(577, 61);
-            this.textBox48.Name = "textBox48";
-            this.textBox48.Size = new System.Drawing.Size(72, 23);
-            this.textBox48.TabIndex = 15;
+            this.txtDiastolicaPresionArterial.Location = new System.Drawing.Point(577, 61);
+            this.txtDiastolicaPresionArterial.Name = "txtDiastolicaPresionArterial";
+            this.txtDiastolicaPresionArterial.Size = new System.Drawing.Size(72, 23);
+            this.txtDiastolicaPresionArterial.TabIndex = 15;
             // 
-            // label95
+            // lblMmHgDiastolicaPresionArterial
             // 
-            this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(655, 64);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(48, 17);
-            this.label95.TabIndex = 14;
-            this.label95.Text = "mmHg";
+            this.lblMmHgDiastolicaPresionArterial.AutoSize = true;
+            this.lblMmHgDiastolicaPresionArterial.Location = new System.Drawing.Point(655, 64);
+            this.lblMmHgDiastolicaPresionArterial.Name = "lblMmHgDiastolicaPresionArterial";
+            this.lblMmHgDiastolicaPresionArterial.Size = new System.Drawing.Size(48, 17);
+            this.lblMmHgDiastolicaPresionArterial.TabIndex = 14;
+            this.lblMmHgDiastolicaPresionArterial.Text = "mmHg";
             // 
-            // label96
+            // lblDiastolicaPresionArterial
             // 
-            this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(407, 64);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(170, 17);
-            this.label96.TabIndex = 13;
-            this.label96.Text = "Presión Arterial Diastólica";
+            this.lblDiastolicaPresionArterial.AutoSize = true;
+            this.lblDiastolicaPresionArterial.Location = new System.Drawing.Point(407, 64);
+            this.lblDiastolicaPresionArterial.Name = "lblDiastolicaPresionArterial";
+            this.lblDiastolicaPresionArterial.Size = new System.Drawing.Size(170, 17);
+            this.lblDiastolicaPresionArterial.TabIndex = 13;
+            this.lblDiastolicaPresionArterial.Text = "Presión Arterial Diastólica";
             // 
-            // textBox47
+            // txtSistolicaPresionArterial
             // 
-            this.textBox47.Location = new System.Drawing.Point(576, 101);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(72, 23);
-            this.textBox47.TabIndex = 12;
+            this.txtSistolicaPresionArterial.Location = new System.Drawing.Point(576, 101);
+            this.txtSistolicaPresionArterial.Name = "txtSistolicaPresionArterial";
+            this.txtSistolicaPresionArterial.Size = new System.Drawing.Size(72, 23);
+            this.txtSistolicaPresionArterial.TabIndex = 12;
             // 
-            // comboBox37
+            // cmbMomentoDiaPresionArterial
             // 
-            this.comboBox37.FormattingEnabled = true;
-            this.comboBox37.Location = new System.Drawing.Point(126, 104);
-            this.comboBox37.Name = "comboBox37";
-            this.comboBox37.Size = new System.Drawing.Size(121, 24);
-            this.comboBox37.TabIndex = 11;
+            this.cmbMomentoDiaPresionArterial.FormattingEnabled = true;
+            this.cmbMomentoDiaPresionArterial.Location = new System.Drawing.Point(126, 104);
+            this.cmbMomentoDiaPresionArterial.Name = "cmbMomentoDiaPresionArterial";
+            this.cmbMomentoDiaPresionArterial.Size = new System.Drawing.Size(121, 24);
+            this.cmbMomentoDiaPresionArterial.TabIndex = 11;
             // 
-            // label93
+            // lblMmHgSistolicaPresionArterial
             // 
-            this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(654, 104);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(48, 17);
-            this.label93.TabIndex = 9;
-            this.label93.Text = "mmHg";
+            this.lblMmHgSistolicaPresionArterial.AutoSize = true;
+            this.lblMmHgSistolicaPresionArterial.Location = new System.Drawing.Point(654, 104);
+            this.lblMmHgSistolicaPresionArterial.Name = "lblMmHgSistolicaPresionArterial";
+            this.lblMmHgSistolicaPresionArterial.Size = new System.Drawing.Size(48, 17);
+            this.lblMmHgSistolicaPresionArterial.TabIndex = 9;
+            this.lblMmHgSistolicaPresionArterial.Text = "mmHg";
             // 
-            // label91
+            // lblMomentoDiaPresionArterial
             // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(8, 107);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(112, 17);
-            this.label91.TabIndex = 7;
-            this.label91.Text = "Momento del día";
+            this.lblMomentoDiaPresionArterial.AutoSize = true;
+            this.lblMomentoDiaPresionArterial.Location = new System.Drawing.Point(8, 107);
+            this.lblMomentoDiaPresionArterial.Name = "lblMomentoDiaPresionArterial";
+            this.lblMomentoDiaPresionArterial.Size = new System.Drawing.Size(112, 17);
+            this.lblMomentoDiaPresionArterial.TabIndex = 7;
+            this.lblMomentoDiaPresionArterial.Text = "Momento del día";
             // 
-            // label90
+            // lblSistolicaPresionArterial
             // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(407, 104);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(161, 17);
-            this.label90.TabIndex = 6;
-            this.label90.Text = "Presión Arterial Sistólica";
+            this.lblSistolicaPresionArterial.AutoSize = true;
+            this.lblSistolicaPresionArterial.Location = new System.Drawing.Point(407, 104);
+            this.lblSistolicaPresionArterial.Name = "lblSistolicaPresionArterial";
+            this.lblSistolicaPresionArterial.Size = new System.Drawing.Size(161, 17);
+            this.lblSistolicaPresionArterial.TabIndex = 6;
+            this.lblSistolicaPresionArterial.Text = "Presión Arterial Sistólica";
             // 
-            // comboBox36
+            // cmbSitioMedicionPresionArterial
             // 
-            this.comboBox36.FormattingEnabled = true;
-            this.comboBox36.Location = new System.Drawing.Point(675, 22);
-            this.comboBox36.Name = "comboBox36";
-            this.comboBox36.Size = new System.Drawing.Size(157, 24);
-            this.comboBox36.TabIndex = 5;
+            this.cmbSitioMedicionPresionArterial.FormattingEnabled = true;
+            this.cmbSitioMedicionPresionArterial.Location = new System.Drawing.Point(675, 22);
+            this.cmbSitioMedicionPresionArterial.Name = "cmbSitioMedicionPresionArterial";
+            this.cmbSitioMedicionPresionArterial.Size = new System.Drawing.Size(157, 24);
+            this.cmbSitioMedicionPresionArterial.TabIndex = 5;
             // 
-            // comboBox35
+            // cmbPosicionPresionArterial
             // 
-            this.comboBox35.FormattingEnabled = true;
-            this.comboBox35.Location = new System.Drawing.Point(409, 22);
-            this.comboBox35.Name = "comboBox35";
-            this.comboBox35.Size = new System.Drawing.Size(140, 24);
-            this.comboBox35.TabIndex = 4;
+            this.cmbPosicionPresionArterial.FormattingEnabled = true;
+            this.cmbPosicionPresionArterial.Location = new System.Drawing.Point(409, 22);
+            this.cmbPosicionPresionArterial.Name = "cmbPosicionPresionArterial";
+            this.cmbPosicionPresionArterial.Size = new System.Drawing.Size(140, 24);
+            this.cmbPosicionPresionArterial.TabIndex = 4;
             // 
-            // comboBox34
+            // cmbExtremidadPresionArterial
             // 
-            this.comboBox34.FormattingEnabled = true;
-            this.comboBox34.Location = new System.Drawing.Point(90, 22);
-            this.comboBox34.Name = "comboBox34";
-            this.comboBox34.Size = new System.Drawing.Size(246, 24);
-            this.comboBox34.TabIndex = 3;
+            this.cmbExtremidadPresionArterial.FormattingEnabled = true;
+            this.cmbExtremidadPresionArterial.Location = new System.Drawing.Point(90, 22);
+            this.cmbExtremidadPresionArterial.Name = "cmbExtremidadPresionArterial";
+            this.cmbExtremidadPresionArterial.Size = new System.Drawing.Size(246, 24);
+            this.cmbExtremidadPresionArterial.TabIndex = 3;
+            this.cmbExtremidadPresionArterial.SelectedIndexChanged += new System.EventHandler(this.cmbExtremidadPresionArterial_SelectedIndexChanged);
             // 
-            // label89
+            // lblSitioMedicionPresionArterial
             // 
-            this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(554, 25);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(115, 17);
-            this.label89.TabIndex = 2;
-            this.label89.Text = "Sitio de medición";
+            this.lblSitioMedicionPresionArterial.AutoSize = true;
+            this.lblSitioMedicionPresionArterial.Location = new System.Drawing.Point(554, 25);
+            this.lblSitioMedicionPresionArterial.Name = "lblSitioMedicionPresionArterial";
+            this.lblSitioMedicionPresionArterial.Size = new System.Drawing.Size(115, 17);
+            this.lblSitioMedicionPresionArterial.TabIndex = 2;
+            this.lblSitioMedicionPresionArterial.Text = "Sitio de medición";
             // 
-            // label88
+            // lblPosicionPresionArterial
             // 
-            this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(342, 25);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(61, 17);
-            this.label88.TabIndex = 1;
-            this.label88.Text = "Posición";
+            this.lblPosicionPresionArterial.AutoSize = true;
+            this.lblPosicionPresionArterial.Location = new System.Drawing.Point(342, 25);
+            this.lblPosicionPresionArterial.Name = "lblPosicionPresionArterial";
+            this.lblPosicionPresionArterial.Size = new System.Drawing.Size(61, 17);
+            this.lblPosicionPresionArterial.TabIndex = 1;
+            this.lblPosicionPresionArterial.Text = "Posición";
             // 
-            // label87
+            // lblExtremidadPresionArterial
             // 
-            this.label87.AutoSize = true;
-            this.label87.Location = new System.Drawing.Point(6, 25);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(78, 17);
-            this.label87.TabIndex = 0;
-            this.label87.Text = "Extremidad";
+            this.lblExtremidadPresionArterial.AutoSize = true;
+            this.lblExtremidadPresionArterial.Location = new System.Drawing.Point(6, 25);
+            this.lblExtremidadPresionArterial.Name = "lblExtremidadPresionArterial";
+            this.lblExtremidadPresionArterial.Size = new System.Drawing.Size(78, 17);
+            this.lblExtremidadPresionArterial.TabIndex = 0;
+            this.lblExtremidadPresionArterial.Text = "Extremidad";
             // 
             // groupBox8
             // 
@@ -3883,15 +3866,55 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnAgregarSintoma
+            // fechaPA
             // 
-            this.btnAgregarSintoma.Location = new System.Drawing.Point(158, 365);
-            this.btnAgregarSintoma.Name = "btnAgregarSintoma";
-            this.btnAgregarSintoma.Size = new System.Drawing.Size(132, 29);
-            this.btnAgregarSintoma.TabIndex = 24;
-            this.btnAgregarSintoma.Text = "Agregar Síntoma";
-            this.btnAgregarSintoma.UseVisualStyleBackColor = true;
-            this.btnAgregarSintoma.Click += new System.EventHandler(this.btnAgregarSintoma_Click);
+            this.fechaPA.HeaderText = "Fecha";
+            this.fechaPA.Name = "fechaPA";
+            // 
+            // horaPA
+            // 
+            this.horaPA.HeaderText = "Hora";
+            this.horaPA.Name = "horaPA";
+            // 
+            // extremidadPA
+            // 
+            this.extremidadPA.HeaderText = "Extremidad";
+            this.extremidadPA.Name = "extremidadPA";
+            // 
+            // ubicacionPA
+            // 
+            this.ubicacionPA.HeaderText = "Ubicación de extremidad";
+            this.ubicacionPA.Name = "ubicacionPA";
+            // 
+            // posicionPA
+            // 
+            this.posicionPA.HeaderText = "Posición";
+            this.posicionPA.Name = "posicionPA";
+            // 
+            // sitioPA
+            // 
+            this.sitioPA.HeaderText = "Sitio de medición";
+            this.sitioPA.Name = "sitioPA";
+            // 
+            // sistolicaPA
+            // 
+            this.sistolicaPA.HeaderText = "Presión Sistólica";
+            this.sistolicaPA.Name = "sistolicaPA";
+            // 
+            // diastolicaPA
+            // 
+            this.diastolicaPA.HeaderText = "Presión Diastólica";
+            this.diastolicaPA.Name = "diastolicaPA";
+            // 
+            // pulsoPA
+            // 
+            this.pulsoPA.HeaderText = "Pulso";
+            this.pulsoPA.Name = "pulsoPA";
+            // 
+            // momentoPA
+            // 
+            this.momentoPA.HeaderText = "Momento del día";
+            this.momentoPA.Name = "momentoPA";
             // 
             // MenuPrincipal
             // 
@@ -3973,7 +3996,7 @@
             this.tabPage9.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPresionArterial)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -4239,36 +4262,29 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button btnAgregarDiagnostico;
-        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button btnAgregarPresionArterial;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Label label99;
-        private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.Label label94;
-        private System.Windows.Forms.Label label92;
-        private System.Windows.Forms.TextBox textBox49;
-        private System.Windows.Forms.Label label97;
-        private System.Windows.Forms.TextBox textBox48;
-        private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.Label label96;
-        private System.Windows.Forms.TextBox textBox47;
-        private System.Windows.Forms.ComboBox comboBox37;
-        private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.Label label91;
-        private System.Windows.Forms.Label label90;
-        private System.Windows.Forms.ComboBox comboBox36;
-        private System.Windows.Forms.ComboBox comboBox35;
-        private System.Windows.Forms.ComboBox comboBox34;
-        private System.Windows.Forms.Label label89;
-        private System.Windows.Forms.Label label88;
-        private System.Windows.Forms.Label label87;
-        private System.Windows.Forms.DataGridView dataGridView6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.Label lblValorMinPresionArterial;
+        private System.Windows.Forms.Label lblValorMaxPresionArterial;
+        private System.Windows.Forms.Label lblCategoriaPresionArterial;
+        private System.Windows.Forms.Label lblPromedioPresionArterial;
+        private System.Windows.Forms.TextBox txtPulsoPresionArterial;
+        private System.Windows.Forms.Label lblPulsoPresionArterial;
+        private System.Windows.Forms.TextBox txtDiastolicaPresionArterial;
+        private System.Windows.Forms.Label lblMmHgDiastolicaPresionArterial;
+        private System.Windows.Forms.Label lblDiastolicaPresionArterial;
+        private System.Windows.Forms.TextBox txtSistolicaPresionArterial;
+        private System.Windows.Forms.ComboBox cmbMomentoDiaPresionArterial;
+        private System.Windows.Forms.Label lblMmHgSistolicaPresionArterial;
+        private System.Windows.Forms.Label lblMomentoDiaPresionArterial;
+        private System.Windows.Forms.Label lblSistolicaPresionArterial;
+        private System.Windows.Forms.ComboBox cmbSitioMedicionPresionArterial;
+        private System.Windows.Forms.ComboBox cmbPosicionPresionArterial;
+        private System.Windows.Forms.ComboBox cmbExtremidadPresionArterial;
+        private System.Windows.Forms.Label lblSitioMedicionPresionArterial;
+        private System.Windows.Forms.Label lblPosicionPresionArterial;
+        private System.Windows.Forms.Label lblExtremidadPresionArterial;
+        private System.Windows.Forms.DataGridView dgvPresionArterial;
         private System.Windows.Forms.TextBox txtTipoDocPaciente;
         private System.Windows.Forms.TextBox txtLocalidadPaciente;
         private System.Windows.Forms.TextBox txtBarrioPaciente;
@@ -4332,8 +4348,8 @@
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.ComboBox cmbUbicacionPresionArterial;
+        private System.Windows.Forms.Label lblUbicacionPresionArterial;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Button btnRegistrarMedicacion;
         private System.Windows.Forms.Label label86;
@@ -4351,5 +4367,15 @@
         private System.Windows.Forms.TextBox txtIndicacionesEstudioARealizar;
         private System.Windows.Forms.ToolStripMenuItem generarNuevaConsultaToolStripMenuItem;
         private System.Windows.Forms.Button btnAgregarSintoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horaPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn extremidadPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ubicacionPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn posicionPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sitioPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sistolicaPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diastolicaPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pulsoPA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn momentoPA;
     }
 }

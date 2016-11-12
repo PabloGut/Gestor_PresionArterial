@@ -23,6 +23,7 @@ namespace Entidades.Clases
         public int id_pulso { set; get; }
         public List<SistemaLinfatico> territoriosExaminados { set; get; }
         public PulsoArterial pulso { set; get; }
+        public MedicionDePresionArterial medicion { set; get; }
         public RazonamientoDiagnostico razonamiento { set; get;}
 
     }

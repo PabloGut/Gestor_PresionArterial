@@ -52,6 +52,7 @@
     <Compile Include="AntecedenteMorbidoLN.cs" />
     <Compile Include="BarrioLN.cs" />
     <Compile Include="CaracterDelDolorLN.cs" />
+    <Compile Include="ClasificacionPresionArterialLN.cs" />
     <Compile Include="ComponenteDelTiempoLN.cs" />
     <Compile Include="ConsistenciaLN.cs" />
     <Compile Include="ConsultaLN.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />
     <Compile Include="ExamenGeneralLN.cs" />
+    <Compile Include="ExtremidadLN.cs" />
     <Compile Include="FamiliarLN.cs" />
     <Compile Include="FormaAdministracionLN.cs" />
     <Compile Include="FrecuenciaLN.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="LocalidadLN.cs" />
     <Compile Include="MedicamentoAlergiaLN.cs" />
     <Compile Include="MedicamentoLN.cs" />
+    <Compile Include="MedicionDePresionArterialLN.cs" />
     <Compile Include="MedidaLN.cs" />
     <Compile Include="ModificacionSintomaLN.cs" />
     <Compile Include="MomentoDiaLN.cs" />
@@ -89,12 +92,14 @@
     <Compile Include="NombreEstudioLN.cs" />
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
+    <Compile Include="PosicionLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />
     <Compile Include="PulsoArterialLN.cs" />
     <Compile Include="PulsoLN.cs" />
     <Compile Include="RazonamientoDiagnosticoLN.cs" />
     <Compile Include="SintomaLN.cs" />
     <Compile Include="SistemaLinfaticoLN.cs" />
+    <Compile Include="SitioMedicionLN.cs" />
     <Compile Include="SustanciaAmbienteLN.cs" />
     <Compile Include="SustanciaContactoPielLN.cs" />
     <Compile Include="SustanciaDrogaIlicitaLN.cs" />
@@ -106,6 +111,7 @@
     <Compile Include="TipoPartoLN.cs" />
     <Compile Include="TipoSintomaLN.cs" />
     <Compile Include="TraumatismoLN.cs" />
+    <Compile Include="UbicacionExtremidadLN.cs" />
     <Compile Include="UbicacionLN.cs" />
     <Compile Include="UnidadMedidaLN.cs" />
     <Compile Include="UsuarioLN.cs" />

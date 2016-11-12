@@ -59,11 +59,13 @@
     <Compile Include="BarrioDAO.cs" />
     <Compile Include="CadenaConexion.cs" />
     <Compile Include="CaracterDelDolorDAO.cs" />
+    <Compile Include="ClasificacionPresionArterialDAO.cs" />
     <Compile Include="ComponeneteDelTiempoDAO.cs" />
     <Compile Include="ConsistenciaDAO.cs" />
     <Compile Include="ConsultaDAO.cs" />
     <Compile Include="DejoDeFumarDAO.cs" />
     <Compile Include="DescripcionDelTiempoDAO.cs" />
+    <Compile Include="DetalleMedicionPresionArterialDAO.cs" />
     <Compile Include="DetallePulsoArterialDAO.cs" />
     <Compile Include="DiagnosticoDAO.cs" />
     <Compile Include="DomicilioDAO.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="EstudioDAO.cs" />
     <Compile Include="EstudioDiagnosticoPorImagenDAO.cs" />
     <Compile Include="ExamenGeneralDAO.cs" />
+    <Compile Include="ExtremidadDAO.cs" />
     <Compile Include="FamiliarDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -103,6 +106,7 @@
     <Compile Include="LocalidadDAO.cs" />
     <Compile Include="MedicamentoAlergiaDAO.cs" />
     <Compile Include="MedicamentoDAO.cs" />
+    <Compile Include="MedicionDePresionArterialDAO.cs" />
     <Compile Include="MedidaDAO.cs" />
     <Compile Include="ModificacionSintomaDAO.cs" />
     <Compile Include="MomentoDiaDAO.cs" />
@@ -111,6 +115,7 @@
     <Compile Include="OperacionesDAO.cs" />
     <Compile Include="PacienteDAO.cs" />
     <Compile Include="ParteDelCuerpoDAO.cs" />
+    <Compile Include="PosicionDAO.cs" />
     <Compile Include="PresentacionMedicamentoDAO.cs" />
     <Compile Include="ProfesionalMedicoDAO.cs" />
     <Compile Include="Program.cs" />
@@ -122,6 +127,7 @@
     <Compile Include="RazonamientoDiagnosticoDAO.cs" />
     <Compile Include="SintomaDAO.cs" />
     <Compile Include="SistemaLinfaticoDAO.cs" />
+    <Compile Include="SitioMedicionDAO.cs" />
     <Compile Include="SustanciaAmbienteDAO.cs" />
     <Compile Include="SustanciaContactoPielDAO.cs" />
     <Compile Include="SustanciaDrogaIlicitaDAO.cs" />
@@ -134,6 +140,7 @@
     <Compile Include="TipoSintomaDAO.cs" />
     <Compile Include="TraumatismoDAO.cs" />
     <Compile Include="UbicacionDAO.cs" />
+    <Compile Include="UbicacionExtremidadDAO.cs" />
     <Compile Include="UnidadMedidaDAO.cs" />
     <Compile Include="UsuarioDAO.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
