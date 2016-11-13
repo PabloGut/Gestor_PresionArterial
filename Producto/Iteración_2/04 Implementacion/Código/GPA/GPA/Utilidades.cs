@@ -62,13 +62,14 @@ namespace GPA
             strAl = strAl.Replace(".", ""); // Para remover el .
             return strAl;
         }
-        
+
         public static void cargarCombo<T>(ComboBox combo, List<T> lista, string valueMember, string displayMember)
         {
-            combo.DataSource = lista;
             combo.ValueMember = valueMember;
             combo.DisplayMember = displayMember;
+            combo.DataSource = lista;
         }
+
         public static void agregarColumnaAntecedentesMorbidos(DataGridView dgv)
         {
             string[] nombreColumnasAntecedenteMorbido = new string[6] { "Fecha de registro","Tipo", "Nombre", "Tratamiento", "Evolución", "Cantidad de tiempo en que ocurrió" };
@@ -82,6 +83,7 @@ namespace GPA
                 dgv.Columns.Add(columna);
             }
         }
+
         public static void mostrarFilaNoSeEncontraronResultados(DataGridView dgv)
         {
             dgv.DataSource = null;
@@ -97,6 +99,7 @@ namespace GPA
 
             dgv.Rows[0].Cells[0].Value = "No se encontraron resultados";
         }
+
         public static void presentarDatosEnDataGridView(DataTable dt, DataGridView dgv)
         {
             if (dt != null && dt.Rows.Count > 0)
@@ -116,6 +119,7 @@ namespace GPA
                 Utilidades.mostrarFilaNoSeEncontraronResultados(dgv);
             }
         }
+
         public static void agregarColumnasDataGridView(DataGridView dgv, List<String> nombreColumnas)
         {
             for (int i = 0; i < nombreColumnas.Count ; i++)

@@ -11,17 +11,12 @@ namespace GPA.Manejadores
     public class ManejadorRegistrarAtencionMedicaEnConsultorio
     {
         private MenuPrincipal pantalla;
-        /*
-        public void registrarAtencionMedicaEnConsultorio(MenuPrincipal mp){
-            pantalla=mp;
-            mostrarTiposDeDatos();
+
+        public void registrarAtencionMedicaEnConsultorio(MenuPrincipal mp)
+        {
+            pantalla = mp;
         }
 
-        public void mostrarTiposDeDatos()
-        {
-            pantalla.presentarAtencionEnConsultorio(CaracterDelDolorLN.mostrarCaracterDelDolor());
-        }
-         * */
         public void registrarSintomas(List<Sintoma> sintomas, int idConsulta)
         {
             SintomaLN.registrarSintomasDeConsulta(sintomas, idConsulta);
