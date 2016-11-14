@@ -510,7 +510,7 @@ namespace GPA
             RegistrarMedicamento formRegistrarMedicamento = new RegistrarMedicamento();
             formRegistrarMedicamento.ShowDialog();
             ManejadorRegistrarHC manejador = new ManejadorRegistrarHC();
-            pacienteSeleccionado.id_hc=manejador.mostrarIdHc(pacienteSeleccionado.id_tipoDoc, pacienteSeleccionado.nroDoc);
+            //pacienteSeleccionado.id_hc=manejador.mostrarIdHc(pacienteSeleccionado.id_tipoDoc, pacienteSeleccionado.nroDoc);
         }
 
         private void registrarProfesionalMédicoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -539,6 +539,13 @@ namespace GPA
             }
             manejadorConsultarHc = new ManejadorConsultarHC();
             hc = manejadorConsultarHc.mostrarHistoriaClinica(pacienteSeleccionado);
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            
 
             txtNroHistoriaClinica.Text = Convert.ToString(hc.nro_hc);
             mtbFechaCreacionHc.Text = Convert.ToString(hc.fecha);
@@ -564,26 +571,84 @@ namespace GPA
         }
         private void btnEnfermedades_Click(object sender, EventArgs e)
         {
-            DataTable dt= manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
+            presentarEnfermedades();
+        }
+        private void presentarEnfermedades()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
         }
         private void btnTraumatismos_Click(object sender, EventArgs e)
         {
+            presentarTraumatismos();
+        }
+        private void presentarTraumatismos()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosTraumatismos(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
         }
-
         private void btnOperaciones_Click(object sender, EventArgs e)
         {
+            presentarOperaciones();
+        }
+        private void presentarOperaciones()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosOperaciones(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
         }
         private void btnEmbarazosAbortos_Click(object sender, EventArgs e)
         {
+            presentarEmbarazos();
+        }
+        private void presentarEmbarazos()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAntecedentesGinecoObstetricos(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesGinecoObstetricos);
         }
-
         private void btnAbortos_Click(object sender, EventArgs e)
         {
 
@@ -591,6 +656,21 @@ namespace GPA
 
         private void btnAlergiaAlimentos_Click(object sender, EventArgs e)
         {
+            presentarAlergiaAlimentos();
+        }
+        private void presentarAlergiaAlimentos()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAlergiasAlimentos(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
         }
@@ -646,28 +726,84 @@ namespace GPA
 
         private void btnAlergiaSustanciaAmbiente_Click(object sender, EventArgs e)
         {
+            presentarAlergiaSustanciaAmbiente();
+        }
+        private void presentarAlergiaSustanciaAmbiente()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAlergiasSustanciasAmbiente(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
         }
-
         private void btnAlergiaSustanciaContactoPiel_Click(object sender, EventArgs e)
         {
+            presentarAlergiaSustanciaContactoPiel();
+        }
+        private void presentarAlergiaSustanciaContactoPiel()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAlergiasSustanciaContactoPiel(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
         }
-
         private void btnAlergiaInsectos_Click(object sender, EventArgs e)
         {
+            presentarAlergiaInsectos();
+        }
+        private void presentarAlergiaInsectos()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAlergiasInsectos(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
         }
-
         private void btnAlergiaMedicamentos_Click(object sender, EventArgs e)
         {
+            presentarAlergiaMedicamentos();
+        }
+        private void presentarAlergiaMedicamentos()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             DataTable dt = manejadorConsultarHc.mostrarAlergiasMedicamentos(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
         }
-
         private void dgvAntecedentesMorbidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -1476,6 +1612,28 @@ namespace GPA
             sintoma.fechaRegistro = Convert.ToDateTime(mtbFechaConsulta.Text);
 
             listaSintoma.Add(sintoma);
+        }
+
+        private void btnConsultas_Click(object sender, EventArgs e)
+        {
+            presentarConsultas();
+        }
+        public void presentarConsultas()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DataTable dt = manejadorConsultarHc.mostrarConsultasAnteriores(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvConsultas);
         }
     }
 }

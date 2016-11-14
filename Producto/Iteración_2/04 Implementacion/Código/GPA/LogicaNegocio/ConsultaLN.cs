@@ -40,5 +40,9 @@ namespace LogicaNegocio
         {
             ConsultaDAO.registrarConsultaYExameGeneral(consulta);
         }
+        public static DataTable mostrarConsultasAnteriores(int idHc)
+        {
+            return ConsultaDAO.mostrarConsultasAnteriores(idHc);
+        }
     }
 }

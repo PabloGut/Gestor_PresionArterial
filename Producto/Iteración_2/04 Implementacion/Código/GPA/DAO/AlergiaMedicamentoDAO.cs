@@ -85,7 +85,7 @@ namespace DAO
 
                 string consulta = @"select am.fechaRegistro as 'Fecha de registro', ma.nombre as 'Nombre del alérgeno', am.efectos as 'Efectos de la alergia'
                                     from AlergiaMedicamento am, MedicamentoAlergia ma
-                                    where am.id_hc_fk='57'
+                                    where am.id_hc_fk=@idHc
                                     and am.id_medicamentoAlergia_fk=ma.id_medicamentoAlergia";
 
                 SqlCommand cmd = new SqlCommand();

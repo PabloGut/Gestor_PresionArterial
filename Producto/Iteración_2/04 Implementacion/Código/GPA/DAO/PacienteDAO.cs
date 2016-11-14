@@ -419,7 +419,8 @@ namespace DAO
                     paciente.nroCelular = Convert.ToInt64(dr["nroCelular"].ToString());
                     paciente.mail = dr["email"].ToString();
                     paciente.fechaNacimiento = Convert.ToDateTime(dr["fecha_nacimiento"].ToString());
-                    paciente.altura =Convert.ToInt32(dr["altura"].ToString());
+                    //paciente.altura =Convert.ToInt32(dr["altura"].ToString());
+                    paciente.altura = 0;
                     paciente.peso = (int)dr["peso"];
                     paciente.id_domicilio = (int)dr["id_domicilio_fk"];
                     paciente.id_tipodoc_medico = (int)dr["id_profesionalMedico_tipoDoc_fk"];

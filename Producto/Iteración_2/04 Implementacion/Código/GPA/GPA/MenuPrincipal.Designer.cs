@@ -133,6 +133,9 @@
             this.mtbHoraCreacionHc = new System.Windows.Forms.MaskedTextBox();
             this.txtMotivoPrimeraConsulta = new System.Windows.Forms.TextBox();
             this.mtbFechaCreacionHc = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnConsultas = new System.Windows.Forms.Button();
+            this.dgvConsultas = new System.Windows.Forms.DataGridView();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.btnAlergiaMedicamentos = new System.Windows.Forms.Button();
             this.btnAlergiaInsectos = new System.Windows.Forms.Button();
@@ -293,6 +296,16 @@
             this.cmbUbicacionPresionArterial = new System.Windows.Forms.ComboBox();
             this.lblUbicacionPresionArterial = new System.Windows.Forms.Label();
             this.dgvPresionArterial = new System.Windows.Forms.DataGridView();
+            this.fechaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.extremidadPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ubicacionPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.posicionPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sitioPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sistolicaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diastolicaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pulsoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.momentoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregarPresionArterial = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.lblValorMinPresionArterial = new System.Windows.Forms.Label();
@@ -378,16 +391,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.fechaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.extremidadPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ubicacionPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.posicionPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sitioPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sistolicaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diastolicaPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pulsoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.momentoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -411,6 +414,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesGinecoObstetricos)).BeginInit();
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).BeginInit();
+            this.groupBox16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultas)).BeginInit();
             this.groupBox14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlergias)).BeginInit();
             this.tabPage4.SuspendLayout();
@@ -1265,6 +1270,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox16);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox14);
             this.splitContainer1.Size = new System.Drawing.Size(852, 606);
             this.splitContainer1.SplitterDistance = 430;
@@ -1451,6 +1457,35 @@
             this.mtbFechaCreacionHc.Size = new System.Drawing.Size(100, 20);
             this.mtbFechaCreacionHc.TabIndex = 9;
             this.mtbFechaCreacionHc.ValidatingType = typeof(System.DateTime);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.btnConsultas);
+            this.groupBox16.Controls.Add(this.dgvConsultas);
+            this.groupBox16.Location = new System.Drawing.Point(3, 198);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(410, 174);
+            this.groupBox16.TabIndex = 20;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Consultas anteriores";
+            // 
+            // btnConsultas
+            // 
+            this.btnConsultas.Location = new System.Drawing.Point(6, 30);
+            this.btnConsultas.Name = "btnConsultas";
+            this.btnConsultas.Size = new System.Drawing.Size(75, 23);
+            this.btnConsultas.TabIndex = 1;
+            this.btnConsultas.Text = "Consultas";
+            this.btnConsultas.UseVisualStyleBackColor = true;
+            this.btnConsultas.Click += new System.EventHandler(this.btnConsultas_Click);
+            // 
+            // dgvConsultas
+            // 
+            this.dgvConsultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsultas.Location = new System.Drawing.Point(6, 59);
+            this.dgvConsultas.Name = "dgvConsultas";
+            this.dgvConsultas.Size = new System.Drawing.Size(398, 109);
+            this.dgvConsultas.TabIndex = 0;
             // 
             // groupBox14
             // 
@@ -3066,6 +3101,56 @@
             this.dgvPresionArterial.Size = new System.Drawing.Size(483, 144);
             this.dgvPresionArterial.TabIndex = 20;
             // 
+            // fechaPA
+            // 
+            this.fechaPA.HeaderText = "Fecha";
+            this.fechaPA.Name = "fechaPA";
+            // 
+            // horaPA
+            // 
+            this.horaPA.HeaderText = "Hora";
+            this.horaPA.Name = "horaPA";
+            // 
+            // extremidadPA
+            // 
+            this.extremidadPA.HeaderText = "Extremidad";
+            this.extremidadPA.Name = "extremidadPA";
+            // 
+            // ubicacionPA
+            // 
+            this.ubicacionPA.HeaderText = "Ubicación de extremidad";
+            this.ubicacionPA.Name = "ubicacionPA";
+            // 
+            // posicionPA
+            // 
+            this.posicionPA.HeaderText = "Posición";
+            this.posicionPA.Name = "posicionPA";
+            // 
+            // sitioPA
+            // 
+            this.sitioPA.HeaderText = "Sitio de medición";
+            this.sitioPA.Name = "sitioPA";
+            // 
+            // sistolicaPA
+            // 
+            this.sistolicaPA.HeaderText = "Presión Sistólica";
+            this.sistolicaPA.Name = "sistolicaPA";
+            // 
+            // diastolicaPA
+            // 
+            this.diastolicaPA.HeaderText = "Presión Diastólica";
+            this.diastolicaPA.Name = "diastolicaPA";
+            // 
+            // pulsoPA
+            // 
+            this.pulsoPA.HeaderText = "Pulso";
+            this.pulsoPA.Name = "pulsoPA";
+            // 
+            // momentoPA
+            // 
+            this.momentoPA.HeaderText = "Momento del día";
+            this.momentoPA.Name = "momentoPA";
+            // 
             // btnAgregarPresionArterial
             // 
             this.btnAgregarPresionArterial.Location = new System.Drawing.Point(260, 99);
@@ -3866,56 +3951,6 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // fechaPA
-            // 
-            this.fechaPA.HeaderText = "Fecha";
-            this.fechaPA.Name = "fechaPA";
-            // 
-            // horaPA
-            // 
-            this.horaPA.HeaderText = "Hora";
-            this.horaPA.Name = "horaPA";
-            // 
-            // extremidadPA
-            // 
-            this.extremidadPA.HeaderText = "Extremidad";
-            this.extremidadPA.Name = "extremidadPA";
-            // 
-            // ubicacionPA
-            // 
-            this.ubicacionPA.HeaderText = "Ubicación de extremidad";
-            this.ubicacionPA.Name = "ubicacionPA";
-            // 
-            // posicionPA
-            // 
-            this.posicionPA.HeaderText = "Posición";
-            this.posicionPA.Name = "posicionPA";
-            // 
-            // sitioPA
-            // 
-            this.sitioPA.HeaderText = "Sitio de medición";
-            this.sitioPA.Name = "sitioPA";
-            // 
-            // sistolicaPA
-            // 
-            this.sistolicaPA.HeaderText = "Presión Sistólica";
-            this.sistolicaPA.Name = "sistolicaPA";
-            // 
-            // diastolicaPA
-            // 
-            this.diastolicaPA.HeaderText = "Presión Diastólica";
-            this.diastolicaPA.Name = "diastolicaPA";
-            // 
-            // pulsoPA
-            // 
-            this.pulsoPA.HeaderText = "Pulso";
-            this.pulsoPA.Name = "pulsoPA";
-            // 
-            // momentoPA
-            // 
-            this.momentoPA.HeaderText = "Momento del día";
-            this.momentoPA.Name = "momentoPA";
-            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3961,6 +3996,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesGinecoObstetricos)).EndInit();
             this.groupBox12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).EndInit();
+            this.groupBox16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultas)).EndInit();
             this.groupBox14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlergias)).EndInit();
             this.tabPage4.ResumeLayout(false);
@@ -4377,5 +4414,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn diastolicaPA;
         private System.Windows.Forms.DataGridViewTextBoxColumn pulsoPA;
         private System.Windows.Forms.DataGridViewTextBoxColumn momentoPA;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Button btnConsultas;
+        private System.Windows.Forms.DataGridView dgvConsultas;
     }
 }

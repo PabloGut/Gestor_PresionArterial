@@ -52,6 +52,10 @@ namespace GPA.Manejadores
         {
             return AlergiaMedicamentoLN.mostrarAlergiasMedicamentos(idHc);
         }
+        public DataTable mostrarConsultasAnteriores(int idHc)
+        {
+            return ConsultaLN.mostrarConsultasAnteriores(idHc);
+        }
 
     }
 }
