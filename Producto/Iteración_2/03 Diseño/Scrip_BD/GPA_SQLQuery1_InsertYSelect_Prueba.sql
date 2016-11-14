@@ -611,7 +611,7 @@ add id_razonamiento_fk int
 alter table ExamenGeneral
 add foreign key(id_razonamiento_fk) references RazonamientoDiagnostico(id_razonamiento)
 
-select * from Consulta
+select * from ExamenGeneral
 
 sp_rename 'PulsoArterial.ausculacion', 'auscultacion' --Cambia nombre de columna
 
@@ -624,3 +624,10 @@ select IDENT_CURRENT('Consulta')
 select IDENT_CURRENT('RazonamientoDiagnostico')
 select IDENT_CURRENT('PulsoArterial')
 select IDENT_CURRENT('ExamenGeneral')
+
+select c.nroConsulta, c.fechaConsulta,c.horaConsulta,c.motivoConsulta, ex.posicionYDecubito,ex.marchaYDeambulacion,ex.facieExpresionFisonomia,ex.concienciaEstadoPsiquico,ex.constitucionEstadoNutritivo,ex.peso,ex.talla
+from Consulta c, ExamenGeneral ex, Historia_Clinica hc
+where c.id_examenGeneral_fk=ex.id_examenGeneral
+and hc.id_hc=c.id_hc_fk and hc.id_hc='56'
+
+select * from AlergiaMedicamento

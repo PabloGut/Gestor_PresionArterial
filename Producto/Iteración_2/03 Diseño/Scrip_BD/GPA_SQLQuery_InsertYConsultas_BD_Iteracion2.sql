@@ -868,3 +868,4 @@ values('HTA grado o nivel 2',160,999,100,999)
 insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
 values('HTA sistólica o aislada',140,999,0,90)
 /*--------------------------*/
+
