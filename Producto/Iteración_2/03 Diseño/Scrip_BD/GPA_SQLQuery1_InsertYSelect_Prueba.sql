@@ -542,11 +542,11 @@ and ISNULL(ag.id_TipoParto3_fk,0)=0
 
 select * from Historia_Clinica
 
-select * from AntecedentesMorbidos
+select * from AntecedentesGinecoObstetricos
 
 select ag.fechaRegistro, ag.cantidadEmbarazos,CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino', ab.cantidadTotal as 'Cantidad de abortos',CONCAT(ab.cantidadProvocados,' Aborto/s ',ta2.nombre) as 'Abortos provocados', CONCAT(ab.cantidadEspontaneo,' Aborto/s ',ta1.nombre) as 'Abortos espontaneos', ab.nroHijosVivos as 'Numero de hijos vivos',ab.problemasAsociadosAlEmbarazo as 'Problemas asociados al embarazo' 
 from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2, TipoParto tp3, Aborto ab, TipoAborto ta1,TipoAborto ta2
-where hc.id_hc=ag.id_hc_fk and hc.id_hc='18'
+where hc.id_hc=ag.id_hc_fk and hc.id_hc='59'
 and ag.id_TipoParto1_fk=tp1.id_TipoParto
 and ag.id_TipoParto2_fk=tp2.id_TipoParto
 and ag.id_TipoParto3_fk=tp3.id_TipoParto
@@ -630,4 +630,4 @@ from Consulta c, ExamenGeneral ex, Historia_Clinica hc
 where c.id_examenGeneral_fk=ex.id_examenGeneral
 and hc.id_hc=c.id_hc_fk and hc.id_hc='56'
 
-select * from AlergiaMedicamento
+select * from AntecedentesGinecoObstetricos
