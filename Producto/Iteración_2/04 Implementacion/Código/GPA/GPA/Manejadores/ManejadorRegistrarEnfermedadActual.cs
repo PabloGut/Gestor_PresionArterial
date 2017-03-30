@@ -39,5 +39,9 @@ namespace GPA.Manejadores
         {
             return ElementoDeModificacionLN.mostrarElementosDeModificacion();
         }
+        public void registrarSintomas(List<Sintoma> sintomas, int idHc)
+        {
+            SintomaLN.registrarSintomas(sintomas, idHc);
+        }
     }
 }

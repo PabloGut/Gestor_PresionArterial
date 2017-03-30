@@ -31,5 +31,9 @@ namespace GPA.Manejadores
         {
             return ElementoDelTiempoLN.mostrarElementosDelTiempo();
         }
+        public void registrarAntecedentesMorbidos(List<AntecedenteMorbido> antecedentes, int idHc)
+        {
+            AntecedenteMorbidoLN.registrarAntecedentesMorbidos(antecedentes, idHc);
+        }
     }
 }

@@ -27,7 +27,28 @@ namespace GPA
         ManejadorRegistrarAlergias manejadorRegistrarAlergias;
         ManejadorRegistrarHabitosTabaquismo manejadorRegistrarHabitosTabaquismo;
         ManejadorRegistrarHabitoAlcoholismo manejadorRegistrarHabitosAlcoholismo;
-        ManejadorRegistrarHabitosDrogasIlicitas manajadorRegistrarHabitosDrogasIlicitas;
+        ManejadorRegistrarHabitosDrogasIlicitas manejadorRegistrarHabitosDrogasIlicitas;
+        ManejadorRegistrarDrogasLicitas manejadorRegistrarDrogasLicitas;
+        ManejadorRegistrarHabitosActividadFisica manejadorRegistrarHabitosActividadFisica;
+
+        List<Sintoma> listaSintomas;
+
+        List<AntecedenteMorbido> listaAntecedentesMorbidos;
+        AntecedenteGinecoObstetrico antecedenteGinecoObtetrico;
+
+        List<AntecedenteFamiliar> listaAntecedentesFamiliares;
+
+        List<AlergiaAlimento> listaAlergiasAlimento;
+        List<AlergiaSustanciaAmbiente> listaAlergiasSustanciaAmbiente;
+        List<AlergiaSustanciaContactoPiel> listaAlergiaSustanciaContactoPiel;
+        List<AlergiaInsecto> listaAlergiaInsectos;
+        List<AlergiaMedicamento> listaAlergiaMedicamento;
+
+        List<HabitoTabaquismo> listaHabitosTabaquismo;
+        List<HabitoAlcoholismo> listaHabitosAlcoholismo;
+        List<HabitoDrogasIlicitas> listaHabitosDrogasIlicitas;
+        List<HabitoMedicamento> listaHabitosMedicamentos;
+        List<HabitoActividadFisica> listaHabitosActividadFisica;
 
         public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
         {
@@ -42,12 +63,29 @@ namespace GPA
             manejadorRegistrarAlergias = new ManejadorRegistrarAlergias();
             manejadorRegistrarHabitosTabaquismo = new ManejadorRegistrarHabitosTabaquismo();
             manejadorRegistrarHabitosAlcoholismo = new ManejadorRegistrarHabitoAlcoholismo();
-            manajadorRegistrarHabitosDrogasIlicitas = new ManejadorRegistrarHabitosDrogasIlicitas();
+            manejadorRegistrarHabitosDrogasIlicitas = new ManejadorRegistrarHabitosDrogasIlicitas();
+            manejadorRegistrarDrogasLicitas = new ManejadorRegistrarDrogasLicitas();
+            manejadorRegistrarHabitosActividadFisica = new ManejadorRegistrarHabitosActividadFisica();
+
+            listaSintomas = new List<Sintoma>();
+            listaAntecedentesMorbidos = null;
+            antecedenteGinecoObtetrico = null;
+            listaAntecedentesFamiliares = null;
+            listaAlergiasAlimento = null;
+            listaAlergiasSustanciaAmbiente = null;
+            listaAlergiaSustanciaContactoPiel = null;
+            listaAlergiaInsectos = null;
+            listaAlergiaMedicamento = null;
+            listaHabitosTabaquismo = null;
+            listaHabitosAlcoholismo = null;
+            listaHabitosDrogasIlicitas = null;
+            listaHabitosMedicamentos = null;
+            listaHabitosActividadFisica = null;
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
             habilitarDeshabilitarTabPageYBotones(false);
-            rbSiDolor.Checked = true;
+            
             presentarDatosPacienteYMedico();
 
             presentarFechaYHoraActual();
@@ -81,10 +119,7 @@ namespace GPA
             presentarTiposAborto(cboTipoAborto2, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeAbortos(), "id_tipoAborto", "nombre");
 
             presentarFamiliares(cboFamiliar, manejadorRegistrarAntecedentesPatologicosFamiliares.mostrarFamiliares(), "id_familiar", "nombre");
-            rbSiViveFamiliar.Checked = true;
-            rbNoOtraEnfermedad.Checked = true;
-            txtDescripcionOtraEnfermedad.Enabled=false;
-            txtCausaMuerte.Enabled = false;
+          
 
             presentarAlimentos(cboAlimentos, manejadorRegistrarAlergias.mostrarAlimentos(), "id_alimento", "nombre");
 
@@ -94,7 +129,7 @@ namespace GPA
 
             presentarInsectos(cboInsectos, manejadorRegistrarAlergias.mostrarInsectos(), "id_insecto", "nombre");
 
-            presentarNombreMedicamentos(cboMedicamentos, manejadorRegistrarAlergias.mostrarNombreMedicamentos(), "id_medicamento", "nombreGenerico");
+            presentarNombreMedicamentosQueProducenAlergia(cboMedicamentosAlergia, manejadorRegistrarAlergias.mostrarMedicamentosQueProducenAlergias(), "idMedicamentoAlergia", "nombre");
 
             presentarNombreElementosQueFuma(cboElementoQueFuma, manejadorRegistrarHabitosTabaquismo.mostrarNombreElementoQueFuma(), "id_elementoQueFuma", "nombre");
 
@@ -114,10 +149,71 @@ namespace GPA
 
             presentarMedidasBebidasAlcoholicas(cboMedidaConsumeAlcohol, manejadorRegistrarHabitosAlcoholismo.mostrarMedidasBebidasAlcoholicas(), "id_medida", "nombre");
 
-            presentarSustanciasDrogasIlicitas(cboSustanciaDrogaIlicita, manajadorRegistrarHabitosDrogasIlicitas.mostrarSustanciasDrogasIlicitas(), "id_sustancia", "nombre");
+            presentarSustanciasDrogasIlicitas(cboSustanciaDrogaIlicita, manejadorRegistrarHabitosDrogasIlicitas.mostrarSustanciasDrogasIlicitas(), "id_sustancia", "nombre");
 
-            presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manajadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+            presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manejadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
+            presentarMedicamento(cboNombreGenerico, manejadorRegistrarDrogasLicitas.mostrarNombresMedicamento(),"id_medicamento", "nombreGenerico");
+
+            presentarMomentosDelDia(cboMomentoDia1, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
+
+            presentarMomentosDelDia(cboMomentoDia2, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
+
+            presentarMomentosDelDia(cboMomentoDia3, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento1, manejadorRegistrarDrogasLicitas.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento2, manejadorRegistrarDrogasLicitas.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento3, manejadorRegistrarDrogasLicitas.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+
+            presentarElementosDelTiempo(cboElementoTiempoMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+
+            presentarElementosDelTiempo(cboElementoTiempoCancelacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
+            
+
+            presentarFrecuenciasDeConsumo(cboFrecuencia, manejadorRegistrarDrogasLicitas.mostrarFrecuencias(), "id_frecuencia", "nombre");
+
+            presentarActividadFisica(cboActividadFisica, manejadorRegistrarHabitosActividadFisica.mostrarActividadFisica(), "id_actividadFisica", "nombre");
+
+            presentarGradosActividadFisica(cboGradoActividadFisica, manejadorRegistrarHabitosActividadFisica.mostrarGradosActividadFisica(), "id_gradoActividadFisica", "nombre");
+
+            presentarIntensidadesActividadFisica(cboIntensidad, manejadorRegistrarHabitosActividadFisica.mostrarIntensidadActividadFisica(), "id_intensidad", "nombre");
+
+            agregarColumnasSintomas();
+            agregarColumnaAntecedentes();
+            agregarColumnaAlergias();
+            agregarColumnaHabitos();
+
+            inicializarComponentes();
+        }
+        public void inicializarComponentes()
+        {
+         
+            rbNoDolor.Checked = true;
+
+            rbNoPresentaAntecedentesMorbidos.Checked = true;
+            rbNoTieneEmbarazos.Checked = true;
+            rbNoTieneAbortos.Checked = true;
+
+            rbSiViveFamiliar.Checked = true;
+            rbNoOtraEnfermedad.Checked = true;
+            txtDescripcionOtraEnfermedad.Enabled = false;
+            txtCausaMuerte.Enabled = false;
+
+            rbNoAlergicoAlimentos.Checked = true;
+            rbNoAlergiaSustanciaAmbiente.Checked = true;
+            rbNoAlergiaSustanciaContactoPiel.Checked = true;
+            rbNoAlergiaInsecto.Checked = true;
+            rbNoAlergiaMedicamento.Checked = true;
+
+            rbNoFuma.Checked = true;
+            rbNoConsumeAlcohol.Checked = true;
+            rbNoConsumeDrogas.Checked = true;
+            rbNoConsumeMedicamentos.Checked = true;
+            rbMedicamentoActual.Checked = true;
+            rbNoActividadFisica.Checked = true;
+            
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -316,9 +412,9 @@ namespace GPA
            * El valor de retorno es void.
            * Llama al método cargarCombo.
          */
-        public void presentarNombreMedicamentos(ComboBox combo, List<Medicamento> medicamentos, string valueMember, string displayMember)
+        public void presentarNombreMedicamentosQueProducenAlergia(ComboBox combo, List<MedicamentoAlergia> medicamentosAlergia, string valueMember, string displayMember)
         {
-            cargarCombo(combo, medicamentos, valueMember, displayMember);
+            cargarCombo(combo, medicamentosAlergia, valueMember, displayMember);
         }
         /*
           * Método para mostrar, los nombres de elementos utilizados para fumar,  en el combobox.
@@ -361,6 +457,7 @@ namespace GPA
             cargarCombo(combo, medidas, valueMember, displayMember);
             
         }
+        
         /*
        * Método para mostrar, las sustancias que son drogas ilicitas,  en el combobox.
        * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaDrogaIlicita, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
@@ -371,6 +468,106 @@ namespace GPA
         {
             cargarCombo(combo, sustancias, valueMember, displayMember);
 
+        }
+        /*
+        * Método para mostrar los nombres de medicamentos,  en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos Medicamento, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+        */
+        public void presentarMedicamento(ComboBox combo, List<Medicamento> medicamento, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, medicamento, valueMember, displayMember);
+        }
+        /*
+          * Método para mostrar los nombres comerciales de los medicamentos,  en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos NombreComercial, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+          */
+        public void presentarNombresComerciales(ComboBox combo, List<NombreComercial> nombresComerciales, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, nombresComerciales, valueMember, displayMember);
+        }
+        /*
+          * Método para presentar unidades de medida en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos UnidadMedida, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+         */
+        public void presentarUnidadMedida(ComboBox combo, List<UnidadDeMedida> unidadesDeMedida, string valueMember, string displayMember)
+        {
+            cargarCombo(cboUnidadMedida, unidadesDeMedida, valueMember, displayMember);
+        }
+        /*
+         * Método para presentar FormasAdministracion en el combobox.
+         * Recibe como parámetro la referencia del ComboBox, una lista de objetos FormaAdministracion, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+         * El valor de retorno es void.
+         * Llama al método cargarCombo.
+        */
+        public void presentarFormaAdministracion(ComboBox combo, List<FormaAdministracion> formasAdministracion, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, formasAdministracion, valueMember, displayMember);
+        }
+        /*
+        * Método para presentar presentaciones de medicamentos en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos PresentacionMedicamento, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+       */
+        public void presentarPresentacionMedicamento(ComboBox combo, List<PresentacionMedicamento> presentacionesMedicamento, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, presentacionesMedicamento, valueMember, displayMember);
+        }
+        /*
+           * Método para presentar presentaciones momentos del dia en el combobox.
+           * Recibe como parámetro la referencia del ComboBox, una lista de objetos MomentoDia, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+           * El valor de retorno es void.
+           * Llama al método cargarCombo.
+          */
+        public void presentarMomentosDelDia(ComboBox combo, List<MomentoDia> momentoDia, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, momentoDia, valueMember, displayMember);
+        }
+        /*
+           * Método para presentar frecuencias de consumo de medicamento en el combobox.
+           * Recibe como parámetro la referencia del ComboBox, una lista de objetos Frecuencia, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+           * El valor de retorno es void.
+           * Llama al método cargarCombo.
+          */
+        public void presentarFrecuenciasDeConsumo(ComboBox combo, List<Frecuencia> frecuencias, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, frecuencias, valueMember, displayMember);
+        }
+        /*
+          * Método para presentar las actividades física en el combobox.
+          * Recibe como parámetro la referencia del ComboBox, una lista de objetos ActividadFisica, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+          * El valor de retorno es void.
+          * Llama al método cargarCombo.
+         */
+        public void presentarActividadFisica(ComboBox combo, List<ActividadFisica> actividades, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, actividades, valueMember, displayMember);
+        }
+        /*
+        * Método para presentar los grados de actividad física en el combobox.
+        * Recibe como parámetro la referencia del ComboBox, una lista de objetos GradoActividadFisica, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+        * El valor de retorno es void.
+        * Llama al método cargarCombo.
+       */
+        public void presentarGradosActividadFisica(ComboBox combo, List<GradoActividadFisica> grados, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, grados, valueMember, displayMember);
+        }
+        /*
+       * Método para presentar intensidades de la actividad física en el combobox.
+       * Recibe como parámetro la referencia del ComboBox, una lista de objetos IntensidadActividadFisica, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
+       * El valor de retorno es void.
+       * Llama al método cargarCombo.
+      */
+        public void presentarIntensidadesActividadFisica(ComboBox combo, List<IntensidadActividadFisica> intensidades, string valueMember, string displayMember)
+        {
+            cargarCombo(combo, intensidades, valueMember, displayMember);
         }
         /*
          * Método para cargar un ComboBox.
@@ -519,9 +716,8 @@ namespace GPA
 
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
-
+            registrarHistoriaClinica();
         }
-
         private void rbSiDolor_CheckedChanged(object sender, EventArgs e)
         {
             cboCaracterDolor.Enabled = true;
@@ -552,10 +748,6 @@ namespace GPA
                  default:
                      break;
              }
-            
-                
-            
-            
         }
 
         private void rbSiOtraEnfermedad_CheckedChanged(object sender, EventArgs e)
@@ -572,5 +764,1521 @@ namespace GPA
         {
 
         }
+
+        private void cboNombreGenerico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idMedicamento;
+            Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+           presentarNombresComerciales(cboNombreComercial, manejadorRegistrarDrogasLicitas.mostrarNombresComercialDeMedicamento(idMedicamento),"id_nombreComercial","nombre");
+        }
+
+        private void cboMedidaConsumeAlcohol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Medida medida= (Medida)cboMedidaConsumeAlcohol.SelectedItem;
+            txtDescripcionMedida.Text = medida.descripcion;
+        }
+
+        private void txtDescripcionMedida_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboNombreComercial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentarDatosDeLaEspecificacion();
+        }
+        public void presentarDatosDeLaEspecificacion()
+        {
+            int idMedicamento;
+            int idNombreComercial;
+            Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+            Int32.TryParse(cboNombreComercial.SelectedValue.ToString(), out idNombreComercial);
+
+            presentarUnidadMedida(cboUnidadMedida, manejadorRegistrarDrogasLicitas.mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_unidadMedida", "nombre");
+
+            presentarFormaAdministracion(cboFormaAdministración, manejadorRegistrarDrogasLicitas.mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_formaAdministracion", "nombre");
+
+            presentarPresentacionMedicamento(cboPresentacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_presentacionMedicamento", "nombre");
+
+            UnidadDeMedida unidad= (UnidadDeMedida) cboUnidadMedida.SelectedItem;
+            PresentacionMedicamento presentacion= (PresentacionMedicamento) cboPresentacionMedicamento.SelectedItem;
+            FormaAdministracion formaAdministracion= (FormaAdministracion) cboFormaAdministración.SelectedItem;
+
+            cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+            cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+        }
+
+        private void cboGradoActividadFisica_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GradoActividadFisica grado = (GradoActividadFisica)cboGradoActividadFisica.SelectedItem;
+            txtDescripcionGradoActividadFisica.Text = grado.descripcion;
+        }
+
+        private void btnAgregarSintoma_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewSintomas();
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los sintomas.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewSintomas()
+        {
+            Sintoma sintoma = new Sintoma();
+
+            string descripcionQueSiente = "No precisa";
+            string caracterDolor = "No precisa";
+            string haciaDondeIrradia = "No precisa";
+            string fechaInicio = "No precisa";
+            string cantidadTiempoDeComienzo = "No precisa";
+            string cuandoComenzo = "No precisa";
+            string comoModificaSintoma = "No precisa";
+            string elementoModificacionSintoma = "No precisa";
+            string observaciones = "No precisa";
+
+            TipoSintoma nombreSintoma = (TipoSintoma)cboQueSienteElPaciente.SelectedItem;
+            sintoma.id_tipoSintoma = nombreSintoma.id_tipoSintoma;
+
+            ParteDelCuerpo parteCuerpo = (ParteDelCuerpo)cboParteCuerpo.SelectedItem;
+            sintoma.id_parteCuerpo = parteCuerpo.id_parteCuerpo;
+            
+            if (string.IsNullOrEmpty(txtDescQueSientePaciente.Text) == false)
+            {
+                descripcionQueSiente = txtDescQueSientePaciente.Text;
+            }
+            sintoma.descripcion = descripcionQueSiente;
+
+            if (rbSiDolor.Checked == true && cboCaracterDolor.SelectedIndex>0)
+            {
+                CaracterDelDolor caracter = (CaracterDelDolor)cboCaracterDolor.SelectedItem;
+                caracterDolor = caracter.nombre;
+                sintoma.id_caracterDolor = caracter.id_caracterDelDolor;
+            }
+
+            if (string.IsNullOrEmpty(txtHaciaDondeIrradia.Text) == false)
+            {
+                haciaDondeIrradia = txtHaciaDondeIrradia.Text;
+            }
+            sintoma.haciaDondeIrradia = haciaDondeIrradia;
+
+            if (mtbFechaComienzoSintoma.MaskFull==true)
+            {
+                fechaInicio = mtbFechaComienzoSintoma.Text;
+                sintoma.fechaInicioSintoma = Convert.ToDateTime(mtbFechaComienzoSintoma.Text);
+            }
+            
+            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false && cboElementoTiempo.SelectedIndex>0)
+            {
+                ElementoDelTiempo elementoTiempo = (ElementoDelTiempo)cboElementoTiempo.SelectedItem;
+                sintoma.cantidadTiempo = Convert.ToInt32(txtCantTiempoInicioSintoma.Text);
+                sintoma.id_elementoTiempo = elementoTiempo.id_elementoDelTiempo;
+            }
+            if (cboCuandoComenzo.SelectedIndex > 0)
+            {
+                DescripcionDelTiempo descripcion= (DescripcionDelTiempo) cboCuandoComenzo.SelectedItem;
+                cuandoComenzo = descripcion.nombre;
+                sintoma.id_descripcionDelTiempo = descripcion.id_descripcionDelTiempo;
+            }
+            if (cboComoModificaSintoma.SelectedIndex > 0)
+            {
+                ModificacionSintoma modificacion = (ModificacionSintoma)cboComoModificaSintoma.SelectedItem;
+                comoModificaSintoma = modificacion.nombre;
+                sintoma.id_modificacionSintoma = modificacion.id_modificacionSintoma;
+            }
+            if (cboElementoModificacion.SelectedIndex > 0)
+            {
+                ElementoDeModificacion elementoModificacion = (ElementoDeModificacion)cboElementoModificacion.SelectedItem;
+                elementoModificacionSintoma = elementoModificacion.nombre;
+                sintoma.id_elementoModificacion = elementoModificacion.id_elementoDeModificacion;
+            }
+            if (string.IsNullOrEmpty(txtObservaciones.Text) == false)
+            {
+                observaciones = txtObservaciones.Text;
+            }
+            sintoma.observaciones = observaciones;
+            sintoma.fechaRegistro =Convert.ToDateTime(mtbFechaActual.Text);
+
+            listaSintomas.Add(sintoma);
+
+            dgvListaSintoma.Rows.Add(nombreSintoma.nombre,descripcionQueSiente,parteCuerpo.nombre,caracterDolor,haciaDondeIrradia,fechaInicio,cantidadTiempoDeComienzo,cuandoComenzo,comoModificaSintoma,elementoModificacionSintoma,observaciones);
+            
+            
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los Antecedentes Mórbidos.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAntecedentesMorbidos()
+        {
+            if (rbPresentaAntecedentesMorbidos.Checked == true)
+            {
+                AntecedenteMorbido antecedenteMorbido = new AntecedenteMorbido();
+                if (listaAntecedentesMorbidos == null)
+                    listaAntecedentesMorbidos = new List<AntecedenteMorbido>();
+
+                string tipoAntecedente = "No precisa";
+                string nombreDelTipoDeAntecedente = "No precisa";
+                string tratamiento = "No precisa";
+                string evolución = "No precisa";
+                string tiempo = "No precisa";
+
+                antecedenteMorbido.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                if (cboTipoAntecedenteMorbido.SelectedIndex > -1)
+                {
+                    TipoAntecedenteMorbido tipo = (TipoAntecedenteMorbido)cboTipoAntecedenteMorbido.SelectedItem;
+                    tipoAntecedente = tipo.nombre;
+                    antecedenteMorbido.id_tipoAntecedenteMorbido = tipo.id_tipoAntecedenteMorbido;
+                    switch (tipo.nombre)
+                    {
+                        case "Enfermedad":
+                            Enfermedad enfermedadSeleccionada = (Enfermedad)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                            nombreDelTipoDeAntecedente = enfermedadSeleccionada.nombre;
+                            antecedenteMorbido.id_enfermedad = enfermedadSeleccionada.id_enfermedad;
+                            break;
+                        case "Operación":
+                            Operacion operacionSeleccionada = (Operacion)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                            nombreDelTipoDeAntecedente = operacionSeleccionada.nombre;
+                            antecedenteMorbido.id_operacion = operacionSeleccionada.id_operacion;
+                            break;
+                        case "Traumatismo":
+                            Traumatismo traumatismoSeleccionado = (Traumatismo)cboNombrePorTipoAntecedenteMorbido.SelectedItem;
+                            nombreDelTipoDeAntecedente = traumatismoSeleccionado.nombre;
+                            antecedenteMorbido.id_traumatismo = traumatismoSeleccionado.id_traumatismo;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                if (string.IsNullOrEmpty(txtTratamientoAntecedenteMorbido.Text) == false)
+                {
+                    tratamiento = txtTratamientoAntecedenteMorbido.Text;
+                }
+                antecedenteMorbido.tratamiento = tratamiento;
+
+                if (string.IsNullOrEmpty(txtEvoluciónAntecedenteMorbido.Text) == false)
+                {
+                    evolución = txtEvoluciónAntecedenteMorbido.Text;
+                }
+                antecedenteMorbido.evolución = evolución;
+
+                if (string.IsNullOrEmpty(txtCantTiempoAntecedenteMorbido.Text) == false)
+                {
+                    ElementoDelTiempo componente = (ElementoDelTiempo)cboTiempoOcurridoAntMorbido.SelectedItem;
+                    tiempo = txtCantTiempoAntecedenteMorbido.Text + " " + componente.nombre;
+                    antecedenteMorbido.id_elementoTiempo = componente.id_elementoDelTiempo;
+                    antecedenteMorbido.cantidadTiempo = Convert.ToInt32(txtCantTiempoAntecedenteMorbido.Text);
+                }
+
+                listaAntecedentesMorbidos.Add(antecedenteMorbido);
+                dgvAntecedentesMorbidos.Rows.Add(tipoAntecedente, nombreDelTipoDeAntecedente, tratamiento, evolución, tiempo);
+            }
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los Antecedentes Patológicos Familiares.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAntecedentesPatologicosFamiliares()
+        {
+            if (cboFamiliar.SelectedIndex > 0)
+            {
+                AntecedenteFamiliar antecedente = new AntecedenteFamiliar();
+                if (listaAntecedentesFamiliares == null)
+                    listaAntecedentesFamiliares = new List<AntecedenteFamiliar>();
+
+                string nombreFamiliar = "No precisa";
+                string viveFamiliar = "No precisa";
+                string enfermedades = "";
+                string otraEnfermedad = "No precisa";
+                string causaMuerte = "No precisa";
+                string descripcionOtraEnfermedad = "No precisa";
+                string observaciones = "No precisa";
+                
+                Familiar familiar = (Familiar)cboFamiliar.SelectedItem;
+                nombreFamiliar = familiar.nombre;
+                antecedente.id_familiar = familiar.id_familiar;
+
+                if (rbSiViveFamiliar.Checked == true)
+                {
+                    viveFamiliar = "Si";
+                }
+                else
+                {
+                    viveFamiliar = "No";
+                }
+                antecedente.familiarVive = viveFamiliar;
+
+                if (chbAsma.Checked == true)
+                {
+                    enfermedades = "Asma"; 
+                }
+                if (chbDiabetes.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Diabetes";
+                }
+                if (chbHipertensión.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Hipertensión";
+                }
+                if (chbAnemias.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Anemias";  
+                }
+                if (chbTuberculosis.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Tuberculosis";
+                }
+                if (chbLepra.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Lepra"; 
+                }
+                if (chbHepatitis.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Hepatitis";
+                }
+                if (chbParasitismo.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Parasitismo"; 
+                }
+                if (chbTranstornosNutricionales.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(enfermedades) == false)
+                    {
+                        enfermedades += ", ";
+                    }
+                    enfermedades += "Trastornos nutricionales";
+                }
+                if (string.IsNullOrEmpty(enfermedades) == true)
+                {
+                    enfermedades = "No precisa";
+                }
+                antecedente.enfermedades = enfermedades;
+
+                if (rbSiOtraEnfermedad.Checked == true)
+                {
+                    otraEnfermedad = "Si";
+                }
+                else
+                {
+                    otraEnfermedad = "No";
+                }
+                if (string.IsNullOrEmpty(txtDescripcionOtraEnfermedad.Text) == false)
+                {
+                    descripcionOtraEnfermedad = txtDescripcionOtraEnfermedad.Text;    
+                }
+                antecedente.descripcionOtrasEnfermedades = descripcionOtraEnfermedad;
+
+                if (string.IsNullOrEmpty(txtCausaMuerte.Text) == false)
+                {
+                    causaMuerte = txtCausaMuerte.Text;
+                }
+                antecedente.causaMuerte = causaMuerte;
+
+                if (string.IsNullOrEmpty(txtObservacionesAntecedentesPatologicosFamiliares.Text) == false)
+                {
+                    observaciones = txtObservacionesAntecedentesPatologicosFamiliares.Text;
+                }
+                antecedente.observaciones = observaciones;
+                antecedente.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                listaAntecedentesFamiliares.Add(antecedente);
+                dgvAntecedentesPatologicosFamiliares.Rows.Add(nombreFamiliar, viveFamiliar, enfermedades, otraEnfermedad, descripcionOtraEnfermedad, causaMuerte, observaciones);
+            }
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los Alimentos.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaAlimentos()
+        {
+            
+            if (rbSiAlergicoAlimentos.Checked == true && cboAlimentos.SelectedIndex > 0 )
+            {   
+                if(listaAlergiasAlimento==null)
+                listaAlergiasAlimento = new List<AlergiaAlimento>();
+
+                AlergiaAlimento alergia = new AlergiaAlimento();
+
+                string alergiaAlimento = "";
+                string alimento = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergicoAlimentos.Checked == true)
+                {
+                    alergiaAlimento = "Si";
+                }
+                else
+                {
+                    alergiaAlimento = "No";
+                }
+                Alimento alimentoSeleccionado = (Alimento)cboAlimentos.SelectedItem;
+                alimento = alimentoSeleccionado.nombre;
+                
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaAlimentos.Text;
+                }
+
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_alimento = alimentoSeleccionado.id_alimento;
+                alergia.efectos = efectos;
+
+                listaAlergiasAlimento.Add(alergia);
+                dgvAlergiasAlimentos.Rows.Add(alergiaAlimento, alimento, efectos);
+            }
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a las sustancias del ambiente que producen alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaSustanciaAmbiente()
+        {
+            if (rbSiAlergiaSustanciaAmbiente.Checked == true && cboSustanciaAmbiente.SelectedIndex > 0)
+            {
+                AlergiaSustanciaAmbiente alergia = new AlergiaSustanciaAmbiente();
+
+                if (listaAlergiasSustanciaAmbiente == null)
+                    listaAlergiasSustanciaAmbiente = new List<AlergiaSustanciaAmbiente>();
+
+                string alergiaSustanciaAmbiente = "";
+                string sustancia = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergiaSustanciaAmbiente.Checked == true)
+                {
+                    alergiaSustanciaAmbiente = "Si";
+                }
+                else
+                {
+                    alergiaSustanciaAmbiente = "No";
+                }
+                SustaciaAmbiente sustanciaAmbiente = (SustaciaAmbiente)cboSustanciaAmbiente.SelectedItem;
+                sustancia = sustanciaAmbiente.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiaSustanciaAmbiente.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaSustanciaAmbiente.Text;
+                }
+                alergia.fechaRegistro =Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_sustanciaAmbiente = sustanciaAmbiente.id_sustanciaAmbiente;
+                alergia.efectos = efectos;
+
+                listaAlergiasSustanciaAmbiente.Add(alergia);
+                dgvAlergiasSustanciaAmbiente.Rows.Add(alergiaSustanciaAmbiente, sustancia, efectos);
+            }
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a las sustancias o meteriales que producen alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaSustanciaContactoPiel()
+        {
+            if (rbSiAlergiaSustanciaContactoPiel.Checked == true && cboSustanciaContactoPiel.SelectedIndex > 0)
+            {
+                AlergiaSustanciaContactoPiel alergia = new AlergiaSustanciaContactoPiel();
+
+                if (listaAlergiaSustanciaContactoPiel == null)
+                    listaAlergiaSustanciaContactoPiel = new List<AlergiaSustanciaContactoPiel>();
+
+                string alergiaSustanciaContactoPiel = "";
+                string sustancia = "";
+                string efectos = "No precisa";
+
+                alergiaSustanciaContactoPiel = "Si";
+                
+            
+                SustanciaContactoPiel sustanciaContactoPiel = (SustanciaContactoPiel)cboSustanciaContactoPiel.SelectedItem;
+                sustancia = sustanciaContactoPiel.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiaSustanciaContactoPiel.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaSustanciaContactoPiel.Text;
+                }
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_sustanciaContactoPiel = sustanciaContactoPiel.id_sustanciaContactoPiel;
+                alergia.efectos = efectos;
+
+                listaAlergiaSustanciaContactoPiel.Add(alergia);
+                dgvAlergiasSustanciasContactoPiel.Rows.Add(alergiaSustanciaContactoPiel, sustancia, efectos);
+            }
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a los insectos.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaInsectos()
+        {
+            if (rbSiAlergiaInsecto.Checked == true && cboInsectos.SelectedIndex > 0)
+            {
+                AlergiaInsecto alergia = new AlergiaInsecto();
+
+                if (listaAlergiaInsectos == null)
+                    listaAlergiaInsectos = new List<AlergiaInsecto>();
+
+                string alergiaInsectos = "";
+                string insecto = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergiaInsecto.Checked == true)
+                {
+                    alergiaInsectos = "Si";
+                }
+                else
+                {
+                    alergiaInsectos = "No";
+                }
+                Insecto insectoSeleccionado = (Insecto)cboInsectos.SelectedItem;
+                insecto = insectoSeleccionado.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiaInsecto.Text) == false)
+                {
+                    efectos = txtEfectosAlergiaInsecto.Text;
+                }
+
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_insecto = insectoSeleccionado.id_insecto;
+                alergia.efectos = efectos;
+
+                listaAlergiaInsectos.Add(alergia);
+                dgvAlergiasInsectos.Rows.Add(alergiaInsectos, insecto, efectos);
+            }
+        }
+        /*
+        * Método para cargar filas al DatagridView correspondiente a medicamentos que producen alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void cargarDatosDataGridViewAlergiaMedicamentos()
+        {
+            if (rbSiAlergiaMedicamento.Checked == true && cboMedicamentosAlergia.SelectedIndex > 0)
+            {
+                AlergiaMedicamento alergia = new AlergiaMedicamento();
+
+                if (listaAlergiaMedicamento == null)
+                    listaAlergiaMedicamento = new List<AlergiaMedicamento>();
+
+                string alergiaMedicamento = "";
+                string medicamento = "";
+                string efectos = "No precisa";
+
+                if (rbSiAlergiaMedicamento.Checked == true)
+                {
+                    alergiaMedicamento = "Si";
+                }
+                else
+                {
+                    alergiaMedicamento = "No";
+                }
+                MedicamentoAlergia medicamentoSeleccionado = (MedicamentoAlergia)cboMedicamentosAlergia.SelectedItem;
+                medicamento = medicamentoSeleccionado.nombre;
+
+                if (string.IsNullOrEmpty(txtEfectosAlergiasMedicamentos.Text) == false)
+                {
+                    efectos = txtEfectosAlergiasMedicamentos.Text;
+                }
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.id_MedicamentoAlergia = medicamentoSeleccionado.idMedicamentoAlergia;
+                alergia.efectos = efectos;
+
+                listaAlergiaMedicamento.Add(alergia);
+                dgvAlergiasMedicamentos.Rows.Add(alergiaMedicamento, medicamento, efectos);
+            }
+        }
+        /*
+       * Método para cargar filas al DatagridView correspondiente a los hábitos de tabaquismo.
+       * No recibe valores por parámetro.
+       * El valor de retorno es void.
+      */
+        public void cargarDatosDataGridViewHabitoTabaquismo()
+        {
+            string fuma = "";
+            string cantidad = "No precisa";
+            string elemento = "No precisa";
+            string componente = "No precisa";
+            string añosFumando = "No precisa";
+            string dejoFumar = "No precisa";
+            string cantTiempoDejoFumar = "No precisa";
+            string descripcionTiempoFumaba = "No precisa";
+            string elementoFumaba = "No precisa";
+            string componenteTiempoFumaba = "No precisa";
+            string cantidadFumaba = "No precisa";
+
+            if (listaHabitosTabaquismo == null)
+                listaHabitosTabaquismo = new List<HabitoTabaquismo>();
+
+            HabitoTabaquismo habitoTabaquismo = new HabitoTabaquismo();
+            DejoDeFumar dejoDeFumar = null;
+
+            if (rbSiFuma.Checked == true)
+            {
+                fuma = "Si";
+                
+                if (string.IsNullOrEmpty(txtCantidadQueFuma.Text) == false)
+                {
+                    ElementoQueFuma elementoSeleccionado = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
+                    elemento = elementoSeleccionado.nombre;
+
+                    habitoTabaquismo.cantidad = Convert.ToInt32(txtCantidadQueFuma.Text);
+                    habitoTabaquismo.id_elementoQueFuma = elementoSeleccionado.id_elementoQueFuma;
+
+                    ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoFuma.SelectedItem;
+                    componente = componenteSeleccionado.nombre;
+
+                    habitoTabaquismo.id_componenteTiempo = componenteSeleccionado.id_componenteTiempo;
+
+                    cantidad = txtCantidadQueFuma.Text + " " + elemento + " X " + " " + componente;
+                }
+
+                if (string.IsNullOrEmpty(txtCantidadAñosFumando.Text) == false)
+                {
+                    añosFumando = txtCantidadAñosFumando.Text;
+                    habitoTabaquismo.añosFumando = Convert.ToInt32(txtCantidadAñosFumando.Text);
+                }
+                habitoTabaquismo.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+            }
+            else
+            {
+                fuma = "No";
+
+                if (cbDejoFumar.Checked == true)
+                {
+                    dejoFumar = "Si";
+                    dejoDeFumar = new DejoDeFumar();
+
+                    if (string.IsNullOrEmpty(txtCantiTiempoDejoFumar.Text) == false)
+                    {
+                        ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementosDelTiempoFumaba.SelectedItem;
+                        dejoDeFumar.cantidad = Convert.ToInt32(txtCantiTiempoDejoFumar.Text);
+                        dejoDeFumar.id_elementoTiempo = elementoSeleccionado.id_elementoDelTiempo;
+                        cantTiempoDejoFumar = txtCantiTiempoDejoFumar.Text + " " + elementoSeleccionado.nombre;
+                    }
+
+                    if (cboDescripcionDelTiempoFumaba.SelectedIndex > 0)
+                    {
+                        DescripcionDelTiempo descripcion = (DescripcionDelTiempo)cboDescripcionDelTiempoFumaba.SelectedItem;
+                        dejoDeFumar.id_descripcionTiempo = descripcion.id_descripcionDelTiempo;
+                        descripcionTiempoFumaba = descripcion.nombre;
+                    }
+
+                    if (string.IsNullOrEmpty(txtCantidadFumaba.Text) == false)
+                    {
+                        ElementoQueFuma elementoSeleccionadoFumaba = (ElementoQueFuma)cboElementoFumaba.SelectedItem;
+                        elementoFumaba = elementoSeleccionadoFumaba.nombre;
+                        dejoDeFumar.cantidadFumaba = Convert.ToInt32(txtCantidadFumaba.Text);
+                        dejoDeFumar.id_elementoQueFuma = elementoSeleccionadoFumaba.id_elementoQueFuma;
+
+                        ComponenteDelTiempo componenteSeleccionadoFumaba = (ComponenteDelTiempo)cboComponenteTiempoFumaba.SelectedItem;
+                        componenteTiempoFumaba = componenteSeleccionadoFumaba.nombre;
+                        dejoDeFumar.id_componenteTiempo = componenteSeleccionadoFumaba.id_componenteTiempo;
+
+                        cantidadFumaba = txtCantidadFumaba.Text + " " + elementoFumaba + " X " + " " + componenteSeleccionadoFumaba.nombre;
+                    }
+                    habitoTabaquismo.dejoDeFumar = dejoDeFumar;
+                }
+                habitoTabaquismo.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+            }
+
+            listaHabitosTabaquismo.Add(habitoTabaquismo);
+            dgvHabitosFumar.Rows.Add(fuma, cantidad, añosFumando, dejoFumar, cantTiempoDejoFumar, descripcionTiempoFumaba, cantidadFumaba);
+        }
+        /*
+      * Método para cargar filas al DatagridView correspondiente a los hábitos de alcoholismo.
+      * No recibe valores por parámetro.
+      * El valor de retorno es void.
+     */
+        public void cargarDatosDataGridViewHabitoAlcoholismo()
+        {
+            if (rbSiConsumeAlcohol.Checked == true)
+            {
+                if (listaHabitosAlcoholismo == null)
+                    listaHabitosAlcoholismo = new List<HabitoAlcoholismo>();
+
+                HabitoAlcoholismo habitoAlcoholismo = new HabitoAlcoholismo();
+
+                string consumeAlcohol = "No";
+                string bebida = "";
+                string estimacionCantidad = "";
+                string descripcion = "";
+                if (rbSiConsumeAlcohol.Checked == true)
+                {
+                    consumeAlcohol = "Si";
+                }
+
+                TipoBebida bebidaSeleccionada = (TipoBebida)cboTipoBebida.SelectedItem;
+                bebida = bebidaSeleccionada.nombre;
+                habitoAlcoholismo.id_tipoBebida = bebidaSeleccionada.id_tipoBebida;
+
+                if (string.IsNullOrEmpty(txtCantidadConsume.Text) == false)
+                {
+                    Medida medidaSeleccionada = (Medida)cboMedidaConsumeAlcohol.SelectedItem;
+                    habitoAlcoholismo.id_medida = medidaSeleccionada.id_medida;
+                    ComponenteDelTiempo componenteSeleccionado = (ComponenteDelTiempo)cboComponenteTiempoAlcoholismo.SelectedItem;
+                    habitoAlcoholismo.id_componenteTiempo = componenteSeleccionado.id_componenteTiempo;
+                    habitoAlcoholismo.cantidad = Convert.ToInt32(txtCantidadConsume.Text);
+
+                    estimacionCantidad = txtCantidadConsume.Text + " " + medidaSeleccionada.nombre + " X " + componenteSeleccionado.nombre;
+                }
+
+                if (string.IsNullOrEmpty(txtDescripcionMedida.Text) == false)
+                {
+                    descripcion = txtDescripcionMedida.Text;
+                }
+                habitoAlcoholismo.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                listaHabitosAlcoholismo.Add(habitoAlcoholismo);
+                dgvHabitosAlcoholismo.Rows.Add(consumeAlcohol, bebida, estimacionCantidad, descripcion);
+            }
+        }
+        /*
+      * Método para cargar filas al DatagridView correspondiente a los hábitos de drogas Ilicitas.
+      * No recibe valores por parámetro.
+      * El valor de retorno es void.
+     */
+        public void cargarDatosDataGridViewHabitosDrogasIlicitas()
+        {
+            if (rbSiConsumeDrogas.Checked == true)
+            {
+                if (listaHabitosDrogasIlicitas == null)
+                    listaHabitosDrogasIlicitas = new List<HabitoDrogasIlicitas>();
+
+                HabitoDrogasIlicitas habitoDrogasIlicitas = new HabitoDrogasIlicitas();
+
+                string consumeDrogas = "No";
+                string sustancia = "";
+                string tiempoConsumiento = "";
+
+
+                if (rbSiConsumeDrogas.Checked == true)
+                {
+                    consumeDrogas = "Si";
+                }
+                SustanciaDrogaIlicita sustanciaSelecciona = (SustanciaDrogaIlicita)cboSustanciaDrogaIlicita.SelectedItem;
+                habitoDrogasIlicitas.id_sustancia = sustanciaSelecciona.id_sustancia;
+                sustancia = sustanciaSelecciona.nombre;
+
+                if (string.IsNullOrEmpty(txtCantidadTiempoConsumiendo.Text) == false)
+                {
+                    ElementoDelTiempo elementoSeleccionado = (ElementoDelTiempo)cboElementoTiempoDrogasIlicitas.SelectedItem;
+                    habitoDrogasIlicitas.tiempoConsumiendo = Convert.ToInt32(txtCantidadTiempoConsumiendo.Text);
+                    habitoDrogasIlicitas.id_elementoTiempo = elementoSeleccionado.id_elementoDelTiempo;
+
+                    tiempoConsumiento = txtCantidadTiempoConsumiendo.Text + " " + elementoSeleccionado.nombre;
+                }
+                habitoDrogasIlicitas.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                listaHabitosDrogasIlicitas.Add(habitoDrogasIlicitas);
+                dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento);
+            }
+        }
+        /*
+         * Método para crear y cargar los objetos HabitoActividadFisica a una lista.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void cargarDatosHabitosDrogasLicitas()
+        {
+            if (rbSiConsumeMedicamentos.Checked == true)
+            {
+                if (listaHabitosMedicamentos == null)
+                    listaHabitosMedicamentos = new List<HabitoMedicamento>();
+
+                HabitoMedicamento habitoMedicamento = new HabitoMedicamento();
+                ProgramacionMedicamento programacion= new ProgramacionMedicamento();
+
+                EspecificacionMedicamento especificacion = new EspecificacionMedicamento();
+
+                Medicamento medicamentoSeleccionado = (Medicamento)cboNombreGenerico.SelectedItem;
+                especificacion.id_medicamento_fk = medicamentoSeleccionado.id_medicamento;
+
+                NombreComercial nombreComercialSeleccionado = (NombreComercial)cboNombreComercial.SelectedItem;
+                especificacion.id_nombreComercial = nombreComercialSeleccionado.id_nombreComercial;
+
+                int concentracionSeleccionada = (int)cboConcentracion.SelectedItem;
+                especificacion.concentracion = concentracionSeleccionada;
+                UnidadDeMedida unidadMedidaSeleccionada = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+                especificacion.id_unidadMedida_fk = unidadMedidaSeleccionada.id_unidadMedida;
+
+                PresentacionMedicamento presentacionSeleccionada = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+                especificacion.id_presentacionMedicamento = presentacionSeleccionada.id_presentacionMedicamento;
+
+                FormaAdministracion formaAdmSeleccionada = (FormaAdministracion)cboFormaAdministración.SelectedItem;
+                especificacion.id_formaAdministracion = formaAdmSeleccionada.id_formaAdministracion;
+
+                int cantidadComprimidosSeleccionada = (int)cboCantidadComprimidos.SelectedItem;
+                especificacion.cantidadComprimidos = cantidadComprimidosSeleccionada;
+
+                manejadorRegistrarDrogasLicitas.buscarIdEspecificacion(especificacion);
+
+                programacion.id_especificacionMedicamento = especificacion.id_especificacion;
+                programacion.id_medicamento = especificacion.id_medicamento_fk;
+
+                Frecuencia frecuenciaSeleccionada = (Frecuencia)cboFrecuencia.SelectedItem;
+                programacion.id_frecuencia = frecuenciaSeleccionada.id_Frecuencia;
+                
+
+                if(cboMomentoDia1.SelectedIndex > 0)
+                {
+                    MomentoDia momentoDia1 = (MomentoDia)cboMomentoDia1.SelectedItem;
+                    programacion.id_momentoDia1 = momentoDia1.idMomentoDia;
+
+                    programacion.cantidad1Numerador = Convert.ToInt32(txtNumeradorCantidad1.Text);
+
+                    if (string.IsNullOrEmpty(txtDenominadorCantidad1.Text) == false)
+                    {
+                        programacion.cantidad1Denominador = Convert.ToInt32(txtDenominadorCantidad1.Text);
+                    }
+
+                    PresentacionMedicamento presentacionSeleccionada1 = (PresentacionMedicamento)cboPresentacionMedicamento1.SelectedItem;
+                    programacion.id_presentacionMedicamento1 = presentacionSeleccionada1.id_presentacionMedicamento;
+
+                    programacion.hora1 = Convert.ToDateTime(mtbHora1.Text);
+                }
+
+                if (cboMomentoDia2.SelectedIndex > 0)
+                {
+                    MomentoDia momentoDia2 = (MomentoDia)cboMomentoDia2.SelectedItem;
+                    programacion.id_momentoDia2 = momentoDia2.idMomentoDia;
+
+                    programacion.cantidad2Numerador = Convert.ToInt32(txtNumeradorCantidad2.Text);
+
+                    if (string.IsNullOrEmpty(txtDenominadorCantidad2.Text) == false)
+                    {
+                        programacion.cantidad2Denominador = Convert.ToInt32(txtDenominadorCantidad2.Text);
+                    }
+
+                    PresentacionMedicamento presentacionSeleccionada2 = (PresentacionMedicamento)cboPresentacionMedicamento2.SelectedItem;
+                    programacion.id_presentacionMedicamento2 = presentacionSeleccionada2.id_presentacionMedicamento;
+
+                    programacion.hora2 = Convert.ToDateTime(mtbHora2.Text);
+                }
+
+                if (cboMomentoDia3.SelectedIndex > 0)
+                {
+                    MomentoDia momentoDia3 = (MomentoDia)cboMomentoDia3.SelectedItem;
+                    programacion.id_momentoDia3 = momentoDia3.idMomentoDia;
+
+                    programacion.cantidad3Numerador = Convert.ToInt32(txtNumeradorCantidad3.Text);
+
+                    if (string.IsNullOrEmpty(txtDenominadorCantidad3.Text) == false)
+                        programacion.cantidad3Denominador = Convert.ToInt32(txtDenominadorCantidad3.Text);
+                    
+
+                    PresentacionMedicamento presentacionSeleccionada3 = (PresentacionMedicamento)cboPresentacionMedicamento3.SelectedItem;
+                    programacion.id_presentacionMedicamento3 = presentacionSeleccionada3.id_presentacionMedicamento;
+
+                    programacion.hora3 = Convert.ToDateTime(mtbHora3.Text);
+                }
+
+                if (string.IsNullOrEmpty(txtMotivoConsumo.Text) == false)
+                    programacion.motivoConsumo = txtMotivoConsumo.Text;
+
+                if (rbMedicamentoActual.Checked == true)
+                {
+                    programacion.cantidadTiempoConsumo = Convert.ToInt32(txtCantidadTiempoConsumoMedicamento.Text);
+                    ElementoDelTiempo elementoTiempoConsumo = (ElementoDelTiempo)cboElementoTiempoMedicamento.SelectedItem;
+                    programacion.id_elementoTiempo1 = elementoTiempoConsumo.id_elementoDelTiempo;
+
+                    programacion.id_estado = manejadorRegistrarDrogasLicitas.buscarIdEstado("Activa");
+                }
+
+                if (rbMedicamentoAnterior.Checked == true)
+                {
+                    programacion.motivoCancelacion = txtMotivoCancelacion.Text;
+
+                    programacion.cantidadCancelacion =Convert.ToInt32(txtCantTiempoCancelacionMedicamento.Text);
+                    ElementoDelTiempo elementoTiempoCancelacion = (ElementoDelTiempo)cboElementoTiempoCancelacionMedicamento.SelectedItem;
+                    programacion.id_elementoTiempo2 = elementoTiempoCancelacion.id_elementoDelTiempo;
+
+                }
+                if (chbAutomedicado.Checked == true)
+                {
+                    programacion.automedicamento = "Si";
+                }
+                else
+                {
+                    programacion.automedicamento = "No";
+                }
+                habitoMedicamento.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+                habitoMedicamento.programacion = programacion;
+                listaHabitosMedicamentos.Add(habitoMedicamento);
+            }
+        }
+        /*
+      * Método para cargar filas al DatagridView correspondiente a los hábitos de Actividad física.
+      * No recibe valores por parámetro.
+      * El valor de retorno es void.
+     */
+        public void cargarDatosDataGridViewHabitosActividadFisica()
+        {
+            string actividad = "";
+            string grado = "";
+            string intensidad = "";
+            string descripcion = "";
+
+            if (rbSiActividadFisica.Checked == true)
+            {   
+                
+                if (cboActividadFisica.SelectedIndex > -1)
+                {
+                    if (listaHabitosActividadFisica == null)
+                        listaHabitosActividadFisica = new List<HabitoActividadFisica>();
+
+                    HabitoActividadFisica habito = new HabitoActividadFisica();
+
+                    ActividadFisica actividadFisica = (ActividadFisica)cboActividadFisica.SelectedItem;
+                    actividad = actividadFisica.nombre;
+                    habito.id_actividadFisica = actividadFisica.id_actividadFisica;
+
+                    GradoActividadFisica gradoActividad = (GradoActividadFisica)cboGradoActividadFisica.SelectedItem;
+                    grado = gradoActividad.nombre;
+                    habito.id_gradoActividadFisica = gradoActividad.id_gradoActividadFisica;
+
+                    IntensidadActividadFisica intensidadActividad = (IntensidadActividadFisica)cboIntensidad.SelectedItem;
+                    intensidad = intensidadActividad.nombre;
+                    habito.id_intensidad = intensidadActividad.id_intensidad;
+
+                    if (string.IsNullOrEmpty(txtDescripcionGradoActividadFisica.Text) == false)
+                    {
+                        descripcion = txtDescripcionGradoActividadFisica.Text;
+                    }
+                    habito.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                    listaHabitosActividadFisica.Add(habito);
+                    dgvHabitosActividadFisica.Rows.Add(actividad, grado, descripcion, intensidad);
+                }
+            }
+
+        }
+        /*
+         * Método para cargar las columnas del DatagridView correspondiente a los sintomas.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void agregarColumnasSintomas()
+        {
+            string[] nombreColumnasSintomas = new string[11] { "Que siente el paciente", "Descripción de lo que siente","Parte del cuerpo donde siente la molestia","Caracter del dolor",
+                                                              "Hacia donde se irradia","Fecha de inicio síntoma","Cantidad de tiempo desde que comenzó","Descripción tiempo","Como se modifica", "Elemento que lo modifica","Observaciones"};
+
+            for (int i = 0; i < nombreColumnasSintomas.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasSintomas[i];
+                columna.Width = 200;
+                dgvListaSintoma.Columns.Add(columna);
+            }
+        }
+        /*
+        * Método para cargar las columnas de los DatagridView correspondiente a los antecedentes mórbidos y patológicos familiares.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void agregarColumnaAntecedentes()
+        {
+            string[] nombreColumnasAntecedenteMorbido = new string[5] { "Tipo", "Nombre", "Tratamiento", "Evolución", "Cuando ocurrio" };
+
+
+            for (int i = 0; i < nombreColumnasAntecedenteMorbido.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAntecedenteMorbido[i];
+                columna.Width = 200;
+                dgvAntecedentesMorbidos.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAntecedentesPatologicosFamiliares = new string[7] { "Familiar", "Vive Si/No", "Enfermedades que padece o padeció", "Otras enfermedades","Descripción", "Causa de muerte", "Observaciones" };
+
+
+            for (int i = 0; i < nombreColumnasAntecedentesPatologicosFamiliares.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAntecedentesPatologicosFamiliares[i];
+                columna.Width = 200;
+                dgvAntecedentesPatologicosFamiliares.Columns.Add(columna);
+            }
+        }
+        /*
+        * Método para cargar las columnas de los DatagridView correspondiente a las alergias.
+        * No recibe valores por parámetro.
+        * El valor de retorno es void.
+       */
+        public void agregarColumnaAlergias()
+        {
+            string[] nombreColumnasAlergiasAlimento = new string[3] { "Es alergico Si/No", "Alimento", "Efectos"};
+
+
+            for (int i = 0; i < nombreColumnasAlergiasAlimento.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasAlimento[i];
+                columna.Width = 200;
+                dgvAlergiasAlimentos.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasSustanciaDelAmbiente= new string[3] { "Es alergico Si/No", "Sustancia", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasSustanciaDelAmbiente.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasAlimento[i];
+                columna.Width = 200;
+                dgvAlergiasSustanciaAmbiente.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasSustanciaMaterialesContactoPiel = new string[3] { "Es alergico Si/No", "Sustancia o material", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasSustanciaMaterialesContactoPiel.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasSustanciaMaterialesContactoPiel[i];
+                columna.Width = 200;
+                dgvAlergiasSustanciasContactoPiel.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasPicaduraInsectos = new string[3] { "Es alergico Si/No", "Insecto", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasPicaduraInsectos.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasPicaduraInsectos[i];
+                columna.Width = 200;
+                dgvAlergiasInsectos.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasAlergiasMedicamentos = new string[3] { "Es alergico Si/No", "Medicamento", "Efectos" };
+
+            for (int i = 0; i < nombreColumnasAlergiasMedicamentos.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasAlergiasMedicamentos[i];
+                columna.Width = 200;
+                dgvAlergiasMedicamentos.Columns.Add(columna);
+            }
+
+
+        }
+        /*
+         * Método para cargar las columnas de los DatagridView correspondiente a los hábitos.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void agregarColumnaHabitos()
+        {
+            string[] nombreColumnasHabitoTabaquismo = new string[7] { "Fuma Si/No", "Cantidad", "Años fumando", "Dejó de fumar Si/No","Cantidad de tiempo que dejó de fumar",
+                                                                      "Descripción del tiempo", "Cantidad que fumaba"};
+
+            for (int i = 0; i < nombreColumnasHabitoTabaquismo.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoTabaquismo[i];
+                columna.Width = 200;
+                dgvHabitosFumar.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasHabitoBebidasAlcoholicas = new string[4] { "Consume alcohol Si/No", "Bebida", "Estimación de la cantidad de alcohol","Descripcion de la medida" };
+
+            for (int i = 0; i < nombreColumnasHabitoBebidasAlcoholicas.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoBebidasAlcoholicas[i];
+                columna.Width = 200;
+                dgvHabitosAlcoholismo.Columns.Add(columna);
+            }
+
+            string[] nombreColumnasHabitoDrogasIlicitas = new string[3] { "Consume drogas Si/No", "Sustancia","Cantidad de tiempo consumiento"};
+
+            for (int i = 0; i < nombreColumnasHabitoDrogasIlicitas.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoDrogasIlicitas[i];
+                columna.Width = 200;
+                dgvHabitosDrogasIlicitas.Columns.Add(columna);
+            }
+            string[] nombreColumnasHabitoActividadFisica = new string[4] { "Deporte o actividad", "Grado de la actividad ","Descripción", "Intensidad"};
+
+            for (int i = 0; i < nombreColumnasHabitoActividadFisica.Length; i++)
+            {
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = nombreColumnasHabitoActividadFisica[i];
+                columna.Width = 200;
+                dgvHabitosActividadFisica.Columns.Add(columna);
+            }
+        }
+        /*
+         * Método para registrar la creación de la historia clínica del paciente. Registrar enfermedad actual, antecedentes y hábitos.
+         * No recibe valores por parámetro.
+         * El valor de retorno es void.
+        */
+        public void registrarHistoriaClinica()
+        {
+            HistoriaClinica hc = new HistoriaClinica();
+
+            int idHc = 0;
+
+            hc.idtipodoc_paciente = paciente.id_tipoDoc;
+            hc.nrodoc_paciente = paciente.nroDoc;
+            hc.idtipodoc = paciente.id_tipodoc_medico;
+            hc.nrodoc = paciente.nrodoc_medico;
+
+            hc.nro_hc = manejadorRegistrarHC.calcularSiguienteNroHc();
+
+            hc.fecha =Convert.ToDateTime(mtbFechaActual.Text);
+            hc.hora = Convert.ToDateTime(mtbHoraActual.Text);
+            hc.fechaInicioAtencion = Convert.ToDateTime(mtbFechaActual.Text);
+
+            hc.motivoConsulta = txtmotivoConsulta.Text;
+
+            idHc=manejadorRegistrarHC.registrarHistoriaClinica(hc);
+
+            registrarEnfermedadActual(idHc);
+
+            registrarAntecedentesMorbidos(idHc);
+
+            registrarAntecedentesGinecoObstetricos(idHc);
+
+            registrarAntecedentesPatologicosFamiliares(idHc);
+
+            registrarAlergiaAlimentos(idHc);
+
+            registrarAlergiaSustanciaAmbiente(idHc);
+
+            registrarAlergiaSustanciasContactoPiel(idHc);
+
+            registrarAlergiaInsectos(idHc);
+
+            registrarAlergiaMedicamentos(idHc);
+
+            registrarHabitosTabaquismo(idHc);
+
+            registrarHabitosAlcoholismo(idHc);
+
+            registrarHabitoDrogasIlicitas(idHc);
+
+            registrarHabitosDrogasLicitas(idHc);
+
+            registrarHabitosActividadFisica(idHc);
+
+            manejadorRegistrarHC.asignarHCAPaciente(paciente.id_tipoDoc, paciente.nroDoc, idHc);
+
+            MessageBox.Show("La historia clínica se registró correctamente!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+           
+        }
+        private void registrarEnfermedadActual(int idHc)
+        {   
+            if(listaSintomas!=null && listaSintomas.Count>0)
+            manejadorRegistrarEnfermedadActual.registrarSintomas(listaSintomas, idHc);
+        }
+        private void registrarAntecedentesMorbidos(int idHc)
+        {
+            if (listaAntecedentesMorbidos!=null && listaAntecedentesMorbidos.Count > 0)
+            manejadorRegistrarAntecedentesMorbidos.registrarAntecedentesMorbidos(listaAntecedentesMorbidos,idHc);
+        }
+        /*
+         * Método para crear los objetos AntecedenteGinecoObstetrico y Aborto.
+         * No recibe parámetros.
+         * El valor de retorno es void.
+         */
+        private void AgregarAntecedenteGinecoObstetricos()
+        {
+            string problemasEmbarazo = "No precisa";
+            if (rbSiTieneEmbarazos.Checked == true)
+            {
+                antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
+
+                antecedenteGinecoObtetrico.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazos.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazos = Convert.ToInt32(txtCantidadEmbarazos.Text);
+                
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazosPrematuro.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazosPrematuros = Convert.ToInt32(txtCantidadEmbarazosPrematuro.Text);
+
+                if (cboTipoPartoPretermino.SelectedIndex > 0)
+                {
+                    TipoParto tipoParto1Seleccionado = (TipoParto)cboTipoPartoPretermino.SelectedItem;
+                    antecedenteGinecoObtetrico.id_tipoPartoPrematuro = tipoParto1Seleccionado.id_tipoParto;
+                }
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazosATermino = Convert.ToInt32(txtCantidadEmbarazosATermino.Text);
+
+                if (cboTipoPartoATermino.SelectedIndex > 0)
+                {
+                    TipoParto tipoParto2Seleccionado = (TipoParto)cboTipoPartoATermino.SelectedItem;
+                    antecedenteGinecoObtetrico.id_tipoPartoATermino = tipoParto2Seleccionado.id_tipoParto;
+                }
+
+                if(string.IsNullOrEmpty(txtCantidadEmbarazosPosTermino.Text)==false)
+                antecedenteGinecoObtetrico.cantidadEmbarazosPosTermino = Convert.ToInt32(txtCantidadEmbarazosPosTermino.Text);
+
+                if (cboTipoPartoPostermino.SelectedIndex > 0)
+                {
+                    TipoParto tipoParto3Seleccionado = (TipoParto)cboTipoPartoPostermino.SelectedItem;
+                    antecedenteGinecoObtetrico.id_tipoPartoPosTermino = tipoParto3Seleccionado.id_tipoParto;
+                }
+
+                if (rbSiTieneAbortos.Checked == true)
+                {
+                    Aborto aborto = new Aborto();
+
+                    aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
+
+                    if (string.IsNullOrEmpty(txtCantidadTipoAborto1.Text) == false)
+                    {
+                        aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+                        TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
+                        aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+                    }
+                    if (string.IsNullOrEmpty(txtCantidadTipoAborto2.Text) == false)
+                    {
+                        TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
+                        aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
+                        aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+                    }
+
+                    aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
+                    
+                    if(string.IsNullOrEmpty(txtProblemasEmbarazo.Text)==false)
+                    aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
+
+                    antecedenteGinecoObtetrico.aborto = aborto;
+                }
+            }
+            else
+            {
+                if (rbSiTieneAbortos.Checked == true)
+                {
+
+                    antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
+                    antecedenteGinecoObtetrico.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
+
+                    Aborto aborto = new Aborto();
+
+                    aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
+
+                    aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+                    TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
+                    aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+
+                    TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
+                    aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
+                    aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+
+                    aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
+
+                    if(string.IsNullOrEmpty( txtProblemasEmbarazo.Text)==false)
+                        aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
+
+                    antecedenteGinecoObtetrico.aborto = aborto;
+                }
+            }
+           
+            
+        }
+        /*
+         * Método para registrar los antecedentes ginecoObstetricos y aborto.
+         * Recibe como parámetro al idHc.
+         * Llama método registrarAntecedentesGinecoObstetricos del manejador registrar antecedentes ginecoObstetricos.
+         * El valor de retorno es void.
+         */
+        private void registrarAntecedentesGinecoObstetricos(int idHc)
+        {
+            if (antecedenteGinecoObtetrico != null)
+            {
+                antecedenteGinecoObtetrico.id_hc = idHc;
+                manejadorRegistrarAntecedentesGinecoObstetricos.registrarAntecedentesGinecoObstetricos(antecedenteGinecoObtetrico);
+            }
+        }
+        /*
+        * Método para registrar los antecedentes patologicos familiares.
+        * Recibe como parámetro al idHc.
+        * Llama método registrarAntecedentesFamiliares del manejador antecedentes patologicos familiares.
+        * El valor de retorno es void.
+        */
+        private void registrarAntecedentesPatologicosFamiliares(int idHc)
+        {
+            if (listaAntecedentesFamiliares!=null && listaAntecedentesFamiliares.Count > 0)
+            {
+                manejadorRegistrarAntecedentesPatologicosFamiliares.registrarAntecedentesFamiliares(listaAntecedentesFamiliares, idHc);
+            }
+        }
+        /*
+        * Método para registrar las alergias a los alimentos.
+        * Recibe como parámetro al idHc.
+        * Llama método registrarAntecedentesAlergiaAlimento del manejador registrarAlergias.
+        * El valor de retorno es void.
+        */
+        private void registrarAlergiaAlimentos(int idHc)
+        {
+            if (listaAlergiasAlimento != null && listaAlergiasAlimento.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiasAlimento(listaAlergiasAlimento, idHc);
+            }
+        }
+        /*
+       * Método para registrar las alergias a las sustancias del ambiente.
+       * Recibe como parámetro al idHc.
+       * Llama método registrarAlergiaSustanciaDelAmbiente del manejador registrarAlergias.
+       * El valor de retorno es void.
+       */
+        private void registrarAlergiaSustanciaAmbiente(int idHc)
+        {
+            if (listaAlergiasSustanciaAmbiente != null && listaAlergiasSustanciaAmbiente.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaSustanciaDelAmbiente(listaAlergiasSustanciaAmbiente, idHc);
+            }
+        }
+        /*
+         * Método para registrar las alergias a las sustancias o materiales.
+         * Recibe como parámetro al idHc.
+         * Llama método registrarAlergiaSustanciaDelAmbiente del manejador registrarAlergias.
+         * El valor de retorno es void.
+        */
+        private void registrarAlergiaSustanciasContactoPiel(int idHc)
+        {
+            if (listaAlergiaSustanciaContactoPiel != null && listaAlergiaSustanciaContactoPiel.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaSustanciaContactoPiel(listaAlergiaSustanciaContactoPiel, idHc);
+            }
+        }
+        /*
+        * Método para registrar las alergias a insectos.
+        * Recibe como parámetro al idHc.
+        * Llama método registrarAlergiaInsectos del manejador registrarAlergias.
+        * El valor de retorno es void.
+       */
+        private void registrarAlergiaInsectos(int idHc)
+        {
+            if (listaAlergiaInsectos != null && listaAlergiaInsectos.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaInsectos(listaAlergiaInsectos, idHc);
+            }
+        }
+        /*
+       * Método para registrar las alergias a medicamentos.
+       * Recibe como parámetro al idHc.
+       * Llama método registrarAlergiaMedicamento del manejador registrarAlergias.
+       * El valor de retorno es void.
+        */
+        private void registrarAlergiaMedicamentos(int idHc)
+        {
+            if (listaAlergiaMedicamento != null && listaAlergiaMedicamento.Count > 0)
+            {
+                manejadorRegistrarAlergias.registrarAlergiaMedicamento(listaAlergiaMedicamento, idHc);
+            }
+        }
+        private void registrarHabitosTabaquismo(int idHc)
+        {
+            if (listaHabitosTabaquismo != null && listaHabitosTabaquismo.Count > 0)
+                manejadorRegistrarHabitosTabaquismo.registrarHabitosTabaquismo(listaHabitosTabaquismo, idHc);
+        }
+        private void registrarHabitosAlcoholismo(int idHc)
+        {
+            if (listaHabitosAlcoholismo != null && listaHabitosAlcoholismo.Count > 0)
+                manejadorRegistrarHabitosAlcoholismo.registrarHabitosAlcoholismo(listaHabitosAlcoholismo, idHc);
+        }
+        private void registrarHabitoDrogasIlicitas(int idHc)
+        {
+            if (listaHabitosDrogasIlicitas != null && listaHabitosDrogasIlicitas.Count > 0)
+                manejadorRegistrarHabitosDrogasIlicitas.registrarHabitoDrogasIlicitas(listaHabitosDrogasIlicitas, idHc);
+        }
+        private void registrarHabitosDrogasLicitas(int idHc)
+        {
+            if (listaHabitosMedicamentos != null && listaHabitosMedicamentos.Count > 0)
+                manejadorRegistrarDrogasLicitas.registrarHabitosDrogasLicitas(listaHabitosMedicamentos, idHc); 
+        }
+        private void registrarHabitosActividadFisica(int idHc)
+        {
+            if (listaHabitosActividadFisica != null && listaHabitosActividadFisica.Count > 0)
+                manejadorRegistrarHabitosActividadFisica.registrarHabitosActividadFisica(listaHabitosActividadFisica, idHc);
+        }
+        private void btnAgregarAntecedenteMorbido_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAntecedentesMorbidos();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAntecedentesPatologicosFamiliares();
+        }
+
+        private void btnAgregarAlergiaAlimentos_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaAlimentos();
+        }
+
+        private void btnAgregarSustanciaContactoPiel_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaSustanciaContactoPiel();
+        }
+
+        private void btnAgregarSustanciaAmbiente_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaSustanciaAmbiente();
+        }
+
+        private void btnAgregarAlergiaInsecto_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaInsectos();
+        }
+
+        private void btnAgregarMedicamento_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewAlergiaMedicamentos();
+        }
+
+        private void btnAgregarHabitoTabaquismo_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitoTabaquismo();
+        }
+
+        private void txtCantidadConsume_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarHabitoDrogaIlicita_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitosDrogasIlicitas();
+        }
+
+        private void btnAgregarHabitoActividadFisica_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitosActividadFisica();
+        }
+
+        private void btnAgregarAntecedenteGinecoObstetrico_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarAntecedenteGinecoObstetrico_Click_1(object sender, EventArgs e)
+        {
+            AgregarAntecedenteGinecoObstetricos();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarHabitoAlcoholismo_Click(object sender, EventArgs e)
+        {
+            cargarDatosDataGridViewHabitoAlcoholismo();
+        }
+
+        private void btnAgregarHabitoMedicamento_Click(object sender, EventArgs e)
+        {
+            cargarDatosHabitosDrogasLicitas();
+        }
+
+        private void cboPresentacionMedicamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAñadirSustanciaAmbiente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbNoPresentaAntecedentesMorbidos_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rbPresentaAntecedentesMorbidos_CheckedChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void cboUnidadMedida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboConcentracion.SelectedIndex < 0)
+            {
+                int idMedicamento;
+                int idNombreComercial;
+                Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+                Int32.TryParse(cboNombreComercial.SelectedValue.ToString(), out idNombreComercial);
+
+                UnidadDeMedida unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+                PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+                FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
+                
+                if (unidad != null && presentacion != null && formaAdministracion != null)
+                {
+                    cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                    cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                }
+            }
+
+        }
+
+        private void cboFormaAdministración_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboConcentracion.SelectedIndex < 0)
+            {
+                int idMedicamento;
+                int idNombreComercial;
+                Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+                Int32.TryParse(cboNombreComercial.SelectedValue.ToString(), out idNombreComercial);
+
+                UnidadDeMedida unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+                PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+                FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
+
+                if (unidad != null && presentacion != null && formaAdministracion != null)
+                {
+                    cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                    cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+                }
+            }
+        }
+
+        private void cboNombrePorTipoAntecedenteMorbido_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+       
     }
 }

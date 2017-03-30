@@ -4,9 +4,15 @@ CREATE TABLE Historia_Clinica(
 id_hc integer PRIMARY KEY IDENTITY,
 nro_hc integer NOT NULL,
 fecha_creación date NOT NULL,
-hora_creacion date not null,
-principalProblema varchar(20),
-fecha_inicio_atencion_con_profesional date not null)
+hora_creacion time not null,
+principalProblema text,
+fecha_inicio_atencion_con_profesional date not null,
+id_tipodoc_profesionaMedico_fk int,
+id_nrodoc_profesionalMedico_fk int,
+id_tipodoc_paciente_fk int,
+id_nrodoc_paciente_fk int,
+foreign key(id_tipodoc_profesionaMedico_fk, id_nrodoc_profesionalMedico_fk) references ProfesionalMedico(id_tipodoc_fk,nro_documento),
+foreign key(id_tipodoc_paciente_fk, id_nrodoc_paciente_fk) references Paciente(id_tipoDoc_fk,nro_documento))
 
 CREATE TABLE Institucion(
 id_institucion integer PRIMARY KEY IDENTITY,
@@ -126,11 +132,13 @@ id_usuario_fk int not null,
 id_estado_fk int not null,
 id_especialidad_fk int not null,
 id_sexo_fk int,
+id_domicilio_fk int,
 PRIMARY KEY (id_tipodoc_fk,nro_documento),
 foreign key(id_usuario_fk) references Usuario(id_usuario),
 foreign key (id_estado_fk) references Estado(id_estado),
 foreign key (id_especialidad_fk) references Especialidad(id_especialidad),
-foreign key (id_sexo_fk) references Sexo(id_sexo))
+foreign key (id_sexo_fk) references Sexo(id_sexo),
+foreign key (id_domicilio_fk) references Domicilio(id_domicilio))
 
 CREATE TABLE Paciente (
 id_tipoDoc_fk int not null,
@@ -206,8 +214,8 @@ nombre varchar(100) not null)
 CREATE TABLE AlergiaAlimento (
 id_alergiaAlimento int primary key identity,
 fechaRegistro date not null,
-efectos text,
 id_alimento_fk int not null,
+efectos text,
 id_hc_fk int not null,
 foreign key (id_alimento_fk) references Alimento(id_alimento),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
@@ -239,13 +247,17 @@ nombre text,
 id_medicamento_fk int,
 foreign key (id_medicamento_fk) references Medicamento(id_medicamento))
 
+create table MedicamentoAlergia(
+id_medicamentoAlergia int primary key identity,
+nombre text)
+
 CREATE TABLE AlergiaMedicamento (
 id_alergiaMedicamento int primary key identity,
 fechaRegistro date not null,
 efectos text,
-id_medicamento_fk int not null,
+id_medicamentoAlergia_fk int not null,
 id_hc_fk int not null,
-foreign key (id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key (id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE NombrePorTipoAntecedenteMorbido (
@@ -282,14 +294,21 @@ CREATE TABLE AntecedentesMorbidos(
 id_antecedenteMorbido int primary key identity,
 fechaRegistro date not null,
 id_tipoAntecedenteMorbido_fk int not null,
+id_enfermedad_fk int,
+id_operacion_fk int,
+id_traumatismo_fk int,
 cantidadTiempo int,
 id_elementoTiempo_fk int,
 evolucion text,
 tratamiento text,
-id_medicamento_fk int not null,
 id_hc_fk int not null,
-foreign key (id_tipoAntecedenteMorbido_fk) references TipoAntecedenteMorbido(id_tipoAntecedenteMorbido),
+foreign key (id_tipoAntecedenteMorbido_fk) references TiposAntecedentesMorbidos(id_tipoAntecedenteMorbido),
+foreign key (id_operacion_fk) references Operaciones(id_operacion),
+foreign key (id_traumatismo_fk) references Traumatismos(id_traumatismo),
+foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad),
+foreign key (id_elementoTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
+
 
 CREATE TABLE TipoAborto(
 id_TipoAborto int primary key identity,
@@ -304,11 +323,10 @@ descripcion text)
 
 CREATE TABLE Aborto(
 id_aborto int primary key identity,
-fechaRegistro date not null,
 cantidadTotal int,
-cantidadProvocados int,
+cantidadAbortoTipo1 int,
 id_TipoAborto1_fk int,
-cantidadEspontaneo int,
+cantidadAbortoTipo2 int,
 id_TipoAborto2_fk int,
 nroHijosVivos int,
 problemasAsociadosAlEmbarazo text,
@@ -323,10 +341,13 @@ cantidadEmbarazosPrematuros int,
 id_TipoParto1_fk int,
 cantidadEmbarazosATermino int,
 id_TipoParto2_fk int,
+cantidadEmbarazosPosTermino int,
+id_TipoParto3_fk int,
 id_Aborto_fk int,
 id_hc_fk int not null,
 foreign key (id_TipoParto1_fk) references TipoParto(id_tipoParto),
 foreign key (id_TipoParto2_fk) references TipoParto(id_tipoParto),
+foreign key (id_TipoParto3_fk) references TipoParto(id_tipoParto),
 foreign key (id_Aborto_fk) references Aborto(id_aborto),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
@@ -342,7 +363,7 @@ CREATE TABLE ComponenteDelTiempo(
 id_componenteTiempo int primary key identity,
 nombre text)
 
-CREATE TABLE HabitosBebidasAlcoholicas(
+CREATE TABLE HabitosAlcoholismo(
 id_habitoBebidaAlcoholica int primary key identity,
 id_tipoBebida_fk int,
 fechaRegistro date not null,
@@ -369,8 +390,6 @@ id_sustancia_fk int,
 fechaRegistro date not null,
 tiempoConsumiendo int,
 id_ElementoDelTiempo_fk int,
-enTratamiento varchar(50),
-dejoConsumir varchar(50),
 id_hc_fk int not null,
 foreign key (id_sustancia_fk) references Sustancia(id_sustancia),
 foreign key (id_ElementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
@@ -408,7 +427,7 @@ CREATE TABLE ElementoQueFuma(
 id_elemento int primary key identity,
 nombre text)
 
-CREATE TABLE HabitosFumar(
+CREATE TABLE HabitosTabaquismo(
 id_habitoFumar int primary key identity,
 cantidad int,
 id_elementoQueFuma_fk int,
@@ -427,21 +446,24 @@ nombre text)
 CREATE TABLE DejoDeFumar(
 id_DejoDeFumar int primary key identity,
 cantidadTiempo int,
+id_elementoDelTiempo_fk int,
 id_descripcionTiempo_fk int,
 cantidadFumaba int,
-id_elementoDelTiempo_fk int,
-id_componenteTiempo_fk int,
 id_elementoQueFuma_fk int,
-id_habitoFumar_fk int not null,
+id_componenteTiempo_fk int,
+id_habitoTabaquismo_fk int not null,
 foreign key (id_descripcionTiempo_fk) references DescripcionDelTiempo(id_descripcionDelTiempo),
 foreign key (id_elementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_elementoQueFuma_fk) references ElementoQueFuma(id_elemento),
-foreign key (id_habitoFumar_fk) references HabitosFumar(id_habitoFumar))
+foreign key (id_componenteTiempo_fk) references ComponenteDelTiempo(id_componenteTiempo),
+foreign key (id_habitoTabaquismo_fk) references HabitosTabaquismo(id_habitoFumar))
 
 CREATE TABLE HabitosMedicamento(
 id_habitoMedicamento int primary key identity,
 id_hc_fk int not null,
+id_programacionMedicamento_fk int,
 fechaRegistro date not null,
+foreign key (id_programacionMedicamento_fk) references ProgramacionMedicamento(id_programacionMedicamento),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE TemperaturaPiel(
@@ -471,7 +493,13 @@ talla int,
 id_piel_fk int,
 descripcionComoRespira text,
 observacionesRespiracion text,
-foreign key (id_piel_fk) references Piel(id_piel))
+id_pulsoArterial_fk int,
+id_razonamientoDiagnostico_fk int,
+id_medicion_fk int,
+foreign key (id_piel_fk) references Piel(id_piel),
+foreign key (id_pulsoArterial_fk) references PulsoArterial(id_pulsoArterial),
+foreign key (id_razonamientoDiagnostico_fk)references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
 
 CREATE TABLE SitioMedicionTemperatura(
 id_sitioMedicionTemperatura int primary key identity,
@@ -523,64 +551,95 @@ foreign key (id_tamaño_fk) references Tamaño(id_tamaño),
 foreign key (id_consistencia_fk) references Consistencia(id_consistencia),
 foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
 
-CREATE TABLE EscalaPulso(
-id_escalaPulso int primary key identity,
-nombre int)
-
 CREATE TABLE Pulso(
 id_Pulso int primary key identity,
-nombre int)
+nombre text)
+
+CREATE TABLE EscalaPulso(
+id_escalaPulso int primary key identity,
+nombre text)
+
+CREATE TABLE PulsoArterial(
+id_pulsoArterial int primary key identity,
+auscultacion text,
+observaciones text)
 
 CREATE TABLE DetallePulsoArterial(
-id_detallePulsoArterial int primary key identity,
+id_pulsoArterial int,
+id_detallePulsoArterial int identity,
 id_derecha_fk int,
 id_izquierda_fk int,
 id_pulso_fk int,
+primary key(id_pulsoArterial,id_detallePulsoArterial),
+foreign key (id_pulsoArterial) references PulsoArterial(id_pulsoArterial),
 foreign key (id_derecha_fk) references EscalaPulso(id_escalaPulso),
 foreign key (id_izquierda_fk) references EscalaPulso(id_escalaPulso),
 foreign key (id_pulso_fk) references Pulso(id_pulso))
 
-CREATE TABLE PulsoArterial(
-id_pulsoArterial int primary key identity,
-id_detallePulso_fk int,
-ausculacion text,
-observaciones text,
-foreign key (id_detallePulso_fk) references DetallePulsoArterial(id_detallePulsoArterial))
-
-
 CREATE TABLE RazonamientoDiagnostico(
 id_razonamiento int primary key identity,
-conceptoInicial text,
-ausculacion text,
-observaciones text)
+conceptoInicial text)
 
 CREATE TABLE EstadoHipotesis(
 id_estadoHipotesis int primary key identity,
 nombre text)
 
 CREATE TABLE HipotesisInicial(
-id_hipotesis int primary key identity,
+id_razonamientoDiagnostico_fk int,
+id_hipotesis int identity,
 descripcion text,
 id_estadoHipotesis_fk int,
-id_razonamientoDiagnostico_fk int,
 motivoDescartar text,
-foreign key (id_estadoHipotesis_fk) references EstadoHipotesis(id_estadoHipotesis),
-foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
+primary key (id_hipotesis,id_razonamientoDiagnostico_fk),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_estadoHipotesis_fk) references EstadoHipotesis(id_estadoHipotesis))
 
 CREATE TABLE DiagnosticoDefinitivo(
-id_diagnostico int primary key identity,
+id_razonamientoDiagnostico_fk int,
+id_diagnostico int identity,
 descripcion text,
-evolucion text)
+evolucion text
+primary key (id_diagnostico,id_razonamientoDiagnostico_fk),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
 
+create table NombreEstudio(
+id_nombreEstudio int primary key identity,
+nombre text,
+descricpcion text)
+
+create table AnalisisLaboratorio(
+id_analisis int primary key identity,
+nombre text,
+descripcion text)
+
+create table EstudiosDiagnosticoPorImagen(
+id_razonamientoDiagnostico_fk int,
+id_estudioDiagnosticoPorImagen int identity,
+id_nombreEstudio_fk int not null,
+indicaciones text,
+primary key(id_razonamientoDiagnostico_fk,id_estudioDiagnosticoPorImagen),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_nombreEstudio_fk) references NombreEstudio(id_nombreEstudio))
+
+create table PruebasDeLaboratorio(
+id_razonamientoDiagnostico_fk int,
+id_pruebaLaboratorio int identity,
+id_analisis_fk int not null,
+indicaciones text,
+primary key(id_razonamientoDiagnostico_fk,id_pruebaLaboratorio),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento),
+foreign key (id_analisis_fk) references AnalisisLaboratorio(id_analisis))
 
 CREATE TABLE Consulta(
 id_consulta int primary key identity,
 nroConsulta int not null,
 fechaConsulta date,
-horaConsulta date,
+horaConsulta time,
 motivoConsulta text,
 id_examenGeneral_fk int,
-foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
+id_hc_fk int,
+foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE TipoSintoma(
 id_TipoSintoma int primary key identity,
@@ -602,35 +661,32 @@ CREATE TABLE CaracterDelDolor(
 id_caracterDelDolor int primary key identity,
 nombre date not null)
 
-CREATE TABLE DescripcionSintoma(
-id_descripcionDelSintoma int primary key identity,
-id_tipoSintoma_fk int not null,
-descripcion text,
-id_parteDelCuerpo_fk int,
-haciaDondeIrradia text,
-id_comoSeModifica_fk int,
-id_elementoDeModificacion_fk int,
-id_caracterDolor_fk int,
-estimacionIntensidad int,
-comoloAfecta text,
-queHaceParaAliviar text,
-foreign key (id_tipoSintoma_fk) references TipoSintoma(id_tipoSintoma),
-foreign key (id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
-foreign key (id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
-foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
-foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor))
-
 CREATE TABLE Sintoma(
 id_Sintoma int primary key identity,
 fechaInicioSintoma date,
 cantidadDeTiempo int,
 id_elementoDelTiempo_fk int,
 id_descripcionDelTiempo_fk int,
-id_descripcionSintoma_fk int,
-motivoConsulta text,
+id_tipoSintoma_fk int,
+descripcion text,
+id_parteDelCuerpo_fk int,
+haciaDondeIrradia text,
+id_comoSeModifica_fk int,
+id_elementoDeModificacion_fk int,
+id_caracterDolor_fk int,
+observaciones text,
+id_hc_fk int,
+fechaRegistro date,
+id_consulta_fk int,
 foreign key (id_elementoDelTiempo_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_descripcionDelTiempo_fk) references DescripcionDelTiempo(id_descripcionDelTiempo),
-foreign key (id_descripcionSintoma_fk) references DescripcionSintoma(id_descripcionDelSintoma))
+foreign key (id_tipoSintoma_fk) references TipoSintoma(id_tipoSintoma),
+foreign key (id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
+foreign key (id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
+foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
+foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc),
+foreign key (id_consulta_fk) references Consulta(id_consulta))
 
 CREATE TABLE Extremidad(
 id_extremidad int primary key identity,
@@ -648,7 +704,11 @@ nombre text)
 
 CREATE TABLE ClasificacionPresionArterial(
 id_clasificacion int primary key identity,
-nombre text)
+categoria text,
+maximaDesde int,
+maximaHasta int,
+minimaDesde int,
+minimaHasta int)
 
 CREATE TABLE MomentoDelDia(
 id_momentoDelDia int primary key identity,
@@ -658,22 +718,31 @@ CREATE TABLE SitioMedicion(
 id_sitioMedicion int primary key identity,
 nombre text)
 
-
 CREATE TABLE MedicionDePrecionArterial(
 id_medicion int primary key identity,
 fecha date,
-horaInicio date,
-id_extremidad_fk int,
+horaInicio time,
+id_ubicacionExtremidad_fk int,
 id_posicion_fk int,
 id_clasificacion_fk int,
 id_momentoDelDia_fk int,
 promedio float,  
 id_sitioMedicion_fk int,
-foreign key (id_extremidad_fk) references Extremidad(id_extremidad),
+foreign key (id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad),
 foreign key (id_posicion_fk) references Posicion(id_posicion),
 foreign key (id_clasificacion_fk) references ClasificacionPresionArterial(id_clasificacion),
 foreign key (id_momentoDelDia_fk) references MomentoDelDia(id_momentoDelDia),
 foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion))
+
+CREATE TABLE DetalleMedicionPresionArterial(
+id_nroMedicion int,
+id_medicion_fk int,
+hora time,
+pulso int,
+valorMaximo int,
+valorMinimo int,
+primary key (id_nroMedicion,id_medicion_fk),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
 
 CREATE TABLE Frecuencia(
 id_frecuencia int primary key identity,
@@ -683,33 +752,55 @@ CREATE TABLE EstadoProgramacion(
 id_estadoProgramacion int primary key identity,
 nombre text)
 
-
 CREATE TABLE ProgramacionMedicamento(
 id_programacionMedicamento int primary key identity,
+id_especificacionMedicamento_fk int,
 id_medicamento_fk int,
 id_frecuencia_fk int,
-fechainicio date,
+fechaDesde date,
+fechaHasta date,
+id_momentoDia1_fk int,
+cantidadNumerador1 int,
+cantidadDenominador1 int,
+id_presentacionMedicamento1_fk int,
+hora1 time,
+id_momentoDia2_fk int,
+cantidadNumerador2 int,
+cantidadDenominador2 int,
+id_presentacionMedicamento2_fk int,
+hora2 time,
+id_momentoDia3_fk int,
+cantidadNumerador3 int,
+cantidadDenominador3 int,
+id_presentacionMedicamento3_fk int,
+hora3 time,
+motivoConsumo text,
 cantidadTiempoConsumo int,
 id_elementoDelTiempo1_fk int,
-motivoConsumo text,
-automedicado varchar(20),
 motivoCancelacionConsumo text,
 tiempoDeCancelacion int,
-id_elementoDelTiempo2_fk int,  
+id_elementoDelTiempo2_fk int, 
+automedicado varchar(20),
 id_estado_fk int,
 id_examenGeneral_fk int,
-foreign key (id_medicamento_fk) references Medicamento(id_medicamento),
+foreign key (id_especificacionMedicamento_fk,id_medicamento_fk) references EspecificacionMedicamento(id_especificacion, id_medicamento_fk),
 foreign key (id_frecuencia_fk) references Frecuencia(id_frecuencia),
+foreign key (id_momentoDia1_fk) references MomentoDelDia(id_momentoDelDia),
+foreign key (id_presentacionMedicamento1_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key (id_momentoDia2_fk) references MomentoDelDia(id_momentoDelDia),
+foreign key (id_presentacionMedicamento2_fk) references PresentacionMedicamento(id_presentacionMedicamento),
+foreign key (id_momentoDia3_fk) references MomentoDelDia(id_momentoDelDia),
+foreign key (id_presentacionMedicamento3_fk) references PresentacionMedicamento(id_presentacionMedicamento),
 foreign key (id_elementoDelTiempo1_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_elementoDelTiempo2_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_estado_fk) references EstadoProgramacion(id_EstadoProgramacion),
 foreign key (id_examenGeneral_fk) references ExamenGeneral(id_ExamenGeneral))
 
-Create table ProgramacionXMedicamento(
+/*Create table ProgramacionXMedicamento(
 id_programacionMedicamento_fk int not null,
 id_medicamento_fk int not null,
 foreign key(id_programacionMedicamento_fk) references ProgramacionMedicamento(id_programacionMedicamento),
-foreign key(id_medicamento_fk) references Medicamento(id_medicamento))
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento))*/
 
 
 create table Familiar(
@@ -760,6 +851,22 @@ foreign key(id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
 foreign key(id_formaAdministracion_fk) references FormaAdministracion(id_formaAdministracion),
 foreign key(id_presentacionMedicamento_fk) references PresentacionMedicamento(id_presentacionMedicamento),
 foreign key(id_nombreComercial_fk) references NombreComercial(id_nombreComercial))
+
+
+create table AntecedentesFamiliares(
+id_antecedenteFamiliar int primary key identity,
+fechaRegistro date,
+id_familiar_fk int,
+familiarVive varchar(20),
+enfermedades text,
+descripcionOtrasEnfermedades text,
+causaMuerte text,
+observaciones text,
+id_hc_fk int,
+foreign key (id_familiar_fk) references Familiar(id_familiar),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc))
+
+
 
 
 

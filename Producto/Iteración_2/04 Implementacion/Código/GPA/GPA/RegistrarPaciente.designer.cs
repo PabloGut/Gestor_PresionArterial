@@ -42,8 +42,6 @@
             this.lblPeso = new System.Windows.Forms.Label();
             this._txtAltura = new System.Windows.Forms.TextBox();
             this.lblAltura = new System.Windows.Forms.Label();
-            this._txtFechaNacimiento = new System.Windows.Forms.MaskedTextBox();
-            this.lblFechaNacimiento = new System.Windows.Forms.Label();
             this.grbDomicilio = new System.Windows.Forms.GroupBox();
             this._cmbBarrio = new System.Windows.Forms.ComboBox();
             this._cmbLocalidad = new System.Windows.Forms.ComboBox();
@@ -60,21 +58,29 @@
             this._txtCalle = new System.Windows.Forms.TextBox();
             this.lblCalle = new System.Windows.Forms.Label();
             this.grbPersonales = new System.Windows.Forms.GroupBox();
+            this.grbSexo = new System.Windows.Forms.GroupBox();
+            this.radF = new System.Windows.Forms.RadioButton();
+            this.radM = new System.Windows.Forms.RadioButton();
             this._txtEmail = new System.Windows.Forms.TextBox();
             this._txtNroCelular = new System.Windows.Forms.TextBox();
             this._txtTelefonoFijo = new System.Windows.Forms.TextBox();
+            this._txtFechaNacimiento = new System.Windows.Forms.MaskedTextBox();
             this._txtApellido = new System.Windows.Forms.TextBox();
+            this.lblFechaNacimiento = new System.Windows.Forms.Label();
             this._txtNombre = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblNroCelular = new System.Windows.Forms.Label();
             this.lblTelefonoFijo = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.lblM = new System.Windows.Forms.Label();
+            this.lblKg = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.grbDocumento.SuspendLayout();
             this.grbAdicionales.SuspendLayout();
             this.grbDomicilio.SuspendLayout();
             this.grbPersonales.SuspendLayout();
+            this.grbSexo.SuspendLayout();
             this.SuspendLayout();
             // 
             // _txtNroDocumento
@@ -112,7 +118,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(331, 365);
+            this.btnSalir.Location = new System.Drawing.Point(332, 393);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 22;
@@ -122,7 +128,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(250, 365);
+            this.btnCancelar.Location = new System.Drawing.Point(251, 393);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 21;
@@ -132,7 +138,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(169, 365);
+            this.btnAceptar.Location = new System.Drawing.Point(170, 393);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 20;
@@ -148,7 +154,7 @@
             this.panel1.Controls.Add(this.grbPersonales);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(528, 338);
+            this.panel1.Size = new System.Drawing.Size(528, 375);
             this.panel1.TabIndex = 23;
             // 
             // grbDocumento
@@ -166,31 +172,31 @@
             // 
             // grbAdicionales
             // 
+            this.grbAdicionales.Controls.Add(this.lblKg);
+            this.grbAdicionales.Controls.Add(this.lblM);
             this.grbAdicionales.Controls.Add(this._txtPeso);
             this.grbAdicionales.Controls.Add(this.lblPeso);
             this.grbAdicionales.Controls.Add(this._txtAltura);
             this.grbAdicionales.Controls.Add(this.lblAltura);
-            this.grbAdicionales.Controls.Add(this._txtFechaNacimiento);
-            this.grbAdicionales.Controls.Add(this.lblFechaNacimiento);
             this.grbAdicionales.Enabled = false;
-            this.grbAdicionales.Location = new System.Drawing.Point(12, 245);
+            this.grbAdicionales.Location = new System.Drawing.Point(12, 314);
             this.grbAdicionales.Name = "grbAdicionales";
-            this.grbAdicionales.Size = new System.Drawing.Size(504, 79);
+            this.grbAdicionales.Size = new System.Drawing.Size(504, 49);
             this.grbAdicionales.TabIndex = 2;
             this.grbAdicionales.TabStop = false;
             this.grbAdicionales.Text = "Datos Adicionales del Paciente";
             // 
             // _txtPeso
             // 
-            this._txtPeso.Location = new System.Drawing.Point(133, 48);
+            this._txtPeso.Location = new System.Drawing.Point(154, 22);
             this._txtPeso.Name = "_txtPeso";
-            this._txtPeso.Size = new System.Drawing.Size(70, 20);
+            this._txtPeso.Size = new System.Drawing.Size(49, 20);
             this._txtPeso.TabIndex = 13;
             // 
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
-            this.lblPeso.Location = new System.Drawing.Point(97, 51);
+            this.lblPeso.Location = new System.Drawing.Point(118, 25);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(34, 13);
             this.lblPeso.TabIndex = 12;
@@ -198,7 +204,7 @@
             // 
             // _txtAltura
             // 
-            this._txtAltura.Location = new System.Drawing.Point(49, 48);
+            this._txtAltura.Location = new System.Drawing.Point(49, 22);
             this._txtAltura.Name = "_txtAltura";
             this._txtAltura.Size = new System.Drawing.Size(42, 20);
             this._txtAltura.TabIndex = 11;
@@ -206,30 +212,11 @@
             // lblAltura
             // 
             this.lblAltura.AutoSize = true;
-            this.lblAltura.Location = new System.Drawing.Point(6, 51);
+            this.lblAltura.Location = new System.Drawing.Point(6, 25);
             this.lblAltura.Name = "lblAltura";
             this.lblAltura.Size = new System.Drawing.Size(37, 13);
             this.lblAltura.TabIndex = 10;
             this.lblAltura.Text = "Altura:";
-            // 
-            // _txtFechaNacimiento
-            // 
-            this._txtFechaNacimiento.Culture = new System.Globalization.CultureInfo("es-CR");
-            this._txtFechaNacimiento.Location = new System.Drawing.Point(123, 22);
-            this._txtFechaNacimiento.Mask = "00/00/0000";
-            this._txtFechaNacimiento.Name = "_txtFechaNacimiento";
-            this._txtFechaNacimiento.Size = new System.Drawing.Size(80, 20);
-            this._txtFechaNacimiento.TabIndex = 9;
-            this._txtFechaNacimiento.ValidatingType = typeof(System.DateTime);
-            // 
-            // lblFechaNacimiento
-            // 
-            this.lblFechaNacimiento.AutoSize = true;
-            this.lblFechaNacimiento.Location = new System.Drawing.Point(6, 25);
-            this.lblFechaNacimiento.Name = "lblFechaNacimiento";
-            this.lblFechaNacimiento.Size = new System.Drawing.Size(111, 13);
-            this.lblFechaNacimiento.TabIndex = 0;
-            this.lblFechaNacimiento.Text = "Fecha de Nacimiento:";
             // 
             // grbDomicilio
             // 
@@ -250,7 +237,7 @@
             this.grbDomicilio.Enabled = false;
             this.grbDomicilio.Location = new System.Drawing.Point(278, 13);
             this.grbDomicilio.Name = "grbDomicilio";
-            this.grbDomicilio.Size = new System.Drawing.Size(238, 226);
+            this.grbDomicilio.Size = new System.Drawing.Size(238, 295);
             this.grbDomicilio.TabIndex = 1;
             this.grbDomicilio.TabStop = false;
             this.grbDomicilio.Text = "Datos del Domicilio";
@@ -372,10 +359,13 @@
             // 
             // grbPersonales
             // 
+            this.grbPersonales.Controls.Add(this.grbSexo);
             this.grbPersonales.Controls.Add(this._txtEmail);
             this.grbPersonales.Controls.Add(this._txtNroCelular);
             this.grbPersonales.Controls.Add(this._txtTelefonoFijo);
+            this.grbPersonales.Controls.Add(this._txtFechaNacimiento);
             this.grbPersonales.Controls.Add(this._txtApellido);
+            this.grbPersonales.Controls.Add(this.lblFechaNacimiento);
             this.grbPersonales.Controls.Add(this._txtNombre);
             this.grbPersonales.Controls.Add(this.lblEmail);
             this.grbPersonales.Controls.Add(this.lblNroCelular);
@@ -385,10 +375,44 @@
             this.grbPersonales.Enabled = false;
             this.grbPersonales.Location = new System.Drawing.Point(12, 91);
             this.grbPersonales.Name = "grbPersonales";
-            this.grbPersonales.Size = new System.Drawing.Size(260, 148);
+            this.grbPersonales.Size = new System.Drawing.Size(260, 217);
             this.grbPersonales.TabIndex = 0;
             this.grbPersonales.TabStop = false;
             this.grbPersonales.Text = "Datos Personales";
+            // 
+            // grbSexo
+            // 
+            this.grbSexo.Controls.Add(this.radF);
+            this.grbSexo.Controls.Add(this.radM);
+            this.grbSexo.Location = new System.Drawing.Point(89, 140);
+            this.grbSexo.Name = "grbSexo";
+            this.grbSexo.Size = new System.Drawing.Size(156, 43);
+            this.grbSexo.TabIndex = 12;
+            this.grbSexo.TabStop = false;
+            this.grbSexo.Text = "Sexo";
+            // 
+            // radF
+            // 
+            this.radF.AutoSize = true;
+            this.radF.Location = new System.Drawing.Point(85, 19);
+            this.radF.Name = "radF";
+            this.radF.Size = new System.Drawing.Size(71, 17);
+            this.radF.TabIndex = 1;
+            this.radF.TabStop = true;
+            this.radF.Text = "Femenino";
+            this.radF.UseVisualStyleBackColor = true;
+            // 
+            // radM
+            // 
+            this.radM.AutoSize = true;
+            this.radM.Checked = true;
+            this.radM.Location = new System.Drawing.Point(6, 19);
+            this.radM.Name = "radM";
+            this.radM.Size = new System.Drawing.Size(73, 17);
+            this.radM.TabIndex = 0;
+            this.radM.TabStop = true;
+            this.radM.Text = "Masculino";
+            this.radM.UseVisualStyleBackColor = true;
             // 
             // _txtEmail
             // 
@@ -411,12 +435,31 @@
             this._txtTelefonoFijo.Size = new System.Drawing.Size(121, 20);
             this._txtTelefonoFijo.TabIndex = 9;
             // 
+            // _txtFechaNacimiento
+            // 
+            this._txtFechaNacimiento.Culture = new System.Globalization.CultureInfo("es-CR");
+            this._txtFechaNacimiento.Location = new System.Drawing.Point(123, 189);
+            this._txtFechaNacimiento.Mask = "00/00/0000";
+            this._txtFechaNacimiento.Name = "_txtFechaNacimiento";
+            this._txtFechaNacimiento.Size = new System.Drawing.Size(80, 20);
+            this._txtFechaNacimiento.TabIndex = 9;
+            this._txtFechaNacimiento.ValidatingType = typeof(System.DateTime);
+            // 
             // _txtApellido
             // 
             this._txtApellido.Location = new System.Drawing.Point(124, 39);
             this._txtApellido.Name = "_txtApellido";
             this._txtApellido.Size = new System.Drawing.Size(121, 20);
             this._txtApellido.TabIndex = 8;
+            // 
+            // lblFechaNacimiento
+            // 
+            this.lblFechaNacimiento.AutoSize = true;
+            this.lblFechaNacimiento.Location = new System.Drawing.Point(6, 192);
+            this.lblFechaNacimiento.Name = "lblFechaNacimiento";
+            this.lblFechaNacimiento.Size = new System.Drawing.Size(111, 13);
+            this.lblFechaNacimiento.TabIndex = 0;
+            this.lblFechaNacimiento.Text = "Fecha de Nacimiento:";
             // 
             // _txtNombre
             // 
@@ -470,11 +513,29 @@
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Nombre:";
             // 
+            // lblM
+            // 
+            this.lblM.AutoSize = true;
+            this.lblM.Location = new System.Drawing.Point(97, 25);
+            this.lblM.Name = "lblM";
+            this.lblM.Size = new System.Drawing.Size(15, 13);
+            this.lblM.TabIndex = 14;
+            this.lblM.Text = "m";
+            // 
+            // lblKg
+            // 
+            this.lblKg.AutoSize = true;
+            this.lblKg.Location = new System.Drawing.Point(209, 25);
+            this.lblKg.Name = "lblKg";
+            this.lblKg.Size = new System.Drawing.Size(19, 13);
+            this.lblKg.TabIndex = 15;
+            this.lblKg.Text = "kg";
+            // 
             // RegistrarPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 396);
+            this.ClientSize = new System.Drawing.Size(551, 428);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnCancelar);
@@ -492,6 +553,8 @@
             this.grbDomicilio.PerformLayout();
             this.grbPersonales.ResumeLayout(false);
             this.grbPersonales.PerformLayout();
+            this.grbSexo.ResumeLayout(false);
+            this.grbSexo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -642,5 +705,10 @@
         private System.Windows.Forms.Label lblTelefonoFijo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.GroupBox grbSexo;
+        private System.Windows.Forms.RadioButton radF;
+        private System.Windows.Forms.RadioButton radM;
+        private System.Windows.Forms.Label lblM;
+        private System.Windows.Forms.Label lblKg;
     }
 }

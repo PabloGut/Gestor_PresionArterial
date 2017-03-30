@@ -15,9 +15,9 @@ namespace Entidades.Clases
 
         public int existeMayorNumeroUsuario(int numeroUsuario)
         {
-            if (Convert.ToInt32((nombre.Substring(nombre.Length))) > numeroUsuario)
+            if (Convert.ToInt32((nombre.Substring(nombre.Length - 1))) > numeroUsuario)
             {
-                return Convert.ToInt32((nombre.Substring(nombre.Length)));
+                return Convert.ToInt32((nombre.Substring(nombre.Length - 1)));
             }
             else
             {

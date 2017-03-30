@@ -22,3 +22,19 @@ D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Reposito
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.exe.config
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.exe
 D:\Dropbox\Ingeniería en Sistemas\5º Año\Proyecto Final\2016\Trabajo\Repositorio\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.exe.config
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.exe
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.Properties.Resources.resources
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.csproj.GenerateResource.Cache
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.exe
+C:\Users\Pablo\Desktop\Pablo\CopiaTrabajo_Proyecto\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.exe.config
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.exe
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.Properties.Resources.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.csproj.GenerateResource.Cache
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.exe
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache

@@ -60,5 +60,30 @@ namespace LogicaNegocio
         {
             return EspecificacionMedicamentoDAO.mostrarEspecificacionMedicamento(nombreGenerico);
         }
+        public static List<UnidadDeMedida> mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.mostrarUnidadMedidaParaUnNombreGenericoYComercial(idMedicamento, idNombreComercial);
+        }
+        public static List<FormaAdministracion> mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.mostrarFormaAdministracionParaUnNombreGenericoYComercial(idMedicamento, idNombreComercial);
+        }
+        public static List<PresentacionMedicamento> mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoDAO.mostrarPresentacionMedicamentoParaUnNombreGenericoYComercial(idMedicamento, idNombreComercial);
+        }
+        public static List<int> mostrarConcentracionEspecificacion(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoDAO.mostrarConcentracionEspecificacionMedicamento(idMedicamento,idNombreComercial,idUnidadMedida,idPresentacion,idFormaAdministracion);
+        }
+        public static List<int> mostrarCantidadComprimidos(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoDAO.mostrarCantidadComprimidosEspecificacionMedicamento(idMedicamento, idNombreComercial, idUnidadMedida, idPresentacion, idFormaAdministracion);
+        }
+        public static void buscasIdEspecificacion(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoDAO.buscarIdEspecificacion(especificacion);
+        }
+        
     }
 }

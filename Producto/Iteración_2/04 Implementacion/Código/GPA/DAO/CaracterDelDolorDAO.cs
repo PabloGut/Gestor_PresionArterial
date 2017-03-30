@@ -22,6 +22,11 @@ namespace DAO
         {
             return cadenaConexion;
         }
+        /*
+       * Método para obtener los nombres de los tipos de dolores.
+       * No recibe parámetros.
+       * Retorna una lista de objetos CaracterDelDolor.
+       */
         public static List<CaracterDelDolor> mostrarCaracterDelDolor()
         {
             setCadenaConexion();

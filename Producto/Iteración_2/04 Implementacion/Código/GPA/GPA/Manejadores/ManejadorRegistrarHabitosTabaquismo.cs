@@ -27,5 +27,9 @@ namespace GPA.Manejadores
         {
             return ElementoDelTiempoLN.mostrarElementosDelTiempo();
         }
+        public void registrarHabitosTabaquismo(List<HabitoTabaquismo> habitos, int idHc)
+        {
+            HabitoTabaquismoLN.registrasHabitosTabaquismo(habitos, idHc);
+        }
     }
 }

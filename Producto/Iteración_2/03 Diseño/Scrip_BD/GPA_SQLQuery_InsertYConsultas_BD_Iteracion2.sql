@@ -53,7 +53,10 @@ values(8,'20000325','Martín','Molina','74700000','152801200','martinM@hotmail.co
 /*--------------------------*/
 
 
-/*-------Insert Pacientes-----*/
+/*-------InsertSintoma-----*/
+insert into TipoSintoma(nombre)
+values('--Seleccionar--')
+
 insert into TipoSintoma(nombre)
 values('Dolor')
 
@@ -61,9 +64,13 @@ insert into TipoSintoma(nombre)
 values('Molestia')
 
 select * from ParteDelCuerpo
+
 /*--------------------------*/
 
 /*-------Insert Parte del cuerpo-----*/
+insert into ParteDelCuerpo(nombre)
+values('--Seleccionar--')
+
 insert into ParteDelCuerpo(nombre)
 values('Cabeza')
 
@@ -79,9 +86,13 @@ values('Espalda')
 insert into ParteDelCuerpo(nombre)
 values('Cintura')
 
+
 /*--------------------------*/
 
 /*-------Insert Carácter del dolor-----*/
+insert into CaracterDelDolor(nombre)
+values('--Seleccionar--')
+
 insert into CaracterDelDolor(nombre)
 values('Cólico')
 
@@ -113,6 +124,9 @@ values('Terebrante')
 
 /*-------Insert Elementos del tiempo-----*/
 insert into ElementoDelTiempo(nombre)
+values('--Seleccionar--')
+
+insert into ElementoDelTiempo(nombre)
 values('Días')
 
 insert into ElementoDelTiempo(nombre)
@@ -127,6 +141,9 @@ values('Años')
 /*-------Insert Descripción del tiempo-----*/
 
 insert into DescripcionDelTiempo(nombre)
+values('--Seleccionar--')
+
+insert into DescripcionDelTiempo(nombre)
 values('Antenoche')
 
 insert into DescripcionDelTiempo(nombre)
@@ -138,6 +155,11 @@ values('La semana pasada')
 /*--------------------------*/
 
 /*-------Insert ModificaciónSíntoma-----*/
+
+
+insert into ModificacionSintoma(nombre)
+values('--Seleccionar--')
+
 insert into ModificacionSintoma(nombre)
 values('Aumentando')
 
@@ -147,11 +169,13 @@ values('Disminuyendo')
 insert into ModificacionSintoma(nombre)
 values('No se modifica')
 
-select * from ElementoDeModificacion
-delete from ModificacionSintoma 
 /*--------------------------*/
 
 /*-------Insert ElementoDeModificacion-----*/
+
+insert into ElementoDeModificacion(nombre)
+values('--Seleccionar--')
+
 insert into ElementoDeModificacion(nombre)
 values('Alimentos')
 
@@ -160,6 +184,7 @@ values('Posiciones corporales')
 /*--------------------------*/
 
 /*-------Insert TiposAntecedentesMórbidos-----*/
+delete from TipoAntecedenteMorbido
 
 insert into TiposAntecedentesMorbidos(nombre)
 values('Enfermedad')
@@ -212,6 +237,11 @@ values('Traumatismo de columna vertebral','3')
 /*--------------------------*/
 
 /*-------Insert TipoParto-----*/
+
+
+insert into TipoParto(nombre)
+values('--Seleccionar--')
+
 insert into TipoParto(nombre)
 values('Cesarea')
 
@@ -220,6 +250,11 @@ values('Natural')
 /*--------------------------*/
 
 /*-------Insert TipoAborto-----*/
+
+
+insert into TipoAborto(nombre)
+values('--Seleccionar--')
+
 insert into TipoAborto(nombre)
 values('Espontáneo')
 
@@ -228,6 +263,11 @@ values('Provocado')
 /*--------------------------*/
 
 /*-------Insert Familiar-----*/
+delete from Familiar
+
+insert into Familiar(nombre)
+values('--Seleccionar--')
+
 insert into Familiar(nombre)
 values('Madre')
 
@@ -244,6 +284,10 @@ values('Hermana')
 /*--------------------------*/
 
 /*-------Insert Alimento-----*/
+
+insert into Alimento(nombre)
+values('--Seleccionar--')
+
 insert into Alimento(nombre)
 values('Pescado')
 
@@ -268,6 +312,11 @@ values('Huevo')
 /*--------------------------*/
 
 /*-------Insert SustanciasAmbiente-----*/
+
+
+insert into SustanciaAmbiente(nombre)
+values('--Seleccionar--')
+
 insert into SustanciaAmbiente(nombre)
 values('Pólenes')
 
@@ -283,6 +332,11 @@ values('Hongos')
 /*--------------------------*/
 
 /*-------Insert SustanciaContactoPiel-----*/
+delete from SustanciaContactoPiel
+
+insert into SustanciaContactoPiel(nombre)
+values('--Seleccionar--')
+
 insert into SustanciaContactoPiel(nombre)
 values('Tinturas para cabello')
 
@@ -297,6 +351,11 @@ values('Shampoos')
 /*--------------------------*/
 
 /*-------Insert Insectos-----*/
+
+
+insert into Insecto(nombre)
+values('--Seleccionar--')
+
 insert into Insecto(nombre)
 values('Abejas')
 
@@ -309,26 +368,35 @@ values('Hormigas')
 /*--------------------------*/
 
 /*-------Insert Medicamento-----*/
-insert into Medicamento(nombreGenerico)
+
+insert into MedicamentoAlergia(nombre)
+values('--Seleccionar--')
+
+insert into MedicamentoAlergia(nombre)
 values('Penicilina')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Anestésicos locales')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Sulfamidas')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Relajantes musculares')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Insulina no humana')
 
-insert into Medicamento(nombreGenerico)
+insert into MedicamentoAlergia(nombre)
 values('Contrastes yodados')
 /*--------------------------*/
 
 /*-------Insert ElementoQueFuma-----*/
+delete from ElementoQueFuma
+
+insert into ElementoQueFuma(nombre)
+values('--Seleccionar--')
+
 insert into ElementoQueFuma(nombre)
 values('Cigarrillos')
 
@@ -341,6 +409,11 @@ select * from ElementoDelTiempo
 
 
 /*-------Insert ComponenteTiempo-----*/
+
+
+insert into ComponenteDelTiempo(nombre)
+values('--Seleccionar--')
+
 insert into ComponenteDelTiempo(nombre)
 values('Día')
 
@@ -353,6 +426,10 @@ values('Año')
 
 
 /*-------Insert TipoBebida-----*/
+
+insert into TipoBebida(nombre)
+values('--Seleccionar--')
+
 insert into TipoBebida(nombre)
 values('Vino')
 
@@ -375,6 +452,11 @@ values('Vodka')
 /*--------------------------*/
 
 /*-------Insert Medida-----*/
+
+
+insert into Medida(nombre)
+values('--Seleccionar--')
+
 insert into Medida(nombre, descripcion)
 values('Vaso largo','Su capacidad aproximada ronda los 235 y los 355 ml')
 
@@ -386,6 +468,13 @@ add descripcion text
 /*--------------------------*/
 
 /*-------Insert SustanciasDrogasIlicitas-----*/
+
+insert into Sustancia(nombre)
+values('--Seleccionar--')
+
+insert into Sustancia(nombre)
+values('Cocaína')
+
 insert into Sustancia(nombre)
 values('Cocaína')
 
@@ -442,16 +531,341 @@ values('Comprimidos')
 /*--------------------------*/
 
 /*-------Insert Frecuencia-----*/
+
+
+insert into Frecuencia(nombre)
+values('--Seleccionar--')
+
 insert into Frecuencia(nombre)
 values('Diaria')
 /*--------------------------*/
 
+/*-------Insert MomentoDelDia-----*/
+
+
+insert into MomentoDelDia(nombre)
+values('--Seleccionar--')
+insert into MomentoDelDia(nombre)
+values('Mañana')
+insert into MomentoDelDia(nombre)
+values('Tarde')
+insert into MomentoDelDia(nombre)
+values('Noche')
+
+
+/*--------------------------*/
+
+/*-------Insert ActividadFisica-----*/
+
+
+insert into ActividadFisica(nombre)
+values('--Seleccionar--')
+insert into ActividadFisica(nombre)
+values('Futbol')
+insert into ActividadFisica(nombre)
+values('Basquet')
+insert into ActividadFisica(nombre)
+values('Voley')
+/*--------------------------*/
+
+/*-------Insert GradoActividad-----*/
+
+
+insert into GradoActividad(nombre)
+values('--Seleccionar--')
+insert into GradoActividad(nombre,descripcion)
+values('Bajo','Menos de 30 minutos de actividad física por semana.')
+insert into GradoActividad(nombre,descripcion)
+values('Medio','Correspondiente a 30 minutos de 3-5 veces por semana.')
+insert into GradoActividad(nombre,descripcion)
+values('Alto','Correspondiente a 30 minutos o mas de actividad física y más de 5 veces a la semana.')
+/*--------------------------*/
+
+/*-------Insert IntensidadActividadFisica-----*/
+delete from IntensidadActividadFisica
+
+insert into IntensidadActividadFisica(nombre)
+values('--Seleccionar--')
+insert into IntensidadActividadFisica(nombre)
+values('Muy suave')
+insert into IntensidadActividadFisica(nombre)
+values('Suave')
+insert into IntensidadActividadFisica(nombre)
+values('Moderado')
+insert into IntensidadActividadFisica(nombre)
+values('Intenso')
+insert into IntensidadActividadFisica(nombre)
+values('Máximo')
+
+/*--------------------------*/
+
+/*-------Insert EstadoProgramacion-----*/
+insert into EstadoProgramacion(nombre)
+values('Activa')
+insert into EstadoProgramacion(nombre)
+values('Cancelada')
+
+/*--------------------------*/
+
+/*-------Insert Ubicación-----*/
+insert into Ubicacion(nombre)
+values('--Seleccionar--')
+insert into Ubicacion(nombre)
+values('Región Occipital')
+insert into Ubicacion(nombre)
+values('Región Mastoídeas')
+insert into Ubicacion(nombre)
+values('Región Preauriculares')
+insert into Ubicacion(nombre)
+values('Región Submandibulares')
+insert into Ubicacion(nombre)
+values('Región Cervical Anterior')
+insert into Ubicacion(nombre)
+values('Región Cervical Lateral')
+insert into Ubicacion(nombre)
+values('Región Cervical Posterior')
+insert into Ubicacion(nombre)
+values('Huecos Supraclaviculares')
+insert into Ubicacion(nombre)
+values('Región Epitroclear derecha')
+insert into Ubicacion(nombre)
+values('Región Epitroclear izquierda')
+insert into Ubicacion(nombre)
+values('Axíla derecha')
+insert into Ubicacion(nombre)
+values('Axíla izquierda')
+insert into Ubicacion(nombre)
+values('Regiónes Inguinal derecha')
+insert into Ubicacion(nombre)
+values('Regiónes Inguinal izquierda')
+/*--------------------------*/
+
+/*-------Insert Ubicación-----*/
+insert into Tamaño(nombre)
+values('--Seleccionar--')
+insert into Tamaño(nombre)
+values('Normal')
+insert into Tamaño(nombre)
+values('Grande')
+/*--------------------------*/
+
+/*-------Insert Consistencia-----*/
+insert into Consistencia(nombre)
+values('--Seleccionar--')
+insert into Consistencia(nombre)
+values('Elástica (Normal)')
+insert into Consistencia(nombre)
+values('Muy duro')
+insert into Consistencia(nombre)
+values('Muy blando')
+insert into Consistencia(nombre)
+values('Muy blando')
+/*--------------------------*/
+
+/*-------Insert Escala Pulso-----*/
+insert into EscalaPulso(nombre)
+values('--Seleccionar--')
+insert into EscalaPulso(nombre)
+values('No se palpan')
+insert into EscalaPulso(nombre)
+values('Se palpan disminuidos')
+insert into EscalaPulso(nombre)
+values('Se palpan normales')
+insert into EscalaPulso(nombre)
+values('Se palpan aumentados')
+insert into EscalaPulso(nombre)
+values('Se palpan muy aumentados')
+/*--------------------------*/
+
+/*-------Insert Escala Pulso-----*/
+insert into Pulso(nombre)
+values('--Seleccionar--')
+insert into Pulso(nombre)
+values('P. Carotídeo')
+insert into Pulso(nombre)
+values('P. Axilar')
+insert into Pulso(nombre)
+values('P. Branquial')
+insert into Pulso(nombre)
+values('P. Radial')
+insert into Pulso(nombre)
+values('P. Femoral')
+insert into Pulso(nombre)
+values('P. Poplíteo')
+insert into Pulso(nombre)
+values('P. Tibial Posterior')
+insert into Pulso(nombre)
+values('P. Pedio')
+/*--------------------------*/
+/*-------Insert Extremidad-----*/
+insert into Extremidad(nombre)
+values('Miembro Superior')
+insert into Extremidad(nombre)
+values('Miembro Inferior')
+/*--------------------------*/
+
+/*-------Insert UbicacionExtremidad-----*/
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Antebrazo',1)
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Brazo',1)
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Pantorrilla',2)
+insert into UbicacionExtremidad(nombre,id_extremidad_fk)
+values('Muslo',2)
+select * from Extremidad
+/*--------------------------*/
+
+
+/*-------Insert AnalisisLaboratorio-----*/
+insert into AnalisisLaboratorio(nombre)
+values('--Seleccionar--')
+insert into AnalisisLaboratorio(nombre)
+values('Hemoglobina')
+insert into AnalisisLaboratorio(nombre)
+values('Glucemia en ayunas')
+insert into AnalisisLaboratorio(nombre)
+values('Triglicéridos')
+/*--------------------------*/
+
+/*-------Insert EstudiosDiagnosticoPorImagenes-----*/
+insert into NombreEstudio(nombre)
+values('--Seleccionar--')
+insert into NombreEstudio(nombre)
+values('Ecografía Renal')
+insert into NombreEstudio(nombre)
+values('Electrocardiograma')
+insert into NombreEstudio(nombre)
+values('Radiografía de Tórax')
+/*--------------------------*/
+
+/*-------Insert EstadoHipotesis-----*/
+insert into EstadoHipotesis(nombre)
+values('--Seleccionar--')
+insert into EstadoHipotesis(nombre)
+values('Rechazada')
+insert into EstadoHipotesis(nombre)
+values('No Rechazada')
+/*--------------------------*/
 
 /*-------Insert-----*/
 
 /*--------------------------*/
 
-alter table Medicamento
-add cantidadComprimidos int
+alter table EscalaPulso
+alter column nombre text
 
-select * from UnidadMedidaXMedicamento
+select * from HipotesisInicial
+
+alter table AlergiaMedicamento
+add id_medicamentoAlergia_fk int
+
+alter table AlergiaMedicamento
+add foreign key(id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia)
+
+drop table DetallePulsoArterial
+drop table PulsoArterial
+drop table EscalaPulso
+drop table Pulso
+
+delete from AnalisisLaboratorio
+delete from NombreEstudio
+delete from EstadoHipotesis
+
+DBCC CHECKIDENT('AnalisisLaboratorio',RESEED,0)
+DBCC CHECKIDENT('NombreEstudio',RESEED,0)
+DBCC CHECKIDENT('EstadoHipotesis',RESEED,0)
+
+select * from Usuario
+
+select @@IDENTITY
+select SCOPE_IDENTITY()
+select IDENT_CURRENT('RazonamientoDiagnostico')
+
+CREATE TABLE DetalleMedicionPresionArterial(
+id_nroMedicion int,
+id_medicion_fk int,
+hora time,
+pulso int,
+valorMaximo int,
+valorMinimo int,
+primary key (id_nroMedicion,id_medicion_fk),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
+
+alter table ClasificacionPresionArterial
+drop column nombre
+
+alter table ClasificacionPresionArterial
+add categoria text
+
+alter table ClasificacionPresionArterial
+add maximaDesde int
+
+alter table ClasificacionPresionArterial
+add maximaHasta int
+
+alter table ClasificacionPresionArterial
+add minimaDesde int
+
+alter table ClasificacionPresionArterial
+add minimaHasta int
+
+alter table ExamenGeneral
+add id_medicion_fk int
+
+alter table ExamenGeneral
+add foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion)
+
+alter table MedicionDePrecionArterial
+drop column horaInicio
+
+alter table MedicionDePrecionArterial
+add horaInicio time
+
+alter table MedicionDePrecionArterial
+drop constraint FK__MedicionD__id_ex__0A688BB1 
+
+alter table MedicionDePrecionArterial
+drop column id_extremidad_fk
+
+alter table MedicionDePrecionArterial
+add id_ubicacionExtremidad_fk int
+
+alter table MedicionDePrecionArterial
+add foreign key(id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad)
+
+/*-------Insert Posicion-----*/
+insert into Posicion(nombre)
+values('--Seleccionar--')
+insert into Posicion(nombre)
+values('Acostado')
+insert into Posicion(nombre)
+values('De pie')
+insert into Posicion(nombre)
+values('Sentado')
+/*--------------------------*/
+
+/*-------Insert SitioMedicion-----*/
+insert into SitioMedicion(nombre)
+values('--Seleccionar--')
+insert into SitioMedicion(nombre)
+values('Consultorio')
+insert into SitioMedicion(nombre)
+values('Hogar')
+/*--------------------------*/
+
+/*-------Insert-----*/
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('Hipotensión',0,90,0,60)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('Normal',120,129,80,84)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('Limítrofe',130,139,85,89)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('HTA grado o nivel 1',140,159,90,99)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('HTA grado o nivel 2',160,999,100,999)
+insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minimaDesde,minimaHasta)
+values('HTA sistólica o aislada',140,999,0,90)
+/*--------------------------*/
+

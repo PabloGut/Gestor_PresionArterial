@@ -112,7 +112,7 @@ namespace DAO
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
 
-            string consulta = "SELECT id_usuario FROM Usuario WHERE nombre_usuario LIKE @paramNombre";
+            string consulta = "SELECT id_usuario, nombre_usuario FROM Usuario WHERE nombre_usuario LIKE @paramNombre";
 
             SqlCommand cmd = new SqlCommand();
 
@@ -128,6 +128,7 @@ namespace DAO
                 usuarios.Add(new Usuario()
                 {
                     id_usuario = (int)dr["id_usuario"],
+                    nombre = dr["nombre_usuario"].ToString(),
                 });
             }
             cn.Close();

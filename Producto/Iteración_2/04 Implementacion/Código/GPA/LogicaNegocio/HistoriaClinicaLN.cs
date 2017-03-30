@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades.Clases;
+using DAO;
+using System.Data;
 
 namespace LogicaNegocio
 {
@@ -26,5 +29,31 @@ namespace LogicaNegocio
         {
             return DateTime.Now.ToShortTimeString();
         }
+        public static int registrarHistoriaClinica(HistoriaClinica hc)
+        {
+            return HistoriaClinicaDAO.registrarHistoriaClinica(hc);
+        }
+        public static int buscarNroHistoriaClinica()
+        {
+            return HistoriaClinicaDAO.buscarNroHC();
+        }
+        public static int calcularSiguienteNroHc()
+        {
+            int ultimoNro = buscarNroHistoriaClinica();
+
+            int siguienteNroHc = ultimoNro + 1;
+
+            return siguienteNroHc;
+ 
+        }
+        public static HistoriaClinica mostrarHistoriaClinica(Paciente paciente)
+        {
+            return HistoriaClinicaDAO.mostrarHistoriaClinica(paciente);
+        }
+        public static int mostrarIdHc(int idTipoDoc, long nroDoc)
+        {
+            return HistoriaClinicaDAO.buscarIdHc(idTipoDoc, nroDoc);
+        }
+       
     }
 }

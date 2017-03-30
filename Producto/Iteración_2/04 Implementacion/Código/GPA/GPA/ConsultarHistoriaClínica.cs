@@ -19,14 +19,14 @@ namespace GPA
         private ManejadorConsultarHC manejadorConsultarHC;
         private HistoriaClinica hcPacienteSeleccionado;
         private Paciente pacienteSelec;
-
+        /*
         public ConsultarHistoriaClínica(MenuPrincipal mp)
         {
             InitializeComponent();
             refMenuPrincipal = mp;
             manejadorConsultarHC = new ManejadorConsultarHC();
             
-        }
+        }*/
         public ConsultarHistoriaClínica()
         {
             InitializeComponent();

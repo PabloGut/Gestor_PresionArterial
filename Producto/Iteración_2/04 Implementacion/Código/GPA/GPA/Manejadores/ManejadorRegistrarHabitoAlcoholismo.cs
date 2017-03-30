@@ -23,5 +23,9 @@ namespace GPA.Manejadores
         {
             return MedidaLN.mostrarMedidasDeBebidasAlcoholicas();
         }
+        public void registrarHabitosAlcoholismo(List<HabitoAlcoholismo> habitos, int idHc)
+        {
+            HabitoAlcoholismoLN.registrasHabitosAlcoholismo(habitos, idHc);
+        }
     }
 }

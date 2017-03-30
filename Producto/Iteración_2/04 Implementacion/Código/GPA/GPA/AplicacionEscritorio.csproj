@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -76,11 +79,12 @@
     <Compile Include="ConsultarHistoriaClínica.Designer.cs">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Manejadores\ManejadorRegistrarExamenGeneral.cs" />
+    <Compile Include="PresentarInformacionHistoriaClinica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PresentarInformacionHistoriaClinica.Designer.cs">
+      <DependentUpon>PresentarInformacionHistoriaClinica.cs</DependentUpon>
     </Compile>
     <Compile Include="Manejadores\ManejadorConsultarHC.cs" />
     <Compile Include="Manejadores\ManejadorConsultarPaciente.cs" />
@@ -88,15 +92,19 @@
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesGinecoObstetricos.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesMorbidos.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesPatologicosFamiliares.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarAtencionMedicaEnConsultorio.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarBarrio.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarDrogasLicitas.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEnfermedadActual.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarEspecialidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHabitoAlcoholismo.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarHabitosActividadFisica.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHabitosDrogasIlicitas.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHabitosTabaquismo.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarLocalidad.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarPaciente.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarProfesionalMedico.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarTipoDeDocumento.cs" />
     <Compile Include="Manejadores\ManejadorActualizarMedicamento.cs" />
     <Compile Include="RegistrarBarrio.cs">
@@ -198,8 +206,8 @@
     <EmbeddedResource Include="ConsultarHistoriaClínica.resx">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="PresentarInformacionHistoriaClinica.resx">
+      <DependentUpon>PresentarInformacionHistoriaClinica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarBarrio.resx">
       <DependentUpon>RegistrarBarrio.cs</DependentUpon>
@@ -275,6 +283,13 @@
       <Project>{91c34cec-ab63-43af-baaa-8af94ef916ee}</Project>
       <Name>LogicaNegocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\" />
+    <Folder Include="Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

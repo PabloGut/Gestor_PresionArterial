@@ -24,12 +24,13 @@ namespace GPA
             InitializeComponent();
             manejador = new ManejadorRegistrarEstudio();
         }
+        /*
         public RegistrarEstudio(MenuPrincipal mp)
         {
             InitializeComponent();
             manejador = new ManejadorRegistrarEstudio();
             referenciaMenuPrincipal = mp;
-        }
+        }*/
 
         private void Form1_Load(object sender, EventArgs e)
         {

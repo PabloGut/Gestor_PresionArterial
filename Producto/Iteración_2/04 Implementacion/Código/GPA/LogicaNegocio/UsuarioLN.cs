@@ -9,6 +9,10 @@ namespace LogicaNegocio
 {
     public class UsuarioLN
     {
+        public static List<Usuario> buscarContraseñaUsuario(string nombre)
+        {
+            return UsuarioDAO.buscarContraseñaUsuario(nombre);
+        }
         /*
         * Método para que buscar un usuario.
         * Toma como parámetros el nombre y la contraseña del usuario.
@@ -18,6 +22,10 @@ namespace LogicaNegocio
         public static List<Usuario> buscarUsuario(string nombre, string pass)
         {
             return UsuarioDAO.buscarUsuario(nombre, pass);
+        }
+        public static List<Usuario> buscarUsuarioPorNombre(string nombre)
+        {
+            return UsuarioDAO.buscarUsuarioPorNombre(nombre);
         }
     }
 }

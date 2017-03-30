@@ -21,15 +21,15 @@ Insert into Estudio("fecha_estudio","doctorACargo",informe_estudio,id_hc_fk,id_i
 values ('15/06/2016','Diaz','Normal','1','1')
 
 select *
-from Historia_Clinica
+from TiposAntecedentesMorbidos
 
 
 
 select *
-from Estudio
+from EstadoHipotesis
 
 select *
-from Usuario
+from TipoSintoma
 
 delete from Historia_Clinica
 where nro_hc=3
@@ -218,7 +218,7 @@ and em.id_nombreComercial_fk=nc.id_nombreComercial
 and em.id_unidadMedida_fk=um.id_unidadMedida
 and em.id_formaAdministracion_fk=fa.id_formaAdministracion
 and em.id_presentacionMedicamento_fk= pm.id_presentacionMedicamento
-select * from UnidadMedidaXMedicamento
+select * from FormaAdministracion
 
 select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentración', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk,nc.id_nombreComercial
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um, FormaAdministracion fa, PresentacionMedicamento pm
@@ -249,7 +249,7 @@ select * from UnidadMedidaXMedicamento
 --delete from PresentacionMedicamentoXMedicamento
 
 delete  from Medicamento
-delete from EspecificacionMedicamento
+delete from Historia_Clinica
 select m.nombreGenerico, um.nombre, m.id_medicamento
 from Medicamento m, UnidadMedidaXMedicamento umm, UnidadMedida um
 where m.id_medicamento=umm.id_medicamento_fk and um.id_unidadMedida=umm.id_unidadMedida_fk and m.nombreGenerico like 'Hidroclorotiazida'
@@ -341,13 +341,14 @@ where m.id_medicamento=umm.id_medicamento_fk and um.id_unidadMedida=umm.id_unida
 
 
 select * from Medicamento
-select * from UnidadMedidaXMedicamento
+select * from FormaAdministracionXMedicamento
+select * from EspecificacionMedicamento
 select distinct em.*  from EspecificacionMedicamento em
 select * from EspecificacionMedicamento
 select * from NombreComercial
 
 
-select em.id_especificacion, m.nombreGenerico,nc.nombre, um.nombre
+select distinct um.id_unidadMedida,cast(um.nombre as varchar(max))
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, UnidadMedidaXMedicamento umm, UnidadMedida um
 where m.id_medicamento=em.id_medicamento_fk 
 and em.id_nombreComercial_fk=nc.id_nombreComercial
@@ -359,9 +360,274 @@ and umm.id_medicamento_fk=m.id_medicamento
 and umm.id_nombreComercial_fk=nc.id_nombreComercial
 and em.id_medicamento_fk='21' and em.id_nombreComercial_fk='19'
 
+select distinct fa.id_formaAdministracion,cast(fa.nombre as varchar(max)) as 'Forma de administración'
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, FormaAdministracionXMedicamento fam, FormaAdministracion fa
+where m.id_medicamento=em.id_medicamento_fk 
+and em.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_formaAdministracion_fk=fam.id_formaAdministracion_fk 
+and em.id_medicamento_fk=fam.id_medicamento_fk
+and em.id_nombreComercial_fk=fam.id_nombreComercial_fk
+and fam.id_formaAdministracion_fk=fa.id_formaAdministracion
+and fam.id_medicamento_fk=m.id_medicamento
+and fam.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_medicamento_fk='22' and em.id_nombreComercial_fk='22'
+
+select distinct pm.id_presentacionMedicamento,cast(pm.nombre as varchar(max)) as 'Presentación medicamento'
+from Medicamento m,EspecificacionMedicamento em, NombreComercial nc, PresentacionMedicamentoXMedicamento pmm, PresentacionMedicamento pm
+where m.id_medicamento=em.id_medicamento_fk 
+and em.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_presentacionMedicamento_fk=pmm.id_presentacionMedicamento_fk 
+and em.id_medicamento_fk=pmm.id_medicamento_fk
+and em.id_nombreComercial_fk=pmm.id_nombreComercial_fk
+and pmm.id_presentacionMedicamento_fk=pm.id_presentacionMedicamento
+and pmm.id_medicamento_fk=m.id_medicamento
+and pmm.id_nombreComercial_fk=nc.id_nombreComercial
+and em.id_medicamento_fk='21' and em.id_nombreComercial_fk='25'
+
+
 
 select m.nombreGenerico,nc.nombre
 from Medicamento m, NombreComercial nc
 where m.id_medicamento=nc.id_medicamento_fk
 and m.id_medicamento='21'
 
+select * from FormaAdministracionXMedicamento
+
+alter table Sintoma 
+add id_tipoSintoma_fk int,
+descripcion text,
+id_parteDelCuerpo_fk int,
+haciaDondeIrradia text,
+id_comoSeModifica_fk int,
+id_elementoDeModificacion_fk int,
+id_caracterDolor_fk int,
+observaciones text
+
+alter table Sintoma
+add foreign key(id_parteDelCuerpo_fk) references ParteDelCuerpo(id_parteDelCuerpo),
+foreign key(id_comoSeModifica_fk) references ModificacionSintoma(id_modificacionesSintoma),
+foreign key (id_elementoDeModificacion_fk) references ElementoDeModificacion(id_elementoDeModificacion),
+foreign key (id_caracterDolor_fk) references CaracterDelDolor(id_caracterDelDolor)
+
+
+alter table Sintoma 
+add fechaRegistro date
+
+alter table AntecedentesMorbidos
+add id_operacion_fk int, id_traumatismo_fk int, id_enfermedad_fk int
+
+alter table AntecedentesMorbidos
+add foreign key (id_operacion_fk) references Operaciones(id_operacion),
+foreign key (id_traumatismo_fk) references Traumatismos(id_traumatismo),
+foreign key (id_enfermedad_fk) references Enfermedades(id_enfermedad)
+
+alter table ProfesionalMedico
+add foreign key (id_domicilio_fk) references Domicilio(id_domicilio)
+
+drop table ProgramacionMedicamento
+select * from UnidadMedida
+
+select concentracion,cantidadComprimidos, id_especificacion from EspecificacionMedicamento
+where id_medicamento_fk='21'
+and id_nombreComercial_fk='19'
+and id_unidadMedida_fk='2'
+and id_formaAdministracion_fk='1'
+and id_presentacionMedicamento_fk='1'
+
+alter table Historia_Clinica
+add id_tipodoc_paciente_fk int,id_nrodoc_paciente_fk int
+
+alter table Historia_Clinica
+add foreign key(id_tipodoc_paciente_fk, id_nrodoc_paciente_fk) references Paciente(id_tipoDoc_fk,nro_documento)
+delete from Historia_Clinica
+
+select * from Historia_Clinica
+select * from HabitosActividadFisica
+select * from HabitosTabaquismo
+select * from Paciente
+delete from Historia_Clinica where id_hc=58
+delete from HabitosTabaquismo where id_hc_fk=30
+
+select * from ProgramacionMedicamento
+
+delete from HabitosTabaquismo
+
+
+delete from Sintoma 
+
+drop table Consulta
+drop table ProgramacionMedicamento
+
+select * from Historia_Clinica
+select * from HabitosMedicamento
+select * from HabitosTabaquismo
+select * from Sustancia
+
+update Paciente
+set id_hc_fk= null
+where  id_hc_fk= '37'
+
+alter table Historia_Clinica
+alter column principalProblema text
+
+alter table HabitosDrogasIlicitas
+drop column dejoConsumir 
+
+alter table Aborto
+drop column fechaRegistro 
+
+alter table HabitosDrogasIlicitas
+add foreign key (id_hc_fk) references Historia_Clinica(id_hc)
+
+select * from Paciente where id_hc_fk=57
+select * from AntecedentesMorbidos
+
+select * from Operaciones
+
+
+select hc.nro_hc, hc.fecha_inicio_atencion_con_profesional,hc.principalProblema 'Motivo de la primera consulta'
+from Paciente p, Historia_Clinica hc, AntecedentesMorbidos am
+where p.id_hc_fk=hc.id_hc and id_tipoDoc_fk=8 and nro_documento=20258789
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk
+from Historia_Clinica hc, AntecedentesMorbidos am
+where hc.id_hc= am.id_hc_fk and am.id_hc_fk='57'
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, enf.nombre, am.tratamiento, am.evolucion
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_enfermedad_fk=enf.id_enfermedad 
+
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, ope.nombre, am.evolucion, am.tratamiento
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Operaciones ope
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_operacion_fk=ope.id_operacion 
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, trau.nombre, am.evolucion, am.tratamiento
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Traumatismos trau
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_traumatismo_fk=trau.id_traumatismo
+
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, enf.nombre, am.tratamiento, am.evolucion
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_enfermedad_fk=enf.id_enfermedad 
+
+select * from AntecedentesGinecoObstetricos
+
+select am.fechaRegistro, am.id_tipoAntecedenteMorbido_fk, tam.nombre, enf.nombre, am.tratamiento, am.evolucion,CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
+from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf,ElementoDelTiempo et
+where hc.id_hc= am.id_hc_fk and hc.id_hc= '57' and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+and am.id_enfermedad_fk=enf.id_enfermedad 
+and am.id_elementoTiempo_fk=et.id_elementoDelTiempo
+
+
+select ag.fechaRegistro, ag.cantidadEmbarazos,CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino'
+from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2, TipoParto tp3
+where hc.id_hc=ag.id_hc_fk and hc.id_hc='18'
+and ag.id_TipoParto1_fk=tp1.id_TipoParto
+and ag.id_TipoParto2_fk=tp2.id_TipoParto
+and ag.id_TipoParto3_fk=tp3.id_TipoParto
+
+
+select ag.fechaRegistro, ag.cantidadEmbarazos,CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término'
+from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2,TipoParto tp3
+where hc.id_hc=ag.id_hc_fk and hc.id_hc='59'
+and ag.id_TipoParto1_fk=tp1.id_TipoParto
+and ag.id_TipoParto2_fk=tp2.id_TipoParto
+and ag.id_TipoParto3_fk=tp3.id_TipoParto
+and ISNULL(ag.id_TipoParto3_fk,0)=0
+
+select * from Historia_Clinica
+
+select * from AntecedentesGinecoObstetricos
+
+select ag.fechaRegistro, ag.cantidadEmbarazos,CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino', ab.cantidadTotal as 'Cantidad de abortos',CONCAT(ab.cantidadProvocados,' Aborto/s ',ta2.nombre) as 'Abortos provocados', CONCAT(ab.cantidadEspontaneo,' Aborto/s ',ta1.nombre) as 'Abortos espontaneos', ab.nroHijosVivos as 'Numero de hijos vivos',ab.problemasAsociadosAlEmbarazo as 'Problemas asociados al embarazo' 
+from Historia_Clinica hc, AntecedentesGinecoObstetricos ag, TipoParto tp1, TipoParto tp2, TipoParto tp3, Aborto ab, TipoAborto ta1,TipoAborto ta2
+where hc.id_hc=ag.id_hc_fk and hc.id_hc='59'
+and ag.id_TipoParto1_fk=tp1.id_TipoParto
+and ag.id_TipoParto2_fk=tp2.id_TipoParto
+and ag.id_TipoParto3_fk=tp3.id_TipoParto
+and ag.id_Aborto_fk=ab.id_aborto
+and ab.id_TipoAborto1_fk=ta1.id_TipoAborto
+and ab.id_TipoAborto2_fk=ta2.id_TipoAborto
+
+select aa.fechaRegistro as 'Fecha de registro', a.nombre as 'Nombre del alimento', aa.efectos as 'Efectos de la alergia'
+from AlergiaAlimento aa,Alimento a
+where id_hc_fk='23'
+and aa.id_alimento_fk=a.id_alimento
+
+select asa.fechaRegistro as 'Fecha de registro', sa.nombre as 'Nombre de la sustancia', asa.efectos as 'Efectos de la alergia'
+from AlergiaSustanciaAmbiente asa, SustanciaAmbiente sa
+where asa.id_hc_fk='24'
+and asa.id_sustanciaAmbiente_fk=sa.id_sustanciaAmbiente
+
+select * from AlergiaInsecto
+
+select ascp.fechaRegistro as 'Fecha de registro', scp.nombre as 'Nombre de la sustancia', ascp.efectos as 'Efectos de la alergia'
+from AlergiaSustanciaContactoPiel ascp, SustanciaContactoPiel scp
+where ascp.id_hc_fk='25'
+and ascp.id_sustanciaContactoPiel_fk=scp.id_sustanciaContactoPiel
+
+select am.fechaRegistro as 'Fecha de registro', ma.nombre as 'Nombre del medicamento', am.efectos as 'Efectos de la alergia'
+from AlergiaMedicamento am, MedicamentoAlergia ma
+where am.id_hc_fk='57'
+and am.id_medicamentoAlergia_fk=ma.id_medicamentoAlergia
+
+select ai.fechaRegistro as 'Fecha de registro', ins.nombre as 'Nombre del insecto', ai.efectos as 'Efectos de la alergia'
+from AlergiaInsecto ai, Insecto ins
+where ai.id_hc_fk='57'
+and ai.id_insecto_fk=ins.id_insecto
+
+select * from SistemaLinfatico
+
+alter table Sintoma
+add id_consulta_fk int
+
+alter table Consulta
+add id_hc_fk int not null
+
+alter table Consulta
+add foreign key (id_hc_fk) references Historia_Clinica(id_hc)
+
+alter table Sintoma
+add foreign key (id_consulta_fk) references Consulta(id_consulta)
+
+alter table ExamenGeneral
+add id_pulsoArterial_fk int
+
+alter table ExamenGeneral
+add foreign key(id_pulsoArterial_fk) references PulsoArterial(id_pulsoArterial)
+
+drop table HipotesisInicial
+drop table DiagnosticoDefinitivo
+drop table RazonamientoDiagnostico
+
+alter table ExamenGeneral
+add id_razonamiento_fk int
+
+alter table ExamenGeneral
+add foreign key(id_razonamiento_fk) references RazonamientoDiagnostico(id_razonamiento)
+
+select * from ExamenGeneral
+
+sp_rename 'PulsoArterial.ausculacion', 'auscultacion' --Cambia nombre de columna
+
+select * from PulsoArterial
+select * from DetallePulsoArterial
+select * from ExamenGeneral
+select @@IDENTITY
+select SCOPE_IDENTITY()
+select IDENT_CURRENT('Consulta')
+select IDENT_CURRENT('RazonamientoDiagnostico')
+select IDENT_CURRENT('PulsoArterial')
+select IDENT_CURRENT('ExamenGeneral')
+
+select c.nroConsulta, c.fechaConsulta,c.horaConsulta,c.motivoConsulta, ex.posicionYDecubito,ex.marchaYDeambulacion,ex.facieExpresionFisonomia,ex.concienciaEstadoPsiquico,ex.constitucionEstadoNutritivo,ex.peso,ex.talla
+from Consulta c, ExamenGeneral ex, Historia_Clinica hc
+where c.id_examenGeneral_fk=ex.id_examenGeneral
+and hc.id_hc=c.id_hc_fk and hc.id_hc='56'
+
+select * from AntecedentesGinecoObstetricos

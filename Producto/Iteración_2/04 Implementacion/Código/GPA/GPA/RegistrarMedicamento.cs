@@ -90,7 +90,6 @@ namespace GPA
         {
             cargarCombo(combo, formasAdministracion, valueMember, displayMember);
         }
-
         /*
         * Método para cargar un ComboBox.
         * Recibe como parámetro una referencia de un ComboBox, una lista genérica,  un string del valueMember y un string del displayMember.
@@ -301,16 +300,21 @@ namespace GPA
 
         private void txtNombreGenerico_TextChanged(object sender, EventArgs e)
         {
-            /*
+            
             if (string.IsNullOrEmpty(txtNombreGenerico.Text) == false)
             {
                 dgvListaMedicamentos.DataSource = manejadorActualizarMedicamento.mostrarEspecificacionMedicamento(txtNombreGenerico.Text);
-            }*/
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvListaMedicamentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }

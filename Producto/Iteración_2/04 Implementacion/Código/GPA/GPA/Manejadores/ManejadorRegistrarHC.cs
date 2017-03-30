@@ -43,6 +43,18 @@ namespace GPA.Manejadores
         {
             return PacienteLN.existeHC(tipoDoc, nroDoc);
         }
-       
+        public int registrarHistoriaClinica(HistoriaClinica hc)
+        {
+            return HistoriaClinicaLN.registrarHistoriaClinica(hc);
+        }
+        public int calcularSiguienteNroHc()
+        {
+            return HistoriaClinicaLN.calcularSiguienteNroHc();
+        }
+        public int mostrarIdHc(int tipoDoc, long nroDoc)
+        {
+            return HistoriaClinicaLN.mostrarIdHc(tipoDoc, nroDoc);
+        }
+
     }
 }
