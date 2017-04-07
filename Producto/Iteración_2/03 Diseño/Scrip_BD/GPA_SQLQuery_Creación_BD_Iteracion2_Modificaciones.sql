@@ -866,6 +866,15 @@ id_hc_fk int,
 foreign key (id_familiar_fk) references Familiar(id_familiar),
 foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
+create table AntecedentesPatologicosPersonales(
+id_antecedentePatologicoPersonal int identity,
+fechaRegistro date,
+enfermedades text,
+descripcion_otrasEnfermedades text,
+id_hc_fk int,
+constraint antecedentePatologicoPersonal_pk primary key(id_antecedentePatologicoPersonal),
+constraint antecedentePatologicoPersonal_fk foreign key (id_hc_fk) references Historia_Clinica (id_hc))
+
 
 
 
