@@ -24,6 +24,7 @@ namespace GPA
         ManejadorRegistrarAntecedentesMorbidos manejadorRegistrarAntecedentesMorbidos;
         ManejadorRegistrarAntecedentesGinecoObstetricos manejadorRegistrarAntecedentesGinecoObstetricos;
         ManejadorRegistrarAntecedentesPatologicosFamiliares manejadorRegistrarAntecedentesPatologicosFamiliares;
+        ManejadorRegistrarAntecedentesPatologicosPersonales manejadorRegistrarAntecedentesPatologicosPersonales;
         ManejadorRegistrarAlergias manejadorRegistrarAlergias;
         ManejadorRegistrarHabitosTabaquismo manejadorRegistrarHabitosTabaquismo;
         ManejadorRegistrarHabitoAlcoholismo manejadorRegistrarHabitosAlcoholismo;
@@ -60,6 +61,7 @@ namespace GPA
             manejadorRegistrarAntecedentesMorbidos = new ManejadorRegistrarAntecedentesMorbidos();
             manejadorRegistrarAntecedentesGinecoObstetricos = new ManejadorRegistrarAntecedentesGinecoObstetricos();
             manejadorRegistrarAntecedentesPatologicosFamiliares = new ManejadorRegistrarAntecedentesPatologicosFamiliares();
+            
             manejadorRegistrarAlergias = new ManejadorRegistrarAlergias();
             manejadorRegistrarHabitosTabaquismo = new ManejadorRegistrarHabitosTabaquismo();
             manejadorRegistrarHabitosAlcoholismo = new ManejadorRegistrarHabitoAlcoholismo();
@@ -1872,6 +1874,8 @@ namespace GPA
 
             registrarAntecedentesPatologicosFamiliares(idHc);
 
+            registrarAntecedentesPatológicosPersonales(idHc);
+
             registrarAlergiaAlimentos(idHc);
 
             registrarAlergiaSustanciaAmbiente(idHc);
@@ -2039,6 +2043,69 @@ namespace GPA
             {
                 manejadorRegistrarAntecedentesPatologicosFamiliares.registrarAntecedentesFamiliares(listaAntecedentesFamiliares, idHc);
             }
+        }
+        public void registrarAntecedentesPatológicosPersonales(int idHc)
+        {
+            
+            string listaEnfermedades = "";
+            string descripcionOtrasEnfermedades = "No precisa";
+            List<String> enfermedades = new List<String>();
+
+            if (cbTosFerina.Checked == true)
+                enfermedades.Add(" Tos Ferina");
+            if (cbNeumonia.Checked == true)
+                 enfermedades.Add(" Neumonía");
+            if (cbBronconeumonia.Checked == true)
+                 enfermedades.Add(" Bronconeumonía ");
+            if (cbAmigdalitis.Checked == true)
+                 enfermedades.Add(" Amigdalitis ");
+            if (cbFiebreTifoidea.Checked == true)
+                 enfermedades.Add(" Fiebre Tifoidea ");
+            if (cbDiarrea.Checked == true)
+                 enfermedades.Add(" Diarrea ");
+            if (cbBronquitis.Checked == true)
+                enfermedades.Add(" Bronquitis ");
+            if (cbSinusitis.Checked == true)
+                 enfermedades.Add(" Sinusitis ");
+            if (cbDifteria.Checked == true)
+                 enfermedades.Add(" Difteria ");
+            if (cbParoditis.Checked == true)
+                 enfermedades.Add(" Parotiditis ");
+            if (cbVaricela.Checked == true)
+                 enfermedades.Add(" Varicela ");
+            if (cbITS.Checked == true)
+                 enfermedades.Add(" ITS ");
+            if (cbDengue.Checked == true)
+                 enfermedades.Add(" Dengue ");
+            if (cbRubeola.Checked == true)
+                 enfermedades.Add(" Rubeola ");
+            if (cbSarampion.Checked == true)
+                enfermedades.Add(" Sarampión ");
+            if (cbCefalea.Checked == true)
+                 enfermedades.Add( " Cefalea ");
+            if (cbArtrosis.Checked == true)
+                 enfermedades.Add( " Artrosis ");
+            if (cbGastritis.Checked == true)
+                 enfermedades.Add( " Gastritis ");
+            if (cbAsmaBronquial.Checked == true)
+                 enfermedades.Add(" Asma Bronquial ");
+            if (cbFiebreReumatica.Checked == true)
+                 enfermedades.Add( " Fiebre Reumática ");
+            if (cbInfartoAgudoMiocardio.Checked == true)
+                 enfermedades.Add(" Infarto Agudo de Miocardio ");
+            if (cbArtritis.Checked == true)
+                 enfermedades.Add( " Artritis ");
+
+            if (string.IsNullOrEmpty(txtDescOtrasEnfermedadesPP.Text) == false)
+            {
+                descripcionOtrasEnfermedades = txtDescOtrasEnfermedadesPP.Text;
+            }
+
+            manejadorRegistrarAntecedentesPatologicosPersonales = new ManejadorRegistrarAntecedentesPatologicosPersonales();
+
+            DateTime fechaRegistro= Convert.ToDateTime(mtbFechaActual.Text);
+
+            manejadorRegistrarAntecedentesPatologicosPersonales.registrarAntecedentesPatologicosPersonales(fechaRegistro, enfermedades, descripcionOtrasEnfermedades, idHc);
         }
         /*
         * Método para registrar las alergias a los alimentos.
@@ -2274,6 +2341,11 @@ namespace GPA
         }
 
         private void cboNombrePorTipoAntecedenteMorbido_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
 
         }

@@ -56,6 +56,7 @@
     <Compile Include="Clases\AntecedenteFamiliar.cs" />
     <Compile Include="Clases\AntecedenteGinecoObstetrico.cs" />
     <Compile Include="Clases\AntecedenteMorbido.cs" />
+    <Compile Include="Clases\AntecedentePatologicoPersonal.cs" />
     <Compile Include="Clases\Barrio.cs" />
     <Compile Include="Clases\CaracterDelDolor.cs" />
     <Compile Include="Clases\ClasificacionPresionArterial.cs" />

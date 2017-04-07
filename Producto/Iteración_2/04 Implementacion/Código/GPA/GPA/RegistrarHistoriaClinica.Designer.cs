@@ -179,6 +179,39 @@
             this.cboFamiliar = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtDescOtrasEnfermedadesPP = new System.Windows.Forms.TextBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.rbNoOtraEnfermedadPP = new System.Windows.Forms.RadioButton();
+            this.rbSiOtraEnfermedadPP = new System.Windows.Forms.RadioButton();
+            this.label112 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.label111 = new System.Windows.Forms.Label();
+            this.cbHepatitis = new System.Windows.Forms.CheckBox();
+            this.cbAnginaPecho = new System.Windows.Forms.CheckBox();
+            this.cbArtritis = new System.Windows.Forms.CheckBox();
+            this.cbInfartoAgudoMiocardio = new System.Windows.Forms.CheckBox();
+            this.cbFiebreReumatica = new System.Windows.Forms.CheckBox();
+            this.cbAsmaBronquial = new System.Windows.Forms.CheckBox();
+            this.cbGastritis = new System.Windows.Forms.CheckBox();
+            this.cbArtrosis = new System.Windows.Forms.CheckBox();
+            this.cbCefalea = new System.Windows.Forms.CheckBox();
+            this.cbBronquitis = new System.Windows.Forms.CheckBox();
+            this.cbSinusitis = new System.Windows.Forms.CheckBox();
+            this.cbDifteria = new System.Windows.Forms.CheckBox();
+            this.cbParoditis = new System.Windows.Forms.CheckBox();
+            this.cbVaricela = new System.Windows.Forms.CheckBox();
+            this.cbITS = new System.Windows.Forms.CheckBox();
+            this.cbDengue = new System.Windows.Forms.CheckBox();
+            this.cbRubeola = new System.Windows.Forms.CheckBox();
+            this.cbSarampion = new System.Windows.Forms.CheckBox();
+            this.cbDiarrea = new System.Windows.Forms.CheckBox();
+            this.cbFiebreTifoidea = new System.Windows.Forms.CheckBox();
+            this.cbAmigdalitis = new System.Windows.Forms.CheckBox();
+            this.cbBronconeumonia = new System.Windows.Forms.CheckBox();
+            this.cbNeumonia = new System.Windows.Forms.CheckBox();
+            this.cbTosFerina = new System.Windows.Forms.CheckBox();
             this.tpAlergias = new System.Windows.Forms.TabPage();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -410,6 +443,9 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesPatologicosFamiliares)).BeginInit();
             this.panel3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.tpAlergias.SuspendLayout();
             this.tabControl4.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -1083,6 +1119,7 @@
             // 
             this.tabControl3.Controls.Add(this.tabPage10);
             this.tabControl3.Controls.Add(this.tabPage11);
+            this.tabControl3.Controls.Add(this.tabPage1);
             this.tabControl3.Location = new System.Drawing.Point(6, 6);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
@@ -1929,6 +1966,360 @@
             this.label38.Size = new System.Drawing.Size(28, 13);
             this.label38.TabIndex = 1;
             this.label38.Text = "Vive";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.txtDescOtrasEnfermedadesPP);
+            this.tabPage1.Controls.Add(this.label113);
+            this.tabPage1.Controls.Add(this.panel13);
+            this.tabPage1.Controls.Add(this.label112);
+            this.tabPage1.Controls.Add(this.panel12);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(702, 558);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Antecedentes Patológicos Personales";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtDescOtrasEnfermedadesPP
+            // 
+            this.txtDescOtrasEnfermedadesPP.Location = new System.Drawing.Point(9, 372);
+            this.txtDescOtrasEnfermedadesPP.Multiline = true;
+            this.txtDescOtrasEnfermedadesPP.Name = "txtDescOtrasEnfermedadesPP";
+            this.txtDescOtrasEnfermedadesPP.Size = new System.Drawing.Size(684, 59);
+            this.txtDescOtrasEnfermedadesPP.TabIndex = 6;
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(6, 356);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(217, 13);
+            this.label113.TabIndex = 5;
+            this.label113.Text = "Descripción enfermedades  no mencionadas";
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.rbNoOtraEnfermedadPP);
+            this.panel13.Controls.Add(this.rbSiOtraEnfermedadPP);
+            this.panel13.Location = new System.Drawing.Point(247, 318);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(119, 24);
+            this.panel13.TabIndex = 4;
+            // 
+            // rbNoOtraEnfermedadPP
+            // 
+            this.rbNoOtraEnfermedadPP.AutoSize = true;
+            this.rbNoOtraEnfermedadPP.Location = new System.Drawing.Point(57, 4);
+            this.rbNoOtraEnfermedadPP.Name = "rbNoOtraEnfermedadPP";
+            this.rbNoOtraEnfermedadPP.Size = new System.Drawing.Size(39, 17);
+            this.rbNoOtraEnfermedadPP.TabIndex = 2;
+            this.rbNoOtraEnfermedadPP.TabStop = true;
+            this.rbNoOtraEnfermedadPP.Text = "No";
+            this.rbNoOtraEnfermedadPP.UseVisualStyleBackColor = true;
+            // 
+            // rbSiOtraEnfermedadPP
+            // 
+            this.rbSiOtraEnfermedadPP.AutoSize = true;
+            this.rbSiOtraEnfermedadPP.Location = new System.Drawing.Point(2, 3);
+            this.rbSiOtraEnfermedadPP.Name = "rbSiOtraEnfermedadPP";
+            this.rbSiOtraEnfermedadPP.Size = new System.Drawing.Size(34, 17);
+            this.rbSiOtraEnfermedadPP.TabIndex = 1;
+            this.rbSiOtraEnfermedadPP.TabStop = true;
+            this.rbSiOtraEnfermedadPP.Text = "Si";
+            this.rbSiOtraEnfermedadPP.UseVisualStyleBackColor = true;
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(6, 323);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(220, 13);
+            this.label112.TabIndex = 3;
+            this.label112.Text = "Padece alguna enfermedad no mencionada?";
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.label111);
+            this.panel12.Controls.Add(this.cbHepatitis);
+            this.panel12.Controls.Add(this.cbAnginaPecho);
+            this.panel12.Controls.Add(this.cbArtritis);
+            this.panel12.Controls.Add(this.cbInfartoAgudoMiocardio);
+            this.panel12.Controls.Add(this.cbFiebreReumatica);
+            this.panel12.Controls.Add(this.cbAsmaBronquial);
+            this.panel12.Controls.Add(this.cbGastritis);
+            this.panel12.Controls.Add(this.cbArtrosis);
+            this.panel12.Controls.Add(this.cbCefalea);
+            this.panel12.Controls.Add(this.cbBronquitis);
+            this.panel12.Controls.Add(this.cbSinusitis);
+            this.panel12.Controls.Add(this.cbDifteria);
+            this.panel12.Controls.Add(this.cbParoditis);
+            this.panel12.Controls.Add(this.cbVaricela);
+            this.panel12.Controls.Add(this.cbITS);
+            this.panel12.Controls.Add(this.cbDengue);
+            this.panel12.Controls.Add(this.cbRubeola);
+            this.panel12.Controls.Add(this.cbSarampion);
+            this.panel12.Controls.Add(this.cbDiarrea);
+            this.panel12.Controls.Add(this.cbFiebreTifoidea);
+            this.panel12.Controls.Add(this.cbAmigdalitis);
+            this.panel12.Controls.Add(this.cbBronconeumonia);
+            this.panel12.Controls.Add(this.cbNeumonia);
+            this.panel12.Controls.Add(this.cbTosFerina);
+            this.panel12.Location = new System.Drawing.Point(6, 34);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(690, 241);
+            this.panel12.TabIndex = 0;
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(198, 9);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(250, 13);
+            this.label111.TabIndex = 24;
+            this.label111.Text = "Seleccionar enfermedades que padeció el paciente";
+            // 
+            // cbHepatitis
+            // 
+            this.cbHepatitis.AutoSize = true;
+            this.cbHepatitis.Location = new System.Drawing.Point(532, 195);
+            this.cbHepatitis.Name = "cbHepatitis";
+            this.cbHepatitis.Size = new System.Drawing.Size(67, 17);
+            this.cbHepatitis.TabIndex = 23;
+            this.cbHepatitis.Text = "Hepatitis";
+            this.cbHepatitis.UseVisualStyleBackColor = true;
+            // 
+            // cbAnginaPecho
+            // 
+            this.cbAnginaPecho.AutoSize = true;
+            this.cbAnginaPecho.Location = new System.Drawing.Point(532, 163);
+            this.cbAnginaPecho.Name = "cbAnginaPecho";
+            this.cbAnginaPecho.Size = new System.Drawing.Size(107, 17);
+            this.cbAnginaPecho.TabIndex = 22;
+            this.cbAnginaPecho.Text = "Angina de pecho";
+            this.cbAnginaPecho.UseVisualStyleBackColor = true;
+            // 
+            // cbArtritis
+            // 
+            this.cbArtritis.AutoSize = true;
+            this.cbArtritis.Location = new System.Drawing.Point(532, 131);
+            this.cbArtritis.Name = "cbArtritis";
+            this.cbArtritis.Size = new System.Drawing.Size(54, 17);
+            this.cbArtritis.TabIndex = 21;
+            this.cbArtritis.Text = "Artritis";
+            this.cbArtritis.UseVisualStyleBackColor = true;
+            // 
+            // cbInfartoAgudoMiocardio
+            // 
+            this.cbInfartoAgudoMiocardio.AutoSize = true;
+            this.cbInfartoAgudoMiocardio.Location = new System.Drawing.Point(532, 99);
+            this.cbInfartoAgudoMiocardio.Name = "cbInfartoAgudoMiocardio";
+            this.cbInfartoAgudoMiocardio.Size = new System.Drawing.Size(152, 17);
+            this.cbInfartoAgudoMiocardio.TabIndex = 20;
+            this.cbInfartoAgudoMiocardio.Text = "Infarto agudo de miocardio";
+            this.cbInfartoAgudoMiocardio.UseVisualStyleBackColor = true;
+            // 
+            // cbFiebreReumatica
+            // 
+            this.cbFiebreReumatica.AutoSize = true;
+            this.cbFiebreReumatica.Location = new System.Drawing.Point(532, 67);
+            this.cbFiebreReumatica.Name = "cbFiebreReumatica";
+            this.cbFiebreReumatica.Size = new System.Drawing.Size(104, 17);
+            this.cbFiebreReumatica.TabIndex = 19;
+            this.cbFiebreReumatica.Text = "Fiebre reumática";
+            this.cbFiebreReumatica.UseVisualStyleBackColor = true;
+            // 
+            // cbAsmaBronquial
+            // 
+            this.cbAsmaBronquial.AutoSize = true;
+            this.cbAsmaBronquial.Location = new System.Drawing.Point(532, 35);
+            this.cbAsmaBronquial.Name = "cbAsmaBronquial";
+            this.cbAsmaBronquial.Size = new System.Drawing.Size(98, 17);
+            this.cbAsmaBronquial.TabIndex = 18;
+            this.cbAsmaBronquial.Text = "Asma bronquial";
+            this.cbAsmaBronquial.UseVisualStyleBackColor = true;
+            // 
+            // cbGastritis
+            // 
+            this.cbGastritis.AutoSize = true;
+            this.cbGastritis.Location = new System.Drawing.Point(391, 195);
+            this.cbGastritis.Name = "cbGastritis";
+            this.cbGastritis.Size = new System.Drawing.Size(63, 17);
+            this.cbGastritis.TabIndex = 17;
+            this.cbGastritis.Text = "Gastritis";
+            this.cbGastritis.UseVisualStyleBackColor = true;
+            // 
+            // cbArtrosis
+            // 
+            this.cbArtrosis.AutoSize = true;
+            this.cbArtrosis.Location = new System.Drawing.Point(391, 163);
+            this.cbArtrosis.Name = "cbArtrosis";
+            this.cbArtrosis.Size = new System.Drawing.Size(60, 17);
+            this.cbArtrosis.TabIndex = 16;
+            this.cbArtrosis.Text = "Artrosis";
+            this.cbArtrosis.UseVisualStyleBackColor = true;
+            // 
+            // cbCefalea
+            // 
+            this.cbCefalea.AutoSize = true;
+            this.cbCefalea.Location = new System.Drawing.Point(391, 131);
+            this.cbCefalea.Name = "cbCefalea";
+            this.cbCefalea.Size = new System.Drawing.Size(62, 17);
+            this.cbCefalea.TabIndex = 15;
+            this.cbCefalea.Text = "Cefalea";
+            this.cbCefalea.UseVisualStyleBackColor = true;
+            // 
+            // cbBronquitis
+            // 
+            this.cbBronquitis.AutoSize = true;
+            this.cbBronquitis.Location = new System.Drawing.Point(211, 35);
+            this.cbBronquitis.Name = "cbBronquitis";
+            this.cbBronquitis.Size = new System.Drawing.Size(72, 17);
+            this.cbBronquitis.TabIndex = 14;
+            this.cbBronquitis.Text = "Bronquitis";
+            this.cbBronquitis.UseVisualStyleBackColor = true;
+            // 
+            // cbSinusitis
+            // 
+            this.cbSinusitis.AutoSize = true;
+            this.cbSinusitis.Location = new System.Drawing.Point(211, 67);
+            this.cbSinusitis.Name = "cbSinusitis";
+            this.cbSinusitis.Size = new System.Drawing.Size(64, 17);
+            this.cbSinusitis.TabIndex = 13;
+            this.cbSinusitis.Text = "Sinusitis";
+            this.cbSinusitis.UseVisualStyleBackColor = true;
+            // 
+            // cbDifteria
+            // 
+            this.cbDifteria.AutoSize = true;
+            this.cbDifteria.Location = new System.Drawing.Point(211, 99);
+            this.cbDifteria.Name = "cbDifteria";
+            this.cbDifteria.Size = new System.Drawing.Size(59, 17);
+            this.cbDifteria.TabIndex = 12;
+            this.cbDifteria.Text = "Difteria";
+            this.cbDifteria.UseVisualStyleBackColor = true;
+            // 
+            // cbParoditis
+            // 
+            this.cbParoditis.AutoSize = true;
+            this.cbParoditis.Location = new System.Drawing.Point(211, 131);
+            this.cbParoditis.Name = "cbParoditis";
+            this.cbParoditis.Size = new System.Drawing.Size(71, 17);
+            this.cbParoditis.TabIndex = 11;
+            this.cbParoditis.Text = "Parotiditis";
+            this.cbParoditis.UseVisualStyleBackColor = true;
+            // 
+            // cbVaricela
+            // 
+            this.cbVaricela.AutoSize = true;
+            this.cbVaricela.Location = new System.Drawing.Point(211, 163);
+            this.cbVaricela.Name = "cbVaricela";
+            this.cbVaricela.Size = new System.Drawing.Size(64, 17);
+            this.cbVaricela.TabIndex = 10;
+            this.cbVaricela.Text = "Varicela";
+            this.cbVaricela.UseVisualStyleBackColor = true;
+            // 
+            // cbITS
+            // 
+            this.cbITS.AutoSize = true;
+            this.cbITS.Location = new System.Drawing.Point(211, 195);
+            this.cbITS.Name = "cbITS";
+            this.cbITS.Size = new System.Drawing.Size(43, 17);
+            this.cbITS.TabIndex = 9;
+            this.cbITS.Text = "ITS";
+            this.cbITS.UseVisualStyleBackColor = true;
+            // 
+            // cbDengue
+            // 
+            this.cbDengue.AutoSize = true;
+            this.cbDengue.Location = new System.Drawing.Point(391, 35);
+            this.cbDengue.Name = "cbDengue";
+            this.cbDengue.Size = new System.Drawing.Size(64, 17);
+            this.cbDengue.TabIndex = 8;
+            this.cbDengue.Text = "Dengue";
+            this.cbDengue.UseVisualStyleBackColor = true;
+            // 
+            // cbRubeola
+            // 
+            this.cbRubeola.AutoSize = true;
+            this.cbRubeola.Location = new System.Drawing.Point(391, 67);
+            this.cbRubeola.Name = "cbRubeola";
+            this.cbRubeola.Size = new System.Drawing.Size(66, 17);
+            this.cbRubeola.TabIndex = 7;
+            this.cbRubeola.Text = "Rubeola";
+            this.cbRubeola.UseVisualStyleBackColor = true;
+            // 
+            // cbSarampion
+            // 
+            this.cbSarampion.AutoSize = true;
+            this.cbSarampion.Location = new System.Drawing.Point(391, 99);
+            this.cbSarampion.Name = "cbSarampion";
+            this.cbSarampion.Size = new System.Drawing.Size(76, 17);
+            this.cbSarampion.TabIndex = 6;
+            this.cbSarampion.Text = "Sarampión";
+            this.cbSarampion.UseVisualStyleBackColor = true;
+            // 
+            // cbDiarrea
+            // 
+            this.cbDiarrea.AutoSize = true;
+            this.cbDiarrea.Location = new System.Drawing.Point(18, 195);
+            this.cbDiarrea.Name = "cbDiarrea";
+            this.cbDiarrea.Size = new System.Drawing.Size(60, 17);
+            this.cbDiarrea.TabIndex = 5;
+            this.cbDiarrea.Text = "Diarrea";
+            this.cbDiarrea.UseVisualStyleBackColor = true;
+            // 
+            // cbFiebreTifoidea
+            // 
+            this.cbFiebreTifoidea.AutoSize = true;
+            this.cbFiebreTifoidea.Location = new System.Drawing.Point(18, 163);
+            this.cbFiebreTifoidea.Name = "cbFiebreTifoidea";
+            this.cbFiebreTifoidea.Size = new System.Drawing.Size(96, 17);
+            this.cbFiebreTifoidea.TabIndex = 4;
+            this.cbFiebreTifoidea.Text = "Fiebre Tifoidea";
+            this.cbFiebreTifoidea.UseVisualStyleBackColor = true;
+            // 
+            // cbAmigdalitis
+            // 
+            this.cbAmigdalitis.AutoSize = true;
+            this.cbAmigdalitis.Location = new System.Drawing.Point(18, 131);
+            this.cbAmigdalitis.Name = "cbAmigdalitis";
+            this.cbAmigdalitis.Size = new System.Drawing.Size(75, 17);
+            this.cbAmigdalitis.TabIndex = 3;
+            this.cbAmigdalitis.Text = "Amigdalitis";
+            this.cbAmigdalitis.UseVisualStyleBackColor = true;
+            // 
+            // cbBronconeumonia
+            // 
+            this.cbBronconeumonia.AutoSize = true;
+            this.cbBronconeumonia.Location = new System.Drawing.Point(18, 99);
+            this.cbBronconeumonia.Name = "cbBronconeumonia";
+            this.cbBronconeumonia.Size = new System.Drawing.Size(108, 17);
+            this.cbBronconeumonia.TabIndex = 2;
+            this.cbBronconeumonia.Text = "Bronconeumonía";
+            this.cbBronconeumonia.UseVisualStyleBackColor = true;
+            // 
+            // cbNeumonia
+            // 
+            this.cbNeumonia.AutoSize = true;
+            this.cbNeumonia.Location = new System.Drawing.Point(18, 67);
+            this.cbNeumonia.Name = "cbNeumonia";
+            this.cbNeumonia.Size = new System.Drawing.Size(76, 17);
+            this.cbNeumonia.TabIndex = 1;
+            this.cbNeumonia.Text = "Neumonía";
+            this.cbNeumonia.UseVisualStyleBackColor = true;
+            this.cbNeumonia.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // cbTosFerina
+            // 
+            this.cbTosFerina.AutoSize = true;
+            this.cbTosFerina.Location = new System.Drawing.Point(18, 35);
+            this.cbTosFerina.Name = "cbTosFerina";
+            this.cbTosFerina.Size = new System.Drawing.Size(76, 17);
+            this.cbTosFerina.TabIndex = 0;
+            this.cbTosFerina.Text = "Tos Ferina";
+            this.cbTosFerina.UseVisualStyleBackColor = true;
             // 
             // tpAlergias
             // 
@@ -4034,6 +4425,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesPatologicosFamiliares)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.tpAlergias.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -4447,5 +4844,38 @@
         private System.Windows.Forms.RadioButton rbNoActividadFisica;
         private System.Windows.Forms.RadioButton rbSiActividadFisica;
         private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.CheckBox cbBronquitis;
+        private System.Windows.Forms.CheckBox cbSinusitis;
+        private System.Windows.Forms.CheckBox cbDifteria;
+        private System.Windows.Forms.CheckBox cbParoditis;
+        private System.Windows.Forms.CheckBox cbVaricela;
+        private System.Windows.Forms.CheckBox cbITS;
+        private System.Windows.Forms.CheckBox cbDengue;
+        private System.Windows.Forms.CheckBox cbRubeola;
+        private System.Windows.Forms.CheckBox cbSarampion;
+        private System.Windows.Forms.CheckBox cbDiarrea;
+        private System.Windows.Forms.CheckBox cbFiebreTifoidea;
+        private System.Windows.Forms.CheckBox cbAmigdalitis;
+        private System.Windows.Forms.CheckBox cbBronconeumonia;
+        private System.Windows.Forms.CheckBox cbNeumonia;
+        private System.Windows.Forms.CheckBox cbTosFerina;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.RadioButton rbNoOtraEnfermedadPP;
+        private System.Windows.Forms.RadioButton rbSiOtraEnfermedadPP;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.CheckBox cbHepatitis;
+        private System.Windows.Forms.CheckBox cbAnginaPecho;
+        private System.Windows.Forms.CheckBox cbArtritis;
+        private System.Windows.Forms.CheckBox cbInfartoAgudoMiocardio;
+        private System.Windows.Forms.CheckBox cbFiebreReumatica;
+        private System.Windows.Forms.CheckBox cbAsmaBronquial;
+        private System.Windows.Forms.CheckBox cbGastritis;
+        private System.Windows.Forms.CheckBox cbArtrosis;
+        private System.Windows.Forms.CheckBox cbCefalea;
+        private System.Windows.Forms.TextBox txtDescOtrasEnfermedadesPP;
     }
 }

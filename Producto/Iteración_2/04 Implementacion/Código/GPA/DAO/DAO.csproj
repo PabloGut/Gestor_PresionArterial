@@ -55,6 +55,7 @@
     <Compile Include="AnalisisLaboratorioDAO.cs" />
     <Compile Include="AntecedenteFamiliarDAO.cs" />
     <Compile Include="AntecedenteMorbidoDAO.cs" />
+    <Compile Include="AntecedentePatologicoPersonalDAO.cs" />
     <Compile Include="AntecedentesGinecoObstetricosDAO.cs" />
     <Compile Include="BarrioDAO.cs" />
     <Compile Include="CadenaConexion.cs" />
