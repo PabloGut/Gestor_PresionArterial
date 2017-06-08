@@ -1,5 +1,4 @@
-
-# Created by https://www.gitignore.io/api/windows,visualstudio,microsoftoffice
+# Created by https://www.gitignore.io/api/svn,windows,visualstudio,microsoftoffice
 
 ### MicrosoftOffice ###
 *.tmp
@@ -18,6 +17,9 @@
 
 # Visio autosave temporary files
 *.~vsdx
+
+### SVN ###
+.svn/
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -329,4 +331,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-# End of https://www.gitignore.io/api/windows,visualstudio,microsoftoffice
+# End of https://www.gitignore.io/api/svn,windows,visualstudio,microsoftoffice
