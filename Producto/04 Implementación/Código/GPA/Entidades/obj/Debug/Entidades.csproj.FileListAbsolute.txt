@@ -1,8 +1,0 @@
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\bin\Debug\Entidades.exe.config
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\bin\Debug\Entidades.exe
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\bin\Debug\Entidades.pdb
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\obj\Debug\Entidades.Properties.Resources.resources
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\obj\Debug\Entidades.csproj.GenerateResource.Cache
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\obj\Debug\Entidades.exe
-C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\04 Implementación\Código\GPA\Entidades\obj\Debug\Entidades.pdb
