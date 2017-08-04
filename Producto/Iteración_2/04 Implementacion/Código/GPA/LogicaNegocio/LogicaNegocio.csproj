@@ -93,6 +93,7 @@
     <Compile Include="NombreEstudioLN.cs" />
     <Compile Include="OperacionLN.cs" />
     <Compile Include="ParteDelCuerpoLN.cs" />
+    <Compile Include="PielLN.cs" />
     <Compile Include="PosicionLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />
     <Compile Include="PulsoArterialLN.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="SustanciaContactoPielLN.cs" />
     <Compile Include="SustanciaDrogaIlicitaLN.cs" />
     <Compile Include="TamañoLN.cs" />
+    <Compile Include="TemperaturaLN.cs" />
     <Compile Include="TipoAbortoLN.cs" />
     <Compile Include="TipoAntecedenteMorbidoLN.cs" />
     <Compile Include="TipoBebidaLN.cs" />

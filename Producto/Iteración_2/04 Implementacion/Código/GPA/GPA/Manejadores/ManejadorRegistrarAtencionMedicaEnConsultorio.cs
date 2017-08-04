@@ -37,5 +37,31 @@ namespace GPA.Manejadores
         {
             ConsultaLN.registrarConsultaYExamenGeneral(consulta);
         }
+        /*
+         * Crear un objeto consulta.
+         * Retorna un objeto consulta.
+         */
+        public Consulta crearObjetoConsulta(int nroConsulta, DateTime fecha, DateTime hora, string motivoConsulta, int hc)
+        {
+            Consulta consulta = new Consulta();
+            consulta.nroConsulta = nroConsulta;
+            consulta.fecha = fecha;
+            consulta.hora = hora;
+            consulta.motivoConsulta = motivoConsulta;
+            consulta.id_hc = hc;
+
+            return consulta;
+        }
+        public Consulta crearObjetoConsulta(int nroConsulta, DateTime fecha, DateTime hora, string motivoConsulta, int hc, List<Sintoma> sintomas)
+        {
+            Consulta consulta = new Consulta();
+            consulta.nroConsulta = nroConsulta;
+            consulta.fecha = fecha;
+            consulta.hora = hora;
+            consulta.motivoConsulta = motivoConsulta;
+            consulta.id_hc = hc;
+            consulta.sintoma = sintomas;
+            return consulta;
+        }
     }
 }

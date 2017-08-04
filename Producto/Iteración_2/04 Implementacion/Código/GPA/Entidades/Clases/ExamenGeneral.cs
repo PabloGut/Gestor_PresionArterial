@@ -25,6 +25,7 @@ namespace Entidades.Clases
         public PulsoArterial pulso { set; get; }
         public MedicionDePresionArterial medicion { set; get; }
         public RazonamientoDiagnostico razonamiento { set; get;}
+        public Piel examenPiel { set; get; }
 
     }
 }

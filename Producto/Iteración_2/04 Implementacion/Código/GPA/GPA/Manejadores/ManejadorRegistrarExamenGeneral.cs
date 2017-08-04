@@ -53,7 +53,67 @@ namespace GPA.Manejadores
         {
             return PulsoArterialLN.registrarPulsoArterial(pulsoArterial);
         }
+        public ExamenGeneral crearExamenGeneralPaso1(string posicionYDecubito,string marchaDeambulacion,string facieExpresionFisonomia,string concienciaEstadoPsiquico,string constitucionEstadoNutritivo,int peso, int talla)
+        {
+            ExamenGeneral nuevoExamen = new ExamenGeneral();
+            nuevoExamen.posicionYDecubito = posicionYDecubito;
+            nuevoExamen.marchaYDeambulacion = marchaDeambulacion;
+            nuevoExamen.facieExpresionFisonomia=facieExpresionFisonomia;
+            nuevoExamen.concienciaEstadoPsiquico = concienciaEstadoPsiquico;
+            nuevoExamen.constitucionEstadoNutritivo = constitucionEstadoNutritivo;
+            nuevoExamen.peso = peso;
+            nuevoExamen.talla = talla;
 
+            return nuevoExamen;
+        }
+        public Piel crearExamenDePielPaso1(string colorPiel, string elasticidad, string humedad, string untuosidad, string turgor, string lesiones, TemperaturaPiel temperaturaPiel)
+        {
+            Piel nuevoExamenPiel = new Piel();
+            nuevoExamenPiel.color = colorPiel;
+            nuevoExamenPiel.elasticidad = elasticidad;
+            nuevoExamenPiel.untuosidad = untuosidad;
+            nuevoExamenPiel.turgor = turgor;
+            nuevoExamenPiel.lesiones = lesiones;
+            nuevoExamenPiel.temperatura = temperaturaPiel;
+
+            return nuevoExamenPiel;
+        }
+        public SistemaLinfatico crearSistemaLinfaticoPaso2(int ubicacion, int tamaño, int aproximacionNumerica, int consistencia, string descripcion, string sensiblePalpacion, string palpaConLimitesPrecisos, string tiendeConfluir, string seMovilizaConDedos, string adheridaPlanosProfundos, string procesoInflamatorioComprometePiel, string lesion, string observaciones)
+        {
+            SistemaLinfatico nuevoAnalisisSistemaLinfatico = new SistemaLinfatico();
+            nuevoAnalisisSistemaLinfatico.id_ubicacion = ubicacion;
+            nuevoAnalisisSistemaLinfatico.id_tamaño = tamaño;
+            nuevoAnalisisSistemaLinfatico.aproximacionNumerica = aproximacionNumerica;
+            nuevoAnalisisSistemaLinfatico.id_consistencia = consistencia;
+            nuevoAnalisisSistemaLinfatico.descripcion = descripcion;
+            nuevoAnalisisSistemaLinfatico.sensiblePalpacion = sensiblePalpacion;
+            nuevoAnalisisSistemaLinfatico.sePalpaConLimitesPrecisos = palpaConLimitesPrecisos;
+            nuevoAnalisisSistemaLinfatico.tiendeAConfluir = tiendeConfluir;
+            nuevoAnalisisSistemaLinfatico.sePuedeMovilizarConDedos = seMovilizaConDedos;
+            nuevoAnalisisSistemaLinfatico.adheridaPlanosProfundos = adheridaPlanosProfundos;
+            nuevoAnalisisSistemaLinfatico.procesoInflamatorioComprometeLaPiel = procesoInflamatorioComprometePiel;
+            nuevoAnalisisSistemaLinfatico.lesion = lesion;
+            nuevoAnalisisSistemaLinfatico.observaciones = observaciones;
+
+            return nuevoAnalisisSistemaLinfatico;
+        }
+        public PulsoArterial crearPulsoArterialPaso3(string auscultacion, string observaciones, List<DetallePulsoArterial> detalles)
+        {
+            PulsoArterial pulso = new PulsoArterial();
+            pulso.auscultacion = auscultacion;
+            pulso.observaciones = observaciones;
+            pulso.detalles = detalles;
+
+            return pulso;
+        }
+        public Respiracion crearRespiracionPaso3(string descripcion, string observaciones)
+        {
+            Respiracion respiracion = new Respiracion();
+            respiracion.descripcion = descripcion;
+            respiracion.observaciones = observaciones;
+
+            return respiracion;
+        }
         public void mostrarPresionArterial()
         {
             pantalla.presentarExamenGeneralPresionArterial(ExtremidadLN.mostrarExtremidades(), PosicionLN.mostrarPosiciones(), SitioMedicionLN.mostrarSitiosDeMedicion(), MomentoDiaLN.mostrarMomentosDelDia());

@@ -196,19 +196,19 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.cboTemperaturaPiel = new System.Windows.Forms.ComboBox();
+            this.txtLesionesPiel = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.txtElasticidadPiel = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.txtTurgorPiel = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.txtUntuosidadPiel = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.txtColorPiel = new System.Windows.Forms.TextBox();
+            this.txtHumedadPiel = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.txtAltura = new System.Windows.Forms.TextBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
@@ -254,9 +254,9 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label51 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.txtObservacionesRespiracion = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.txtDescripcionRespiracion = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.txtObservacionesPulsoArterial = new System.Windows.Forms.TextBox();
@@ -329,23 +329,23 @@
             this.lblPosicionPresionArterial = new System.Windows.Forms.Label();
             this.lblExtremidadPresionArterial = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox43 = new System.Windows.Forms.TextBox();
+            this.txtObservacionesTemperatura = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
-            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.txtResultado4 = new System.Windows.Forms.TextBox();
             this.label77 = new System.Windows.Forms.Label();
-            this.textBox41 = new System.Windows.Forms.TextBox();
+            this.txtResultadoTemperatura3 = new System.Windows.Forms.TextBox();
             this.label76 = new System.Windows.Forms.Label();
-            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.txtResultadoTemperatura2 = new System.Windows.Forms.TextBox();
             this.label75 = new System.Windows.Forms.Label();
-            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.txtResultadoTemperatura1 = new System.Windows.Forms.TextBox();
             this.label74 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox37 = new System.Windows.Forms.TextBox();
-            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.txtValorTemperatura4 = new System.Windows.Forms.TextBox();
+            this.txtValorTemperatura3 = new System.Windows.Forms.TextBox();
+            this.txtValorTemperatura2 = new System.Windows.Forms.TextBox();
             this.label70 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
@@ -354,11 +354,11 @@
             this.label65 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
-            this.comboBox31 = new System.Windows.Forms.ComboBox();
-            this.comboBox30 = new System.Windows.Forms.ComboBox();
-            this.comboBox29 = new System.Windows.Forms.ComboBox();
-            this.comboBox28 = new System.Windows.Forms.ComboBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.cboSitioMedicion3 = new System.Windows.Forms.ComboBox();
+            this.cboSitioMedicion4 = new System.Windows.Forms.ComboBox();
+            this.cboSitioMedicion2 = new System.Windows.Forms.ComboBox();
+            this.cboSitionMedición1 = new System.Windows.Forms.ComboBox();
+            this.txtValorTemperatura1 = new System.Windows.Forms.TextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.label55 = new System.Windows.Forms.Label();
@@ -2095,40 +2095,40 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.comboBox9);
-            this.panel7.Controls.Add(this.textBox28);
+            this.panel7.Controls.Add(this.cboTemperaturaPiel);
+            this.panel7.Controls.Add(this.txtLesionesPiel);
             this.panel7.Controls.Add(this.label42);
             this.panel7.Controls.Add(this.label41);
-            this.panel7.Controls.Add(this.textBox26);
+            this.panel7.Controls.Add(this.txtElasticidadPiel);
             this.panel7.Controls.Add(this.label40);
-            this.panel7.Controls.Add(this.textBox25);
+            this.panel7.Controls.Add(this.txtTurgorPiel);
             this.panel7.Controls.Add(this.label39);
-            this.panel7.Controls.Add(this.textBox24);
+            this.panel7.Controls.Add(this.txtUntuosidadPiel);
             this.panel7.Controls.Add(this.label36);
             this.panel7.Controls.Add(this.label38);
-            this.panel7.Controls.Add(this.textBox22);
-            this.panel7.Controls.Add(this.textBox23);
+            this.panel7.Controls.Add(this.txtColorPiel);
+            this.panel7.Controls.Add(this.txtHumedadPiel);
             this.panel7.Controls.Add(this.label37);
             this.panel7.Location = new System.Drawing.Point(6, 19);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(826, 219);
             this.panel7.TabIndex = 21;
             // 
-            // comboBox9
+            // cboTemperaturaPiel
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(107, 168);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(141, 24);
-            this.comboBox9.TabIndex = 27;
+            this.cboTemperaturaPiel.FormattingEnabled = true;
+            this.cboTemperaturaPiel.Location = new System.Drawing.Point(107, 168);
+            this.cboTemperaturaPiel.Name = "cboTemperaturaPiel";
+            this.cboTemperaturaPiel.Size = new System.Drawing.Size(141, 24);
+            this.cboTemperaturaPiel.TabIndex = 27;
             // 
-            // textBox28
+            // txtLesionesPiel
             // 
-            this.textBox28.Location = new System.Drawing.Point(497, 108);
-            this.textBox28.Multiline = true;
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(325, 49);
-            this.textBox28.TabIndex = 26;
+            this.txtLesionesPiel.Location = new System.Drawing.Point(497, 108);
+            this.txtLesionesPiel.Multiline = true;
+            this.txtLesionesPiel.Name = "txtLesionesPiel";
+            this.txtLesionesPiel.Size = new System.Drawing.Size(325, 49);
+            this.txtLesionesPiel.TabIndex = 26;
             // 
             // label42
             // 
@@ -2151,12 +2151,12 @@
             this.label41.Text = "Temperatura:";
             this.label41.Click += new System.EventHandler(this.label41_Click);
             // 
-            // textBox26
+            // txtElasticidadPiel
             // 
-            this.textBox26.Location = new System.Drawing.Point(547, 25);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(275, 23);
-            this.textBox26.TabIndex = 22;
+            this.txtElasticidadPiel.Location = new System.Drawing.Point(547, 25);
+            this.txtElasticidadPiel.Name = "txtElasticidadPiel";
+            this.txtElasticidadPiel.Size = new System.Drawing.Size(275, 23);
+            this.txtElasticidadPiel.TabIndex = 22;
             // 
             // label40
             // 
@@ -2168,13 +2168,13 @@
             this.label40.TabIndex = 21;
             this.label40.Text = "Elasticidad:";
             // 
-            // textBox25
+            // txtTurgorPiel
             // 
-            this.textBox25.Location = new System.Drawing.Point(64, 103);
-            this.textBox25.Multiline = true;
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(337, 37);
-            this.textBox25.TabIndex = 18;
+            this.txtTurgorPiel.Location = new System.Drawing.Point(64, 103);
+            this.txtTurgorPiel.Multiline = true;
+            this.txtTurgorPiel.Name = "txtTurgorPiel";
+            this.txtTurgorPiel.Size = new System.Drawing.Size(337, 37);
+            this.txtTurgorPiel.TabIndex = 18;
             // 
             // label39
             // 
@@ -2186,13 +2186,13 @@
             this.label39.TabIndex = 17;
             this.label39.Text = "Turgor:";
             // 
-            // textBox24
+            // txtUntuosidadPiel
             // 
-            this.textBox24.Location = new System.Drawing.Point(497, 66);
-            this.textBox24.Multiline = true;
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(325, 36);
-            this.textBox24.TabIndex = 20;
+            this.txtUntuosidadPiel.Location = new System.Drawing.Point(497, 66);
+            this.txtUntuosidadPiel.Multiline = true;
+            this.txtUntuosidadPiel.Name = "txtUntuosidadPiel";
+            this.txtUntuosidadPiel.Size = new System.Drawing.Size(325, 36);
+            this.txtUntuosidadPiel.TabIndex = 20;
             // 
             // label36
             // 
@@ -2215,19 +2215,19 @@
             this.label38.Text = "Untuosidad:";
             this.label38.Click += new System.EventHandler(this.label38_Click);
             // 
-            // textBox22
+            // txtColorPiel
             // 
-            this.textBox22.Location = new System.Drawing.Point(64, 25);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(386, 23);
-            this.textBox22.TabIndex = 16;
+            this.txtColorPiel.Location = new System.Drawing.Point(64, 25);
+            this.txtColorPiel.Name = "txtColorPiel";
+            this.txtColorPiel.Size = new System.Drawing.Size(386, 23);
+            this.txtColorPiel.TabIndex = 16;
             // 
-            // textBox23
+            // txtHumedadPiel
             // 
-            this.textBox23.Location = new System.Drawing.Point(88, 65);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(313, 23);
-            this.textBox23.TabIndex = 18;
+            this.txtHumedadPiel.Location = new System.Drawing.Point(88, 65);
+            this.txtHumedadPiel.Name = "txtHumedadPiel";
+            this.txtHumedadPiel.Size = new System.Drawing.Size(313, 23);
+            this.txtHumedadPiel.TabIndex = 18;
             // 
             // label37
             // 
@@ -2659,9 +2659,9 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label51);
-            this.groupBox7.Controls.Add(this.textBox34);
+            this.groupBox7.Controls.Add(this.txtObservacionesRespiracion);
             this.groupBox7.Controls.Add(this.label35);
-            this.groupBox7.Controls.Add(this.textBox33);
+            this.groupBox7.Controls.Add(this.txtDescripcionRespiracion);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(6, 380);
             this.groupBox7.Name = "groupBox7";
@@ -2680,13 +2680,13 @@
             this.label51.TabIndex = 6;
             this.label51.Text = "Observaciones";
             // 
-            // textBox34
+            // txtObservacionesRespiracion
             // 
-            this.textBox34.Location = new System.Drawing.Point(6, 129);
-            this.textBox34.Multiline = true;
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(824, 52);
-            this.textBox34.TabIndex = 7;
+            this.txtObservacionesRespiracion.Location = new System.Drawing.Point(6, 129);
+            this.txtObservacionesRespiracion.Multiline = true;
+            this.txtObservacionesRespiracion.Name = "txtObservacionesRespiracion";
+            this.txtObservacionesRespiracion.Size = new System.Drawing.Size(824, 52);
+            this.txtObservacionesRespiracion.TabIndex = 7;
             // 
             // label35
             // 
@@ -2698,13 +2698,13 @@
             this.label35.TabIndex = 4;
             this.label35.Text = "Descripción de como la persona respira";
             // 
-            // textBox33
+            // txtDescripcionRespiracion
             // 
-            this.textBox33.Location = new System.Drawing.Point(6, 45);
-            this.textBox33.Multiline = true;
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(824, 52);
-            this.textBox33.TabIndex = 5;
+            this.txtDescripcionRespiracion.Location = new System.Drawing.Point(6, 45);
+            this.txtDescripcionRespiracion.Multiline = true;
+            this.txtDescripcionRespiracion.Name = "txtDescripcionRespiracion";
+            this.txtDescripcionRespiracion.Size = new System.Drawing.Size(824, 52);
+            this.txtDescripcionRespiracion.TabIndex = 5;
             // 
             // groupBox5
             // 
@@ -3347,23 +3347,23 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.textBox43);
+            this.groupBox8.Controls.Add(this.txtObservacionesTemperatura);
             this.groupBox8.Controls.Add(this.label79);
             this.groupBox8.Controls.Add(this.label78);
-            this.groupBox8.Controls.Add(this.textBox42);
+            this.groupBox8.Controls.Add(this.txtResultado4);
             this.groupBox8.Controls.Add(this.label77);
-            this.groupBox8.Controls.Add(this.textBox41);
+            this.groupBox8.Controls.Add(this.txtResultadoTemperatura3);
             this.groupBox8.Controls.Add(this.label76);
-            this.groupBox8.Controls.Add(this.textBox40);
+            this.groupBox8.Controls.Add(this.txtResultadoTemperatura2);
             this.groupBox8.Controls.Add(this.label75);
-            this.groupBox8.Controls.Add(this.textBox39);
+            this.groupBox8.Controls.Add(this.txtResultadoTemperatura1);
             this.groupBox8.Controls.Add(this.label74);
             this.groupBox8.Controls.Add(this.label73);
             this.groupBox8.Controls.Add(this.label72);
             this.groupBox8.Controls.Add(this.label71);
-            this.groupBox8.Controls.Add(this.textBox38);
-            this.groupBox8.Controls.Add(this.textBox37);
-            this.groupBox8.Controls.Add(this.textBox36);
+            this.groupBox8.Controls.Add(this.txtValorTemperatura4);
+            this.groupBox8.Controls.Add(this.txtValorTemperatura3);
+            this.groupBox8.Controls.Add(this.txtValorTemperatura2);
             this.groupBox8.Controls.Add(this.label70);
             this.groupBox8.Controls.Add(this.label69);
             this.groupBox8.Controls.Add(this.label68);
@@ -3372,11 +3372,11 @@
             this.groupBox8.Controls.Add(this.label65);
             this.groupBox8.Controls.Add(this.label64);
             this.groupBox8.Controls.Add(this.label63);
-            this.groupBox8.Controls.Add(this.comboBox31);
-            this.groupBox8.Controls.Add(this.comboBox30);
-            this.groupBox8.Controls.Add(this.comboBox29);
-            this.groupBox8.Controls.Add(this.comboBox28);
-            this.groupBox8.Controls.Add(this.textBox35);
+            this.groupBox8.Controls.Add(this.cboSitioMedicion3);
+            this.groupBox8.Controls.Add(this.cboSitioMedicion4);
+            this.groupBox8.Controls.Add(this.cboSitioMedicion2);
+            this.groupBox8.Controls.Add(this.cboSitionMedición1);
+            this.groupBox8.Controls.Add(this.txtValorTemperatura1);
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
@@ -3385,13 +3385,13 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Temperatura";
             // 
-            // textBox43
+            // txtObservacionesTemperatura
             // 
-            this.textBox43.Location = new System.Drawing.Point(115, 207);
-            this.textBox43.Multiline = true;
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new System.Drawing.Size(596, 50);
-            this.textBox43.TabIndex = 35;
+            this.txtObservacionesTemperatura.Location = new System.Drawing.Point(115, 207);
+            this.txtObservacionesTemperatura.Multiline = true;
+            this.txtObservacionesTemperatura.Name = "txtObservacionesTemperatura";
+            this.txtObservacionesTemperatura.Size = new System.Drawing.Size(596, 50);
+            this.txtObservacionesTemperatura.TabIndex = 35;
             // 
             // label79
             // 
@@ -3411,12 +3411,12 @@
             this.label78.TabIndex = 33;
             this.label78.Text = "Resultado";
             // 
-            // textBox42
+            // txtResultado4
             // 
-            this.textBox42.Location = new System.Drawing.Point(598, 168);
-            this.textBox42.Name = "textBox42";
-            this.textBox42.Size = new System.Drawing.Size(113, 23);
-            this.textBox42.TabIndex = 32;
+            this.txtResultado4.Location = new System.Drawing.Point(598, 168);
+            this.txtResultado4.Name = "txtResultado4";
+            this.txtResultado4.Size = new System.Drawing.Size(113, 23);
+            this.txtResultado4.TabIndex = 32;
             // 
             // label77
             // 
@@ -3427,12 +3427,12 @@
             this.label77.TabIndex = 31;
             this.label77.Text = "Resultado";
             // 
-            // textBox41
+            // txtResultadoTemperatura3
             // 
-            this.textBox41.Location = new System.Drawing.Point(598, 124);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(113, 23);
-            this.textBox41.TabIndex = 30;
+            this.txtResultadoTemperatura3.Location = new System.Drawing.Point(598, 124);
+            this.txtResultadoTemperatura3.Name = "txtResultadoTemperatura3";
+            this.txtResultadoTemperatura3.Size = new System.Drawing.Size(113, 23);
+            this.txtResultadoTemperatura3.TabIndex = 30;
             // 
             // label76
             // 
@@ -3443,12 +3443,12 @@
             this.label76.TabIndex = 29;
             this.label76.Text = "Resultado";
             // 
-            // textBox40
+            // txtResultadoTemperatura2
             // 
-            this.textBox40.Location = new System.Drawing.Point(598, 81);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(113, 23);
-            this.textBox40.TabIndex = 28;
+            this.txtResultadoTemperatura2.Location = new System.Drawing.Point(598, 81);
+            this.txtResultadoTemperatura2.Name = "txtResultadoTemperatura2";
+            this.txtResultadoTemperatura2.Size = new System.Drawing.Size(113, 23);
+            this.txtResultadoTemperatura2.TabIndex = 28;
             // 
             // label75
             // 
@@ -3459,12 +3459,12 @@
             this.label75.TabIndex = 27;
             this.label75.Text = "Resultado";
             // 
-            // textBox39
+            // txtResultadoTemperatura1
             // 
-            this.textBox39.Location = new System.Drawing.Point(598, 32);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(113, 23);
-            this.textBox39.TabIndex = 26;
+            this.txtResultadoTemperatura1.Location = new System.Drawing.Point(598, 32);
+            this.txtResultadoTemperatura1.Name = "txtResultadoTemperatura1";
+            this.txtResultadoTemperatura1.Size = new System.Drawing.Size(113, 23);
+            this.txtResultadoTemperatura1.TabIndex = 26;
             // 
             // label74
             // 
@@ -3502,26 +3502,26 @@
             this.label71.TabIndex = 22;
             this.label71.Text = "ºC";
             // 
-            // textBox38
+            // txtValorTemperatura4
             // 
-            this.textBox38.Location = new System.Drawing.Point(376, 168);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(78, 23);
-            this.textBox38.TabIndex = 21;
+            this.txtValorTemperatura4.Location = new System.Drawing.Point(376, 168);
+            this.txtValorTemperatura4.Name = "txtValorTemperatura4";
+            this.txtValorTemperatura4.Size = new System.Drawing.Size(78, 23);
+            this.txtValorTemperatura4.TabIndex = 21;
             // 
-            // textBox37
+            // txtValorTemperatura3
             // 
-            this.textBox37.Location = new System.Drawing.Point(376, 124);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(78, 23);
-            this.textBox37.TabIndex = 20;
+            this.txtValorTemperatura3.Location = new System.Drawing.Point(376, 124);
+            this.txtValorTemperatura3.Name = "txtValorTemperatura3";
+            this.txtValorTemperatura3.Size = new System.Drawing.Size(78, 23);
+            this.txtValorTemperatura3.TabIndex = 20;
             // 
-            // textBox36
+            // txtValorTemperatura2
             // 
-            this.textBox36.Location = new System.Drawing.Point(376, 78);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(78, 23);
-            this.textBox36.TabIndex = 19;
+            this.txtValorTemperatura2.Location = new System.Drawing.Point(376, 78);
+            this.txtValorTemperatura2.Name = "txtValorTemperatura2";
+            this.txtValorTemperatura2.Size = new System.Drawing.Size(78, 23);
+            this.txtValorTemperatura2.TabIndex = 19;
             // 
             // label70
             // 
@@ -3595,44 +3595,44 @@
             this.label63.TabIndex = 11;
             this.label63.Text = "Sitio de medición";
             // 
-            // comboBox31
+            // cboSitioMedicion3
             // 
-            this.comboBox31.FormattingEnabled = true;
-            this.comboBox31.Location = new System.Drawing.Point(127, 124);
-            this.comboBox31.Name = "comboBox31";
-            this.comboBox31.Size = new System.Drawing.Size(121, 24);
-            this.comboBox31.TabIndex = 10;
+            this.cboSitioMedicion3.FormattingEnabled = true;
+            this.cboSitioMedicion3.Location = new System.Drawing.Point(127, 124);
+            this.cboSitioMedicion3.Name = "cboSitioMedicion3";
+            this.cboSitioMedicion3.Size = new System.Drawing.Size(121, 24);
+            this.cboSitioMedicion3.TabIndex = 10;
             // 
-            // comboBox30
+            // cboSitioMedicion4
             // 
-            this.comboBox30.FormattingEnabled = true;
-            this.comboBox30.Location = new System.Drawing.Point(127, 168);
-            this.comboBox30.Name = "comboBox30";
-            this.comboBox30.Size = new System.Drawing.Size(121, 24);
-            this.comboBox30.TabIndex = 8;
+            this.cboSitioMedicion4.FormattingEnabled = true;
+            this.cboSitioMedicion4.Location = new System.Drawing.Point(127, 168);
+            this.cboSitioMedicion4.Name = "cboSitioMedicion4";
+            this.cboSitioMedicion4.Size = new System.Drawing.Size(121, 24);
+            this.cboSitioMedicion4.TabIndex = 8;
             // 
-            // comboBox29
+            // cboSitioMedicion2
             // 
-            this.comboBox29.FormattingEnabled = true;
-            this.comboBox29.Location = new System.Drawing.Point(127, 81);
-            this.comboBox29.Name = "comboBox29";
-            this.comboBox29.Size = new System.Drawing.Size(121, 24);
-            this.comboBox29.TabIndex = 7;
+            this.cboSitioMedicion2.FormattingEnabled = true;
+            this.cboSitioMedicion2.Location = new System.Drawing.Point(127, 81);
+            this.cboSitioMedicion2.Name = "cboSitioMedicion2";
+            this.cboSitioMedicion2.Size = new System.Drawing.Size(121, 24);
+            this.cboSitioMedicion2.TabIndex = 7;
             // 
-            // comboBox28
+            // cboSitionMedición1
             // 
-            this.comboBox28.FormattingEnabled = true;
-            this.comboBox28.Location = new System.Drawing.Point(127, 32);
-            this.comboBox28.Name = "comboBox28";
-            this.comboBox28.Size = new System.Drawing.Size(121, 24);
-            this.comboBox28.TabIndex = 6;
+            this.cboSitionMedición1.FormattingEnabled = true;
+            this.cboSitionMedición1.Location = new System.Drawing.Point(127, 32);
+            this.cboSitionMedición1.Name = "cboSitionMedición1";
+            this.cboSitionMedición1.Size = new System.Drawing.Size(121, 24);
+            this.cboSitionMedición1.TabIndex = 6;
             // 
-            // textBox35
+            // txtValorTemperatura1
             // 
-            this.textBox35.Location = new System.Drawing.Point(376, 32);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(78, 23);
-            this.textBox35.TabIndex = 3;
+            this.txtValorTemperatura1.Location = new System.Drawing.Point(376, 32);
+            this.txtValorTemperatura1.Name = "txtValorTemperatura1";
+            this.txtValorTemperatura1.Size = new System.Drawing.Size(78, 23);
+            this.txtValorTemperatura1.TabIndex = 3;
             // 
             // tabPage10
             // 
@@ -4197,24 +4197,24 @@
         private System.Windows.Forms.TextBox txtFacieOExpresióndeFisonomia;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txtMarchaYDeambulacion;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox txtUntuosidadPiel;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox txtHumedadPiel;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox txtColorPiel;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TextBox txtElasticidadPiel;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.TextBox txtTurgorPiel;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.TextBox txtLesionesPiel;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox cboTemperaturaPiel;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
@@ -4249,16 +4249,16 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.TextBox txtObservacionesRespiracion;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox txtDescripcionRespiracion;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.TextBox textBox38;
-        private System.Windows.Forms.TextBox textBox37;
-        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.TextBox txtValorTemperatura4;
+        private System.Windows.Forms.TextBox txtValorTemperatura3;
+        private System.Windows.Forms.TextBox txtValorTemperatura2;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label68;
@@ -4267,22 +4267,22 @@
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.ComboBox comboBox31;
-        private System.Windows.Forms.ComboBox comboBox30;
-        private System.Windows.Forms.ComboBox comboBox29;
-        private System.Windows.Forms.ComboBox comboBox28;
-        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.ComboBox cboSitioMedicion3;
+        private System.Windows.Forms.ComboBox cboSitioMedicion4;
+        private System.Windows.Forms.ComboBox cboSitioMedicion2;
+        private System.Windows.Forms.ComboBox cboSitionMedición1;
+        private System.Windows.Forms.TextBox txtValorTemperatura1;
         private System.Windows.Forms.Label label74;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.TextBox textBox42;
+        private System.Windows.Forms.TextBox txtResultado4;
         private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.TextBox textBox41;
+        private System.Windows.Forms.TextBox txtResultadoTemperatura3;
         private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.TextBox textBox40;
+        private System.Windows.Forms.TextBox txtResultadoTemperatura2;
         private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.TextBox textBox39;
-        private System.Windows.Forms.TextBox textBox43;
+        private System.Windows.Forms.TextBox txtResultadoTemperatura1;
+        private System.Windows.Forms.TextBox txtObservacionesTemperatura;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TabPage tabPage10;

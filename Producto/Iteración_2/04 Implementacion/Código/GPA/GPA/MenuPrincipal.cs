@@ -864,7 +864,6 @@ namespace GPA
             string observaciones = "No precisa";
 
             listaTerritoriosExaminados = new List<SistemaLinfatico>();
-            SistemaLinfatico sistemaLinfatico = new SistemaLinfatico();
 
             Ubicacion ubicacionSeleccionada = (Ubicacion)cboUbicacionGanglio.SelectedItem;
             ubicacion = ubicacionSeleccionada.nombre;
@@ -925,25 +924,11 @@ namespace GPA
                 observaciones = txtObservaciones.Text;
             }
 
-            sistemaLinfatico.id_ubicacion=ubicacionSeleccionada.id_ubicacion;
-            sistemaLinfatico.id_tamaño=tamañoSeleccionado.id_tamaño;
-            sistemaLinfatico.aproximacionNumerica=aproximacionNumerica;
-            sistemaLinfatico.id_consistencia=consistenciaSeleccionada.id_consistencia;
-            sistemaLinfatico.descripcion=descripcion;
-            sistemaLinfatico.sensiblePalpacion=sensiblePalpacion;
-            sistemaLinfatico.sePalpaConLimitesPrecisos=limitesPrecisos;
-            sistemaLinfatico.tiendeAConfluir=tiendeConfluir;
-            sistemaLinfatico.sensiblePalpacion=sensiblePalpacion;
-            sistemaLinfatico.sePalpaConLimitesPrecisos=limitesPrecisos;
-            sistemaLinfatico.tiendeAConfluir=tiendeConfluir;
-            sistemaLinfatico.sePuedeMovilizarConDedos=movilizaConDedos;
-            sistemaLinfatico.adheridaPlanosProfundos=planosProfundos;
-            sistemaLinfatico.procesoInflamatorioComprometeLaPiel=procesoInflamatorio;
-            sistemaLinfatico.lesion=lesion;
-            sistemaLinfatico.observaciones=observaciones;
-
+            SistemaLinfatico nuevoExamenLinfatico=manejadorRegistrarExamenGeneral.crearSistemaLinfaticoPaso2(ubicacion,tamaño,aproximacionNumerica,consistencia,descripcion,sensiblePalpacion,,tiendeConfluir,movilizaConDedos,planosProfundos,procesoInflamatorio,lesion,observaciones);
+            
+            listaTerritoriosExaminados.Add(nuevoExamenLinfatico);
+            
             dgvRegionesEstudiadas.Rows.Add(ubicacion, tamaño, aproximacionNumerica, consistencia, descripcion, sensiblePalpacion, limitesPrecisos, tiendeConfluir,movilizaConDedos,planosProfundos, procesoInflamatorio, lesion, observaciones);
-            listaTerritoriosExaminados.Add(sistemaLinfatico);
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -1035,6 +1020,7 @@ namespace GPA
         private void btnRegistrarAtención_Click(object sender, EventArgs e)
         {
             registrarExamenGeneralYConsulta();
+
             /*int idRazonamientoDiagnostico = registrarRazonamientoDiagnostico();
             
             int idExamenGeneral = registrarExamenGeneral(idRazonamientoDiagnostico);
@@ -1047,31 +1033,329 @@ namespace GPA
 
 
         }
+        public void crearRazonamientoDiagnostico()
+        {
+            razonamiento = new RazonamientoDiagnostico();
+
+            if (string.IsNullOrEmpty(txtConceptoInicial.Text) == false)
+            {
+                razonamiento.conceptoInicial = txtConceptoInicial.Text;
+            }
+
+            if (hipotesis != null && hipotesis.Count > 0)
+                razonamiento.hipotesis = hipotesis;
+
+            if (diagnosticos != null && diagnosticos.Count > 0)
+                razonamiento.diagnosticos = diagnosticos;
+
+            if (listaEstudios != null && listaEstudios.Count > 0)
+                razonamiento.estudios = listaEstudios;
+
+            if (listaPrubasLaboratorio != null && listaPrubasLaboratorio.Count > 0)
+                razonamiento.pruebas = listaPrubasLaboratorio;
+
+            //int id=manejadorRegistrarExamenGeneral.registrarRazonamientoDiagnostico(razonamiento);
+
+            //return id;
+        }
+        /*
+        * Crea un objeto consulta.
+        * Llama al manejador Registrar Ateción Médica en consultorio.
+        * Retorna un objeto consulta.
+        */
+        public Consulta CrearConsulta()
+        {
+            int nroConsulta;
+            DateTime fecha;
+            DateTime hora;
+            string motivoConsulta;
+            int idhc;
+            Consulta consulta;
+            nroConsulta = Convert.ToInt32(txtNroConsulta.Text);
+            fecha = Convert.ToDateTime(mtbFechaConsulta.Text);
+            hora = Convert.ToDateTime(mtbHoraConsulta.Text);
+            motivoConsulta = txtMotivoConsulta.Text;
+            idhc = hc.id_hc;
+
+            if (listaSintoma != null && listaSintoma.Count > 0)
+            {
+                consulta = manejadorRegistrarAtencionMedicaEnConsultorio.crearObjetoConsulta(nroConsulta, fecha, hora, motivoConsulta, idhc, listaSintoma);
+            }
+            else
+            {
+                consulta = manejadorRegistrarAtencionMedicaEnConsultorio.crearObjetoConsulta(nroConsulta, fecha, hora, motivoConsulta, idhc);
+            }
+
+            return consulta;
+        }
+        /*Crear el objeto examen general.
+         * Llama al manejador RegistrarExamenGeneral
+         * Retorna un objeto Examen General.
+         */
+        public ExamenGeneral crearExamenGeneral()
+        {
+            string posicionYDecubito = "";
+            string marchaDeambulacion = "";
+            string facieExpresionFisonomia = "";
+            string concienciaEstadoPsiquico = "";
+            string constitucionEstadoNutritivo = "";
+            int peso = 0;
+            int talla = 0;
+
+
+            if (string.IsNullOrEmpty(txtPosicionYDecubito.Text) == false)
+            {
+                posicionYDecubito = txtPosicionYDecubito.Text;
+            }
+            else
+            {
+                posicionYDecubito = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtMarchaYDeambulacion.Text) == false)
+            {
+                marchaDeambulacion = txtMarchaYDeambulacion.Text;
+            }
+            else
+            {
+                marchaDeambulacion = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtFacieOExpresióndeFisonomia.Text) == false)
+            {
+                facieExpresionFisonomia = txtFacieOExpresióndeFisonomia.Text;
+            }
+            else
+            {
+                facieExpresionFisonomia = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtConsistenciaYEstadoPsiquico.Text) == false)
+            {
+                concienciaEstadoPsiquico = txtConsistenciaYEstadoPsiquico.Text;
+            }
+            else
+            {
+                concienciaEstadoPsiquico = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtConstitucionYEstadoNutritivo.Text) == false)
+            {
+                constitucionEstadoNutritivo = txtConstitucionYEstadoNutritivo.Text;
+            }
+            else
+            {
+                constitucionEstadoNutritivo = "No precisa";
+            }
+
+            if (string.IsNullOrEmpty(txtPeso.Text) == false)
+            {
+                peso = Convert.ToInt32(txtPeso.Text);
+            }
+
+            if (string.IsNullOrEmpty(txtAltura.Text) == false)
+            {
+                talla = Convert.ToInt32(txtAltura.Text);
+            }
+            return manejadorRegistrarExamenGeneral.crearExamenGeneralPaso1(posicionYDecubito, marchaDeambulacion, facieExpresionFisonomia, concienciaEstadoPsiquico, constitucionEstadoNutritivo, peso, talla);
+        }
+       
         private void registrarSistemaLinfatico(int idExamenGeneral)
         {
             if (listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
                 manejadorRegistrarExamenGeneral.registrarSistemaLinfatico(listaTerritoriosExaminados, idExamenGeneral);
         }
-        private void registrarPulsoArterial()
+        /*
+         * Crear el objeto correspondiente al exmanen de la piel.
+         * Llama al Manejador Registrar Examen General.
+         * Retorna un objeto Piel.
+         */
+        private Piel crearExamenPiel()
         {
-            pulso = new PulsoArterial();
+            string colorPiel = "";
+            string elasticidad = "";
+            string humedad = "";
+            string untuosidad = "";
+            string turgor = "";
+            string lesiones = "";
+            TemperaturaPiel temperaturaPiel = null;
 
-            if (String.IsNullOrEmpty(txtAuscultacionPulsos.Text) == true)
+            if (string.IsNullOrEmpty(txtColorPiel.Text))
             {
-                pulso.auscultacion = "No precisa";
+                colorPiel = "No precisa";
             }
             else
             {
-                pulso.auscultacion = txtAuscultacionPulsos.Text;
+                colorPiel = txtColorPiel.Text;
+            }
+
+            if (string.IsNullOrEmpty(txtElasticidadPiel.Text))
+            {
+                elasticidad = "No precisa";
+            }
+            else
+            {
+                elasticidad = txtElasticidadPiel.Text;
+            }
+
+            if (string.IsNullOrEmpty(txtHumedadPiel.Text))
+            {
+                humedad = "No precisa";
+            }
+            else
+            {
+                humedad = txtHumedadPiel.Text;
+            }
+
+            if (string.IsNullOrEmpty(txtUntuosidadPiel.Text))
+            {
+                untuosidad = "No precisa";
+            }
+            else
+            {
+                untuosidad = txtUntuosidadPiel.Text;
+            }
+
+            if (string.IsNullOrEmpty(txtTurgorPiel.Text))
+            {
+                turgor = "No precisa";
+            }
+            else
+            {
+                turgor = txtTurgorPiel.Text;
+            }
+
+            if (string.IsNullOrEmpty(txtLesionesPiel.Text))
+            {
+                lesiones = "No precisa";
+            }
+            else
+            {
+                lesiones = txtLesionesPiel.Text;
+            }
+
+            if (cboTemperaturaPiel.SelectedIndex > 0)
+            {
+                temperaturaPiel = (TemperaturaPiel)cboTemperaturaPiel.SelectedItem;
+            }
+            return manejadorRegistrarExamenGeneral.crearExamenDePielPaso1(colorPiel, elasticidad, humedad, untuosidad, turgor, lesiones, temperaturaPiel);
+        }
+        /*
+         * Agrega los territorios examinados del sistema linfático a la grilla, del paso dos.
+         * Agrega los territorios examinados a la lista.
+         * Llama al manejador Registrar Examine General.
+         * Valor de retorno void.
+         */
+        private void cargarDatosDataGridViewSistemaLinfatico()
+        {
+            string ubicacion;
+            string tamaño;
+            int aproximacionNumerica;
+            string consistencia;
+            string descripcion = "No precisa";
+            string sensiblePalpacion = "No";
+            string limitesPrecisos="No";
+            string tiendeConfluir="No";
+            string movilizaConDedos="No";
+            string planosProfundos="No";
+            string procesoInflamatorio = "No";
+            string lesion = "No precisa";
+            string observaciones = "No precisa";
+
+            listaTerritoriosExaminados = new List<SistemaLinfatico>();
+
+            Ubicacion ubicacionSeleccionada = (Ubicacion)cboUbicacionGanglio.SelectedItem;
+            ubicacion = ubicacionSeleccionada.nombre;
+
+            Tamaño tamañoSeleccionado = (Tamaño)cboTamañoGanglio.SelectedItem;
+            tamaño = tamañoSeleccionado.nombre;
+
+            aproximacionNumerica = Convert.ToInt32(cboAproximacionNumerica.SelectedItem.ToString());
+
+            Consistencia consistenciaSeleccionada = (Consistencia)cboConsistencia.SelectedItem;
+            consistencia = consistenciaSeleccionada.nombre;
+
+            if (string.IsNullOrEmpty(txtDescripcion.Text) == false)
+            {
+                descripcion = txtDescripcion.Text;
+            }
+
+            if (chbSensiblePalpacion.Checked == true)
+            {
+                sensiblePalpacion = "Si";
+            }
+
+            if (rbLimitesPrecisos.Checked == true)
+            {
+                limitesPrecisos = "Si";
+            }
+            else
+            {
+                if (rbTiendeConfluir.Checked == true)
+                {
+                    tiendeConfluir = "Si";
+                }
+            }
+
+            if(rbMovilizarConDedos.Checked==true)
+            {
+                movilizaConDedos="Si";
+            }
+            else
+            {
+                if(rbPlanosProfundos.Checked==true)
+                {
+                    planosProfundos="Si";
+                }
+            }
+            if (chbProcesoInflamatorio.Checked == true)
+            {
+                procesoInflamatorio = "Si";
+            }
+
+            if (String.IsNullOrEmpty(txtLesionCompromisoGangleo.Text) == false)
+            {
+                lesion = txtLesionCompromisoGangleo.Text;
+            }
+
+            if (String.IsNullOrEmpty(txtObservaciones.Text) == false)
+            {
+                observaciones = txtObservaciones.Text;
+            }
+
+            SistemaLinfatico nuevoExamenLinfatico=manejadorRegistrarExamenGeneral.crearSistemaLinfaticoPaso2(ubicacion,tamaño,aproximacionNumerica,consistencia,descripcion,sensiblePalpacion,,tiendeConfluir,movilizaConDedos,planosProfundos,procesoInflamatorio,lesion,observaciones);
+            
+            listaTerritoriosExaminados.Add(nuevoExamenLinfatico);
+            
+            dgvRegionesEstudiadas.Rows.Add(ubicacion, tamaño, aproximacionNumerica, consistencia, descripcion, sensiblePalpacion, limitesPrecisos, tiendeConfluir,movilizaConDedos,planosProfundos, procesoInflamatorio, lesion, observaciones);
+        }
+        /*
+        * Crear el objeto PulsoArterial.
+        * Llama al manejador registrar Examen General.
+        * Retorna un objeto PulsoArterial.
+        */
+        private PulsoArterial crearPulsoArterial()
+        {
+            string auscultacion = "";
+            string observaciones = "";
+
+
+            if (String.IsNullOrEmpty(txtAuscultacionPulsos.Text) == true)
+            {
+                auscultacion = "No precisa";
+            }
+            else
+            {
+                auscultacion = txtAuscultacionPulsos.Text;
             }
 
             if (String.IsNullOrEmpty(txtObservaciones.Text) == true)
             {
-                pulso.observaciones = "No precisa";
+                observaciones = "No precisa";
             }
             else
             {
-                pulso.auscultacion = txtObservaciones.Text;
+                auscultacion = txtObservaciones.Text;
             }
 
             List<DetallePulsoArterial> detalles = new List<DetallePulsoArterial>();
@@ -1079,8 +1363,8 @@ namespace GPA
             if (cboPulso1.SelectedIndex > 0)
             {
                 DetallePulsoArterial detalle = new DetallePulsoArterial();
-                
-                Pulso pulsoSeleccionado=(Pulso) cboPulso1.SelectedItem;
+
+                Pulso pulsoSeleccionado = (Pulso)cboPulso1.SelectedItem;
                 detalle.id_pulso = pulsoSeleccionado.id_pulso;
 
                 EscalaPulso escalaSeleccionadaI = (EscalaPulso)cboPI1.SelectedItem;
@@ -1204,9 +1488,59 @@ namespace GPA
                 detalles.Add(detalle);
             }
 
-            pulso.detalles = detalles;
+            return manejadorRegistrarExamenGeneral.crearPulsoArterialPaso3(auscultacion, observaciones, detalles);
         }
+        /*
+         * Crear el objetoRespiracion.
+         * Llama al manejador Registrar Examen General.
+         * Retorna un objeto Respiracion.
+         */
+        public Respiracion crearRespiracion()
+        {
+            string descripcion = "";
+            string observaciones = "";
 
+            if (string.IsNullOrEmpty(txtDescripcionRespiracion.Text))
+            {
+                descripcion = "No precisa";
+            }
+            else
+            {
+                descripcion = txtDescripcionRespiracion.Text;
+            }
+
+            if (string.IsNullOrEmpty(txtObservaciones.Text))
+            {
+                observaciones = "No precisa";
+            }
+            else
+            {
+                observaciones = txtObservaciones.Text;
+            }
+
+            return manejadorRegistrarExamenGeneral.crearRespiracionPaso3(descripcion, observaciones);
+
+        }
+        public Temperatura crearMedicionTemperatura()
+        {
+            int id_sitio;
+            double valorTemperatura;
+            int resultado;
+
+            if (cboSitionMedición1.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura1.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura1.Text))
+            {
+                SitioMedicion sitio = (SitioMedicion)cboSitionMedición1.SelectedItem;
+                id_sitio = sitio.id_sitioMedicion;
+
+                valorTemperatura =Convert.ToDouble(txtValorTemperatura1.Text);
+
+                resultado=Convert.toStr
+            }
+            
+                
+
+
+        }
         public void presentarExamenGeneralPresionArterial(List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
         {
             Utilidades.cargarCombo(cmbExtremidadPresionArterial, extremidades, "id_extremidad", "nombre");
@@ -1357,104 +1691,6 @@ namespace GPA
                 dgvExamenesARealizar.Rows.Add(analisis, indicaciones);
             }
         }
-        public void registrarRazonamientoDiagnostico()
-        {
-            razonamiento = new RazonamientoDiagnostico();
-
-            if (string.IsNullOrEmpty(txtConceptoInicial.Text) == false)
-            {
-                razonamiento.conceptoInicial = txtConceptoInicial.Text;
-            }
-
-            if (hipotesis != null && hipotesis.Count > 0)
-                razonamiento.hipotesis = hipotesis;
-
-            if (diagnosticos != null && diagnosticos.Count > 0)
-                razonamiento.diagnosticos = diagnosticos;
-
-            if (listaEstudios != null && listaEstudios.Count > 0)
-                razonamiento.estudios = listaEstudios;
-
-            if (listaPrubasLaboratorio != null && listaPrubasLaboratorio.Count > 0)
-                razonamiento.pruebas = listaPrubasLaboratorio;
-
-            //int id=manejadorRegistrarExamenGeneral.registrarRazonamientoDiagnostico(razonamiento);
-
-            //return id;
-        }
-        public void registrarExamenGeneral()
-        {
-            examen = new ExamenGeneral();
-
-            if (string.IsNullOrEmpty(txtPosicionYDecubito.Text) == false)
-            {
-                examen.posicionYDecubito = txtPosicionYDecubito.Text;
-            }
-            else
-            {
-                examen.posicionYDecubito = "No precisa";
-            }
-
-            if (string.IsNullOrEmpty(txtMarchaYDeambulacion.Text) == false)
-            {
-                examen.marchaYDeambulacion = txtMarchaYDeambulacion.Text;
-            }
-            else
-            {
-                examen.marchaYDeambulacion = "No precisa";
-            }
-
-            if (string.IsNullOrEmpty(txtFacieOExpresióndeFisonomia.Text) == false)
-            {
-                examen.facieExpresionFisonomia = txtFacieOExpresióndeFisonomia.Text;
-            }
-            else
-            {
-                examen.facieExpresionFisonomia = "No precisa";
-            }
-
-            if (string.IsNullOrEmpty(txtConsistenciaYEstadoPsiquico.Text) == false)
-            {
-                examen.concienciaEstadoPsiquico = txtConsistenciaYEstadoPsiquico.Text;
-            }
-            else
-            {
-                examen.concienciaEstadoPsiquico = "No precisa";
-            }
-
-            if (string.IsNullOrEmpty(txtConstitucionYEstadoNutritivo.Text) == false)
-            {
-                examen.constitucionEstadoNutritivo = txtConstitucionYEstadoNutritivo.Text;
-            }
-            else
-            {
-                examen.constitucionEstadoNutritivo = "No precisa";
-            }
-
-            if (string.IsNullOrEmpty(txtPeso.Text) == false)
-            {
-                examen.peso = Convert.ToInt32(txtPeso.Text);
-            }
-
-            if (string.IsNullOrEmpty(txtAltura.Text) == false)
-            {
-                examen.talla = Convert.ToInt32(txtAltura.Text);
-            }
-        }
-        public void registrarConsulta()
-        {
-            consulta = new Consulta();
-
-            consulta.nroConsulta = Convert.ToInt32(txtNroConsulta.Text);
-            consulta.fecha = Convert.ToDateTime(mtbFechaConsulta.Text);
-            consulta.hora = Convert.ToDateTime(mtbHoraConsulta.Text);
-            consulta.motivoConsulta = txtMotivoConsulta.Text;
-            consulta.id_hc = hc.id_hc;
-
-            if (listaSintoma != null && listaSintoma.Count > 0)
-                consulta.sintoma = listaSintoma;
-        }
-
         private void generarNuevaConsultaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             generarNuevaConsulta();
@@ -1505,24 +1741,26 @@ namespace GPA
         }
         public void registrarExamenGeneralYConsulta()
         {
-            //Codigo para registrar exáme general y consulta con una sola transaccion en DAO.
-            registrarRazonamientoDiagnostico();
+            //Codigo para registrar exámen general y consulta con una sola transaccion en DAO.
+            crearRazonamientoDiagnostico();
 
-            registrarExamenGeneral();
+            examen=crearExamenGeneral();//Crea ObjetoExamenGeneral.
+
+            examen.examenPiel= crearExamenPiel();//Agrega el análisis de la piel al examen general.
 
             if (examen!=null && listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
-                examen.territoriosExaminados = listaTerritoriosExaminados;
+                examen.territoriosExaminados = listaTerritoriosExaminados; //Agrega el análisis del sistema linfático al examen
 
-            registrarPulsoArterial();
+            crearPulsoArterial();//Crea ObjetoPulsoArterial
             
-            examen.pulso = pulso;
+            examen.pulso = pulso;//Agrega el examen del pulso al examen.
 
             if (examen != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
                 examen.medicion = manejadorRegistrarExamenGeneral.medicion;
 
             examen.razonamiento = razonamiento;
 
-            registrarConsulta();
+            CrearConsulta();
 
             consulta.examen = examen;
 

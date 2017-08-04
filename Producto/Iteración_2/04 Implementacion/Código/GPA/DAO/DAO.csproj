@@ -116,6 +116,7 @@
     <Compile Include="OperacionesDAO.cs" />
     <Compile Include="PacienteDAO.cs" />
     <Compile Include="ParteDelCuerpoDAO.cs" />
+    <Compile Include="PielDAO.cs" />
     <Compile Include="PosicionDAO.cs" />
     <Compile Include="PresentacionMedicamentoDAO.cs" />
     <Compile Include="ProfesionalMedicoDAO.cs" />
