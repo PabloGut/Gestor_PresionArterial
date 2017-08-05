@@ -507,12 +507,14 @@ nombre text)
 
 CREATE TABLE ResultadoTemperatura(
 id_resultadoTemperatura int primary key identity,
-nombre text)
+nombre text,
+valorMaximo float,
+valorMinimo float)
 
 CREATE TABLE Temperatura(
 id_temperatura int primary key identity,
 id_sitioMedicio_fk int,
-temperaturaGradosCentigrados varchar(20),
+temperaturaGradosCentigrados float,
 id_resultadoTemperatura_fk int,
 id_examenGeneral_fk int not null,
 foreign key (id_sitioMedicio_fk) references SitioMedicionTemperatura(id_sitioMedicionTemperatura),

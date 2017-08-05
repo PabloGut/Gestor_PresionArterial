@@ -869,3 +869,29 @@ insert into ClasificacionPresionArterial(categoria,maximaDesde,maximaHasta,minim
 values('HTA sistólica o aislada',140,999,0,90)
 /*--------------------------*/
 
+/*----------------Insert----------------------------*/
+insert into SitioMedicionTemperatura(nombre)
+values('--Seleccionar--')
+insert into SitioMedicionTemperatura(nombre)
+values('Boca(Bajo la lengua)')
+insert into SitioMedicionTemperatura(nombre)
+values('Axilas')
+insert into SitioMedicionTemperatura(nombre)
+values('Pliegue inguinal')
+/*-----------------------------------------------------*/
+/*---------------Insert------------------------------*/
+insert into ResultadoTemperatura(nombre,valorMaximo,valorMinimo)
+values('Hipotermia',36.4,0)
+insert into ResultadoTemperatura(nombre,valorMaximo,valorMinimo)
+values('Normal',37.2,36.5)
+insert into ResultadoTemperatura(nombre,valorMaximo,valorMinimo)
+values('Fiebre ligera',38.4,37.3)
+insert into ResultadoTemperatura(nombre,valorMaximo,valorMinimo)
+values('Fiebre Moderada',39.4, 38.5)
+insert into ResultadoTemperatura(nombre,valorMaximo,valorMinimo)
+values('Fiebre alta',40.4, 39.5)
+insert into ResultadoTemperatura(nombre,valorMaximo,valorMinimo)
+values('Fiebre muy alta',45, 40.5)
+/*------------------------------------------------------*/
+
+

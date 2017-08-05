@@ -603,7 +603,7 @@ add foreign key(id_pulsoArterial_fk) references PulsoArterial(id_pulsoArterial)
 
 drop table HipotesisInicial
 drop table DiagnosticoDefinitivo
-drop table RazonamientoDiagnostico
+drop table ResultadoTemperatura
 
 alter table ExamenGeneral
 add id_razonamiento_fk int
@@ -631,3 +631,19 @@ where c.id_examenGeneral_fk=ex.id_examenGeneral
 and hc.id_hc=c.id_hc_fk and hc.id_hc='56'
 
 select * from AntecedentesGinecoObstetricos
+
+alter table ResultadoTemperatura
+add valorMaximo float, valorMinimo 
+
+alter table Temperatura
+add temperaturaGradosCentigrados float
+
+alter table Temperatura
+drop column temperaturaGradosCentigrados
+
+select * from ResultadoTemperatura
+select nombre, valorMaximo, valorMinimo
+from ResultadoTemperatura
+where 36 between valorMinimo and valorMaximo
+ 
+
