@@ -134,6 +134,7 @@
     <Compile Include="SustanciaContactoPielDAO.cs" />
     <Compile Include="SustanciaDrogaIlicitaDAO.cs" />
     <Compile Include="TamañoDAO.cs" />
+    <Compile Include="TemperaturaDAO.cs" />
     <Compile Include="TipoAbortoDAO.cs" />
     <Compile Include="TipoAntecedenteMorbidoDAO.cs" />
     <Compile Include="TipoBebidaDAO.cs" />

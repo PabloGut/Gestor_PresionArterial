@@ -847,7 +847,7 @@ namespace GPA
             Utilidades.agregarColumnasDataGridView(dgvExamenesARealizar, nombresColumnas);
 
         }
-        private void cargarDatosDataGridViewSistemaLinfatico()
+        /*private void cargarDatosDataGridViewSistemaLinfatico()
         {
             string ubicacion;
             string tamaño;
@@ -929,7 +929,7 @@ namespace GPA
             listaTerritoriosExaminados.Add(nuevoExamenLinfatico);
             
             dgvRegionesEstudiadas.Rows.Add(ubicacion, tamaño, aproximacionNumerica, consistencia, descripcion, sensiblePalpacion, limitesPrecisos, tiendeConfluir,movilizaConDedos,planosProfundos, procesoInflamatorio, lesion, observaciones);
-        }
+        }*/
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -1524,17 +1524,22 @@ namespace GPA
         public Temperatura crearMedicionTemperatura()
         {
             int id_sitio;
-            double valorTemperatura;
-            int resultado;
+            float valorTemperatura;
+            string resultado;
 
             if (cboSitionMedición1.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura1.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura1.Text))
             {
                 SitioMedicion sitio = (SitioMedicion)cboSitionMedición1.SelectedItem;
                 id_sitio = sitio.id_sitioMedicion;
 
-                valorTemperatura =Convert.ToDouble(txtValorTemperatura1.Text);
+                valorTemperatura =float.Parse(txtValorTemperatura1.Text);
 
-                resultado=Convert.toStr
+                resultado = txtResultadoTemperatura1.Text;
+
+                Temperatura temperatura = new Temperatura();
+
+                temperatura.valorTemperatura = valorTemperatura;
+                
             }
             
                 

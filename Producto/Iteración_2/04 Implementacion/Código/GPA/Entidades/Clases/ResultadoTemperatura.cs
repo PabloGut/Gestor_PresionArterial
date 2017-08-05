@@ -10,7 +10,7 @@ namespace Entidades.Clases
     {
         public int id_resultado { get; set; }
         public string nombre { set; get; }
-        public double valorMaximo { set; get; }
-        public double valorMinimo { set; get; }
+        public float valorMaximo { set; get; }
+        public float valorMinimo { set; get; }
     }
 }

@@ -11,9 +11,20 @@ namespace LogicaNegocio
 {
     public class TemperaturaLN
     {
-        public ResultadoTemperatura determinarResultado(double valorTemperatura)
+        public string determinarResultado(float valorTemperatura)
         {
-           
+            string nombreClasificacionTemperatura = TemperaturaDAO.mostrarClasificacionDeTemperatura(valorTemperatura);
+
+            if (string.IsNullOrEmpty(nombreClasificacionTemperatura))
+            {
+                nombreClasificacionTemperatura = "";
+                return nombreClasificacionTemperatura;
+            }
+            else
+            {
+                return nombreClasificacionTemperatura;
+            }
+
         }
     }
 }
