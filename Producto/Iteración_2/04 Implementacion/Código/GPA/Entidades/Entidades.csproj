@@ -75,11 +75,13 @@
     <Compile Include="Clases\Especialidad.cs" />
     <Compile Include="Clases\EspecificacionMedicamento.cs" />
     <Compile Include="Clases\Estado.cs" />
+    <Compile Include="Clases\EstadoDiagnostico.cs" />
     <Compile Include="Clases\EstadoHipotesis.cs" />
     <Compile Include="Clases\EstadoProgramacion.cs" />
     <Compile Include="Clases\Estudio.cs" />
     <Compile Include="Clases\EstudioDiagnosticoPorImagen.cs" />
     <Compile Include="Clases\ExamenGeneral.cs" />
+    <Compile Include="Clases\ExploracionComplementaria.cs" />
     <Compile Include="Clases\Extremidad.cs" />
     <Compile Include="Clases\FormaAdministracion.cs" />
     <Compile Include="Clases\HabitoActividadFisica.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Clases\Insecto.cs" />
     <Compile Include="Clases\Institucion.cs" />
     <Compile Include="Clases\IntensidadActividadFisica.cs" />
+    <Compile Include="Clases\Laboratorio.cs" />
     <Compile Include="Clases\Localidad.cs" />
     <Compile Include="Clases\Medicamento.cs" />
     <Compile Include="Clases\MedicamentoAlergia.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Clases\MomentoDia.cs" />
     <Compile Include="Clases\NombreComercial.cs" />
     <Compile Include="Clases\NombreEstudio.cs" />
+    <Compile Include="Clases\Nota.cs" />
     <Compile Include="Clases\Operacion.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\ParteDelCuerpo.cs" />
@@ -129,6 +133,7 @@
     <Compile Include="Clases\TipoDocumento.cs" />
     <Compile Include="Clases\TipoParto.cs" />
     <Compile Include="Clases\TipoSintoma.cs" />
+    <Compile Include="Clases\Tratamiento.cs" />
     <Compile Include="Clases\Traumatismo.cs" />
     <Compile Include="Clases\Ubicacion.cs" />
     <Compile Include="Clases\UbicacionExtremidad.cs" />

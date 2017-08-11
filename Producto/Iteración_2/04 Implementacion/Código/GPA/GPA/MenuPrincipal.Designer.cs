@@ -42,6 +42,8 @@
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tratamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoTratamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -366,8 +368,6 @@
             this.txtIndicacionesAnalisisARealizar = new System.Windows.Forms.TextBox();
             this.txtIndicacionesEstudioARealizar = new System.Windows.Forms.TextBox();
             this.btnRegistrarAtención = new System.Windows.Forms.Button();
-            this.btnRegistrarMedicacion = new System.Windows.Forms.Button();
-            this.label86 = new System.Windows.Forms.Label();
             this.btnAnalisisLaboratorioARealizar = new System.Windows.Forms.Button();
             this.btnEstudioARealizar = new System.Windows.Forms.Button();
             this.dgvExamenesARealizar = new System.Windows.Forms.DataGridView();
@@ -376,21 +376,27 @@
             this.label84 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblFechaDescartado = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.cboEstadoDiagnostico = new System.Windows.Forms.ComboBox();
+            this.lblEstadoDiagnostico = new System.Windows.Forms.Label();
             this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.dgvDiagnosticos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDiagnostico = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
-            this.AgregarHipotesisInicial = new System.Windows.Forms.Button();
-            this.dgvHipotesis = new System.Windows.Forms.DataGridView();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtHipotesisInicial = new System.Windows.Forms.TextBox();
-            this.label81 = new System.Windows.Forms.Label();
             this.txtConceptoInicial = new System.Windows.Forms.TextBox();
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label56 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label57 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -448,7 +454,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvExamenesARealizar)).BeginInit();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHipotesis)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -457,7 +462,8 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Highlight;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.ediciónToolStripMenuItem});
+            this.ediciónToolStripMenuItem,
+            this.tratamientoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
@@ -568,6 +574,21 @@
             this.tiposDeDocumentoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.tiposDeDocumentoToolStripMenuItem.Text = "Tipos de Documento";
             this.tiposDeDocumentoToolStripMenuItem.Click += new System.EventHandler(this.tiposDeDocumentoToolStripMenuItem_Click);
+            // 
+            // tratamientoToolStripMenuItem
+            // 
+            this.tratamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoTratamientoToolStripMenuItem});
+            this.tratamientoToolStripMenuItem.Name = "tratamientoToolStripMenuItem";
+            this.tratamientoToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.tratamientoToolStripMenuItem.Text = "Tratamiento";
+            // 
+            // nuevoTratamientoToolStripMenuItem
+            // 
+            this.nuevoTratamientoToolStripMenuItem.Name = "nuevoTratamientoToolStripMenuItem";
+            this.nuevoTratamientoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.nuevoTratamientoToolStripMenuItem.Text = "Nuevo Tratamiento";
+            this.nuevoTratamientoToolStripMenuItem.Click += new System.EventHandler(this.nuevoTratamientoToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -3648,13 +3669,16 @@
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.label56);
+            this.groupBox15.Controls.Add(this.textBox2);
+            this.groupBox15.Controls.Add(this.button1);
+            this.groupBox15.Controls.Add(this.comboBox1);
+            this.groupBox15.Controls.Add(this.label57);
             this.groupBox15.Controls.Add(this.label55);
             this.groupBox15.Controls.Add(this.label54);
             this.groupBox15.Controls.Add(this.txtIndicacionesAnalisisARealizar);
             this.groupBox15.Controls.Add(this.txtIndicacionesEstudioARealizar);
             this.groupBox15.Controls.Add(this.btnRegistrarAtención);
-            this.groupBox15.Controls.Add(this.btnRegistrarMedicacion);
-            this.groupBox15.Controls.Add(this.label86);
             this.groupBox15.Controls.Add(this.btnAnalisisLaboratorioARealizar);
             this.groupBox15.Controls.Add(this.btnEstudioARealizar);
             this.groupBox15.Controls.Add(this.dgvExamenesARealizar);
@@ -3663,9 +3687,9 @@
             this.groupBox15.Controls.Add(this.label84);
             this.groupBox15.Controls.Add(this.label83);
             this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox15.Location = new System.Drawing.Point(6, 294);
+            this.groupBox15.Location = new System.Drawing.Point(9, 269);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(838, 280);
+            this.groupBox15.Size = new System.Drawing.Size(838, 305);
             this.groupBox15.TabIndex = 2;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Exámenes complementarios a realizar";
@@ -3673,7 +3697,7 @@
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(5, 139);
+            this.label55.Location = new System.Drawing.Point(5, 151);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(86, 17);
             this.label55.TabIndex = 32;
@@ -3690,7 +3714,7 @@
             // 
             // txtIndicacionesAnalisisARealizar
             // 
-            this.txtIndicacionesAnalisisARealizar.Location = new System.Drawing.Point(8, 159);
+            this.txtIndicacionesAnalisisARealizar.Location = new System.Drawing.Point(9, 171);
             this.txtIndicacionesAnalisisARealizar.Multiline = true;
             this.txtIndicacionesAnalisisARealizar.Name = "txtIndicacionesAnalisisARealizar";
             this.txtIndicacionesAnalisisARealizar.Size = new System.Drawing.Size(470, 40);
@@ -3706,7 +3730,7 @@
             // 
             // btnRegistrarAtención
             // 
-            this.btnRegistrarAtención.Location = new System.Drawing.Point(119, 248);
+            this.btnRegistrarAtención.Location = new System.Drawing.Point(515, 259);
             this.btnRegistrarAtención.Name = "btnRegistrarAtención";
             this.btnRegistrarAtención.Size = new System.Drawing.Size(247, 26);
             this.btnRegistrarAtención.TabIndex = 28;
@@ -3714,27 +3738,9 @@
             this.btnRegistrarAtención.UseVisualStyleBackColor = true;
             this.btnRegistrarAtención.Click += new System.EventHandler(this.btnRegistrarAtención_Click);
             // 
-            // btnRegistrarMedicacion
-            // 
-            this.btnRegistrarMedicacion.Location = new System.Drawing.Point(151, 205);
-            this.btnRegistrarMedicacion.Name = "btnRegistrarMedicacion";
-            this.btnRegistrarMedicacion.Size = new System.Drawing.Size(178, 26);
-            this.btnRegistrarMedicacion.TabIndex = 27;
-            this.btnRegistrarMedicacion.Text = "Registrar Medicación";
-            this.btnRegistrarMedicacion.UseVisualStyleBackColor = true;
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.Location = new System.Drawing.Point(1, 210);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(144, 17);
-            this.label86.TabIndex = 26;
-            this.label86.Text = "Medicación a recetar:";
-            // 
             // btnAnalisisLaboratorioARealizar
             // 
-            this.btnAnalisisLaboratorioARealizar.Location = new System.Drawing.Point(348, 112);
+            this.btnAnalisisLaboratorioARealizar.Location = new System.Drawing.Point(348, 124);
             this.btnAnalisisLaboratorioARealizar.Name = "btnAnalisisLaboratorioARealizar";
             this.btnAnalisisLaboratorioARealizar.Size = new System.Drawing.Size(130, 26);
             this.btnAnalisisLaboratorioARealizar.TabIndex = 25;
@@ -3755,15 +3761,15 @@
             // dgvExamenesARealizar
             // 
             this.dgvExamenesARealizar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvExamenesARealizar.Location = new System.Drawing.Point(555, 22);
+            this.dgvExamenesARealizar.Location = new System.Drawing.Point(484, 22);
             this.dgvExamenesARealizar.Name = "dgvExamenesARealizar";
-            this.dgvExamenesARealizar.Size = new System.Drawing.Size(276, 252);
+            this.dgvExamenesARealizar.Size = new System.Drawing.Size(347, 228);
             this.dgvExamenesARealizar.TabIndex = 23;
             // 
             // cboAnalisiLaboratorioARealizar
             // 
             this.cboAnalisiLaboratorioARealizar.FormattingEnabled = true;
-            this.cboAnalisiLaboratorioARealizar.Location = new System.Drawing.Point(159, 114);
+            this.cboAnalisiLaboratorioARealizar.Location = new System.Drawing.Point(159, 126);
             this.cboAnalisiLaboratorioARealizar.Name = "cboAnalisiLaboratorioARealizar";
             this.cboAnalisiLaboratorioARealizar.Size = new System.Drawing.Size(183, 24);
             this.cboAnalisiLaboratorioARealizar.TabIndex = 22;
@@ -3779,7 +3785,7 @@
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(5, 117);
+            this.label84.Location = new System.Drawing.Point(5, 129);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(148, 17);
             this.label84.TabIndex = 20;
@@ -3796,27 +3802,81 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.maskedTextBox1);
+            this.groupBox10.Controls.Add(this.textBox1);
+            this.groupBox10.Controls.Add(this.lblFechaDescartado);
+            this.groupBox10.Controls.Add(this.label53);
+            this.groupBox10.Controls.Add(this.cboEstadoDiagnostico);
+            this.groupBox10.Controls.Add(this.lblEstadoDiagnostico);
             this.groupBox10.Controls.Add(this.btnAgregarDiagnostico);
             this.groupBox10.Controls.Add(this.dgvDiagnosticos);
             this.groupBox10.Controls.Add(this.txtDiagnostico);
             this.groupBox10.Controls.Add(this.label85);
-            this.groupBox10.Controls.Add(this.AgregarHipotesisInicial);
-            this.groupBox10.Controls.Add(this.dgvHipotesis);
-            this.groupBox10.Controls.Add(this.txtHipotesisInicial);
-            this.groupBox10.Controls.Add(this.label81);
             this.groupBox10.Controls.Add(this.txtConceptoInicial);
             this.groupBox10.Controls.Add(this.label80);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(6, 6);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(838, 282);
+            this.groupBox10.Size = new System.Drawing.Size(838, 257);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Razonamiento Diagnóstico";
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(463, 117);
+            this.maskedTextBox1.Mask = "00/00/0000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBox1.TabIndex = 26;
+            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(9, 175);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(556, 43);
+            this.textBox1.TabIndex = 25;
+            // 
+            // lblFechaDescartado
+            // 
+            this.lblFechaDescartado.AutoSize = true;
+            this.lblFechaDescartado.Location = new System.Drawing.Point(410, 120);
+            this.lblFechaDescartado.Name = "lblFechaDescartado";
+            this.lblFechaDescartado.Size = new System.Drawing.Size(51, 17);
+            this.lblFechaDescartado.TabIndex = 22;
+            this.lblFechaDescartado.Text = "Fecha:";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(7, 155);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(53, 17);
+            this.label53.TabIndex = 21;
+            this.label53.Text = "Motivo:";
+            // 
+            // cboEstadoDiagnostico
+            // 
+            this.cboEstadoDiagnostico.FormattingEnabled = true;
+            this.cboEstadoDiagnostico.Location = new System.Drawing.Point(159, 117);
+            this.cboEstadoDiagnostico.Name = "cboEstadoDiagnostico";
+            this.cboEstadoDiagnostico.Size = new System.Drawing.Size(175, 24);
+            this.cboEstadoDiagnostico.TabIndex = 20;
+            // 
+            // lblEstadoDiagnostico
+            // 
+            this.lblEstadoDiagnostico.AutoSize = true;
+            this.lblEstadoDiagnostico.Location = new System.Drawing.Point(6, 120);
+            this.lblEstadoDiagnostico.Name = "lblEstadoDiagnostico";
+            this.lblEstadoDiagnostico.Size = new System.Drawing.Size(155, 17);
+            this.lblEstadoDiagnostico.TabIndex = 19;
+            this.lblEstadoDiagnostico.Text = "Estado del diagnóstico:";
+            // 
             // btnAgregarDiagnostico
             // 
-            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(433, 161);
+            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(570, 224);
             this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
             this.btnAgregarDiagnostico.Size = new System.Drawing.Size(130, 26);
             this.btnAgregarDiagnostico.TabIndex = 18;
@@ -3829,9 +3889,9 @@
             this.dgvDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiagnosticos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this.dgvDiagnosticos.Location = new System.Drawing.Point(164, 161);
+            this.dgvDiagnosticos.Location = new System.Drawing.Point(570, 29);
             this.dgvDiagnosticos.Name = "dgvDiagnosticos";
-            this.dgvDiagnosticos.Size = new System.Drawing.Size(260, 109);
+            this.dgvDiagnosticos.Size = new System.Drawing.Size(253, 189);
             this.dgvDiagnosticos.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn1
@@ -3842,69 +3902,25 @@
             // 
             // txtDiagnostico
             // 
-            this.txtDiagnostico.Location = new System.Drawing.Point(164, 109);
+            this.txtDiagnostico.Location = new System.Drawing.Point(119, 73);
             this.txtDiagnostico.Multiline = true;
             this.txtDiagnostico.Name = "txtDiagnostico";
-            this.txtDiagnostico.Size = new System.Drawing.Size(399, 46);
+            this.txtDiagnostico.Size = new System.Drawing.Size(444, 38);
             this.txtDiagnostico.TabIndex = 14;
             // 
             // label85
             // 
             this.label85.AutoSize = true;
             this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.Location = new System.Drawing.Point(6, 112);
+            this.label85.Location = new System.Drawing.Point(31, 88);
             this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(160, 17);
+            this.label85.Size = new System.Drawing.Size(86, 17);
             this.label85.TabIndex = 13;
-            this.label85.Text = "Diagnósticos definitivos:\r\n";
-            // 
-            // AgregarHipotesisInicial
-            // 
-            this.AgregarHipotesisInicial.Location = new System.Drawing.Point(434, 77);
-            this.AgregarHipotesisInicial.Name = "AgregarHipotesisInicial";
-            this.AgregarHipotesisInicial.Size = new System.Drawing.Size(130, 26);
-            this.AgregarHipotesisInicial.TabIndex = 2;
-            this.AgregarHipotesisInicial.Text = "Agregar";
-            this.AgregarHipotesisInicial.UseVisualStyleBackColor = true;
-            this.AgregarHipotesisInicial.Click += new System.EventHandler(this.AgregarHipotesisInicial_Click);
-            // 
-            // dgvHipotesis
-            // 
-            this.dgvHipotesis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHipotesis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column9});
-            this.dgvHipotesis.Location = new System.Drawing.Point(569, 35);
-            this.dgvHipotesis.Name = "dgvHipotesis";
-            this.dgvHipotesis.Size = new System.Drawing.Size(262, 120);
-            this.dgvHipotesis.TabIndex = 4;
-            this.dgvHipotesis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Hipotesis Iniciales";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 215;
-            // 
-            // txtHipotesisInicial
-            // 
-            this.txtHipotesisInicial.Location = new System.Drawing.Point(135, 79);
-            this.txtHipotesisInicial.Name = "txtHipotesisInicial";
-            this.txtHipotesisInicial.Size = new System.Drawing.Size(293, 23);
-            this.txtHipotesisInicial.TabIndex = 3;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label81.Location = new System.Drawing.Point(6, 82);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(129, 17);
-            this.label81.TabIndex = 2;
-            this.label81.Text = "Hipotesis Inicial de:";
+            this.label85.Text = "Diagnóstico:";
             // 
             // txtConceptoInicial
             // 
-            this.txtConceptoInicial.Location = new System.Drawing.Point(119, 35);
+            this.txtConceptoInicial.Location = new System.Drawing.Point(118, 29);
             this.txtConceptoInicial.Multiline = true;
             this.txtConceptoInicial.Name = "txtConceptoInicial";
             this.txtConceptoInicial.Size = new System.Drawing.Size(445, 38);
@@ -3916,9 +3932,9 @@
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label80.Location = new System.Drawing.Point(6, 35);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(107, 17);
+            this.label80.Size = new System.Drawing.Size(111, 17);
             this.label80.TabIndex = 0;
-            this.label80.Text = "Concepto Inicial";
+            this.label80.Text = "Concepto Inicial:";
             // 
             // groupBox3
             // 
@@ -3950,6 +3966,49 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(5, 261);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(86, 17);
+            this.label56.TabIndex = 37;
+            this.label56.Text = "Indicaciones";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(97, 261);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(381, 30);
+            this.textBox2.TabIndex = 36;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(362, 228);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 26);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Añadir";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(173, 230);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(183, 24);
+            this.comboBox1.TabIndex = 34;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(6, 233);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(161, 17);
+            this.label57.TabIndex = 33;
+            this.label57.Text = "PracticaComplementaria";
             // 
             // MenuPrincipal
             // 
@@ -4045,7 +4104,6 @@
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHipotesis)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -4287,13 +4345,8 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.DataGridView dgvHipotesis;
-        private System.Windows.Forms.TextBox txtHipotesisInicial;
-        private System.Windows.Forms.Label label81;
         private System.Windows.Forms.TextBox txtConceptoInicial;
         private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.Button AgregarHipotesisInicial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridView dgvDiagnosticos;
         private System.Windows.Forms.TextBox txtDiagnostico;
         private System.Windows.Forms.Label label85;
@@ -4388,8 +4441,6 @@
         private System.Windows.Forms.ComboBox cmbUbicacionPresionArterial;
         private System.Windows.Forms.Label lblUbicacionPresionArterial;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Button btnRegistrarMedicacion;
-        private System.Windows.Forms.Label label86;
         private System.Windows.Forms.Button btnAnalisisLaboratorioARealizar;
         private System.Windows.Forms.Button btnEstudioARealizar;
         private System.Windows.Forms.DataGridView dgvExamenesARealizar;
@@ -4417,5 +4468,18 @@
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Button btnConsultas;
         private System.Windows.Forms.DataGridView dgvConsultas;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblFechaDescartado;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.ComboBox cboEstadoDiagnostico;
+        private System.Windows.Forms.Label lblEstadoDiagnostico;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem tratamientoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoTratamientoToolStripMenuItem;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label57;
     }
 }

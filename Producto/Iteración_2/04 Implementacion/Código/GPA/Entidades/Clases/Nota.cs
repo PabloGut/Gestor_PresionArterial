@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases
 {
-    public class Institucion
+    public class Nota
     {
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
+        public int id_nota { set; get; }
+        public DateTime fecha { set; get; }
+        public string descripcion { set; get; }
     }
 }

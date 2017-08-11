@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases
 {
-    public class Institucion
+    public class EstadoDiagnostico
     {
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
+        public string nombre { set; get; }
     }
 }

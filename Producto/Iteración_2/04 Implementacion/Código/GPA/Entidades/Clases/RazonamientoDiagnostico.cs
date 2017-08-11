@@ -10,10 +10,19 @@ namespace Entidades.Clases
     {
         public int id_razonamiento { set; get; }
         public string conceptoInicial { set; get; }
-        public List<HipotesisInicial> hipotesis { set; get; }
-        public List<Diagnostico> diagnosticos { set; get; }
-        public List<EstudioDiagnosticoPorImagen> estudios { set; get; }
+        public EstadoDiagnostico estado { set; get; }
+        public string motivoDescartado { set; get; }
+        public DateTime fechaDescartado { set; get; }
+        public string motivoConfirmado { set; get; }
+        public DateTime fechaConfirmado { set; get; }
+        public DateTime fechaTentativo { set; get; }
+        public string motivoTentativo { set; get; }
         public List<PruebasDeLaboratorio> pruebas { set; get; }
+        public List<EstudioDiagnosticoPorImagen> estudios { set; get; }
+        public List<Tratamiento> tratamientos { set; get; }
+        
+       
+        
 
     }
 }

@@ -29,12 +29,10 @@ namespace GPA
         List<EstudioDiagnosticoPorImagen> listaEstudios;
         List<PruebasDeLaboratorio> listaPrubasLaboratorio;
 
-        Consulta consulta;
         List<Sintoma> listaSintoma;
-
+        Consulta consulta;
         ExamenGeneral examen;
         List<SistemaLinfatico> listaTerritoriosExaminados;
-        PulsoArterial pulso;
 
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
@@ -46,9 +44,9 @@ namespace GPA
             manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
             manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
 
-            razonamiento = null;
             consulta = null;
             examen = null;
+            razonamiento = null;
             listaTerritoriosExaminados = null;
             listaSintoma = null;
             listaTerritoriosExaminados = null;
@@ -56,7 +54,6 @@ namespace GPA
             diagnosticos = null;
             listaEstudios = null;
             listaPrubasLaboratorio = null;
-            pulso = null;
         }
         public MenuPrincipal()
         {
@@ -1521,6 +1518,11 @@ namespace GPA
             return manejadorRegistrarExamenGeneral.crearRespiracionPaso3(descripcion, observaciones);
 
         }
+        /*
+        * Crear el objeto Temperatura
+        * Llama al manejador Registrar Examen General.
+        * Retorna un objeto Temperatura.
+        */
         public Temperatura crearMedicionTemperatura()
         {
             int id_sitio;
@@ -1532,19 +1534,16 @@ namespace GPA
                 SitioMedicion sitio = (SitioMedicion)cboSitionMedición1.SelectedItem;
                 id_sitio = sitio.id_sitioMedicion;
 
-                valorTemperatura =float.Parse(txtValorTemperatura1.Text);
+                valorTemperatura = float.Parse(txtValorTemperatura1.Text);
 
                 resultado = txtResultadoTemperatura1.Text;
 
-                Temperatura temperatura = new Temperatura();
-
-                temperatura.valorTemperatura = valorTemperatura;
-                
+                return manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
             }
-            
-                
-
-
+            else
+            {
+                return null;
+            }
         }
         public void presentarExamenGeneralPresionArterial(List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
         {
@@ -1599,7 +1598,7 @@ namespace GPA
 
         private void AgregarHipotesisInicial_Click(object sender, EventArgs e)
         {
-            cargarDatosDgvHipotesisInicial();
+            
         }
         private void cargarDatosDgvHipotesisInicial()
         {
@@ -1746,7 +1745,7 @@ namespace GPA
         }
         public void registrarExamenGeneralYConsulta()
         {
-            //Codigo para registrar exámen general y consulta con una sola transaccion en DAO.
+            //Codigo para registrar exámen general y consulta con una sola transacción en DAO.
             crearRazonamientoDiagnostico();
 
             examen=crearExamenGeneral();//Crea ObjetoExamenGeneral.
@@ -1756,16 +1755,14 @@ namespace GPA
             if (examen!=null && listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
                 examen.territoriosExaminados = listaTerritoriosExaminados; //Agrega el análisis del sistema linfático al examen
 
-            crearPulsoArterial();//Crea ObjetoPulsoArterial
-            
-            examen.pulso = pulso;//Agrega el examen del pulso al examen.
+            examen.pulso=crearPulsoArterial();//Crea ObjetoPulsoArterial
 
             if (examen != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
                 examen.medicion = manejadorRegistrarExamenGeneral.medicion;
 
             examen.razonamiento = razonamiento;
 
-            CrearConsulta();
+            consulta=CrearConsulta();
 
             consulta.examen = examen;
 
@@ -1877,6 +1874,17 @@ namespace GPA
 
             DataTable dt = manejadorConsultarHc.mostrarConsultasAnteriores(hc.id_hc);
             Utilidades.presentarDatosEnDataGridView(dt, dgvConsultas);
+        }
+
+        private void btnRegistrarMedicacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nuevoTratamientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarTratamiento rt = new RegistrarTratamiento();
+            rt.ShowDialog();
         }
     }
 }

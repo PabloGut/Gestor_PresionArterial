@@ -114,6 +114,44 @@ namespace GPA.Manejadores
 
             return respiracion;
         }
+        public Temperatura crearTemperaturaPaso4(int sitioMedicion, string resultado, float valorTemperatura)
+        {
+            Temperatura temperatura = new Temperatura();
+
+            temperatura.sitioMedicion.id_sitioMedicion = sitioMedicion;
+            temperatura.resultado.nombre = resultado;
+            temperatura.valorTemperatura = valorTemperatura;
+
+            return temperatura;
+        }
+        public RazonamientoDiagnostico crearRazonamientoDiagnostico(string conceptoInicial, string estadoDiagnostico, string motivo, DateTime fecha, List<AnalisisLaboratorio> analisis, List<EstudioDiagnosticoPorImagen> estudios, List<Tratamiento> tratamientos)
+        {
+            RazonamientoDiagnostico diagnostico = new RazonamientoDiagnostico();
+            diagnostico.conceptoInicial = conceptoInicial;
+            diagnostico.estado.nombre = estadoDiagnostico;
+
+            switch (estadoDiagnostico)
+            {
+                case "Tentativo":
+                    diagnostico.fechaTentativo=fecha;
+                    diagnostico.motivoTentativo=motivo;
+                    break;
+
+                case "Confirmado":
+                    diagnostico.fechaConfirmado = fecha;
+                    diagnostico.motivoConfirmado = motivo;
+                    break;
+
+                case "Descartado":
+                    diagnostico.fechaDescartado = fecha;
+                    diagnostico.motivoDescartado = motivo;
+                    break;
+            }
+
+            diagnostico.pruebas = analisis;
+            diagnostico.estudios = estudios;
+            diagnostico.tratamientos = tratamientos;
+        }
         public void mostrarPresionArterial()
         {
             pantalla.presentarExamenGeneralPresionArterial(ExtremidadLN.mostrarExtremidades(), PosicionLN.mostrarPosiciones(), SitioMedicionLN.mostrarSitiosDeMedicion(), MomentoDiaLN.mostrarMomentosDelDia());
