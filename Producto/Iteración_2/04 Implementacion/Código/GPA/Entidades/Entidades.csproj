@@ -64,7 +64,9 @@
     <Compile Include="Clases\Consulta.cs" />
     <Compile Include="Clases\DejoDeFumar.cs" />
     <Compile Include="Clases\DescripcionDelTiempo.cs" />
+    <Compile Include="Clases\DetalleItemLaboratorio.cs" />
     <Compile Include="Clases\DetalleMedicionPresionArterial.cs" />
+    <Compile Include="Clases\DetalleValorReferenciaLaboratorio.cs" />
     <Compile Include="Clases\Diagnostico.cs" />
     <Compile Include="Clases\Domicilio.cs" />
     <Compile Include="Clases\ElementoDelTiempo.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Clases\Insecto.cs" />
     <Compile Include="Clases\Institucion.cs" />
     <Compile Include="Clases\IntensidadActividadFisica.cs" />
+    <Compile Include="Clases\ItemEstudioLaboratorio.cs" />
     <Compile Include="Clases\Laboratorio.cs" />
     <Compile Include="Clases\Localidad.cs" />
     <Compile Include="Clases\Medicamento.cs" />
@@ -114,7 +117,6 @@
     <Compile Include="Clases\PresentacionMedicamento.cs" />
     <Compile Include="Clases\ProfesionaMedico.cs" />
     <Compile Include="Clases\ProgramacionMedicamento.cs" />
-    <Compile Include="Clases\PruebasDeLaboratorio.cs" />
     <Compile Include="Clases\PulsoArterial.cs" />
     <Compile Include="Clases\Respiracion.cs" />
     <Compile Include="Clases\ResultadoTemperatura.cs" />

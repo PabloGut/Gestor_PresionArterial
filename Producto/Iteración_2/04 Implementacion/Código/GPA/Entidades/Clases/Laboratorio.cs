@@ -11,8 +11,8 @@ namespace Entidades.Clases
         public int id_laboratorio { set; get; }
         public AnalisisLaboratorio analisis { set; get; }
 
-        public Laboratorio(int id_razonamientoDiagnostico, DateTime fechaSolicitud, DateTime fechaRealizado, string doctorAcargo, Institucion institucion, string observaciones, string indicaciones, AnalisisLaboratorio analisis)
-            : base(id_razonamientoDiagnostico,fechaSolicitud, fechaRealizado, doctorAcargo, institucion, observaciones, indicaciones)
+        public Laboratorio( DateTime fechaSolicitud, DateTime fechaRealizado, string doctorAcargo, Institucion institucion, string observaciones, string indicaciones, AnalisisLaboratorio analisis)
+            : base(fechaSolicitud, fechaRealizado, doctorAcargo, institucion, observaciones, indicaciones)
         {
             this.analisis = analisis;
          }

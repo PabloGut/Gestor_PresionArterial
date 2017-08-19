@@ -21,7 +21,7 @@ namespace Entidades.Clases
         public ExploracionComplementaria(int id_razonamiento, DateTime fechaSolicitud, DateTime fechaRealizado, string doctorAcargo, string informeEstudio, Institucion institucion, string observaciones, string indicaciones)
         {
             
-            id_razonamientoDiagnostico = id_razonamiento;
+            this.id_razonamientoDiagnostico = id_razonamiento;
             this.fechaSolicitud = fechaSolicitud;
             this.fechaRealizacion = fechaRealizacion;
             this.DoctorACargo = doctorAcargo;
@@ -40,7 +40,7 @@ namespace Entidades.Clases
             this.observaciones = observaciones;
             this.indicaciones = indicaciones;
         }
-        public ExploracionComplementaria(int id_razonamiento,DateTime fechaSolicitud, DateTime fechaRealizado, string doctorAcargo, Institucion institucion, string observaciones, string indicaciones)
+        public ExploracionComplementaria(DateTime fechaSolicitud, DateTime fechaRealizado, string doctorAcargo, Institucion institucion, string observaciones, string indicaciones)
         {
             this.fechaSolicitud = fechaSolicitud;
             this.fechaRealizacion = fechaRealizacion;
