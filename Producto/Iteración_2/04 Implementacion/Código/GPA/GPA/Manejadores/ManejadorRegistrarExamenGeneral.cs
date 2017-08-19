@@ -124,10 +124,11 @@ namespace GPA.Manejadores
 
             return temperatura;
         }
-        public RazonamientoDiagnostico crearRazonamientoDiagnostico(string conceptoInicial, string estadoDiagnostico, string motivo, DateTime fecha, List<AnalisisLaboratorio> analisis, List<EstudioDiagnosticoPorImagen> estudios, List<Tratamiento> tratamientos)
+        public RazonamientoDiagnostico crearRazonamientoDiagnostico(string conceptoInicial,string Desdiagnostico, string estadoDiagnostico, string motivo, DateTime fecha, List<AnalisisLaboratorio> analisis, List<EstudioDiagnosticoPorImagen> estudios, List<Tratamiento> tratamientos)
         {
             RazonamientoDiagnostico diagnostico = new RazonamientoDiagnostico();
             diagnostico.conceptoInicial = conceptoInicial;
+            diagnostico.diagnostico = Desdiagnostico;
             diagnostico.estado.nombre = estadoDiagnostico;
 
             switch (estadoDiagnostico)
@@ -148,9 +149,30 @@ namespace GPA.Manejadores
                     break;
             }
 
-            diagnostico.pruebas = analisis;
+            diagnostico.analisis = analisis;
             diagnostico.estudios = estudios;
             diagnostico.tratamientos = tratamientos;
+
+            return diagnostico;
+        }
+        public List<Laboratorio> crearListaLaboratorio()
+        {   
+            List<Laboratorio> listaLaboratorio=new List<Laboratorio>();
+            return listaLaboratorio;
+        }
+        public AnalisisLaboratorio crearAnalisisLaboratorio(int id,string nombre)
+        {
+            AnalisisLaboratorio analisisLaboratorio = new AnalisisLaboratorio();
+            analisisLaboratorio.id_analisis = id;
+            analisisLaboratorio.nombre = nombre;
+
+            return analisisLaboratorio;
+        }
+        public Laboratorio crearLaboratorio(string indicaciones)
+        {
+            Laboratorio laboratorio = new Laboratorio();
+            laboratorio.indicaciones = indicaciones;
+
         }
         public void mostrarPresionArterial()
         {

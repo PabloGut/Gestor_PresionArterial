@@ -363,6 +363,11 @@
             this.txtValorTemperatura1 = new System.Windows.Forms.TextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label57 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.txtIndicacionesAnalisisARealizar = new System.Windows.Forms.TextBox();
@@ -384,7 +389,6 @@
             this.lblEstadoDiagnostico = new System.Windows.Forms.Label();
             this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.dgvDiagnosticos = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDiagnostico = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
             this.txtConceptoInicial = new System.Windows.Forms.TextBox();
@@ -392,11 +396,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.label56 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label57 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -3694,6 +3694,49 @@
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Exámenes complementarios a realizar";
             // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(5, 261);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(86, 17);
+            this.label56.TabIndex = 37;
+            this.label56.Text = "Indicaciones";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(97, 261);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(381, 30);
+            this.textBox2.TabIndex = 36;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(362, 228);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 26);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Añadir";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(173, 230);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(183, 24);
+            this.comboBox1.TabIndex = 34;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(6, 233);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(161, 17);
+            this.label57.TabIndex = 33;
+            this.label57.Text = "PracticaComplementaria";
+            // 
             // label55
             // 
             this.label55.AutoSize = true;
@@ -3894,12 +3937,6 @@
             this.dgvDiagnosticos.Size = new System.Drawing.Size(253, 189);
             this.dgvDiagnosticos.TabIndex = 15;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Diagnóstico definitivo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 215;
-            // 
             // txtDiagnostico
             // 
             this.txtDiagnostico.Location = new System.Drawing.Point(119, 73);
@@ -3967,48 +4004,11 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // label56
+            // dataGridViewTextBoxColumn1
             // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(5, 261);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(86, 17);
-            this.label56.TabIndex = 37;
-            this.label56.Text = "Indicaciones";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(97, 261);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(381, 30);
-            this.textBox2.TabIndex = 36;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(362, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 26);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Añadir";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(173, 230);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(183, 24);
-            this.comboBox1.TabIndex = 34;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(6, 233);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(161, 17);
-            this.label57.TabIndex = 33;
-            this.label57.Text = "PracticaComplementaria";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Diagnósticos";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 215;
             // 
             // MenuPrincipal
             // 
@@ -4350,7 +4350,6 @@
         private System.Windows.Forms.DataGridView dgvDiagnosticos;
         private System.Windows.Forms.TextBox txtDiagnostico;
         private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button btnAgregarDiagnostico;
         private System.Windows.Forms.Button btnAgregarPresionArterial;
         private System.Windows.Forms.GroupBox groupBox11;
@@ -4481,5 +4480,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

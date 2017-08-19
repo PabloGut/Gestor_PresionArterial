@@ -23,11 +23,9 @@ namespace GPA
         ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
         ManejadorRegistrarExamenGeneral manejadorRegistrarExamenGeneral;
 
-        RazonamientoDiagnostico razonamiento;
-        List<HipotesisInicial> hipotesis;
         List<Diagnostico> diagnosticos;
         List<EstudioDiagnosticoPorImagen> listaEstudios;
-        List<PruebasDeLaboratorio> listaPrubasLaboratorio;
+        List<Laboratorio> listaLaboratorio;
 
         List<Sintoma> listaSintoma;
         Consulta consulta;
@@ -46,14 +44,12 @@ namespace GPA
 
             consulta = null;
             examen = null;
-            razonamiento = null;
             listaTerritoriosExaminados = null;
             listaSintoma = null;
             listaTerritoriosExaminados = null;
-            hipotesis = null;
             diagnosticos = null;
             listaEstudios = null;
-            listaPrubasLaboratorio = null;
+            listaLaboratorio = null;
         }
         public MenuPrincipal()
         {
@@ -1032,28 +1028,21 @@ namespace GPA
         }
         public void crearRazonamientoDiagnostico()
         {
-            razonamiento = new RazonamientoDiagnostico();
+            string conceptoInicial = "";
 
             if (string.IsNullOrEmpty(txtConceptoInicial.Text) == false)
             {
-                razonamiento.conceptoInicial = txtConceptoInicial.Text;
+                conceptoInicial = txtConceptoInicial.Text;
             }
 
-            if (hipotesis != null && hipotesis.Count > 0)
-                razonamiento.hipotesis = hipotesis;
-
             if (diagnosticos != null && diagnosticos.Count > 0)
-                razonamiento.diagnosticos = diagnosticos;
+                razonamiento.diagnostico = diagnosticos;
 
             if (listaEstudios != null && listaEstudios.Count > 0)
                 razonamiento.estudios = listaEstudios;
 
-            if (listaPrubasLaboratorio != null && listaPrubasLaboratorio.Count > 0)
+            if (listaLaboratorio != null && listaLaboratorio.Count > 0)
                 razonamiento.pruebas = listaPrubasLaboratorio;
-
-            //int id=manejadorRegistrarExamenGeneral.registrarRazonamientoDiagnostico(razonamiento);
-
-            //return id;
         }
         /*
         * Crea un objeto consulta.
@@ -1671,28 +1660,31 @@ namespace GPA
         }
         private void cargarDatosDgvAnalisisLaboratorioARealizar()
         {
-            string analisis;
-            string indicaciones = "No precisa";
-            if (cboEstudioARealizar.SelectedIndex > 0)
+            string analisisLaboratorio;
+            int id_analisisLaboratorio;
+            string indicaciones = "";
+            if (cboAnalisiLaboratorioARealizar.SelectedIndex > 0)
             {
-                AnalisisLaboratorio analisisSeleccionado = (AnalisisLaboratorio)cboAnalisiLaboratorioARealizar.SelectedItem;
-                analisis = analisisSeleccionado.nombre;
+                AnalisisLaboratorio analisisLaboratorioSeleccionado = (AnalisisLaboratorio)cboAnalisiLaboratorioARealizar.SelectedItem;
+                
+                analisisLaboratorio = analisisLaboratorioSeleccionado.nombre;
+                id_analisisLaboratorio =(int) cboAnalisiLaboratorioARealizar.SelectedValue;
 
                 if (string.IsNullOrEmpty(txtIndicacionesEstudioARealizar.Text) == false)
                 {
                     indicaciones = txtIndicacionesEstudioARealizar.Text;
                 }
 
-                if (listaPrubasLaboratorio == null)
-                    listaPrubasLaboratorio = new List<PruebasDeLaboratorio>();
+                Laboratorio laboratorio = manejadorRegistrarExamenGeneral.crearLaboratorio(indicaciones);
 
-                PruebasDeLaboratorio prueba = new PruebasDeLaboratorio();
+                if (listaLaboratorio == null)
+                    listaLaboratorio = manejadorRegistrarExamenGeneral.crearListaLaboratorio();
 
-                prueba.id_analisis = analisisSeleccionado.id_analisis;
-                prueba.indicaciones = indicaciones;
+                laboratorio.analisis = manejadorRegistrarExamenGeneral.crearAnalisisLaboratorio(id_analisisLaboratorio, analisisLaboratorio);
+                
+                listaLaboratorio.Add(laboratorio);
 
-                listaPrubasLaboratorio.Add(prueba);
-                dgvExamenesARealizar.Rows.Add(analisis, indicaciones);
+                dgvExamenesARealizar.Rows.Add(analisisLaboratorio, indicaciones);
             }
         }
         private void generarNuevaConsultaToolStripMenuItem_Click(object sender, EventArgs e)

@@ -648,10 +648,10 @@ where 36 between valorMinimo and valorMaximo
 
 
 
-drop table AnalisisLaboratorio
+drop table Laboratorio
 
 
-select * from AnalisisLaboratorio
+select * from PracticaComplementaria
 
 alter table AnalisisLaboratorio
 add valorResultado float,

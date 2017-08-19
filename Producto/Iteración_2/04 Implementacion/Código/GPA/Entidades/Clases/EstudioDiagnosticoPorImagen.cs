@@ -17,5 +17,7 @@ namespace Entidades.Clases
         {
             this.nombreEstudio = nombreEstudio;
         }
+        public EstudioDiagnosticoPorImagen()
+        { }
     }
 }

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases
 {
-    public class AnalisisLaboratorio
+    public class TipoPracticaComplementaria
     {
-        
-        public int id_analisis { set; get; }
+        public int id_tipoPracticaComplementaria { set; get; }
         public string nombre { set; get; }
         public string descripcion { set; get; }
+
+
     }
 }

@@ -114,6 +114,7 @@
     <Compile Include="Clases\Persona.cs" />
     <Compile Include="Clases\Piel.cs" />
     <Compile Include="Clases\Posicion.cs" />
+    <Compile Include="Clases\PracticaComplementaria.cs" />
     <Compile Include="Clases\PresentacionMedicamento.cs" />
     <Compile Include="Clases\ProfesionaMedico.cs" />
     <Compile Include="Clases\ProgramacionMedicamento.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Clases\TipoBebida.cs" />
     <Compile Include="Clases\TipoDocumento.cs" />
     <Compile Include="Clases\TipoParto.cs" />
+    <Compile Include="Clases\TipoPracticaComplementaria.cs" />
     <Compile Include="Clases\TipoSintoma.cs" />
     <Compile Include="Clases\Tratamiento.cs" />
     <Compile Include="Clases\Traumatismo.cs" />

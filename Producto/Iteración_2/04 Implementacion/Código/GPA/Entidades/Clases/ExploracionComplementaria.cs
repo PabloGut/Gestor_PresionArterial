@@ -49,5 +49,7 @@ namespace Entidades.Clases
             this.observaciones = observaciones;
             this.indicaciones = indicaciones;
         }
+        public ExploracionComplementaria()
+        { }
     }
 }
