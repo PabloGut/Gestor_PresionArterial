@@ -18,7 +18,7 @@ namespace Entidades.Clases
         public DateTime fechaConfirmado { set; get; }
         public DateTime fechaTentativo { set; get; }
         public string motivoTentativo { set; get; }
-        public List<AnalisisLaboratorio> analisis { set; get; }
+        public List<Laboratorio> analisis { set; get; }
         public List<EstudioDiagnosticoPorImagen> estudios { set; get; }
         public List<Tratamiento> tratamientos { set; get; }
         

@@ -130,6 +130,7 @@
     <Compile Include="Clases\Tamaño.cs" />
     <Compile Include="Clases\Temperatura.cs" />
     <Compile Include="Clases\TemperaturaPiel.cs" />
+    <Compile Include="Clases\Terapia.cs" />
     <Compile Include="Clases\TipoAborto.cs" />
     <Compile Include="Clases\TipoAntecedenteMorbido.cs" />
     <Compile Include="Clases\TipoBebida.cs" />

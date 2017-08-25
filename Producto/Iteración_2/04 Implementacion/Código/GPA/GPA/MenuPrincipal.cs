@@ -23,9 +23,11 @@ namespace GPA
         ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
         ManejadorRegistrarExamenGeneral manejadorRegistrarExamenGeneral;
 
-        List<Diagnostico> diagnosticos;
+        List<RazonamientoDiagnostico> listaDiagnosticos;
         List<EstudioDiagnosticoPorImagen> listaEstudios;
         List<Laboratorio> listaLaboratorio;
+        List<PracticaComplementaria> listaPracticasComplementarias;
+        List<Tratamiento> listaTratamiento;
 
         List<Sintoma> listaSintoma;
         Consulta consulta;
@@ -47,9 +49,12 @@ namespace GPA
             listaTerritoriosExaminados = null;
             listaSintoma = null;
             listaTerritoriosExaminados = null;
-            diagnosticos = null;
+            listaDiagnosticos = null;
             listaEstudios = null;
             listaLaboratorio = null;
+            listaPracticasComplementarias=null;
+            listaTratamiento = null;
+
         }
         public MenuPrincipal()
         {
@@ -1589,7 +1594,7 @@ namespace GPA
         {
             
         }
-        private void cargarDatosDgvHipotesisInicial()
+        /*private void cargarDatosDgvHipotesisInicial()
         {
             if (string.IsNullOrEmpty(txtHipotesisInicial.Text) == false)
             {
@@ -1604,52 +1609,75 @@ namespace GPA
                 hipotesis.Add(hi);
                 txtHipotesisInicial.Clear();
             }
-        }
+        }*/
         private void btnAgregarDiagnostico_Click(object sender, EventArgs e)
         {
             cargarDatosDgvDiagnosticos();
         }
         private void cargarDatosDgvDiagnosticos()
-        {
-            if (string.IsNullOrEmpty(txtDiagnostico.Text) == false)
+        {   
+            string conceptoInicial;
+            string descDiagnostico;
+            int id_estado;
+            string nombreEstado;
+            DateTime fecha;
+            string motivo;
+
+            if(cboEstadoDiagnostico.SelectedIndex>0 && string.IsNullOrEmpty(txtDiagnostico.Text) == false)
             {
-                if (diagnosticos == null)
-                    diagnosticos = new List<Diagnostico>();
+                EstadoDiagnostico estadoSeleccionado= (EstadoDiagnostico) cboEstadoDiagnostico.SelectedItem;
+                nombreEstado=estadoSeleccionado.nombre;
+                id_estado=(int) cboEstadoDiagnostico.SelectedValue;
+                
+                conceptoInicial= txtConceptoInicial.Text;
+                descDiagnostico=txtDiagnostico.Text;
+                fecha=Convert.ToDateTime(mtbFechaDiagnostico.Text);
+                motivo=txtMotivoDiagnostico.Text;
 
-                Diagnostico di = new Diagnostico();
+                if (listaDiagnosticos == null)
+                listaDiagnosticos = manejadorRegistrarExamenGeneral.CrearListaDiagnosticos();
 
-                dgvDiagnosticos.Rows.Add(txtDiagnostico.Text);
-                di.descripcion = txtDiagnostico.Text;
-                diagnosticos.Add(di);
-                txtDiagnostico.Clear();
+                EstadoDiagnostico estado= manejadorRegistrarExamenGeneral.crearEstadoDiagnostico(id_estado,nombreEstado);
+
+                RazonamientoDiagnostico diagnostico = manejadorRegistrarExamenGeneral.crearRazonamientoDiagnostico(conceptoInicial, descDiagnostico, estado, motivo, fecha, listaLaboratorio, listaEstudios, listaTratamiento);
+
+                listaDiagnosticos.Add(diagnostico);
+
+                dgvDiagnosticos.Rows.Add(txtDiagnostico.Text, nombreEstado);
             }
+            
         }
         private void btnEstudioARealizar_Click(object sender, EventArgs e)
         {
             cargarDatosDgvEstudioARealizar();
         }
+        /*
+         * Crea la lista de estudios de diagnóstico por imagen seleccionados del combo box y las agrega a la grilla.
+         */
         private void cargarDatosDgvEstudioARealizar()
         {
             string estudio;
+            int id_estudio;
             string indicaciones = "No precisa";
             if (cboEstudioARealizar.SelectedIndex > 0)
             {
                 NombreEstudio nombreSeleccionado = (NombreEstudio)cboEstudioARealizar.SelectedItem;
                 estudio = nombreSeleccionado.nombre;
+                id_estudio = (int)cboEstudioARealizar.SelectedValue;
 
                 if (string.IsNullOrEmpty(txtIndicacionesEstudioARealizar.Text) == false)
                 {
                     indicaciones = txtIndicacionesEstudioARealizar.Text;
                 }
 
+                EstudioDiagnosticoPorImagen estudioDiagnosticoImagen = manejadorRegistrarExamenGeneral.crearEstudioDiagnosticoPorImagen(indicaciones);
+
                 if (listaEstudios == null)
-                    listaEstudios = new List<EstudioDiagnosticoPorImagen>();
+                    listaEstudios = manejadorRegistrarExamenGeneral.crearListaEstudioDiagnosticoPorImagen();
 
-                EstudioDiagnosticoPorImagen estudioD = new EstudioDiagnosticoPorImagen();
+                estudioDiagnosticoImagen.nombreEstudio = manejadorRegistrarExamenGeneral.crearNombreEstudio(id_estudio, estudio);
 
-                estudioD.id_nombreEstudio = nombreSeleccionado.id_nombreEstudio;
-                estudioD.indicaciones = indicaciones;
-                listaEstudios.Add(estudioD);
+                listaEstudios.Add(estudioDiagnosticoImagen);
 
                 dgvExamenesARealizar.Rows.Add(estudio, indicaciones);
             }
@@ -1658,6 +1686,9 @@ namespace GPA
         {
             cargarDatosDgvAnalisisLaboratorioARealizar();
         }
+        /*
+         * Crea la lista de analisis de laboratorios seleccionados del combo box y las agrega a la grilla.
+         */
         private void cargarDatosDgvAnalisisLaboratorioARealizar()
         {
             string analisisLaboratorio;
@@ -1733,7 +1764,6 @@ namespace GPA
 
 
             txtConceptoInicial.Text = "Paciente con valores elevados de presión arterial en el consultorio y en un exámen de rutina";
-            txtHipotesisInicial.Text = "Hipertensión arterial escencial";
         }
         public void registrarExamenGeneralYConsulta()
         {
@@ -1875,8 +1905,49 @@ namespace GPA
 
         private void nuevoTratamientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegistrarTratamiento rt = new RegistrarTratamiento();
-            rt.ShowDialog();
+            RegistrarTratamiento rt = new RegistrarTratamiento(manejadorRegistrarExamenGeneral);
+            if (rt.ShowDialog() == DialogResult.OK)
+            {
+                listaTratamiento = rt.listaTratamientos;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cargarDatosDgvPracticasComplementariasARealizar();
+        }
+        /*
+         * Crea la lista de practicas complementarias seleccionadas del combo box y las agrega a la grilla.
+         */
+        public void cargarDatosDgvPracticasComplementariasARealizar()
+        {
+            string nombre;
+            int id_tipo;
+
+            string indicaciones = "No precisa";
+
+            if (cboPracticasComplementarias.SelectedIndex > 0)
+            {
+                TipoPracticaComplementaria nombreSeleccionado = (TipoPracticaComplementaria)cboPracticasComplementarias.SelectedItem;
+                nombre = nombreSeleccionado.nombre;
+                id_tipo = (int)cboPracticasComplementarias.SelectedValue;
+
+                if (string.IsNullOrEmpty(txtIndicacionesPracticasComplementarias.Text) == false)
+                {
+                    indicaciones = txtIndicacionesPracticasComplementarias.Text;
+                }
+
+                PracticaComplementaria practicaComplementaria = manejadorRegistrarExamenGeneral.crearPracticaComplementaria(indicaciones);
+
+                if (listaPracticasComplementarias == null)
+                    listaPracticasComplementarias = manejadorRegistrarExamenGeneral.crearListaPracticaComplementaria();
+
+                practicaComplementaria.tipo = manejadorRegistrarExamenGeneral.crearTipoPracticaComplementaria(id_tipo, nombre);
+
+                listaPracticasComplementarias.Add(practicaComplementaria);
+
+                dgvExamenesARealizar.Rows.Add(nombre, indicaciones);
+            }
         }
     }
 }

@@ -16,5 +16,7 @@ namespace Entidades.Clases
         public DateTime fechaFin { set; get; }
         public string motivoFin { set; get; }
         public List<Nota> notasEvolucionTratamiento { set; get; }
+        public Terapia terapia { set; get; }
+
     }
 }

@@ -124,56 +124,6 @@ namespace GPA.Manejadores
 
             return temperatura;
         }
-        public RazonamientoDiagnostico crearRazonamientoDiagnostico(string conceptoInicial,string Desdiagnostico, string estadoDiagnostico, string motivo, DateTime fecha, List<AnalisisLaboratorio> analisis, List<EstudioDiagnosticoPorImagen> estudios, List<Tratamiento> tratamientos)
-        {
-            RazonamientoDiagnostico diagnostico = new RazonamientoDiagnostico();
-            diagnostico.conceptoInicial = conceptoInicial;
-            diagnostico.diagnostico = Desdiagnostico;
-            diagnostico.estado.nombre = estadoDiagnostico;
-
-            switch (estadoDiagnostico)
-            {
-                case "Tentativo":
-                    diagnostico.fechaTentativo=fecha;
-                    diagnostico.motivoTentativo=motivo;
-                    break;
-
-                case "Confirmado":
-                    diagnostico.fechaConfirmado = fecha;
-                    diagnostico.motivoConfirmado = motivo;
-                    break;
-
-                case "Descartado":
-                    diagnostico.fechaDescartado = fecha;
-                    diagnostico.motivoDescartado = motivo;
-                    break;
-            }
-
-            diagnostico.analisis = analisis;
-            diagnostico.estudios = estudios;
-            diagnostico.tratamientos = tratamientos;
-
-            return diagnostico;
-        }
-        public List<Laboratorio> crearListaLaboratorio()
-        {   
-            List<Laboratorio> listaLaboratorio=new List<Laboratorio>();
-            return listaLaboratorio;
-        }
-        public AnalisisLaboratorio crearAnalisisLaboratorio(int id,string nombre)
-        {
-            AnalisisLaboratorio analisisLaboratorio = new AnalisisLaboratorio();
-            analisisLaboratorio.id_analisis = id;
-            analisisLaboratorio.nombre = nombre;
-
-            return analisisLaboratorio;
-        }
-        public Laboratorio crearLaboratorio(string indicaciones)
-        {
-            Laboratorio laboratorio = new Laboratorio();
-            laboratorio.indicaciones = indicaciones;
-
-        }
         public void mostrarPresionArterial()
         {
             pantalla.presentarExamenGeneralPresionArterial(ExtremidadLN.mostrarExtremidades(), PosicionLN.mostrarPosiciones(), SitioMedicionLN.mostrarSitiosDeMedicion(), MomentoDiaLN.mostrarMomentosDelDia());
@@ -240,5 +190,158 @@ namespace GPA.Manejadores
         {
             return RazonamientoDiagnosticoLN.registrarRazonamientoDiagnostico(razonamiento);
         }
+        /*
+         * Crear un diagnostico con tratamientos
+         */
+        public RazonamientoDiagnostico crearRazonamientoDiagnostico(string conceptoInicial, string Desdiagnostico, EstadoDiagnostico estadoDiagnostico, string motivo, DateTime fecha, List<Laboratorio> analisis, List<EstudioDiagnosticoPorImagen> estudios, List<Tratamiento> tratamientos)
+        {
+            RazonamientoDiagnostico diagnostico = new RazonamientoDiagnostico();
+            diagnostico.conceptoInicial = conceptoInicial;
+            diagnostico.diagnostico = Desdiagnostico;
+            diagnostico.estado = estadoDiagnostico;
+
+            switch (estadoDiagnostico.nombre)
+            {
+                case "Tentativo":
+                    diagnostico.fechaTentativo = fecha;
+                    diagnostico.motivoTentativo = motivo;
+                    break;
+
+                case "Confirmado":
+                    diagnostico.fechaConfirmado = fecha;
+                    diagnostico.motivoConfirmado = motivo;
+                    break;
+
+                case "Descartado":
+                    diagnostico.fechaDescartado = fecha;
+                    diagnostico.motivoDescartado = motivo;
+                    break;
+            }
+
+            diagnostico.analisis = analisis;
+            diagnostico.estudios = estudios;
+            diagnostico.tratamientos = tratamientos;
+
+            return diagnostico;
+        }
+        public List<RazonamientoDiagnostico> CrearListaDiagnosticos()
+        {
+            List<RazonamientoDiagnostico> lista = new List<RazonamientoDiagnostico>();
+            return lista;
+        }
+        public EstadoDiagnostico crearEstadoDiagnostico(int id_estado, string nombre)
+        {
+            EstadoDiagnostico estado = new EstadoDiagnostico();
+            estado.id_estado = id_estado;
+            estado.nombre = nombre;
+            return estado;
+        }
+        public List<Laboratorio> crearListaLaboratorio()
+        {
+            List<Laboratorio> listaLaboratorio = new List<Laboratorio>();
+            return listaLaboratorio;
+        }
+        public AnalisisLaboratorio crearAnalisisLaboratorio(int id, string nombre)
+        {
+            AnalisisLaboratorio analisisLaboratorio = new AnalisisLaboratorio();
+            analisisLaboratorio.id_analisis = id;
+            analisisLaboratorio.nombre = nombre;
+
+            return analisisLaboratorio;
+        }
+        public Laboratorio crearLaboratorio(string indicaciones)
+        {
+            Laboratorio laboratorio = new Laboratorio();
+            laboratorio.indicaciones = indicaciones;
+            return laboratorio;
+        }
+        public NombreEstudio crearNombreEstudio(int id_estudio, string nombre)
+        {
+            NombreEstudio estudio = new NombreEstudio();
+            estudio.id_nombreEstudio = id_estudio;
+            estudio.nombre = nombre;
+            return estudio;
+        }
+        public EstudioDiagnosticoPorImagen crearEstudioDiagnosticoPorImagen(string indicaciones)
+        {
+            EstudioDiagnosticoPorImagen estudio = new EstudioDiagnosticoPorImagen();
+            estudio.indicaciones = indicaciones;
+            return estudio;
+        }
+        public List<EstudioDiagnosticoPorImagen> crearListaEstudioDiagnosticoPorImagen()
+        {
+            List<EstudioDiagnosticoPorImagen> listaEstudioDiagnosticoImagen = new List<EstudioDiagnosticoPorImagen>();
+            return listaEstudioDiagnosticoImagen;
+        }
+        public TipoPracticaComplementaria crearTipoPracticaComplementaria(int id_practica, string nombre)
+        {
+            TipoPracticaComplementaria practica = new TipoPracticaComplementaria();
+            practica.id_tipoPracticaComplementaria = id_practica;
+            practica.nombre = nombre;
+            return practica;
+        }
+        public PracticaComplementaria crearPracticaComplementaria(string indicaciones)
+        {
+            PracticaComplementaria practica = new PracticaComplementaria();
+            practica.indicaciones = indicaciones;
+            return practica;
+        }
+        public List<PracticaComplementaria> crearListaPracticaComplementaria()
+        {
+            List<PracticaComplementaria> listaPracticas = new List<PracticaComplementaria>();
+            return listaPracticas;
+        }
+        public Tratamiento crearTratamiento(Terapia terapia, string indicaciones, DateTime fechaInicio, string motivo)
+        {
+            Tratamiento tratamiento = new Tratamiento();
+            tratamiento.terapia = terapia;
+            tratamiento.indicaciones = indicaciones;
+            tratamiento.fechaInicio = fechaInicio;
+            tratamiento.motivoInicio = motivo;
+
+            return tratamiento;
+        }
+        public Tratamiento crearTratamiento(Terapia terapia, string indicaciones, DateTime fechaInicio, string motivo,List<ProgramacionMedicamento> medicamentos)
+        {
+            Tratamiento tratamiento = new Tratamiento();
+            tratamiento.terapia = terapia;
+            tratamiento.indicaciones = indicaciones;
+            tratamiento.fechaInicio = fechaInicio;
+            tratamiento.motivoInicio = motivo;
+            tratamiento.medicamentos = medicamentos;
+            return tratamiento;
+        }
+        public List<Tratamiento> crearListaTratamiento()
+        {
+            List<Tratamiento> listatTratamiento = new List<Tratamiento>();
+            return listatTratamiento;
+        }
+        public Terapia crearTerapia(int id_terapia, string nombre)
+        {
+            Terapia terapia = new Terapia();
+            terapia.id_terapia = id_terapia;
+            terapia.nombre = nombre;
+            return terapia;
+        }
+        public ProgramacionMedicamento crearProgramacionMedicamento()
+        {
+            ProgramacionMedicamento programacion = new ProgramacionMedicamento();
+            return programacion;
+        }
+        public EspecificacionMedicamento crearEspecificacionMedicamento()
+        {
+            EspecificacionMedicamento especificacion = new EspecificacionMedicamento();
+            return especificacion;
+        }
+        public void buscarEspecificacionMedicamento(EspecificacionMedicamento especificacion)
+        {
+            EspecificacionMedicamentoLN.buscasIdEspecificacion(especificacion);
+        }
+        public List<ProgramacionMedicamento> crearListaProgramacionMedicamento()
+        {
+            List<ProgramacionMedicamento> lista = new List<ProgramacionMedicamento>();
+            return lista;
+        }
+           
     }
 }

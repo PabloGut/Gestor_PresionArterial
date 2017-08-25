@@ -364,9 +364,9 @@
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.label56 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtIndicacionesPracticasComplementarias = new System.Windows.Forms.TextBox();
+            this.btnPracticasComplementariasARealizar = new System.Windows.Forms.Button();
+            this.cboPracticasComplementarias = new System.Windows.Forms.ComboBox();
             this.label57 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
@@ -381,14 +381,15 @@
             this.label84 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.mtbFechaDiagnostico = new System.Windows.Forms.MaskedTextBox();
+            this.txtMotivoDiagnostico = new System.Windows.Forms.TextBox();
             this.lblFechaDescartado = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.cboEstadoDiagnostico = new System.Windows.Forms.ComboBox();
             this.lblEstadoDiagnostico = new System.Windows.Forms.Label();
             this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.dgvDiagnosticos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDiagnostico = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
             this.txtConceptoInicial = new System.Windows.Forms.TextBox();
@@ -396,7 +397,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -3670,9 +3670,10 @@
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.label56);
-            this.groupBox15.Controls.Add(this.textBox2);
-            this.groupBox15.Controls.Add(this.button1);
-            this.groupBox15.Controls.Add(this.comboBox1);
+            this.groupBox15.Controls.Add(this.txtIndicacionesPracticasComplementarias);
+            this.groupBox15.Controls.Add(this.btnAgregarDiagnostico);
+            this.groupBox15.Controls.Add(this.btnPracticasComplementariasARealizar);
+            this.groupBox15.Controls.Add(this.cboPracticasComplementarias);
             this.groupBox15.Controls.Add(this.label57);
             this.groupBox15.Controls.Add(this.label55);
             this.groupBox15.Controls.Add(this.label54);
@@ -3687,9 +3688,9 @@
             this.groupBox15.Controls.Add(this.label84);
             this.groupBox15.Controls.Add(this.label83);
             this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox15.Location = new System.Drawing.Point(9, 269);
+            this.groupBox15.Location = new System.Drawing.Point(6, 246);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(838, 305);
+            this.groupBox15.Size = new System.Drawing.Size(838, 328);
             this.groupBox15.TabIndex = 2;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Exámenes complementarios a realizar";
@@ -3703,30 +3704,31 @@
             this.label56.TabIndex = 37;
             this.label56.Text = "Indicaciones";
             // 
-            // textBox2
+            // txtIndicacionesPracticasComplementarias
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 261);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(381, 30);
-            this.textBox2.TabIndex = 36;
+            this.txtIndicacionesPracticasComplementarias.Location = new System.Drawing.Point(97, 261);
+            this.txtIndicacionesPracticasComplementarias.Multiline = true;
+            this.txtIndicacionesPracticasComplementarias.Name = "txtIndicacionesPracticasComplementarias";
+            this.txtIndicacionesPracticasComplementarias.Size = new System.Drawing.Size(381, 30);
+            this.txtIndicacionesPracticasComplementarias.TabIndex = 36;
             // 
-            // button1
+            // btnPracticasComplementariasARealizar
             // 
-            this.button1.Location = new System.Drawing.Point(362, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 26);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Añadir";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPracticasComplementariasARealizar.Location = new System.Drawing.Point(362, 228);
+            this.btnPracticasComplementariasARealizar.Name = "btnPracticasComplementariasARealizar";
+            this.btnPracticasComplementariasARealizar.Size = new System.Drawing.Size(117, 26);
+            this.btnPracticasComplementariasARealizar.TabIndex = 35;
+            this.btnPracticasComplementariasARealizar.Text = "Añadir";
+            this.btnPracticasComplementariasARealizar.UseVisualStyleBackColor = true;
+            this.btnPracticasComplementariasARealizar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // cboPracticasComplementarias
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(173, 230);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(183, 24);
-            this.comboBox1.TabIndex = 34;
+            this.cboPracticasComplementarias.FormattingEnabled = true;
+            this.cboPracticasComplementarias.Location = new System.Drawing.Point(173, 230);
+            this.cboPracticasComplementarias.Name = "cboPracticasComplementarias";
+            this.cboPracticasComplementarias.Size = new System.Drawing.Size(183, 24);
+            this.cboPracticasComplementarias.TabIndex = 34;
             // 
             // label57
             // 
@@ -3773,7 +3775,7 @@
             // 
             // btnRegistrarAtención
             // 
-            this.btnRegistrarAtención.Location = new System.Drawing.Point(515, 259);
+            this.btnRegistrarAtención.Location = new System.Drawing.Point(533, 296);
             this.btnRegistrarAtención.Name = "btnRegistrarAtención";
             this.btnRegistrarAtención.Size = new System.Drawing.Size(247, 26);
             this.btnRegistrarAtención.TabIndex = 28;
@@ -3845,13 +3847,12 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.maskedTextBox1);
-            this.groupBox10.Controls.Add(this.textBox1);
+            this.groupBox10.Controls.Add(this.mtbFechaDiagnostico);
+            this.groupBox10.Controls.Add(this.txtMotivoDiagnostico);
             this.groupBox10.Controls.Add(this.lblFechaDescartado);
             this.groupBox10.Controls.Add(this.label53);
             this.groupBox10.Controls.Add(this.cboEstadoDiagnostico);
             this.groupBox10.Controls.Add(this.lblEstadoDiagnostico);
-            this.groupBox10.Controls.Add(this.btnAgregarDiagnostico);
             this.groupBox10.Controls.Add(this.dgvDiagnosticos);
             this.groupBox10.Controls.Add(this.txtDiagnostico);
             this.groupBox10.Controls.Add(this.label85);
@@ -3860,27 +3861,27 @@
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(6, 6);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(838, 257);
+            this.groupBox10.Size = new System.Drawing.Size(838, 234);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Razonamiento Diagnóstico";
             // 
-            // maskedTextBox1
+            // mtbFechaDiagnostico
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(463, 117);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.maskedTextBox1.TabIndex = 26;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.mtbFechaDiagnostico.Location = new System.Drawing.Point(463, 117);
+            this.mtbFechaDiagnostico.Mask = "00/00/0000";
+            this.mtbFechaDiagnostico.Name = "mtbFechaDiagnostico";
+            this.mtbFechaDiagnostico.Size = new System.Drawing.Size(100, 23);
+            this.mtbFechaDiagnostico.TabIndex = 26;
+            this.mtbFechaDiagnostico.ValidatingType = typeof(System.DateTime);
             // 
-            // textBox1
+            // txtMotivoDiagnostico
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 175);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(556, 43);
-            this.textBox1.TabIndex = 25;
+            this.txtMotivoDiagnostico.Location = new System.Drawing.Point(9, 175);
+            this.txtMotivoDiagnostico.Multiline = true;
+            this.txtMotivoDiagnostico.Name = "txtMotivoDiagnostico";
+            this.txtMotivoDiagnostico.Size = new System.Drawing.Size(556, 43);
+            this.txtMotivoDiagnostico.TabIndex = 25;
             // 
             // lblFechaDescartado
             // 
@@ -3919,9 +3920,9 @@
             // 
             // btnAgregarDiagnostico
             // 
-            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(570, 224);
+            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(533, 259);
             this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
-            this.btnAgregarDiagnostico.Size = new System.Drawing.Size(130, 26);
+            this.btnAgregarDiagnostico.Size = new System.Drawing.Size(247, 26);
             this.btnAgregarDiagnostico.TabIndex = 18;
             this.btnAgregarDiagnostico.Text = "Agregar";
             this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
@@ -3936,6 +3937,12 @@
             this.dgvDiagnosticos.Name = "dgvDiagnosticos";
             this.dgvDiagnosticos.Size = new System.Drawing.Size(253, 189);
             this.dgvDiagnosticos.TabIndex = 15;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Diagnósticos";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 215;
             // 
             // txtDiagnostico
             // 
@@ -4003,12 +4010,6 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Diagnósticos";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 215;
             // 
             // MenuPrincipal
             // 
@@ -4467,18 +4468,18 @@
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Button btnConsultas;
         private System.Windows.Forms.DataGridView dgvConsultas;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMotivoDiagnostico;
         private System.Windows.Forms.Label lblFechaDescartado;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.ComboBox cboEstadoDiagnostico;
         private System.Windows.Forms.Label lblEstadoDiagnostico;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtbFechaDiagnostico;
         private System.Windows.Forms.ToolStripMenuItem tratamientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoTratamientoToolStripMenuItem;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtIndicacionesPracticasComplementarias;
+        private System.Windows.Forms.Button btnPracticasComplementariasARealizar;
+        private System.Windows.Forms.ComboBox cboPracticasComplementarias;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
