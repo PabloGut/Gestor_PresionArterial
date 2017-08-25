@@ -658,8 +658,6 @@ insert into Consistencia(nombre)
 values('Muy duro')
 insert into Consistencia(nombre)
 values('Muy blando')
-insert into Consistencia(nombre)
-values('Muy blando')
 /*--------------------------*/
 
 /*-------Insert Escala Pulso-----*/
@@ -739,20 +737,11 @@ insert into NombreEstudio(nombre)
 values('Radiografía de Tórax')
 /*--------------------------*/
 
-/*-------Insert EstadoHipotesis-----*/
-insert into EstadoHipotesis(nombre)
-values('--Seleccionar--')
-insert into EstadoHipotesis(nombre)
-values('Rechazada')
-insert into EstadoHipotesis(nombre)
-values('No Rechazada')
-/*--------------------------*/
-
 /*-------Insert-----*/
 
 /*--------------------------*/
 
-alter table EscalaPulso
+/*alter table EscalaPulso
 alter column nombre text
 
 select * from HipotesisInicial
@@ -780,9 +769,9 @@ select * from Usuario
 
 select @@IDENTITY
 select SCOPE_IDENTITY()
-select IDENT_CURRENT('RazonamientoDiagnostico')
+select IDENT_CURRENT('RazonamientoDiagnostico')*/
 
-CREATE TABLE DetalleMedicionPresionArterial(
+/*CREATE TABLE DetalleMedicionPresionArterial(
 id_nroMedicion int,
 id_medicion_fk int,
 hora time,
@@ -832,7 +821,7 @@ alter table MedicionDePrecionArterial
 add id_ubicacionExtremidad_fk int
 
 alter table MedicionDePrecionArterial
-add foreign key(id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad)
+add foreign key(id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad)*/
 
 /*-------Insert Posicion-----*/
 insert into Posicion(nombre)

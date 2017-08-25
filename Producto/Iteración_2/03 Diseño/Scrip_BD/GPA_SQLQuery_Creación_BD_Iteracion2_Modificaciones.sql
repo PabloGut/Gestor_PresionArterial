@@ -615,9 +615,25 @@ foreign key (id_derecha_fk) references EscalaPulso(id_escalaPulso),
 foreign key (id_izquierda_fk) references EscalaPulso(id_escalaPulso),
 foreign key (id_pulso_fk) references Pulso(id_pulso))
 
+CREATE TABLE EstadoDiagnostico(
+id_estadoDiagnostico int primary key identity,
+nombre varchar(50),
+descripcion varchar(100))
+
 CREATE TABLE RazonamientoDiagnostico(
 id_razonamiento int primary key identity,
-conceptoInicial text)
+conceptoInicial text,
+diagnostico text,
+id_estadoDiagnostico_fk int not null,
+motivoDescartado text,
+fechaDescartado date,
+motivoConfirmado text,
+fechaConfirmado date,
+motivoTentativo text,
+fechaTentativo date,
+id_examenGeneral_fk int not null,
+foreign key (id_estadoDiagnostico_fk) references EstadoDiagnostico(id_estadoDiagnostico),
+foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
 
 CREATE TABLE EstadoHipotesis(
 id_estadoHipotesis int primary key identity,

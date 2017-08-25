@@ -651,7 +651,7 @@ where 36 between valorMinimo and valorMaximo
 drop table Laboratorio
 
 
-select * from PracticaComplementaria
+select * from RazonamientoDiagnostico
 
 alter table AnalisisLaboratorio
 add valorResultado float,
@@ -659,3 +659,4 @@ id_unidadMedida_fk int not null,
 id_metodoAnalisisLaboratorio_fk int
 
 select * from AnalisisLaboratorioXRazonamientoDiagnostico
+
