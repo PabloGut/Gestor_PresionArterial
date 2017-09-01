@@ -71,7 +71,6 @@ id_analisisLaboratorio_fk int not null,
 id_tipoPractica_fk int not null,
 id_razonamientoDiagnostico_fk int not null,
 FOREIGN KEY (id_institucion_fk) REFERENCES Institucion(id_institucion),
-FOREIGN KEY (id_analisisLaboratorio_fk) REFERENCES AnalisisLaboratorio(id_analisisLaboratorio),
 FOREIGN KEY (id_tipoPractica_fk) REFERENCES TipoPracticaComplementaria(id_tipoPractica),
 foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
 
@@ -82,20 +81,16 @@ nombre varchar(100) not null)
 CREATE TABLE AnalisisLaboratorio(
 id_analisisLaboratorio integer PRIMARY KEY IDENTITY,
 nombre varchar(200) not null,
-descripcion text,
-valorResultado float,
-id_unidadMedida_fk int,
-id_metodoAnalisisLaboratorio_fk int not null,
-FOREIGN KEY (id_unidadMedida_fk) REFERENCES UnidadMedida(id_unidadMedida))
+descripcion text)
 
 CREATE TABLE ItemEstudioLaboratorio(
 id_item integer PRIMARY KEY IDENTITY,
 nombre varchar(200) not null,
 valorresultado float,
 id_unidadMedida_fk int not null,
-id_analisisLaboratorio_fk integer not null,
+id_Laboratorio_fk integer not null,
 FOREIGN KEY (id_unidadMedida_fk) REFERENCES UnidadMedida(id_unidadMedida),
-FOREIGN KEY (id_analisisLaboratorio_fk) REFERENCES AnalisisLaboratorio(id_analisisLaboratorio))
+FOREIGN KEY (id_Laboratorio_fk) REFERENCES Laboratorio(id_Laboratorio))
 
 CREATE TABLE DetalleItemLaboratorio(
 id_detalleItemLaboratorio integer PRIMARY KEY IDENTITY,
@@ -531,11 +526,9 @@ id_piel_fk int,
 descripcionComoRespira text,
 observacionesRespiracion text,
 id_pulsoArterial_fk int,
-id_razonamientoDiagnostico_fk int,
 id_medicion_fk int,
 foreign key (id_piel_fk) references Piel(id_piel),
 foreign key (id_pulsoArterial_fk) references PulsoArterial(id_pulsoArterial),
-foreign key (id_razonamientoDiagnostico_fk)references RazonamientoDiagnostico(id_razonamiento),
 foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
 
 CREATE TABLE SitioMedicionTemperatura(
@@ -614,6 +607,28 @@ foreign key (id_pulsoArterial) references PulsoArterial(id_pulsoArterial),
 foreign key (id_derecha_fk) references EscalaPulso(id_escalaPulso),
 foreign key (id_izquierda_fk) references EscalaPulso(id_escalaPulso),
 foreign key (id_pulso_fk) references Pulso(id_pulso))
+
+CREATE TABLE Terapia(
+id_terapia int primary key identity,
+nombre varchar(100),
+descripcion varchar(100))
+
+CREATE TABLE Nota(
+id_nota int primary key identity,
+fechaNota date,
+descripcion text,
+id_tratamiento_fk int not null)
+
+CREATE TABLE Tratamiento(
+id_tratamiento int identity,
+indicaciones text,
+fechaInicio date,
+motivoInicioTratamiento text,
+fechaFin date,
+motivoFinTratamiento text,
+id_terapia_fk int not null,
+primary key (id_tratamiento),
+foreign key (id_terapia_fk) references Terapia(id_terapia))
 
 CREATE TABLE EstadoDiagnostico(
 id_estadoDiagnostico int primary key identity,

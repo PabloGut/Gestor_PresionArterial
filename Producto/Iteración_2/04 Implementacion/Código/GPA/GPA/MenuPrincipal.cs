@@ -28,6 +28,7 @@ namespace GPA
         List<Laboratorio> listaLaboratorio;
         List<PracticaComplementaria> listaPracticasComplementarias;
         List<Tratamiento> listaTratamiento;
+        List<Temperatura> listaTemperaturas;
 
         List<Sintoma> listaSintoma;
         Consulta consulta;
@@ -54,6 +55,7 @@ namespace GPA
             listaLaboratorio = null;
             listaPracticasComplementarias=null;
             listaTratamiento = null;
+            listaTemperaturas = null;
 
         }
         public MenuPrincipal()
@@ -1031,23 +1033,39 @@ namespace GPA
 
 
         }
-        public void crearRazonamientoDiagnostico()
+        public void registrarExamenGeneralYConsulta()
         {
-            string conceptoInicial = "";
+            //Codigo para registrar exámen general y consulta con una sola transacción en DAO.
 
-            if (string.IsNullOrEmpty(txtConceptoInicial.Text) == false)
-            {
-                conceptoInicial = txtConceptoInicial.Text;
-            }
+            examen = crearExamenGeneral();//Crea ObjetoExamenGeneral.
 
-            if (diagnosticos != null && diagnosticos.Count > 0)
-                razonamiento.diagnostico = diagnosticos;
+            examen.examenPiel = crearExamenPiel();//Agrega el análisis de la piel al examen general.
 
-            if (listaEstudios != null && listaEstudios.Count > 0)
-                razonamiento.estudios = listaEstudios;
+            if (examen != null && listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
+                examen.territoriosExaminados = listaTerritoriosExaminados; //Agrega el análisis del sistema linfático al examen
 
-            if (listaLaboratorio != null && listaLaboratorio.Count > 0)
-                razonamiento.pruebas = listaPrubasLaboratorio;
+            examen.pulso = crearPulsoArterial();//Crea ObjetoPulsoArterial
+
+            Respiracion respiracion = crearRespiracion();//Agrega los datos de la respiración al examen
+            examen.descripcionComoRespira = respiracion.descripcion;
+            examen.observacionesRespiracion = respiracion.observaciones;
+
+            //Agrega datos de temperatura al examen
+            if (examen != null && manejadorRegistrarExamenGeneral != null && listaTemperaturas != null && listaTemperaturas.Count > 0)
+                examen.listaTemperaturas = listaTemperaturas;//Agrega la lista de temperaturas corporales al examen general.
+
+            if (examen != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
+                examen.medicion = manejadorRegistrarExamenGeneral.medicion;//Agrega las mediciones de presión arterial al examen
+
+            if (examen != null && manejadorRegistrarExamenGeneral != null && listaDiagnosticos != null && listaDiagnosticos.Count > 0)
+                examen.listaDiagnosticos = listaDiagnosticos;//agrega al examen la lista de diagnosticos. Cada objeto de la lista ya contiene sus correspondientes tratamientos, exploraciones complementarias, programación de medicamentos.
+
+            consulta = CrearConsulta();//Crea un objeto consulta y agrega una lista con los sintomas.
+
+            consulta.examen = examen;//Agrega el examen general a la consulta
+
+            manejadorRegistrarAtencionMedicaEnConsultorio.registrarConsultaYExamenGeneral(consulta);//Registra todo el examen general en la base de datos.
+
         }
         /*
         * Crea un objeto consulta.
@@ -1513,30 +1531,82 @@ namespace GPA
 
         }
         /*
-        * Crear el objeto Temperatura
+        * Crear la lista de mediciones de temperatura corporal y agrega los objetos Temperatura a la lista.
         * Llama al manejador Registrar Examen General.
-        * Retorna un objeto Temperatura.
+        * Retorna void.
         */
-        public Temperatura crearMedicionTemperatura()
+        public void crearMedicionTemperatura()
         {
             int id_sitio;
             float valorTemperatura;
             string resultado;
 
-            if (cboSitionMedición1.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura1.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura1.Text))
+            if (cboSitioMedicion1.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura1.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura1.Text))
             {
-                SitioMedicion sitio = (SitioMedicion)cboSitionMedición1.SelectedItem;
+                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion1.SelectedItem;
                 id_sitio = sitio.id_sitioMedicion;
 
                 valorTemperatura = float.Parse(txtValorTemperatura1.Text);
 
                 resultado = txtResultadoTemperatura1.Text;
 
-                return manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+                Temperatura temperatura=manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+
+                if (listaTemperaturas == null)
+                    listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
+
+                listaTemperaturas.Add(temperatura);
             }
-            else
+
+            if (cboSitioMedicion2.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura2.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura2.Text))
             {
-                return null;
+                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion2.SelectedItem;
+                id_sitio = sitio.id_sitioMedicion;
+
+                valorTemperatura = float.Parse(txtValorTemperatura2.Text);
+
+                resultado = txtResultadoTemperatura2.Text;
+
+                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+
+                if (listaTemperaturas == null)
+                    listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
+
+                listaTemperaturas.Add(temperatura);
+            }
+
+            if (cboSitioMedicion3.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura3.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura3.Text))
+            {
+                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion3.SelectedItem;
+                id_sitio = sitio.id_sitioMedicion;
+
+                valorTemperatura = float.Parse(txtValorTemperatura3.Text);
+
+                resultado = txtResultadoTemperatura3.Text;
+
+                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+
+                if (listaTemperaturas == null)
+                    listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
+
+                listaTemperaturas.Add(temperatura);
+            }
+
+            if (cboSitioMedicion4.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura4.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura4.Text))
+            {
+                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion4.SelectedItem;
+                id_sitio = sitio.id_sitioMedicion;
+
+                valorTemperatura = float.Parse(txtValorTemperatura4.Text);
+
+                resultado = txtResultadoTemperatura4.Text;
+
+                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+
+                if (listaTemperaturas == null)
+                    listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
+
+                listaTemperaturas.Add(temperatura);
             }
         }
         public void presentarExamenGeneralPresionArterial(List<Extremidad> extremidades, List<Posicion> posiciones, List<SitioMedicion> sitios, List<MomentoDia> momentos)
@@ -1765,33 +1835,6 @@ namespace GPA
 
             txtConceptoInicial.Text = "Paciente con valores elevados de presión arterial en el consultorio y en un exámen de rutina";
         }
-        public void registrarExamenGeneralYConsulta()
-        {
-            //Codigo para registrar exámen general y consulta con una sola transacción en DAO.
-            crearRazonamientoDiagnostico();
-
-            examen=crearExamenGeneral();//Crea ObjetoExamenGeneral.
-
-            examen.examenPiel= crearExamenPiel();//Agrega el análisis de la piel al examen general.
-
-            if (examen!=null && listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
-                examen.territoriosExaminados = listaTerritoriosExaminados; //Agrega el análisis del sistema linfático al examen
-
-            examen.pulso=crearPulsoArterial();//Crea ObjetoPulsoArterial
-
-            if (examen != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
-                examen.medicion = manejadorRegistrarExamenGeneral.medicion;
-
-            examen.razonamiento = razonamiento;
-
-            consulta=CrearConsulta();
-
-            consulta.examen = examen;
-
-            manejadorRegistrarAtencionMedicaEnConsultorio.registrarConsultaYExamenGeneral(consulta);
-
-        }
-
         private void btnAgregarSintoma_Click(object sender, EventArgs e)
         {
             cargarSintomas();

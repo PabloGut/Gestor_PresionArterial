@@ -76,6 +76,9 @@ namespace GPA
 
                 Terapia terapia = manejador.crearTerapia(id_terapia, nombreTerapia);
 
+                if(listaTratamientos==null)
+                    listaTratamientos = manejador.crearListaTratamiento();
+
                 Tratamiento tratamiento = manejador.crearTratamiento(terapia, indicaciones, fechaInicio, motivoInicio);
 
                 dgvListaTratamientos.Rows.Add(nombreTerapia);
@@ -197,7 +200,6 @@ namespace GPA
                 Terapia terapiaSeleccionada = (Terapia)cboTerapia.SelectedItem;
                 terapia = terapiaSeleccionada.nombre;
 
-
                 fecha = Convert.ToDateTime(mtbFechaInicio.Text);
 
                 if (!string.IsNullOrEmpty(txtIndicacionesTerapia.Text))
@@ -208,6 +210,9 @@ namespace GPA
                 {
                     motivo = txtMotivoInicio.Text;
                 }
+
+                cargarTratamientoFarmacologico();
+
                 Tratamiento tratamiento = manejador.crearTratamiento(terapiaSeleccionada, indicaciones, fecha, motivo, listaMedicamentos);
 
                 listaTratamientos.Add(tratamiento);

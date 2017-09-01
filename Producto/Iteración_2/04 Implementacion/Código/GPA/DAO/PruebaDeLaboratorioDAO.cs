@@ -22,7 +22,7 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static void registrarAnalisisLaboratorioD(PruebasDeLaboratorio prueba, SqlTransaction tran, SqlConnection cn)
+        public static void registrarAnalisisLaboratorioD(Laboratorio prueba, SqlTransaction tran, SqlConnection cn)
         {
             try
             {

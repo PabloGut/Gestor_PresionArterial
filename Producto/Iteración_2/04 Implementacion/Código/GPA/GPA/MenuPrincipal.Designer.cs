@@ -334,7 +334,7 @@
             this.txtObservacionesTemperatura = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
-            this.txtResultado4 = new System.Windows.Forms.TextBox();
+            this.txtResultadoTemperatura4 = new System.Windows.Forms.TextBox();
             this.label77 = new System.Windows.Forms.Label();
             this.txtResultadoTemperatura3 = new System.Windows.Forms.TextBox();
             this.label76 = new System.Windows.Forms.Label();
@@ -359,12 +359,13 @@
             this.cboSitioMedicion3 = new System.Windows.Forms.ComboBox();
             this.cboSitioMedicion4 = new System.Windows.Forms.ComboBox();
             this.cboSitioMedicion2 = new System.Windows.Forms.ComboBox();
-            this.cboSitionMedición1 = new System.Windows.Forms.ComboBox();
+            this.cboSitioMedicion1 = new System.Windows.Forms.ComboBox();
             this.txtValorTemperatura1 = new System.Windows.Forms.TextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.label56 = new System.Windows.Forms.Label();
             this.txtIndicacionesPracticasComplementarias = new System.Windows.Forms.TextBox();
+            this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.btnPracticasComplementariasARealizar = new System.Windows.Forms.Button();
             this.cboPracticasComplementarias = new System.Windows.Forms.ComboBox();
             this.label57 = new System.Windows.Forms.Label();
@@ -387,7 +388,6 @@
             this.label53 = new System.Windows.Forms.Label();
             this.cboEstadoDiagnostico = new System.Windows.Forms.ComboBox();
             this.lblEstadoDiagnostico = new System.Windows.Forms.Label();
-            this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.dgvDiagnosticos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDiagnostico = new System.Windows.Forms.TextBox();
@@ -3371,7 +3371,7 @@
             this.groupBox8.Controls.Add(this.txtObservacionesTemperatura);
             this.groupBox8.Controls.Add(this.label79);
             this.groupBox8.Controls.Add(this.label78);
-            this.groupBox8.Controls.Add(this.txtResultado4);
+            this.groupBox8.Controls.Add(this.txtResultadoTemperatura4);
             this.groupBox8.Controls.Add(this.label77);
             this.groupBox8.Controls.Add(this.txtResultadoTemperatura3);
             this.groupBox8.Controls.Add(this.label76);
@@ -3396,7 +3396,7 @@
             this.groupBox8.Controls.Add(this.cboSitioMedicion3);
             this.groupBox8.Controls.Add(this.cboSitioMedicion4);
             this.groupBox8.Controls.Add(this.cboSitioMedicion2);
-            this.groupBox8.Controls.Add(this.cboSitionMedición1);
+            this.groupBox8.Controls.Add(this.cboSitioMedicion1);
             this.groupBox8.Controls.Add(this.txtValorTemperatura1);
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
@@ -3432,12 +3432,12 @@
             this.label78.TabIndex = 33;
             this.label78.Text = "Resultado";
             // 
-            // txtResultado4
+            // txtResultadoTemperatura4
             // 
-            this.txtResultado4.Location = new System.Drawing.Point(598, 168);
-            this.txtResultado4.Name = "txtResultado4";
-            this.txtResultado4.Size = new System.Drawing.Size(113, 23);
-            this.txtResultado4.TabIndex = 32;
+            this.txtResultadoTemperatura4.Location = new System.Drawing.Point(598, 168);
+            this.txtResultadoTemperatura4.Name = "txtResultadoTemperatura4";
+            this.txtResultadoTemperatura4.Size = new System.Drawing.Size(113, 23);
+            this.txtResultadoTemperatura4.TabIndex = 32;
             // 
             // label77
             // 
@@ -3640,13 +3640,13 @@
             this.cboSitioMedicion2.Size = new System.Drawing.Size(121, 24);
             this.cboSitioMedicion2.TabIndex = 7;
             // 
-            // cboSitionMedición1
+            // cboSitioMedicion1
             // 
-            this.cboSitionMedición1.FormattingEnabled = true;
-            this.cboSitionMedición1.Location = new System.Drawing.Point(127, 32);
-            this.cboSitionMedición1.Name = "cboSitionMedición1";
-            this.cboSitionMedición1.Size = new System.Drawing.Size(121, 24);
-            this.cboSitionMedición1.TabIndex = 6;
+            this.cboSitioMedicion1.FormattingEnabled = true;
+            this.cboSitioMedicion1.Location = new System.Drawing.Point(127, 32);
+            this.cboSitioMedicion1.Name = "cboSitioMedicion1";
+            this.cboSitioMedicion1.Size = new System.Drawing.Size(121, 24);
+            this.cboSitioMedicion1.TabIndex = 6;
             // 
             // txtValorTemperatura1
             // 
@@ -3711,6 +3711,16 @@
             this.txtIndicacionesPracticasComplementarias.Name = "txtIndicacionesPracticasComplementarias";
             this.txtIndicacionesPracticasComplementarias.Size = new System.Drawing.Size(381, 30);
             this.txtIndicacionesPracticasComplementarias.TabIndex = 36;
+            // 
+            // btnAgregarDiagnostico
+            // 
+            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(533, 259);
+            this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
+            this.btnAgregarDiagnostico.Size = new System.Drawing.Size(247, 26);
+            this.btnAgregarDiagnostico.TabIndex = 18;
+            this.btnAgregarDiagnostico.Text = "Agregar";
+            this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
+            this.btnAgregarDiagnostico.Click += new System.EventHandler(this.btnAgregarDiagnostico_Click);
             // 
             // btnPracticasComplementariasARealizar
             // 
@@ -3917,16 +3927,6 @@
             this.lblEstadoDiagnostico.Size = new System.Drawing.Size(155, 17);
             this.lblEstadoDiagnostico.TabIndex = 19;
             this.lblEstadoDiagnostico.Text = "Estado del diagnóstico:";
-            // 
-            // btnAgregarDiagnostico
-            // 
-            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(533, 259);
-            this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
-            this.btnAgregarDiagnostico.Size = new System.Drawing.Size(247, 26);
-            this.btnAgregarDiagnostico.TabIndex = 18;
-            this.btnAgregarDiagnostico.Text = "Agregar";
-            this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
-            this.btnAgregarDiagnostico.Click += new System.EventHandler(this.btnAgregarDiagnostico_Click);
             // 
             // dgvDiagnosticos
             // 
@@ -4329,12 +4329,12 @@
         private System.Windows.Forms.ComboBox cboSitioMedicion3;
         private System.Windows.Forms.ComboBox cboSitioMedicion4;
         private System.Windows.Forms.ComboBox cboSitioMedicion2;
-        private System.Windows.Forms.ComboBox cboSitionMedición1;
+        private System.Windows.Forms.ComboBox cboSitioMedicion1;
         private System.Windows.Forms.TextBox txtValorTemperatura1;
         private System.Windows.Forms.Label label74;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.TextBox txtResultado4;
+        private System.Windows.Forms.TextBox txtResultadoTemperatura4;
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.TextBox txtResultadoTemperatura3;
         private System.Windows.Forms.Label label76;

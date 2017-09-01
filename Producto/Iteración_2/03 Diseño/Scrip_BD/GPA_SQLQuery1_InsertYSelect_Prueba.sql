@@ -26,7 +26,7 @@ from TiposAntecedentesMorbidos
 
 
 select *
-from EstadoHipotesis
+from MedicionDePrecionArterial
 
 select *
 from TipoSintoma
@@ -645,10 +645,6 @@ select * from ResultadoTemperatura
 select nombre, valorMaximo, valorMinimo
 from ResultadoTemperatura
 where 36 between valorMinimo and valorMaximo
-
-
-
-drop table Laboratorio
 
 
 select * from RazonamientoDiagnostico

@@ -125,11 +125,6 @@ namespace DAO
         {
             try
             {
-                if (examen.razonamiento != null)
-                {
-                    examen.id_razonamiento = RazonamientoDiagnosticoDAO.registrarRazonamientoDiagnostico(examen.razonamiento, tran, cn);
-                }
-
                 if (examen.pulso != null)
                 {
                     examen.id_pulso = PulsoArterialDAO.registrarPulsoArterial(examen.pulso, tran, cn);
@@ -140,9 +135,14 @@ namespace DAO
                 {
                     id_medicion_fk = MedicionDePresionArterialDAO.registrarMedicionDePresionArterial(examen.medicion, tran, cn);
                 }
+                int id_piel_fk = 0;
+                if (examen.examenPiel != null)
+                {
+                    id_piel_fk = PielDAO.registrarExamenPiel(examen.examenPiel, cn, tran);
+                }
 
-                string consulta = @"insert into ExamenGeneral(posicionYdecubito,marchaYDeambulacion,facieExpresionFisonomia, concienciaEstadoPsiquico, constitucionEstadoNutritivo, peso,talla,id_pulsoArterial_fk,id_razonamiento_fk,id_medicion_fk)
-                                  values(@posicionYdecubito,@marchaYDeambulacion,@facieExpresionFisonomia,@concienciaEstadoPsiquico,@constitucionEstadoNutritivo,@peso,@talla,@id_pulsoArterial_fk,@id_razonamiento_fk,@id_medicion_fk)";
+                string consulta = @"insert into ExamenGeneral(posicionYdecubito,marchaYDeambulacion,facieExpresionFisonomia, concienciaEstadoPsiquico, constitucionEstadoNutritivo, peso,talla,id_piel_fk,descripcionComoRespira,observacionesRespiracion,id_pulsoArterial_fk,id_razonamiento_fk,id_medicion_fk)
+                                  values(@posicionYdecubito,@marchaYDeambulacion,@facieExpresionFisonomia,@concienciaEstadoPsiquico,@constitucionEstadoNutritivo,@peso,@talla,@id_piel_fk,@descComoRespira,@obsRespiracion,@id_pulsoArterial_fk,@id_razonamiento_fk,@id_medicion_fk)";
 
                 SqlCommand cmd = new SqlCommand();
 
@@ -194,13 +194,22 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@peso", examen.peso);
                 cmd.Parameters.AddWithValue("@talla", examen.talla);
 
-                if (examen.id_razonamiento == 0)
+                if (examen.descripcionComoRespira.Equals("No precisa") == true)
                 {
-                    cmd.Parameters.AddWithValue("@id_razonamiento_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@descComoRespira", DBNull.Value);
                 }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@id_razonamiento_fk", examen.id_razonamiento);
+                    cmd.Parameters.AddWithValue("@descComoRespira", examen.descripcionComoRespira);
+                }
+
+                if (examen.observacionesRespiracion.Equals("No precisa") == true)
+                {
+                    cmd.Parameters.AddWithValue("@obsRespiracion", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@obsRespiracion", examen.observacionesRespiracion);
                 }
 
                 if (examen.id_pulso == 0)
@@ -221,6 +230,15 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@id_medicion_fk", id_medicion_fk);
                 }
 
+                if (id_piel_fk == 0)
+                {
+                    cmd.Parameters.AddWithValue("@id_piel_fk", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_piel_fk", id_piel_fk);
+                }
+
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
@@ -236,6 +254,15 @@ namespace DAO
                 {
                     territorio.id_examenGeneral = examen.id_examenGeneral;
                     SistemaLinfaticoDAO.registrarSistemaLinfatico(territorio, tran, cn);
+                }
+
+                if (examen.listaDiagnosticos != null)
+                {
+                    foreach (RazonamientoDiagnostico diagnostico in examen.listaDiagnosticos)
+                    {
+                        diagnostico.id_examenGeneral = examen.id_examenGeneral;
+                        RazonamientoDiagnosticoDAO.registrarRazonamientoDiagnostico(diagnostico, tran, cn);
+                    }
                 }
             }
             catch (Exception e)

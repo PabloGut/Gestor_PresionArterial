@@ -124,6 +124,11 @@ namespace GPA.Manejadores
 
             return temperatura;
         }
+        public List<Temperatura> crearListaTemperatura()
+        {
+            List<Temperatura> lista = new List<Temperatura>();
+            return lista;
+        }
         public void mostrarPresionArterial()
         {
             pantalla.presentarExamenGeneralPresionArterial(ExtremidadLN.mostrarExtremidades(), PosicionLN.mostrarPosiciones(), SitioMedicionLN.mostrarSitiosDeMedicion(), MomentoDiaLN.mostrarMomentosDelDia());
@@ -342,6 +347,5 @@ namespace GPA.Manejadores
             List<ProgramacionMedicamento> lista = new List<ProgramacionMedicamento>();
             return lista;
         }
-           
     }
 }

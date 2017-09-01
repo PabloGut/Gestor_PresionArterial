@@ -19,12 +19,12 @@ namespace Entidades.Clases
         public string descripcionComoRespira { set; get; }
         public string observacionesRespiracion { set; get; }
         public int id_piel { set; get; }
-        public int id_razonamiento { set; get; }
         public int id_pulso { set; get; }
         public List<SistemaLinfatico> territoriosExaminados { set; get; }
         public PulsoArterial pulso { set; get; }
         public MedicionDePresionArterial medicion { set; get; }
-        public RazonamientoDiagnostico razonamiento { set; get;}
+        public List<RazonamientoDiagnostico> listaDiagnosticos { set; get;}
+        public List<Temperatura> listaTemperaturas { set; get; }
         public Piel examenPiel { set; get; }
 
     }

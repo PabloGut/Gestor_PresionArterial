@@ -11,6 +11,7 @@ namespace Entidades.Clases
         public int id_razonamiento { set; get; }
         public string conceptoInicial { set; get; }
         public string diagnostico { set; get; }
+        public int id_estadoDiagnostico { set; get; }
         public EstadoDiagnostico estado { set; get; }
         public string motivoDescartado { set; get; }
         public DateTime fechaDescartado { set; get; }
@@ -18,6 +19,7 @@ namespace Entidades.Clases
         public DateTime fechaConfirmado { set; get; }
         public DateTime fechaTentativo { set; get; }
         public string motivoTentativo { set; get; }
+        public int id_examenGeneral { set; get; }
         public List<Laboratorio> analisis { set; get; }
         public List<EstudioDiagnosticoPorImagen> estudios { set; get; }
         public List<Tratamiento> tratamientos { set; get; }

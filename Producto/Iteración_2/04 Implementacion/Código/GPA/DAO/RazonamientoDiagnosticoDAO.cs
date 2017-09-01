@@ -103,15 +103,51 @@ namespace DAO
             }
             return razonamientoDiagnostico.id_razonamiento;
         }
-        public static int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamientoDiagnostico,SqlTransaction tran,SqlConnection cn)
+        public static void registrarRazonamientoDiagnostico(RazonamientoDiagnostico diagnostico,int id_examenGeneral,SqlTransaction tran,SqlConnection cn)
         {
             try
             {
-                string consulta = "insert into RazonamientoDiagnostico(conceptoInicial)values(@conceptoInicial)";
+                string consulta = @"insert into RazonamientoDiagnostico(conceptoInicial,diagnostico,id_estadoDiagnostico_fk,motivoDescartado,fechaDescartado,motivoConfirmado,fechaConfirmado,motivoTentativo,fechaTentativo,id_examenGeneral_fk)
+                                    values(@conceptoInicial,@diagnostico,@id_estadoDiagnostico_fk,@motivoDescartado,@fechaDescartado,@motivoConfirmado,@fechaConfirmado,@motivoTentativo,@fechaTentativo,@id_examenGeneral_fk)";
 
                 SqlCommand cmd = new SqlCommand();
 
-                cmd.Parameters.AddWithValue("@conceptoInicial", razonamientoDiagnostico.conceptoInicial);
+                cmd.Parameters.AddWithValue("@conceptoInicial", diagnostico.conceptoInicial);
+                cmd.Parameters.AddWithValue("@diagnostico", diagnostico.diagnostico);
+                cmd.Parameters.AddWithValue("@id_estadoDiagnostico_fk", diagnostico.id_estadoDiagnostico);
+                
+                if (!string.IsNullOrEmpty(diagnostico.motivoDescartado))
+                {
+                    cmd.Parameters.AddWithValue("@motivoDescartado", diagnostico.motivoDescartado);
+                    cmd.Parameters.AddWithValue("@fechaDescartado", diagnostico.fechaDescartado);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoDescartado", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@fechaDescartado", DBNull.Value);
+                }
+                if (!string.IsNullOrEmpty(diagnostico.motivoConfirmado))
+                {
+                    cmd.Parameters.AddWithValue("@motivoConfirmado", diagnostico.motivoConfirmado);
+                    cmd.Parameters.AddWithValue("@fechaConfirmado", diagnostico.fechaConfirmado);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoConfirmado", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@fechaConfirmado", DBNull.Value);
+                }
+                if (!string.IsNullOrEmpty(diagnostico.motivoTentativo))
+                {
+                    cmd.Parameters.AddWithValue("@motivoTentativo", diagnostico.motivoTentativo);
+                    cmd.Parameters.AddWithValue("@fechaTentativo", diagnostico.fechaTentativo);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoTentativo", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@fechaTentativo", DBNull.Value);
+                }
+
+                cmd.Parameters.AddWithValue("id_examenGeneral_fk", diagnostico.id_examenGeneral);
 
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.Text;
@@ -122,41 +158,31 @@ namespace DAO
 
                 SqlCommand cmd1 = new SqlCommand("select IDENT_CURRENT('RazonamientoDiagnostico')", cn, tran);
 
-                razonamientoDiagnostico.id_razonamiento = Convert.ToInt32(cmd1.ExecuteScalar());
+                diagnostico.id_razonamiento = Convert.ToInt32(cmd1.ExecuteScalar());
 
-                if (razonamientoDiagnostico.hipotesis != null && razonamientoDiagnostico.hipotesis.Count > 0)
+                if (diagnostico.tratamientos != null && diagnostico.tratamientos.Count > 0)
                 {
-                    foreach (HipotesisInicial hipotesis in razonamientoDiagnostico.hipotesis)
+                    foreach (Tratamiento tratamiento in diagnostico.tratamientos)
                     {
-                        hipotesis.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
-                        HipotesisInicialDAO.registrarHipotesisInicial(hipotesis, tran, cn);
+                      // Falta registrar en base de datos los tratamientos.
                     }
                 }
 
-                if (razonamientoDiagnostico.diagnosticos != null && razonamientoDiagnostico.diagnosticos.Count > 0)
+                if (diagnostico.estudios != null && diagnostico.estudios.Count > 0)
                 {
-                    foreach (Diagnostico diagnostico in razonamientoDiagnostico.diagnosticos)
+                    foreach (EstudioDiagnosticoPorImagen estudio in diagnostico.estudios)
                     {
-                        diagnostico.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
-                        DiagnosticoDAO.registrarDiagnostico(diagnostico, tran, cn);
-                    }
-                }
-
-                if (razonamientoDiagnostico.estudios != null && razonamientoDiagnostico.estudios.Count > 0)
-                {
-                    foreach (EstudioDiagnosticoPorImagen estudio in razonamientoDiagnostico.estudios)
-                    {
-                        estudio.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
+                        estudio.id_razonamientoDiagnostico = diagnostico.id_razonamiento;
                         EstudioDiagnosticoPorImagenDAO.registrarEstudioDiagnosticoPorImagen(estudio, tran, cn);
                     }
                 }
 
-                if (razonamientoDiagnostico.pruebas != null && razonamientoDiagnostico.pruebas.Count > 0)
+                if (diagnostico.analisis != null && diagnostico.analisis.Count > 0)
                 {
-                    foreach (PruebasDeLaboratorio prueba in razonamientoDiagnostico.pruebas)
+                    foreach (Laboratorio laboratorio in diagnostico.analisis)
                     {
-                        prueba.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
-                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioD(prueba, tran, cn);
+                        laboratorio.id_razonamientoDiagnostico = diagnostico.id_razonamiento;
+                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioD(laboratorio, tran, cn);//Modificar el método. Se quitó la clase prueba de laboratorio. Utilizar clase Laboratorio.
                     }
                 }
             }
@@ -169,7 +195,6 @@ namespace DAO
                 }
                 throw new ApplicationException("Error:" + e.Message);
             }
-            return razonamientoDiagnostico.id_razonamiento;
         }
     }
 }

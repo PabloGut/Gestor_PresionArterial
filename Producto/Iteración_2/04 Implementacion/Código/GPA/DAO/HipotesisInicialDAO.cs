@@ -22,7 +22,7 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static void registrarHipotesisInicial(HipotesisInicial hipotesis, SqlTransaction tran, SqlConnection cn)
+        public static void registrarHipotesisInicial(HipotesisInicial hipotesis, SqlTransaction tran, SqlConnection cn)//Eliminar
         {
             try
             {
