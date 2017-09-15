@@ -11,9 +11,9 @@ namespace LogicaNegocio
 {
     public class RazonamientoDiagnosticoLN
     {
-        public static int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamiento)
+        /*public static int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamiento)
         {
             return RazonamientoDiagnosticoDAO.registrarRazonamientoDiagnostico(razonamiento);
-        }
+        }*/
     }
 }

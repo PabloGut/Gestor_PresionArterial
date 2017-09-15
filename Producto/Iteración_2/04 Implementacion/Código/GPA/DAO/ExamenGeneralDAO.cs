@@ -22,7 +22,7 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static int registrarExamenGeneral(ExamenGeneral examen)
+        /*public static int registrarExamenGeneral(ExamenGeneral examen)
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
@@ -120,7 +120,7 @@ namespace DAO
                 throw new ApplicationException("Error: " + e.Message);
             }
             return idExamen;
-        }
+        }*/
         public static int registrarExamenGeneral(ExamenGeneral examen,SqlTransaction tran, SqlConnection cn)
         {
             try

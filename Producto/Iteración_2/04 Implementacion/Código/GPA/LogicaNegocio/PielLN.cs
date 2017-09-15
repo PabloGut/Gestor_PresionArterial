@@ -11,6 +11,6 @@ namespace LogicaNegocio
 {
     public class PielLN
     {
-        public void registrarExamenPiel()
+
     }
 }

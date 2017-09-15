@@ -145,3 +145,4 @@ C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branc
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.pdb
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\branches\BranchPrueba\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.frmInformacionHistoriaClinica.resources
 C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.frmInformacionHistoriaClinica.resources
+C:\Users\Pablo\Desktop\Pablo\UTN2016\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\GPA\obj\Debug\GPA.RegistrarTratamiento.resources

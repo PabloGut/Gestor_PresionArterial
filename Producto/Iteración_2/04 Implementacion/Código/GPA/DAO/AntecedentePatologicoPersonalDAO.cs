@@ -27,7 +27,7 @@ namespace DAO
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
 
-            string consulta = @"insert into AntecedentesPatologicosPersonales(fechaRegistro, enfermedades, descripción_otrasEnfermedades, id_hc_fk)
+            string consulta = @"insert into AntecedentesPatologicosPersonales(fechaRegistro, enfermedades, descripcion_otrasEnfermedades, id_hc_fk)
                                values(@fechaRegistro,@enfermedades,@descripcion,@idhc)";
 
             try
@@ -35,8 +35,25 @@ namespace DAO
                 cn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.AddWithValue("@fechaRegistro", antecedente.fechaRegistro);
-                cmd.Parameters.AddWithValue("@enfermedades", antecedente.enfermedades);
-                cmd.Parameters.AddWithValue("@descripcion",antecedente.otrasEnfermedades);
+
+                if (string.IsNullOrEmpty(antecedente.enfermedades))
+                {
+                    cmd.Parameters.AddWithValue("@enfermedades", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@enfermedades", antecedente.enfermedades);
+                }
+
+                if (string.IsNullOrEmpty(antecedente.otrasEnfermedades))
+                {
+                    cmd.Parameters.AddWithValue("@descripcion", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@descripcion", antecedente.otrasEnfermedades);
+                }
+
                 cmd.Parameters.AddWithValue("@idhc", antecedente.idhc);
 
 

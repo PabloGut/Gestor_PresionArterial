@@ -15,10 +15,10 @@ namespace GPA
 {
     public partial class ConsultarHistoriaClínica : Form
     {
-        private MenuPrincipal refMenuPrincipal;
-        private ManejadorConsultarHC manejadorConsultarHC;
+        //private MenuPrincipal refMenuPrincipal;
+        //private ManejadorConsultarHC manejadorConsultarHC;
         private HistoriaClinica hcPacienteSeleccionado;
-        private Paciente pacienteSelec;
+        //private Paciente pacienteSelec;
         /*
         public ConsultarHistoriaClínica(MenuPrincipal mp)
         {
@@ -43,13 +43,8 @@ namespace GPA
         }
         public void presentarDatosHc()
         {
-            
-            
-         
 
         }
-       
-
         private void dgvEstudios_DoubleClick(object sender, EventArgs e)
         {
             tomarEstudioSeleccionado();
@@ -68,10 +63,7 @@ namespace GPA
             ConsultarEstudio ce = new ConsultarEstudio();
             ce.presentarDatosEstudio(nombre, fecha, doctor, informe);
             ce.ShowDialog();
-            this.Show();
-            
-
-                
+            this.Show();     
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

@@ -17,6 +17,7 @@ namespace Entidades.Clases
         public string motivoFin { set; get; }
         public List<Nota> notasEvolucionTratamiento { set; get; }
         public Terapia terapia { set; get; }
+        public int id_razonamiento_fk { set; get; }
 
     }
 }

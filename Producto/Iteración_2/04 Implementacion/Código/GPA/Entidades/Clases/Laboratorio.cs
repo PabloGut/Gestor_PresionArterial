@@ -10,6 +10,7 @@ namespace Entidades.Clases
     {
         public int id_laboratorio { set; get; }
         public AnalisisLaboratorio analisis { set; get; }
+        public int id_analisisLaboratorio_fk { set; get; }
         public int id_metodoLaboratorio { set; get; }
         public int id_itemsEstudioLaboratorio { set; get; }
 

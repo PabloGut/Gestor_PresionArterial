@@ -188,6 +188,7 @@ namespace GPA
             agregarColumnaHabitos();
 
             inicializarComponentes();
+            tabControl1.TabPages.Remove(tpEnfermedadActual);
         }
         public void inicializarComponentes()
         {
@@ -215,6 +216,8 @@ namespace GPA
             rbNoConsumeMedicamentos.Checked = true;
             rbMedicamentoActual.Checked = true;
             rbNoActividadFisica.Checked = true;
+
+            
             
         }
         /*
@@ -2047,8 +2050,8 @@ namespace GPA
         public void registrarAntecedentesPatológicosPersonales(int idHc)
         {
             
-            string listaEnfermedades = "";
-            string descripcionOtrasEnfermedades = "No precisa";
+            //string listaEnfermedades = "";
+            string descripcionOtrasEnfermedades = "";
             List<String> enfermedades = new List<String>();
 
             if (cbTosFerina.Checked == true)
@@ -2348,6 +2351,30 @@ namespace GPA
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            DialogResult rd;
+            if (string.IsNullOrEmpty(txtmotivoConsulta.Text) || listaAlergiaInsectos.Count > 0 || listaAlergiaMedicamento.Count > 0 || listaAlergiasAlimento.Count > 0 || listaAlergiasSustanciaAmbiente.Count > 0 || listaAlergiaSustanciaContactoPiel.Count > 0 || listaAntecedentesFamiliares.Count > 0 || listaAntecedentesMorbidos.Count > 0 || listaHabitosActividadFisica.Count > 0 || listaHabitosAlcoholismo.Count > 0 || listaHabitosDrogasIlicitas.Count > 0 || listaHabitosMedicamentos.Count > 0 || listaHabitosTabaquismo.Count > 0)
+            {
+                rd=MessageBox.Show("Desea guardar los datos antes de salir?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (rd == DialogResult.Yes)
+                {
+                    registrarHistoriaClinica();
+                }
+                else if(rd==DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 

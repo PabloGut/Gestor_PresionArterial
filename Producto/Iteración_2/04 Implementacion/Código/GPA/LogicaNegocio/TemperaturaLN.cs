@@ -11,7 +11,7 @@ namespace LogicaNegocio
 {
     public class TemperaturaLN
     {
-        public string determinarResultado(float valorTemperatura)
+        public static string determinarResultado(float valorTemperatura)
         {
             string nombreClasificacionTemperatura = TemperaturaDAO.mostrarClasificacionDeTemperatura(valorTemperatura);
 

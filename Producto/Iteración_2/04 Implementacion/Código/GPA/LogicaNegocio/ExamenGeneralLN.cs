@@ -11,9 +11,9 @@ namespace LogicaNegocio
 {
     public class ExamenGeneralLN
     {
-        public static int registrarExamenGeneral(ExamenGeneral examen)
+        /*public static int registrarExamenGeneral(ExamenGeneral examen)
         {
             return ExamenGeneralDAO.registrarExamenGeneral(examen);
-        }
+        }*/
     }
 }

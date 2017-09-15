@@ -15,7 +15,10 @@ namespace GPA.Manejadores
             AntecedentePatologicoPersonal antecendente = new AntecedentePatologicoPersonal();
 
             antecendente.fechaRegistro = fechaRegistro;
+
+            if(enfermedades.Count >0)
             antecendente.enfermedades = crearCadena(enfermedades);
+
             antecendente.otrasEnfermedades = descOtrasEnfermedades;
             antecendente.idhc = idhc;
 

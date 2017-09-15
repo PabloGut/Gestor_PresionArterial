@@ -162,7 +162,7 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@automedicado", programacion.automedicamento);
                 cmd.Parameters.AddWithValue("@id_estado_fk", programacion.id_estado);
 
-                if (programacion.id_examenGeneral == 0)
+                if (programacion.id_examenGeneral == 0)//Se debería quitar id_examengeneral__fk de la tabla porque no se usa.
                 {
                     cmd.Parameters.AddWithValue("@idExamenGeneral", DBNull.Value);
                 }
@@ -177,6 +177,119 @@ namespace DAO
                 SqlCommand cmd1 = new SqlCommand("Select @@Identity", cn, tran);
                 programacion.id_programacionMedicamento = Convert.ToInt32(cmd1.ExecuteScalar());
                 
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+
+        }
+        public static void registrarTratamientoProgramacionMedicamento(ProgramacionMedicamento programacion, SqlTransaction tran, SqlConnection cn)
+        {
+            try
+            {
+                string consulta = @"insert into ProgramacionMedicamento(id_especificacionMedicamento_fk,id_medicamento_fk,id_frecuencia_fk,fechaDesde,
+                                  id_momentoDia1_fk,cantidadNumerador1,cantidadDenominador1,id_presentacionMedicamento1_fk,hora1,
+                                  id_momentoDia2_fk,cantidadNumerador2,cantidadDenominador2,id_presentacionMedicamento2_fk,hora2, 
+                                  id_momentoDia3_fk,cantidadNumerador3,cantidadDenominador3,id_presentacionMedicamento3_fk,hora3, 
+                                  motivoConsumo,id_estado_fk,id_tratamiento_fk) 
+                                  values(@id_especificacionMedicamento_fk,@id_medicamento_fk,@id_frecuencia_fk,@fechaDesde,
+                                  @id_momentoDia1_fk,@cantidadNumerador1,@cantidadDenominador1,@id_presentacionMedicamento1_fk,@hora1,
+                                  @id_momentoDia2_fk,@cantidadNumerador2,@cantidadDenominador2,@id_presentacionMedicamento2_fk,@hora2,
+                                  @id_momentoDia3_fk,@cantidadNumerador3,@cantidadDenominador3,@id_presentacionMedicamento3_fk,@hora3,
+                                  @motivoConsumo,@id_estado_fk,@id_tratamiento_fk)";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.Transaction = tran;
+                cmd.CommandText = consulta;
+
+                cmd.Parameters.AddWithValue("@id_especificacionMedicamento_fk", programacion.id_especificacionMedicamento);
+                cmd.Parameters.AddWithValue("@id_medicamento_fk", programacion.id_medicamento);
+                cmd.Parameters.AddWithValue("@id_frecuencia_fk", programacion.id_frecuencia);
+
+                DateTime fecha = Convert.ToDateTime("01/01/0001 0:00:00");
+
+                if (DateTime.Compare(fecha, programacion.fechaDesde) == 0)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", programacion.fechaDesde);
+                }
+
+                if (programacion.id_momentoDia1 == 0)
+                {
+                    cmd.Parameters.AddWithValue("@id_momentoDia1_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@cantidadNumerador1", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@cantidadDenominador1", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_presentacionMedicamento1_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@hora1", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_momentoDia1_fk", programacion.id_momentoDia1);
+                    cmd.Parameters.AddWithValue("@cantidadNumerador1", programacion.cantidad1Numerador);
+                    cmd.Parameters.AddWithValue("@cantidadDenominador1", programacion.cantidad1Denominador);
+                    cmd.Parameters.AddWithValue("@id_presentacionMedicamento1_fk", programacion.id_presentacionMedicamento1);
+                    cmd.Parameters.AddWithValue("@hora1", programacion.hora1);
+                }
+
+
+                if (programacion.id_momentoDia2 == 0)
+                {
+                    cmd.Parameters.AddWithValue("@id_momentoDia2_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@cantidadNumerador2", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@cantidadDenominador2", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_presentacionMedicamento2_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@hora2", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_momentoDia2_fk", programacion.id_momentoDia2);
+                    cmd.Parameters.AddWithValue("@cantidadNumerador2", programacion.cantidad2Numerador);
+                    cmd.Parameters.AddWithValue("@cantidadDenominador2", programacion.cantidad2Denominador);
+                    cmd.Parameters.AddWithValue("@id_presentacionMedicamento2_fk", programacion.id_presentacionMedicamento2);
+                    cmd.Parameters.AddWithValue("@hora2", programacion.hora2);
+                }
+
+                if (programacion.id_momentoDia3 == 0)
+                {
+                    cmd.Parameters.AddWithValue("@id_momentoDia3_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@cantidadNumerador3", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@cantidadDenominador3", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id_presentacionMedicamento3_fk", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@hora3", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_momentoDia3_fk", programacion.id_momentoDia3);
+                    cmd.Parameters.AddWithValue("@cantidadNumerador3", programacion.cantidad3Numerador);
+                    cmd.Parameters.AddWithValue("@cantidadDenominador3", programacion.cantidad3Denominador);
+                    cmd.Parameters.AddWithValue("@id_presentacionMedicamento3_fk", programacion.id_presentacionMedicamento3);
+                    cmd.Parameters.AddWithValue("@hora3", programacion.hora3);
+                }
+
+                if (string.IsNullOrEmpty(programacion.motivoConsumo) == true)
+                {
+                    cmd.Parameters.AddWithValue("@motivoConsumo", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoConsumo", programacion.motivoConsumo);
+                }
+
+                cmd.Parameters.AddWithValue("@id_estado_fk", programacion.id_estado);
+
+                cmd.Parameters.AddWithValue("@id_tratamiento_fk", programacion.id_tratamiento);
+
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {

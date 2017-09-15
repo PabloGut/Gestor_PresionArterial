@@ -22,7 +22,7 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamientoDiagnostico)
+        /*public static int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamientoDiagnostico)
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
@@ -83,7 +83,7 @@ namespace DAO
                     foreach (PruebasDeLaboratorio prueba in razonamientoDiagnostico.pruebas)
                     {
                         prueba.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
-                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioD(prueba, tran, cn);
+                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioARealizar(prueba, tran, cn);
                     }
                 }
 
@@ -102,8 +102,8 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
             return razonamientoDiagnostico.id_razonamiento;
-        }
-        public static void registrarRazonamientoDiagnostico(RazonamientoDiagnostico diagnostico,int id_examenGeneral,SqlTransaction tran,SqlConnection cn)
+        }*/
+        public static void registrarRazonamientoDiagnostico(RazonamientoDiagnostico diagnostico,SqlTransaction tran,SqlConnection cn)
         {
             try
             {
@@ -164,7 +164,8 @@ namespace DAO
                 {
                     foreach (Tratamiento tratamiento in diagnostico.tratamientos)
                     {
-                      // Falta registrar en base de datos los tratamientos.
+                        tratamiento.id_razonamiento_fk = diagnostico.id_razonamiento;
+                        TratamientoDAO.registrarTratamientos(tratamiento, cn, tran);
                     }
                 }
 
@@ -182,7 +183,7 @@ namespace DAO
                     foreach (Laboratorio laboratorio in diagnostico.analisis)
                     {
                         laboratorio.id_razonamientoDiagnostico = diagnostico.id_razonamiento;
-                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioD(laboratorio, tran, cn);//Modificar el método. Se quitó la clase prueba de laboratorio. Utilizar clase Laboratorio.
+                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioARealizar(laboratorio, tran, cn);//Modificar el método. Se quitó la clase prueba de laboratorio. Utilizar clase Laboratorio.
                     }
                 }
             }

@@ -26,8 +26,8 @@ namespace DAO
         {
             try
             {
-                string consulta = @"insert into EstudiosDiagnosticoPorImagen(id_razonamientoDiagnostico_fk,id_nombreEstudio_fk, indicaciones)
-                                  values(@id_razonamientoDiagnostico_fk,@id_nombreEstudio_fk,@indicaciones)";
+                string consulta = @"insert into EstudiosDiagnosticoPorImagen(fechaSolicitud,indicaciones,id_nombreEstudio_fk, id_razonamientoDiagnostico_fk)
+                                  values(@fechaSolicitud,@indicaciones,@id_nombreEstudio_fk,@id_razonamientoDiagnostico_fk)";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
@@ -35,9 +35,10 @@ namespace DAO
                 cmd.CommandText = consulta;
 
 
-                cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", estudio.id_razonamientoDiagnostico);
-                cmd.Parameters.AddWithValue("@id_nombreEstudio_fk", estudio.id_nombreEstudio);
+                cmd.Parameters.AddWithValue("@fechaSolicitud", estudio.fechaSolicitud);
                 cmd.Parameters.AddWithValue("@indicaciones", estudio.indicaciones);
+                cmd.Parameters.AddWithValue("@id_nombreEstudio_fk", estudio.id_nombreEstudio);
+                cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", estudio.id_razonamientoDiagnostico);
 
                 cmd.ExecuteNonQuery();
             }

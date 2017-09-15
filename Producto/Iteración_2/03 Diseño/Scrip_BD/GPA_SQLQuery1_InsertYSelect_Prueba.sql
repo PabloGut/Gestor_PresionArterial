@@ -646,6 +646,87 @@ select nombre, valorMaximo, valorMinimo
 from ResultadoTemperatura
 where 36 between valorMinimo and valorMaximo
 
+/*alter table EscalaPulso
+alter column nombre text
+
+select * from HipotesisInicial
+
+alter table AlergiaMedicamento
+add id_medicamentoAlergia_fk int
+
+alter table AlergiaMedicamento
+add foreign key(id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia)
+
+drop table DetallePulsoArterial
+drop table PulsoArterial
+drop table EscalaPulso
+drop table Pulso
+
+delete from AnalisisLaboratorio
+delete from NombreEstudio
+delete from EstadoHipotesis
+
+DBCC CHECKIDENT('AnalisisLaboratorio',RESEED,0)
+DBCC CHECKIDENT('NombreEstudio',RESEED,0)
+DBCC CHECKIDENT('EstadoHipotesis',RESEED,0)
+
+select * from Usuario
+
+select @@IDENTITY
+select SCOPE_IDENTITY()
+select IDENT_CURRENT('RazonamientoDiagnostico')*/
+
+/*CREATE TABLE DetalleMedicionPresionArterial(
+id_nroMedicion int,
+id_medicion_fk int,
+hora time,
+pulso int,
+valorMaximo int,
+valorMinimo int,
+primary key (id_nroMedicion,id_medicion_fk),
+foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
+
+alter table ClasificacionPresionArterial
+drop column nombre
+
+alter table ClasificacionPresionArterial
+add categoria text
+
+alter table ClasificacionPresionArterial
+add maximaDesde int
+
+alter table ClasificacionPresionArterial
+add maximaHasta int
+
+alter table ClasificacionPresionArterial
+add minimaDesde int
+
+alter table ClasificacionPresionArterial
+add minimaHasta int
+
+alter table ExamenGeneral
+add id_medicion_fk int
+
+alter table ExamenGeneral
+add foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion)
+
+alter table MedicionDePrecionArterial
+drop column horaInicio
+
+alter table MedicionDePrecionArterial
+add horaInicio time
+
+alter table MedicionDePrecionArterial
+drop constraint FK__MedicionD__id_ex__0A688BB1 
+
+alter table MedicionDePrecionArterial
+drop column id_extremidad_fk
+
+alter table MedicionDePrecionArterial
+add id_ubicacionExtremidad_fk int
+
+alter table MedicionDePrecionArterial
+add foreign key(id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad)*/
 
 select * from RazonamientoDiagnostico
 
@@ -654,5 +735,18 @@ add valorResultado float,
 id_unidadMedida_fk int not null,
 id_metodoAnalisisLaboratorio_fk int
 
-select * from AnalisisLaboratorioXRazonamientoDiagnostico
+select * from Historia_Clinica
 
+alter table AntecedentesPatologicosPersonales
+alter column descripcion_otrasEnfermedades text
+
+alter table RazonamientoDiagnostico
+add id_estadoDiagnostico_fk int
+
+alter table RazonamientoDiagnostico
+add foreign key (id_estadoDiagnostico_fk) references EstadoDiagnostico(id_estadoDiagnostico)
+
+select * from RazonamientoDiagnostico
+
+delete from RazonamientoDiagnostico
+where id_hc=63

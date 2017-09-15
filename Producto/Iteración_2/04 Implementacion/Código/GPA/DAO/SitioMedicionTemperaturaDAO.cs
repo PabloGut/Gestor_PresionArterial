@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    public class PruebaDeLaboratorioDAO
+    public class SitioMedicionTemperaturaDAO
     {
         private static string cadenaConexion;
 
@@ -22,35 +22,43 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static void registrarAnalisisLaboratorioARealizar(Laboratorio prueba, SqlTransaction tran, SqlConnection cn)
+        public static List<SitioMedicionTemperatura> mostrarSitioMedicionTemperatura()
         {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            List<SitioMedicionTemperatura> sitios = new List<SitioMedicionTemperatura>();
             try
             {
-                string consulta = @"insert into Laboratorio(fechaSolicitud,indicaciones,id_analisisLaboratorio_fk, id_razonamientoDiagnostico_fk)
-                                  values(@fechaSolicitud,@indicaciones,@id_analisisLaboratorio_fk,@id_razonamientoDiagnostico_fk)";
+                cn.Open();
 
+                string consulta = "select * from SitioMedicionTemperatura";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.Transaction = tran;
+                cmd.CommandType = CommandType.Text;
                 cmd.CommandText = consulta;
 
-                cmd.Parameters.AddWithValue("@fechaSolicitud", prueba.fechaSolicitud);
-                cmd.Parameters.AddWithValue("@indicaciones", prueba.indicaciones);
-                cmd.Parameters.AddWithValue("@id_analisisLaboratorio_fk", prueba.id_analisisLaboratorio_fk);
-                cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", prueba.id_razonamientoDiagnostico);
+                SqlDataReader dr = cmd.ExecuteReader();
 
-                cmd.ExecuteNonQuery();
+                while (dr.Read())
+                {
+                    sitios.Add(new SitioMedicionTemperatura()
+                    {
+                        id_sitioMedicion = (int)dr["id_sitioMedicionTemperatura"],
+                        nombre = dr["nombre"].ToString()
+                    });
+                }
             }
             catch (Exception e)
             {
                 if (cn.State == ConnectionState.Open)
                 {
                     cn.Close();
-                    tran.Rollback();
                 }
                 throw new ApplicationException("Error:" + e.Message);
             }
-
+            cn.Close();
+            return sitios;
+        
         }
     }
 }

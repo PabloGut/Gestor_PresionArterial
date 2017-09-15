@@ -102,6 +102,7 @@
     <Compile Include="SintomaLN.cs" />
     <Compile Include="SistemaLinfaticoLN.cs" />
     <Compile Include="SitioMedicionLN.cs" />
+    <Compile Include="SitioMedicionTemperaturaLN.cs" />
     <Compile Include="SustanciaAmbienteLN.cs" />
     <Compile Include="SustanciaContactoPielLN.cs" />
     <Compile Include="SustanciaDrogaIlicitaLN.cs" />

@@ -131,8 +131,27 @@ namespace GPA
                 DateTime fecha_nacimiento = Convert.ToDateTime(txtFechaNacimiento.Text);
                 string calle = txtCalle.Text;
                 int numero = Convert.ToInt32(txtNroCalle.Text);
-                int piso = Convert.ToInt32(txtPiso.Text);
-                string departamento = txtDpto.Text;
+
+                int piso;
+                if (string.IsNullOrEmpty(txtPiso.Text))
+                {
+                    piso = -1;
+                }
+                else
+                {
+                    piso = Convert.ToInt32(txtPiso.Text);
+                }
+
+                string departamento;
+                if (string.IsNullOrEmpty(txtDpto.Text))
+                {
+                    departamento = "";
+                }
+                else
+                {
+                     departamento= txtDpto.Text;
+                }
+
                 int codigo_postal = Convert.ToInt32(txtCodigoPostal.Text);
                 Barrio barrio = (Barrio)cmbBarrio.Items[cmbBarrio.SelectedIndex];
                 int edad=DateTime.Today.Year-fecha_nacimiento.Year;

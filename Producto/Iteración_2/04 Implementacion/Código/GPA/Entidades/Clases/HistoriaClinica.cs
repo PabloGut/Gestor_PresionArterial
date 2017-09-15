@@ -19,17 +19,5 @@ namespace Entidades.Clases
         public int idtipodoc_paciente { get; set; }
         public long nrodoc_paciente { get; set; }
         public string motivoConsulta { get; set; }
-       
-        public List<Estudio> estudios;
-
-        public HistoriaClinica()
-        {
-            estudios = new List<Estudio>();
-        }
-        public void agregarEstudio(List<Estudio> e)
-        {
-            estudios = e;
-        }
-
     }
 }

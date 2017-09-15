@@ -100,6 +100,44 @@ namespace DAO
             cn.Close();
             return true;
         }
+        public static int buscarIdHC(int id_tipoDoc, long nroDocumento)
+        {
+            int idHc=0;
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "select id_hc_fk from Paciente where id_tipoDoc_fk=@id_tipoDoc and nro_documento=@nroDocumento";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@id_tipoDoc", id_tipoDoc);
+            cmd.Parameters.AddWithValue("@nroDocumento", (int)nroDocumento);
+
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    if (dr["id_hc_fk"] == DBNull.Value)
+                    {
+                        idHc = -1;
+                    }
+                    else
+                    {
+                        idHc = (int) dr["id_hc_fk"];
+                    }
+                }
+
+            }
+            cn.Close();
+            return idHc;
+        }
         public static void AsignarHCPaciente(int id_tipoDoc, long nroDocumento,int idhc)
         {
             
@@ -137,8 +175,25 @@ namespace DAO
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramCalle", calle);
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramNumero", numero);
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramCodigo_postal", codigo_postal);
-                cmdInsertarDomicilio.Parameters.AddWithValue("@paramPiso", piso);
-                cmdInsertarDomicilio.Parameters.AddWithValue("@paramDepartamento", departamento);
+
+                if (piso==-1)
+                {
+                    cmdInsertarDomicilio.Parameters.AddWithValue("@paramPiso", DBNull.Value);
+                }
+                else
+                {
+                    cmdInsertarDomicilio.Parameters.AddWithValue("@paramPiso", piso);
+                }
+
+                if (string.IsNullOrEmpty(departamento))
+                {
+                    cmdInsertarDomicilio.Parameters.AddWithValue("@paramDepartamento", DBNull.Value);
+                }
+                else
+                {
+                    cmdInsertarDomicilio.Parameters.AddWithValue("@paramDepartamento", departamento);
+                }
+
                 cmdInsertarDomicilio.Parameters.AddWithValue("@paramId_barrio_fk", id_barrio);
 
                 cmdInsertarDomicilio.CommandText = consultaInsertarDomicilio;

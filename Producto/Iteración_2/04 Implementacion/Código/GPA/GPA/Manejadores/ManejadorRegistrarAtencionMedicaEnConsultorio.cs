@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades.Clases;
 using LogicaNegocio;
-
+using DAO;
 namespace GPA.Manejadores
 {
     public class ManejadorRegistrarAtencionMedicaEnConsultorio
@@ -32,6 +32,10 @@ namespace GPA.Manejadores
         public int calcularNroConsulta(int idHc)
         {
             return ConsultaLN.calcularSiguinteNroConsulta(idHc);
+        }
+        public int existeHc(int tipoDoc, long nroDoc)
+        {
+            return PacienteDAO.buscarIdHC(tipoDoc, nroDoc);
         }
         public void registrarConsultaYExamenGeneral(Consulta consulta)
         {

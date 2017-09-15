@@ -741,88 +741,6 @@ values('Radiografía de Tórax')
 
 /*--------------------------*/
 
-/*alter table EscalaPulso
-alter column nombre text
-
-select * from HipotesisInicial
-
-alter table AlergiaMedicamento
-add id_medicamentoAlergia_fk int
-
-alter table AlergiaMedicamento
-add foreign key(id_medicamentoAlergia_fk) references MedicamentoAlergia(id_medicamentoAlergia)
-
-drop table DetallePulsoArterial
-drop table PulsoArterial
-drop table EscalaPulso
-drop table Pulso
-
-delete from AnalisisLaboratorio
-delete from NombreEstudio
-delete from EstadoHipotesis
-
-DBCC CHECKIDENT('AnalisisLaboratorio',RESEED,0)
-DBCC CHECKIDENT('NombreEstudio',RESEED,0)
-DBCC CHECKIDENT('EstadoHipotesis',RESEED,0)
-
-select * from Usuario
-
-select @@IDENTITY
-select SCOPE_IDENTITY()
-select IDENT_CURRENT('RazonamientoDiagnostico')*/
-
-/*CREATE TABLE DetalleMedicionPresionArterial(
-id_nroMedicion int,
-id_medicion_fk int,
-hora time,
-pulso int,
-valorMaximo int,
-valorMinimo int,
-primary key (id_nroMedicion,id_medicion_fk),
-foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion))
-
-alter table ClasificacionPresionArterial
-drop column nombre
-
-alter table ClasificacionPresionArterial
-add categoria text
-
-alter table ClasificacionPresionArterial
-add maximaDesde int
-
-alter table ClasificacionPresionArterial
-add maximaHasta int
-
-alter table ClasificacionPresionArterial
-add minimaDesde int
-
-alter table ClasificacionPresionArterial
-add minimaHasta int
-
-alter table ExamenGeneral
-add id_medicion_fk int
-
-alter table ExamenGeneral
-add foreign key (id_medicion_fk) references MedicionDePrecionArterial(id_medicion)
-
-alter table MedicionDePrecionArterial
-drop column horaInicio
-
-alter table MedicionDePrecionArterial
-add horaInicio time
-
-alter table MedicionDePrecionArterial
-drop constraint FK__MedicionD__id_ex__0A688BB1 
-
-alter table MedicionDePrecionArterial
-drop column id_extremidad_fk
-
-alter table MedicionDePrecionArterial
-add id_ubicacionExtremidad_fk int
-
-alter table MedicionDePrecionArterial
-add foreign key(id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad)*/
-
 /*-------Insert Posicion-----*/
 insert into Posicion(nombre)
 values('--Seleccionar--')
@@ -883,4 +801,15 @@ insert into ResultadoTemperatura(nombre,valorMaximo,valorMinimo)
 values('Fiebre muy alta',45, 40.5)
 /*------------------------------------------------------*/
 
+
+/*---------------Terapias------------------------------*/
+insert into Terapia(nombre)
+values('--Seleccionar--')
+insert into Terapia(nombre,descripcion)
+values('Dieta','Es la cantidad de alimentos y bebidas que se le proporciona a un organismo en un periodo de 24 horas')
+insert into Terapia(nombre,descripcion)
+values('Medicamentos','Aplicación de medicamentos para la prevención y tratamiento de las enfermedades')
+insert into Terapia(nombre)
+values('Actividad Física')
+------------------*/
 

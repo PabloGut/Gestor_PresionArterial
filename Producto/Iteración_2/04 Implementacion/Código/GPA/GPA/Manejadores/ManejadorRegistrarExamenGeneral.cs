@@ -41,10 +41,18 @@ namespace GPA.Manejadores
         {
             return ConsistenciaLN.mostrarConsistencia();
         }
-        public int registrarExamenGeneral(ExamenGeneral examen)
+        public List<SitioMedicionTemperatura> mostrarSitioMedicionTemperatura()
+        {
+            return SitioMedicionTemperaturaLN.mostrarSitioMedicionTemperatura();
+        }
+        public string mostrarClasificacionTemperatura(float valor)
+        {
+            return TemperaturaLN.determinarResultado(valor);
+        }
+        /*public int registrarExamenGeneral(ExamenGeneral examen)
         {
             return ExamenGeneralLN.registrarExamenGeneral(examen);
-        }
+        }*/
         public void registrarSistemaLinfatico(List<SistemaLinfatico> territoriosExaminados, int idExamenGeneral)
         {
             SistemaLinfaticoLN.registrarSistemaLinfatico(territoriosExaminados, idExamenGeneral);
@@ -191,10 +199,10 @@ namespace GPA.Manejadores
         {
             return EstadoHipotesisLN.mostrarIdEstadoHipotesis(nombreEstado);
         }
-        public int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamiento)
+        /*public int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamiento)
         {
             return RazonamientoDiagnosticoLN.registrarRazonamientoDiagnostico(razonamiento);
-        }
+        }*/
         /*
          * Crear un diagnostico con tratamientos
          */

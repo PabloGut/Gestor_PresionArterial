@@ -45,6 +45,7 @@ namespace Entidades.Clases
         public int id_estado { set; get; }
 
         public int id_examenGeneral { set; get; }
+        public int id_tratamiento { set; get; }
 
 
     }

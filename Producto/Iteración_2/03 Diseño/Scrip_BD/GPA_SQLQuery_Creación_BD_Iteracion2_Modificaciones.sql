@@ -114,13 +114,13 @@ FOREIGN KEY (id_detalleItemLaboratorio_fk) REFERENCES DetalleItemLaboratorio(id_
 CREATE TABLE Laboratorio(
 id_laboratorio integer PRIMARY KEY IDENTITY,
 fechaSolicitud date not null,
-fechaRealizacion date not null,
-doctorACargo varchar(20) not null,
-id_institucion_fk integer not null,
+fechaRealizacion date,
+doctorACargo varchar(50),
+id_institucion_fk integer,
 observacionDeLosResultados text,
 indicaciones text,
 id_analisisLaboratorio_fk int not null,
-id_metodoAnalisisLaboratorio_fk int not null,
+id_metodoAnalisisLaboratorio_fk int ,
 id_razonamientoDiagnostico_fk int not null
 FOREIGN KEY (id_institucion_fk) REFERENCES Institucion(id_institucion),
 FOREIGN KEY (id_analisisLaboratorio_fk) REFERENCES AnalisisLaboratorio(id_analisisLaboratorio),
@@ -627,8 +627,10 @@ motivoInicioTratamiento text,
 fechaFin date,
 motivoFinTratamiento text,
 id_terapia_fk int not null,
+id_razonamientoDiagnostico_fk int not null,
 primary key (id_tratamiento),
-foreign key (id_terapia_fk) references Terapia(id_terapia))
+foreign key (id_terapia_fk) references Terapia(id_terapia),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
 
 CREATE TABLE EstadoDiagnostico(
 id_estadoDiagnostico int primary key identity,
@@ -650,11 +652,11 @@ id_examenGeneral_fk int not null,
 foreign key (id_estadoDiagnostico_fk) references EstadoDiagnostico(id_estadoDiagnostico),
 foreign key (id_examenGeneral_fk) references ExamenGeneral(id_examenGeneral))
 
-CREATE TABLE EstadoHipotesis(
+/*CREATE TABLE EstadoHipotesis(
 id_estadoHipotesis int primary key identity,
-nombre text)
+nombre text)*/
 
-CREATE TABLE HipotesisInicial(
+/*CREATE TABLE HipotesisInicial(
 id_razonamientoDiagnostico_fk int,
 id_hipotesis int identity,
 descripcion text,
@@ -662,7 +664,7 @@ id_estadoHipotesis_fk int,
 motivoDescartar text,
 primary key (id_hipotesis,id_razonamientoDiagnostico_fk),
 foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento),
-foreign key (id_estadoHipotesis_fk) references EstadoHipotesis(id_estadoHipotesis))
+foreign key (id_estadoHipotesis_fk) references EstadoHipotesis(id_estadoHipotesis))*/
 
 /*CREATE TABLE DiagnosticoDefinitivo(
 id_razonamientoDiagnostico_fk int,
@@ -680,9 +682,9 @@ descricpcion text)
 create table EstudiosDiagnosticoPorImagen(
 id_estudioDiagnosticoPorImagen int identity,
 fechaSolicitud date not null,
-fechaRealizacion date not null,
-doctorACargo varchar(20) not null,
-id_institucion_fk integer not null,
+fechaRealizacion date,
+doctorACargo varchar(50),
+id_institucion_fk integer,
 observacionDeLosResultados text,
 indicaciones text,
 informe text,
@@ -845,6 +847,7 @@ id_elementoDelTiempo2_fk int,
 automedicado varchar(20),
 id_estado_fk int,
 id_examenGeneral_fk int,
+id_tratamiento_fk int,
 foreign key (id_especificacionMedicamento_fk,id_medicamento_fk) references EspecificacionMedicamento(id_especificacion, id_medicamento_fk),
 foreign key (id_frecuencia_fk) references Frecuencia(id_frecuencia),
 foreign key (id_momentoDia1_fk) references MomentoDelDia(id_momentoDelDia),
@@ -856,13 +859,14 @@ foreign key (id_presentacionMedicamento3_fk) references PresentacionMedicamento(
 foreign key (id_elementoDelTiempo1_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_elementoDelTiempo2_fk) references ElementoDelTiempo(id_elementoDelTiempo),
 foreign key (id_estado_fk) references EstadoProgramacion(id_EstadoProgramacion),
-foreign key (id_examenGeneral_fk) references ExamenGeneral(id_ExamenGeneral))
+foreign key (id_examenGeneral_fk) references ExamenGeneral(id_ExamenGeneral),
+foreign key (id_tratamiento_fk) references Tratamiento(id_tratamiento))
 
-/*Create table ProgramacionXMedicamento(
+Create table ProgramacionXMedicamento(
 id_programacionMedicamento_fk int not null,
 id_medicamento_fk int not null,
 foreign key(id_programacionMedicamento_fk) references ProgramacionMedicamento(id_programacionMedicamento),
-foreign key(id_medicamento_fk) references Medicamento(id_medicamento))*/
+foreign key(id_medicamento_fk) references Medicamento(id_medicamento))
 
 
 create table Familiar(

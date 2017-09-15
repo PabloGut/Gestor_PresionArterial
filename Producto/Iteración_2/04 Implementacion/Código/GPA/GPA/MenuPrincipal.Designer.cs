@@ -31,10 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buscarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.crearHistoriaClínicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultarHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarEstudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarNuevaConsultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ediciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -475,8 +471,6 @@
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarPacienteToolStripMenuItem,
-            this.buscarPacienteToolStripMenuItem,
-            this.crearHistoriaClínicaToolStripMenuItem,
             this.registrarProfesionalMédicoToolStripMenuItem,
             this.generarNuevaConsultaToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
@@ -490,37 +484,6 @@
             this.registrarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.registrarPacienteToolStripMenuItem.Text = "Registrar Paciente";
             this.registrarPacienteToolStripMenuItem.Click += new System.EventHandler(this.registrarPacienteToolStripMenuItem_Click);
-            // 
-            // buscarPacienteToolStripMenuItem
-            // 
-            this.buscarPacienteToolStripMenuItem.Name = "buscarPacienteToolStripMenuItem";
-            this.buscarPacienteToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.buscarPacienteToolStripMenuItem.Text = "Buscar Paciente";
-            this.buscarPacienteToolStripMenuItem.Click += new System.EventHandler(this.buscarPacienteToolStripMenuItem_Click);
-            // 
-            // crearHistoriaClínicaToolStripMenuItem
-            // 
-            this.crearHistoriaClínicaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consultarHistoriaClinicaToolStripMenuItem,
-            this.agregarEstudioToolStripMenuItem});
-            this.crearHistoriaClínicaToolStripMenuItem.Name = "crearHistoriaClínicaToolStripMenuItem";
-            this.crearHistoriaClínicaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.crearHistoriaClínicaToolStripMenuItem.Text = "Historia Clínica";
-            this.crearHistoriaClínicaToolStripMenuItem.Click += new System.EventHandler(this.crearHistoriaClínicaToolStripMenuItem_Click);
-            // 
-            // consultarHistoriaClinicaToolStripMenuItem
-            // 
-            this.consultarHistoriaClinicaToolStripMenuItem.Name = "consultarHistoriaClinicaToolStripMenuItem";
-            this.consultarHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.consultarHistoriaClinicaToolStripMenuItem.Text = "Consultar Historia Clinica";
-            this.consultarHistoriaClinicaToolStripMenuItem.Click += new System.EventHandler(this.consultarHistoriaClinicaToolStripMenuItem_Click);
-            // 
-            // agregarEstudioToolStripMenuItem
-            // 
-            this.agregarEstudioToolStripMenuItem.Name = "agregarEstudioToolStripMenuItem";
-            this.agregarEstudioToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.agregarEstudioToolStripMenuItem.Text = "Agregar Estudio";
-            this.agregarEstudioToolStripMenuItem.Click += new System.EventHandler(this.agregarEstudioToolStripMenuItem_Click);
             // 
             // registrarProfesionalMédicoToolStripMenuItem
             // 
@@ -3529,6 +3492,7 @@
             this.txtValorTemperatura4.Name = "txtValorTemperatura4";
             this.txtValorTemperatura4.Size = new System.Drawing.Size(78, 23);
             this.txtValorTemperatura4.TabIndex = 21;
+            this.txtValorTemperatura4.TextChanged += new System.EventHandler(this.txtValorTemperatura4_TextChanged);
             // 
             // txtValorTemperatura3
             // 
@@ -3536,6 +3500,7 @@
             this.txtValorTemperatura3.Name = "txtValorTemperatura3";
             this.txtValorTemperatura3.Size = new System.Drawing.Size(78, 23);
             this.txtValorTemperatura3.TabIndex = 20;
+            this.txtValorTemperatura3.TextChanged += new System.EventHandler(this.txtValorTemperatura3_TextChanged);
             // 
             // txtValorTemperatura2
             // 
@@ -3543,6 +3508,7 @@
             this.txtValorTemperatura2.Name = "txtValorTemperatura2";
             this.txtValorTemperatura2.Size = new System.Drawing.Size(78, 23);
             this.txtValorTemperatura2.TabIndex = 19;
+            this.txtValorTemperatura2.TextChanged += new System.EventHandler(this.txtValorTemperatura2_TextChanged);
             // 
             // label70
             // 
@@ -3654,6 +3620,7 @@
             this.txtValorTemperatura1.Name = "txtValorTemperatura1";
             this.txtValorTemperatura1.Size = new System.Drawing.Size(78, 23);
             this.txtValorTemperatura1.TabIndex = 3;
+            this.txtValorTemperatura1.TextChanged += new System.EventHandler(this.txtValorTemperatura1_TextChanged);
             // 
             // tabPage10
             // 
@@ -4115,10 +4082,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem buscarPacienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem crearHistoriaClínicaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem agregarEstudioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultarHistoriaClinicaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ediciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem especialidadesToolStripMenuItem;

@@ -51,7 +51,8 @@ namespace DAO
 
                 while (dr.Read())
                 {
-                    nombre = dr["nombre"].ToString();
+                    if (dr["nombre"]!=null)
+                        nombre = dr["nombre"].ToString();
                 }
 
             }

@@ -91,17 +91,13 @@ namespace GPA
             presentarAproximacionNúmericaDeTamaño();
             presentarEscalaPulso();
             presentarTiposDePulso();
+            presentarSitioMedicionTemperatura();
             presentarConsistencia();
 
             agregarColumnasSistemaLinfatico();
             agregarColumnasExamenesARealizar();
 
             presentarEstudiosYAnalisis();
-
-            
-
-
-
         }
         private void presentarTipoSintomas()
         {
@@ -189,7 +185,13 @@ namespace GPA
         {
             Utilidades.cargarCombo(cboEstudioARealizar, manejadorRegistrarExamenGeneral.mostrarNombreEstudios(), "id_nombreEstudio", "nombre");
             Utilidades.cargarCombo(cboAnalisiLaboratorioARealizar, manejadorRegistrarExamenGeneral.mostrarAnalisisLaboratorio(), "id_analisis", "nombre");
-
+        }
+        public void presentarSitioMedicionTemperatura()
+        {
+            Utilidades.cargarCombo(cboSitioMedicion1, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+            Utilidades.cargarCombo(cboSitioMedicion2, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+            Utilidades.cargarCombo(cboSitioMedicion3, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+            Utilidades.cargarCombo(cboSitioMedicion4, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
         }
         public void presentarFechaYHoraActual()
         {
@@ -545,8 +547,6 @@ namespace GPA
                 return;
             }
 
-            
-
             txtNroHistoriaClinica.Text = Convert.ToString(hc.nro_hc);
             mtbFechaCreacionHc.Text = Convert.ToString(hc.fecha);
             mtbHoraCreacionHc.Text = Convert.ToString(hc.hora.ToShortTimeString());
@@ -557,11 +557,28 @@ namespace GPA
         }
         public void generarNuevaConsulta()
         {
-            if (pacienteSeleccionado != null && hc != null)
+            int id = 0;
+            if (pacienteSeleccionado != null)
             {
-                txtNroConsulta.Text = Convert.ToString(manejadorRegistrarAtencionMedicaEnConsultorio.calcularNroConsulta(hc.id_hc));
-                presentarFechaYHoraActual();
-
+                if (hc ==null)
+                {
+                    id= manejadorRegistrarAtencionMedicaEnConsultorio.existeHc(pacienteSeleccionado.id_tipoDoc, pacienteSeleccionado.nroDoc);
+                    if (id == -1)
+                    {
+                        MessageBox.Show("No se genera la consulta por falta de historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    else 
+                    {
+                        txtNroConsulta.Text = Convert.ToString(manejadorRegistrarAtencionMedicaEnConsultorio.calcularNroConsulta(id));
+                        presentarFechaYHoraActual();
+                    }
+                }
+                else
+                {
+                    txtNroConsulta.Text = Convert.ToString(manejadorRegistrarAtencionMedicaEnConsultorio.calcularNroConsulta(hc.id_hc));
+                    presentarFechaYHoraActual();
+                }
             }
             else
             {
@@ -1020,18 +1037,6 @@ namespace GPA
         private void btnRegistrarAtención_Click(object sender, EventArgs e)
         {
             registrarExamenGeneralYConsulta();
-
-            /*int idRazonamientoDiagnostico = registrarRazonamientoDiagnostico();
-            
-            int idExamenGeneral = registrarExamenGeneral(idRazonamientoDiagnostico);
-
-            registrarSistemaLinfatico(idExamenGeneral);
-            
-            registrarPulsoArterial(idExamenGeneral);
-
-            registrarConsulta(idExamenGeneral);*/
-
-
         }
         public void registrarExamenGeneralYConsulta()
         {
@@ -1332,7 +1337,7 @@ namespace GPA
                 observaciones = txtObservaciones.Text;
             }
 
-            SistemaLinfatico nuevoExamenLinfatico=manejadorRegistrarExamenGeneral.crearSistemaLinfaticoPaso2(ubicacion,tamaño,aproximacionNumerica,consistencia,descripcion,sensiblePalpacion,,tiendeConfluir,movilizaConDedos,planosProfundos,procesoInflamatorio,lesion,observaciones);
+            SistemaLinfatico nuevoExamenLinfatico=manejadorRegistrarExamenGeneral.crearSistemaLinfaticoPaso2(ubicacionSeleccionada.id_ubicacion,tamañoSeleccionado.id_tamaño,aproximacionNumerica,consistenciaSeleccionada.id_consistencia,descripcion,sensiblePalpacion,limitesPrecisos,tiendeConfluir,movilizaConDedos,planosProfundos,procesoInflamatorio,lesion,observaciones);
             
             listaTerritoriosExaminados.Add(nuevoExamenLinfatico);
             
@@ -1848,7 +1853,7 @@ namespace GPA
             string caracterDolor = "No precisa";
             string haciaDondeIrradia = "No precisa";
             string fechaInicio = "No precisa";
-            string cantidadTiempoDeComienzo = "No precisa";
+            //string cantidadTiempoDeComienzo = "No precisa";
             string cuandoComenzo = "No precisa";
             string comoModificaSintoma = "No precisa";
             string elementoModificacionSintoma = "No precisa";
@@ -1990,6 +1995,43 @@ namespace GPA
                 listaPracticasComplementarias.Add(practicaComplementaria);
 
                 dgvExamenesARealizar.Rows.Add(nombre, indicaciones);
+            }
+        }
+
+        private void txtValorTemperatura1_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtValorTemperatura1.Text))
+            {
+                float valor = float.Parse(txtValorTemperatura1.Text);
+                txtResultadoTemperatura1.Text = Convert.ToString(manejadorRegistrarExamenGeneral.mostrarClasificacionTemperatura(valor));
+            }
+            
+        }
+
+        private void txtValorTemperatura2_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtValorTemperatura2.Text))
+            {
+                float valor = float.Parse(txtValorTemperatura2.Text);
+                txtResultadoTemperatura2.Text = Convert.ToString(manejadorRegistrarExamenGeneral.mostrarClasificacionTemperatura(valor));
+            }
+        }
+
+        private void txtValorTemperatura3_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtValorTemperatura3.Text))
+            {
+                float valor = float.Parse(txtValorTemperatura3.Text);
+                txtResultadoTemperatura3.Text = Convert.ToString(manejadorRegistrarExamenGeneral.mostrarClasificacionTemperatura(valor));
+            }
+        }
+
+        private void txtValorTemperatura4_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtValorTemperatura4.Text))
+            {
+                float valor = float.Parse(txtValorTemperatura4.Text);
+                txtResultadoTemperatura4.Text = Convert.ToString(manejadorRegistrarExamenGeneral.mostrarClasificacionTemperatura(valor));
             }
         }
     }

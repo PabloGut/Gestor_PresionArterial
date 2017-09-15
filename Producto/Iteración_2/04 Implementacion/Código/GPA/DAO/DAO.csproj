@@ -127,9 +127,11 @@
     <Compile Include="PulsoArterialDAO.cs" />
     <Compile Include="PulsoDAO.cs" />
     <Compile Include="RazonamientoDiagnosticoDAO.cs" />
+    <Compile Include="ResultadoTemperaturaDAO.cs" />
     <Compile Include="SintomaDAO.cs" />
     <Compile Include="SistemaLinfaticoDAO.cs" />
     <Compile Include="SitioMedicionDAO.cs" />
+    <Compile Include="SitioMedicionTemperaturaDAO.cs" />
     <Compile Include="SustanciaAmbienteDAO.cs" />
     <Compile Include="SustanciaContactoPielDAO.cs" />
     <Compile Include="SustanciaDrogaIlicitaDAO.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="TipoDocumentoDAO.cs" />
     <Compile Include="TipoPartoDAO.cs" />
     <Compile Include="TipoSintomaDAO.cs" />
+    <Compile Include="TratamientoDAO.cs" />
     <Compile Include="TraumatismoDAO.cs" />
     <Compile Include="UbicacionDAO.cs" />
     <Compile Include="UbicacionExtremidadDAO.cs" />
