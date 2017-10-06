@@ -65,7 +65,7 @@
     <Compile Include="EscalaPulsoLN.cs" />
     <Compile Include="EspecialidadLN.cs" />
     <Compile Include="EspecificacionMedicamentoLN.cs" />
-    <Compile Include="EstadoHipotesisLN.cs" />
+    <Compile Include="EstadoDiagnosticoLN.cs" />
     <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />
     <Compile Include="ExamenGeneralLN.cs" />
@@ -108,11 +108,13 @@
     <Compile Include="SustanciaDrogaIlicitaLN.cs" />
     <Compile Include="TamañoLN.cs" />
     <Compile Include="TemperaturaLN.cs" />
+    <Compile Include="TemperaturaPielLN.cs" />
     <Compile Include="TipoAbortoLN.cs" />
     <Compile Include="TipoAntecedenteMorbidoLN.cs" />
     <Compile Include="TipoBebidaLN.cs" />
     <Compile Include="TipoDocumentoLN.cs" />
     <Compile Include="TipoPartoLN.cs" />
+    <Compile Include="TipoPracticaComplementariaLN.cs" />
     <Compile Include="TipoSintomaLN.cs" />
     <Compile Include="TraumatismoLN.cs" />
     <Compile Include="UbicacionExtremidadLN.cs" />

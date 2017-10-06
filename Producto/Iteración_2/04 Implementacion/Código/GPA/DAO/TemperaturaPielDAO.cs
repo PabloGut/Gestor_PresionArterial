@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Data;
 using Entidades.Clases;
-using System.Data.SqlClient;
-
 namespace DAO
 {
-    public class AnalisisLaboratorioDAO
+    public class TemperaturaPielDAO
     {
         private static string cadenaConexion;
 
@@ -22,37 +21,31 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        /*
-      * Método para obtener los nombres de pruebas de laboratorio.
-      * No recibe parámetros.
-      * Retorna una lista de objetos AnalisisLaboratorio.
-      */
-        public static List<AnalisisLaboratorio> mostrarAnalisisLaboratorio()
+        public static List<TemperaturaPiel> obtenerTemperaturaPiel()
         {
+            string consulta = @"select * from TemperaturaPiel";
+
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
-            List<AnalisisLaboratorio> analisis = new List<AnalisisLaboratorio>();
+            SqlCommand cmd = new SqlCommand();
+            List<TemperaturaPiel> temperaturas = new List<TemperaturaPiel>();
             try
             {
                 cn.Open();
-
-                string consulta = "select * from AnalisisLaboratorio";
-                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandType = CommandType.Text;
                 cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    analisis.Add(new AnalisisLaboratorio()
+                    temperaturas.Add(new TemperaturaPiel()
                     {
-                        id_analisis = (int)dr["id_analisisLaboratorio"],
-                        nombre = dr["nombre"].ToString()
+                        id_temperatura = (int)dr["id_temperatura"],
+                        nombre = dr["nombre"].ToString(),
                     });
                 }
-
             }
             catch (Exception e)
             {
@@ -62,8 +55,7 @@ namespace DAO
                 }
                 throw new ApplicationException("Error:" + e.Message);
             }
-            cn.Close();
-            return analisis;
+            return temperaturas;
         }
     }
 }

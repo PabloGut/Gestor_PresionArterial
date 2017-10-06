@@ -26,7 +26,7 @@ namespace DAO
         {
             try
             {
-                string consulta = @"inset into Piel(color,elasticidad,humedad,untuosidad,turgor,lesiones,id_temperatura_fk)
+                string consulta = @"insert into Piel(color,elasticidad,humedad,untuosidad,turgor,lesiones,id_temperatura_fk)
                                     values(@color,@elasticidad,@humedad,@untuosidad,@turgor,@lesiones,@id_Temperatura_fk)";
 
                 SqlCommand cmd = new SqlCommand();

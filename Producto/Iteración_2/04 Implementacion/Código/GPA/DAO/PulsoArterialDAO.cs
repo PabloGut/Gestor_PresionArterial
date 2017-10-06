@@ -96,7 +96,7 @@ namespace DAO
 
                 SqlCommand cmd = new SqlCommand();
 
-                if (string.IsNullOrEmpty(pulsoArterial.auscultacion) == true)
+                if (string.IsNullOrEmpty(pulsoArterial.auscultacion) == true || pulsoArterial.auscultacion.Equals("No precisa"))
                 {
                     cmd.Parameters.AddWithValue("@auscultacion", DBNull.Value);
                 }
@@ -105,7 +105,7 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@auscultacion", pulsoArterial.auscultacion);
                 }
 
-                if (string.IsNullOrEmpty(pulsoArterial.observaciones) == true)
+                if (string.IsNullOrEmpty(pulsoArterial.observaciones) == true || pulsoArterial.observaciones.Equals("No precisa"))
                 {
                     cmd.Parameters.AddWithValue("@observaciones", DBNull.Value);
                 }

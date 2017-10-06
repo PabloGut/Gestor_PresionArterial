@@ -746,7 +746,13 @@ add id_estadoDiagnostico_fk int
 alter table RazonamientoDiagnostico
 add foreign key (id_estadoDiagnostico_fk) references EstadoDiagnostico(id_estadoDiagnostico)
 
-select * from RazonamientoDiagnostico
+alter table EstadoDiagnostico
+drop column descripcion
 
-delete from RazonamientoDiagnostico
+select * from DetalleMedicionPresionArterial
+drop table PracticaComplementaria
+delete from NombreEstudio
+
+
+
 where id_hc=63

@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    public class PruebaDeLaboratorioDAO
+    public class PracticaComplementariaDAO
     {
         private static string cadenaConexion;
 
@@ -22,7 +22,7 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static void registrarAnalisisLaboratorioARealizar(Laboratorio prueba, SqlTransaction tran, SqlConnection cn)
+        public static void registrarPracticaComplementariaARealizar(PracticaComplementaria practica, SqlTransaction tran, SqlConnection cn)
         {
             try
             {
@@ -34,17 +34,17 @@ namespace DAO
                 cmd.Transaction = tran;
                 cmd.CommandText = consulta;
 
-                cmd.Parameters.AddWithValue("@fechaSolicitud", prueba.fechaSolicitud);
-                if (!string.IsNullOrEmpty(prueba.indicaciones))
+                cmd.Parameters.AddWithValue("@fechaSolicitud", practica.fechaSolicitud);
+                if (!string.IsNullOrEmpty(practica.indicaciones))
                 {
-                    cmd.Parameters.AddWithValue("@indicaciones", prueba.indicaciones);
+                    cmd.Parameters.AddWithValue("@indicaciones", practica.indicaciones);
                 }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@indicaciones", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@indicaciones",DBNull.Value);
                 }
-                cmd.Parameters.AddWithValue("@id_analisisLaboratorio_fk", prueba.id_analisisLaboratorio_fk);
-                cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", prueba.id_razonamientoDiagnostico);
+                cmd.Parameters.AddWithValue("@id_analisisLaboratorio_fk", practica.id_tipoPractica);
+                cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", practica.id_razonamientoDiagnostico);
 
                 cmd.ExecuteNonQuery();
             }

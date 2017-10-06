@@ -78,7 +78,7 @@
     <Compile Include="EspecialidadDAO.cs" />
     <Compile Include="EspecificacionMedicamentoDAO.cs" />
     <Compile Include="EstadoDAO.cs" />
-    <Compile Include="EstadoHipotesisDAO.cs" />
+    <Compile Include="EstadoDiagnosticoDAO.cs" />
     <Compile Include="EstadoProgramacionDAO.cs" />
     <Compile Include="EstudioDAO.cs" />
     <Compile Include="EstudioDiagnosticoPorImagenDAO.cs" />
@@ -118,6 +118,7 @@
     <Compile Include="ParteDelCuerpoDAO.cs" />
     <Compile Include="PielDAO.cs" />
     <Compile Include="PosicionDAO.cs" />
+    <Compile Include="PracticaComplementariaDAO.cs" />
     <Compile Include="PresentacionMedicamentoDAO.cs" />
     <Compile Include="ProfesionalMedicoDAO.cs" />
     <Compile Include="Program.cs" />
@@ -137,11 +138,13 @@
     <Compile Include="SustanciaDrogaIlicitaDAO.cs" />
     <Compile Include="TamañoDAO.cs" />
     <Compile Include="TemperaturaDAO.cs" />
+    <Compile Include="TemperaturaPielDAO.cs" />
     <Compile Include="TipoAbortoDAO.cs" />
     <Compile Include="TipoAntecedenteMorbidoDAO.cs" />
     <Compile Include="TipoBebidaDAO.cs" />
     <Compile Include="TipoDocumentoDAO.cs" />
     <Compile Include="TipoPartoDAO.cs" />
+    <Compile Include="TipoPracticaComplementariaDAO.cs" />
     <Compile Include="TipoSintomaDAO.cs" />
     <Compile Include="TratamientoDAO.cs" />
     <Compile Include="TraumatismoDAO.cs" />

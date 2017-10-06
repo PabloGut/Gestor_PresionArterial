@@ -732,9 +732,21 @@ values('--Seleccionar--')
 insert into NombreEstudio(nombre)
 values('Ecografía Renal')
 insert into NombreEstudio(nombre)
-values('Electrocardiograma')
+values('Tomografía')
 insert into NombreEstudio(nombre)
 values('Radiografía de Tórax')
+/*--------------------------*/
+
+/*-------Insert PracticaComplementaria-----*/
+insert into TipoPracticaComplementaria(nombre,descripcion)
+values('--Seleccionar--','')
+insert into TipoPracticaComplementaria(nombre,descripcion)
+values('Pruebas endoscópicas','Son pruebas que visualizan el interior de cavidades u órganos huecos del cuerpo como la colonoscopia')
+insert into TipoPracticaComplementaria(nombre,descripcion)
+values('Anatomía Patológica','Son pruebas que analizan una muestra de tejido o biopsia o una pieza quirúrgica tras una cirugía. También incluye las citologías.')
+insert into TipoPracticaComplementaria(nombre,descripcion)
+values('Electrocardiograma','electrocardiograma ECG, electroencefalograma EEG, electromigrama EMG')
+
 /*--------------------------*/
 
 /*-------Insert-----*/
@@ -811,5 +823,27 @@ insert into Terapia(nombre,descripcion)
 values('Medicamentos','Aplicación de medicamentos para la prevención y tratamiento de las enfermedades')
 insert into Terapia(nombre)
 values('Actividad Física')
+------------------*/
+
+/*---------------EstadoDiagnostico------------------------------*/
+insert into EstadoDiagnostico(nombre)
+values('--Seleccionar--')
+insert into EstadoDiagnostico(nombre)
+values('Tentativo')
+insert into EstadoDiagnostico(nombre)
+values('Definitivo')
+insert into EstadoDiagnostico(nombre)
+values('Descartado')
+------------------*/
+
+/*---------------EstadoDiagnostico------------------------------*/
+insert into TemperaturaPiel(nombre)
+values('--Seleccionar--')
+insert into TemperaturaPiel(nombre)
+values('Normal')
+insert into TemperaturaPiel(nombre)
+values('Aumentada')
+insert into TemperaturaPiel(nombre)
+values('Disminuida')
 ------------------*/
 

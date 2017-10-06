@@ -186,6 +186,15 @@ namespace DAO
                         PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioARealizar(laboratorio, tran, cn);//Modificar el método. Se quitó la clase prueba de laboratorio. Utilizar clase Laboratorio.
                     }
                 }
+                if (diagnostico.practicas != null && diagnostico.practicas.Count > 0)
+                {
+                    foreach (PracticaComplementaria practica in diagnostico.practicas)
+                    {
+                        practica.id_razonamientoDiagnostico = diagnostico.id_razonamiento;
+                        PracticaComplementariaDAO.registrarPracticaComplementariaARealizar(practica, tran, cn);//Modificar el método. Se quitó la clase prueba de laboratorio. Utilizar clase Laboratorio.
+                    }
+                }
+
             }
             catch (Exception e)
             {

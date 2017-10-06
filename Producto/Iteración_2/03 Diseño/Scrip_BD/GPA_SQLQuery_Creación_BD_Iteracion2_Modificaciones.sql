@@ -67,7 +67,6 @@ id_institucion_fk integer not null,
 observacionDeLosResultados text,
 indicaciones text,
 informe text,
-id_analisisLaboratorio_fk int not null,
 id_tipoPractica_fk int not null,
 id_razonamientoDiagnostico_fk int not null,
 FOREIGN KEY (id_institucion_fk) REFERENCES Institucion(id_institucion),
@@ -633,9 +632,9 @@ foreign key (id_terapia_fk) references Terapia(id_terapia),
 foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
 
 CREATE TABLE EstadoDiagnostico(
-id_estadoDiagnostico int primary key identity,
+id_estadoDiagnostico int identity,
 nombre varchar(50),
-descripcion varchar(100))
+constraint id_estadoDiagnostico_pk primary key (id_estadoDiagnostico))
 
 CREATE TABLE RazonamientoDiagnostico(
 id_razonamiento int primary key identity,
@@ -940,8 +939,6 @@ descripcion_otrasEnfermedades text,
 id_hc_fk int,
 constraint antecedentePatologicoPersonal_pk primary key(id_antecedentePatologicoPersonal),
 constraint antecedentePatologicoPersonal_fk foreign key (id_hc_fk) references Historia_Clinica (id_hc))
-
-
 
 
 

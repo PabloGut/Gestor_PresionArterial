@@ -363,7 +363,7 @@
             this.txtIndicacionesPracticasComplementarias = new System.Windows.Forms.TextBox();
             this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.btnPracticasComplementariasARealizar = new System.Windows.Forms.Button();
-            this.cboPracticasComplementarias = new System.Windows.Forms.ComboBox();
+            this.cboPracticasComplementariasARealizar = new System.Windows.Forms.ComboBox();
             this.label57 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
@@ -2100,6 +2100,7 @@
             // 
             // cboTemperaturaPiel
             // 
+            this.cboTemperaturaPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTemperaturaPiel.FormattingEnabled = true;
             this.cboTemperaturaPiel.Location = new System.Drawing.Point(107, 168);
             this.cboTemperaturaPiel.Name = "cboTemperaturaPiel";
@@ -2108,6 +2109,7 @@
             // 
             // txtLesionesPiel
             // 
+            this.txtLesionesPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLesionesPiel.Location = new System.Drawing.Point(497, 108);
             this.txtLesionesPiel.Multiline = true;
             this.txtLesionesPiel.Name = "txtLesionesPiel";
@@ -2137,6 +2139,7 @@
             // 
             // txtElasticidadPiel
             // 
+            this.txtElasticidadPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtElasticidadPiel.Location = new System.Drawing.Point(547, 25);
             this.txtElasticidadPiel.Name = "txtElasticidadPiel";
             this.txtElasticidadPiel.Size = new System.Drawing.Size(275, 23);
@@ -2154,6 +2157,7 @@
             // 
             // txtTurgorPiel
             // 
+            this.txtTurgorPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTurgorPiel.Location = new System.Drawing.Point(64, 103);
             this.txtTurgorPiel.Multiline = true;
             this.txtTurgorPiel.Name = "txtTurgorPiel";
@@ -2172,6 +2176,7 @@
             // 
             // txtUntuosidadPiel
             // 
+            this.txtUntuosidadPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUntuosidadPiel.Location = new System.Drawing.Point(497, 66);
             this.txtUntuosidadPiel.Multiline = true;
             this.txtUntuosidadPiel.Name = "txtUntuosidadPiel";
@@ -2201,6 +2206,7 @@
             // 
             // txtColorPiel
             // 
+            this.txtColorPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtColorPiel.Location = new System.Drawing.Point(64, 25);
             this.txtColorPiel.Name = "txtColorPiel";
             this.txtColorPiel.Size = new System.Drawing.Size(386, 23);
@@ -2208,6 +2214,7 @@
             // 
             // txtHumedadPiel
             // 
+            this.txtHumedadPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHumedadPiel.Location = new System.Drawing.Point(88, 65);
             this.txtHumedadPiel.Name = "txtHumedadPiel";
             this.txtHumedadPiel.Size = new System.Drawing.Size(313, 23);
@@ -2795,6 +2802,7 @@
             // 
             // cboPulso1
             // 
+            this.cboPulso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso1.FormattingEnabled = true;
             this.cboPulso1.Location = new System.Drawing.Point(9, 29);
             this.cboPulso1.Name = "cboPulso1";
@@ -2803,6 +2811,7 @@
             // 
             // cboPulso2
             // 
+            this.cboPulso2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso2.FormattingEnabled = true;
             this.cboPulso2.Location = new System.Drawing.Point(9, 75);
             this.cboPulso2.Name = "cboPulso2";
@@ -2811,6 +2820,7 @@
             // 
             // cboPulso3
             // 
+            this.cboPulso3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso3.FormattingEnabled = true;
             this.cboPulso3.Location = new System.Drawing.Point(9, 117);
             this.cboPulso3.Name = "cboPulso3";
@@ -2819,6 +2829,7 @@
             // 
             // cboPulso4
             // 
+            this.cboPulso4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso4.FormattingEnabled = true;
             this.cboPulso4.Location = new System.Drawing.Point(9, 156);
             this.cboPulso4.Name = "cboPulso4";
@@ -2827,6 +2838,7 @@
             // 
             // cboPulso5
             // 
+            this.cboPulso5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso5.FormattingEnabled = true;
             this.cboPulso5.Location = new System.Drawing.Point(9, 203);
             this.cboPulso5.Name = "cboPulso5";
@@ -2835,6 +2847,7 @@
             // 
             // cboPulso6
             // 
+            this.cboPulso6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso6.FormattingEnabled = true;
             this.cboPulso6.Location = new System.Drawing.Point(9, 245);
             this.cboPulso6.Name = "cboPulso6";
@@ -2843,6 +2856,7 @@
             // 
             // cboPulso7
             // 
+            this.cboPulso7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso7.FormattingEnabled = true;
             this.cboPulso7.Location = new System.Drawing.Point(9, 286);
             this.cboPulso7.Name = "cboPulso7";
@@ -2851,6 +2865,7 @@
             // 
             // cboPulso8
             // 
+            this.cboPulso8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso8.FormattingEnabled = true;
             this.cboPulso8.Location = new System.Drawing.Point(9, 324);
             this.cboPulso8.Name = "cboPulso8";
@@ -2859,6 +2874,7 @@
             // 
             // cboPI8
             // 
+            this.cboPI8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI8.FormattingEnabled = true;
             this.cboPI8.Location = new System.Drawing.Point(128, 324);
             this.cboPI8.Name = "cboPI8";
@@ -2867,6 +2883,7 @@
             // 
             // cboPD8
             // 
+            this.cboPD8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD8.FormattingEnabled = true;
             this.cboPD8.Location = new System.Drawing.Point(300, 324);
             this.cboPD8.Name = "cboPD8";
@@ -2875,6 +2892,7 @@
             // 
             // cboPD7
             // 
+            this.cboPD7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD7.FormattingEnabled = true;
             this.cboPD7.Location = new System.Drawing.Point(300, 286);
             this.cboPD7.Name = "cboPD7";
@@ -2883,6 +2901,7 @@
             // 
             // cboPD6
             // 
+            this.cboPD6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD6.FormattingEnabled = true;
             this.cboPD6.Location = new System.Drawing.Point(300, 245);
             this.cboPD6.Name = "cboPD6";
@@ -2891,6 +2910,7 @@
             // 
             // cboPD5
             // 
+            this.cboPD5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD5.FormattingEnabled = true;
             this.cboPD5.Location = new System.Drawing.Point(300, 203);
             this.cboPD5.Name = "cboPD5";
@@ -2899,6 +2919,7 @@
             // 
             // cboPD4
             // 
+            this.cboPD4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD4.FormattingEnabled = true;
             this.cboPD4.Location = new System.Drawing.Point(300, 157);
             this.cboPD4.Name = "cboPD4";
@@ -2907,6 +2928,7 @@
             // 
             // cboPD3
             // 
+            this.cboPD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD3.FormattingEnabled = true;
             this.cboPD3.Location = new System.Drawing.Point(300, 117);
             this.cboPD3.Name = "cboPD3";
@@ -2915,6 +2937,7 @@
             // 
             // cboPD2
             // 
+            this.cboPD2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD2.FormattingEnabled = true;
             this.cboPD2.Location = new System.Drawing.Point(300, 75);
             this.cboPD2.Name = "cboPD2";
@@ -2923,6 +2946,7 @@
             // 
             // cboPD1
             // 
+            this.cboPD1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD1.FormattingEnabled = true;
             this.cboPD1.Location = new System.Drawing.Point(300, 29);
             this.cboPD1.Name = "cboPD1";
@@ -2931,6 +2955,7 @@
             // 
             // cboPI7
             // 
+            this.cboPI7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI7.FormattingEnabled = true;
             this.cboPI7.Location = new System.Drawing.Point(128, 286);
             this.cboPI7.Name = "cboPI7";
@@ -2939,6 +2964,7 @@
             // 
             // cboPI6
             // 
+            this.cboPI6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI6.FormattingEnabled = true;
             this.cboPI6.Location = new System.Drawing.Point(128, 245);
             this.cboPI6.Name = "cboPI6";
@@ -2947,6 +2973,7 @@
             // 
             // cboPI5
             // 
+            this.cboPI5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI5.FormattingEnabled = true;
             this.cboPI5.Location = new System.Drawing.Point(128, 203);
             this.cboPI5.Name = "cboPI5";
@@ -2955,6 +2982,7 @@
             // 
             // cboPI4
             // 
+            this.cboPI4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI4.FormattingEnabled = true;
             this.cboPI4.Location = new System.Drawing.Point(128, 157);
             this.cboPI4.Name = "cboPI4";
@@ -2963,6 +2991,7 @@
             // 
             // cboPI3
             // 
+            this.cboPI3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI3.FormattingEnabled = true;
             this.cboPI3.Location = new System.Drawing.Point(128, 117);
             this.cboPI3.Name = "cboPI3";
@@ -2971,6 +3000,7 @@
             // 
             // cboPI2
             // 
+            this.cboPI2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI2.FormattingEnabled = true;
             this.cboPI2.Location = new System.Drawing.Point(128, 75);
             this.cboPI2.Name = "cboPI2";
@@ -2979,6 +3009,7 @@
             // 
             // cboPI1
             // 
+            this.cboPI1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI1.FormattingEnabled = true;
             this.cboPI1.Location = new System.Drawing.Point(128, 29);
             this.cboPI1.Name = "cboPI1";
@@ -3640,7 +3671,7 @@
             this.groupBox15.Controls.Add(this.txtIndicacionesPracticasComplementarias);
             this.groupBox15.Controls.Add(this.btnAgregarDiagnostico);
             this.groupBox15.Controls.Add(this.btnPracticasComplementariasARealizar);
-            this.groupBox15.Controls.Add(this.cboPracticasComplementarias);
+            this.groupBox15.Controls.Add(this.cboPracticasComplementariasARealizar);
             this.groupBox15.Controls.Add(this.label57);
             this.groupBox15.Controls.Add(this.label55);
             this.groupBox15.Controls.Add(this.label54);
@@ -3699,13 +3730,13 @@
             this.btnPracticasComplementariasARealizar.UseVisualStyleBackColor = true;
             this.btnPracticasComplementariasARealizar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cboPracticasComplementarias
+            // cboPracticasComplementariasARealizar
             // 
-            this.cboPracticasComplementarias.FormattingEnabled = true;
-            this.cboPracticasComplementarias.Location = new System.Drawing.Point(173, 230);
-            this.cboPracticasComplementarias.Name = "cboPracticasComplementarias";
-            this.cboPracticasComplementarias.Size = new System.Drawing.Size(183, 24);
-            this.cboPracticasComplementarias.TabIndex = 34;
+            this.cboPracticasComplementariasARealizar.FormattingEnabled = true;
+            this.cboPracticasComplementariasARealizar.Location = new System.Drawing.Point(173, 230);
+            this.cboPracticasComplementariasARealizar.Name = "cboPracticasComplementariasARealizar";
+            this.cboPracticasComplementariasARealizar.Size = new System.Drawing.Size(183, 24);
+            this.cboPracticasComplementariasARealizar.TabIndex = 34;
             // 
             // label57
             // 
@@ -4442,7 +4473,7 @@
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.TextBox txtIndicacionesPracticasComplementarias;
         private System.Windows.Forms.Button btnPracticasComplementariasARealizar;
-        private System.Windows.Forms.ComboBox cboPracticasComplementarias;
+        private System.Windows.Forms.ComboBox cboPracticasComplementariasARealizar;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }

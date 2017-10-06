@@ -22,6 +22,7 @@ namespace Entidades.Clases
         public int id_examenGeneral { set; get; }
         public List<Laboratorio> analisis { set; get; }
         public List<EstudioDiagnosticoPorImagen> estudios { set; get; }
+        public List<PracticaComplementaria> practicas { set; get; }
         public List<Tratamiento> tratamientos { set; get; }
         
        

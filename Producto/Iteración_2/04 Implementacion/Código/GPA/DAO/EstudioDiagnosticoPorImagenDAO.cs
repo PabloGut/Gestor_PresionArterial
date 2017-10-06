@@ -36,7 +36,14 @@ namespace DAO
 
 
                 cmd.Parameters.AddWithValue("@fechaSolicitud", estudio.fechaSolicitud);
-                cmd.Parameters.AddWithValue("@indicaciones", estudio.indicaciones);
+                if (!string.IsNullOrEmpty(estudio.indicaciones))
+                {
+                    cmd.Parameters.AddWithValue("@indicaciones", estudio.indicaciones);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@indicaciones", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@id_nombreEstudio_fk", estudio.id_nombreEstudio);
                 cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", estudio.id_razonamientoDiagnostico);
 

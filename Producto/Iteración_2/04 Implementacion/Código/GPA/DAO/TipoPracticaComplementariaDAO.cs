@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 using Entidades.Clases;
 using System.Data.SqlClient;
-
+using System.Data;
 namespace DAO
 {
-    public class AnalisisLaboratorioDAO
+    public class TipoPracticaComplementariaDAO
     {
-        private static string cadenaConexion;
+         private static string cadenaConexion;
 
         public static void setCadenaConexion()
         {
@@ -23,20 +22,20 @@ namespace DAO
             return cadenaConexion;
         }
         /*
-      * Método para obtener los nombres de pruebas de laboratorio.
-      * No recibe parámetros.
-      * Retorna una lista de objetos AnalisisLaboratorio.
-      */
-        public static List<AnalisisLaboratorio> mostrarAnalisisLaboratorio()
+       * Método para obtener los nombres de prácticas complementarias.
+       * No recibe parámetros.
+       * Retorna una lista de objetos TipoPracticaComplementaria.
+       */
+        public static List<TipoPracticaComplementaria> mostrarPracticasComplementarias()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
-            List<AnalisisLaboratorio> analisis = new List<AnalisisLaboratorio>();
+            List<TipoPracticaComplementaria> practicasComplementarias = new List<TipoPracticaComplementaria>();
             try
             {
                 cn.Open();
 
-                string consulta = "select * from AnalisisLaboratorio";
+                string consulta = "select id_tipoPractica, nombre from TipoPracticaComplementaria";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.Text;
@@ -46,9 +45,9 @@ namespace DAO
 
                 while (dr.Read())
                 {
-                    analisis.Add(new AnalisisLaboratorio()
+                    practicasComplementarias.Add(new TipoPracticaComplementaria()
                     {
-                        id_analisis = (int)dr["id_analisisLaboratorio"],
+                        id_tipoPracticaComplementaria = (int)dr["id_tipoPractica"],
                         nombre = dr["nombre"].ToString()
                     });
                 }
@@ -63,7 +62,8 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
             cn.Close();
-            return analisis;
+            return practicasComplementarias;
         }
+    
     }
 }

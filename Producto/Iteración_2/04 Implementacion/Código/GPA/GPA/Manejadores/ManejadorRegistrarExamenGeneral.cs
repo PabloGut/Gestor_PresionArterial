@@ -126,8 +126,16 @@ namespace GPA.Manejadores
         {
             Temperatura temperatura = new Temperatura();
 
-            temperatura.sitioMedicion.id_sitioMedicion = sitioMedicion;
-            temperatura.resultado.nombre = resultado;
+            SitioMedicionTemperatura sitio = new SitioMedicionTemperatura();
+
+            sitio.id_sitioMedicion = sitioMedicion;
+
+            temperatura.sitioMedicion=sitio;
+
+            ResultadoTemperatura nuevoResultado = new ResultadoTemperatura();
+            nuevoResultado.nombre = resultado;
+
+            temperatura.resultado = nuevoResultado;
             temperatura.valorTemperatura = valorTemperatura;
 
             return temperatura;
@@ -195,9 +203,13 @@ namespace GPA.Manejadores
         {
             return AnalisisLaboratorioLN.mostrarAnalisisLaboratorio();
         }
-        public int mostrarIdEstadoHipotesis(string nombreEstado)
+        public List<TipoPracticaComplementaria> mostrarTipoPracticaComplementaria()
         {
-            return EstadoHipotesisLN.mostrarIdEstadoHipotesis(nombreEstado);
+            return TipoPracticaComplementariaLN.mostrarPracticasComplementarias();
+        }
+        public int mostrarIdEstadoDiagnostico(string nombreEstado)
+        {
+            return EstadoDiagnosticoLN.mostrarIdEstadoDiagnostico(nombreEstado);
         }
         /*public int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamiento)
         {
@@ -206,7 +218,7 @@ namespace GPA.Manejadores
         /*
          * Crear un diagnostico con tratamientos
          */
-        public RazonamientoDiagnostico crearRazonamientoDiagnostico(string conceptoInicial, string Desdiagnostico, EstadoDiagnostico estadoDiagnostico, string motivo, DateTime fecha, List<Laboratorio> analisis, List<EstudioDiagnosticoPorImagen> estudios, List<Tratamiento> tratamientos)
+        public RazonamientoDiagnostico crearRazonamientoDiagnostico(string conceptoInicial, string Desdiagnostico, EstadoDiagnostico estadoDiagnostico, string motivo, DateTime fecha, List<Laboratorio> analisis, List<EstudioDiagnosticoPorImagen> estudios,List<PracticaComplementaria> practicas, List<Tratamiento> tratamientos)
         {
             RazonamientoDiagnostico diagnostico = new RazonamientoDiagnostico();
             diagnostico.conceptoInicial = conceptoInicial;
@@ -233,6 +245,7 @@ namespace GPA.Manejadores
 
             diagnostico.analisis = analisis;
             diagnostico.estudios = estudios;
+            diagnostico.practicas = practicas;
             diagnostico.tratamientos = tratamientos;
 
             return diagnostico;
@@ -354,6 +367,14 @@ namespace GPA.Manejadores
         {
             List<ProgramacionMedicamento> lista = new List<ProgramacionMedicamento>();
             return lista;
+        }
+        public List<EstadoDiagnostico> obtenerEstadoDiagnostico()
+        {
+            return EstadoDiagnosticoLN.obtenerEstadosDiagnostico();
+        }
+        public List<TemperaturaPiel> obtenerTemperaturasPiel()
+        {
+            return TemperaturaPielLN.obtenerTemperaturasPiel();
         }
     }
 }

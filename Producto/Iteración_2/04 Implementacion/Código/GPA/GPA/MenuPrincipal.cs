@@ -93,11 +93,13 @@ namespace GPA
             presentarTiposDePulso();
             presentarSitioMedicionTemperatura();
             presentarConsistencia();
+            presentarTemperaturaPiel();
+            presentarEstadosDiagnostico();
+            presentarEstudiosYAnalisis();
 
             agregarColumnasSistemaLinfatico();
             agregarColumnasExamenesARealizar();
-
-            presentarEstudiosYAnalisis();
+           
         }
         private void presentarTipoSintomas()
         {
@@ -138,6 +140,10 @@ namespace GPA
         public void presentarConsistencia()
         {
             Utilidades.cargarCombo(cboConsistencia, manejadorRegistrarExamenGeneral.mostrarConsistencia(), "id_consistencia", "nombre");
+        }
+        public void presentarTemperaturaPiel()
+        {
+            Utilidades.cargarCombo(cboTemperaturaPiel, manejadorRegistrarExamenGeneral.obtenerTemperaturasPiel(), "id_temperatura", "nombre");
         }
         public void presentarAproximacionNúmericaDeTamaño()
         {
@@ -181,10 +187,15 @@ namespace GPA
             Utilidades.cargarCombo(cboPulso7, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
             Utilidades.cargarCombo(cboPulso8, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
         }
+        public void presentarEstadosDiagnostico()
+        {
+            Utilidades.cargarCombo(cboEstadoDiagnostico, manejadorRegistrarExamenGeneral.obtenerEstadoDiagnostico(), "id_estadoDiagnostico", "nombre");
+        }
         public void presentarEstudiosYAnalisis()
         {
             Utilidades.cargarCombo(cboEstudioARealizar, manejadorRegistrarExamenGeneral.mostrarNombreEstudios(), "id_nombreEstudio", "nombre");
-            Utilidades.cargarCombo(cboAnalisiLaboratorioARealizar, manejadorRegistrarExamenGeneral.mostrarAnalisisLaboratorio(), "id_analisis", "nombre");
+            Utilidades.cargarCombo(cboAnalisiLaboratorioARealizar, manejadorRegistrarExamenGeneral.mostrarAnalisisLaboratorio(), "id_analisisLaboratorio", "nombre");
+            Utilidades.cargarCombo(cboPracticasComplementariasARealizar, manejadorRegistrarExamenGeneral.mostrarTipoPracticaComplementaria(), "id_tipoPractica", "nombre");
         }
         public void presentarSitioMedicionTemperatura()
         {
@@ -197,6 +208,7 @@ namespace GPA
         {
             mtbFechaConsulta.Text = manejadorRegistrarAtencionMedicaEnConsultorio.mostrarFechaActual();
             mtbHoraConsulta.Text = manejadorRegistrarAtencionMedicaEnConsultorio.mostrarHoraActual();
+            mtbFechaDiagnostico.Text = manejadorRegistrarAtencionMedicaEnConsultorio.mostrarFechaActual();
         }
         /*
          * Método para cargar el ComboBox del tipo de documento.
@@ -255,7 +267,6 @@ namespace GPA
             {
                 return null;
             }
-            
         }
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -1056,6 +1067,7 @@ namespace GPA
             examen.observacionesRespiracion = respiracion.observaciones;
 
             //Agrega datos de temperatura al examen
+            crearMedicionTemperatura();
             if (examen != null && manejadorRegistrarExamenGeneral != null && listaTemperaturas != null && listaTemperaturas.Count > 0)
                 examen.listaTemperaturas = listaTemperaturas;//Agrega la lista de temperaturas corporales al examen general.
 
@@ -1548,7 +1560,7 @@ namespace GPA
 
             if (cboSitioMedicion1.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura1.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura1.Text))
             {
-                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion1.SelectedItem;
+                SitioMedicionTemperatura sitio = (SitioMedicionTemperatura)cboSitioMedicion1.SelectedItem;
                 id_sitio = sitio.id_sitioMedicion;
 
                 valorTemperatura = float.Parse(txtValorTemperatura1.Text);
@@ -1565,7 +1577,7 @@ namespace GPA
 
             if (cboSitioMedicion2.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura2.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura2.Text))
             {
-                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion2.SelectedItem;
+                SitioMedicionTemperatura sitio = (SitioMedicionTemperatura)cboSitioMedicion2.SelectedItem;
                 id_sitio = sitio.id_sitioMedicion;
 
                 valorTemperatura = float.Parse(txtValorTemperatura2.Text);
@@ -1582,7 +1594,7 @@ namespace GPA
 
             if (cboSitioMedicion3.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura3.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura3.Text))
             {
-                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion3.SelectedItem;
+                SitioMedicionTemperatura sitio = (SitioMedicionTemperatura)cboSitioMedicion3.SelectedItem;
                 id_sitio = sitio.id_sitioMedicion;
 
                 valorTemperatura = float.Parse(txtValorTemperatura3.Text);
@@ -1599,7 +1611,7 @@ namespace GPA
 
             if (cboSitioMedicion4.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura4.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura4.Text))
             {
-                SitioMedicion sitio = (SitioMedicion)cboSitioMedicion4.SelectedItem;
+                SitioMedicionTemperatura sitio = (SitioMedicionTemperatura)cboSitioMedicion4.SelectedItem;
                 id_sitio = sitio.id_sitioMedicion;
 
                 valorTemperatura = float.Parse(txtValorTemperatura4.Text);
@@ -1702,7 +1714,7 @@ namespace GPA
             {
                 EstadoDiagnostico estadoSeleccionado= (EstadoDiagnostico) cboEstadoDiagnostico.SelectedItem;
                 nombreEstado=estadoSeleccionado.nombre;
-                id_estado=(int) cboEstadoDiagnostico.SelectedValue;
+                id_estado=estadoSeleccionado.id_estado;
                 
                 conceptoInicial= txtConceptoInicial.Text;
                 descDiagnostico=txtDiagnostico.Text;
@@ -1714,7 +1726,7 @@ namespace GPA
 
                 EstadoDiagnostico estado= manejadorRegistrarExamenGeneral.crearEstadoDiagnostico(id_estado,nombreEstado);
 
-                RazonamientoDiagnostico diagnostico = manejadorRegistrarExamenGeneral.crearRazonamientoDiagnostico(conceptoInicial, descDiagnostico, estado, motivo, fecha, listaLaboratorio, listaEstudios, listaTratamiento);
+                RazonamientoDiagnostico diagnostico = manejadorRegistrarExamenGeneral.crearRazonamientoDiagnostico(conceptoInicial, descDiagnostico, estado, motivo, fecha, listaLaboratorio, listaEstudios,listaPracticasComplementarias, listaTratamiento);
 
                 listaDiagnosticos.Add(diagnostico);
 
@@ -1768,13 +1780,13 @@ namespace GPA
         {
             string analisisLaboratorio;
             int id_analisisLaboratorio;
-            string indicaciones = "";
+            string indicaciones = "No Precisa";
             if (cboAnalisiLaboratorioARealizar.SelectedIndex > 0)
             {
                 AnalisisLaboratorio analisisLaboratorioSeleccionado = (AnalisisLaboratorio)cboAnalisiLaboratorioARealizar.SelectedItem;
                 
                 analisisLaboratorio = analisisLaboratorioSeleccionado.nombre;
-                id_analisisLaboratorio =(int) cboAnalisiLaboratorioARealizar.SelectedValue;
+                id_analisisLaboratorio = analisisLaboratorioSeleccionado.id_analisis;
 
                 if (string.IsNullOrEmpty(txtIndicacionesEstudioARealizar.Text) == false)
                 {
@@ -1809,15 +1821,22 @@ namespace GPA
             txtPeso.Text = "47";
             txtAltura.Text = "175";
 
+            txtColorPiel.Text = "Coloración normal";
+            txtElasticidadPiel.Text = "Normal";
+            txtHumedadPiel.Text = "Normal";
+            txtUntuosidadPiel.Text = "Normal";
+            txtTurgorPiel.Text = "Normal";
+            txtLesionesPiel.Text = "Normal";
+            cboTemperaturaPiel.SelectedIndex = 1;
+
             cboUbicacionGanglio.SelectedIndex = 1;
             cboTamañoGanglio.SelectedIndex = 1;
-            cboTamañoGanglio.SelectedIndex = 2;
             cboConsistencia.SelectedIndex = 1;
+            cboAproximacionNumerica.SelectedIndex = 2;
             chbSensiblePalpacion.Checked = true;
             chbProcesoInflamatorio.Checked = true;
             rbLimitesPrecisos.Checked = true;
             rbPlanosProfundos.Checked = true;
-            cboAproximacionNumerica.SelectedIndex = 2;
 
             cboPulso1.SelectedIndex = 1;
             cboPI1.SelectedIndex = 3;
@@ -1827,7 +1846,10 @@ namespace GPA
             cboPI2.SelectedIndex = 3;
             cboPD2.SelectedIndex = 3;
 
+            txtDescripcionRespiracion.Text = "Respiración normal";
 
+            cboSitioMedicion1.SelectedIndex = 1;
+            cboSitioMedicion2.SelectedIndex = 2;
 
             cboQueSienteElPaciente.SelectedIndex = 1;
             txtDescQueSientePaciente.Text = "Dolor de cabeza";
@@ -1839,6 +1861,8 @@ namespace GPA
 
 
             txtConceptoInicial.Text = "Paciente con valores elevados de presión arterial en el consultorio y en un exámen de rutina";
+            txtDiagnostico.Text = "Hipertensión arterial";
+            txtMotivoDiagnostico.Text = "Valores elevados de presión arterial en consultorio";
         }
         private void btnAgregarSintoma_Click(object sender, EventArgs e)
         {
@@ -1974,11 +1998,11 @@ namespace GPA
 
             string indicaciones = "No precisa";
 
-            if (cboPracticasComplementarias.SelectedIndex > 0)
+            if (cboPracticasComplementariasARealizar.SelectedIndex > 0)
             {
-                TipoPracticaComplementaria nombreSeleccionado = (TipoPracticaComplementaria)cboPracticasComplementarias.SelectedItem;
+                TipoPracticaComplementaria nombreSeleccionado = (TipoPracticaComplementaria)cboPracticasComplementariasARealizar.SelectedItem;
                 nombre = nombreSeleccionado.nombre;
-                id_tipo = (int)cboPracticasComplementarias.SelectedValue;
+                id_tipo = nombreSeleccionado.id_tipoPracticaComplementaria;
 
                 if (string.IsNullOrEmpty(txtIndicacionesPracticasComplementarias.Text) == false)
                 {
