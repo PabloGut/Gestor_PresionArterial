@@ -774,7 +774,7 @@ namespace GPA
         {
             int idMedicamento;
             Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
-           presentarNombresComerciales(cboNombreComercial, manejadorRegistrarDrogasLicitas.mostrarNombresComercialDeMedicamento(idMedicamento),"id_nombreComercial","nombre");
+            Utilidades.cargarCombo(cboNombreComercial, manejadorRegistrarDrogasLicitas.mostrarNombresComercialDeMedicamento(idMedicamento),"id_nombreComercial","nombre");
         }
 
         private void cboMedidaConsumeAlcohol_SelectedIndexChanged(object sender, EventArgs e)

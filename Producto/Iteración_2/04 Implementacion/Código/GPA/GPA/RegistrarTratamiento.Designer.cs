@@ -37,6 +37,7 @@
             this.mtbFechaInicio = new System.Windows.Forms.MaskedTextBox();
             this.txtMotivoInicio = new System.Windows.Forms.TextBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarTratamientoMedicamento = new System.Windows.Forms.Button();
             this.cboCantidadComprimidos = new System.Windows.Forms.ComboBox();
             this.cboConcentracion = new System.Windows.Forms.ComboBox();
             this.CantidadComprimidos = new System.Windows.Forms.Label();
@@ -82,7 +83,6 @@
             this.btnAgregarTerapia = new System.Windows.Forms.Button();
             this.dgvListaTratamientos = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnAgregarTratamientoMedicamento = new System.Windows.Forms.Button();
             this.groupBox16.SuspendLayout();
             this.groupBox17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTratamientos)).BeginInit();
@@ -182,6 +182,16 @@
             this.groupBox16.TabIndex = 8;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Tratamiento Farmacológico";
+            // 
+            // btnAgregarTratamientoMedicamento
+            // 
+            this.btnAgregarTratamientoMedicamento.Location = new System.Drawing.Point(286, 234);
+            this.btnAgregarTratamientoMedicamento.Name = "btnAgregarTratamientoMedicamento";
+            this.btnAgregarTratamientoMedicamento.Size = new System.Drawing.Size(103, 23);
+            this.btnAgregarTratamientoMedicamento.TabIndex = 1;
+            this.btnAgregarTratamientoMedicamento.Text = "Agregar ";
+            this.btnAgregarTratamientoMedicamento.UseVisualStyleBackColor = true;
+            this.btnAgregarTratamientoMedicamento.Click += new System.EventHandler(this.btnAgregarTratamientoMedicamento_Click);
             // 
             // cboCantidadComprimidos
             // 
@@ -478,6 +488,7 @@
             this.cboNombreComercial.Name = "cboNombreComercial";
             this.cboNombreComercial.Size = new System.Drawing.Size(121, 21);
             this.cboNombreComercial.TabIndex = 12;
+            this.cboNombreComercial.SelectedIndexChanged += new System.EventHandler(this.cboNombreComercial_SelectedIndexChanged);
             // 
             // cboNombreGenerico
             // 
@@ -486,6 +497,7 @@
             this.cboNombreGenerico.Name = "cboNombreGenerico";
             this.cboNombreGenerico.Size = new System.Drawing.Size(121, 21);
             this.cboNombreGenerico.TabIndex = 11;
+            this.cboNombreGenerico.SelectedIndexChanged += new System.EventHandler(this.cboNombreGenerico_SelectedIndexChanged);
             // 
             // label90
             // 
@@ -586,16 +598,6 @@
             this.label5.Size = new System.Drawing.Size(115, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Tratamientos iniciados:";
-            // 
-            // btnAgregarTratamientoMedicamento
-            // 
-            this.btnAgregarTratamientoMedicamento.Location = new System.Drawing.Point(286, 234);
-            this.btnAgregarTratamientoMedicamento.Name = "btnAgregarTratamientoMedicamento";
-            this.btnAgregarTratamientoMedicamento.Size = new System.Drawing.Size(103, 23);
-            this.btnAgregarTratamientoMedicamento.TabIndex = 1;
-            this.btnAgregarTratamientoMedicamento.Text = "Agregar ";
-            this.btnAgregarTratamientoMedicamento.UseVisualStyleBackColor = true;
-            this.btnAgregarTratamientoMedicamento.Click += new System.EventHandler(this.btnAgregarTratamientoMedicamento_Click);
             // 
             // RegistrarTratamiento
             // 

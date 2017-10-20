@@ -107,14 +107,14 @@ namespace DAO
         {
             try
             {
-                string consulta = @"insert into RazonamientoDiagnostico(conceptoInicial,diagnostico,id_estadoDiagnostico_fk,motivoDescartado,fechaDescartado,motivoConfirmado,fechaConfirmado,motivoTentativo,fechaTentativo,id_examenGeneral_fk)
-                                    values(@conceptoInicial,@diagnostico,@id_estadoDiagnostico_fk,@motivoDescartado,@fechaDescartado,@motivoConfirmado,@fechaConfirmado,@motivoTentativo,@fechaTentativo,@id_examenGeneral_fk)";
+                string consulta = @"insert into RazonamientoDiagnostico(conceptoInicial,diagnostico,id_estadoDiagnostico_fk,motivoDescartado,fechaDescartado,id_examenGeneral_fk, motivoConfirmado,fechaConfirmado,motivoTentativo,fechaTentativo)
+                                    values(@conceptoInicial,@diagnostico,@id_estadoDiagnostico_fk,@motivoDescartado,@fechaDescartado,@id_examenGeneral_fk,@motivoConfirmado,@fechaConfirmado,@motivoTentativo,@fechaTentativo)";
 
                 SqlCommand cmd = new SqlCommand();
 
                 cmd.Parameters.AddWithValue("@conceptoInicial", diagnostico.conceptoInicial);
                 cmd.Parameters.AddWithValue("@diagnostico", diagnostico.diagnostico);
-                cmd.Parameters.AddWithValue("@id_estadoDiagnostico_fk", diagnostico.id_estadoDiagnostico);
+                cmd.Parameters.AddWithValue("@id_estadoDiagnostico_fk", diagnostico.estado.id_estado);
                 
                 if (!string.IsNullOrEmpty(diagnostico.motivoDescartado))
                 {
@@ -183,7 +183,7 @@ namespace DAO
                     foreach (Laboratorio laboratorio in diagnostico.analisis)
                     {
                         laboratorio.id_razonamientoDiagnostico = diagnostico.id_razonamiento;
-                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioARealizar(laboratorio, tran, cn);//Modificar el método. Se quitó la clase prueba de laboratorio. Utilizar clase Laboratorio.
+                        PruebaDeLaboratorioDAO.registrarAnalisisLaboratorioARealizar(laboratorio, tran, cn);
                     }
                 }
                 if (diagnostico.practicas != null && diagnostico.practicas.Count > 0)
@@ -191,7 +191,7 @@ namespace DAO
                     foreach (PracticaComplementaria practica in diagnostico.practicas)
                     {
                         practica.id_razonamientoDiagnostico = diagnostico.id_razonamiento;
-                        PracticaComplementariaDAO.registrarPracticaComplementariaARealizar(practica, tran, cn);//Modificar el método. Se quitó la clase prueba de laboratorio. Utilizar clase Laboratorio.
+                        PracticaComplementariaDAO.registrarPracticaComplementariaARealizar(practica, tran, cn);
                     }
                 }
 

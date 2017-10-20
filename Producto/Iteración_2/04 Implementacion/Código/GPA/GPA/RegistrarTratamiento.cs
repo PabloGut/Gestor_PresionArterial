@@ -38,8 +38,17 @@ namespace GPA
             columnas.Add("Descripción");
 
             Utilidades.agregarColumnasDataGridView(dgvListaTratamientos, columnas);
-        }
 
+          
+
+            mtbFechaInicio.Text = DateTime.Now.ToShortDateString();
+        }
+        public void cargarCombosTratamientos()
+        {
+            Utilidades.cargarCombo(cboTerapia, manejador.mostrarTerapias(), "id_terapia", "nombre");
+            Utilidades.cargarCombo(cboNombreGenerico, manejador.presentarNombreGenericoMedicamento(), "id_medicamento", "nombreGenerico");
+
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -223,6 +232,38 @@ namespace GPA
         {
             txtIndicacionesTerapia.Clear();
             txtMotivoInicio.Clear();
+        }
+
+        private void cboNombreGenerico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idMedicamento;
+            Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+            Utilidades.cargarCombo(cboNombreComercial, manejador.presentarNombreComercialMedicamento(idMedicamento), "id_nombreComercial", "nombre");
+        }
+
+        private void cboNombreComercial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presentarDatosDeLaEspecificacion();
+        }
+        public void presentarDatosDeLaEspecificacion()
+        {
+            int idMedicamento;
+            int idNombreComercial;
+            Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
+            Int32.TryParse(cboNombreComercial.SelectedValue.ToString(), out idNombreComercial);
+
+            Utilidades.cargarCombo(cboUnidadMedida, manejador.mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_unidadMedida", "nombre");
+
+            Utilidades.cargarCombo(cboFormaAdministración, manejador.mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_formaAdministracion", "nombre");
+
+            Utilidades.cargarCombo(cboPresentacionMedicamento, manejador.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_presentacionMedicamento", "nombre");
+
+            UnidadDeMedida unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+            PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+            FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
+
+            cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+            cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
         }
     }
 }

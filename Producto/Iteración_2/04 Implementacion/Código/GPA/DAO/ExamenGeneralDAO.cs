@@ -141,8 +141,8 @@ namespace DAO
                     id_piel_fk = PielDAO.registrarExamenPiel(examen.examenPiel, cn, tran);
                 }
 
-                string consulta = @"insert into ExamenGeneral(posicionYdecubito,marchaYDeambulacion,facieExpresionFisonomia, concienciaEstadoPsiquico, constitucionEstadoNutritivo, peso,talla,id_piel_fk,descripcionComoRespira,observacionesRespiracion,id_pulsoArterial_fk,id_razonamiento_fk,id_medicion_fk)
-                                  values(@posicionYdecubito,@marchaYDeambulacion,@facieExpresionFisonomia,@concienciaEstadoPsiquico,@constitucionEstadoNutritivo,@peso,@talla,@id_piel_fk,@descComoRespira,@obsRespiracion,@id_pulsoArterial_fk,@id_razonamiento_fk,@id_medicion_fk)";
+                string consulta = @"insert into ExamenGeneral(posicionYdecubito,marchaYDeambulacion,facieExpresionFisonomia, concienciaEstadoPsiquico, constitucionEstadoNutritivo, peso,talla,id_piel_fk,descripcionComoRespira,observacionesRespiracion,id_pulsoArterial_fk,id_medicion_fk)
+                                  values(@posicionYdecubito,@marchaYDeambulacion,@facieExpresionFisonomia,@concienciaEstadoPsiquico,@constitucionEstadoNutritivo,@peso,@talla,@id_piel_fk,@descComoRespira,@obsRespiracion,@id_pulsoArterial_fk,@id_medicion_fk)";
 
                 SqlCommand cmd = new SqlCommand();
 

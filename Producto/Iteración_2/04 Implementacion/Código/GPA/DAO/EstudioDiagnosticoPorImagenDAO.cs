@@ -44,7 +44,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@indicaciones", DBNull.Value);
                 }
-                cmd.Parameters.AddWithValue("@id_nombreEstudio_fk", estudio.id_nombreEstudio);
+                cmd.Parameters.AddWithValue("@id_nombreEstudio_fk", estudio.nombreEstudio.id_nombreEstudio);
                 cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", estudio.id_razonamientoDiagnostico);
 
                 cmd.ExecuteNonQuery();

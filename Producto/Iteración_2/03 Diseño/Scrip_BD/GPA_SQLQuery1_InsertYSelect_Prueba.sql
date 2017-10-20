@@ -741,18 +741,73 @@ alter table AntecedentesPatologicosPersonales
 alter column descripcion_otrasEnfermedades text
 
 alter table RazonamientoDiagnostico
-add id_estadoDiagnostico_fk int
+drop column motivoConfirmado
+alter table RazonamientoDiagnostico
+drop column fechaConfirmado
+alter table RazonamientoDiagnostico
+drop column motivoTentativo
+alter table RazonamientoDiagnostico
+drop column fechaTentativo
+alter table RazonamientoDiagnostico
+drop column id_ExamenGeneral_fk
+
+/*alter table RazonamientoDiagnostico
+add motivoDescartado text
+alter table RazonamientoDiagnostico
+add fechaDescartado date*/
+alter table RazonamientoDiagnostico
+add motivoConfirmado text
+alter table RazonamientoDiagnostico
+add fechaConfirmado date
+alter table RazonamientoDiagnostico
+add motivoTentativo text
+alter table RazonamientoDiagnostico
+add fechaTentativo date
+
+alter table RazonamientoDiagnostico
+add id_ExamenGeneral_fk int
+alter table RazonamientoDiagnostico
+add foreign key (id_ExamenGeneral_fk) references ExamenGeneral(id_examenGeneral)
+
+
+alter table RazonamientoDiagnostico
+alter column fechaDescartado date
+
+alter table RazonamientoDiagnostico
+alter column fechaConfirmado date
+
+alter table RazonamientoDiagnostico
+alter column fechaTentativo date
 
 alter table RazonamientoDiagnostico
 add foreign key (id_estadoDiagnostico_fk) references EstadoDiagnostico(id_estadoDiagnostico)
 
-alter table EstadoDiagnostico
-drop column descripcion
+alter table RazonamientoDiagnostico
+drop column fechaTentativo
 
-select * from DetalleMedicionPresionArterial
-drop table PracticaComplementaria
+select * from RazonamientoDiagnostico
+drop table RazonamientoDiagnosticoPrueba
+
+
 delete from NombreEstudio
 
+select * from PracticaComplementaria
 
+alter table PracticaComplementaria
+alter column fechaSolicitud date
 
-where id_hc=63
+alter table PracticaComplementaria
+alter column fechaRealizacion date
+alter table PracticaComplementaria
+alter column doctorACargo varchar(50)
+alter table Paciente
+alter column altura int
+
+select * from Paciente
+where nombre='Soledad'
+select * from Historia_Clinica
+
+select p.nombre,p.apellido, hc.nro_hc, hc.id_hc, c.nroConsulta, c.fechaConsulta, c.motivoConsulta
+from Historia_Clinica hc, Paciente p, Consulta c
+where p.id_hc_fk=hc.id_hc and hc.id_hc=c.id_hc_fk
+order by c.nroConsulta

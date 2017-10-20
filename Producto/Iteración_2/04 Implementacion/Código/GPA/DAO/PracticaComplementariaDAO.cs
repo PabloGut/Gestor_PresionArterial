@@ -26,8 +26,8 @@ namespace DAO
         {
             try
             {
-                string consulta = @"insert into Laboratorio(fechaSolicitud,indicaciones,id_analisisLaboratorio_fk, id_razonamientoDiagnostico_fk)
-                                  values(@fechaSolicitud,@indicaciones,@id_analisisLaboratorio_fk,@id_razonamientoDiagnostico_fk)";
+                string consulta = @"insert into PracticaComplementaria(fechaSolicitud,indicaciones,id_tipoPractica_fk,id_razonamientoDiagnostico_fk)
+                                  values(@fechaSolicitud,@indicaciones,@id_tipoPractica_fk,@id_razonamientoDiagnostico_fk)";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
@@ -43,7 +43,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@indicaciones",DBNull.Value);
                 }
-                cmd.Parameters.AddWithValue("@id_analisisLaboratorio_fk", practica.id_tipoPractica);
+                cmd.Parameters.AddWithValue("@id_tipoPractica_fk", practica.tipo.id_tipoPracticaComplementaria);
                 cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", practica.id_razonamientoDiagnostico);
 
                 cmd.ExecuteNonQuery();

@@ -139,6 +139,7 @@
     <Compile Include="TamañoDAO.cs" />
     <Compile Include="TemperaturaDAO.cs" />
     <Compile Include="TemperaturaPielDAO.cs" />
+    <Compile Include="TerapiaDAO.cs" />
     <Compile Include="TipoAbortoDAO.cs" />
     <Compile Include="TipoAntecedenteMorbidoDAO.cs" />
     <Compile Include="TipoBebidaDAO.cs" />

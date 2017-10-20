@@ -393,6 +393,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnCancelarAtencionEnConsultorio = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -3079,6 +3080,7 @@
             this.groupBox9.TabIndex = 1;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Presión arterial";
+            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
             // cmbUbicacionPresionArterial
             // 
@@ -3243,7 +3245,7 @@
             // 
             // txtDiastolicaPresionArterial
             // 
-            this.txtDiastolicaPresionArterial.Location = new System.Drawing.Point(577, 61);
+            this.txtDiastolicaPresionArterial.Location = new System.Drawing.Point(576, 101);
             this.txtDiastolicaPresionArterial.Name = "txtDiastolicaPresionArterial";
             this.txtDiastolicaPresionArterial.Size = new System.Drawing.Size(72, 23);
             this.txtDiastolicaPresionArterial.TabIndex = 15;
@@ -3251,7 +3253,7 @@
             // lblMmHgDiastolicaPresionArterial
             // 
             this.lblMmHgDiastolicaPresionArterial.AutoSize = true;
-            this.lblMmHgDiastolicaPresionArterial.Location = new System.Drawing.Point(655, 64);
+            this.lblMmHgDiastolicaPresionArterial.Location = new System.Drawing.Point(654, 68);
             this.lblMmHgDiastolicaPresionArterial.Name = "lblMmHgDiastolicaPresionArterial";
             this.lblMmHgDiastolicaPresionArterial.Size = new System.Drawing.Size(48, 17);
             this.lblMmHgDiastolicaPresionArterial.TabIndex = 14;
@@ -3260,7 +3262,7 @@
             // lblDiastolicaPresionArterial
             // 
             this.lblDiastolicaPresionArterial.AutoSize = true;
-            this.lblDiastolicaPresionArterial.Location = new System.Drawing.Point(407, 64);
+            this.lblDiastolicaPresionArterial.Location = new System.Drawing.Point(400, 104);
             this.lblDiastolicaPresionArterial.Name = "lblDiastolicaPresionArterial";
             this.lblDiastolicaPresionArterial.Size = new System.Drawing.Size(170, 17);
             this.lblDiastolicaPresionArterial.TabIndex = 13;
@@ -3268,7 +3270,7 @@
             // 
             // txtSistolicaPresionArterial
             // 
-            this.txtSistolicaPresionArterial.Location = new System.Drawing.Point(576, 101);
+            this.txtSistolicaPresionArterial.Location = new System.Drawing.Point(576, 64);
             this.txtSistolicaPresionArterial.Name = "txtSistolicaPresionArterial";
             this.txtSistolicaPresionArterial.Size = new System.Drawing.Size(72, 23);
             this.txtSistolicaPresionArterial.TabIndex = 12;
@@ -3302,7 +3304,7 @@
             // lblSistolicaPresionArterial
             // 
             this.lblSistolicaPresionArterial.AutoSize = true;
-            this.lblSistolicaPresionArterial.Location = new System.Drawing.Point(407, 104);
+            this.lblSistolicaPresionArterial.Location = new System.Drawing.Point(409, 67);
             this.lblSistolicaPresionArterial.Name = "lblSistolicaPresionArterial";
             this.lblSistolicaPresionArterial.Size = new System.Drawing.Size(161, 17);
             this.lblSistolicaPresionArterial.TabIndex = 6;
@@ -3655,8 +3657,11 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.btnCancelarAtencionEnConsultorio);
             this.tabPage10.Controls.Add(this.groupBox15);
             this.tabPage10.Controls.Add(this.groupBox10);
+            this.tabPage10.Controls.Add(this.btnAgregarDiagnostico);
+            this.tabPage10.Controls.Add(this.btnRegistrarAtención);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
@@ -3669,7 +3674,6 @@
             // 
             this.groupBox15.Controls.Add(this.label56);
             this.groupBox15.Controls.Add(this.txtIndicacionesPracticasComplementarias);
-            this.groupBox15.Controls.Add(this.btnAgregarDiagnostico);
             this.groupBox15.Controls.Add(this.btnPracticasComplementariasARealizar);
             this.groupBox15.Controls.Add(this.cboPracticasComplementariasARealizar);
             this.groupBox15.Controls.Add(this.label57);
@@ -3677,7 +3681,6 @@
             this.groupBox15.Controls.Add(this.label54);
             this.groupBox15.Controls.Add(this.txtIndicacionesAnalisisARealizar);
             this.groupBox15.Controls.Add(this.txtIndicacionesEstudioARealizar);
-            this.groupBox15.Controls.Add(this.btnRegistrarAtención);
             this.groupBox15.Controls.Add(this.btnAnalisisLaboratorioARealizar);
             this.groupBox15.Controls.Add(this.btnEstudioARealizar);
             this.groupBox15.Controls.Add(this.dgvExamenesARealizar);
@@ -3688,7 +3691,7 @@
             this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox15.Location = new System.Drawing.Point(6, 246);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(838, 328);
+            this.groupBox15.Size = new System.Drawing.Size(838, 296);
             this.groupBox15.TabIndex = 2;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Exámenes complementarios a realizar";
@@ -3696,7 +3699,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(5, 261);
+            this.label56.Location = new System.Drawing.Point(6, 233);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(86, 17);
             this.label56.TabIndex = 37;
@@ -3704,25 +3707,25 @@
             // 
             // txtIndicacionesPracticasComplementarias
             // 
-            this.txtIndicacionesPracticasComplementarias.Location = new System.Drawing.Point(97, 261);
+            this.txtIndicacionesPracticasComplementarias.Location = new System.Drawing.Point(8, 253);
             this.txtIndicacionesPracticasComplementarias.Multiline = true;
             this.txtIndicacionesPracticasComplementarias.Name = "txtIndicacionesPracticasComplementarias";
-            this.txtIndicacionesPracticasComplementarias.Size = new System.Drawing.Size(381, 30);
+            this.txtIndicacionesPracticasComplementarias.Size = new System.Drawing.Size(470, 30);
             this.txtIndicacionesPracticasComplementarias.TabIndex = 36;
             // 
             // btnAgregarDiagnostico
             // 
-            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(533, 259);
+            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(6, 548);
             this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
             this.btnAgregarDiagnostico.Size = new System.Drawing.Size(247, 26);
             this.btnAgregarDiagnostico.TabIndex = 18;
-            this.btnAgregarDiagnostico.Text = "Agregar";
+            this.btnAgregarDiagnostico.Text = "Agregar diagnóstico";
             this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
             this.btnAgregarDiagnostico.Click += new System.EventHandler(this.btnAgregarDiagnostico_Click);
             // 
             // btnPracticasComplementariasARealizar
             // 
-            this.btnPracticasComplementariasARealizar.Location = new System.Drawing.Point(362, 228);
+            this.btnPracticasComplementariasARealizar.Location = new System.Drawing.Point(361, 205);
             this.btnPracticasComplementariasARealizar.Name = "btnPracticasComplementariasARealizar";
             this.btnPracticasComplementariasARealizar.Size = new System.Drawing.Size(117, 26);
             this.btnPracticasComplementariasARealizar.TabIndex = 35;
@@ -3733,7 +3736,7 @@
             // cboPracticasComplementariasARealizar
             // 
             this.cboPracticasComplementariasARealizar.FormattingEnabled = true;
-            this.cboPracticasComplementariasARealizar.Location = new System.Drawing.Point(173, 230);
+            this.cboPracticasComplementariasARealizar.Location = new System.Drawing.Point(172, 205);
             this.cboPracticasComplementariasARealizar.Name = "cboPracticasComplementariasARealizar";
             this.cboPracticasComplementariasARealizar.Size = new System.Drawing.Size(183, 24);
             this.cboPracticasComplementariasARealizar.TabIndex = 34;
@@ -3741,7 +3744,7 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(6, 233);
+            this.label57.Location = new System.Drawing.Point(6, 208);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(161, 17);
             this.label57.TabIndex = 33;
@@ -3750,7 +3753,7 @@
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(5, 151);
+            this.label55.Location = new System.Drawing.Point(5, 139);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(86, 17);
             this.label55.TabIndex = 32;
@@ -3767,7 +3770,7 @@
             // 
             // txtIndicacionesAnalisisARealizar
             // 
-            this.txtIndicacionesAnalisisARealizar.Location = new System.Drawing.Point(9, 171);
+            this.txtIndicacionesAnalisisARealizar.Location = new System.Drawing.Point(9, 159);
             this.txtIndicacionesAnalisisARealizar.Multiline = true;
             this.txtIndicacionesAnalisisARealizar.Name = "txtIndicacionesAnalisisARealizar";
             this.txtIndicacionesAnalisisARealizar.Size = new System.Drawing.Size(470, 40);
@@ -3783,7 +3786,7 @@
             // 
             // btnRegistrarAtención
             // 
-            this.btnRegistrarAtención.Location = new System.Drawing.Point(533, 296);
+            this.btnRegistrarAtención.Location = new System.Drawing.Point(597, 548);
             this.btnRegistrarAtención.Name = "btnRegistrarAtención";
             this.btnRegistrarAtención.Size = new System.Drawing.Size(247, 26);
             this.btnRegistrarAtención.TabIndex = 28;
@@ -3793,7 +3796,7 @@
             // 
             // btnAnalisisLaboratorioARealizar
             // 
-            this.btnAnalisisLaboratorioARealizar.Location = new System.Drawing.Point(348, 124);
+            this.btnAnalisisLaboratorioARealizar.Location = new System.Drawing.Point(348, 112);
             this.btnAnalisisLaboratorioARealizar.Name = "btnAnalisisLaboratorioARealizar";
             this.btnAnalisisLaboratorioARealizar.Size = new System.Drawing.Size(130, 26);
             this.btnAnalisisLaboratorioARealizar.TabIndex = 25;
@@ -3822,7 +3825,7 @@
             // cboAnalisiLaboratorioARealizar
             // 
             this.cboAnalisiLaboratorioARealizar.FormattingEnabled = true;
-            this.cboAnalisiLaboratorioARealizar.Location = new System.Drawing.Point(159, 126);
+            this.cboAnalisiLaboratorioARealizar.Location = new System.Drawing.Point(159, 114);
             this.cboAnalisiLaboratorioARealizar.Name = "cboAnalisiLaboratorioARealizar";
             this.cboAnalisiLaboratorioARealizar.Size = new System.Drawing.Size(183, 24);
             this.cboAnalisiLaboratorioARealizar.TabIndex = 22;
@@ -3838,7 +3841,7 @@
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(5, 129);
+            this.label84.Location = new System.Drawing.Point(5, 117);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(148, 17);
             this.label84.TabIndex = 20;
@@ -4008,6 +4011,16 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelarAtencionEnConsultorio
+            // 
+            this.btnCancelarAtencionEnConsultorio.Location = new System.Drawing.Point(366, 548);
+            this.btnCancelarAtencionEnConsultorio.Name = "btnCancelarAtencionEnConsultorio";
+            this.btnCancelarAtencionEnConsultorio.Size = new System.Drawing.Size(225, 26);
+            this.btnCancelarAtencionEnConsultorio.TabIndex = 29;
+            this.btnCancelarAtencionEnConsultorio.Text = "Cancelar";
+            this.btnCancelarAtencionEnConsultorio.UseVisualStyleBackColor = true;
+            this.btnCancelarAtencionEnConsultorio.Click += new System.EventHandler(this.btnCancelarAtencionEnConsultorio_Click);
             // 
             // MenuPrincipal
             // 
@@ -4476,5 +4489,6 @@
         private System.Windows.Forms.ComboBox cboPracticasComplementariasARealizar;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button btnCancelarAtencionEnConsultorio;
     }
 }

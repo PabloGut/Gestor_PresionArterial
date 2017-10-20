@@ -109,6 +109,7 @@
     <Compile Include="TamañoLN.cs" />
     <Compile Include="TemperaturaLN.cs" />
     <Compile Include="TemperaturaPielLN.cs" />
+    <Compile Include="TerapiaLN.cs" />
     <Compile Include="TipoAbortoLN.cs" />
     <Compile Include="TipoAntecedenteMorbidoLN.cs" />
     <Compile Include="TipoBebidaLN.cs" />

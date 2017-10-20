@@ -1665,7 +1665,7 @@ namespace GPA
             }
 
             dgvPresionArterial.Rows.Add(DateTime.Today.ToShortDateString(), DateTime.Now.ToShortTimeString(), extremidad.nombre, ubicacion.nombre, posicion.nombre, sitio.nombre, txtSistolicaPresionArterial.Text + "mmHg", txtDiastolicaPresionArterial.Text + "mmHg", txtPulsoPresionArterial.Text, momento.nombre);
-            DateTime hora = DateTime.Now; int pulso = Convert.ToInt32(txtPulsoPresionArterial.Text); int valorMinimo = Convert.ToInt32(txtSistolicaPresionArterial.Text); int valorMaximo = Convert.ToInt32(txtDiastolicaPresionArterial.Text);
+            DateTime hora = DateTime.Now; int pulso = Convert.ToInt32(txtPulsoPresionArterial.Text); int valorMinimo = Convert.ToInt32(txtDiastolicaPresionArterial.Text); int valorMaximo = Convert.ToInt32(txtSistolicaPresionArterial.Text);
             manejadorRegistrarExamenGeneral.registrarDetalleDeMedicion(hora, pulso, valorMinimo, valorMaximo);
         }
 
@@ -1745,7 +1745,7 @@ namespace GPA
         {
             string estudio;
             int id_estudio;
-            string indicaciones = "No precisa";
+            string indicaciones = "";
             if (cboEstudioARealizar.SelectedIndex > 0)
             {
                 NombreEstudio nombreSeleccionado = (NombreEstudio)cboEstudioARealizar.SelectedItem;
@@ -1763,7 +1763,7 @@ namespace GPA
                     listaEstudios = manejadorRegistrarExamenGeneral.crearListaEstudioDiagnosticoPorImagen();
 
                 estudioDiagnosticoImagen.nombreEstudio = manejadorRegistrarExamenGeneral.crearNombreEstudio(id_estudio, estudio);
-
+                estudioDiagnosticoImagen.fechaSolicitud = Convert.ToDateTime(mtbFechaDiagnostico.Text);
                 listaEstudios.Add(estudioDiagnosticoImagen);
 
                 dgvExamenesARealizar.Rows.Add(estudio, indicaciones);
@@ -1780,7 +1780,7 @@ namespace GPA
         {
             string analisisLaboratorio;
             int id_analisisLaboratorio;
-            string indicaciones = "No Precisa";
+            string indicaciones = "";
             if (cboAnalisiLaboratorioARealizar.SelectedIndex > 0)
             {
                 AnalisisLaboratorio analisisLaboratorioSeleccionado = (AnalisisLaboratorio)cboAnalisiLaboratorioARealizar.SelectedItem;
@@ -1799,7 +1799,7 @@ namespace GPA
                     listaLaboratorio = manejadorRegistrarExamenGeneral.crearListaLaboratorio();
 
                 laboratorio.analisis = manejadorRegistrarExamenGeneral.crearAnalisisLaboratorio(id_analisisLaboratorio, analisisLaboratorio);
-                
+                laboratorio.fechaSolicitud = Convert.ToDateTime(mtbFechaDiagnostico.Text);
                 listaLaboratorio.Add(laboratorio);
 
                 dgvExamenesARealizar.Rows.Add(analisisLaboratorio, indicaciones);
@@ -1996,7 +1996,7 @@ namespace GPA
             string nombre;
             int id_tipo;
 
-            string indicaciones = "No precisa";
+            string indicaciones = "";
 
             if (cboPracticasComplementariasARealizar.SelectedIndex > 0)
             {
@@ -2015,7 +2015,7 @@ namespace GPA
                     listaPracticasComplementarias = manejadorRegistrarExamenGeneral.crearListaPracticaComplementaria();
 
                 practicaComplementaria.tipo = manejadorRegistrarExamenGeneral.crearTipoPracticaComplementaria(id_tipo, nombre);
-
+                practicaComplementaria.fechaSolicitud = Convert.ToDateTime(mtbFechaDiagnostico.Text);
                 listaPracticasComplementarias.Add(practicaComplementaria);
 
                 dgvExamenesARealizar.Rows.Add(nombre, indicaciones);
@@ -2057,6 +2057,150 @@ namespace GPA
                 float valor = float.Parse(txtValorTemperatura4.Text);
                 txtResultadoTemperatura4.Text = Convert.ToString(manejadorRegistrarExamenGeneral.mostrarClasificacionTemperatura(valor));
             }
+        }
+
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelarAtencionEnConsultorio_Click(object sender, EventArgs e)
+        {
+            cancelarAtencionEnConsultorio();
+        }
+        public void cancelarAtencionEnConsultorio()
+        {
+            if (MessageBox.Show("Está seguro que desea cancelar la atención en consultorio?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                borrarDatosComponentesAtencionConsultorio();
+            }
+        }
+        public void borrarDatosComponentesAtencionConsultorio()
+        {
+            txtNroConsulta.Clear();
+            mtbFechaConsulta.Clear();
+            mtbHoraConsulta.Clear();
+            txtMotivoConsulta.Clear();
+            cboQueSienteElPaciente.SelectedIndex = 0;
+            txtDescQueSientePaciente.Clear();
+            cboQueSienteElPaciente.SelectedIndex = 0;
+            cboCaracterDolor.SelectedIndex = 0;
+            txtHaciaDondeIrradia.Clear();
+            cboCuandoComenzo.SelectedIndex = 0;
+            cboComoModificaSintoma.SelectedIndex = 0;
+            cboElementoModificacion.SelectedIndex = 0;
+            mtbFechaComienzoSintoma.Clear();
+            txtCantTiempoInicioSintoma.Clear();
+            cboElementoTiempo.SelectedIndex = 0;
+            txtObservacionesSintoma.Clear();
+
+            txtPosicionYDecubito.Clear();
+            txtMarchaYDeambulacion.Clear();
+            txtFacieOExpresióndeFisonomia.Clear();
+            txtConsistenciaYEstadoPsiquico.Clear();
+            txtConstitucionYEstadoNutritivo.Clear();
+            txtPeso.Clear();
+            txtAltura.Clear();
+
+            txtColorPiel.Clear();
+            txtElasticidadPiel.Clear();
+            txtHumedadPiel.Clear();
+            txtUntuosidadPiel.Clear();
+            txtTurgorPiel.Clear();
+            txtLesionesPiel.Clear();
+            cboTemperaturaPiel.SelectedIndex = 0;
+
+            cboUbicacionGanglio.SelectedIndex = 0;
+            cboTamañoGanglio.SelectedIndex = 0;
+            cboAproximacionNumerica.SelectedIndex = 0;
+            cboConsistencia.SelectedIndex = 0;
+            txtDescripcion.Clear();
+            chbSensiblePalpacion.Checked = false;
+            chbProcesoInflamatorio.Checked = false;
+            txtLesionCompromisoGangleo.Clear();
+            txtObservaciones.Clear();
+            dgvRegionesEstudiadas.Rows.Clear();
+
+            cboPulso1.SelectedIndex = 0;
+            cboPI1.SelectedIndex = 0;
+            cboPD1.SelectedIndex = 0;
+
+            cboPulso2.SelectedIndex = 0;
+            cboPI2.SelectedIndex = 0;
+            cboPD2.SelectedIndex = 0;
+
+            cboPulso3.SelectedIndex = 0;
+            cboPI3.SelectedIndex = 0;
+            cboPD3.SelectedIndex = 0;
+
+            cboPulso4.SelectedIndex = 0;
+            cboPI4.SelectedIndex = 0;
+            cboPD4.SelectedIndex = 0;
+
+            cboPulso5.SelectedIndex = 0;
+            cboPI5.SelectedIndex = 0;
+            cboPD5.SelectedIndex = 0;
+
+            cboPulso6.SelectedIndex = 0;
+            cboPI6.SelectedIndex = 0;
+            cboPD6.SelectedIndex = 0;
+
+            cboPulso7.SelectedIndex = 0;
+            cboPI7.SelectedIndex = 0;
+            cboPD7.SelectedIndex = 0;
+
+            cboPulso8.SelectedIndex = 0;
+            cboPI8.SelectedIndex = 0;
+            cboPD8.SelectedIndex = 0;
+
+            txtAuscultacionPulsos.Clear();
+            txtObservacionesPulsoArterial.Clear();
+
+            txtDescripcionRespiracion.Clear();
+            txtObservacionesRespiracion.Clear();
+
+            cboSitioMedicion1.SelectedIndex = 0;
+            txtValorTemperatura1.Clear();
+            txtResultadoTemperatura1.Clear();
+
+            cboSitioMedicion2.SelectedIndex = 0;
+            txtValorTemperatura2.Clear();
+            txtResultadoTemperatura2.Clear();
+
+            cboSitioMedicion3.SelectedIndex = 0;
+            txtValorTemperatura3.Clear();
+            txtResultadoTemperatura3.Clear();
+
+            cboSitioMedicion4.SelectedIndex = 0;
+            txtValorTemperatura4.Clear();
+            txtResultadoTemperatura4.Clear();
+
+            cmbExtremidadPresionArterial.SelectedIndex = 0;
+            cmbPosicionPresionArterial.SelectedIndex = 0;
+            cmbSitioMedicionPresionArterial.SelectedIndex = 0;
+            cmbUbicacionPresionArterial.SelectedIndex = 0;
+            cmbMomentoDiaPresionArterial.SelectedIndex = 0;
+            txtSistolicaPresionArterial.Clear();
+            txtDiastolicaPresionArterial.Clear();
+            txtPulsoPresionArterial.Clear();
+            dgvPresionArterial.Rows.Clear();
+
+            txtConceptoInicial.Clear();
+            txtDiagnostico.Clear();
+            cboEstadoDiagnostico.SelectedIndex = 0;
+            mtbFechaDiagnostico.Clear();
+            txtMotivoDiagnostico.Clear();
+            cboEstudioARealizar.SelectedIndex = 0;
+            txtIndicacionesEstudioARealizar.Clear();
+            cboAnalisiLaboratorioARealizar.SelectedIndex = 0;
+            txtIndicacionesAnalisisARealizar.Clear();
+            cboPracticasComplementariasARealizar.SelectedIndex = 0;
+            txtIndicacionesPracticasComplementarias.Clear();
+            dgvExamenesARealizar.Rows.Clear();
+            dgvDiagnosticos.Rows.Clear();
+
+
+
         }
     }
 }

@@ -228,11 +228,11 @@ namespace GPA.Manejadores
             switch (estadoDiagnostico.nombre)
             {
                 case "Tentativo":
-                    diagnostico.fechaTentativo = fecha;
+                    diagnostico.fechaTentativo =Convert.ToDateTime(fecha.ToShortDateString());
                     diagnostico.motivoTentativo = motivo;
                     break;
 
-                case "Confirmado":
+                case "Definitivo":
                     diagnostico.fechaConfirmado = fecha;
                     diagnostico.motivoConfirmado = motivo;
                     break;
@@ -375,6 +375,30 @@ namespace GPA.Manejadores
         public List<TemperaturaPiel> obtenerTemperaturasPiel()
         {
             return TemperaturaPielLN.obtenerTemperaturasPiel();
+        }
+        public List<Terapia> mostrarTerapias()
+        {
+            return TerapiaLN.mostrarTerapias();
+        }
+        public List<Medicamento> presentarNombreGenericoMedicamento()
+        {
+            return MedicamentoLN.mostrarNombreMedicamentos();
+        }
+        public List<NombreComercial> presentarNombreComercialMedicamento(int id)
+        {
+            return NombreComercialLN.mostrarNombresComercialesDeMedicamento(id);
+        }
+        public List<UnidadDeMedida> mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoLN.mostrarUnidadMedidaParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial);
+        }
+        public List<FormaAdministracion> mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoLN.mostrarFormasAdministracionParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial);
+        }
+        public List<PresentacionMedicamento> mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(int idMedicamento, int idNombreComercial)
+        {
+            return EspecificacionMedicamentoLN.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial);
         }
     }
 }

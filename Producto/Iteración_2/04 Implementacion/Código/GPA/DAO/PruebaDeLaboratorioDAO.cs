@@ -43,7 +43,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@indicaciones", DBNull.Value);
                 }
-                cmd.Parameters.AddWithValue("@id_analisisLaboratorio_fk", prueba.id_analisisLaboratorio_fk);
+                cmd.Parameters.AddWithValue("@id_analisisLaboratorio_fk", prueba.analisis.id_analisis);
                 cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", prueba.id_razonamientoDiagnostico);
 
                 cmd.ExecuteNonQuery();
