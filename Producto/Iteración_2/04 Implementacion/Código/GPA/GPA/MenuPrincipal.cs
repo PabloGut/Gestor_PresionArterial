@@ -32,6 +32,7 @@ namespace GPA
 
         List<Sintoma> listaSintoma;
         Consulta consulta;
+        private Boolean consultaGenerada;
         ExamenGeneral examen;
         List<SistemaLinfatico> listaTerritoriosExaminados;
 
@@ -46,6 +47,7 @@ namespace GPA
             manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
 
             consulta = null;
+            consultaGenerada = false;
             examen = null;
             listaTerritoriosExaminados = null;
             listaSintoma = null;
@@ -583,12 +585,14 @@ namespace GPA
                     {
                         txtNroConsulta.Text = Convert.ToString(manejadorRegistrarAtencionMedicaEnConsultorio.calcularNroConsulta(id));
                         presentarFechaYHoraActual();
+                        consultaGenerada = true;
                     }
                 }
                 else
                 {
                     txtNroConsulta.Text = Convert.ToString(manejadorRegistrarAtencionMedicaEnConsultorio.calcularNroConsulta(hc.id_hc));
                     presentarFechaYHoraActual();
+                    consultaGenerada = true;
                 }
             }
             else
@@ -1046,7 +1050,8 @@ namespace GPA
         }
 
         private void btnRegistrarAtención_Click(object sender, EventArgs e)
-        {
+        {   
+            //Aqui va la validación. Para evitar registrar el examen general y la atención en consultorio sin los datos necesarios.
             registrarExamenGeneralYConsulta();
         }
         public void registrarExamenGeneralYConsulta()
@@ -1977,6 +1982,30 @@ namespace GPA
 
         private void nuevoTratamientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int id = 0;
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No ha seleccionado un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
+            {
+                if (hc == null)
+                {
+                    id = manejadorRegistrarAtencionMedicaEnConsultorio.existeHc(pacienteSeleccionado.id_tipoDoc, pacienteSeleccionado.nroDoc);
+                    if (id == -1)
+                    {
+                        MessageBox.Show("El paciente no tiene historia clínica. No es posible registrar tratamientos.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+            }
+
+            if (consultaGenerada == false)
+            {
+                MessageBox.Show("Antes de registrar tratamientos debe generar una nueva consulta", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             RegistrarTratamiento rt = new RegistrarTratamiento(manejadorRegistrarExamenGeneral);
             if (rt.ShowDialog() == DialogResult.OK)
             {

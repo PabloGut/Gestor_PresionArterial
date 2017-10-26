@@ -400,5 +400,25 @@ namespace GPA.Manejadores
         {
             return EspecificacionMedicamentoLN.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial);
         }
+        public List<int> mostrarConcentracionMedicamento(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoLN.mostrarConcentracionEspecificacion(idMedicamento, idNombreComercial, idUnidadMedida, idPresentacion, idFormaAdministracion);
+        }
+        public List<int> mostrarCantidadComrpimidos(int idMedicamento, int idNombreComercial, int idUnidadMedida, int idPresentacion, int idFormaAdministracion)
+        {
+            return EspecificacionMedicamentoLN.mostrarCantidadComprimidos(idMedicamento, idNombreComercial, idUnidadMedida, idPresentacion, idFormaAdministracion);
+        }
+        public List<Frecuencia> mostrarFrecuencias()
+        {
+            return FrecuenciaLN.mostrarFrecuencias();
+        }
+        public List<MomentoDia> mostrarMomentosDelDia()
+        {
+            return MomentoDiaLN.mostrarMomentosDelDia();
+        }
+        public List<PresentacionMedicamento> mostrarPresentacionesMedicamento()
+        {
+            return PresentacionMedicamentoLN.mostrarPresentacionesMedicamento();
+        }
     }
 }

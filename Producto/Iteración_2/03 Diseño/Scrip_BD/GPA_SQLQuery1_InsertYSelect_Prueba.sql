@@ -811,3 +811,6 @@ select p.nombre,p.apellido, hc.nro_hc, hc.id_hc, c.nroConsulta, c.fechaConsulta,
 from Historia_Clinica hc, Paciente p, Consulta c
 where p.id_hc_fk=hc.id_hc and hc.id_hc=c.id_hc_fk
 order by c.nroConsulta
+
+
+select * from Tratamiento

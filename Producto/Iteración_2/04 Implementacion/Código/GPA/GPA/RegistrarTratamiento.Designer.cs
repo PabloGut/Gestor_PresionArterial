@@ -36,7 +36,7 @@
             this.txtIndicacionesTerapia = new System.Windows.Forms.TextBox();
             this.mtbFechaInicio = new System.Windows.Forms.MaskedTextBox();
             this.txtMotivoInicio = new System.Windows.Forms.TextBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.grbTratamientoFarmacologico = new System.Windows.Forms.GroupBox();
             this.btnAgregarTratamientoMedicamento = new System.Windows.Forms.Button();
             this.cboCantidadComprimidos = new System.Windows.Forms.ComboBox();
             this.cboConcentracion = new System.Windows.Forms.ComboBox();
@@ -83,7 +83,7 @@
             this.btnAgregarTerapia = new System.Windows.Forms.Button();
             this.dgvListaTratamientos = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox16.SuspendLayout();
+            this.grbTratamientoFarmacologico.SuspendLayout();
             this.groupBox17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTratamientos)).BeginInit();
             this.SuspendLayout();
@@ -131,6 +131,7 @@
             this.cboTerapia.Name = "cboTerapia";
             this.cboTerapia.Size = new System.Drawing.Size(214, 21);
             this.cboTerapia.TabIndex = 4;
+            this.cboTerapia.SelectedIndexChanged += new System.EventHandler(this.cboTerapia_SelectedIndexChanged);
             // 
             // txtIndicacionesTerapia
             // 
@@ -157,39 +158,39 @@
             this.txtMotivoInicio.Size = new System.Drawing.Size(588, 36);
             this.txtMotivoInicio.TabIndex = 7;
             // 
-            // groupBox16
+            // grbTratamientoFarmacologico
             // 
-            this.groupBox16.Controls.Add(this.btnAgregarTratamientoMedicamento);
-            this.groupBox16.Controls.Add(this.cboCantidadComprimidos);
-            this.groupBox16.Controls.Add(this.cboConcentracion);
-            this.groupBox16.Controls.Add(this.CantidadComprimidos);
-            this.groupBox16.Controls.Add(this.groupBox17);
-            this.groupBox16.Controls.Add(this.cboFrecuencia);
-            this.groupBox16.Controls.Add(this.cboPresentacionMedicamento);
-            this.groupBox16.Controls.Add(this.cboFormaAdministración);
-            this.groupBox16.Controls.Add(this.cboUnidadMedida);
-            this.groupBox16.Controls.Add(this.cboNombreComercial);
-            this.groupBox16.Controls.Add(this.cboNombreGenerico);
-            this.groupBox16.Controls.Add(this.label90);
-            this.groupBox16.Controls.Add(this.label89);
-            this.groupBox16.Controls.Add(this.label85);
-            this.groupBox16.Controls.Add(this.label83);
-            this.groupBox16.Controls.Add(this.label82);
-            this.groupBox16.Controls.Add(this.label81);
-            this.groupBox16.Location = new System.Drawing.Point(12, 155);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(661, 262);
-            this.groupBox16.TabIndex = 8;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Tratamiento Farmacológico";
+            this.grbTratamientoFarmacologico.Controls.Add(this.btnAgregarTratamientoMedicamento);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboCantidadComprimidos);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboConcentracion);
+            this.grbTratamientoFarmacologico.Controls.Add(this.CantidadComprimidos);
+            this.grbTratamientoFarmacologico.Controls.Add(this.groupBox17);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboFrecuencia);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboPresentacionMedicamento);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboFormaAdministración);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboUnidadMedida);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboNombreComercial);
+            this.grbTratamientoFarmacologico.Controls.Add(this.cboNombreGenerico);
+            this.grbTratamientoFarmacologico.Controls.Add(this.label90);
+            this.grbTratamientoFarmacologico.Controls.Add(this.label89);
+            this.grbTratamientoFarmacologico.Controls.Add(this.label85);
+            this.grbTratamientoFarmacologico.Controls.Add(this.label83);
+            this.grbTratamientoFarmacologico.Controls.Add(this.label82);
+            this.grbTratamientoFarmacologico.Controls.Add(this.label81);
+            this.grbTratamientoFarmacologico.Location = new System.Drawing.Point(12, 155);
+            this.grbTratamientoFarmacologico.Name = "grbTratamientoFarmacologico";
+            this.grbTratamientoFarmacologico.Size = new System.Drawing.Size(661, 262);
+            this.grbTratamientoFarmacologico.TabIndex = 8;
+            this.grbTratamientoFarmacologico.TabStop = false;
+            this.grbTratamientoFarmacologico.Text = "Tratamiento Farmacológico";
             // 
             // btnAgregarTratamientoMedicamento
             // 
-            this.btnAgregarTratamientoMedicamento.Location = new System.Drawing.Point(286, 234);
+            this.btnAgregarTratamientoMedicamento.Location = new System.Drawing.Point(194, 233);
             this.btnAgregarTratamientoMedicamento.Name = "btnAgregarTratamientoMedicamento";
-            this.btnAgregarTratamientoMedicamento.Size = new System.Drawing.Size(103, 23);
+            this.btnAgregarTratamientoMedicamento.Size = new System.Drawing.Size(261, 23);
             this.btnAgregarTratamientoMedicamento.TabIndex = 1;
-            this.btnAgregarTratamientoMedicamento.Text = "Agregar ";
+            this.btnAgregarTratamientoMedicamento.Text = "Agregar tratamiento farmacológico";
             this.btnAgregarTratamientoMedicamento.UseVisualStyleBackColor = true;
             this.btnAgregarTratamientoMedicamento.Click += new System.EventHandler(this.btnAgregarTratamientoMedicamento_Click);
             // 
@@ -609,7 +610,7 @@
             this.Controls.Add(this.btnAgregarTerapia);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.groupBox16);
+            this.Controls.Add(this.grbTratamientoFarmacologico);
             this.Controls.Add(this.txtMotivoInicio);
             this.Controls.Add(this.mtbFechaInicio);
             this.Controls.Add(this.txtIndicacionesTerapia);
@@ -621,8 +622,8 @@
             this.Name = "RegistrarTratamiento";
             this.Text = "RegistrarTratamiento";
             this.Load += new System.EventHandler(this.RegistrarTratamiento_Load);
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
+            this.grbTratamientoFarmacologico.ResumeLayout(false);
+            this.grbTratamientoFarmacologico.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTratamientos)).EndInit();
@@ -641,7 +642,7 @@
         private System.Windows.Forms.TextBox txtIndicacionesTerapia;
         private System.Windows.Forms.MaskedTextBox mtbFechaInicio;
         private System.Windows.Forms.TextBox txtMotivoInicio;
-        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.GroupBox grbTratamientoFarmacologico;
         private System.Windows.Forms.ComboBox cboCantidadComprimidos;
         private System.Windows.Forms.ComboBox cboConcentracion;
         private System.Windows.Forms.Label CantidadComprimidos;

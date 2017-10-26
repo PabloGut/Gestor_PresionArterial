@@ -30,6 +30,7 @@ namespace GPA
         public List<Tratamiento> listaTratamientos { set; get; }
         public List<ProgramacionMedicamento> listaMedicamentos { set; get; }
         public ManejadorRegistrarExamenGeneral manejador { set; get; }
+        public Tratamiento tratamientoMedicamento { set; get; }
 
         private void RegistrarTratamiento_Load(object sender, EventArgs e)
         {
@@ -38,15 +39,20 @@ namespace GPA
             columnas.Add("Descripción");
 
             Utilidades.agregarColumnasDataGridView(dgvListaTratamientos, columnas);
-
-          
-
+            cargarCombosTratamientos();
             mtbFechaInicio.Text = DateTime.Now.ToShortDateString();
         }
         public void cargarCombosTratamientos()
         {
             Utilidades.cargarCombo(cboTerapia, manejador.mostrarTerapias(), "id_terapia", "nombre");
             Utilidades.cargarCombo(cboNombreGenerico, manejador.presentarNombreGenericoMedicamento(), "id_medicamento", "nombreGenerico");
+            Utilidades.cargarCombo(cboFrecuencia, manejador.mostrarFrecuencias(), "id_frecuencia", "nombre");
+            Utilidades.cargarCombo(cboMomentoDia1, manejador.mostrarMomentosDelDia(), "idMomentiDia", "nombre");
+            Utilidades.cargarCombo(cboMomentoDia2, manejador.mostrarMomentosDelDia(), "idMomentiDia", "nombre");
+            Utilidades.cargarCombo(cboMomentoDia3, manejador.mostrarMomentosDelDia(), "idMomentiDia", "nombre");
+            Utilidades.cargarCombo(cboPresentacionMedicamento1, manejador.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+            Utilidades.cargarCombo(cboPresentacionMedicamento2, manejador.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
+            Utilidades.cargarCombo(cboPresentacionMedicamento3, manejador.mostrarPresentacionesMedicamento(), "id_presentacionMedicamento", "nombre");
 
         }
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -57,9 +63,9 @@ namespace GPA
 
         private void btnAgregarTratamiento_Click(object sender, EventArgs e)
         {
-            agregarTerapiaDgvTratamiento();
+            agregarTerapia();
         }
-        public void agregarTerapiaDgvTratamiento()
+        public void agregarTerapia()
         {
             string nombreTerapia;
             int id_terapia;
@@ -68,7 +74,7 @@ namespace GPA
             DateTime fechaInicio;
 
             if (cboTerapia.SelectedIndex > 0)
-            {
+            {   
                 Terapia terapiaSeleccionada = (Terapia)cboTerapia.SelectedItem;
                 nombreTerapia = terapiaSeleccionada.nombre;
                 id_terapia = (int)cboTerapia.SelectedValue;
@@ -85,19 +91,21 @@ namespace GPA
 
                 Terapia terapia = manejador.crearTerapia(id_terapia, nombreTerapia);
 
-                if(listaTratamientos==null)
+                if (listaTratamientos == null)
                     listaTratamientos = manejador.crearListaTratamiento();
 
                 Tratamiento tratamiento = manejador.crearTratamiento(terapia, indicaciones, fechaInicio, motivoInicio);
 
-                dgvListaTratamientos.Rows.Add(nombreTerapia);
+                if (nombreTerapia.Equals("Medicamento") == false)
+                {
+                    listaTratamientos.Add(tratamiento);
+                }
+                else
+                {
+                    tratamientoMedicamento = tratamiento;
+                }
 
-                listaTratamientos.Add(tratamiento);
             }
-        }
-        public void agregarDgvTratamientoFarmacologico()
-        {
-
         }
         public void cargarTratamientoFarmacologico()
         {
@@ -190,8 +198,6 @@ namespace GPA
                 programacion.hora3 = Convert.ToDateTime(mtbHora3.Text);
             }
 
-            dgvListaTratamientos.Rows.Add(nombreTerapia, nombreComercialSeleccionado);
-
             if (listaMedicamentos == null)
                 listaMedicamentos = manejador.crearListaProgramacionMedicamento();
 
@@ -199,34 +205,13 @@ namespace GPA
         }
         private void btnAgregarTratamientoMedicamento_Click(object sender, EventArgs e)
         {
-            string terapia = "";
-            DateTime fecha;
-            string indicaciones = "";
-            string motivo = "";
-
-            if (cboTerapia.SelectedIndex > 0)
-            {
-                Terapia terapiaSeleccionada = (Terapia)cboTerapia.SelectedItem;
-                terapia = terapiaSeleccionada.nombre;
-
-                fecha = Convert.ToDateTime(mtbFechaInicio.Text);
-
-                if (!string.IsNullOrEmpty(txtIndicacionesTerapia.Text))
-                {
-                    indicaciones = txtIndicacionesTerapia.Text;
-                }
-                if (!string.IsNullOrEmpty(txtMotivoInicio.Text))
-                {
-                    motivo = txtMotivoInicio.Text;
-                }
-
-                cargarTratamientoFarmacologico();
-
-                Tratamiento tratamiento = manejador.crearTratamiento(terapiaSeleccionada, indicaciones, fecha, motivo, listaMedicamentos);
-
-                listaTratamientos.Add(tratamiento);
-            }
-
+            agregarTerapiaMedicamento();
+        }
+        public void agregarTerapiaMedicamento()
+        {
+            cargarTratamientoFarmacologico();
+            tratamientoMedicamento.medicamentos = listaMedicamentos;
+            listaTratamientos.Add(tratamientoMedicamento);
         }
         public void limpiarContenidoComponentes()
         {
@@ -262,8 +247,21 @@ namespace GPA
             PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
             FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
 
-            cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
-            cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+            cboConcentracion.DataSource = manejador.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+            cboCantidadComprimidos.DataSource = manejador.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
+        }
+
+        private void cboTerapia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Terapia terapia = (Terapia)cboTerapia.SelectedItem;
+            if (terapia.nombre.Equals("Medicamentos"))
+            {
+                grbTratamientoFarmacologico.Enabled = true;
+            }
+            else
+            {
+                grbTratamientoFarmacologico.Enabled = false;
+            }
         }
     }
 }
