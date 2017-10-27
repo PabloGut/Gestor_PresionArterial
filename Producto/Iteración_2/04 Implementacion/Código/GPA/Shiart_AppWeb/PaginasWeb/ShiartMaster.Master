@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ShiartMaster.master.cs" Inherits="Shiart_AppWeb.PaginasWeb.ShiartMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+     <link href="https://fonts.googleapis.com/css?family=Oswald:300,700|Varela+Round" rel="stylesheet"/>
+	 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"/>
+	 <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bangers|Josefin+Sans|Miltonian+Tattoo" rel="stylesheet"/>
+	 <link rel="stylesheet" type="text/css" href="/Estilos/style.css"/>
+    <title>SHIAR</title>
+   
+</head>
+<body>
+    <div class="titulo">
+				<h1 class="titulo">SHIAR</h1>
+			</div>
+		<div class="navegacion">
+			<ul>
+				<li><a href="/PaginasWeb/Inicio.aspx">Inicio</a></li>
+				<li><a href="/PaginasWeb/IniciarSesion.aspx">Iniciar Sesion</a></li>
+				<li><a href="/PaginasWeb/HistoriaClinica.aspx">Historia Clinica</a></li>
+				<li><a href="/PaginasWeb/RegistrarMediciones.aspx">Registrar mediciones</a></li>
+			</ul>
+		</div>
+		<!--<a class="btn" href="#">Registrarse</a>
+		<a class="btn" href="#">Iniciar Sesión</a>!-->
+		
+		<div class="centro">
+			<div class="contenidoCentro">
+                <asp:ContentPlaceHolder ID="ContenedorInicio" runat="server">
+			    <h2 class="nombreSistema">Sistema de control del tratamiento de Hipertensión Arterial</h2>
+               
+
+                </asp:ContentPlaceHolder>
+			</div>
+		</div>
+		<div class="parrafoDesc">
+			<p class="desc">La hipertensión arterial (HA) es una afección con una prevalencia elevada en la población
+			general que supera 25% (1-5). Es, además, un factor de riesgo mayor para el desarrollo de
+			enfermedad cardiovascular. La elevación de la presión arterial (PA) no suele acompañarse de
+			síntomas clínicos por lo que un alto porcentaje de los pacientes desconoce su condición (1,2);
+			no obstante la enfermedad puede comenzar a detectarse con procedimientos que no son
+			complejos en una consulta a la que se concurre por otros motivos.</p>
+		<div>
+		<div class="suport">
+			<div class="conteiner"> 
+				<div class="col">
+					<h2>Historia Clínica</h2>
+					<p>Consulta de historia clínica</p>
+				</div>
+				
+				<div class="col">
+					<h2>Carga automatica</h2>
+					<p>Carga automática de mediciones de presión arterial desde un tensiometro digital</p>
+				</div>
+				
+				<div class="col">
+					<h2>Consulta de mediciones y medicamentos</h2>
+					<p>Consulta de los medicamentos recetados y las mediciones realizadas</p>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
