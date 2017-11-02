@@ -1732,7 +1732,11 @@ namespace GPA
                 EstadoDiagnostico estado= manejadorRegistrarExamenGeneral.crearEstadoDiagnostico(id_estado,nombreEstado);
 
                 RazonamientoDiagnostico diagnostico = manejadorRegistrarExamenGeneral.crearRazonamientoDiagnostico(conceptoInicial, descDiagnostico, estado, motivo, fecha, listaLaboratorio, listaEstudios,listaPracticasComplementarias, listaTratamiento);
-
+                
+                if (listaTratamiento != null && listaTratamiento.Count > 0)
+                {
+                    diagnostico.tratamientos = listaTratamiento;
+                }
                 listaDiagnosticos.Add(diagnostico);
 
                 dgvDiagnosticos.Rows.Add(txtDiagnostico.Text, nombreEstado);

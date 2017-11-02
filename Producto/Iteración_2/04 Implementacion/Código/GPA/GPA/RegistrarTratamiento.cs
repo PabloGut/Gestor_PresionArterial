@@ -64,6 +64,7 @@ namespace GPA
         private void btnAgregarTratamiento_Click(object sender, EventArgs e)
         {
             agregarTerapia();
+            limpiarContenidoComponentes();
         }
         public void agregarTerapia()
         {
@@ -96,8 +97,9 @@ namespace GPA
 
                 Tratamiento tratamiento = manejador.crearTratamiento(terapia, indicaciones, fechaInicio, motivoInicio);
 
-                if (nombreTerapia.Equals("Medicamento") == false)
+                if (nombreTerapia.Equals("Medicamentos") == false)
                 {
+                    dgvListaTratamientos.Rows.Add(tratamiento.terapia.nombre, tratamiento.indicaciones);
                     listaTratamientos.Add(tratamiento);
                 }
                 else
@@ -198,10 +200,13 @@ namespace GPA
                 programacion.hora3 = Convert.ToDateTime(mtbHora3.Text);
             }
 
+            programacion.id_estado = manejador.buscarIdEstado("Activa");
+
             if (listaMedicamentos == null)
                 listaMedicamentos = manejador.crearListaProgramacionMedicamento();
 
             listaMedicamentos.Add(programacion);
+            dgvListaTratamientos.Rows.Add(tratamientoMedicamento.terapia.nombre, nombreComercialSeleccionado.nombre);
         }
         private void btnAgregarTratamientoMedicamento_Click(object sender, EventArgs e)
         {
@@ -209,16 +214,43 @@ namespace GPA
         }
         public void agregarTerapiaMedicamento()
         {
+            agregarTerapia();
             cargarTratamientoFarmacologico();
             tratamientoMedicamento.medicamentos = listaMedicamentos;
+
             listaTratamientos.Add(tratamientoMedicamento);
+
+            cboFrecuencia.SelectedIndex = 0;
+            cboMomentoDia1.SelectedIndex = 0;
+            cboMomentoDia2.SelectedIndex = 0;
+            cboMomentoDia3.SelectedIndex = 0;
+            txtNumeradorCantidad1.Clear();
+            txtNumeradorCantidad2.Clear();
+            txtNumeradorCantidad3.Clear();
+
+            txtDenominadorCantidad1.Clear();
+            txtDenominadorCantidad2.Clear();
+            txtDenominadorCantidad3.Clear();
+
+            cboPresentacionMedicamento1.SelectedIndex = 0;
+            cboPresentacionMedicamento2.SelectedIndex = 0;
+            cboPresentacionMedicamento3.SelectedIndex = 0;
+
+            mtbHora1.Clear();
+            mtbHora2.Clear();
+            mtbHora3.Clear();
+
+            btnAgregarTerapia.Enabled = true;
+            cboTerapia.Enabled = true;
+            limpiarContenidoComponentes();
+            btnAgregarTratamientoMedicamento.Enabled = false;
         }
         public void limpiarContenidoComponentes()
         {
             txtIndicacionesTerapia.Clear();
             txtMotivoInicio.Clear();
+            cboTerapia.SelectedIndex = 0;
         }
-
         private void cboNombreGenerico_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idMedicamento;
@@ -257,11 +289,48 @@ namespace GPA
             if (terapia.nombre.Equals("Medicamentos"))
             {
                 grbTratamientoFarmacologico.Enabled = true;
+                btnAgregarTerapia.Enabled = false;
+                cboTerapia.Enabled = false;
+                if (btnAgregarTratamientoMedicamento.Enabled == false)
+                {
+                    btnAgregarTratamientoMedicamento.Enabled = true;
+                }
             }
             else
             {
                 grbTratamientoFarmacologico.Enabled = false;
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cancelar();
+        }
+        public void cancelar()
+        {
+            cboTerapia.SelectedIndex = 0;
+            txtMotivoInicio.Clear();
+            txtIndicacionesTerapia.Clear();
+            cboFrecuencia.SelectedIndex = 0;
+            cboMomentoDia1.SelectedIndex = 0;
+            cboMomentoDia2.SelectedIndex = 0;
+            cboMomentoDia3.SelectedIndex = 0;
+            txtNumeradorCantidad1.Clear();
+            txtNumeradorCantidad2.Clear();
+            txtNumeradorCantidad3.Clear();
+            txtDenominadorCantidad1.Clear();
+            txtDenominadorCantidad2.Clear();
+            txtDenominadorCantidad3.Clear();
+            cboPresentacionMedicamento1.SelectedIndex = 0;
+            cboPresentacionMedicamento2.SelectedIndex = 0;
+            cboPresentacionMedicamento3.SelectedIndex = 0;
+            mtbHora1.Clear();
+            mtbHora2.Clear();
+            mtbHora3.Clear();
+            dgvListaTratamientos.Rows.Clear();
+            tratamientoMedicamento = null;
+            listaTratamientos = null;
+            listaMedicamentos = null;
         }
     }
 }

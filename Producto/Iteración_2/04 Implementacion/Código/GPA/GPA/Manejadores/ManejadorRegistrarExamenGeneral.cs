@@ -420,5 +420,9 @@ namespace GPA.Manejadores
         {
             return PresentacionMedicamentoLN.mostrarPresentacionesMedicamento();
         }
+        public int buscarIdEstado(string estado)
+        {
+            return EstadoProgramacionLN.buscarIdEstado(estado);
+        }
     }
 }

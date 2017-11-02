@@ -20,9 +20,24 @@ namespace DAO
             {
                 SqlCommand cmd = new SqlCommand();
 
-                cmd.Parameters.AddWithValue("@indicaciones", tratamiento.indicaciones);
+                if (!string.IsNullOrEmpty(tratamiento.indicaciones))
+                {
+                    cmd.Parameters.AddWithValue("@indicaciones", tratamiento.indicaciones);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@indicaciones", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@fechaInicio", tratamiento.fechaInicio);
-                cmd.Parameters.AddWithValue("@motivoInicio", tratamiento.motivoInicio);
+
+                if (!string.IsNullOrEmpty(tratamiento.motivoInicio))
+                {
+                    cmd.Parameters.AddWithValue("@motivoInicio", tratamiento.motivoInicio);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoInicio", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@id_terapia_fk", tratamiento.terapia.id_terapia);
                 cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", tratamiento.id_razonamiento_fk);
 
