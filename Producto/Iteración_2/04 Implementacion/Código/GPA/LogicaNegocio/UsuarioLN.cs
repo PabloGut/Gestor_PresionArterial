@@ -27,5 +27,9 @@ namespace LogicaNegocio
         {
             return UsuarioDAO.buscarUsuarioPorNombre(nombre);
         }
+        public static int buscarUnUsuario(string nombre, string pass)
+        {
+            return UsuarioDAO.buscarUnUsuario(nombre, pass);
+        }
     }
 }

@@ -2,7 +2,7 @@
 <asp:Content runat="server" ID="IniciarSesion" ContentPlaceHolderID="ContenedorInicio" >
     <form id="form1" runat="server">
        <div class="login">
-       <asp:Login ID="Login1" runat="server">
+       <asp:Login ID="logInicioSesion" runat="server" OnAuthenticate="Login1_Authenticate">
  
        </asp:Login>
        </div>

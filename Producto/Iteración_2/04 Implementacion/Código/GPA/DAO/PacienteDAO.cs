@@ -67,6 +67,43 @@ namespace DAO
             cn.Close();
             return pacientes;
         }
+        public static Paciente buscarUnPaciente(int idUsuarioPaciente)
+        {
+            setCadenaConexion();
+            Paciente paciente = new Paciente();
+
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            cn.Open();
+
+            string consulta = "select nombre,apellido,id_hc_fk from Paciente where id_usuario_fk=@idUsuarioPaciente";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idUsuarioPaciente", idUsuarioPaciente);
+
+            cmd.CommandText = consulta;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cn;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                if (dr["id_hc_fk"] != DBNull.Value)
+                {
+                    paciente.nombre= dr["nombre"].ToString();
+                    paciente.apellido = dr["apellido"].ToString();
+                    paciente.id_hc = (int)dr["id_hc_fk"];
+                }
+                else
+                {
+                    paciente.nombre = dr["nombre"].ToString();
+                    paciente.apellido = dr["apellido"].ToString();
+                }
+
+            }
+            cn.Close();
+            return paciente;
+        }
         public static Boolean ExisteHC(int id_tipoDoc, long nroDocumento)
         {
             SqlConnection cn = new SqlConnection(cadenaConexion);

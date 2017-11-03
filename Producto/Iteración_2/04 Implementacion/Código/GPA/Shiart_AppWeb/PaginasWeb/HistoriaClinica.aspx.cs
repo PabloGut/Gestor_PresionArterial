@@ -11,7 +11,14 @@ namespace Shiart_AppWeb.PaginasWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Response.Cookies["Paciente"] == null)
+            {
+                lblPacienteLogueado.Text = "Ingresar un usuario para ver su hitoria clínica";
+            }
+            else
+            {
+                lblPacienteLogueado.Text = Request.Cookies["Paciente"]["Nombre"] + " " + Request.Cookies["Paciente"]["Apellido"];
+            }
         }
     }
 }

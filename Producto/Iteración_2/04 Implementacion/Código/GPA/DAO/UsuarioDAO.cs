@@ -104,7 +104,47 @@ namespace DAO
             cn.Close();
             return usuarios;
         }
+        public static int buscarUnUsuario(string nombre, string pass)
+        {
+            setCadenaConexion();
+            int idUsuario=0;
 
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            try
+            {
+
+                cn.Open();
+
+                string consulta = "select id_usuario from Usuario where nombre_usuario=@nombre and pwdcompare(@pass,contraseña)=1";
+
+                SqlCommand cmd = new SqlCommand();
+
+
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@pass", pass);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                   idUsuario = (int)dr["id_usuario"];
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return idUsuario;
+        }
         public static List<Usuario> buscarUsuarioPorNombre(string nombre)
         {
             List<Usuario> usuarios = new List<Usuario>();

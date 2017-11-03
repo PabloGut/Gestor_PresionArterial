@@ -42,5 +42,9 @@ namespace LogicaNegocio
         {
             return PacienteDAO.ExisteHC(tipoDoc, nroDoc);
         }
+        public static Paciente buscarUnPaciente(int idUsuarioPaciente)
+        {
+            return PacienteDAO.buscarUnPaciente(idUsuarioPaciente);
+        }
     }
 }
