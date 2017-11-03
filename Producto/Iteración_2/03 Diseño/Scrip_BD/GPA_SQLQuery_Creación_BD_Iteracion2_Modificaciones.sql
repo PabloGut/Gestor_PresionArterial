@@ -791,11 +791,13 @@ id_clasificacion_fk int,
 id_momentoDelDia_fk int,
 promedio float,  
 id_sitioMedicion_fk int,
+id_hc_fk int,
 foreign key (id_ubicacionExtremidad_fk) references UbicacionExtremidad(id_ubicacionExtremidad),
 foreign key (id_posicion_fk) references Posicion(id_posicion),
 foreign key (id_clasificacion_fk) references ClasificacionPresionArterial(id_clasificacion),
 foreign key (id_momentoDelDia_fk) references MomentoDelDia(id_momentoDelDia),
-foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion))
+foreign key (id_sitioMedicion_fk) references SitioMedicion(id_sitioMedicion),
+foreign key (id_hc_fk) references Historia_Clinica(id_hc))
 
 CREATE TABLE DetalleMedicionPresionArterial(
 id_nroMedicion int,

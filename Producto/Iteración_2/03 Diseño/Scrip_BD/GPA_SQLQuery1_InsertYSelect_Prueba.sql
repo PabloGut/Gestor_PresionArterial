@@ -803,6 +803,11 @@ alter column doctorACargo varchar(50)
 alter table Paciente
 alter column altura int
 
+alter table MedicionDePrecionArterial
+add id_hc_fk int
+alter table MedicionDePrecionArterial
+add foreign key (id_hc_fk) references Historia_Clinica(id_hc)
+
 select * from Paciente
 where nombre='Soledad'
 select * from Historia_Clinica
@@ -812,5 +817,9 @@ from Historia_Clinica hc, Paciente p, Consulta c
 where p.id_hc_fk=hc.id_hc and hc.id_hc=c.id_hc_fk
 order by c.nroConsulta
 
+select * from ProgramacionMedicamento
 
-select * from Tratamiento
+select  c.fechaConsulta, c.nroConsulta, nro_hc, p.nombre, p.apellido
+from Consulta c, Historia_Clinica h, Paciente p
+where c.id_hc_fk=h.id_hc and h.id_tipodoc_paciente_fk=p.id_tipoDoc_fk and h.id_nrodoc_paciente_fk=p.nro_documento
+group by c.nroConsulta, c.fechaConsulta,  nro_hc, p.nombre, p.apellido
