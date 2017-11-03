@@ -552,8 +552,12 @@ namespace GPA
                 MessageBox.Show("No se seleccionó el paciente que recibe atención médica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            manejadorConsultarHc = new ManejadorConsultarHC();
+                
+            if(manejadorConsultarHc==null)
+                   manejadorConsultarHc = new ManejadorConsultarHC();
+
             hc = manejadorConsultarHc.mostrarHistoriaClinica(pacienteSeleccionado);
+            
             if (hc == null)
             {
                 MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -575,6 +579,10 @@ namespace GPA
             {
                 if (hc ==null)
                 {
+                    if (manejadorConsultarHc == null)
+                        manejadorConsultarHc = new ManejadorConsultarHC();
+
+                    hc = manejadorConsultarHc.mostrarHistoriaClinica(pacienteSeleccionado);
                     id= manejadorRegistrarAtencionMedicaEnConsultorio.existeHc(pacienteSeleccionado.id_tipoDoc, pacienteSeleccionado.nroDoc);
                     if (id == -1)
                     {
@@ -1051,7 +1059,12 @@ namespace GPA
 
         private void btnRegistrarAtención_Click(object sender, EventArgs e)
         {   
-            //Aqui va la validación. Para evitar registrar el examen general y la atención en consultorio sin los datos necesarios.
+            //Aqui va la validación. Falta validación del examen general.
+            if (consultaGenerada == false)
+            {
+                MessageBox.Show("Antes de registrar la atención en consultorio y el examen general\n debe generar una nueva consulta", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             registrarExamenGeneralYConsulta();
         }
         public void registrarExamenGeneralYConsulta()
@@ -1087,7 +1100,7 @@ namespace GPA
             consulta.examen = examen;//Agrega el examen general a la consulta
 
             manejadorRegistrarAtencionMedicaEnConsultorio.registrarConsultaYExamenGeneral(consulta);//Registra todo el examen general en la base de datos.
-
+            ////Falta agregar la "fecha desde" a la programación del medicamento. 
         }
         /*
         * Crea un objeto consulta.
@@ -1732,7 +1745,18 @@ namespace GPA
                 EstadoDiagnostico estado= manejadorRegistrarExamenGeneral.crearEstadoDiagnostico(id_estado,nombreEstado);
 
                 RazonamientoDiagnostico diagnostico = manejadorRegistrarExamenGeneral.crearRazonamientoDiagnostico(conceptoInicial, descDiagnostico, estado, motivo, fecha, listaLaboratorio, listaEstudios,listaPracticasComplementarias, listaTratamiento);
-                
+
+                DialogResult dr = MessageBox.Show("Desea registrar tratamientos?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+                if (dr == DialogResult.Yes)
+                {
+                    RegistrarTratamiento rt = new RegistrarTratamiento(manejadorRegistrarExamenGeneral);
+               
+                    if (rt.ShowDialog() == DialogResult.OK)
+                    {
+                        listaTratamiento = rt.listaTratamientos;
+                    }
+                }
+
                 if (listaTratamiento != null && listaTratamiento.Count > 0)
                 {
                     diagnostico.tratamientos = listaTratamiento;
@@ -1815,7 +1839,7 @@ namespace GPA
             }
         }
         private void generarNuevaConsultaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {    
             generarNuevaConsulta();
             cargarDatosDeEjemplo();
         }

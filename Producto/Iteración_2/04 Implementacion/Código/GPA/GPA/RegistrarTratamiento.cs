@@ -204,7 +204,7 @@ namespace GPA
 
             if (listaMedicamentos == null)
                 listaMedicamentos = manejador.crearListaProgramacionMedicamento();
-
+            
             listaMedicamentos.Add(programacion);
             dgvListaTratamientos.Rows.Add(tratamientoMedicamento.terapia.nombre, nombreComercialSeleccionado.nombre);
         }
@@ -331,6 +331,12 @@ namespace GPA
             tratamientoMedicamento = null;
             listaTratamientos = null;
             listaMedicamentos = null;
+            cboTerapia.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

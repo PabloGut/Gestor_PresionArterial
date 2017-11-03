@@ -83,7 +83,7 @@
             this.btnAgregarTerapia = new System.Windows.Forms.Button();
             this.dgvListaTratamientos = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.grbTratamientoFarmacologico.SuspendLayout();
             this.groupBox17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTratamientos)).BeginInit();
@@ -602,21 +602,22 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Tratamientos iniciados:";
             // 
-            // button1
+            // btnSalir
             // 
-            this.button1.Location = new System.Drawing.Point(798, 423);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Salir";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSalir.Location = new System.Drawing.Point(798, 423);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 14;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 
             // RegistrarTratamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 452);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvListaTratamientos);
             this.Controls.Add(this.btnAgregarTerapia);
@@ -701,6 +702,6 @@
         private System.Windows.Forms.DataGridView dgvListaTratamientos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAgregarTratamientoMedicamento;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

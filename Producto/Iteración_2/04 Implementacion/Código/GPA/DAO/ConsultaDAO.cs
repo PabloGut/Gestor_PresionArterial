@@ -201,8 +201,8 @@ namespace DAO
             {
                 if (cn.State == ConnectionState.Open)
                 {
-                    cn.Close();
                     tran.Rollback();
+                    cn.Close();
                 }
                 throw new ApplicationException("Error:" + e.Message);
             }

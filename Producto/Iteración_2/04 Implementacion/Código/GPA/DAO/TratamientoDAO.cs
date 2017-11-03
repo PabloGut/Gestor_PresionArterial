@@ -13,7 +13,7 @@ namespace DAO
     {
         public static void registrarTratamientos(Tratamiento tratamiento, SqlConnection cn, SqlTransaction tran)
         {
-            string consulta = @"insert into Tratamiento(indicaciones,fechaInicio,motivoInicio,id_terapia_fk, id_razonamientoDiagnostico_fk)
+            string consulta = @"insert into Tratamiento(indicaciones,fechaInicio,motivoInicioTratamiento,id_terapia_fk, id_razonamientoDiagnostico_fk)
                                 values(@indicaciones,@fechaInicio,@motivoInicio,@id_terapia_fk,@id_razonamientoDiagnostico_fk)";
 
             try
