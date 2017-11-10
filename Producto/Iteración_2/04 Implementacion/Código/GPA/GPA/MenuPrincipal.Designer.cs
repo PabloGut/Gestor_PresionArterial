@@ -32,7 +32,6 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProfesionalMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarNuevaConsultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ediciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -358,10 +357,10 @@
             this.cboSitioMedicion1 = new System.Windows.Forms.ComboBox();
             this.txtValorTemperatura1 = new System.Windows.Forms.TextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.btnCancelarAtencionEnConsultorio = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.label56 = new System.Windows.Forms.Label();
             this.txtIndicacionesPracticasComplementarias = new System.Windows.Forms.TextBox();
-            this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.btnPracticasComplementariasARealizar = new System.Windows.Forms.Button();
             this.cboPracticasComplementariasARealizar = new System.Windows.Forms.ComboBox();
             this.label57 = new System.Windows.Forms.Label();
@@ -369,7 +368,6 @@
             this.label54 = new System.Windows.Forms.Label();
             this.txtIndicacionesAnalisisARealizar = new System.Windows.Forms.TextBox();
             this.txtIndicacionesEstudioARealizar = new System.Windows.Forms.TextBox();
-            this.btnRegistrarAtención = new System.Windows.Forms.Button();
             this.btnAnalisisLaboratorioARealizar = new System.Windows.Forms.Button();
             this.btnEstudioARealizar = new System.Windows.Forms.Button();
             this.dgvExamenesARealizar = new System.Windows.Forms.DataGridView();
@@ -390,10 +388,15 @@
             this.label85 = new System.Windows.Forms.Label();
             this.txtConceptoInicial = new System.Windows.Forms.TextBox();
             this.label80 = new System.Windows.Forms.Label();
+            this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
+            this.btnRegistrarAtención = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnCancelarAtencionEnConsultorio = new System.Windows.Forms.Button();
+            this.atenciónEnConsultorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarNuevaConsultaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.laboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarAnálisisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -460,7 +463,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.ediciónToolStripMenuItem,
-            this.tratamientoToolStripMenuItem});
+            this.tratamientoToolStripMenuItem,
+            this.atenciónEnConsultorioToolStripMenuItem,
+            this.laboratorioToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
@@ -472,8 +477,7 @@
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarPacienteToolStripMenuItem,
-            this.registrarProfesionalMédicoToolStripMenuItem,
-            this.generarNuevaConsultaToolStripMenuItem});
+            this.registrarProfesionalMédicoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -492,13 +496,6 @@
             this.registrarProfesionalMédicoToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.registrarProfesionalMédicoToolStripMenuItem.Text = "Registrar Profesional Médico";
             this.registrarProfesionalMédicoToolStripMenuItem.Click += new System.EventHandler(this.registrarProfesionalMédicoToolStripMenuItem_Click);
-            // 
-            // generarNuevaConsultaToolStripMenuItem
-            // 
-            this.generarNuevaConsultaToolStripMenuItem.Name = "generarNuevaConsultaToolStripMenuItem";
-            this.generarNuevaConsultaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.generarNuevaConsultaToolStripMenuItem.Text = "Generar nueva consulta";
-            this.generarNuevaConsultaToolStripMenuItem.Click += new System.EventHandler(this.generarNuevaConsultaToolStripMenuItem_Click);
             // 
             // ediciónToolStripMenuItem
             // 
@@ -3670,6 +3667,16 @@
             this.tabPage10.Text = "Paso 5";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
+            // btnCancelarAtencionEnConsultorio
+            // 
+            this.btnCancelarAtencionEnConsultorio.Location = new System.Drawing.Point(366, 548);
+            this.btnCancelarAtencionEnConsultorio.Name = "btnCancelarAtencionEnConsultorio";
+            this.btnCancelarAtencionEnConsultorio.Size = new System.Drawing.Size(225, 26);
+            this.btnCancelarAtencionEnConsultorio.TabIndex = 29;
+            this.btnCancelarAtencionEnConsultorio.Text = "Cancelar";
+            this.btnCancelarAtencionEnConsultorio.UseVisualStyleBackColor = true;
+            this.btnCancelarAtencionEnConsultorio.Click += new System.EventHandler(this.btnCancelarAtencionEnConsultorio_Click);
+            // 
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.label56);
@@ -3712,16 +3719,6 @@
             this.txtIndicacionesPracticasComplementarias.Name = "txtIndicacionesPracticasComplementarias";
             this.txtIndicacionesPracticasComplementarias.Size = new System.Drawing.Size(470, 30);
             this.txtIndicacionesPracticasComplementarias.TabIndex = 36;
-            // 
-            // btnAgregarDiagnostico
-            // 
-            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(6, 548);
-            this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
-            this.btnAgregarDiagnostico.Size = new System.Drawing.Size(247, 26);
-            this.btnAgregarDiagnostico.TabIndex = 18;
-            this.btnAgregarDiagnostico.Text = "Agregar diagnóstico";
-            this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
-            this.btnAgregarDiagnostico.Click += new System.EventHandler(this.btnAgregarDiagnostico_Click);
             // 
             // btnPracticasComplementariasARealizar
             // 
@@ -3783,16 +3780,6 @@
             this.txtIndicacionesEstudioARealizar.Name = "txtIndicacionesEstudioARealizar";
             this.txtIndicacionesEstudioARealizar.Size = new System.Drawing.Size(470, 34);
             this.txtIndicacionesEstudioARealizar.TabIndex = 29;
-            // 
-            // btnRegistrarAtención
-            // 
-            this.btnRegistrarAtención.Location = new System.Drawing.Point(597, 548);
-            this.btnRegistrarAtención.Name = "btnRegistrarAtención";
-            this.btnRegistrarAtención.Size = new System.Drawing.Size(247, 26);
-            this.btnRegistrarAtención.TabIndex = 28;
-            this.btnRegistrarAtención.Text = "Registrar Atención en Consultorio";
-            this.btnRegistrarAtención.UseVisualStyleBackColor = true;
-            this.btnRegistrarAtención.Click += new System.EventHandler(this.btnRegistrarAtención_Click);
             // 
             // btnAnalisisLaboratorioARealizar
             // 
@@ -3981,6 +3968,26 @@
             this.label80.TabIndex = 0;
             this.label80.Text = "Concepto Inicial:";
             // 
+            // btnAgregarDiagnostico
+            // 
+            this.btnAgregarDiagnostico.Location = new System.Drawing.Point(6, 548);
+            this.btnAgregarDiagnostico.Name = "btnAgregarDiagnostico";
+            this.btnAgregarDiagnostico.Size = new System.Drawing.Size(247, 26);
+            this.btnAgregarDiagnostico.TabIndex = 18;
+            this.btnAgregarDiagnostico.Text = "Agregar diagnóstico";
+            this.btnAgregarDiagnostico.UseVisualStyleBackColor = true;
+            this.btnAgregarDiagnostico.Click += new System.EventHandler(this.btnAgregarDiagnostico_Click);
+            // 
+            // btnRegistrarAtención
+            // 
+            this.btnRegistrarAtención.Location = new System.Drawing.Point(597, 548);
+            this.btnRegistrarAtención.Name = "btnRegistrarAtención";
+            this.btnRegistrarAtención.Size = new System.Drawing.Size(247, 26);
+            this.btnRegistrarAtención.TabIndex = 28;
+            this.btnRegistrarAtención.Text = "Registrar Atención en Consultorio";
+            this.btnRegistrarAtención.UseVisualStyleBackColor = true;
+            this.btnRegistrarAtención.Click += new System.EventHandler(this.btnRegistrarAtención_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnRegistraMedicamento);
@@ -4012,15 +4019,35 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnCancelarAtencionEnConsultorio
+            // atenciónEnConsultorioToolStripMenuItem
             // 
-            this.btnCancelarAtencionEnConsultorio.Location = new System.Drawing.Point(366, 548);
-            this.btnCancelarAtencionEnConsultorio.Name = "btnCancelarAtencionEnConsultorio";
-            this.btnCancelarAtencionEnConsultorio.Size = new System.Drawing.Size(225, 26);
-            this.btnCancelarAtencionEnConsultorio.TabIndex = 29;
-            this.btnCancelarAtencionEnConsultorio.Text = "Cancelar";
-            this.btnCancelarAtencionEnConsultorio.UseVisualStyleBackColor = true;
-            this.btnCancelarAtencionEnConsultorio.Click += new System.EventHandler(this.btnCancelarAtencionEnConsultorio_Click);
+            this.atenciónEnConsultorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generarNuevaConsultaToolStripMenuItem1});
+            this.atenciónEnConsultorioToolStripMenuItem.Name = "atenciónEnConsultorioToolStripMenuItem";
+            this.atenciónEnConsultorioToolStripMenuItem.Size = new System.Drawing.Size(148, 20);
+            this.atenciónEnConsultorioToolStripMenuItem.Text = "Atención en Consultorio";
+            // 
+            // generarNuevaConsultaToolStripMenuItem1
+            // 
+            this.generarNuevaConsultaToolStripMenuItem1.Name = "generarNuevaConsultaToolStripMenuItem1";
+            this.generarNuevaConsultaToolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
+            this.generarNuevaConsultaToolStripMenuItem1.Text = "Generar nueva consulta";
+            this.generarNuevaConsultaToolStripMenuItem1.Click += new System.EventHandler(this.generarNuevaConsultaToolStripMenuItem1_Click);
+            // 
+            // laboratorioToolStripMenuItem
+            // 
+            this.laboratorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registrarAnálisisToolStripMenuItem});
+            this.laboratorioToolStripMenuItem.Name = "laboratorioToolStripMenuItem";
+            this.laboratorioToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.laboratorioToolStripMenuItem.Text = " Análisis de Laboratorio";
+            // 
+            // registrarAnálisisToolStripMenuItem
+            // 
+            this.registrarAnálisisToolStripMenuItem.Name = "registrarAnálisisToolStripMenuItem";
+            this.registrarAnálisisToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.registrarAnálisisToolStripMenuItem.Text = "Registrar análisis";
+            this.registrarAnálisisToolStripMenuItem.Click += new System.EventHandler(this.registrarAnálisisToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -4460,7 +4487,6 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.TextBox txtIndicacionesAnalisisARealizar;
         private System.Windows.Forms.TextBox txtIndicacionesEstudioARealizar;
-        private System.Windows.Forms.ToolStripMenuItem generarNuevaConsultaToolStripMenuItem;
         private System.Windows.Forms.Button btnAgregarSintoma;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaPA;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaPA;
@@ -4490,5 +4516,9 @@
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button btnCancelarAtencionEnConsultorio;
+        private System.Windows.Forms.ToolStripMenuItem atenciónEnConsultorioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarNuevaConsultaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem laboratorioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarAnálisisToolStripMenuItem;
     }
 }

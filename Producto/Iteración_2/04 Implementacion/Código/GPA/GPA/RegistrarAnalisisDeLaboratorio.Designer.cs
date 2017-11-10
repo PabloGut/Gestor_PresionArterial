@@ -30,55 +30,45 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.panelDetalleValorReferencia = new System.Windows.Forms.Panel();
+            this.cboUnidadMedidaDetalleValorReferencia = new System.Windows.Forms.ComboBox();
+            this.dgvDetallesValorReferencia = new System.Windows.Forms.DataGridView();
+            this.btnAgregarDetalleValorReferencia = new System.Windows.Forms.Button();
+            this.txtDescripcionDetalleValorReferencia = new System.Windows.Forms.TextBox();
+            this.txtValorMaximoDetalleValorReferencia = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtValorMinimoDetalleValorReferencia = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.cbAgregarValoresReferencia = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panelDetalleItem = new System.Windows.Forms.Panel();
+            this.cbAgregarDetalleValorReferencia = new System.Windows.Forms.CheckBox();
+            this.dgvValoresReferencia = new System.Windows.Forms.DataGridView();
+            this.btnAgregarValorReferencia = new System.Windows.Forms.Button();
+            this.cboUnidadMedida = new System.Windows.Forms.ComboBox();
+            this.txtNombreDetalleItem = new System.Windows.Forms.TextBox();
+            this.txtValorMaximoReferencia = new System.Windows.Forms.TextBox();
+            this.txtValorMinimoReferencia = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtNombreEstudioLaboratorio = new System.Windows.Forms.TextBox();
+            this.btnAgregarAnalisis = new System.Windows.Forms.Button();
+            this.cbUnidadMedidaValorReferencia = new System.Windows.Forms.CheckBox();
+            this.cbUnidadMedidaDetalleValorReferencia = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.panelDetalleValorReferencia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetallesValorReferencia)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.panelDetalleItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValoresReferencia)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -92,427 +82,339 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 23);
+            this.label2.Location = new System.Drawing.Point(15, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre estudio:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(365, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Unidad de medida:";
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.btnSalir);
+            this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.cbAgregarValoresReferencia);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtNombreEstudioLaboratorio);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(940, 493);
+            this.panel1.Size = new System.Drawing.Size(948, 364);
             this.panel1.TabIndex = 3;
             // 
-            // comboBox1
+            // btnSalir
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(72, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(186, 21);
-            this.comboBox1.TabIndex = 5;
+            this.btnSalir.Location = new System.Drawing.Point(407, 330);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(120, 21);
+            this.btnSalir.TabIndex = 35;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // btnAceptar
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Método:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(249, 20);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(350, 20);
-            this.textBox2.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(177, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Descripción:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(56, 28);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(123, 20);
-            this.textBox7.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 31);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Nombre:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(99, 20);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(72, 20);
-            this.textBox3.TabIndex = 11;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(467, 56);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(132, 21);
-            this.comboBox2.TabIndex = 24;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(264, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(12, 99);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(587, 391);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Items del estudio de laboratorio";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(306, 28);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(82, 21);
-            this.comboBox3.TabIndex = 26;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(204, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Unidad de medida:";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.dataGridView2);
-            this.groupBox5.Controls.Add(this.button3);
-            this.groupBox5.Controls.Add(this.comboBox4);
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Location = new System.Drawing.Point(6, 159);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(575, 189);
-            this.groupBox5.TabIndex = 29;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Detalle de Item";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Nombre:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(171, 28);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Valor Mínimo:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 71);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(79, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "UnidadMedida:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(181, 71);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(140, 13);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Descripción Valor referencia";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(361, 28);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Valor Máximo:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(246, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(440, 25);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 6;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(53, 25);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 7;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(327, 68);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(116, 20);
-            this.textBox6.TabIndex = 8;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(88, 68);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(82, 21);
-            this.comboBox4.TabIndex = 27;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(404, 26);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Agregar Item";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(449, 68);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 21);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "Agregar detalle";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 65);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(575, 65);
-            this.dataGridView1.TabIndex = 31;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 114);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(560, 65);
-            this.dataGridView2.TabIndex = 32;
+            this.btnAceptar.Location = new System.Drawing.Point(115, 330);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(120, 21);
+            this.btnAceptar.TabIndex = 34;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView3);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.textBox10);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Location = new System.Drawing.Point(605, 20);
+            this.groupBox2.Controls.Add(this.btnAgregarAnalisis);
+            this.groupBox2.Controls.Add(this.panelDetalleValorReferencia);
+            this.groupBox2.Location = new System.Drawing.Point(599, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(332, 218);
+            this.groupBox2.Size = new System.Drawing.Size(346, 348);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle valor de referencia";
             // 
-            // checkBox1
+            // panelDetalleValorReferencia
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 136);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(136, 17);
-            this.checkBox1.TabIndex = 32;
-            this.checkBox1.Text = "Agregar detalles al Item";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.panelDetalleValorReferencia.Controls.Add(this.cbUnidadMedidaDetalleValorReferencia);
+            this.panelDetalleValorReferencia.Controls.Add(this.cboUnidadMedidaDetalleValorReferencia);
+            this.panelDetalleValorReferencia.Controls.Add(this.dgvDetallesValorReferencia);
+            this.panelDetalleValorReferencia.Controls.Add(this.btnAgregarDetalleValorReferencia);
+            this.panelDetalleValorReferencia.Controls.Add(this.txtDescripcionDetalleValorReferencia);
+            this.panelDetalleValorReferencia.Controls.Add(this.txtValorMaximoDetalleValorReferencia);
+            this.panelDetalleValorReferencia.Controls.Add(this.label15);
+            this.panelDetalleValorReferencia.Controls.Add(this.label13);
+            this.panelDetalleValorReferencia.Controls.Add(this.txtValorMinimoDetalleValorReferencia);
+            this.panelDetalleValorReferencia.Controls.Add(this.label14);
+            this.panelDetalleValorReferencia.Location = new System.Drawing.Point(6, 17);
+            this.panelDetalleValorReferencia.Name = "panelDetalleValorReferencia";
+            this.panelDetalleValorReferencia.Size = new System.Drawing.Size(340, 271);
+            this.panelDetalleValorReferencia.TabIndex = 0;
             // 
-            // checkBox2
+            // cboUnidadMedidaDetalleValorReferencia
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 354);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(228, 17);
-            this.checkBox2.TabIndex = 33;
-            this.checkBox2.Text = "Agregar detalles para valores de referencia";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cboUnidadMedidaDetalleValorReferencia.FormattingEnabled = true;
+            this.cboUnidadMedidaDetalleValorReferencia.Location = new System.Drawing.Point(140, 83);
+            this.cboUnidadMedidaDetalleValorReferencia.Name = "cboUnidadMedidaDetalleValorReferencia";
+            this.cboUnidadMedidaDetalleValorReferencia.Size = new System.Drawing.Size(82, 21);
+            this.cboUnidadMedidaDetalleValorReferencia.TabIndex = 54;
             // 
-            // textBox8
+            // dgvDetallesValorReferencia
             // 
-            this.textBox8.Location = new System.Drawing.Point(87, 19);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(226, 20);
-            this.textBox8.TabIndex = 13;
+            this.dgvDetallesValorReferencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetallesValorReferencia.Location = new System.Drawing.Point(13, 110);
+            this.dgvDetallesValorReferencia.Name = "dgvDetallesValorReferencia";
+            this.dgvDetallesValorReferencia.Size = new System.Drawing.Size(320, 150);
+            this.dgvDetallesValorReferencia.TabIndex = 52;
             // 
-            // textBox9
+            // btnAgregarDetalleValorReferencia
             // 
-            this.textBox9.Location = new System.Drawing.Point(246, 56);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(67, 20);
-            this.textBox9.TabIndex = 12;
+            this.btnAgregarDetalleValorReferencia.Location = new System.Drawing.Point(228, 82);
+            this.btnAgregarDetalleValorReferencia.Name = "btnAgregarDetalleValorReferencia";
+            this.btnAgregarDetalleValorReferencia.Size = new System.Drawing.Size(105, 21);
+            this.btnAgregarDetalleValorReferencia.TabIndex = 51;
+            this.btnAgregarDetalleValorReferencia.Text = "Agregar detalle";
+            this.btnAgregarDetalleValorReferencia.UseVisualStyleBackColor = true;
+            this.btnAgregarDetalleValorReferencia.Click += new System.EventHandler(this.btnAgregarDetalleValorReferencia_Click);
             // 
-            // textBox10
+            // txtDescripcionDetalleValorReferencia
             // 
-            this.textBox10.Location = new System.Drawing.Point(87, 56);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(68, 20);
-            this.textBox10.TabIndex = 11;
+            this.txtDescripcionDetalleValorReferencia.Location = new System.Drawing.Point(85, 4);
+            this.txtDescripcionDetalleValorReferencia.Name = "txtDescripcionDetalleValorReferencia";
+            this.txtDescripcionDetalleValorReferencia.Size = new System.Drawing.Size(226, 20);
+            this.txtDescripcionDetalleValorReferencia.TabIndex = 50;
             // 
-            // label13
+            // txtValorMaximoDetalleValorReferencia
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(167, 59);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 13);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Valor Máximo:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 59);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(72, 13);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "Valor Mínimo:";
+            this.txtValorMaximoDetalleValorReferencia.Location = new System.Drawing.Point(251, 38);
+            this.txtValorMaximoDetalleValorReferencia.Name = "txtValorMaximoDetalleValorReferencia";
+            this.txtValorMaximoDetalleValorReferencia.Size = new System.Drawing.Size(67, 20);
+            this.txtValorMaximoDetalleValorReferencia.TabIndex = 49;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 22);
+            this.label15.Location = new System.Drawing.Point(14, 7);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(66, 13);
-            this.label15.TabIndex = 8;
+            this.label15.TabIndex = 45;
             this.label15.Text = "Descripción:";
             // 
-            // button4
+            // label13
             // 
-            this.button4.Location = new System.Drawing.Point(109, 102);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(120, 21);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "Agregar detalle";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(172, 41);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 13);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "Valor Máximo:";
             // 
-            // dataGridView3
+            // txtValorMinimoDetalleValorReferencia
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(6, 144);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(320, 65);
-            this.dataGridView3.TabIndex = 33;
+            this.txtValorMinimoDetalleValorReferencia.Location = new System.Drawing.Point(92, 38);
+            this.txtValorMinimoDetalleValorReferencia.Name = "txtValorMinimoDetalleValorReferencia";
+            this.txtValorMinimoDetalleValorReferencia.Size = new System.Drawing.Size(68, 20);
+            this.txtValorMinimoDetalleValorReferencia.TabIndex = 48;
             // 
-            // button5
+            // label14
             // 
-            this.button5.Location = new System.Drawing.Point(705, 305);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(120, 21);
-            this.button5.TabIndex = 33;
-            this.button5.Text = "Cancelar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 41);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 13);
+            this.label14.TabIndex = 46;
+            this.label14.Text = "Valor Mínimo:";
             // 
-            // button6
+            // btnCancelar
             // 
-            this.button6.Location = new System.Drawing.Point(705, 278);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(120, 21);
-            this.button6.TabIndex = 34;
-            this.button6.Text = "Aceptar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(264, 330);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 21);
+            this.btnCancelar.TabIndex = 33;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // cbAgregarValoresReferencia
+            // 
+            this.cbAgregarValoresReferencia.AutoSize = true;
+            this.cbAgregarValoresReferencia.Location = new System.Drawing.Point(376, 20);
+            this.cbAgregarValoresReferencia.Name = "cbAgregarValoresReferencia";
+            this.cbAgregarValoresReferencia.Size = new System.Drawing.Size(165, 17);
+            this.cbAgregarValoresReferencia.TabIndex = 32;
+            this.cbAgregarValoresReferencia.Text = "Agregar valores de referencia";
+            this.cbAgregarValoresReferencia.UseVisualStyleBackColor = true;
+            this.cbAgregarValoresReferencia.CheckedChanged += new System.EventHandler(this.cbAgregarValoresReferencia_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panelDetalleItem);
+            this.groupBox1.Location = new System.Drawing.Point(6, 51);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(587, 263);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Detalle items del estudio de laboratorio";
+            // 
+            // panelDetalleItem
+            // 
+            this.panelDetalleItem.Controls.Add(this.cbUnidadMedidaValorReferencia);
+            this.panelDetalleItem.Controls.Add(this.cbAgregarDetalleValorReferencia);
+            this.panelDetalleItem.Controls.Add(this.dgvValoresReferencia);
+            this.panelDetalleItem.Controls.Add(this.btnAgregarValorReferencia);
+            this.panelDetalleItem.Controls.Add(this.cboUnidadMedida);
+            this.panelDetalleItem.Controls.Add(this.txtNombreDetalleItem);
+            this.panelDetalleItem.Controls.Add(this.txtValorMaximoReferencia);
+            this.panelDetalleItem.Controls.Add(this.txtValorMinimoReferencia);
+            this.panelDetalleItem.Controls.Add(this.label12);
+            this.panelDetalleItem.Controls.Add(this.label8);
+            this.panelDetalleItem.Controls.Add(this.label7);
+            this.panelDetalleItem.Location = new System.Drawing.Point(6, 19);
+            this.panelDetalleItem.Name = "panelDetalleItem";
+            this.panelDetalleItem.Size = new System.Drawing.Size(575, 237);
+            this.panelDetalleItem.TabIndex = 34;
+            // 
+            // cbAgregarDetalleValorReferencia
+            // 
+            this.cbAgregarDetalleValorReferencia.AutoSize = true;
+            this.cbAgregarDetalleValorReferencia.Location = new System.Drawing.Point(6, 204);
+            this.cbAgregarDetalleValorReferencia.Name = "cbAgregarDetalleValorReferencia";
+            this.cbAgregarDetalleValorReferencia.Size = new System.Drawing.Size(188, 17);
+            this.cbAgregarDetalleValorReferencia.TabIndex = 35;
+            this.cbAgregarDetalleValorReferencia.Text = "Agregar detalle valor de referencia";
+            this.cbAgregarDetalleValorReferencia.UseVisualStyleBackColor = true;
+            this.cbAgregarDetalleValorReferencia.CheckedChanged += new System.EventHandler(this.cbAgregarDetalleValorReferencia_CheckedChanged);
+            // 
+            // dgvValoresReferencia
+            // 
+            this.dgvValoresReferencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvValoresReferencia.Location = new System.Drawing.Point(6, 103);
+            this.dgvValoresReferencia.Name = "dgvValoresReferencia";
+            this.dgvValoresReferencia.Size = new System.Drawing.Size(563, 95);
+            this.dgvValoresReferencia.TabIndex = 44;
+            // 
+            // btnAgregarValorReferencia
+            // 
+            this.btnAgregarValorReferencia.Location = new System.Drawing.Point(205, 201);
+            this.btnAgregarValorReferencia.Name = "btnAgregarValorReferencia";
+            this.btnAgregarValorReferencia.Size = new System.Drawing.Size(120, 21);
+            this.btnAgregarValorReferencia.TabIndex = 43;
+            this.btnAgregarValorReferencia.Text = "Agregar detalle";
+            this.btnAgregarValorReferencia.UseVisualStyleBackColor = true;
+            this.btnAgregarValorReferencia.Click += new System.EventHandler(this.btnAgregarValorReferencia_Click);
+            // 
+            // cboUnidadMedida
+            // 
+            this.cboUnidadMedida.FormattingEnabled = true;
+            this.cboUnidadMedida.Location = new System.Drawing.Point(141, 66);
+            this.cboUnidadMedida.Name = "cboUnidadMedida";
+            this.cboUnidadMedida.Size = new System.Drawing.Size(82, 21);
+            this.cboUnidadMedida.TabIndex = 42;
+            // 
+            // txtNombreDetalleItem
+            // 
+            this.txtNombreDetalleItem.Location = new System.Drawing.Point(53, 23);
+            this.txtNombreDetalleItem.Name = "txtNombreDetalleItem";
+            this.txtNombreDetalleItem.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreDetalleItem.TabIndex = 40;
+            // 
+            // txtValorMaximoReferencia
+            // 
+            this.txtValorMaximoReferencia.Location = new System.Drawing.Point(440, 23);
+            this.txtValorMaximoReferencia.Name = "txtValorMaximoReferencia";
+            this.txtValorMaximoReferencia.Size = new System.Drawing.Size(100, 20);
+            this.txtValorMaximoReferencia.TabIndex = 39;
+            // 
+            // txtValorMinimoReferencia
+            // 
+            this.txtValorMinimoReferencia.Location = new System.Drawing.Point(246, 23);
+            this.txtValorMinimoReferencia.Name = "txtValorMinimoReferencia";
+            this.txtValorMinimoReferencia.Size = new System.Drawing.Size(100, 20);
+            this.txtValorMinimoReferencia.TabIndex = 38;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(361, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Valor Máximo:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(171, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Valor Mínimo:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Nombre:";
+            // 
+            // txtNombreEstudioLaboratorio
+            // 
+            this.txtNombreEstudioLaboratorio.Location = new System.Drawing.Point(105, 20);
+            this.txtNombreEstudioLaboratorio.Name = "txtNombreEstudioLaboratorio";
+            this.txtNombreEstudioLaboratorio.Size = new System.Drawing.Size(232, 20);
+            this.txtNombreEstudioLaboratorio.TabIndex = 11;
+            // 
+            // btnAgregarAnalisis
+            // 
+            this.btnAgregarAnalisis.Location = new System.Drawing.Point(115, 307);
+            this.btnAgregarAnalisis.Name = "btnAgregarAnalisis";
+            this.btnAgregarAnalisis.Size = new System.Drawing.Size(98, 23);
+            this.btnAgregarAnalisis.TabIndex = 1;
+            this.btnAgregarAnalisis.Text = "Agregar análisis";
+            this.btnAgregarAnalisis.UseVisualStyleBackColor = true;
+            this.btnAgregarAnalisis.Click += new System.EventHandler(this.btnAgregarAnalisis_Click);
+            // 
+            // cbUnidadMedidaValorReferencia
+            // 
+            this.cbUnidadMedidaValorReferencia.AutoSize = true;
+            this.cbUnidadMedidaValorReferencia.Location = new System.Drawing.Point(22, 68);
+            this.cbUnidadMedidaValorReferencia.Name = "cbUnidadMedidaValorReferencia";
+            this.cbUnidadMedidaValorReferencia.Size = new System.Drawing.Size(113, 17);
+            this.cbUnidadMedidaValorReferencia.TabIndex = 45;
+            this.cbUnidadMedidaValorReferencia.Text = "Unidad de Medida";
+            this.cbUnidadMedidaValorReferencia.UseVisualStyleBackColor = true;
+            this.cbUnidadMedidaValorReferencia.CheckedChanged += new System.EventHandler(this.cbUnidadMedidaValorReferencia_CheckedChanged);
+            // 
+            // cbUnidadMedidaDetalleValorReferencia
+            // 
+            this.cbUnidadMedidaDetalleValorReferencia.AutoSize = true;
+            this.cbUnidadMedidaDetalleValorReferencia.Location = new System.Drawing.Point(17, 85);
+            this.cbUnidadMedidaDetalleValorReferencia.Name = "cbUnidadMedidaDetalleValorReferencia";
+            this.cbUnidadMedidaDetalleValorReferencia.Size = new System.Drawing.Size(113, 17);
+            this.cbUnidadMedidaDetalleValorReferencia.TabIndex = 55;
+            this.cbUnidadMedidaDetalleValorReferencia.Text = "Unidad de Medida";
+            this.cbUnidadMedidaDetalleValorReferencia.UseVisualStyleBackColor = true;
+            this.cbUnidadMedidaDetalleValorReferencia.CheckedChanged += new System.EventHandler(this.cbUnidadMedidaDetalleValorReferencia_CheckedChanged);
             // 
             // Registrar_Análisis_de_Laboratorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 517);
+            this.ClientSize = new System.Drawing.Size(964, 386);
             this.Controls.Add(this.panel1);
             this.Name = "Registrar_Análisis_de_Laboratorio";
             this.Text = "Registrar Análisis de Laboratorio";
             this.Load += new System.EventHandler(this.Registrar_Análisis_de_Laboratorio_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.panelDetalleValorReferencia.ResumeLayout(false);
+            this.panelDetalleValorReferencia.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetallesValorReferencia)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.panelDetalleItem.ResumeLayout(false);
+            this.panelDetalleItem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValoresReferencia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -521,47 +423,37 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtNombreEstudioLaboratorio;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cbAgregarValoresReferencia;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.CheckBox cbAgregarDetalleValorReferencia;
+        private System.Windows.Forms.Panel panelDetalleItem;
+        private System.Windows.Forms.DataGridView dgvValoresReferencia;
+        private System.Windows.Forms.Button btnAgregarValorReferencia;
+        private System.Windows.Forms.ComboBox cboUnidadMedida;
+        private System.Windows.Forms.TextBox txtNombreDetalleItem;
+        private System.Windows.Forms.TextBox txtValorMaximoReferencia;
+        private System.Windows.Forms.TextBox txtValorMinimoReferencia;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Panel panelDetalleValorReferencia;
+        private System.Windows.Forms.ComboBox cboUnidadMedidaDetalleValorReferencia;
+        private System.Windows.Forms.DataGridView dgvDetallesValorReferencia;
+        private System.Windows.Forms.Button btnAgregarDetalleValorReferencia;
+        private System.Windows.Forms.TextBox txtDescripcionDetalleValorReferencia;
+        private System.Windows.Forms.TextBox txtValorMaximoDetalleValorReferencia;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtValorMinimoDetalleValorReferencia;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button btnAgregarAnalisis;
+        private System.Windows.Forms.CheckBox cbUnidadMedidaValorReferencia;
+        private System.Windows.Forms.CheckBox cbUnidadMedidaDetalleValorReferencia;
     }
 }

@@ -16,7 +16,7 @@ namespace GPA
     public partial class RegistrarEstudio : Form
     {
         ManejadorRegistrarEstudio manejador;
-        MenuPrincipal referenciaMenuPrincipal;
+        //MenuPrincipal referenciaMenuPrincipal;
         private int idhcPaciente;
 
         public RegistrarEstudio()

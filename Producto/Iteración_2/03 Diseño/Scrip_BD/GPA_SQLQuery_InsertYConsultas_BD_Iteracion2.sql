@@ -495,7 +495,12 @@ insert into UnidadMedida(nombre,descripcion)
 values('g.','Gramos')
 insert into UnidadMedida(nombre,descripcion)
 values('mg.','Miligramos')
-select * from UnidadMedida
+insert into UnidadMedida(nombre)
+values('ng/dl')
+insert into UnidadMedida(nombre)
+values('ug/24hs')
+insert into UnidadMedida(nombre)
+values('ml/24hs')
 /*--------------------------*/
 
 /*-------Insert FormaAdministracion-----*/

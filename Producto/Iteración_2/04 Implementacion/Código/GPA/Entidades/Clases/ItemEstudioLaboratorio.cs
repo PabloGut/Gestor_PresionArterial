@@ -10,8 +10,7 @@ namespace Entidades.Clases
     {
         public int id_itemEstudioLaboratoria { set; get; }
         public string nombre { set; get; }
-        public float valorResultado { set; get; }
-        public int id_unidadMedida { set; get; }
-        public int id_detalleEstudio { set; get; }
+        public int id_valorReferencia { set; get; }
+        public List<DetalleItemLaboratorio> detalles { set; get; }
     }
 }

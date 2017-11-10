@@ -10,7 +10,7 @@ namespace GPA.Manejadores
 {
     public class ManejadorConsultarPaciente
     {
-        private PacienteLN paciente;
+        //private PacienteLN paciente;
         public ManejadorConsultarPaciente()
         {
            

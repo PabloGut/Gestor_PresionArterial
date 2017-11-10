@@ -887,90 +887,6 @@ namespace GPA
             Utilidades.agregarColumnasDataGridView(dgvExamenesARealizar, nombresColumnas);
 
         }
-        /*private void cargarDatosDataGridViewSistemaLinfatico()
-        {
-            string ubicacion;
-            string tamaño;
-            int aproximacionNumerica;
-            string consistencia;
-            string descripcion = "No precisa";
-            string sensiblePalpacion = "No";
-            string limitesPrecisos="No";
-            string tiendeConfluir="No";
-            string movilizaConDedos="No";
-            string planosProfundos="No";
-            string procesoInflamatorio = "No";
-            string lesion = "No precisa";
-            string observaciones = "No precisa";
-
-            listaTerritoriosExaminados = new List<SistemaLinfatico>();
-
-            Ubicacion ubicacionSeleccionada = (Ubicacion)cboUbicacionGanglio.SelectedItem;
-            ubicacion = ubicacionSeleccionada.nombre;
-
-            Tamaño tamañoSeleccionado = (Tamaño)cboTamañoGanglio.SelectedItem;
-            tamaño = tamañoSeleccionado.nombre;
-
-            aproximacionNumerica = Convert.ToInt32(cboAproximacionNumerica.SelectedItem.ToString());
-
-            Consistencia consistenciaSeleccionada = (Consistencia)cboConsistencia.SelectedItem;
-            consistencia = consistenciaSeleccionada.nombre;
-
-            if (string.IsNullOrEmpty(txtDescripcion.Text) == false)
-            {
-                descripcion = txtDescripcion.Text;
-            }
-
-            if (chbSensiblePalpacion.Checked == true)
-            {
-                sensiblePalpacion = "Si";
-            }
-
-            if (rbLimitesPrecisos.Checked == true)
-            {
-                limitesPrecisos = "Si";
-            }
-            else
-            {
-                if (rbTiendeConfluir.Checked == true)
-                {
-                    tiendeConfluir = "Si";
-                }
-            }
-
-            if(rbMovilizarConDedos.Checked==true)
-            {
-                movilizaConDedos="Si";
-            }
-            else
-            {
-                if(rbPlanosProfundos.Checked==true)
-                {
-                    planosProfundos="Si";
-                }
-            }
-            if (chbProcesoInflamatorio.Checked == true)
-            {
-                procesoInflamatorio = "Si";
-            }
-
-            if (String.IsNullOrEmpty(txtLesionCompromisoGangleo.Text) == false)
-            {
-                lesion = txtLesionCompromisoGangleo.Text;
-            }
-
-            if (String.IsNullOrEmpty(txtObservaciones.Text) == false)
-            {
-                observaciones = txtObservaciones.Text;
-            }
-
-            SistemaLinfatico nuevoExamenLinfatico=manejadorRegistrarExamenGeneral.crearSistemaLinfaticoPaso2(ubicacion,tamaño,aproximacionNumerica,consistencia,descripcion,sensiblePalpacion,,tiendeConfluir,movilizaConDedos,planosProfundos,procesoInflamatorio,lesion,observaciones);
-            
-            listaTerritoriosExaminados.Add(nuevoExamenLinfatico);
-            
-            dgvRegionesEstudiadas.Rows.Add(ubicacion, tamaño, aproximacionNumerica, consistencia, descripcion, sensiblePalpacion, limitesPrecisos, tiendeConfluir,movilizaConDedos,planosProfundos, procesoInflamatorio, lesion, observaciones);
-        }*/
-
         private void button7_Click(object sender, EventArgs e)
         {
 
@@ -1699,22 +1615,6 @@ namespace GPA
         {
             
         }
-        /*private void cargarDatosDgvHipotesisInicial()
-        {
-            if (string.IsNullOrEmpty(txtHipotesisInicial.Text) == false)
-            {
-                if (hipotesis == null)
-                    hipotesis = new List<HipotesisInicial>();
-
-                HipotesisInicial hi = new HipotesisInicial();
-
-                dgvHipotesis.Rows.Add(txtHipotesisInicial.Text);
-                hi.descripcion = txtHipotesisInicial.Text;
-                hi.id_estadoH = manejadorRegistrarExamenGeneral.mostrarIdEstadoHipotesis("No rechazada");
-                hipotesis.Add(hi);
-                txtHipotesisInicial.Clear();
-            }
-        }*/
         private void btnAgregarDiagnostico_Click(object sender, EventArgs e)
         {
             cargarDatosDgvDiagnosticos();
@@ -2258,6 +2158,18 @@ namespace GPA
 
 
 
+        }
+
+        private void generarNuevaConsultaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            generarNuevaConsulta();
+            cargarDatosDeEjemplo();
+        }
+
+        private void registrarAnálisisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Registrar_Análisis_de_Laboratorio formAnalisis = new Registrar_Análisis_de_Laboratorio();
+            formAnalisis.ShowDialog();
         }
     }
 }
