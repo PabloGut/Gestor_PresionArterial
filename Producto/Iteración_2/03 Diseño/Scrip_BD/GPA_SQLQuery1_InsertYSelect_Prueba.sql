@@ -824,3 +824,14 @@ from Consulta c, Historia_Clinica h, Paciente p
 where c.id_hc_fk=h.id_hc and h.id_tipodoc_paciente_fk=p.id_tipoDoc_fk and h.id_nrodoc_paciente_fk=p.nro_documento
 group by c.nroConsulta, c.fechaConsulta,  nro_hc, p.nombre, p.apellido
 
+select * from Laboratorio
+
+alter table ItemEstudioLaboratorio
+drop column valorresultado
+alter table ItemEstudioLaboratorio
+drop column id_unidadMedida_fk
+
+drop table ItemEstudioLaboratorio
+select * from DetalleItemLaboratorio--Falta crear la tabla
+select * from DetalleValorReferencia--Falta crear la tabla
+

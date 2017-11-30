@@ -14,6 +14,10 @@ namespace GPA
 {
     public partial class Registrar_Análisis_de_Laboratorio : Form
     {
+        private ItemEstudioLaboratorio itemEstudio;
+        private DetalleItemLaboratorio detalleItemLaboratorio;
+        private DetalleValorReferenciaLaboratorio detalleValorReferencia;
+
         private ManejadorEstudiosLaboratorio manejador;
         private List<ItemEstudioLaboratorio> listaItemsLaboratorio;
         private List<DetalleItemLaboratorio> listaDetalles;
@@ -121,19 +125,30 @@ namespace GPA
         }
         public void agregarEstudioLaboratorio()
         {
-            if (listaItemsLaboratorio == null)
-                listaItemsLaboratorio = new List<ItemEstudioLaboratorio>();
+            if (listaDetalles == null)
+                listaDetalles = new List<DetalleItemLaboratorio>();
 
-            string nombre=null;
-            if (!string.IsNullOrEmpty(txtNombreEstudioLaboratorio.Text))
-                nombre = txtNombreEstudioLaboratorio.Text;
-
-            ItemEstudioLaboratorio item = manejador.crearItemEstudioLaboratorio(nombre);
-
-            if (cbAgregarValoresReferencia.Checked == true && listaDetalles!=null && listaDetalles.Count>0)
+            if (cbAgregarDetalleValorReferencia.Checked == false)
+                listaDetalles.Add(detalleItemLaboratorio);
+            else
             {
-                item.detalles = listaDetalles;
+                if (listaDetalleValorReferencia != null && listaDetalleValorReferencia.Count > 0)
+                    detalleItemLaboratorio.detalle = listaDetalleValorReferencia;
+                listaDetalles.Add(detalleItemLaboratorio);
             }
+
+            txtDescripcionDetalleValorReferencia.Clear();
+            txtValorMaximoDetalleValorReferencia.Clear();
+            txtValorMinimoDetalleValorReferencia.Clear();
+            dgvDetallesValorReferencia.Rows.Clear();
+
+            txtNombreDetalleItem.Clear();
+            txtValorMaximoReferencia.Clear();
+            txtValorMinimoReferencia.Clear();
+            btnAgregarValorReferencia.Enabled = true;
+
+            if (listaDetalleValorReferencia != null && listaDetalleValorReferencia.Count > 0)
+                listaDetalleValorReferencia = null;
     
         }
 
@@ -152,8 +167,13 @@ namespace GPA
                 nombre = txtNombreDetalleItem.Text;
             if (!string.IsNullOrEmpty(txtValorMinimoReferencia.Text))
                 valorMinimo = float.Parse(txtValorMinimoReferencia.Text);
+            else
+                valorMinimo = -1;
+
             if (!string.IsNullOrEmpty(txtValorMaximoReferencia.Text))
                 valorMaximo = float.Parse(txtValorMaximoReferencia.Text);
+            else
+                valorMaximo = -1;
 
             UnidadDeMedida unidad = null;
             if (cboUnidadMedida.Enabled==true)
@@ -162,21 +182,19 @@ namespace GPA
                 unidadMedida = unidad.id_unidadMedida;
             }
 
-            if (listaDetalles == null)
-                listaDetalles = new List<DetalleItemLaboratorio>();
+            detalleItemLaboratorio = manejador.crearDetalleItemLaboratorio(nombre, valorMinimo, valorMaximo, unidadMedida);
 
-            DetalleItemLaboratorio detalleItem = manejador.crearDetalleItemLaboratorio(nombre, valorMinimo, valorMaximo, unidadMedida);
-
-            listaDetalles.Add(detalleItem);
 
             if (cboUnidadMedida.Enabled == true)
-            {
-                dgvValoresReferencia.Rows.Add(nombre, valorMinimo, valorMaximo, unidadMedida);
+            {   
+                dgvValoresReferencia.Rows.Add(nombre, valorMinimo, valorMaximo, unidad.nombre);
             }
             else
             {
                 dgvValoresReferencia.Rows.Add(nombre, valorMinimo, valorMaximo, "No seleccionado");
             }
+            btnAgregarValorReferencia.Enabled = false;
+
         }
         public void limpiar()
         {
@@ -233,22 +251,56 @@ namespace GPA
                 unidad = (UnidadDeMedida)cboUnidadMedidaDetalleValorReferencia.SelectedItem;
                 unidadMedida = unidad.id_unidadMedida;
             }
-
             if (listaDetalleValorReferencia == null)
                 listaDetalleValorReferencia = new List<DetalleValorReferenciaLaboratorio>();
 
-            DetalleValorReferenciaLaboratorio detalle = manejador.crearDetalleValorReferencia(descripcion, valorMinimo, valorMaximo, unidadMedida);
-
-            listaDetalleValorReferencia.Add(detalle);
+            detalleValorReferencia = manejador.crearDetalleValorReferencia(descripcion, valorMinimo, valorMaximo, unidadMedida);
+            listaDetalleValorReferencia.Add(detalleValorReferencia);
 
             if (cboUnidadMedidaDetalleValorReferencia.Enabled == true)
             {
-                dgvDetallesValorReferencia.Rows.Add(descripcion, valorMinimo, valorMaximo, unidadMedida);
+                dgvDetallesValorReferencia.Rows.Add(descripcion, valorMinimo, valorMaximo, unidad.nombre);
             }
             else
             {
                 dgvDetallesValorReferencia.Rows.Add(descripcion, valorMinimo, valorMaximo, "No seleccionado");
             }
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            string nombreEstudio="";
+
+            if(!string.IsNullOrEmpty(txtNombreEstudioLaboratorio.Text))
+                 nombreEstudio=txtNombreEstudioLaboratorio.Text;
+
+            itemEstudio = manejador.crearItemEstudioLaboratorio(nombreEstudio);
+
+            if (listaDetalles != null && listaDetalles.Count > 0)
+                itemEstudio.detalles = listaDetalles;
+
+            txtNombreEstudioLaboratorio.Clear();
+            txtNombreDetalleItem.Clear();
+            txtValorMaximoReferencia.Clear();
+            txtValorMinimoReferencia.Clear();
+            dgvValoresReferencia.Rows.Clear();
+            cbAgregarDetalleValorReferencia.Checked = false;
+            txtDescripcionDetalleValorReferencia.Clear();
+            txtValorMaximoDetalleValorReferencia.Clear();
+            txtValorMinimoDetalleValorReferencia.Clear();
+            dgvDetallesValorReferencia.Rows.Clear();
+
+            itemEstudio = null;
+            detalleItemLaboratorio = null;
+            detalleValorReferencia = null;
+            listaItemsLaboratorio = null;
+            listaDetalles = null;
+            listaDetalleValorReferencia = null;
+        }
+
+        private void txtValorMinimoReferencia_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

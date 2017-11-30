@@ -68,6 +68,7 @@
     <Compile Include="DescripcionDelTiempoDAO.cs" />
     <Compile Include="DetalleMedicionPresionArterialDAO.cs" />
     <Compile Include="DetallePulsoArterialDAO.cs" />
+    <Compile Include="DetalleValorReferenciaDAO.cs" />
     <Compile Include="DiagnosticoDAO.cs" />
     <Compile Include="DomicilioDAO.cs" />
     <Compile Include="ElementoDelTiempoDAO.cs" />

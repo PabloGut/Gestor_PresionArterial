@@ -111,14 +111,14 @@ namespace GPA
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            referenciaMenuPrincipal.Show();
+            //referenciaMenuPrincipal.Show();
             this.Hide(); 
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Hide();
-            referenciaMenuPrincipal.Show();
+            //referenciaMenuPrincipal.Show();
             
             
         }

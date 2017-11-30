@@ -34,7 +34,9 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarAnalisis = new System.Windows.Forms.Button();
             this.panelDetalleValorReferencia = new System.Windows.Forms.Panel();
+            this.cbUnidadMedidaDetalleValorReferencia = new System.Windows.Forms.CheckBox();
             this.cboUnidadMedidaDetalleValorReferencia = new System.Windows.Forms.ComboBox();
             this.dgvDetallesValorReferencia = new System.Windows.Forms.DataGridView();
             this.btnAgregarDetalleValorReferencia = new System.Windows.Forms.Button();
@@ -48,6 +50,7 @@
             this.cbAgregarValoresReferencia = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelDetalleItem = new System.Windows.Forms.Panel();
+            this.cbUnidadMedidaValorReferencia = new System.Windows.Forms.CheckBox();
             this.cbAgregarDetalleValorReferencia = new System.Windows.Forms.CheckBox();
             this.dgvValoresReferencia = new System.Windows.Forms.DataGridView();
             this.btnAgregarValorReferencia = new System.Windows.Forms.Button();
@@ -59,9 +62,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNombreEstudioLaboratorio = new System.Windows.Forms.TextBox();
-            this.btnAgregarAnalisis = new System.Windows.Forms.Button();
-            this.cbUnidadMedidaValorReferencia = new System.Windows.Forms.CheckBox();
-            this.cbUnidadMedidaDetalleValorReferencia = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panelDetalleValorReferencia.SuspendLayout();
@@ -109,7 +109,7 @@
             this.btnSalir.Location = new System.Drawing.Point(407, 330);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(120, 21);
-            this.btnSalir.TabIndex = 35;
+            this.btnSalir.TabIndex = 18;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
@@ -118,9 +118,10 @@
             this.btnAceptar.Location = new System.Drawing.Point(115, 330);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(120, 21);
-            this.btnAceptar.TabIndex = 34;
-            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TabIndex = 16;
+            this.btnAceptar.Text = "Guardar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // groupBox2
             // 
@@ -132,6 +133,16 @@
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle valor de referencia";
+            // 
+            // btnAgregarAnalisis
+            // 
+            this.btnAgregarAnalisis.Location = new System.Drawing.Point(114, 294);
+            this.btnAgregarAnalisis.Name = "btnAgregarAnalisis";
+            this.btnAgregarAnalisis.Size = new System.Drawing.Size(98, 23);
+            this.btnAgregarAnalisis.TabIndex = 15;
+            this.btnAgregarAnalisis.Text = "Agregar análisis";
+            this.btnAgregarAnalisis.UseVisualStyleBackColor = true;
+            this.btnAgregarAnalisis.Click += new System.EventHandler(this.btnAgregarAnalisis_Click);
             // 
             // panelDetalleValorReferencia
             // 
@@ -150,13 +161,24 @@
             this.panelDetalleValorReferencia.Size = new System.Drawing.Size(340, 271);
             this.panelDetalleValorReferencia.TabIndex = 0;
             // 
+            // cbUnidadMedidaDetalleValorReferencia
+            // 
+            this.cbUnidadMedidaDetalleValorReferencia.AutoSize = true;
+            this.cbUnidadMedidaDetalleValorReferencia.Location = new System.Drawing.Point(17, 85);
+            this.cbUnidadMedidaDetalleValorReferencia.Name = "cbUnidadMedidaDetalleValorReferencia";
+            this.cbUnidadMedidaDetalleValorReferencia.Size = new System.Drawing.Size(113, 17);
+            this.cbUnidadMedidaDetalleValorReferencia.TabIndex = 13;
+            this.cbUnidadMedidaDetalleValorReferencia.Text = "Unidad de Medida";
+            this.cbUnidadMedidaDetalleValorReferencia.UseVisualStyleBackColor = true;
+            this.cbUnidadMedidaDetalleValorReferencia.CheckedChanged += new System.EventHandler(this.cbUnidadMedidaDetalleValorReferencia_CheckedChanged);
+            // 
             // cboUnidadMedidaDetalleValorReferencia
             // 
             this.cboUnidadMedidaDetalleValorReferencia.FormattingEnabled = true;
             this.cboUnidadMedidaDetalleValorReferencia.Location = new System.Drawing.Point(140, 83);
             this.cboUnidadMedidaDetalleValorReferencia.Name = "cboUnidadMedidaDetalleValorReferencia";
             this.cboUnidadMedidaDetalleValorReferencia.Size = new System.Drawing.Size(82, 21);
-            this.cboUnidadMedidaDetalleValorReferencia.TabIndex = 54;
+            this.cboUnidadMedidaDetalleValorReferencia.TabIndex = 13;
             // 
             // dgvDetallesValorReferencia
             // 
@@ -171,7 +193,7 @@
             this.btnAgregarDetalleValorReferencia.Location = new System.Drawing.Point(228, 82);
             this.btnAgregarDetalleValorReferencia.Name = "btnAgregarDetalleValorReferencia";
             this.btnAgregarDetalleValorReferencia.Size = new System.Drawing.Size(105, 21);
-            this.btnAgregarDetalleValorReferencia.TabIndex = 51;
+            this.btnAgregarDetalleValorReferencia.TabIndex = 14;
             this.btnAgregarDetalleValorReferencia.Text = "Agregar detalle";
             this.btnAgregarDetalleValorReferencia.UseVisualStyleBackColor = true;
             this.btnAgregarDetalleValorReferencia.Click += new System.EventHandler(this.btnAgregarDetalleValorReferencia_Click);
@@ -181,14 +203,14 @@
             this.txtDescripcionDetalleValorReferencia.Location = new System.Drawing.Point(85, 4);
             this.txtDescripcionDetalleValorReferencia.Name = "txtDescripcionDetalleValorReferencia";
             this.txtDescripcionDetalleValorReferencia.Size = new System.Drawing.Size(226, 20);
-            this.txtDescripcionDetalleValorReferencia.TabIndex = 50;
+            this.txtDescripcionDetalleValorReferencia.TabIndex = 10;
             // 
             // txtValorMaximoDetalleValorReferencia
             // 
             this.txtValorMaximoDetalleValorReferencia.Location = new System.Drawing.Point(251, 38);
             this.txtValorMaximoDetalleValorReferencia.Name = "txtValorMaximoDetalleValorReferencia";
             this.txtValorMaximoDetalleValorReferencia.Size = new System.Drawing.Size(67, 20);
-            this.txtValorMaximoDetalleValorReferencia.TabIndex = 49;
+            this.txtValorMaximoDetalleValorReferencia.TabIndex = 12;
             // 
             // label15
             // 
@@ -213,7 +235,7 @@
             this.txtValorMinimoDetalleValorReferencia.Location = new System.Drawing.Point(92, 38);
             this.txtValorMinimoDetalleValorReferencia.Name = "txtValorMinimoDetalleValorReferencia";
             this.txtValorMinimoDetalleValorReferencia.Size = new System.Drawing.Size(68, 20);
-            this.txtValorMinimoDetalleValorReferencia.TabIndex = 48;
+            this.txtValorMinimoDetalleValorReferencia.TabIndex = 11;
             // 
             // label14
             // 
@@ -229,7 +251,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(264, 330);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(120, 21);
-            this.btnCancelar.TabIndex = 33;
+            this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -239,7 +261,7 @@
             this.cbAgregarValoresReferencia.Location = new System.Drawing.Point(376, 20);
             this.cbAgregarValoresReferencia.Name = "cbAgregarValoresReferencia";
             this.cbAgregarValoresReferencia.Size = new System.Drawing.Size(165, 17);
-            this.cbAgregarValoresReferencia.TabIndex = 32;
+            this.cbAgregarValoresReferencia.TabIndex = 2;
             this.cbAgregarValoresReferencia.Text = "Agregar valores de referencia";
             this.cbAgregarValoresReferencia.UseVisualStyleBackColor = true;
             this.cbAgregarValoresReferencia.CheckedChanged += new System.EventHandler(this.cbAgregarValoresReferencia_CheckedChanged);
@@ -272,13 +294,24 @@
             this.panelDetalleItem.Size = new System.Drawing.Size(575, 237);
             this.panelDetalleItem.TabIndex = 34;
             // 
+            // cbUnidadMedidaValorReferencia
+            // 
+            this.cbUnidadMedidaValorReferencia.AutoSize = true;
+            this.cbUnidadMedidaValorReferencia.Location = new System.Drawing.Point(22, 68);
+            this.cbUnidadMedidaValorReferencia.Name = "cbUnidadMedidaValorReferencia";
+            this.cbUnidadMedidaValorReferencia.Size = new System.Drawing.Size(113, 17);
+            this.cbUnidadMedidaValorReferencia.TabIndex = 6;
+            this.cbUnidadMedidaValorReferencia.Text = "Unidad de Medida";
+            this.cbUnidadMedidaValorReferencia.UseVisualStyleBackColor = true;
+            this.cbUnidadMedidaValorReferencia.CheckedChanged += new System.EventHandler(this.cbUnidadMedidaValorReferencia_CheckedChanged);
+            // 
             // cbAgregarDetalleValorReferencia
             // 
             this.cbAgregarDetalleValorReferencia.AutoSize = true;
             this.cbAgregarDetalleValorReferencia.Location = new System.Drawing.Point(6, 204);
             this.cbAgregarDetalleValorReferencia.Name = "cbAgregarDetalleValorReferencia";
             this.cbAgregarDetalleValorReferencia.Size = new System.Drawing.Size(188, 17);
-            this.cbAgregarDetalleValorReferencia.TabIndex = 35;
+            this.cbAgregarDetalleValorReferencia.TabIndex = 9;
             this.cbAgregarDetalleValorReferencia.Text = "Agregar detalle valor de referencia";
             this.cbAgregarDetalleValorReferencia.UseVisualStyleBackColor = true;
             this.cbAgregarDetalleValorReferencia.CheckedChanged += new System.EventHandler(this.cbAgregarDetalleValorReferencia_CheckedChanged);
@@ -293,10 +326,10 @@
             // 
             // btnAgregarValorReferencia
             // 
-            this.btnAgregarValorReferencia.Location = new System.Drawing.Point(205, 201);
+            this.btnAgregarValorReferencia.Location = new System.Drawing.Point(229, 65);
             this.btnAgregarValorReferencia.Name = "btnAgregarValorReferencia";
             this.btnAgregarValorReferencia.Size = new System.Drawing.Size(120, 21);
-            this.btnAgregarValorReferencia.TabIndex = 43;
+            this.btnAgregarValorReferencia.TabIndex = 8;
             this.btnAgregarValorReferencia.Text = "Agregar detalle";
             this.btnAgregarValorReferencia.UseVisualStyleBackColor = true;
             this.btnAgregarValorReferencia.Click += new System.EventHandler(this.btnAgregarValorReferencia_Click);
@@ -307,28 +340,29 @@
             this.cboUnidadMedida.Location = new System.Drawing.Point(141, 66);
             this.cboUnidadMedida.Name = "cboUnidadMedida";
             this.cboUnidadMedida.Size = new System.Drawing.Size(82, 21);
-            this.cboUnidadMedida.TabIndex = 42;
+            this.cboUnidadMedida.TabIndex = 7;
             // 
             // txtNombreDetalleItem
             // 
             this.txtNombreDetalleItem.Location = new System.Drawing.Point(53, 23);
             this.txtNombreDetalleItem.Name = "txtNombreDetalleItem";
             this.txtNombreDetalleItem.Size = new System.Drawing.Size(100, 20);
-            this.txtNombreDetalleItem.TabIndex = 40;
+            this.txtNombreDetalleItem.TabIndex = 3;
             // 
             // txtValorMaximoReferencia
             // 
             this.txtValorMaximoReferencia.Location = new System.Drawing.Point(440, 23);
             this.txtValorMaximoReferencia.Name = "txtValorMaximoReferencia";
             this.txtValorMaximoReferencia.Size = new System.Drawing.Size(100, 20);
-            this.txtValorMaximoReferencia.TabIndex = 39;
+            this.txtValorMaximoReferencia.TabIndex = 5;
             // 
             // txtValorMinimoReferencia
             // 
             this.txtValorMinimoReferencia.Location = new System.Drawing.Point(246, 23);
             this.txtValorMinimoReferencia.Name = "txtValorMinimoReferencia";
             this.txtValorMinimoReferencia.Size = new System.Drawing.Size(100, 20);
-            this.txtValorMinimoReferencia.TabIndex = 38;
+            this.txtValorMinimoReferencia.TabIndex = 4;
+            this.txtValorMinimoReferencia.TextChanged += new System.EventHandler(this.txtValorMinimoReferencia_TextChanged);
             // 
             // label12
             // 
@@ -362,39 +396,7 @@
             this.txtNombreEstudioLaboratorio.Location = new System.Drawing.Point(105, 20);
             this.txtNombreEstudioLaboratorio.Name = "txtNombreEstudioLaboratorio";
             this.txtNombreEstudioLaboratorio.Size = new System.Drawing.Size(232, 20);
-            this.txtNombreEstudioLaboratorio.TabIndex = 11;
-            // 
-            // btnAgregarAnalisis
-            // 
-            this.btnAgregarAnalisis.Location = new System.Drawing.Point(115, 307);
-            this.btnAgregarAnalisis.Name = "btnAgregarAnalisis";
-            this.btnAgregarAnalisis.Size = new System.Drawing.Size(98, 23);
-            this.btnAgregarAnalisis.TabIndex = 1;
-            this.btnAgregarAnalisis.Text = "Agregar análisis";
-            this.btnAgregarAnalisis.UseVisualStyleBackColor = true;
-            this.btnAgregarAnalisis.Click += new System.EventHandler(this.btnAgregarAnalisis_Click);
-            // 
-            // cbUnidadMedidaValorReferencia
-            // 
-            this.cbUnidadMedidaValorReferencia.AutoSize = true;
-            this.cbUnidadMedidaValorReferencia.Location = new System.Drawing.Point(22, 68);
-            this.cbUnidadMedidaValorReferencia.Name = "cbUnidadMedidaValorReferencia";
-            this.cbUnidadMedidaValorReferencia.Size = new System.Drawing.Size(113, 17);
-            this.cbUnidadMedidaValorReferencia.TabIndex = 45;
-            this.cbUnidadMedidaValorReferencia.Text = "Unidad de Medida";
-            this.cbUnidadMedidaValorReferencia.UseVisualStyleBackColor = true;
-            this.cbUnidadMedidaValorReferencia.CheckedChanged += new System.EventHandler(this.cbUnidadMedidaValorReferencia_CheckedChanged);
-            // 
-            // cbUnidadMedidaDetalleValorReferencia
-            // 
-            this.cbUnidadMedidaDetalleValorReferencia.AutoSize = true;
-            this.cbUnidadMedidaDetalleValorReferencia.Location = new System.Drawing.Point(17, 85);
-            this.cbUnidadMedidaDetalleValorReferencia.Name = "cbUnidadMedidaDetalleValorReferencia";
-            this.cbUnidadMedidaDetalleValorReferencia.Size = new System.Drawing.Size(113, 17);
-            this.cbUnidadMedidaDetalleValorReferencia.TabIndex = 55;
-            this.cbUnidadMedidaDetalleValorReferencia.Text = "Unidad de Medida";
-            this.cbUnidadMedidaDetalleValorReferencia.UseVisualStyleBackColor = true;
-            this.cbUnidadMedidaDetalleValorReferencia.CheckedChanged += new System.EventHandler(this.cbUnidadMedidaDetalleValorReferencia_CheckedChanged);
+            this.txtNombreEstudioLaboratorio.TabIndex = 1;
             // 
             // Registrar_Análisis_de_Laboratorio
             // 
