@@ -22,9 +22,38 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public void insertDetalleValorReferencia(DetalleValorReferenciaLaboratorio detalle, SqlConnection cn, SqlTransaction tran)
+        public static void registrartDetalleValorReferencia(DetalleValorReferenciaLaboratorio detalle, SqlConnection cn, SqlTransaction tran)
         {
+            string consulta = @"insert into DetalleValorReferencia(descripcion,valorDesde,valorHasta,id_unidadMedida_fk,id_detalleItemLaboratorio_fk)
+                                values(@descripcion,@valorDesde,@valorHasta,@id_unidadMedida_fk,@id_detalleItemLaboratorio_fk)";
 
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@descripcion", detalle.descripcion);
+                cmd.Parameters.AddWithValue("@valorDesde",detalle.valorDesde);
+                cmd.Parameters.AddWithValue("@valorHasta", detalle.valorHasta);
+                cmd.Parameters.AddWithValue("@id_unidadMedida_fk", detalle.idUnidadMedida);
+                cmd.Parameters.AddWithValue("@id_detalleItemLaboratorio_fk", detalle.idDetalleItemLaboratorio);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Transaction = tran;
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                throw new Exception("Error al insertar medición de presión arterial: " + e.Message);
+            }
+                              
         }
     }
 }

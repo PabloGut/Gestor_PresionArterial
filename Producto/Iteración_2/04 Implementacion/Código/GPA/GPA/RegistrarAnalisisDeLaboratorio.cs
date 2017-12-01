@@ -19,7 +19,7 @@ namespace GPA
         private DetalleValorReferenciaLaboratorio detalleValorReferencia;
 
         private ManejadorEstudiosLaboratorio manejador;
-        private List<ItemEstudioLaboratorio> listaItemsLaboratorio;
+        //private List<ItemEstudioLaboratorio> listaItemsLaboratorio;
         private List<DetalleItemLaboratorio> listaDetalles;
         private List<DetalleValorReferenciaLaboratorio> listaDetalleValorReferencia;
 
@@ -176,10 +176,14 @@ namespace GPA
                 valorMaximo = -1;
 
             UnidadDeMedida unidad = null;
-            if (cboUnidadMedida.Enabled==true)
+            if (cboUnidadMedida.Enabled == true)
             {
                 unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
                 unidadMedida = unidad.id_unidadMedida;
+            }
+            else
+            {
+                unidadMedida = -1;
             }
 
             detalleItemLaboratorio = manejador.crearDetalleItemLaboratorio(nombre, valorMinimo, valorMaximo, unidadMedida);
@@ -246,11 +250,15 @@ namespace GPA
                 valorMaximo =float.Parse(txtValorMaximoDetalleValorReferencia.Text);
 
              UnidadDeMedida unidad=null;
-            if (cboUnidadMedidaDetalleValorReferencia.Enabled == true)
-            {
-                unidad = (UnidadDeMedida)cboUnidadMedidaDetalleValorReferencia.SelectedItem;
-                unidadMedida = unidad.id_unidadMedida;
-            }
+             if (cboUnidadMedidaDetalleValorReferencia.Enabled == true)
+             {
+                 unidad = (UnidadDeMedida)cboUnidadMedidaDetalleValorReferencia.SelectedItem;
+                 unidadMedida = unidad.id_unidadMedida;
+             }
+             else
+             {
+                 unidadMedida = -1;
+             }
             if (listaDetalleValorReferencia == null)
                 listaDetalleValorReferencia = new List<DetalleValorReferenciaLaboratorio>();
 
@@ -274,10 +282,16 @@ namespace GPA
             if(!string.IsNullOrEmpty(txtNombreEstudioLaboratorio.Text))
                  nombreEstudio=txtNombreEstudioLaboratorio.Text;
 
-            itemEstudio = manejador.crearItemEstudioLaboratorio(nombreEstudio);
+            ItemLaboratorio itemLaboratorio = manejador.crearItemLaboratorio(nombreEstudio);
+
+            itemEstudio = manejador.crearItemEstudioLaboratorio(itemLaboratorio);
 
             if (listaDetalles != null && listaDetalles.Count > 0)
                 itemEstudio.detalles = listaDetalles;
+
+            manejador.registrarItemEstudioLaboratorio(itemEstudio);
+
+            MessageBox.Show("Registro completo!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             txtNombreEstudioLaboratorio.Clear();
             txtNombreDetalleItem.Clear();
@@ -293,7 +307,6 @@ namespace GPA
             itemEstudio = null;
             detalleItemLaboratorio = null;
             detalleValorReferencia = null;
-            listaItemsLaboratorio = null;
             listaDetalles = null;
             listaDetalleValorReferencia = null;
         }

@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             return AnalisisLaboratorioDAO.mostrarAnalisisLaboratorio();
         }
+        public static void registrarItemEstudioLaboratorio(ItemEstudioLaboratorio item)
+        {
+            ItemEstudioLaboratorioDAO.registrarItemEstudioLaboratorio(item);
+        }
     }
 }

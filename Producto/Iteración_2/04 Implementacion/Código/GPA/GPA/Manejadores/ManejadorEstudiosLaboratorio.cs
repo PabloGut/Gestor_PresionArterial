@@ -9,12 +9,12 @@ namespace GPA.Manejadores
 {
     public class ManejadorEstudiosLaboratorio
     {
-        public ItemEstudioLaboratorio crearItemEstudioLaboratorio(string nombre)
+        public ItemEstudioLaboratorio crearItemEstudioLaboratorio(ItemLaboratorio item)
         {
-            ItemEstudioLaboratorio item = new ItemEstudioLaboratorio();
-            item.nombre = nombre;
+            ItemEstudioLaboratorio itemLaboratorio = new ItemEstudioLaboratorio();
+            itemLaboratorio.item = item;
 
-            return item;
+            return itemLaboratorio;
         }
         public DetalleItemLaboratorio crearDetalleItemLaboratorio(string nombre, float valorDesde, float valorHasta, int unidadMedida)
         {
@@ -35,6 +35,17 @@ namespace GPA.Manejadores
             detalle.idUnidadMedida = unidadMedida;
 
             return detalle;
+        }
+        public void registrarItemEstudioLaboratorio(ItemEstudioLaboratorio item)
+        {
+            AnalisisLaboratorioLN.registrarItemEstudioLaboratorio(item);
+        }
+        public ItemLaboratorio crearItemLaboratorio(string nombre)
+        {
+            ItemLaboratorio item = new ItemLaboratorio();
+            item.nombre = nombre;
+
+            return item;
         }
     }
 }

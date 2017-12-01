@@ -8,9 +8,11 @@ namespace Entidades.Clases
 {
     public class ItemEstudioLaboratorio
     {
-        public int id_itemEstudioLaboratoria { set; get; }
-        public string nombre { set; get; }
+        public int id_itemEstudioLaboratorio { set; get; }
+        public int id_itemLaboratorio { set; get; }
+        public int idDetalleLaboratorio { set; get; }
         public int id_valorReferencia { set; get; }
+        public ItemLaboratorio item { set; get; }
         public List<DetalleItemLaboratorio> detalles { set; get; }
     }
 }

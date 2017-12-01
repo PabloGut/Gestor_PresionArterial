@@ -13,6 +13,7 @@ namespace Entidades.Clases
         public float valorDesde { set; get; }
         public float valorHasta { set; get; }
         public int id_unidadMedida { set; get; }
+        public int id_ItemEstudioLaboratorio { set; get; }
         public int id_detalleValorReferencia { set; get; }
         public List<DetalleValorReferenciaLaboratorio> detalle { set; get; }
 

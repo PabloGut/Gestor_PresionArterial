@@ -97,6 +97,7 @@
     <Compile Include="Clases\Institucion.cs" />
     <Compile Include="Clases\IntensidadActividadFisica.cs" />
     <Compile Include="Clases\ItemEstudioLaboratorio.cs" />
+    <Compile Include="Clases\ItemLaboratorio.cs" />
     <Compile Include="Clases\Laboratorio.cs" />
     <Compile Include="Clases\Localidad.cs" />
     <Compile Include="Clases\Medicamento.cs" />

@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using Entidades.Clases;
+using System.Data.SqlClient;
+namespace DAO
+{
+    public class DetalleItemLaboratorioDAO
+    {
+        private static string cadenaConexion;
+
+        public static void setCadenaConexion()
+        {
+            CadenaConexion singleton = CadenaConexion.getInstancia();
+            cadenaConexion = singleton.getCadena();
+        }
+        public static string getCadenaConexion()
+        {
+            return cadenaConexion;
+        }
+        public static void registrarDetalleItemLaboratorio(DetalleItemLaboratorio detalleItem, SqlConnection cn, SqlTransaction tran)
+        {
+            string consulta = @"insert into DetalleItemLaboratorio(nombre, valorDesde, valorHasta, id_unidadMedida_fk, id_item_fk)
+                                values(@nombre,@valorDesde,@valorHasta,@id_unidadMedida_fk,@id_item_fk)";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@nombre", detalleItem.nombre);
+                cmd.Parameters.AddWithValue("@valorDesde", detalleItem.valorDesde);
+                cmd.Parameters.AddWithValue("@valorHasta", detalleItem.valorHasta);
+
+                if (detalleItem.id_unidadMedida == -1)
+                {
+                    cmd.Parameters.AddWithValue("@id_unidadMedida_fk", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_unidadMedida_fk", detalleItem.id_unidadMedida);
+                }
+
+                cmd.Parameters.AddWithValue("@id_item_fk", detalleItem.id_detalleItemLaboratorio);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Transaction = tran;
+
+                cmd.ExecuteNonQuery();
+
+                SqlCommand cmd1 = new SqlCommand("SELECT IDENT_CURRENT('DetalleItemLaboratorio')", cn, tran);
+                detalleItem.id_detalleItemLaboratorio = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                foreach (DetalleValorReferenciaLaboratorio detalle in detalleItem.detalle)
+                {
+                    detalle.idDetalleItemLaboratorio = detalleItem.id_detalleItemLaboratorio;
+                    DetalleValorReferenciaDAO.registrartDetalleValorReferencia(detalle, cn, tran);
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw new Exception("Error al insertar: " + e.Message);
+            }
+        }
+    }
+}

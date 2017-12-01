@@ -98,21 +98,27 @@ FOREIGN KEY (id_analisisLaboratorio_fk) REFERENCES AnalisisLaboratorio(id_analis
 FOREIGN KEY (id_metodoAnalisisLaboratorio_fk) REFERENCES MetodoAnalisisLaboratorio(id_metodo),
 foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
 
+create table itemLaboratorio(
+id_itemLaboratorio int identity,
+nombre text,
+primary key (id_itemLaboratorio))
+
+CREATE TABLE ItemEstudioLaboratorio(
+id_itemEstudioLaboratorio integer IDENTITY,
+id_itemLaboratorio_fk int,
+PRIMARY KEY(id_itemEstudioLaboratorio),
+FOREIGN KEY(id_itemLaboratorio_fk) references itemLaboratorio (id_itemLaboratorio))
+
 create table DetalleLaboratorio(
 id_detalleLaboratorio int identity,
 valorResultado float,
 id_unidadMedida_fk int,
+id_itemEstudioLaboratorio_fk int,
 id_laboratorio_fk int,
 constraint id_detallelaboratorio_pk primary key (id_detalleLaboratorio),
 constraint id_unidadMedida_fk foreign key (id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
+constraint id_itemEstudioLaboratorio_fk foreign key (id_itemEstudioLaboratorio_fk) references ItemEstudioLaboratorio(id_itemEstudioLaboratorio),
 constraint id_laboratorio_fk foreign key (id_laboratorio_fk) references Laboratorio(id_laboratorio))
-
-CREATE TABLE ItemEstudioLaboratorio(
-id_itemEstudioLaboratorio integer IDENTITY,
-nombre varchar(200) not null,
-id_detalleLaboratorio_fk integer not null,
-PRIMARY KEY(id_itemEstudioLaboratorio),
-FOREIGN KEY (id_detalleLaboratorio_fk) REFERENCES Laboratorio(id_Laboratorio))
 
 CREATE TABLE DetalleItemLaboratorio(
 id_detalleItemLaboratorio integer PRIMARY KEY IDENTITY,
@@ -120,7 +126,6 @@ nombre varchar(200) not null,
 valorDesde float,
 valorHasta float,
 id_unidadMedida_fk int ,
-descripcionValorDesdeHasta varchar(50),
 id_item_fk integer not null,
 FOREIGN KEY (id_item_fk) references ItemEstudioLaboratorio(id_itemEstudioLaboratorio),
 FOREIGN KEY (id_unidadMedida_fk) REFERENCES UnidadMedida(id_unidadMedida))

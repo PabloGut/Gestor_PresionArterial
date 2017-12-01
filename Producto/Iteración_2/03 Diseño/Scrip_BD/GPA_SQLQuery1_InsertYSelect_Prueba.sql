@@ -831,7 +831,18 @@ drop column valorresultado
 alter table ItemEstudioLaboratorio
 drop column id_unidadMedida_fk
 
-drop table ItemEstudioLaboratorio
-select * from DetalleItemLaboratorio--Falta crear la tabla
-select * from DetalleValorReferencia--Falta crear la tabla
+alter table ItemEstudioLaboratorio
+drop column nombre
+alter table ItemEstudioLaboratorio
+add id_itemLaboratorio int
+alter table ItemEstudioLaboratorio
+add foreign key (id_itemLaboratorio) references itemLaboratorio(id_itemLaboratorio)
+
+drop table DetalleValorReferencia
+drop table DetalleItemLaboratorio
+drop table DetalleLaboratorio
+
+
+select * from ItemLaboratorio
+select * from DetalleValorReferencia
 
