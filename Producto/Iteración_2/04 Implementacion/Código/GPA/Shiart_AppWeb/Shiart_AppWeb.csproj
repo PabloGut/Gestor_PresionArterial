@@ -188,6 +188,7 @@
     <Content Include="Images\bullet.png" />
     <Content Include="Images\Fondo.jpg" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\imagenConsulta.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />

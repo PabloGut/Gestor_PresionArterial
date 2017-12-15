@@ -3,11 +3,11 @@
 	max-width:1300px;
 	background-color:#BCD5DD;
 	padding: 10px 5px 20px 50px;
-	width: 1078px;
 	height:50px;
 	position:relative;
-	left:200px;
-	bottom: 127px;
+	bottom: 50px;
+    display:block;
+    border:solid;
 }
 .navegacion li{
 	display:inline;
@@ -16,7 +16,7 @@
 	font-size:25px;
 	position: relative;
 	right:120px;
-	padding-left:60px;
+	padding-left:150px;
 }
 li a:hover{
 	background-color:#84C2E3;
@@ -27,18 +27,61 @@ a{
 	color:#0D0C0C;
 	font-family: 'Josefin Sans', sans-serif;
 }
+.InicioSesion {
+    position:relative;
+    top:10px;
+    left:939px;
+    width:180px;
+    background-color:#46A3B8;
+}
+    .InicioSesion li {
+         list-style-type:none;
+         padding-left:4px;
+         color:white;
+    }
+    .InicioSesion a {
+        color:white;
+    }
+
+.contenedorSuperior {
+    border:solid;
+    position:relative;
+    bottom:210px;
+    width:1122px;
+    left:205px;
+    height:70px;
+}
+.contenedorFuncionesSistema {
+    position:relative;
+    bottom:125px;
+    width:1327px;
+    height:343px;
+    margin:auto;
+}
+.caracteristicas {
+    width:659.5px;
+    position:relative;
+    float:left;
+    border:solid;
+    border-width:2px;
+}
+.caracteristica h1 {
+    text-align:center;
+}
+.descCaracateristica {
+    text-align:center;
+}
+.imagenCaracteristica {
+    position:relative;
+    width:450px;
+    display:block;
+    margin:auto;
+}
 html{
-	margin:0 px;
-	padding: 0px;
-	size:auto;
-	padding-top:0px;
+
 }
 body{
-	background-color:#FFFFF;
-	height:400px;
-	size:relative;
-	padding:0px;
-	/*background-color:green;*/
+border:solid;
 }
 .btn{
 	background-color:#80B8F3;
@@ -63,14 +106,16 @@ h1.titulo{
 	position:relative;
 	bottom:25px;
 }
+.titulo {
+}
 .centro{
 	background-image:url(/Images/Fondo.jpg);
 	background-size:cover;
 	padding: 300px 20px;
 	background-color:white;
 	position:relative;
-	position:relative;
-	bottom:127px;
+	bottom:126px;
+    height:100px;
 	
 }
 .contenidoCentro{
@@ -92,25 +137,12 @@ h2.nombreSistema{
     position:relative;
     bottom:200px;
 }
-.suport{
-	height:110px;
-	text-align:center;
-	padding:20px 20px 20px 80px;
-	margin:0 auto;
-	background-color:#84C2E3;
-    position:relative;
-    bottom:100px;
-}
 .col{
 	float:left;
 	width:300px;
 	padding-right:100px;
 	position:relative;
 	left:50px;
-}
-.suport .col {
-	font-family: 'Josefin Sans', sans-serif;
-	font-size:12px;
 }
 .col h2{
 	text-transform:uppercase;
@@ -119,14 +151,6 @@ h2.nombreSistema{
 	font-size:16px;
 	
 }
-.conteiner{
-	max-width:1200px;
-	height:120px;
-	width:1900px;
-	margin: auto;
-	position:relative;
-	right: 94px;
-}
 .desc{
 	font-family: 'Josefin Sans', sans-serif;
 	font-size:30px;
@@ -134,12 +158,7 @@ h2.nombreSistema{
 	text-align:center;
 	font-weight:bold;
 }
-.parrafoDesc{
-	position:relative;
-	bottom:158px;
-	background-color:#317FD7;
-	background-size:contain;
-}
+
 .login {
     font-family: 'Miltonian Tattoo', cursive;
     position:relative;
