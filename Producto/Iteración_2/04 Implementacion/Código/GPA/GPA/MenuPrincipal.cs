@@ -22,6 +22,7 @@ namespace GPA
         ManejadorConsultarHC manejadorConsultarHc;
         ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
         ManejadorRegistrarExamenGeneral manejadorRegistrarExamenGeneral;
+        ManejadorModificarEstadoDiagnostico manejadorModificarEstadoDiagnostico;
 
         List<RazonamientoDiagnostico> listaDiagnosticos;
         List<EstudioDiagnosticoPorImagen> listaEstudios;
@@ -45,6 +46,7 @@ namespace GPA
             manejadorConsultarHc = null;
             manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
             manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
+            
 
             consulta = null;
             consultaGenerada = false;
@@ -192,6 +194,7 @@ namespace GPA
         public void presentarEstadosDiagnostico()
         {
             Utilidades.cargarCombo(cboEstadoDiagnostico, manejadorRegistrarExamenGeneral.obtenerEstadoDiagnostico(), "id_estadoDiagnostico", "nombre");
+           
         }
         public void presentarEstudiosYAnalisis()
         {
@@ -2170,6 +2173,44 @@ namespace GPA
         {
             Registrar_Análisis_de_Laboratorio formAnalisis = new Registrar_Análisis_de_Laboratorio();
             formAnalisis.ShowDialog();
+        }
+
+        private void btnBuscarPracticasPendientes_Click(object sender, EventArgs e)
+        {   
+            /*Primero Buscar los diagnosticos del paciente con estado Tentativo
+             Segundo Mostrar en la grilla la lista de diagnosticos
+             Tercero al seleccionar en la grilla de diagnósticos una fila, listar en las grillas los estudio, análisis y prácticas. Además completar los compos con los datos del diagnóstico.*/
+            if(manejadorModificarEstadoDiagnostico==null)
+                manejadorModificarEstadoDiagnostico = new ManejadorModificarEstadoDiagnostico();
+
+            List<EstudioDiagnosticoPorImagen> estudios = manejadorModificarEstadoDiagnostico.presentarEstudiosDiagnosticoPorImagen(hc.id_hc);
+
+            cargarGrillaPracticasComplementarias(estudios);
+
+            Utilidades.cargarCombo(cboEstadoDiagnosticoCambio, manejadorModificarEstadoDiagnostico.presentarEstadoDiagnostico(), "id_EstadoDiagnostico", "nombre");
+        }
+        private void cargarGrillaPracticasComplementarias(List<EstudioDiagnosticoPorImagen> estudios)
+        {
+            cargarColumnasGrillasDiagnostico();
+
+            for (int i = 0; i < estudios.Count; i++)
+            {
+                dgvEstudiosPendientes.Rows.Add(estudios[i].nombreEstudio.nombre,estudios[i].fechaSolicitud, estudios[i].indicaciones);
+            }
+            
+        }
+        private void cargarColumnasGrillasDiagnostico()
+        {
+            List<string> columnasEstudios = new List<string>();
+            columnasEstudios.Add("Nombre del Estudio");
+            columnasEstudios.Add("Fecha de Solicitud");
+            columnasEstudios.Add("Indicaciones");
+
+            Utilidades.agregarColumnasDataGridView(dgvEstudiosPendientes, columnasEstudios);
+
+            Utilidades.agregarColumnasDataGridView(dgvAnalisisLaboratorioPendientes, columnasEstudios);
+
+            Utilidades.agregarColumnasDataGridView(dgvPracticasPendientes, columnasEstudios);
         }
     }
 }

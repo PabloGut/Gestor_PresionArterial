@@ -80,6 +80,7 @@
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </Compile>
     <Compile Include="Manejadores\ManejadorEstudiosLaboratorio.cs" />
+    <Compile Include="Manejadores\ManejadorModificarEstadoDiagnostico.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarAntecedentesPatologicosPersonales.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarExamenGeneral.cs" />
     <Compile Include="PresentarInformacionHistoriaClinica.cs">

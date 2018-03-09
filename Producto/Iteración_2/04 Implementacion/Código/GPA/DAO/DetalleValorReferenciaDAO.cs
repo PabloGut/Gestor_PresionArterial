@@ -34,7 +34,14 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@descripcion", detalle.descripcion);
                 cmd.Parameters.AddWithValue("@valorDesde",detalle.valorDesde);
                 cmd.Parameters.AddWithValue("@valorHasta", detalle.valorHasta);
-                cmd.Parameters.AddWithValue("@id_unidadMedida_fk", detalle.idUnidadMedida);
+                if (detalle.idUnidadMedida == -1)
+                {
+                    cmd.Parameters.AddWithValue("@id_unidadMedida_fk", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_unidadMedida_fk", detalle.idUnidadMedida);
+                }
                 cmd.Parameters.AddWithValue("@id_detalleItemLaboratorio_fk", detalle.idDetalleItemLaboratorio);
 
                 cmd.Connection = cn;

@@ -39,6 +39,10 @@
             this.tiposDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tratamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoTratamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.atenciónEnConsultorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarNuevaConsultaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.laboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarAnálisisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -390,13 +394,35 @@
             this.label80 = new System.Windows.Forms.Label();
             this.btnAgregarDiagnostico = new System.Windows.Forms.Button();
             this.btnRegistrarAtención = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarTratamientoCambioEstado = new System.Windows.Forms.Button();
+            this.mtbCambioEstadoDiagnostico = new System.Windows.Forms.MaskedTextBox();
+            this.cboEstadoDiagnosticoCambio = new System.Windows.Forms.ComboBox();
+            this.txtMotivoCambioEstado = new System.Windows.Forms.TextBox();
+            this.txtDiagnosticoCambiarEstado = new System.Windows.Forms.TextBox();
+            this.label90 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label87 = new System.Windows.Forms.Label();
+            this.txtConceptoInicialExamen = new System.Windows.Forms.TextBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.dgvDiagnosticosPaciente = new System.Windows.Forms.DataGridView();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.dgvPracticasPendientes = new System.Windows.Forms.DataGridView();
+            this.label81 = new System.Windows.Forms.Label();
+            this.dgvAnalisisLaboratorioPendientes = new System.Windows.Forms.DataGridView();
+            this.label58 = new System.Windows.Forms.Label();
+            this.dgvEstudiosPendientes = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.atenciónEnConsultorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarNuevaConsultaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.laboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarAnálisisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBuscarPracticasPendientes = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -454,6 +480,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvExamenesARealizar)).BeginInit();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).BeginInit();
+            this.tabPage11.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticosPaciente)).BeginInit();
+            this.groupBox17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPracticasPendientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnalisisLaboratorioPendientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiosPendientes)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -551,6 +585,36 @@
             this.nuevoTratamientoToolStripMenuItem.Text = "Nuevo Tratamiento";
             this.nuevoTratamientoToolStripMenuItem.Click += new System.EventHandler(this.nuevoTratamientoToolStripMenuItem_Click);
             // 
+            // atenciónEnConsultorioToolStripMenuItem
+            // 
+            this.atenciónEnConsultorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generarNuevaConsultaToolStripMenuItem1});
+            this.atenciónEnConsultorioToolStripMenuItem.Name = "atenciónEnConsultorioToolStripMenuItem";
+            this.atenciónEnConsultorioToolStripMenuItem.Size = new System.Drawing.Size(148, 20);
+            this.atenciónEnConsultorioToolStripMenuItem.Text = "Atención en Consultorio";
+            // 
+            // generarNuevaConsultaToolStripMenuItem1
+            // 
+            this.generarNuevaConsultaToolStripMenuItem1.Name = "generarNuevaConsultaToolStripMenuItem1";
+            this.generarNuevaConsultaToolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
+            this.generarNuevaConsultaToolStripMenuItem1.Text = "Generar nueva consulta";
+            this.generarNuevaConsultaToolStripMenuItem1.Click += new System.EventHandler(this.generarNuevaConsultaToolStripMenuItem1_Click);
+            // 
+            // laboratorioToolStripMenuItem
+            // 
+            this.laboratorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registrarAnálisisToolStripMenuItem});
+            this.laboratorioToolStripMenuItem.Name = "laboratorioToolStripMenuItem";
+            this.laboratorioToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.laboratorioToolStripMenuItem.Text = " Análisis de Laboratorio";
+            // 
+            // registrarAnálisisToolStripMenuItem
+            // 
+            this.registrarAnálisisToolStripMenuItem.Name = "registrarAnálisisToolStripMenuItem";
+            this.registrarAnálisisToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.registrarAnálisisToolStripMenuItem.Text = "Registrar análisis";
+            this.registrarAnálisisToolStripMenuItem.Click += new System.EventHandler(this.registrarAnálisisToolStripMenuItem_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tabControl1);
@@ -567,6 +631,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -3988,6 +4053,247 @@
             this.btnRegistrarAtención.UseVisualStyleBackColor = true;
             this.btnRegistrarAtención.Click += new System.EventHandler(this.btnRegistrarAtención_Click);
             // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.panel13);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(864, 615);
+            this.tabPage11.TabIndex = 5;
+            this.tabPage11.Text = "Diagnósticos";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.btnAgregarTratamientoCambioEstado);
+            this.panel13.Controls.Add(this.button4);
+            this.panel13.Controls.Add(this.button2);
+            this.panel13.Controls.Add(this.button1);
+            this.panel13.Controls.Add(this.groupBox18);
+            this.panel13.Controls.Add(this.groupBox17);
+            this.panel13.Location = new System.Drawing.Point(6, 6);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(852, 603);
+            this.panel13.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(450, 564);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Salir";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(369, 564);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(288, 564);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Aceptar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.btnBuscarPracticasPendientes);
+            this.groupBox18.Controls.Add(this.mtbCambioEstadoDiagnostico);
+            this.groupBox18.Controls.Add(this.cboEstadoDiagnosticoCambio);
+            this.groupBox18.Controls.Add(this.txtMotivoCambioEstado);
+            this.groupBox18.Controls.Add(this.txtDiagnosticoCambiarEstado);
+            this.groupBox18.Controls.Add(this.label90);
+            this.groupBox18.Controls.Add(this.label89);
+            this.groupBox18.Controls.Add(this.label88);
+            this.groupBox18.Controls.Add(this.label87);
+            this.groupBox18.Controls.Add(this.txtConceptoInicialExamen);
+            this.groupBox18.Controls.Add(this.label86);
+            this.groupBox18.Controls.Add(this.dgvDiagnosticosPaciente);
+            this.groupBox18.Location = new System.Drawing.Point(6, 4);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(846, 238);
+            this.groupBox18.TabIndex = 2;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Diagnóstico";
+            // 
+            // btnAgregarTratamientoCambioEstado
+            // 
+            this.btnAgregarTratamientoCambioEstado.Location = new System.Drawing.Point(12, 564);
+            this.btnAgregarTratamientoCambioEstado.Name = "btnAgregarTratamientoCambioEstado";
+            this.btnAgregarTratamientoCambioEstado.Size = new System.Drawing.Size(207, 23);
+            this.btnAgregarTratamientoCambioEstado.TabIndex = 13;
+            this.btnAgregarTratamientoCambioEstado.Text = "Agregar Tratamiento";
+            this.btnAgregarTratamientoCambioEstado.UseVisualStyleBackColor = true;
+            // 
+            // mtbCambioEstadoDiagnostico
+            // 
+            this.mtbCambioEstadoDiagnostico.Location = new System.Drawing.Point(685, 154);
+            this.mtbCambioEstadoDiagnostico.Mask = "00/00/0000";
+            this.mtbCambioEstadoDiagnostico.Name = "mtbCambioEstadoDiagnostico";
+            this.mtbCambioEstadoDiagnostico.Size = new System.Drawing.Size(145, 20);
+            this.mtbCambioEstadoDiagnostico.TabIndex = 12;
+            this.mtbCambioEstadoDiagnostico.ValidatingType = typeof(System.DateTime);
+            // 
+            // cboEstadoDiagnosticoCambio
+            // 
+            this.cboEstadoDiagnosticoCambio.FormattingEnabled = true;
+            this.cboEstadoDiagnosticoCambio.Location = new System.Drawing.Point(452, 154);
+            this.cboEstadoDiagnosticoCambio.Name = "cboEstadoDiagnosticoCambio";
+            this.cboEstadoDiagnosticoCambio.Size = new System.Drawing.Size(171, 21);
+            this.cboEstadoDiagnosticoCambio.TabIndex = 11;
+            // 
+            // txtMotivoCambioEstado
+            // 
+            this.txtMotivoCambioEstado.Location = new System.Drawing.Point(452, 110);
+            this.txtMotivoCambioEstado.Multiline = true;
+            this.txtMotivoCambioEstado.Name = "txtMotivoCambioEstado";
+            this.txtMotivoCambioEstado.Size = new System.Drawing.Size(378, 38);
+            this.txtMotivoCambioEstado.TabIndex = 10;
+            // 
+            // txtDiagnosticoCambiarEstado
+            // 
+            this.txtDiagnosticoCambiarEstado.Location = new System.Drawing.Point(452, 65);
+            this.txtDiagnosticoCambiarEstado.Multiline = true;
+            this.txtDiagnosticoCambiarEstado.Name = "txtDiagnosticoCambiarEstado";
+            this.txtDiagnosticoCambiarEstado.Size = new System.Drawing.Size(378, 39);
+            this.txtDiagnosticoCambiarEstado.TabIndex = 8;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(642, 158);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(37, 13);
+            this.label90.TabIndex = 7;
+            this.label90.Text = "Fecha";
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(407, 122);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(39, 13);
+            this.label89.TabIndex = 6;
+            this.label89.Text = "Motivo";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(349, 154);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(97, 13);
+            this.label88.TabIndex = 5;
+            this.label88.Text = "Estado diagnóstico";
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(383, 68);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(63, 13);
+            this.label87.TabIndex = 4;
+            this.label87.Text = "Diagnóstico";
+            // 
+            // txtConceptoInicialExamen
+            // 
+            this.txtConceptoInicialExamen.Location = new System.Drawing.Point(452, 19);
+            this.txtConceptoInicialExamen.Multiline = true;
+            this.txtConceptoInicialExamen.Name = "txtConceptoInicialExamen";
+            this.txtConceptoInicialExamen.Size = new System.Drawing.Size(378, 40);
+            this.txtConceptoInicialExamen.TabIndex = 3;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(363, 22);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(83, 13);
+            this.label86.TabIndex = 2;
+            this.label86.Text = "Concepto Inicial";
+            // 
+            // dgvDiagnosticosPaciente
+            // 
+            this.dgvDiagnosticosPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDiagnosticosPaciente.Location = new System.Drawing.Point(6, 62);
+            this.dgvDiagnosticosPaciente.Name = "dgvDiagnosticosPaciente";
+            this.dgvDiagnosticosPaciente.Size = new System.Drawing.Size(337, 170);
+            this.dgvDiagnosticosPaciente.TabIndex = 1;
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.label82);
+            this.groupBox17.Controls.Add(this.dgvPracticasPendientes);
+            this.groupBox17.Controls.Add(this.label81);
+            this.groupBox17.Controls.Add(this.dgvAnalisisLaboratorioPendientes);
+            this.groupBox17.Controls.Add(this.label58);
+            this.groupBox17.Controls.Add(this.dgvEstudiosPendientes);
+            this.groupBox17.Location = new System.Drawing.Point(12, 248);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(846, 250);
+            this.groupBox17.TabIndex = 1;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Prácticas solicitadas pendientes";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(572, 65);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(133, 13);
+            this.label82.TabIndex = 5;
+            this.label82.Text = "Prácticas complementarias";
+            // 
+            // dgvPracticasPendientes
+            // 
+            this.dgvPracticasPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPracticasPendientes.Location = new System.Drawing.Point(272, 81);
+            this.dgvPracticasPendientes.Name = "dgvPracticasPendientes";
+            this.dgvPracticasPendientes.Size = new System.Drawing.Size(275, 150);
+            this.dgvPracticasPendientes.TabIndex = 4;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(279, 65);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(109, 13);
+            this.label81.TabIndex = 3;
+            this.label81.Text = "Análisis de laboratorio";
+            // 
+            // dgvAnalisisLaboratorioPendientes
+            // 
+            this.dgvAnalisisLaboratorioPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAnalisisLaboratorioPendientes.Location = new System.Drawing.Point(554, 81);
+            this.dgvAnalisisLaboratorioPendientes.Name = "dgvAnalisisLaboratorioPendientes";
+            this.dgvAnalisisLaboratorioPendientes.Size = new System.Drawing.Size(276, 150);
+            this.dgvAnalisisLaboratorioPendientes.TabIndex = 2;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(6, 65);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(50, 13);
+            this.label58.TabIndex = 1;
+            this.label58.Text = "Estudios ";
+            // 
+            // dgvEstudiosPendientes
+            // 
+            this.dgvEstudiosPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstudiosPendientes.Location = new System.Drawing.Point(6, 81);
+            this.dgvEstudiosPendientes.Name = "dgvEstudiosPendientes";
+            this.dgvEstudiosPendientes.Size = new System.Drawing.Size(260, 150);
+            this.dgvEstudiosPendientes.TabIndex = 0;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnRegistraMedicamento);
@@ -4019,35 +4325,15 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // atenciónEnConsultorioToolStripMenuItem
+            // btnBuscarPracticasPendientes
             // 
-            this.atenciónEnConsultorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generarNuevaConsultaToolStripMenuItem1});
-            this.atenciónEnConsultorioToolStripMenuItem.Name = "atenciónEnConsultorioToolStripMenuItem";
-            this.atenciónEnConsultorioToolStripMenuItem.Size = new System.Drawing.Size(148, 20);
-            this.atenciónEnConsultorioToolStripMenuItem.Text = "Atención en Consultorio";
-            // 
-            // generarNuevaConsultaToolStripMenuItem1
-            // 
-            this.generarNuevaConsultaToolStripMenuItem1.Name = "generarNuevaConsultaToolStripMenuItem1";
-            this.generarNuevaConsultaToolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
-            this.generarNuevaConsultaToolStripMenuItem1.Text = "Generar nueva consulta";
-            this.generarNuevaConsultaToolStripMenuItem1.Click += new System.EventHandler(this.generarNuevaConsultaToolStripMenuItem1_Click);
-            // 
-            // laboratorioToolStripMenuItem
-            // 
-            this.laboratorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registrarAnálisisToolStripMenuItem});
-            this.laboratorioToolStripMenuItem.Name = "laboratorioToolStripMenuItem";
-            this.laboratorioToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
-            this.laboratorioToolStripMenuItem.Text = " Análisis de Laboratorio";
-            // 
-            // registrarAnálisisToolStripMenuItem
-            // 
-            this.registrarAnálisisToolStripMenuItem.Name = "registrarAnálisisToolStripMenuItem";
-            this.registrarAnálisisToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.registrarAnálisisToolStripMenuItem.Text = "Registrar análisis";
-            this.registrarAnálisisToolStripMenuItem.Click += new System.EventHandler(this.registrarAnálisisToolStripMenuItem_Click);
+            this.btnBuscarPracticasPendientes.Location = new System.Drawing.Point(6, 22);
+            this.btnBuscarPracticasPendientes.Name = "btnBuscarPracticasPendientes";
+            this.btnBuscarPracticasPendientes.Size = new System.Drawing.Size(218, 23);
+            this.btnBuscarPracticasPendientes.TabIndex = 6;
+            this.btnBuscarPracticasPendientes.Text = "Buscar prácticas solicitadas y pendientes";
+            this.btnBuscarPracticasPendientes.UseVisualStyleBackColor = true;
+            this.btnBuscarPracticasPendientes.Click += new System.EventHandler(this.btnBuscarPracticasPendientes_Click);
             // 
             // MenuPrincipal
             // 
@@ -4143,6 +4429,16 @@
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).EndInit();
+            this.tabPage11.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticosPaciente)).EndInit();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPracticasPendientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnalisisLaboratorioPendientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiosPendientes)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -4520,5 +4816,31 @@
         private System.Windows.Forms.ToolStripMenuItem generarNuevaConsultaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem laboratorioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarAnálisisToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.DataGridView dgvPracticasPendientes;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.DataGridView dgvAnalisisLaboratorioPendientes;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.DataGridView dgvEstudiosPendientes;
+        private System.Windows.Forms.MaskedTextBox mtbCambioEstadoDiagnostico;
+        private System.Windows.Forms.ComboBox cboEstadoDiagnosticoCambio;
+        private System.Windows.Forms.TextBox txtMotivoCambioEstado;
+        private System.Windows.Forms.TextBox txtDiagnosticoCambiarEstado;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.TextBox txtConceptoInicialExamen;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.DataGridView dgvDiagnosticosPaciente;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAgregarTratamientoCambioEstado;
+        private System.Windows.Forms.Button btnBuscarPracticasPendientes;
     }
 }

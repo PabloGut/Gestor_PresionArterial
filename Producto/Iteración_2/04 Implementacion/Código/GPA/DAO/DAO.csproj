@@ -66,6 +66,7 @@
     <Compile Include="ConsultaDAO.cs" />
     <Compile Include="DejoDeFumarDAO.cs" />
     <Compile Include="DescripcionDelTiempoDAO.cs" />
+    <Compile Include="DetalleItemLaboratorioDAO.cs" />
     <Compile Include="DetalleMedicionPresionArterialDAO.cs" />
     <Compile Include="DetallePulsoArterialDAO.cs" />
     <Compile Include="DetalleValorReferenciaDAO.cs" />
@@ -105,6 +106,8 @@
     <Compile Include="InsectoDAO.cs" />
     <Compile Include="InstitucionDAO.cs" />
     <Compile Include="IntensidadActividadFisicaDAO.cs" />
+    <Compile Include="ItemEstudioLaboratorioDAO.cs" />
+    <Compile Include="ItemLaboratorioDAO.cs" />
     <Compile Include="LocalidadDAO.cs" />
     <Compile Include="MedicamentoAlergiaDAO.cs" />
     <Compile Include="MedicamentoDAO.cs" />

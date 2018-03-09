@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocio", "LogicaNegocio\LogicaNegocio.csproj", "{91C34CEC-AB63-43AF-BAAA-8AF94EF916EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shiart_AppWeb", "Shiart_AppWeb\Shiart_AppWeb.csproj", "{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{91C34CEC-AB63-43AF-BAAA-8AF94EF916EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C34CEC-AB63-43AF-BAAA-8AF94EF916EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C34CEC-AB63-43AF-BAAA-8AF94EF916EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

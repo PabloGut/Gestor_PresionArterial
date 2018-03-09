@@ -125,6 +125,17 @@ namespace GPA
         }
         public void agregarEstudioLaboratorio()
         {
+
+            if (cbAgregarDetalleValorReferencia.Checked == true && string.IsNullOrEmpty(txtDescripcionDetalleValorReferencia.Text))
+            {
+                MessageBox.Show("Falta datos del detalle del valor de referencia", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (cbAgregarDetalleValorReferencia.Checked==true && dgvDetallesValorReferencia.Rows[0].Cells[0].Value == null)
+            {
+                MessageBox.Show("No hay datos en la grilla para agregar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (listaDetalles == null)
                 listaDetalles = new List<DetalleItemLaboratorio>();
 
@@ -133,7 +144,7 @@ namespace GPA
             else
             {
                 if (listaDetalleValorReferencia != null && listaDetalleValorReferencia.Count > 0)
-                    detalleItemLaboratorio.detalle = listaDetalleValorReferencia;
+                detalleItemLaboratorio.detalle = listaDetalleValorReferencia;
                 listaDetalles.Add(detalleItemLaboratorio);
             }
 
@@ -148,7 +159,7 @@ namespace GPA
             btnAgregarValorReferencia.Enabled = true;
 
             if (listaDetalleValorReferencia != null && listaDetalleValorReferencia.Count > 0)
-                listaDetalleValorReferencia = null;
+                listaDetalleValorReferencia=null;
     
         }
 
@@ -238,6 +249,11 @@ namespace GPA
         }
         public void agregarDetalleValorReferencia()
         {
+            if (string.IsNullOrEmpty(txtDescripcionDetalleValorReferencia.Text))
+            {
+                MessageBox.Show("Falta datos del detalle del valor de referencia", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             string descripcion=null;
             float valorMinimo=0;
             float valorMaximo=0;
@@ -277,11 +293,11 @@ namespace GPA
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (validarDatosParaRegistro() == false)
+                return;
+
             string nombreEstudio="";
-
-            if(!string.IsNullOrEmpty(txtNombreEstudioLaboratorio.Text))
-                 nombreEstudio=txtNombreEstudioLaboratorio.Text;
-
+            nombreEstudio = txtNombreEstudioLaboratorio.Text;
             ItemLaboratorio itemLaboratorio = manejador.crearItemLaboratorio(nombreEstudio);
 
             itemEstudio = manejador.crearItemEstudioLaboratorio(itemLaboratorio);
@@ -310,7 +326,21 @@ namespace GPA
             listaDetalles = null;
             listaDetalleValorReferencia = null;
         }
+        public Boolean validarDatosParaRegistro()
+        {
+            if (string.IsNullOrEmpty(txtNombreEstudioLaboratorio.Text))
+            {
+                MessageBox.Show("Faltan datos por ingresar!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (dgvValoresReferencia.Rows[0].Cells[0].Value == null)
+            {
+                MessageBox.Show("No hay datos cargados en la grilla", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
 
+            return true;
+        }
         private void txtValorMinimoReferencia_TextChanged(object sender, EventArgs e)
         {
 

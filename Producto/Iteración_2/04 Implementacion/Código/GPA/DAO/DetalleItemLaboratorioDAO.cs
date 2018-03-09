@@ -43,7 +43,7 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@id_unidadMedida_fk", detalleItem.id_unidadMedida);
                 }
 
-                cmd.Parameters.AddWithValue("@id_item_fk", detalleItem.id_detalleItemLaboratorio);
+                cmd.Parameters.AddWithValue("@id_item_fk", detalleItem.id_ItemEstudioLaboratorio);
 
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
@@ -54,11 +54,14 @@ namespace DAO
 
                 SqlCommand cmd1 = new SqlCommand("SELECT IDENT_CURRENT('DetalleItemLaboratorio')", cn, tran);
                 detalleItem.id_detalleItemLaboratorio = Convert.ToInt32(cmd1.ExecuteScalar());
-
-                foreach (DetalleValorReferenciaLaboratorio detalle in detalleItem.detalle)
+                
+                if (detalleItem.detalle != null)
                 {
-                    detalle.idDetalleItemLaboratorio = detalleItem.id_detalleItemLaboratorio;
-                    DetalleValorReferenciaDAO.registrartDetalleValorReferencia(detalle, cn, tran);
+                    foreach (DetalleValorReferenciaLaboratorio detalle in detalleItem.detalle)
+                    {
+                        detalle.idDetalleItemLaboratorio = detalleItem.id_detalleItemLaboratorio;
+                        DetalleValorReferenciaDAO.registrartDetalleValorReferencia(detalle, cn, tran);
+                    }
                 }
 
             }
