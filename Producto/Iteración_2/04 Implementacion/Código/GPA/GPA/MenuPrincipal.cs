@@ -555,18 +555,16 @@ namespace GPA
                 MessageBox.Show("No se seleccionó el paciente que recibe atención médica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-                
-            if(manejadorConsultarHc==null)
-                   manejadorConsultarHc = new ManejadorConsultarHC();
-
-            hc = manejadorConsultarHc.mostrarHistoriaClinica(pacienteSeleccionado);
-            
             if (hc == null)
             {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                hc = consultarHistoriaClinica(pacienteSeleccionado);
+                
+                if (hc == null)
+                {
+                    MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
             }
-
             txtNroHistoriaClinica.Text = Convert.ToString(hc.nro_hc);
             mtbFechaCreacionHc.Text = Convert.ToString(hc.fecha);
             mtbHoraCreacionHc.Text = Convert.ToString(hc.hora.ToShortTimeString());
@@ -574,6 +572,14 @@ namespace GPA
             txtMotivoPrimeraConsulta.Text = hc.motivoConsulta;
 
            
+        }
+        public HistoriaClinica consultarHistoriaClinica(Paciente paciente)
+        {
+                  
+            if(manejadorConsultarHc==null)
+                   manejadorConsultarHc = new ManejadorConsultarHC();
+
+            return manejadorConsultarHc.mostrarHistoriaClinica(paciente);
         }
         public void generarNuevaConsulta()
         {
@@ -2176,41 +2182,151 @@ namespace GPA
         }
 
         private void btnBuscarPracticasPendientes_Click(object sender, EventArgs e)
-        {   
+        {
+            if (pacienteSeleccionado==null)
+            {
+                MessageBox.Show("Falta seleccionar un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                hc = consultarHistoriaClinica(pacienteSeleccionado);
+               
+                if (hc == null)
+                {
+                    MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
             /*Primero Buscar los diagnosticos del paciente con estado Tentativo
              Segundo Mostrar en la grilla la lista de diagnosticos
              Tercero al seleccionar en la grilla de diagnósticos una fila, listar en las grillas los estudio, análisis y prácticas. Además completar los compos con los datos del diagnóstico.*/
             if(manejadorModificarEstadoDiagnostico==null)
                 manejadorModificarEstadoDiagnostico = new ManejadorModificarEstadoDiagnostico();
 
-            List<EstudioDiagnosticoPorImagen> estudios = manejadorModificarEstadoDiagnostico.presentarEstudiosDiagnosticoPorImagen(hc.id_hc);
+            mtbFechaCambioEstadoDiagnostico.Text = DateTime.Now.ToShortDateString();
 
-            cargarGrillaPracticasComplementarias(estudios);
-
+            List<RazonamientoDiagnostico> diagnosticos = manejadorModificarEstadoDiagnostico.presentarDiagnosticos(hc.id_hc);
+            
+            cargarGrillaDiagnosticos(diagnosticos);
+           
             Utilidades.cargarCombo(cboEstadoDiagnosticoCambio, manejadorModificarEstadoDiagnostico.presentarEstadoDiagnostico(), "id_EstadoDiagnostico", "nombre");
-        }
-        private void cargarGrillaPracticasComplementarias(List<EstudioDiagnosticoPorImagen> estudios)
-        {
-            cargarColumnasGrillasDiagnostico();
 
-            for (int i = 0; i < estudios.Count; i++)
+           
+
+        }
+        private void cargarGrillaDiagnosticos(List<RazonamientoDiagnostico> diagnosticos)
+        {
+            List<string> columnasDiagnosticos = new List<string>();
+            columnasDiagnosticos.Add("Diagnóstico");
+            columnasDiagnosticos.Add("idRazonamiento");
+            columnasDiagnosticos.Add("idEstado");
+            columnasDiagnosticos.Add("conceptoInicial");
+
+            Utilidades.agregarColumnasDataGridView(dgvDiagnosticosPaciente, columnasDiagnosticos);
+
+            dgvDiagnosticosPaciente.Columns[1].Visible = false;
+            dgvDiagnosticosPaciente.Columns[2].Visible = false;
+            dgvDiagnosticosPaciente.Columns[3].Visible = false;
+
+            for (int i = 0; i < diagnosticos.Count; i++)
             {
-                dgvEstudiosPendientes.Rows.Add(estudios[i].nombreEstudio.nombre,estudios[i].fechaSolicitud, estudios[i].indicaciones);
+                dgvDiagnosticosPaciente.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico,diagnosticos[i].conceptoInicial);
             }
+
+        }
+        private void cargarEnGrillaPracticasComplementarias<T>(List<T> lista)
+        {
+            
+            string tipo = Convert.ToString(lista[0].GetType());
+            switch (tipo)
+            {
+                case "Entidades.Clases.EstudioDiagnosticoPorImagen":
+                    foreach (object obj in lista)
+                    {
+                        EstudioDiagnosticoPorImagen estudio = (EstudioDiagnosticoPorImagen)obj;
+                        dgvEstudiosPendientes.Rows.Add(estudio.nombreEstudio.nombre, estudio.fechaSolicitud, estudio.indicaciones,estudio.id_estudioDiagnosticoPorImagen);
+                    }
+                    break;
+                case "Entidades.Clases.PracticaComplementaria":
+                    foreach (object obj in lista)
+                    {
+                        PracticaComplementaria practica = (PracticaComplementaria)obj;
+                        dgvPracticasPendientes.Rows.Add(practica.tipo.nombre, practica.fechaSolicitud, practica.indicaciones,practica.id_PracticaComplementaria);
+                    }
+                    break;
+                case "Entidades.Clases.Laboratorio":
+                    foreach (object obj in lista)
+                    {
+                        Laboratorio laboratorio = (Laboratorio)obj;
+                        dgvAnalisisLaboratorioPendientes.Rows.Add(laboratorio.analisis.nombre, laboratorio.fechaSolicitud, laboratorio.indicaciones);
+                    }
+                    break;
+            }
+           
             
         }
-        private void cargarColumnasGrillasDiagnostico()
+        private void cargarColumnasGrillasPracticasDeDiagnostico()
         {
+            
             List<string> columnasEstudios = new List<string>();
             columnasEstudios.Add("Nombre del Estudio");
             columnasEstudios.Add("Fecha de Solicitud");
             columnasEstudios.Add("Indicaciones");
+            columnasEstudios.Add("idEstudio");
+
 
             Utilidades.agregarColumnasDataGridView(dgvEstudiosPendientes, columnasEstudios);
 
             Utilidades.agregarColumnasDataGridView(dgvAnalisisLaboratorioPendientes, columnasEstudios);
 
             Utilidades.agregarColumnasDataGridView(dgvPracticasPendientes, columnasEstudios);
+
+            dgvEstudiosPendientes.Columns[3].Visible = false;
+            dgvAnalisisLaboratorioPendientes.Columns[3].Visible = false;
+        }
+
+        private void dgvDiagnosticosPaciente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {   
+           
+            txtDiagnosticoCambiarEstado.Text = dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value.ToString();
+            cboEstadoDiagnosticoCambio.SelectedIndex =(int) dgvDiagnosticosPaciente.CurrentRow.Cells[2].Value;
+            txtConceptoInicialExamen.Text = dgvDiagnosticosPaciente.CurrentRow.Cells[3].Value.ToString();
+
+            if (manejadorModificarEstadoDiagnostico == null)
+                manejadorModificarEstadoDiagnostico = new ManejadorModificarEstadoDiagnostico();
+
+             cargarColumnasGrillasPracticasDeDiagnostico();
+
+             List<EstudioDiagnosticoPorImagen> estudios= manejadorModificarEstadoDiagnostico.presentarEstudiosDiagnosticoPorImagen((int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value);
+             cargarEnGrillaPracticasComplementarias(estudios);
+
+             List<PracticaComplementaria> practicas = manejadorModificarEstadoDiagnostico.presentarPracticaComplementaria((int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value);
+             cargarEnGrillaPracticasComplementarias(practicas);
+
+             List<Laboratorio> analisis = manejadorModificarEstadoDiagnostico.presentarAnalisisLaboratorio((int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value);
+             cargarEnGrillaPracticasComplementarias(analisis);
+        }
+
+        private void dgvEstudiosPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RegistrarEstudio re = new RegistrarEstudio((int)dgvEstudiosPendientes.CurrentRow.Cells[3].Value);
+            re.Text = "Registrar informe estudio de diagnóstico por imagen.";
+            if (re.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void dgvPracticasPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RegistrarEstudio re = new RegistrarEstudio((int)dgvPracticasPendientes.CurrentRow.Cells[3].Value);
+            re.Text = "Registrar informe de práctica complementaria.";
+            if (re.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

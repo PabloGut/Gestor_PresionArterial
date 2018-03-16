@@ -68,6 +68,7 @@
     <Compile Include="EstadoDiagnosticoLN.cs" />
     <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />
+    <Compile Include="EstudioDiagnosticoPorImagenLN.cs" />
     <Compile Include="ExamenGeneralLN.cs" />
     <Compile Include="ExtremidadLN.cs" />
     <Compile Include="FamiliarLN.cs" />
@@ -81,7 +82,9 @@
     <Compile Include="HabitoTabaquismoLN.cs" />
     <Compile Include="HistoriaClinicaLN.cs" />
     <Compile Include="InsectoLN.cs" />
+    <Compile Include="InstitucionLN.cs" />
     <Compile Include="IntensidadActividadFisicaLN.cs" />
+    <Compile Include="LaboratorioLN.cs" />
     <Compile Include="LocalidadLN.cs" />
     <Compile Include="MedicamentoAlergiaLN.cs" />
     <Compile Include="MedicamentoLN.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="ParteDelCuerpoLN.cs" />
     <Compile Include="PielLN.cs" />
     <Compile Include="PosicionLN.cs" />
+    <Compile Include="PracticaComplementariaLN.cs" />
     <Compile Include="PresentacionMedicamentoLN.cs" />
     <Compile Include="PulsoArterialLN.cs" />
     <Compile Include="PulsoLN.cs" />

@@ -206,5 +206,61 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+
+        public static List<RazonamientoDiagnostico> obtenerDiagnosticos(int idHc)
+        {
+            setCadenaConexion();
+
+            List<RazonamientoDiagnostico> diagnosticos = new List<RazonamientoDiagnostico>();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+
+            string consulta = @"select r.diagnostico, r.id_razonamiento,r.id_estadoDiagnostico_fk,r.conceptoInicial
+                                from Historia_Clinica hc,Paciente p, Consulta c, ExamenGeneral ex, RazonamientoDiagnostico r, EstadoDiagnostico ediag
+                                where p.id_hc_fk=hc.id_hc
+                                and hc.id_hc=c.id_hc_fk 
+                                and c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ex.id_examenGeneral=r.id_ExamenGeneral_fk
+                                and r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and hc.id_hc=@idHc";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idHc", idHc);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    RazonamientoDiagnostico diagnostico = new RazonamientoDiagnostico();
+                    diagnostico.diagnostico = dr["diagnostico"].ToString();
+                    diagnostico.id_razonamiento = (int)dr["id_razonamiento"];
+                    diagnostico.id_estadoDiagnostico = (int)dr["id_estadoDiagnostico_fk"];
+                    diagnostico.conceptoInicial = dr["conceptoInicial"].ToString();
+
+                    diagnosticos.Add(diagnostico);
+                }
+
+                return diagnosticos;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+      
     }
 }

@@ -12,6 +12,7 @@ namespace Entidades.Clases
         public int id_diagnostico { set; get; }
         public string descripcion { set; get; }
         public string evolucion { set; get; }
+        public int id_estadoDiagnostico { set; get; }
 
     }
 }

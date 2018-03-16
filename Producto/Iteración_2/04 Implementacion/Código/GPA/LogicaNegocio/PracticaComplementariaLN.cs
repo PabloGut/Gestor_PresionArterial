@@ -9,13 +9,11 @@ using DAO;
 
 namespace LogicaNegocio
 {
-    public class RazonamientoDiagnosticoLN
+    public class PracticaComplementariaLN
     {
-        public static List<RazonamientoDiagnostico> obtenerDiagnosticos(int idHc)
+        public static List<PracticaComplementaria> obtenerPracticasComplementarias(int idRazonamiento)
         {
-            return RazonamientoDiagnosticoDAO.obtenerDiagnosticos(idHc);
+            return PracticaComplementariaDAO.obtenerPracticasComplementarias(idRazonamiento);
         }
-        
     }
-    
 }

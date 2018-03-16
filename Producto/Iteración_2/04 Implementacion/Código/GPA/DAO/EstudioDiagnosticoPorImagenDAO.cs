@@ -60,7 +60,7 @@ namespace DAO
             }
 
         }
-        public static List<EstudioDiagnosticoPorImagen> obtenerEstudioDiagnosticoPorImagen(int idHc)
+        public static List<EstudioDiagnosticoPorImagen> obtenerEstudioDiagnosticoPorImagen(int idRazonamiento)
         {
             setCadenaConexion();
 
@@ -68,24 +68,19 @@ namespace DAO
             NombreEstudio nomEstudio=null;
 
             SqlConnection cn = new SqlConnection(getCadenaConexion());
-          
 
 
-            string consulta = @"select ed.fechaSolicitud,ne.nombre, ed.indicaciones
-                                from ExamenGeneral e, Consulta c, Historia_Clinica hc, Paciente p, RazonamientoDiagnostico r, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne, EstadoDiagnostico ediag
-                                where e.id_examenGeneral=c.id_examenGeneral_fk
-                                and hc.id_hc=c.id_hc_fk
-                                and hc.id_hc=p.id_hc_fk
-                                and r.id_ExamenGeneral_fk=e.id_examenGeneral
+
+            string consulta = @"select ed.fechaSolicitud,ne.nombre,ed.indicaciones,ed.id_estudioDiagnosticoPorImagen
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne
+                                where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
                                 and ed.id_razonamientoDiagnostico_fk=r.id_razonamiento
-                                and ne.id_nombreEstudio=ed.id_nombreEstudio_fk
-                                and r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
-                                and ed.fechaRealizacion is null
+                                and ed.id_nombreEstudio_fk=ne.id_nombreEstudio
                                 and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
-                                and hc.id_hc=@idHc";
+                                and r.id_razonamiento=@idRazonamiento";
 
             SqlCommand cmd = new SqlCommand();
-            cmd.Parameters.AddWithValue("@idHc", idHc);
+            cmd.Parameters.AddWithValue("@idRazonamiento", idRazonamiento);
 
             try
             {
@@ -105,6 +100,7 @@ namespace DAO
                     estudio.fechaSolicitud = Convert.ToDateTime(dr["FechaSolicitud"]);
                     estudio.nombreEstudio = nomEstudio;
                     estudio.indicaciones = dr["indicaciones"].ToString();
+                    estudio.id_estudioDiagnosticoPorImagen = (int)dr["id_estudioDiagnosticoPorImagen"];
 
                     estudios.Add(estudio);
                 }

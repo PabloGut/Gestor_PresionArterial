@@ -9,9 +9,9 @@ namespace LogicaNegocio
 {
     public class EstudioDiagnosticoPorImagenLN
     {
-        public static List<EstudioDiagnosticoPorImagen> obtenerEstudiosDiagnosticoPorImagen(int idHc)
+        public static List<EstudioDiagnosticoPorImagen> obtenerEstudiosDiagnosticoPorImagen(int idRazonamiento)
         {
-            return EstudioDiagnosticoPorImagenDAO.obtenerEstudioDiagnosticoPorImagen(idHc);
+            return EstudioDiagnosticoPorImagenDAO.obtenerEstudioDiagnosticoPorImagen(idRazonamiento);
         }
     }
 }

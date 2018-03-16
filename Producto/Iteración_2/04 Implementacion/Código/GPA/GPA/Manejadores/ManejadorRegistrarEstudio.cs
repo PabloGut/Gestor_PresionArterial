@@ -42,11 +42,11 @@ namespace GPA
         {
             this.institucion = institucion;
         }
-        public List<Entidades.Clases.Domicilio> obtenerDomicilioInstitucion(int id_institucion)
+        /*public List<Entidades.Clases.Domicilio> obtenerDomicilioInstitucion(int id_institucion)
         {
             List<Entidades.Clases.Domicilio> domicilio = DAO.InstitucionDAO.buscarDomicilioInstitucion(id_institucion);
             return domicilio;
-        }
+        }*/
         public List<Barrio> buscarBarrios()
         {
             List<Barrio> barrios = BarrioDAO.buscarBarrios();

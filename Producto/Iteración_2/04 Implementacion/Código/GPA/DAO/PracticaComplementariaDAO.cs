@@ -59,5 +59,61 @@ namespace DAO
             }
 
         }
+        public static List<PracticaComplementaria> obtenerPracticasComplementarias(int idRazonamiento)
+        {
+            setCadenaConexion();
+
+            List<PracticaComplementaria> practicas = new List<PracticaComplementaria>();
+            TipoPracticaComplementaria tipo = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+
+            string consulta = @"select pc.fechaSolicitud,tp.nombre,pc.indicaciones,pc.id_practicaComplementaria
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, PracticaComplementaria pc, TipoPracticaComplementaria tp
+                                where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and pc.id_razonamientoDiagnostico_fk=r.id_razonamiento
+                                and pc.id_tipoPractica_fk=tp.id_tipoPractica
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and r.id_razonamiento=@idRazonamiento";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idRazonamiento", idRazonamiento);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    tipo = new TipoPracticaComplementaria();
+                    tipo.nombre = dr["nombre"].ToString();
+
+                    PracticaComplementaria practica = new PracticaComplementaria();
+                    practica.fechaSolicitud = Convert.ToDateTime(dr["FechaSolicitud"]);
+                    practica.tipo = tipo;
+                    practica.indicaciones = dr["indicaciones"].ToString();
+                    practica.id_PracticaComplementaria = (int)dr["id_practicaComplementaria"];
+                    practicas.Add(practica);
+                }
+
+                return practicas;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+
     }
 }

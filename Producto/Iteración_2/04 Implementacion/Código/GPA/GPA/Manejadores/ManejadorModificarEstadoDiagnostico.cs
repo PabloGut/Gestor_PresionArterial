@@ -16,9 +16,21 @@ namespace GPA.Manejadores
         {
             return EstadoDiagnosticoLN.obtenerEstadosDiagnostico();
         }
-        public List<EstudioDiagnosticoPorImagen> presentarEstudiosDiagnosticoPorImagen(int idHc)
+        public List<EstudioDiagnosticoPorImagen> presentarEstudiosDiagnosticoPorImagen(int idRazonamiento)
         {
-            return EstudioDiagnosticoPorImagenLN.obtenerEstudiosDiagnosticoPorImagen(idHc);
+            return EstudioDiagnosticoPorImagenLN.obtenerEstudiosDiagnosticoPorImagen(idRazonamiento);
+        }
+        public List<RazonamientoDiagnostico> presentarDiagnosticos(int idHc)
+        {
+            return RazonamientoDiagnosticoLN.obtenerDiagnosticos(idHc);
+        }
+        public List<PracticaComplementaria> presentarPracticaComplementaria(int idRazonamiento)
+        {
+            return PracticaComplementariaLN.obtenerPracticasComplementarias(idRazonamiento);
+        }
+        public List<Laboratorio> presentarAnalisisLaboratorio(int idRazonamiento)
+        {
+            return LaboratorioLN.obtenerAnalisisLaboratorio(idRazonamiento);
         }
     }
 }

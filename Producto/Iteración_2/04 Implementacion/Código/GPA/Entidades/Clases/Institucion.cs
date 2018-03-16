@@ -8,6 +8,7 @@ namespace Entidades.Clases
 {
     public class Institucion
     {
+        public int id { set; get; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
     }

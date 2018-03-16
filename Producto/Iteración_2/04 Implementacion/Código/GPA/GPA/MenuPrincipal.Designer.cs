@@ -396,12 +396,13 @@
             this.btnRegistrarAtención = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.btnAgregarTratamientoCambioEstado = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.btnAgregarTratamientoCambioEstado = new System.Windows.Forms.Button();
-            this.mtbCambioEstadoDiagnostico = new System.Windows.Forms.MaskedTextBox();
+            this.btnBuscarDiagnosticos = new System.Windows.Forms.Button();
+            this.mtbFechaCambioEstadoDiagnostico = new System.Windows.Forms.MaskedTextBox();
             this.cboEstadoDiagnosticoCambio = new System.Windows.Forms.ComboBox();
             this.txtMotivoCambioEstado = new System.Windows.Forms.TextBox();
             this.txtDiagnosticoCambiarEstado = new System.Windows.Forms.TextBox();
@@ -422,7 +423,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnBuscarPracticasPendientes = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -4077,6 +4077,15 @@
             this.panel13.Size = new System.Drawing.Size(852, 603);
             this.panel13.TabIndex = 0;
             // 
+            // btnAgregarTratamientoCambioEstado
+            // 
+            this.btnAgregarTratamientoCambioEstado.Location = new System.Drawing.Point(12, 564);
+            this.btnAgregarTratamientoCambioEstado.Name = "btnAgregarTratamientoCambioEstado";
+            this.btnAgregarTratamientoCambioEstado.Size = new System.Drawing.Size(207, 23);
+            this.btnAgregarTratamientoCambioEstado.TabIndex = 13;
+            this.btnAgregarTratamientoCambioEstado.Text = "Agregar Tratamiento";
+            this.btnAgregarTratamientoCambioEstado.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(450, 564);
@@ -4106,8 +4115,8 @@
             // 
             // groupBox18
             // 
-            this.groupBox18.Controls.Add(this.btnBuscarPracticasPendientes);
-            this.groupBox18.Controls.Add(this.mtbCambioEstadoDiagnostico);
+            this.groupBox18.Controls.Add(this.btnBuscarDiagnosticos);
+            this.groupBox18.Controls.Add(this.mtbFechaCambioEstadoDiagnostico);
             this.groupBox18.Controls.Add(this.cboEstadoDiagnosticoCambio);
             this.groupBox18.Controls.Add(this.txtMotivoCambioEstado);
             this.groupBox18.Controls.Add(this.txtDiagnosticoCambiarEstado);
@@ -4125,23 +4134,24 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Diagnóstico";
             // 
-            // btnAgregarTratamientoCambioEstado
+            // btnBuscarDiagnosticos
             // 
-            this.btnAgregarTratamientoCambioEstado.Location = new System.Drawing.Point(12, 564);
-            this.btnAgregarTratamientoCambioEstado.Name = "btnAgregarTratamientoCambioEstado";
-            this.btnAgregarTratamientoCambioEstado.Size = new System.Drawing.Size(207, 23);
-            this.btnAgregarTratamientoCambioEstado.TabIndex = 13;
-            this.btnAgregarTratamientoCambioEstado.Text = "Agregar Tratamiento";
-            this.btnAgregarTratamientoCambioEstado.UseVisualStyleBackColor = true;
+            this.btnBuscarDiagnosticos.Location = new System.Drawing.Point(6, 22);
+            this.btnBuscarDiagnosticos.Name = "btnBuscarDiagnosticos";
+            this.btnBuscarDiagnosticos.Size = new System.Drawing.Size(218, 23);
+            this.btnBuscarDiagnosticos.TabIndex = 6;
+            this.btnBuscarDiagnosticos.Text = "Buscar diagnósticos";
+            this.btnBuscarDiagnosticos.UseVisualStyleBackColor = true;
+            this.btnBuscarDiagnosticos.Click += new System.EventHandler(this.btnBuscarPracticasPendientes_Click);
             // 
-            // mtbCambioEstadoDiagnostico
+            // mtbFechaCambioEstadoDiagnostico
             // 
-            this.mtbCambioEstadoDiagnostico.Location = new System.Drawing.Point(685, 154);
-            this.mtbCambioEstadoDiagnostico.Mask = "00/00/0000";
-            this.mtbCambioEstadoDiagnostico.Name = "mtbCambioEstadoDiagnostico";
-            this.mtbCambioEstadoDiagnostico.Size = new System.Drawing.Size(145, 20);
-            this.mtbCambioEstadoDiagnostico.TabIndex = 12;
-            this.mtbCambioEstadoDiagnostico.ValidatingType = typeof(System.DateTime);
+            this.mtbFechaCambioEstadoDiagnostico.Location = new System.Drawing.Point(685, 154);
+            this.mtbFechaCambioEstadoDiagnostico.Mask = "00/00/0000";
+            this.mtbFechaCambioEstadoDiagnostico.Name = "mtbFechaCambioEstadoDiagnostico";
+            this.mtbFechaCambioEstadoDiagnostico.Size = new System.Drawing.Size(145, 20);
+            this.mtbFechaCambioEstadoDiagnostico.TabIndex = 12;
+            this.mtbFechaCambioEstadoDiagnostico.ValidatingType = typeof(System.DateTime);
             // 
             // cboEstadoDiagnosticoCambio
             // 
@@ -4223,10 +4233,12 @@
             // dgvDiagnosticosPaciente
             // 
             this.dgvDiagnosticosPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDiagnosticosPaciente.Location = new System.Drawing.Point(6, 62);
+            this.dgvDiagnosticosPaciente.Location = new System.Drawing.Point(6, 51);
             this.dgvDiagnosticosPaciente.Name = "dgvDiagnosticosPaciente";
-            this.dgvDiagnosticosPaciente.Size = new System.Drawing.Size(337, 170);
+            this.dgvDiagnosticosPaciente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDiagnosticosPaciente.Size = new System.Drawing.Size(256, 170);
             this.dgvDiagnosticosPaciente.TabIndex = 1;
+            this.dgvDiagnosticosPaciente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiagnosticosPaciente_CellClick);
             // 
             // groupBox17
             // 
@@ -4246,7 +4258,7 @@
             // label82
             // 
             this.label82.AutoSize = true;
-            this.label82.Location = new System.Drawing.Point(572, 65);
+            this.label82.Location = new System.Drawing.Point(551, 65);
             this.label82.Name = "label82";
             this.label82.Size = new System.Drawing.Size(133, 13);
             this.label82.TabIndex = 5;
@@ -4255,10 +4267,11 @@
             // dgvPracticasPendientes
             // 
             this.dgvPracticasPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPracticasPendientes.Location = new System.Drawing.Point(272, 81);
+            this.dgvPracticasPendientes.Location = new System.Drawing.Point(554, 81);
             this.dgvPracticasPendientes.Name = "dgvPracticasPendientes";
             this.dgvPracticasPendientes.Size = new System.Drawing.Size(275, 150);
             this.dgvPracticasPendientes.TabIndex = 4;
+            this.dgvPracticasPendientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPracticasPendientes_CellClick);
             // 
             // label81
             // 
@@ -4272,7 +4285,7 @@
             // dgvAnalisisLaboratorioPendientes
             // 
             this.dgvAnalisisLaboratorioPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnalisisLaboratorioPendientes.Location = new System.Drawing.Point(554, 81);
+            this.dgvAnalisisLaboratorioPendientes.Location = new System.Drawing.Point(272, 81);
             this.dgvAnalisisLaboratorioPendientes.Name = "dgvAnalisisLaboratorioPendientes";
             this.dgvAnalisisLaboratorioPendientes.Size = new System.Drawing.Size(276, 150);
             this.dgvAnalisisLaboratorioPendientes.TabIndex = 2;
@@ -4289,10 +4302,11 @@
             // dgvEstudiosPendientes
             // 
             this.dgvEstudiosPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEstudiosPendientes.Location = new System.Drawing.Point(6, 81);
+            this.dgvEstudiosPendientes.Location = new System.Drawing.Point(9, 81);
             this.dgvEstudiosPendientes.Name = "dgvEstudiosPendientes";
             this.dgvEstudiosPendientes.Size = new System.Drawing.Size(260, 150);
             this.dgvEstudiosPendientes.TabIndex = 0;
+            this.dgvEstudiosPendientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudiosPendientes_CellClick);
             // 
             // groupBox3
             // 
@@ -4324,16 +4338,6 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnBuscarPracticasPendientes
-            // 
-            this.btnBuscarPracticasPendientes.Location = new System.Drawing.Point(6, 22);
-            this.btnBuscarPracticasPendientes.Name = "btnBuscarPracticasPendientes";
-            this.btnBuscarPracticasPendientes.Size = new System.Drawing.Size(218, 23);
-            this.btnBuscarPracticasPendientes.TabIndex = 6;
-            this.btnBuscarPracticasPendientes.Text = "Buscar prácticas solicitadas y pendientes";
-            this.btnBuscarPracticasPendientes.UseVisualStyleBackColor = true;
-            this.btnBuscarPracticasPendientes.Click += new System.EventHandler(this.btnBuscarPracticasPendientes_Click);
             // 
             // MenuPrincipal
             // 
@@ -4826,7 +4830,7 @@
         private System.Windows.Forms.DataGridView dgvAnalisisLaboratorioPendientes;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.DataGridView dgvEstudiosPendientes;
-        private System.Windows.Forms.MaskedTextBox mtbCambioEstadoDiagnostico;
+        private System.Windows.Forms.MaskedTextBox mtbFechaCambioEstadoDiagnostico;
         private System.Windows.Forms.ComboBox cboEstadoDiagnosticoCambio;
         private System.Windows.Forms.TextBox txtMotivoCambioEstado;
         private System.Windows.Forms.TextBox txtDiagnosticoCambiarEstado;
@@ -4841,6 +4845,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAgregarTratamientoCambioEstado;
-        private System.Windows.Forms.Button btnBuscarPracticasPendientes;
+        private System.Windows.Forms.Button btnBuscarDiagnosticos;
     }
 }

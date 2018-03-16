@@ -108,6 +108,7 @@
     <Compile Include="IntensidadActividadFisicaDAO.cs" />
     <Compile Include="ItemEstudioLaboratorioDAO.cs" />
     <Compile Include="ItemLaboratorioDAO.cs" />
+    <Compile Include="LaboratorioDAO.cs" />
     <Compile Include="LocalidadDAO.cs" />
     <Compile Include="MedicamentoAlergiaDAO.cs" />
     <Compile Include="MedicamentoDAO.cs" />

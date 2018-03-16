@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using Entidades.Clases;
+using System.Data.SqlClient;
+namespace DAO
+{
+    public class LaboratorioDAO
+    {
+        private static string cadenaConexion;
+
+        public static void setCadenaConexion()
+        {
+            CadenaConexion singleton = CadenaConexion.getInstancia();
+            cadenaConexion = singleton.getCadena();
+        }
+        public static string getCadenaConexion()
+        {
+            return cadenaConexion;
+        }
+        public static List<Laboratorio> obtenerAnalisisLaboratorio(int idRazonamiento)
+        {
+            setCadenaConexion();
+
+            List<Laboratorio> analisis = new List<Laboratorio>();
+            AnalisisLaboratorio analisisLaboratorio = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+
+            string consulta = @"select l.fechaSolicitud,al.nombre,l.indicaciones
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, Laboratorio l, AnalisisLaboratorio al
+                                where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and l.id_razonamientoDiagnostico_fk=r.id_razonamiento
+                                and l.id_analisisLaboratorio_fk=al.id_analisisLaboratorio
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and r.id_razonamiento=@idRazonamiento";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idRazonamiento", idRazonamiento);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    analisisLaboratorio = new AnalisisLaboratorio();
+                    analisisLaboratorio.nombre = dr["nombre"].ToString();
+
+                    Laboratorio laboratorio = new Laboratorio();
+                    laboratorio.fechaSolicitud = Convert.ToDateTime(dr["FechaSolicitud"]);
+                    laboratorio.analisis = analisisLaboratorio;
+                    laboratorio.indicaciones = dr["indicaciones"].ToString();
+
+                    analisis.Add(laboratorio);
+                }
+
+                return analisis;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+    }
+}
