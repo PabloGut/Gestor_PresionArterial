@@ -2328,5 +2328,14 @@ namespace GPA
 
             }
         }
+
+        private void dgvAnalisisLaboratorioPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            RegistrarLaboratorio registroAnalisis = new RegistrarLaboratorio();
+            if (registroAnalisis.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

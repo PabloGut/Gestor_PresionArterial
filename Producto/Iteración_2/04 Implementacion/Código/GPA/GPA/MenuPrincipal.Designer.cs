@@ -4289,6 +4289,7 @@
             this.dgvAnalisisLaboratorioPendientes.Name = "dgvAnalisisLaboratorioPendientes";
             this.dgvAnalisisLaboratorioPendientes.Size = new System.Drawing.Size(276, 150);
             this.dgvAnalisisLaboratorioPendientes.TabIndex = 2;
+            this.dgvAnalisisLaboratorioPendientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAnalisisLaboratorioPendientes_CellClick);
             // 
             // label58
             // 

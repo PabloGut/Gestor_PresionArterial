@@ -47,7 +47,6 @@
             this.txtValorMinimoDetalleValorReferencia = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.cbAgregarValoresReferencia = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelDetalleItem = new System.Windows.Forms.Panel();
             this.cbUnidadMedidaValorReferencia = new System.Windows.Forms.CheckBox();
@@ -94,7 +93,6 @@
             this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Controls.Add(this.cbAgregarValoresReferencia);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.txtNombreEstudioLaboratorio);
             this.panel1.Controls.Add(this.label1);
@@ -254,17 +252,6 @@
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // cbAgregarValoresReferencia
-            // 
-            this.cbAgregarValoresReferencia.AutoSize = true;
-            this.cbAgregarValoresReferencia.Location = new System.Drawing.Point(376, 20);
-            this.cbAgregarValoresReferencia.Name = "cbAgregarValoresReferencia";
-            this.cbAgregarValoresReferencia.Size = new System.Drawing.Size(165, 17);
-            this.cbAgregarValoresReferencia.TabIndex = 2;
-            this.cbAgregarValoresReferencia.Text = "Agregar valores de referencia";
-            this.cbAgregarValoresReferencia.UseVisualStyleBackColor = true;
-            this.cbAgregarValoresReferencia.CheckedChanged += new System.EventHandler(this.cbAgregarValoresReferencia_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -429,7 +416,6 @@
         private System.Windows.Forms.TextBox txtNombreEstudioLaboratorio;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox cbAgregarValoresReferencia;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.CheckBox cbAgregarDetalleValorReferencia;

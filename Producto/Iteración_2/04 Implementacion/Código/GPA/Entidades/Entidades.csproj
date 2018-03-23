@@ -104,6 +104,7 @@
     <Compile Include="Clases\MedicamentoAlergia.cs" />
     <Compile Include="Clases\MedicionDePresionArterial.cs" />
     <Compile Include="Clases\Medida.cs" />
+    <Compile Include="Clases\MetodoAnalisisLaboratorio.cs" />
     <Compile Include="Clases\ModificacionSintoma.cs" />
     <Compile Include="Clases\MomentoDia.cs" />
     <Compile Include="Clases\NombreComercial.cs" />

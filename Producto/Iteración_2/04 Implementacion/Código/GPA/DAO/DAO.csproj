@@ -114,6 +114,7 @@
     <Compile Include="MedicamentoDAO.cs" />
     <Compile Include="MedicionDePresionArterialDAO.cs" />
     <Compile Include="MedidaDAO.cs" />
+    <Compile Include="MetodoAnalisisLaboratorioDAO.cs" />
     <Compile Include="ModificacionSintomaDAO.cs" />
     <Compile Include="MomentoDiaDAO.cs" />
     <Compile Include="NombreComercialDAO.cs" />

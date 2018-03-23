@@ -37,7 +37,8 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnAceptarInstitucion = new System.Windows.Forms.Button();
+            this.btnEliminarInstitucion = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInstituciones)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -77,11 +78,12 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnEliminarInstitucion);
             this.panel1.Controls.Add(this.dgvInstituciones);
             this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Controls.Add(this.btnAceptar);
+            this.panel1.Controls.Add(this.btnAceptarInstitucion);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(422, 270);
@@ -98,7 +100,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(255, 235);
+            this.btnSalir.Location = new System.Drawing.Point(341, 235);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 16;
@@ -121,7 +123,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(126, 235);
+            this.btnCancelar.Location = new System.Drawing.Point(260, 235);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 15;
@@ -129,15 +131,25 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btnAceptar
+            // btnAceptarInstitucion
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(14, 235);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 14;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnAceptarInstitucion.Location = new System.Drawing.Point(14, 235);
+            this.btnAceptarInstitucion.Name = "btnAceptarInstitucion";
+            this.btnAceptarInstitucion.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptarInstitucion.TabIndex = 14;
+            this.btnAceptarInstitucion.Text = "Guardar";
+            this.btnAceptarInstitucion.UseVisualStyleBackColor = true;
+            this.btnAceptarInstitucion.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // btnEliminarInstitucion
+            // 
+            this.btnEliminarInstitucion.Location = new System.Drawing.Point(95, 235);
+            this.btnEliminarInstitucion.Name = "btnEliminarInstitucion";
+            this.btnEliminarInstitucion.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarInstitucion.TabIndex = 18;
+            this.btnEliminarInstitucion.Text = "Eliminar";
+            this.btnEliminarInstitucion.UseVisualStyleBackColor = true;
+            this.btnEliminarInstitucion.Click += new System.EventHandler(this.btnEliminarInstitucion_Click);
             // 
             // RegistrarInstitucion
             // 
@@ -167,7 +179,8 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnAceptarInstitucion;
         private System.Windows.Forms.DataGridView dgvInstituciones;
+        private System.Windows.Forms.Button btnEliminarInstitucion;
     }
 }

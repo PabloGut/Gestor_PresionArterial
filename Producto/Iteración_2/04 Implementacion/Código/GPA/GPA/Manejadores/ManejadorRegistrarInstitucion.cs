@@ -32,5 +32,9 @@ namespace GPA
         {
             InstitucionLN.editarInstitucion(institucion);
         }
+        public void eliminarInstitucion(Institucion institucion)
+        {
+            InstitucionLN.eliminarInstitucion(institucion);
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace GPA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            nuevo();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -36,9 +36,10 @@ namespace GPA
 
         private void RegistrarInstitucion_Load(object sender, EventArgs e)
         {
-
+            nuevo();
             agregarColumnasAGrilla();
             agregarInstitucionesRegistradas();
+            dgvInstituciones.Columns[0].Visible = false;
            
         }
         public void agregarColumnasAGrilla()
@@ -52,6 +53,7 @@ namespace GPA
         }
         public void agregarInstitucionesRegistradas()
         {
+            dgvInstituciones.Rows.Clear();
             List<Institucion> instituciones = manejadorRegistrarInstitucion.obtenerInstituciones();
             foreach (Institucion ins in instituciones)
             {
@@ -101,9 +103,27 @@ namespace GPA
                 institucion = manejadorRegistrarInstitucion.buscarIdInstitucion(id);
                 txtNombre.Text = institucion.nombre;
                 txtDescripcion.Text = institucion.descripcion;
+                btnEliminarInstitucion.Enabled = true;
             }
 
 
+        }
+        public void nuevo()
+        {
+            btnEliminarInstitucion.Enabled = false;
+            institucion = null;
+            txtNombre.Clear();
+            txtDescripcion.Clear();
+        }
+
+        private void btnEliminarInstitucion_Click(object sender, EventArgs e)
+        {
+            if (institucion != null)
+            {
+                manejadorRegistrarInstitucion.eliminarInstitucion(institucion);
+                agregarInstitucionesRegistradas();
+                nuevo();
+            }
         }
      
     }

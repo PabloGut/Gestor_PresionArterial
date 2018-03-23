@@ -297,6 +297,35 @@ namespace DAO
                 throw new ApplicationException("Error!!! " + e.Message);
             }
         }
+        public static void deleteInstitucion(Institucion institucion)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlCommand cmd = new SqlCommand();
+
+            string consulta = @"delete from Institucion
+                                where id_institucion=@idInstitucion";
+
+            cmd.Parameters.AddWithValue("@IdInstitucion", institucion.id);
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error al eliminar la institución " + e.Message);
+            }
+        }
 
     }
 }

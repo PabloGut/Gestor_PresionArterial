@@ -32,10 +32,11 @@ namespace GPA
         private void Registrar_Análisis_de_Laboratorio_Load(object sender, EventArgs e)
         {
             cargarCombosYGrilla();
-            panelDetalleItem.Enabled = false;
             panelDetalleValorReferencia.Enabled = false;
-            cbUnidadMedidaValorReferencia.Checked = true;
             cbUnidadMedidaDetalleValorReferencia.Checked = true;
+            //cbUnidadMedidaValorReferencia.Checked = true;
+            //panelDetalleItem.Enabled = false;
+           
         }
         public void cargarCombosYGrilla()
         {
@@ -92,7 +93,7 @@ namespace GPA
 
         private void cbAgregarValoresReferencia_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbAgregarValoresReferencia.Checked == true)
+            /*if (cbAgregarValoresReferencia.Checked == true)
             {
                 panelDetalleItem.Enabled = true;
                 if (cbAgregarDetalleValorReferencia.Checked == true)
@@ -104,7 +105,7 @@ namespace GPA
             {
                 panelDetalleItem.Enabled = false;
                 panelDetalleValorReferencia.Enabled = false;
-            }
+            }*/
         }
 
         private void cbAgregarDetalleValorReferencia_CheckedChanged(object sender, EventArgs e)

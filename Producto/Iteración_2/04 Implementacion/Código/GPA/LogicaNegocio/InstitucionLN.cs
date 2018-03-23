@@ -30,5 +30,9 @@ namespace LogicaNegocio
         {
             InstitucionDAO.updateInstitucion(institucion);
         }
+        public static void eliminarInstitucion(Institucion institucion)
+        {
+            InstitucionDAO.deleteInstitucion(institucion);
+        }
     }
 }

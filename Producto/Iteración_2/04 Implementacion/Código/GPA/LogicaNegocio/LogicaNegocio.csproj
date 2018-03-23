@@ -90,6 +90,7 @@
     <Compile Include="MedicamentoLN.cs" />
     <Compile Include="MedicionDePresionArterialLN.cs" />
     <Compile Include="MedidaLN.cs" />
+    <Compile Include="MetodoAnalisisLaboratorioLN.cs" />
     <Compile Include="ModificacionSintomaLN.cs" />
     <Compile Include="MomentoDiaLN.cs" />
     <Compile Include="NombreComercialLN.cs" />
