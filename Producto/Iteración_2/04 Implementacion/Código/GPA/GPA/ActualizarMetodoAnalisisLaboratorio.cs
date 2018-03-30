@@ -35,6 +35,7 @@ namespace GPA
             columnasDataDgv.Add("nombre");
 
             Utilidades.agregarColumnasDataGridView(dgvListaMetodosAnalisisLaboratorio, columnasDataDgv);
+            dgvListaMetodosAnalisisLaboratorio.Columns[0].Visible = false;
         }
         private void cargarGrilla()
         {
@@ -108,6 +109,11 @@ namespace GPA
                 manejadorActualizarMetodo.deleteMetodoAnalisisLaboratorio(metodoAnalisis);
                 nuevo();
             }
+        }
+
+        private void btnCancelarMetodoAnalisisLaboratorio_Click(object sender, EventArgs e)
+        {
+            nuevo();
         }
     }
 }

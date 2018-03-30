@@ -13,5 +13,17 @@ namespace GPA.Manejadores
         {
             return MetodoAnalisisLaboratorioLN.obtenerMetodosAnalisisLaboratorio();
         }
+        public List<ItemLaboratorio> obtenerItemLaboratorio()
+        {
+            return ItemLaboratorioLN.obtenerItemLaboratorio();
+        }
+        public List<ItemLaboratorio> buscarItemLaboratorio(string nombre)
+        {
+            return ItemLaboratorioLN.buscarItemLaboratorio(nombre);
+        }
+        public List<UnidadDeMedida> obtenerUnidadesDeMedida()
+        {
+            return UnidadMedidaLN.mostrarUnidadesDeMedida();
+        }
     }
 }

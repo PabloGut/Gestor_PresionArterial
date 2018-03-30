@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAnalisisSolicitado = new System.Windows.Forms.TextBox();
             this.btnAgregarInstitucion = new System.Windows.Forms.Button();
             this.cboInstitucion = new System.Windows.Forms.ComboBox();
             this.mtbFechaPractica = new System.Windows.Forms.MaskedTextBox();
@@ -41,16 +41,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.AgregarResultadoAnalisis = new System.Windows.Forms.Button();
+            this.btnAgregarMetodoAnalisisLaboratorio = new System.Windows.Forms.Button();
+            this.btnNuevoAnalisis = new System.Windows.Forms.Button();
+            this.btnAgregarResultadoAnalisis = new System.Windows.Forms.Button();
             this.dgvListaResultadosAnalisis = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.cboUnidadDeMedida = new System.Windows.Forms.ComboBox();
+            this.txtResultado = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtEstudioSeleccionado = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtEstudioBuscado = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnBuscarItemEstudioLaboratorio = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -60,7 +61,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnAgregarMetodoAnalisisLaboratorio = new System.Windows.Forms.Button();
+            this.btnAgregarUnidadMedida = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaResultadosAnalisis)).BeginInit();
@@ -76,12 +77,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Análisis Laboratorio Solicitado";
             // 
-            // textBox1
+            // txtAnalisisSolicitado
             // 
-            this.textBox1.Location = new System.Drawing.Point(159, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtAnalisisSolicitado.Location = new System.Drawing.Point(159, 23);
+            this.txtAnalisisSolicitado.Name = "txtAnalisisSolicitado";
+            this.txtAnalisisSolicitado.ReadOnly = true;
+            this.txtAnalisisSolicitado.Size = new System.Drawing.Size(142, 20);
+            this.txtAnalisisSolicitado.TabIndex = 1;
             // 
             // btnAgregarInstitucion
             // 
@@ -95,6 +97,7 @@
             // 
             // cboInstitucion
             // 
+            this.cboInstitucion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboInstitucion.FormattingEnabled = true;
             this.cboInstitucion.Location = new System.Drawing.Point(159, 129);
             this.cboInstitucion.Name = "cboInstitucion";
@@ -167,7 +170,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtAnalisisSolicitado);
             this.groupBox1.Controls.Add(this.btnAgregarInstitucion);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtDoctorACargo);
@@ -183,17 +186,18 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnAgregarUnidadMedida);
             this.groupBox2.Controls.Add(this.btnAgregarMetodoAnalisisLaboratorio);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.AgregarResultadoAnalisis);
+            this.groupBox2.Controls.Add(this.btnNuevoAnalisis);
+            this.groupBox2.Controls.Add(this.btnAgregarResultadoAnalisis);
             this.groupBox2.Controls.Add(this.dgvListaResultadosAnalisis);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.cboUnidadDeMedida);
+            this.groupBox2.Controls.Add(this.txtResultado);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.txtEstudioSeleccionado);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtEstudioBuscado);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.btnBuscarItemEstudioLaboratorio);
             this.groupBox2.Controls.Add(this.label7);
@@ -202,76 +206,90 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(12, 207);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(869, 262);
+            this.groupBox2.Size = new System.Drawing.Size(869, 269);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informe del análisis";
             // 
-            // button4
+            // btnAgregarMetodoAnalisisLaboratorio
             // 
-            this.button4.Location = new System.Drawing.Point(220, 120);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 39);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Nuevo análisis";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAgregarMetodoAnalisisLaboratorio.Location = new System.Drawing.Point(217, 31);
+            this.btnAgregarMetodoAnalisisLaboratorio.Name = "btnAgregarMetodoAnalisisLaboratorio";
+            this.btnAgregarMetodoAnalisisLaboratorio.Size = new System.Drawing.Size(99, 23);
+            this.btnAgregarMetodoAnalisisLaboratorio.TabIndex = 16;
+            this.btnAgregarMetodoAnalisisLaboratorio.Text = "Agregar método";
+            this.btnAgregarMetodoAnalisisLaboratorio.UseVisualStyleBackColor = true;
+            this.btnAgregarMetodoAnalisisLaboratorio.Click += new System.EventHandler(this.btnAgregarMetodoAnalisisLaboratorio_Click);
             // 
-            // AgregarResultadoAnalisis
+            // btnNuevoAnalisis
             // 
-            this.AgregarResultadoAnalisis.Location = new System.Drawing.Point(684, 70);
-            this.AgregarResultadoAnalisis.Name = "AgregarResultadoAnalisis";
-            this.AgregarResultadoAnalisis.Size = new System.Drawing.Size(106, 23);
-            this.AgregarResultadoAnalisis.TabIndex = 14;
-            this.AgregarResultadoAnalisis.Text = "Agregar resultado";
-            this.AgregarResultadoAnalisis.UseVisualStyleBackColor = true;
+            this.btnNuevoAnalisis.Location = new System.Drawing.Point(220, 120);
+            this.btnNuevoAnalisis.Name = "btnNuevoAnalisis";
+            this.btnNuevoAnalisis.Size = new System.Drawing.Size(75, 39);
+            this.btnNuevoAnalisis.TabIndex = 15;
+            this.btnNuevoAnalisis.Text = "Nuevo análisis";
+            this.btnNuevoAnalisis.UseVisualStyleBackColor = true;
+            this.btnNuevoAnalisis.Click += new System.EventHandler(this.btnNuevoAnalisis_Click);
+            // 
+            // btnAgregarResultadoAnalisis
+            // 
+            this.btnAgregarResultadoAnalisis.Location = new System.Drawing.Point(757, 101);
+            this.btnAgregarResultadoAnalisis.Name = "btnAgregarResultadoAnalisis";
+            this.btnAgregarResultadoAnalisis.Size = new System.Drawing.Size(106, 23);
+            this.btnAgregarResultadoAnalisis.TabIndex = 14;
+            this.btnAgregarResultadoAnalisis.Text = "Agregar resultado";
+            this.btnAgregarResultadoAnalisis.UseVisualStyleBackColor = true;
+            this.btnAgregarResultadoAnalisis.Click += new System.EventHandler(this.btnAgregarResultadoAnalisis_Click);
             // 
             // dgvListaResultadosAnalisis
             // 
             this.dgvListaResultadosAnalisis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaResultadosAnalisis.Location = new System.Drawing.Point(358, 120);
+            this.dgvListaResultadosAnalisis.Location = new System.Drawing.Point(358, 101);
             this.dgvListaResultadosAnalisis.Name = "dgvListaResultadosAnalisis";
-            this.dgvListaResultadosAnalisis.Size = new System.Drawing.Size(432, 135);
+            this.dgvListaResultadosAnalisis.Size = new System.Drawing.Size(393, 154);
             this.dgvListaResultadosAnalisis.TabIndex = 13;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(496, 75);
+            this.label11.Location = new System.Drawing.Point(483, 77);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(97, 13);
             this.label11.TabIndex = 12;
             this.label11.Text = "Unidad de Medida:";
             // 
-            // comboBox1
+            // cboUnidadDeMedida
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(596, 71);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(73, 21);
-            this.comboBox1.TabIndex = 11;
+            this.cboUnidadDeMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUnidadDeMedida.FormattingEnabled = true;
+            this.cboUnidadDeMedida.Location = new System.Drawing.Point(586, 72);
+            this.cboUnidadDeMedida.Name = "cboUnidadDeMedida";
+            this.cboUnidadDeMedida.Size = new System.Drawing.Size(73, 21);
+            this.cboUnidadDeMedida.TabIndex = 11;
             // 
-            // textBox5
+            // txtResultado
             // 
-            this.textBox5.Location = new System.Drawing.Point(419, 71);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(58, 20);
-            this.textBox5.TabIndex = 10;
+            this.txtResultado.Location = new System.Drawing.Point(419, 73);
+            this.txtResultado.Name = "txtResultado";
+            this.txtResultado.Size = new System.Drawing.Size(58, 20);
+            this.txtResultado.TabIndex = 10;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(355, 75);
+            this.label10.Location = new System.Drawing.Point(355, 77);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 13);
             this.label10.TabIndex = 9;
             this.label10.Text = "Resultado:";
             // 
-            // textBox4
+            // txtEstudioSeleccionado
             // 
-            this.textBox4.Location = new System.Drawing.Point(448, 33);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(156, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtEstudioSeleccionado.Location = new System.Drawing.Point(448, 33);
+            this.txtEstudioSeleccionado.Name = "txtEstudioSeleccionado";
+            this.txtEstudioSeleccionado.ReadOnly = true;
+            this.txtEstudioSeleccionado.Size = new System.Drawing.Size(156, 20);
+            this.txtEstudioSeleccionado.TabIndex = 8;
             // 
             // label9
             // 
@@ -282,12 +300,13 @@
             this.label9.TabIndex = 7;
             this.label9.Text = "Estudio realizado";
             // 
-            // textBox3
+            // txtEstudioBuscado
             // 
-            this.textBox3.Location = new System.Drawing.Point(51, 94);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(158, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtEstudioBuscado.Location = new System.Drawing.Point(51, 94);
+            this.txtEstudioBuscado.Name = "txtEstudioBuscado";
+            this.txtEstudioBuscado.Size = new System.Drawing.Size(158, 20);
+            this.txtEstudioBuscado.TabIndex = 6;
+            this.txtEstudioBuscado.TextChanged += new System.EventHandler(this.txtEstudioBuscado_TextChanged);
             // 
             // label8
             // 
@@ -306,6 +325,7 @@
             this.btnBuscarItemEstudioLaboratorio.TabIndex = 4;
             this.btnBuscarItemEstudioLaboratorio.Text = "Buscar";
             this.btnBuscarItemEstudioLaboratorio.UseVisualStyleBackColor = true;
+            this.btnBuscarItemEstudioLaboratorio.Click += new System.EventHandler(this.btnBuscarItemEstudioLaboratorio_Click);
             // 
             // label7
             // 
@@ -321,11 +341,15 @@
             this.dgvListadoItemsEstudioLaboratorio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListadoItemsEstudioLaboratorio.Location = new System.Drawing.Point(9, 120);
             this.dgvListadoItemsEstudioLaboratorio.Name = "dgvListadoItemsEstudioLaboratorio";
+            this.dgvListadoItemsEstudioLaboratorio.ReadOnly = true;
+            this.dgvListadoItemsEstudioLaboratorio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListadoItemsEstudioLaboratorio.Size = new System.Drawing.Size(205, 135);
             this.dgvListadoItemsEstudioLaboratorio.TabIndex = 2;
+            this.dgvListadoItemsEstudioLaboratorio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListadoItemsEstudioLaboratorio_CellClick);
             // 
             // cboMetodoAnalisisLaboratorio
             // 
+            this.cboMetodoAnalisisLaboratorio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMetodoAnalisisLaboratorio.FormattingEnabled = true;
             this.cboMetodoAnalisisLaboratorio.Location = new System.Drawing.Point(55, 33);
             this.cboMetodoAnalisisLaboratorio.Name = "cboMetodoAnalisisLaboratorio";
@@ -343,7 +367,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 475);
+            this.button1.Location = new System.Drawing.Point(9, 482);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 24;
@@ -352,7 +376,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(93, 475);
+            this.button2.Location = new System.Drawing.Point(90, 482);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 25;
@@ -361,22 +385,22 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(174, 475);
+            this.button3.Location = new System.Drawing.Point(171, 482);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 26;
             this.button3.Text = "Salir";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnAgregarMetodoAnalisisLaboratorio
+            // btnAgregarUnidadMedida
             // 
-            this.btnAgregarMetodoAnalisisLaboratorio.Location = new System.Drawing.Point(217, 31);
-            this.btnAgregarMetodoAnalisisLaboratorio.Name = "btnAgregarMetodoAnalisisLaboratorio";
-            this.btnAgregarMetodoAnalisisLaboratorio.Size = new System.Drawing.Size(99, 23);
-            this.btnAgregarMetodoAnalisisLaboratorio.TabIndex = 16;
-            this.btnAgregarMetodoAnalisisLaboratorio.Text = "Agregar método";
-            this.btnAgregarMetodoAnalisisLaboratorio.UseVisualStyleBackColor = true;
-            this.btnAgregarMetodoAnalisisLaboratorio.Click += new System.EventHandler(this.btnAgregarMetodoAnalisisLaboratorio_Click);
+            this.btnAgregarUnidadMedida.Location = new System.Drawing.Point(665, 71);
+            this.btnAgregarUnidadMedida.Name = "btnAgregarUnidadMedida";
+            this.btnAgregarUnidadMedida.Size = new System.Drawing.Size(159, 23);
+            this.btnAgregarUnidadMedida.TabIndex = 17;
+            this.btnAgregarUnidadMedida.Text = "Agregar Unidad de Medida";
+            this.btnAgregarUnidadMedida.UseVisualStyleBackColor = true;
+            this.btnAgregarUnidadMedida.Click += new System.EventHandler(this.btnAgregarUnidadMedida_Click);
             // 
             // RegistrarLaboratorio
             // 
@@ -404,7 +428,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAnalisisSolicitado;
         private System.Windows.Forms.Button btnAgregarInstitucion;
         private System.Windows.Forms.ComboBox cboInstitucion;
         private System.Windows.Forms.MaskedTextBox mtbFechaPractica;
@@ -420,21 +444,22 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvListadoItemsEstudioLaboratorio;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtEstudioBuscado;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnBuscarItemEstudioLaboratorio;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtEstudioSeleccionado;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtResultado;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button AgregarResultadoAnalisis;
+        private System.Windows.Forms.ComboBox cboUnidadDeMedida;
+        private System.Windows.Forms.Button btnAgregarResultadoAnalisis;
         private System.Windows.Forms.DataGridView dgvListaResultadosAnalisis;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnNuevoAnalisis;
         private System.Windows.Forms.Button btnAgregarMetodoAnalisisLaboratorio;
+        private System.Windows.Forms.Button btnAgregarUnidadMedida;
     }
 }

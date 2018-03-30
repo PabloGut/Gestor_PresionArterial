@@ -74,7 +74,6 @@ namespace GPA
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-
             cargarComboTipoDocumento();
             //dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
             cargarDataGridPacientesDelProfesional();
@@ -2331,7 +2330,8 @@ namespace GPA
 
         private void dgvAnalisisLaboratorioPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            RegistrarLaboratorio registroAnalisis = new RegistrarLaboratorio();
+            string analisis = (string)dgvAnalisisLaboratorioPendientes.CurrentRow.Cells[0].Value;
+            RegistrarLaboratorio registroAnalisis = new RegistrarLaboratorio(analisis);
             if (registroAnalisis.ShowDialog() == DialogResult.OK)
             {
 

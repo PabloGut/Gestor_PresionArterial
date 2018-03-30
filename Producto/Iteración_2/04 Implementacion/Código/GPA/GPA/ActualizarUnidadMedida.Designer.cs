@@ -33,6 +33,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnRegistrarUnidadMedida = new System.Windows.Forms.Button();
+            this.btnNueva = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.dgvUnidadesDeMedida = new System.Windows.Forms.DataGridView();
+            this.btnSalir = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnidadesDeMedida)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombreUnidadMedida
@@ -69,19 +74,63 @@
             // 
             // btnRegistrarUnidadMedida
             // 
-            this.btnRegistrarUnidadMedida.Location = new System.Drawing.Point(60, 134);
+            this.btnRegistrarUnidadMedida.Location = new System.Drawing.Point(12, 135);
             this.btnRegistrarUnidadMedida.Name = "btnRegistrarUnidadMedida";
-            this.btnRegistrarUnidadMedida.Size = new System.Drawing.Size(163, 23);
+            this.btnRegistrarUnidadMedida.Size = new System.Drawing.Size(71, 23);
             this.btnRegistrarUnidadMedida.TabIndex = 4;
-            this.btnRegistrarUnidadMedida.Text = "Registrar unidad de medida";
+            this.btnRegistrarUnidadMedida.Text = "Guardar";
             this.btnRegistrarUnidadMedida.UseVisualStyleBackColor = true;
             this.btnRegistrarUnidadMedida.Click += new System.EventHandler(this.btnRegistrarUnidadMedida_Click);
+            // 
+            // btnNueva
+            // 
+            this.btnNueva.Location = new System.Drawing.Point(89, 135);
+            this.btnNueva.Name = "btnNueva";
+            this.btnNueva.Size = new System.Drawing.Size(75, 23);
+            this.btnNueva.TabIndex = 5;
+            this.btnNueva.Text = "Nueva";
+            this.btnNueva.UseVisualStyleBackColor = true;
+            this.btnNueva.Click += new System.EventHandler(this.btnNueva_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(170, 135);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // dgvUnidadesDeMedida
+            // 
+            this.dgvUnidadesDeMedida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUnidadesDeMedida.Location = new System.Drawing.Point(12, 193);
+            this.dgvUnidadesDeMedida.Name = "dgvUnidadesDeMedida";
+            this.dgvUnidadesDeMedida.ReadOnly = true;
+            this.dgvUnidadesDeMedida.Size = new System.Drawing.Size(320, 150);
+            this.dgvUnidadesDeMedida.TabIndex = 7;
+            this.dgvUnidadesDeMedida.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUnidadesDeMedida_CellClick);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(251, 135);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 8;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // ActualizarUnidadMedida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 209);
+            this.ClientSize = new System.Drawing.Size(344, 355);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.dgvUnidadesDeMedida);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnNueva);
             this.Controls.Add(this.btnRegistrarUnidadMedida);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -89,6 +138,8 @@
             this.Controls.Add(this.txtNombreUnidadMedida);
             this.Name = "ActualizarUnidadMedida";
             this.Text = "Actualizar Unidad Medida";
+            this.Load += new System.EventHandler(this.ActualizarUnidadMedida_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnidadesDeMedida)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +152,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRegistrarUnidadMedida;
+        private System.Windows.Forms.Button btnNueva;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.DataGridView dgvUnidadesDeMedida;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

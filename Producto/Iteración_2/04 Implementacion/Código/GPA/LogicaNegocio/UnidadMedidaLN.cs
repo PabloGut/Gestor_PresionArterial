@@ -19,5 +19,13 @@ namespace LogicaNegocio
         {
             return UnidadMedidaDAO.mostrarUnidadesDeMedida();
         }
+        public static void deleteUnidadMedida(int id)
+        {
+            UnidadMedidaDAO.deleteUnidadMedida(id);
+        }
+        public static void updateUnidadMedida(UnidadDeMedida unidad)
+        {
+            UnidadMedidaDAO.updateUnidadMedida(unidad);
+        }
     }
 }

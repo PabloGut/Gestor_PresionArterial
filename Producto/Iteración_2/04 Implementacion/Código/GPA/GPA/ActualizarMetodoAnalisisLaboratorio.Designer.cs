@@ -59,6 +59,7 @@
             this.dgvListaMetodosAnalisisLaboratorio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaMetodosAnalisisLaboratorio.Location = new System.Drawing.Point(60, 48);
             this.dgvListaMetodosAnalisisLaboratorio.Name = "dgvListaMetodosAnalisisLaboratorio";
+            this.dgvListaMetodosAnalisisLaboratorio.ReadOnly = true;
             this.dgvListaMetodosAnalisisLaboratorio.Size = new System.Drawing.Size(246, 150);
             this.dgvListaMetodosAnalisisLaboratorio.TabIndex = 2;
             this.dgvListaMetodosAnalisisLaboratorio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaMetodosAnalisisLaboratorio_CellClick);
@@ -91,6 +92,7 @@
             this.btnCancelarMetodoAnalisisLaboratorio.TabIndex = 5;
             this.btnCancelarMetodoAnalisisLaboratorio.Text = "Cancelar";
             this.btnCancelarMetodoAnalisisLaboratorio.UseVisualStyleBackColor = true;
+            this.btnCancelarMetodoAnalisisLaboratorio.Click += new System.EventHandler(this.btnCancelarMetodoAnalisisLaboratorio_Click);
             // 
             // btnSalirMetodoAnalisisLaboratorio
             // 
