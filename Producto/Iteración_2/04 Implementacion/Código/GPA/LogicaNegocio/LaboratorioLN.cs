@@ -13,5 +13,9 @@ namespace LogicaNegocio
         {
             return LaboratorioDAO.obtenerAnalisisLaboratorio(idRazonamiento);
         }
+        public static void updateLaboratorio(Laboratorio laboratorio)
+        {
+            LaboratorioDAO.updateLaboratorio(laboratorio);
+        }
     }
 }

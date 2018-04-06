@@ -75,5 +75,53 @@ namespace DAO
                 throw new Exception("Error al insertar: " + e.Message);
             }
         }
+        public List<DetalleItemLaboratorio> obtenerIdDetalleItemLaboratorio(int idDetalleItemLaboratorio)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlCommand cmd = new SqlCommand();
+
+            SqlDataReader dr = null;
+
+            List<DetalleItemLaboratorio> detalles = new List<DetalleItemLaboratorio>();
+
+            string consulta = @"select d.id_detalleItemLaboratorio
+                                from ItemEstudioLaboratorio i, DetalleItemLaboratorio d
+                                where i.id_itemEstudioLaboratorio=d.id_item_fk
+                                and d.id_item_fk=@idItemEstudioLaboratorio";
+
+            cmd.Parameters.AddWithValue("@idItemEstudioLaboratorio", idDetalleItemLaboratorio);
+
+            try
+            {
+                cn.Open();
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    detalles.Add(new DetalleItemLaboratorio()
+                    {
+                        id_detalleItemLaboratorio=(int)dr["id_detalleItemLaboratorio"]
+                    });
+                }
+
+                cn.Close();
+                return detalles;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new Exception("Error al insertar: " + e.Message);
+            }
+        }
     }
 }

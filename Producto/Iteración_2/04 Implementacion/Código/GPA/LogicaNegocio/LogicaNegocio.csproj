@@ -84,6 +84,7 @@
     <Compile Include="InsectoLN.cs" />
     <Compile Include="InstitucionLN.cs" />
     <Compile Include="IntensidadActividadFisicaLN.cs" />
+    <Compile Include="ItemEstudioLaboratorioLN.cs" />
     <Compile Include="ItemLaboratorioLN.cs" />
     <Compile Include="LaboratorioLN.cs" />
     <Compile Include="LocalidadLN.cs" />

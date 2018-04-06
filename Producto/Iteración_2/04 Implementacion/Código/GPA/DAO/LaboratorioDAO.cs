@@ -32,7 +32,7 @@ namespace DAO
 
 
 
-            string consulta = @"select l.fechaSolicitud,al.nombre,l.indicaciones
+            string consulta = @"select l.id_laboratorio, l.fechaSolicitud,al.nombre,l.indicaciones
                                 from RazonamientoDiagnostico r, EstadoDiagnostico ediag, Laboratorio l, AnalisisLaboratorio al
                                 where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
                                 and l.id_razonamientoDiagnostico_fk=r.id_razonamiento
@@ -58,6 +58,7 @@ namespace DAO
                     analisisLaboratorio.nombre = dr["nombre"].ToString();
 
                     Laboratorio laboratorio = new Laboratorio();
+                    laboratorio.id_laboratorio = (int)dr["id_laboratorio"];
                     laboratorio.fechaSolicitud = Convert.ToDateTime(dr["FechaSolicitud"]);
                     laboratorio.analisis = analisisLaboratorio;
                     laboratorio.indicaciones = dr["indicaciones"].ToString();
@@ -75,6 +76,44 @@ namespace DAO
                 }
                 throw new ApplicationException("Error:" + e.Message);
             }
+        }
+        public static void updateLaboratorio(Laboratorio laboratorio)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlCommand cmd = new SqlCommand();
+
+            string consulta = @"update Laboratorio
+                                    set fechaRealizacion=@fechaRealizacion, doctorACargo=@doctorACargo,
+                                    id_institucion_fk=@idInstitucion, observacionesDeLosResultados=@observaciones,
+                                    id_metodoAnalisisLaboratorio_fk=@idMetodo
+                                    where id_laboratorio=@idLaboratorio";
+
+            cmd.Parameters.AddWithValue("@fechaRealizacion", laboratorio.fechaRealizacion);
+            cmd.Parameters.AddWithValue("@doctorACargo", laboratorio.DoctorACargo);
+            cmd.Parameters.AddWithValue("@idInstitucion", laboratorio.id_institucion);
+            if(string.IsNullOrEmpty(laboratorio.observaciones))
+                cmd.Parameters.AddWithValue("@observaciones", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@observaciones", laboratorio.observaciones);
+
+            cmd.Parameters.AddWithValue("@idMetodo", laboratorio.id_metodoLaboratorio);
+            cmd.Parameters.AddWithValue("@idLaboratorio", laboratorio.id_laboratorio);
+            try
+            {
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+
         }
     }
 }

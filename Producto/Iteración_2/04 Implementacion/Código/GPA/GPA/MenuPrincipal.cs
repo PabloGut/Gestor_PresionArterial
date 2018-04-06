@@ -2259,7 +2259,7 @@ namespace GPA
                     foreach (object obj in lista)
                     {
                         Laboratorio laboratorio = (Laboratorio)obj;
-                        dgvAnalisisLaboratorioPendientes.Rows.Add(laboratorio.analisis.nombre, laboratorio.fechaSolicitud, laboratorio.indicaciones);
+                        dgvAnalisisLaboratorioPendientes.Rows.Add(laboratorio.analisis.nombre, laboratorio.fechaSolicitud, laboratorio.indicaciones, laboratorio.id_laboratorio);
                     }
                     break;
             }
@@ -2329,9 +2329,14 @@ namespace GPA
         }
 
         private void dgvAnalisisLaboratorioPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {   
             string analisis = (string)dgvAnalisisLaboratorioPendientes.CurrentRow.Cells[0].Value;
-            RegistrarLaboratorio registroAnalisis = new RegistrarLaboratorio(analisis);
+            DateTime fecha= (DateTime) dgvAnalisisLaboratorioPendientes.CurrentRow.Cells[1].Value;
+            string indicaciones = (string)dgvAnalisisLaboratorioPendientes.CurrentRow.Cells[2].Value;
+            int id = (int)dgvAnalisisLaboratorioPendientes.CurrentRow.Cells[3].Value;
+            Laboratorio laboratorio = manejadorModificarEstadoDiagnostico.crearLaboratorio(id,analisis,fecha,indicaciones);
+            
+            RegistrarLaboratorio registroAnalisis = new RegistrarLaboratorio(laboratorio);
             if (registroAnalisis.ShowDialog() == DialogResult.OK)
             {
 

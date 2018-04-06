@@ -32,5 +32,22 @@ namespace GPA.Manejadores
         {
             return LaboratorioLN.obtenerAnalisisLaboratorio(idRazonamiento);
         }
+        public Laboratorio crearLaboratorio(int idLaboratorio,string nombreAnalisis, DateTime fechaSolicitud, string indicaciones)
+        {
+            AnalisisLaboratorio analisis = crearAnalisisLaboratorio(nombreAnalisis);
+            Laboratorio laboratorio = new Laboratorio();
+            laboratorio.analisis = analisis;
+            laboratorio.fechaSolicitud = fechaSolicitud;
+            laboratorio.indicaciones = indicaciones;
+
+            return laboratorio;
+            
+        }
+        public AnalisisLaboratorio crearAnalisisLaboratorio(string nombreAnalisis)
+        {
+            AnalisisLaboratorio analisis = new AnalisisLaboratorio();
+            analisis.nombre = nombreAnalisis;
+            return analisis;
+        }
     }
 }

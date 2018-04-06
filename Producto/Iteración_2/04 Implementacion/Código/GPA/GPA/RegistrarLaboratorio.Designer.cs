@@ -37,10 +37,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDoctorACargo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarUnidadMedida = new System.Windows.Forms.Button();
             this.btnAgregarMetodoAnalisisLaboratorio = new System.Windows.Forms.Button();
             this.btnNuevoAnalisis = new System.Windows.Forms.Button();
             this.btnAgregarResultadoAnalisis = new System.Windows.Forms.Button();
@@ -58,10 +59,9 @@
             this.dgvListadoItemsEstudioLaboratorio = new System.Windows.Forms.DataGridView();
             this.cboMetodoAnalisisLaboratorio = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardarInformeAnalisis = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnAgregarUnidadMedida = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaResultadosAnalisis)).BeginInit();
@@ -147,13 +147,13 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Fecha de realización";
             // 
-            // textBox2
+            // txtObservaciones
             // 
-            this.textBox2.Location = new System.Drawing.Point(358, 26);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(505, 60);
-            this.textBox2.TabIndex = 20;
+            this.txtObservaciones.Location = new System.Drawing.Point(358, 26);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(505, 60);
+            this.txtObservaciones.TabIndex = 20;
             // 
             // label2
             // 
@@ -169,7 +169,7 @@
             this.groupBox1.Controls.Add(this.cboInstitucion);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtObservaciones);
             this.groupBox1.Controls.Add(this.txtAnalisisSolicitado);
             this.groupBox1.Controls.Add(this.btnAgregarInstitucion);
             this.groupBox1.Controls.Add(this.label3);
@@ -210,6 +210,16 @@
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informe del análisis";
+            // 
+            // btnAgregarUnidadMedida
+            // 
+            this.btnAgregarUnidadMedida.Location = new System.Drawing.Point(665, 71);
+            this.btnAgregarUnidadMedida.Name = "btnAgregarUnidadMedida";
+            this.btnAgregarUnidadMedida.Size = new System.Drawing.Size(159, 23);
+            this.btnAgregarUnidadMedida.TabIndex = 17;
+            this.btnAgregarUnidadMedida.Text = "Agregar Unidad de Medida";
+            this.btnAgregarUnidadMedida.UseVisualStyleBackColor = true;
+            this.btnAgregarUnidadMedida.Click += new System.EventHandler(this.btnAgregarUnidadMedida_Click);
             // 
             // btnAgregarMetodoAnalisisLaboratorio
             // 
@@ -365,14 +375,15 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Método";
             // 
-            // button1
+            // btnGuardarInformeAnalisis
             // 
-            this.button1.Location = new System.Drawing.Point(9, 482);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGuardarInformeAnalisis.Location = new System.Drawing.Point(9, 482);
+            this.btnGuardarInformeAnalisis.Name = "btnGuardarInformeAnalisis";
+            this.btnGuardarInformeAnalisis.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardarInformeAnalisis.TabIndex = 24;
+            this.btnGuardarInformeAnalisis.Text = "Guardar";
+            this.btnGuardarInformeAnalisis.UseVisualStyleBackColor = true;
+            this.btnGuardarInformeAnalisis.Click += new System.EventHandler(this.btnGuardarInformeAnalisis_Click);
             // 
             // button2
             // 
@@ -392,16 +403,6 @@
             this.button3.Text = "Salir";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnAgregarUnidadMedida
-            // 
-            this.btnAgregarUnidadMedida.Location = new System.Drawing.Point(665, 71);
-            this.btnAgregarUnidadMedida.Name = "btnAgregarUnidadMedida";
-            this.btnAgregarUnidadMedida.Size = new System.Drawing.Size(159, 23);
-            this.btnAgregarUnidadMedida.TabIndex = 17;
-            this.btnAgregarUnidadMedida.Text = "Agregar Unidad de Medida";
-            this.btnAgregarUnidadMedida.UseVisualStyleBackColor = true;
-            this.btnAgregarUnidadMedida.Click += new System.EventHandler(this.btnAgregarUnidadMedida_Click);
-            // 
             // RegistrarLaboratorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,7 +410,7 @@
             this.ClientSize = new System.Drawing.Size(893, 528);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGuardarInformeAnalisis);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistrarLaboratorio";
@@ -436,7 +437,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDoctorACargo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -455,7 +456,7 @@
         private System.Windows.Forms.ComboBox cboUnidadDeMedida;
         private System.Windows.Forms.Button btnAgregarResultadoAnalisis;
         private System.Windows.Forms.DataGridView dgvListaResultadosAnalisis;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuardarInformeAnalisis;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnNuevoAnalisis;

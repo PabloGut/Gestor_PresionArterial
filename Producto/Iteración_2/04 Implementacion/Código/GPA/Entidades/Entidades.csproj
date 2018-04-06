@@ -65,6 +65,7 @@
     <Compile Include="Clases\DejoDeFumar.cs" />
     <Compile Include="Clases\DescripcionDelTiempo.cs" />
     <Compile Include="Clases\DetalleItemLaboratorio.cs" />
+    <Compile Include="Clases\DetalleLaboratorio.cs" />
     <Compile Include="Clases\DetalleMedicionPresionArterial.cs" />
     <Compile Include="Clases\DetalleValorReferenciaLaboratorio.cs" />
     <Compile Include="Clases\Diagnostico.cs" />

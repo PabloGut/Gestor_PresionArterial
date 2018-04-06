@@ -61,7 +61,7 @@ namespace DAO
             List<ItemLaboratorio> items = new List<ItemLaboratorio>();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
 
-            string consulta = @"select il.nombre, il.id_itemLaboratorio
+            string consulta = @"select  il.nombre, il.id_itemLaboratorio
                                 from ItemEstudioLaboratorio i , itemLaboratorio il
                                 where i.id_itemLaboratorio_fk=il.id_itemLaboratorio";
 

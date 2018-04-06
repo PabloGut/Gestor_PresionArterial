@@ -72,5 +72,48 @@ namespace DAO
 
 
         }
+        public static int obtenerIdItemEstudioLaboratorio(string nombreEstudio)
+        {
+            setCadenaConexion();
+            int idItemEstudioLaboratorio = 0;
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlCommand cmd = new SqlCommand();
+
+            SqlDataReader dr = null;
+            string consulta = @"select i.id_itemEstudioLaboratorio
+                                from ItemEstudioLaboratorio i , itemLaboratorio il
+                                where i.id_itemLaboratorio_fk=il.id_itemLaboratorio
+                                and il.nombre like @nombreEstudio";
+
+            cmd.Parameters.AddWithValue("@nombreEstudio", nombreEstudio);
+
+            try
+            {
+                cn.Open();
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    idItemEstudioLaboratorio = (int)dr["id_itemEstudioLaboratorio"];
+                }
+
+                cn.Close();
+                return idItemEstudioLaboratorio;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new Exception("Error al insertar: " + e.Message);
+            }
+        }
     }
 }

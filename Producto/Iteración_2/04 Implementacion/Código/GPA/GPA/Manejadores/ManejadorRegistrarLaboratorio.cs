@@ -25,5 +25,29 @@ namespace GPA.Manejadores
         {
             return UnidadMedidaLN.mostrarUnidadesDeMedida();
         }
+        public int obteneridItemEstudioLaboratorio(string nombreEstudio)
+        {
+            return ItemEstudioLaboratorioLN.obtenerIdItemEstudioLaboratorio(nombreEstudio);
+        }
+        public void updateLaboratorio(Laboratorio laboratorio)
+        {
+            LaboratorioLN.updateLaboratorio(laboratorio);
+        }
+        public DetalleLaboratorio crearDetalleLaboratorio(double valorResultado,int idUnidadMedida,ItemEstudioLaboratorio itemEstudioLaboratorio)
+        {
+            DetalleLaboratorio detalle = new DetalleLaboratorio();
+            detalle.valorResultado = valorResultado;
+            detalle.idUnidadMedida = idUnidadMedida;
+            detalle.itemEstudioLaboratorio = itemEstudioLaboratorio;
+
+            return detalle;
+        }
+        public ItemEstudioLaboratorio crearItemEstudioLaboratorio(int idItemLaboratorio)
+        {
+            ItemEstudioLaboratorio item = new ItemEstudioLaboratorio();
+            item.id_itemLaboratorio = idItemLaboratorio;
+
+            return item;
+        }
     }
 }

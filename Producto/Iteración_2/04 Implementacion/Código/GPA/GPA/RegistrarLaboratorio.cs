@@ -15,11 +15,15 @@ namespace GPA
 {
     public partial class RegistrarLaboratorio : Form
     {
-        ManejadorRegistrarLaboratorio manejadorRegistrarLaboratorio;
-        public RegistrarLaboratorio(string analisis)
+        private ManejadorRegistrarLaboratorio manejadorRegistrarLaboratorio;
+        private Laboratorio laboratorio;
+        private List<DetalleLaboratorio> listaDetalles;
+        private int idEstudioSeleccionado { set; get; }
+
+        public RegistrarLaboratorio(Laboratorio laboratorio)
         {
             InitializeComponent();
-            txtAnalisisSolicitado.Text = analisis;
+            this.laboratorio = laboratorio;
         }
 
         private void btnAgregarInstitucion_Click(object sender, EventArgs e)
@@ -36,11 +40,12 @@ namespace GPA
         }
         private void RegistrarLaboratorio_Load(object sender, EventArgs e)
         {
+            txtAnalisisSolicitado.Text = laboratorio.analisis.nombre;
             manejadorRegistrarLaboratorio = new ManejadorRegistrarLaboratorio();
+
             cargarComboInstituciones();
             cargarComboMetodosAnalisisLaboratorio();
             cargarColumnasGrillaItemEstudios();
-            mtbFechaPractica.Text = DateTime.Now.ToShortDateString();
             obtenerItemLaboratorio();
             cargarComboUnidadDeMedida();
             cargarColumnasGrillaResultados();
@@ -150,6 +155,7 @@ namespace GPA
             if (!string.IsNullOrEmpty(valor))
             {
                 txtEstudioSeleccionado.Text = valor;
+                idEstudioSeleccionado = (int)dgvListadoItemsEstudioLaboratorio.CurrentRow.Cells[0].Value;
             }
         }
 
@@ -164,11 +170,50 @@ namespace GPA
 
         private void btnAgregarResultadoAnalisis_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtEstudioSeleccionado.Text))
+            {
+                MessageBox.Show("Falta seleccionar un estudio!!", "Atenciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             MetodoAnalisisLaboratorio metodo = (MetodoAnalisisLaboratorio)cboMetodoAnalisisLaboratorio.SelectedItem;
 
             UnidadDeMedida unidad= (UnidadDeMedida) cboUnidadDeMedida.SelectedItem;
 
-            dgvListaResultadosAnalisis.Rows.Add(txtEstudioSeleccionado.Text, txtResultado.Text, unidad.nombre, metodo.nombre);
+            double resultado= Convert.ToDouble(txtResultado.Text);
+
+            dgvListaResultadosAnalisis.Rows.Add(txtEstudioSeleccionado.Text, resultado, unidad.nombre, metodo.nombre);
+
+            if (listaDetalles == null)
+                listaDetalles = new List<DetalleLaboratorio>();
+
+            ItemEstudioLaboratorio nuevoItemEstudioLaboratorio = manejadorRegistrarLaboratorio.crearItemEstudioLaboratorio(idEstudioSeleccionado);
+            nuevoItemEstudioLaboratorio.id_itemEstudioLaboratorio = manejadorRegistrarLaboratorio.obteneridItemEstudioLaboratorio(txtEstudioSeleccionado.Text);
+
+            DetalleLaboratorio nuevoDetalleLaboratorio= manejadorRegistrarLaboratorio.crearDetalleLaboratorio(resultado,unidad.id_unidadMedida,nuevoItemEstudioLaboratorio);
+
+            listaDetalles.Add(nuevoDetalleLaboratorio);
+        }
+
+        private void btnGuardarInformeAnalisis_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(mtbFechaPractica.Text))
+            {
+                MessageBox.Show("Falta ingresar la en que se realizó el estudio!!", "Atenciòn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
+            laboratorio.fechaRealizacion =Convert.ToDateTime(mtbFechaPractica.Text);
+            laboratorio.observaciones = txtObservaciones.Text;
+
+            Institucion institucion= (Institucion)cboInstitucion.SelectedItem;
+            laboratorio.id_institucion = institucion.id;
+
+            laboratorio.DoctorACargo = txtDoctorACargo.Text;
+
+            laboratorio.listaDetalle = listaDetalles;
+
+            manejadorRegistrarLaboratorio.updateLaboratorio(laboratorio);//Falca hacer insert de los detalles de laboratorio.
         }
     }
 }

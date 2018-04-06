@@ -12,6 +12,7 @@ namespace Entidades.Clases
         public int id_itemLaboratorio { set; get; }
         public int idDetalleLaboratorio { set; get; }
         public int id_valorReferencia { set; get; }
+        public int id_DetalleItemLaboratorio { set; get; }
         public ItemLaboratorio item { set; get; }
         public List<DetalleItemLaboratorio> detalles { set; get; }
     }

@@ -843,6 +843,10 @@ drop table DetalleItemLaboratorio
 drop table DetalleLaboratorio
 
 
-select * from ItemLaboratorio
-select * from DetalleValorReferencia
+select * from itemLaboratorio
+select * from ItemEstudioLaboratorio
+select * from DetalleItemLaboratorio
 
+
+select *
+from MetodoAnalisisLaboratorio

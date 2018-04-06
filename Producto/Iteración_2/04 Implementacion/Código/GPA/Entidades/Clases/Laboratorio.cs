@@ -13,7 +13,8 @@ namespace Entidades.Clases
         public int id_analisisLaboratorio_fk { set; get; }
         public int id_metodoLaboratorio { set; get; }
         public int id_itemsEstudioLaboratorio { set; get; }
-
+        public int id_institucion { set; get; }
+        public List<DetalleLaboratorio> listaDetalle { set; get; }
         public Laboratorio( DateTime fechaSolicitud, DateTime fechaRealizado, string doctorAcargo, Institucion institucion, string observaciones, string indicaciones, AnalisisLaboratorio analisis, int metodo, int id_item)
             : base(fechaSolicitud, fechaRealizado, doctorAcargo, institucion, observaciones, indicaciones)
         {
