@@ -16,6 +16,7 @@ namespace GPA
         public ProfesionaMedico medicoLogueado{set;get;}
         public Paciente pacienteSeleccionado{set;get;}
         public HistoriaClinica hc { set; get; }
+        
 
         ManejadorConsultarPaciente manejadorConsultarPaciente;
         ManejadorRegistrarAtencionMedicaEnConsultorio manejadorRegistrarAtencionMedicaEnConsultorio;
@@ -30,12 +31,18 @@ namespace GPA
         List<PracticaComplementaria> listaPracticasComplementarias;
         List<Tratamiento> listaTratamiento;
         List<Temperatura> listaTemperaturas;
-
         List<Sintoma> listaSintoma;
-        Consulta consulta;
+
+        List<Laboratorio> listaLaboratorioConInforme;
+        List<EstudioDiagnosticoPorImagen> listaEstudioDiagnosticoImagenConInforme;
+        List<PracticaComplementaria> listaPracticasConInforme;
+
+        private Consulta consulta;
         private Boolean consultaGenerada;
-        ExamenGeneral examen;
-        List<SistemaLinfatico> listaTerritoriosExaminados;
+        private ExamenGeneral examen;
+        private List<SistemaLinfatico> listaTerritoriosExaminados;
+        public RazonamientoDiagnostico diagnosticoSeleccionado { set; get; }
+        private int idDiagnosticoSeleccionado { set; get; }
 
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
@@ -2182,6 +2189,7 @@ namespace GPA
 
         private void btnBuscarPracticasPendientes_Click(object sender, EventArgs e)
         {
+            Utilidades.limpiarGrilla(dgvDiagnosticosPaciente);
             if (pacienteSeleccionado==null)
             {
                 MessageBox.Show("Falta seleccionar un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2207,13 +2215,17 @@ namespace GPA
             mtbFechaCambioEstadoDiagnostico.Text = DateTime.Now.ToShortDateString();
 
             List<RazonamientoDiagnostico> diagnosticos = manejadorModificarEstadoDiagnostico.presentarDiagnosticos(hc.id_hc);
-            
-            cargarGrillaDiagnosticos(diagnosticos);
-           
-            Utilidades.cargarCombo(cboEstadoDiagnosticoCambio, manejadorModificarEstadoDiagnostico.presentarEstadoDiagnostico(), "id_EstadoDiagnostico", "nombre");
 
-           
+            if (diagnosticos.Count == 0)
+            {
+                Utilidades.mostrarFilaNoSeEncontraronResultados(dgvDiagnosticosPaciente);
+            }
+            else
+            {
+                cargarGrillaDiagnosticos(diagnosticos);
 
+                Utilidades.cargarCombo(cboEstadoDiagnosticoCambio, manejadorModificarEstadoDiagnostico.presentarEstadoDiagnostico(), "id_EstadoDiagnostico", "nombre");
+            }
         }
         private void cargarGrillaDiagnosticos(List<RazonamientoDiagnostico> diagnosticos)
         {
@@ -2222,12 +2234,14 @@ namespace GPA
             columnasDiagnosticos.Add("idRazonamiento");
             columnasDiagnosticos.Add("idEstado");
             columnasDiagnosticos.Add("conceptoInicial");
+            columnasDiagnosticos.Add("id_diagnostico");
 
             Utilidades.agregarColumnasDataGridView(dgvDiagnosticosPaciente, columnasDiagnosticos);
 
             dgvDiagnosticosPaciente.Columns[1].Visible = false;
             dgvDiagnosticosPaciente.Columns[2].Visible = false;
             dgvDiagnosticosPaciente.Columns[3].Visible = false;
+            dgvDiagnosticosPaciente.Columns[4].Visible = false;
 
             for (int i = 0; i < diagnosticos.Count; i++)
             {
@@ -2287,8 +2301,12 @@ namespace GPA
         }
 
         private void dgvDiagnosticosPaciente_CellClick(object sender, DataGridViewCellEventArgs e)
-        {   
-           
+        {
+            if (dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value==null || string.IsNullOrEmpty(dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value.ToString()))
+                return;
+            if (dgvDiagnosticosPaciente.ColumnCount <= 1)
+                return;
+
             txtDiagnosticoCambiarEstado.Text = dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value.ToString();
             cboEstadoDiagnosticoCambio.SelectedIndex =(int) dgvDiagnosticosPaciente.CurrentRow.Cells[2].Value;
             txtConceptoInicialExamen.Text = dgvDiagnosticosPaciente.CurrentRow.Cells[3].Value.ToString();
@@ -2306,25 +2324,53 @@ namespace GPA
 
              List<Laboratorio> analisis = manejadorModificarEstadoDiagnostico.presentarAnalisisLaboratorio((int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value);
              cargarEnGrillaPracticasComplementarias(analisis);
+
         }
 
         private void dgvEstudiosPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            RegistrarEstudio re = new RegistrarEstudio((int)dgvEstudiosPendientes.CurrentRow.Cells[3].Value);
+            
+            string nombreEstudio = (string)dgvEstudiosPendientes.CurrentRow.Cells[0].Value;
+            DateTime fechaSolicitud = (DateTime)dgvEstudiosPendientes.CurrentRow.Cells[1].Value;
+            string indicaciones = (string)dgvEstudiosPendientes.CurrentRow.Cells[2].Value;
+            int idEstudio = (int)dgvEstudiosPendientes.CurrentRow.Cells[3].Value;
+
+            NombreEstudio nombre = manejadorModificarEstadoDiagnostico.crearNombreEstudio(nombreEstudio);
+            EstudioDiagnosticoPorImagen estudio = manejadorModificarEstadoDiagnostico.crearEstudio(nombre, fechaSolicitud, indicaciones, idEstudio);
+
+            RegistrarEstudio re = new RegistrarEstudio(estudio);
             re.Text = "Registrar informe estudio de diagnóstico por imagen.";
             if (re.ShowDialog() == DialogResult.OK)
             {
+                estudio = re.estudio;
+                if (listaEstudioDiagnosticoImagenConInforme == null)
+                    listaEstudioDiagnosticoImagenConInforme = new List<EstudioDiagnosticoPorImagen>();
 
+                listaEstudioDiagnosticoImagenConInforme.Add(estudio);
             }
         }
 
         private void dgvPracticasPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            RegistrarEstudio re = new RegistrarEstudio((int)dgvPracticasPendientes.CurrentRow.Cells[3].Value);
+            string nombre = (string)dgvPracticasPendientes.CurrentRow.Cells[0].Value;
+            TipoPracticaComplementaria tipo = manejadorModificarEstadoDiagnostico.crearTipoPracticaComplementaria(nombre);
+
+            DateTime fechaSolicitud = (DateTime)dgvEstudiosPendientes.CurrentRow.Cells[1].Value;
+            string indicaciones = (string)dgvEstudiosPendientes.CurrentRow.Cells[2].Value;
+            int idPractica = (int)dgvEstudiosPendientes.CurrentRow.Cells[3].Value;
+            string observacopnes = txtObservaciones.Text;
+            PracticaComplementaria practica = manejadorModificarEstadoDiagnostico.crearPracticaComplementaria(tipo, fechaSolicitud, indicaciones, idPractica, observacopnes);
+
+            RegistrarEstudio re = new RegistrarEstudio(practica);
+
             re.Text = "Registrar informe de práctica complementaria.";
             if (re.ShowDialog() == DialogResult.OK)
             {
+                practica = re.practica;
+                if (listaPracticasConInforme == null)
+                    listaPracticasConInforme = new List<PracticaComplementaria>();
 
+                listaPracticasConInforme.Add(practica);
             }
         }
 
@@ -2337,10 +2383,50 @@ namespace GPA
             Laboratorio laboratorio = manejadorModificarEstadoDiagnostico.crearLaboratorio(id,analisis,fecha,indicaciones);
             
             RegistrarLaboratorio registroAnalisis = new RegistrarLaboratorio(laboratorio);
+
             if (registroAnalisis.ShowDialog() == DialogResult.OK)
             {
+                laboratorio=registroAnalisis.laboratorio;
+                if (listaLaboratorioConInforme == null)
+                    listaLaboratorioConInforme = new List<Laboratorio>();
 
+                listaLaboratorioConInforme.Add(laboratorio);
             }
+        }
+
+        private void btnAceptarDiagnostico_Click(object sender, EventArgs e)
+        {
+             diagnosticoSeleccionado = new RazonamientoDiagnostico();//Crear un objeto diagnostico a partir de los datos anteriores.
+             diagnosticoSeleccionado.id_razonamiento=(int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value;
+             EstadoDiagnostico estado = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
+             diagnosticoSeleccionado.id_estadoDiagnostico = estado.id_estado;
+             
+             switch (estado.nombre)
+             {
+                 case "Tentativo":
+                     diagnosticoSeleccionado.motivoTentativo = txtMotivoCambioEstado.Text;
+                     diagnosticoSeleccionado.fechaTentativo = Convert.ToDateTime(mtbFechaCambioEstadoDiagnostico.Text);
+                     break;
+                 case "Confirmado":
+                     diagnosticoSeleccionado.motivoConfirmado = txtMotivoCambioEstado.Text;
+                     diagnosticoSeleccionado.fechaConfirmado = Convert.ToDateTime(mtbFechaCambioEstadoDiagnostico.Text);
+                     break;
+                 case "Descartado":
+                     diagnosticoSeleccionado.motivoDescartado = txtMotivoCambioEstado.Text;
+                     diagnosticoSeleccionado.fechaDescartado = Convert.ToDateTime(mtbFechaCambioEstadoDiagnostico.Text);
+                     break;
+             }
+             if(listaEstudioDiagnosticoImagenConInforme!=null && listaEstudioDiagnosticoImagenConInforme.Count>0)
+                 diagnosticoSeleccionado.estudios = listaEstudioDiagnosticoImagenConInforme;
+
+             if(listaLaboratorioConInforme!=null && listaLaboratorioConInforme.Count>0)
+                 diagnosticoSeleccionado.analisis = listaLaboratorioConInforme;
+
+             if(listaPracticasConInforme!=null && listaPracticasConInforme.Count>0)
+                 diagnosticoSeleccionado.practicas = listaPracticasConInforme;
+
+             manejadorModificarEstadoDiagnostico.updateRazonamientoDiagnostico(diagnosticoSeleccionado);
+             
         }
     }
 }

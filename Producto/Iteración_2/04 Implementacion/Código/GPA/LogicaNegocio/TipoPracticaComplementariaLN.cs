@@ -14,5 +14,9 @@ namespace LogicaNegocio
         {
             return TipoPracticaComplementariaDAO.mostrarPracticasComplementarias();
         }
+        public static int mostrarTipoPracticaComplementaria(string nombre)
+        {
+            return TipoPracticaComplementariaDAO.mostrarPracticaComplementaria(nombre);
+        }
     }
 }

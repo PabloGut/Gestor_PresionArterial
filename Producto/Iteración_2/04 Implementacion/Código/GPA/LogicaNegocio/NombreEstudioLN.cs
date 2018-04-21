@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             return NombreEstudioDAO.mostrarNombreEstudio();
         }
+        public static int obtenerNombreEstudio(string nombre)
+        {
+            return NombreEstudioDAO.obtenerIdNombreEstudio(nombre);
+        }
     }
 }

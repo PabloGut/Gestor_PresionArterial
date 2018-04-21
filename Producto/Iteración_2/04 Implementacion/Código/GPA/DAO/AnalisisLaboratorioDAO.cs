@@ -114,7 +114,49 @@ namespace DAO
                     ListaAnalisis.Add(laboratorio);
                 }
 
+                cn.Close();
                 return ListaAnalisis;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+        public static int obtenerLaboratorio(string nombreAnalisis)
+        {
+            setCadenaConexion();
+
+            int idAnalisisLaboratorio = 0;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+
+            string consulta = @"select id_analisisLaboratorio from AnalisisLaboratorio where nombre like @nombreAnalisis";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@nombreAnalisis", nombreAnalisis);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    idAnalisisLaboratorio=(int)dr["id_analisisLaboratorio"];
+                }
+
+                cn.Close();
+                return idAnalisisLaboratorio;
             }
             catch (Exception e)
             {

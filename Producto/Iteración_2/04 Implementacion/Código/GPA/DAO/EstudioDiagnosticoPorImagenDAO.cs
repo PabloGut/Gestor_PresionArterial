@@ -116,6 +116,40 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static void updateEstudioDiagnosticoPorImagen(EstudioDiagnosticoPorImagen estudio, SqlConnection cn ,SqlTransaction tran)
+        {
+            SqlCommand cmd= new SqlCommand();
 
+            string consulta= @"update EstudiosDiagnosticoPorImagen
+                              set fechaRealizacion=@fechaRealizacion, doctorACargo=@doctor, id_institucion_fk=@institucion,
+                              observacionDeLosResultados=@observaciones,
+                              informe=@informe,
+                              id_nombreEstudio_fk=@idNombreEstudio
+                              where id_estudioDiagnosticoPorImagen=@idEstudioDiagnosticoImagen";
+            try
+            {
+                cmd.Parameters.AddWithValue("@fechaRealizacion", estudio.fechaRealizacion);
+                cmd.Parameters.AddWithValue("@doctor", estudio.DoctorACargo);
+                cmd.Parameters.AddWithValue("@institucion", estudio.idInstitucion);
+                cmd.Parameters.AddWithValue("@observaciones", estudio.observaciones);
+                cmd.Parameters.AddWithValue("@informe", estudio.informeEstudio);
+                cmd.Parameters.AddWithValue("@idNombreEstudio", estudio.id_nombreEstudio);
+                cmd.Parameters.AddWithValue("@idEstudioDiagnosticoImagen", estudio.id_estudioDiagnosticoPorImagen);
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw new ApplicationException("Error al actualizar estudio diagnostico por imagen: " + e.Message);
+            }
+        }
     }
 }

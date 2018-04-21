@@ -16,7 +16,7 @@ namespace GPA
     public partial class RegistrarLaboratorio : Form
     {
         private ManejadorRegistrarLaboratorio manejadorRegistrarLaboratorio;
-        private Laboratorio laboratorio;
+        public Laboratorio laboratorio{set;get;}
         private List<DetalleLaboratorio> listaDetalles;
         private int idEstudioSeleccionado { set; get; }
 
@@ -179,7 +179,7 @@ namespace GPA
 
             UnidadDeMedida unidad= (UnidadDeMedida) cboUnidadDeMedida.SelectedItem;
 
-            double resultado= Convert.ToDouble(txtResultado.Text);
+            double resultado = Convert.ToDouble(txtResultado.Text);
 
             dgvListaResultadosAnalisis.Rows.Add(txtEstudioSeleccionado.Text, resultado, unidad.nombre, metodo.nombre);
 
@@ -202,18 +202,31 @@ namespace GPA
                 return;
             }
 
-
             laboratorio.fechaRealizacion =Convert.ToDateTime(mtbFechaPractica.Text);
             laboratorio.observaciones = txtObservaciones.Text;
 
-            Institucion institucion= (Institucion)cboInstitucion.SelectedItem;
-            laboratorio.id_institucion = institucion.id;
+            MetodoAnalisisLaboratorio metodo = (MetodoAnalisisLaboratorio)cboMetodoAnalisisLaboratorio.SelectedItem;
+            laboratorio.id_metodoLaboratorio = metodo.idMetodo;
+
+            laboratorio.id_institucion =(int)cboInstitucion.SelectedValue;
 
             laboratorio.DoctorACargo = txtDoctorACargo.Text;
 
+            laboratorio.id_analisisLaboratorio_fk = manejadorRegistrarLaboratorio.obtenerIdAnalisisLaboratorio(txtAnalisisSolicitado.Text);
+
             laboratorio.listaDetalle = listaDetalles;
 
-            manejadorRegistrarLaboratorio.updateLaboratorio(laboratorio);//Falca hacer insert de los detalles de laboratorio.
+            DialogResult = DialogResult.OK;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

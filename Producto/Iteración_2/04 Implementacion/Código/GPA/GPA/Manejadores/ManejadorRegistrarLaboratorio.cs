@@ -29,10 +29,6 @@ namespace GPA.Manejadores
         {
             return ItemEstudioLaboratorioLN.obtenerIdItemEstudioLaboratorio(nombreEstudio);
         }
-        public void updateLaboratorio(Laboratorio laboratorio)
-        {
-            LaboratorioLN.updateLaboratorio(laboratorio);
-        }
         public DetalleLaboratorio crearDetalleLaboratorio(double valorResultado,int idUnidadMedida,ItemEstudioLaboratorio itemEstudioLaboratorio)
         {
             DetalleLaboratorio detalle = new DetalleLaboratorio();
@@ -48,6 +44,10 @@ namespace GPA.Manejadores
             item.id_itemLaboratorio = idItemLaboratorio;
 
             return item;
+        }
+        public int obtenerIdAnalisisLaboratorio(string nombre)
+        {
+            return AnalisisLaboratorioLN.obtenerAnalisisLaboratorio(nombre);
         }
     }
 }

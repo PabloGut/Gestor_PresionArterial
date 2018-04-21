@@ -15,6 +15,10 @@ namespace LogicaNegocio
         {
             return RazonamientoDiagnosticoDAO.obtenerDiagnosticos(idHc);
         }
+        public static void updateRazonamientoDiagnostico(RazonamientoDiagnostico diagnostico)
+        {
+            RazonamientoDiagnosticoDAO.updateRazonamientoDiagnostico(diagnostico);
+        }
         
     }
     

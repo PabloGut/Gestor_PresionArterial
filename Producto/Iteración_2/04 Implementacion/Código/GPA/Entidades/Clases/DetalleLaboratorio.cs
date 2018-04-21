@@ -12,5 +12,7 @@ namespace Entidades.Clases
         public double valorResultado { set; get; }
         public int idUnidadMedida { set; get; }
         public ItemEstudioLaboratorio itemEstudioLaboratorio { set; get; }
+        public int idItemEstudioLaboratorio { set; get; }
+        public int idLaboratorio { set; get; }
     }
 }

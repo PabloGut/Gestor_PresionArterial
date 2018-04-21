@@ -11,7 +11,7 @@ namespace Entidades.Clases
         public int id_estudioDiagnosticoPorImagen { set; get; }
         public int id_nombreEstudio { set; get; }
         public NombreEstudio nombreEstudio {set;get;}
-
+        public int idInstitucion { set; get; }
         public EstudioDiagnosticoPorImagen(DateTime fechaSolicitud, DateTime fechaRealizado, string doctorAcargo, string informeEstudio, Institucion institucion, string observaciones, string indicaciones,NombreEstudio nombreEstudio)
         :base(fechaSolicitud,fechaRealizado,doctorAcargo,informeEstudio,institucion,observaciones,indicaciones)
         {

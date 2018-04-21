@@ -65,5 +65,48 @@ namespace DAO
             cn.Close();
             return nombresEstudios;
         }
+        public static int obtenerIdNombreEstudio(string nombreEstudio)
+        {
+            setCadenaConexion();
+
+            int idNombreEstudio = 0;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"select id_nombreEstudio 
+                                from NombreEstudio 
+                                where nombre like @nombre";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@nombre", nombreEstudio);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if(dr.Read())
+                {
+                    idNombreEstudio = (int)dr["id_nombreEstudio"];
+                }
+
+                cn.Close();
+
+                return idNombreEstudio;
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
     }
 }

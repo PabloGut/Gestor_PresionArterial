@@ -39,7 +39,7 @@ namespace GPA.Manejadores
             laboratorio.analisis = analisis;
             laboratorio.fechaSolicitud = fechaSolicitud;
             laboratorio.indicaciones = indicaciones;
-
+            laboratorio.id_laboratorio = idLaboratorio;
             return laboratorio;
             
         }
@@ -48,6 +48,44 @@ namespace GPA.Manejadores
             AnalisisLaboratorio analisis = new AnalisisLaboratorio();
             analisis.nombre = nombreAnalisis;
             return analisis;
+        }
+        public EstudioDiagnosticoPorImagen crearEstudio(NombreEstudio nombre, DateTime fechaSolicitud, string indicaciones, int idEstudio)
+        {
+            EstudioDiagnosticoPorImagen nuevoEstudio = new EstudioDiagnosticoPorImagen();
+            nuevoEstudio.nombreEstudio = nombre;
+            nuevoEstudio.fechaSolicitud = fechaSolicitud;
+            nuevoEstudio.indicaciones = indicaciones;
+            nuevoEstudio.id_estudioDiagnosticoPorImagen = idEstudio;
+
+            return nuevoEstudio;
+        }
+        public NombreEstudio crearNombreEstudio(string nombre)
+        {
+            NombreEstudio nuevoNombre = new NombreEstudio();
+            nuevoNombre.nombre = nombre;
+
+            return nuevoNombre;
+        }
+        public PracticaComplementaria crearPracticaComplementaria(TipoPracticaComplementaria tipo, DateTime fechaSolicitud, string indicaciones, int idPractica, string observaciones)
+        {
+            PracticaComplementaria practica = new PracticaComplementaria();
+            practica.tipo = tipo;
+            practica.fechaSolicitud = fechaSolicitud;
+            practica.indicaciones = indicaciones;
+            practica.id_PracticaComplementaria = idPractica;
+            practica.observaciones = observaciones;
+            return practica;
+        }
+        public TipoPracticaComplementaria crearTipoPracticaComplementaria(string nombre)
+        {
+            TipoPracticaComplementaria tipo = new TipoPracticaComplementaria();
+            tipo.nombre = nombre;
+
+            return tipo;
+        }
+        public void updateRazonamientoDiagnostico(RazonamientoDiagnostico diagnostico)
+        {
+            RazonamientoDiagnosticoLN.updateRazonamientoDiagnostico(diagnostico);
         }
     }
 }

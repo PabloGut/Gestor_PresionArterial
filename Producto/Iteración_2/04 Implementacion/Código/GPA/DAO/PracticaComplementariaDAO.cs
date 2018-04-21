@@ -114,6 +114,42 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static void updatePracticaComplementaria(PracticaComplementaria practica, SqlConnection cn, SqlTransaction tran)
+        {
+            SqlCommand cmd = new SqlCommand();
 
+            string consulta = @"update PracticaComplementaria
+                              set fechaRealizacion=@fechaRealizacion, doctorACargo=@doctor, id_institucion_fk=@institucion,
+                              observacionDeLosResultados=@observaciones,
+                              informe=@informe,
+                              id_tipoPractica_fk=@idTipoPractica
+                              where id_practicaComplementaria=@idPractica";
+            try
+            {
+                cmd.Parameters.AddWithValue("@fechaRealizacion", practica.fechaRealizacion);
+                cmd.Parameters.AddWithValue("@doctor", practica.DoctorACargo);
+                cmd.Parameters.AddWithValue("@institucion", practica.idInstitucion);
+                cmd.Parameters.AddWithValue("@observaciones", practica.observaciones);
+                cmd.Parameters.AddWithValue("@informe", practica.informeEstudio);
+                cmd.Parameters.AddWithValue("@idTipoPractica", practica.id_tipoPractica);
+                cmd.Parameters.AddWithValue("@idPractica", practica.id_PracticaComplementaria);
+
+                cmd.Connection = cn;
+                cmd.Transaction = tran;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
     }
 }

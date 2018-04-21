@@ -130,5 +130,9 @@ namespace GPA
                 dgv.Columns.Add(columna);
             }
         }
+        public static void limpiarGrilla(DataGridView grilla)
+        {
+            grilla.Rows.Clear();
+        }
     }
 }

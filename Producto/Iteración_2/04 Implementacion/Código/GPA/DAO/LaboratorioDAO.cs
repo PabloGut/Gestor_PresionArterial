@@ -77,38 +77,50 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
-        public static void updateLaboratorio(Laboratorio laboratorio)
+        public static void updateLaboratorio(Laboratorio laboratorio, SqlConnection cn, SqlTransaction tran)
         {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
             SqlCommand cmd = new SqlCommand();
 
             string consulta = @"update Laboratorio
-                                    set fechaRealizacion=@fechaRealizacion, doctorACargo=@doctorACargo,
-                                    id_institucion_fk=@idInstitucion, observacionesDeLosResultados=@observaciones,
-                                    id_metodoAnalisisLaboratorio_fk=@idMetodo
-                                    where id_laboratorio=@idLaboratorio";
+                                set fechaRealizacion=@fechaRealizacion, doctorACargo=@doctorACargo,
+                                id_institucion_fk=@idInstitucion, observacionDeLosResultados=@observaciones,
+                                id_metodoAnalisisLaboratorio_fk=@idMetodo, 
+                                id_analisisLaboratorio_fk=@idAnalisisLaboratorio
+                                where id_laboratorio=@idLaboratorio";    
 
             cmd.Parameters.AddWithValue("@fechaRealizacion", laboratorio.fechaRealizacion);
             cmd.Parameters.AddWithValue("@doctorACargo", laboratorio.DoctorACargo);
             cmd.Parameters.AddWithValue("@idInstitucion", laboratorio.id_institucion);
+
             if(string.IsNullOrEmpty(laboratorio.observaciones))
                 cmd.Parameters.AddWithValue("@observaciones", DBNull.Value);
             else
                 cmd.Parameters.AddWithValue("@observaciones", laboratorio.observaciones);
 
             cmd.Parameters.AddWithValue("@idMetodo", laboratorio.id_metodoLaboratorio);
+            cmd.Parameters.AddWithValue("@idAnalisisLaboratorio", laboratorio.id_analisisLaboratorio_fk);
             cmd.Parameters.AddWithValue("@idLaboratorio", laboratorio.id_laboratorio);
+
+
             try
             {
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
+                cmd.Transaction = tran;
+                cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+
+                foreach(DetalleLaboratorio detalle in laboratorio.listaDetalle)
+                {
+                    detalle.idLaboratorio = laboratorio.id_laboratorio;
+                    DetalleLaboratorioDAO.insertDetalleLaboratorio(detalle, cn, tran);
+                }
             }
             catch (Exception e)
             {
                 if (cn.State == ConnectionState.Open)
                 {
+                    tran.Rollback();
                     cn.Close();
                 }
                 throw new ApplicationException("Error:" + e.Message);

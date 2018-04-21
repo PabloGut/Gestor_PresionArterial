@@ -396,10 +396,9 @@
             this.btnRegistrarAtención = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.btnAgregarTratamientoCambioEstado = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAceptarDiagnostico = new System.Windows.Forms.Button();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnBuscarDiagnosticos = new System.Windows.Forms.Button();
             this.mtbFechaCambioEstadoDiagnostico = new System.Windows.Forms.MaskedTextBox();
@@ -4066,25 +4065,15 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.btnAgregarTratamientoCambioEstado);
             this.panel13.Controls.Add(this.button4);
             this.panel13.Controls.Add(this.button2);
-            this.panel13.Controls.Add(this.button1);
+            this.panel13.Controls.Add(this.btnAceptarDiagnostico);
             this.panel13.Controls.Add(this.groupBox18);
             this.panel13.Controls.Add(this.groupBox17);
             this.panel13.Location = new System.Drawing.Point(6, 6);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(852, 603);
             this.panel13.TabIndex = 0;
-            // 
-            // btnAgregarTratamientoCambioEstado
-            // 
-            this.btnAgregarTratamientoCambioEstado.Location = new System.Drawing.Point(12, 564);
-            this.btnAgregarTratamientoCambioEstado.Name = "btnAgregarTratamientoCambioEstado";
-            this.btnAgregarTratamientoCambioEstado.Size = new System.Drawing.Size(207, 23);
-            this.btnAgregarTratamientoCambioEstado.TabIndex = 13;
-            this.btnAgregarTratamientoCambioEstado.Text = "Agregar Tratamiento";
-            this.btnAgregarTratamientoCambioEstado.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -4104,14 +4093,15 @@
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnAceptarDiagnostico
             // 
-            this.button1.Location = new System.Drawing.Point(288, 564);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAceptarDiagnostico.Location = new System.Drawing.Point(288, 564);
+            this.btnAceptarDiagnostico.Name = "btnAceptarDiagnostico";
+            this.btnAceptarDiagnostico.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptarDiagnostico.TabIndex = 3;
+            this.btnAceptarDiagnostico.Text = "Aceptar";
+            this.btnAceptarDiagnostico.UseVisualStyleBackColor = true;
+            this.btnAceptarDiagnostico.Click += new System.EventHandler(this.btnAceptarDiagnostico_Click);
             // 
             // groupBox18
             // 
@@ -4303,7 +4293,7 @@
             // dgvEstudiosPendientes
             // 
             this.dgvEstudiosPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEstudiosPendientes.Location = new System.Drawing.Point(9, 81);
+            this.dgvEstudiosPendientes.Location = new System.Drawing.Point(6, 81);
             this.dgvEstudiosPendientes.Name = "dgvEstudiosPendientes";
             this.dgvEstudiosPendientes.Size = new System.Drawing.Size(260, 150);
             this.dgvEstudiosPendientes.TabIndex = 0;
@@ -4844,8 +4834,7 @@
         private System.Windows.Forms.DataGridView dgvDiagnosticosPaciente;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnAgregarTratamientoCambioEstado;
+        private System.Windows.Forms.Button btnAceptarDiagnostico;
         private System.Windows.Forms.Button btnBuscarDiagnosticos;
     }
 }

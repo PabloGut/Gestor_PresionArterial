@@ -261,6 +261,112 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static void updateRazonamientoDiagnostico(RazonamientoDiagnostico razonamientoDiagnostico)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction tran = null;
+
+            /*string consulta = @"update RazonamientoDiagnostico
+                                set id_estadoDiagnostico_fk=@idEstado,
+                                motivoDescartado=@motivoDescartado, fechaDescartado=@fechaDescartado,
+                                motivoConfirmado=@motivoConfirmado, fechaConfirmado=@fechaConfirmado, 
+                                motivoTentativo=@motivoTentativo, fechaTentativo=@fechaTentativo
+                                where id_razonamiento=@idRazonamiento";*/
+            string consulta = @"update RazonamientoDiagnostico
+                               set id_estadoDiagnostico_fk=@idEstado, ";
+            try
+            {
+                cmd.Parameters.AddWithValue("@idEstado", razonamientoDiagnostico.id_estadoDiagnostico);
+
+                if (!string.IsNullOrEmpty(razonamientoDiagnostico.motivoDescartado))
+                {
+                    consulta += " motivoDescartado=@motivoDescartado, fechaDescartado=@fechaDescartado";
+                    cmd.Parameters.AddWithValue("@motivoDescartado", razonamientoDiagnostico.motivoDescartado);
+                    cmd.Parameters.AddWithValue("@fechaDescartado", razonamientoDiagnostico.fechaDescartado);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoDescartado", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@fechaDescartado", DBNull.Value);
+                }
+
+                if (!string.IsNullOrEmpty(razonamientoDiagnostico.motivoConfirmado))
+                {
+                    consulta += ",motivoConfirmado=@motivoConfirmado, fechaConfirmado=@fechaConfirmado";
+                    cmd.Parameters.AddWithValue("@motivoConfirmado", razonamientoDiagnostico.motivoConfirmado);
+                    cmd.Parameters.AddWithValue("@fechaConfirmado", razonamientoDiagnostico.fechaConfirmado);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoConfirmado", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@fechaConfirmado",DBNull.Value);
+                }
+
+                if (!string.IsNullOrEmpty(razonamientoDiagnostico.motivoTentativo))
+                {
+                    consulta += ", motivoTentativo=@motivoTentativo, fechaTentativo=@fechaTentativo";
+                    cmd.Parameters.AddWithValue("@motivoTentativo", razonamientoDiagnostico.motivoTentativo);
+                    cmd.Parameters.AddWithValue("@fechaTentativo", razonamientoDiagnostico.fechaTentativo);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@motivoTentativo", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@fechaTentativo",DBNull.Value);
+                }
+
+                consulta += " where id_razonamiento=@idRazonamiento";
+                cmd.Parameters.AddWithValue("@idRazonamiento", razonamientoDiagnostico.id_razonamiento);
+
+                cn.Open();
+                tran = cn.BeginTransaction();
+                cmd.Connection = cn;
+                cmd.Transaction = tran;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                if (razonamientoDiagnostico.estudios != null && razonamientoDiagnostico.estudios.Count > 0)
+                {
+                    foreach(EstudioDiagnosticoPorImagen estudio in razonamientoDiagnostico.estudios)
+                    {
+                        estudio.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
+                        EstudioDiagnosticoPorImagenDAO.updateEstudioDiagnosticoPorImagen(estudio, cn, tran);
+                    }
+                }
+
+                if (razonamientoDiagnostico.analisis != null && razonamientoDiagnostico.analisis.Count > 0)
+                {
+                    foreach (Laboratorio laboratorio in razonamientoDiagnostico.analisis)
+                    {
+                        laboratorio.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
+                        LaboratorioDAO.updateLaboratorio(laboratorio, cn, tran);
+                    }
+                }
+
+                if (razonamientoDiagnostico.practicas != null && razonamientoDiagnostico.practicas.Count > 0)
+                {
+                    foreach (PracticaComplementaria practica in razonamientoDiagnostico.practicas)
+                    {
+                        practica.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
+                        PracticaComplementariaDAO.updatePracticaComplementaria(practica, cn, tran);
+                    }
+                }
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
       
     }
 }

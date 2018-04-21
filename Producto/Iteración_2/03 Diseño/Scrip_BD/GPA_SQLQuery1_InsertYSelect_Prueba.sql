@@ -26,7 +26,7 @@ from TiposAntecedentesMorbidos
 
 
 select *
-from MedicionDePrecionArterial
+from EstudiosDiagnosticoPorImagen
 
 select *
 from TipoSintoma
@@ -849,4 +849,9 @@ select * from DetalleItemLaboratorio
 
 
 select *
-from MetodoAnalisisLaboratorio
+from RazonamientoDiagnostico
+
+select id_nombreEstudio 
+from NombreEstudio 
+where nombre like 'Ecografía Renal'
+

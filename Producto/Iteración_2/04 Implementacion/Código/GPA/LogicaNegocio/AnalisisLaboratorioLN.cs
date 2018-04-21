@@ -19,5 +19,9 @@ namespace LogicaNegocio
         {
             ItemEstudioLaboratorioDAO.registrarItemEstudioLaboratorio(item);
         }
+        public static int obtenerAnalisisLaboratorio(string nombreAnalisis)
+        {
+            return AnalisisLaboratorioDAO.obtenerLaboratorio(nombreAnalisis);
+        }
     }
 }

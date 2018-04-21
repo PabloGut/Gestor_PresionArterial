@@ -67,6 +67,7 @@
     <Compile Include="DejoDeFumarDAO.cs" />
     <Compile Include="DescripcionDelTiempoDAO.cs" />
     <Compile Include="DetalleItemLaboratorioDAO.cs" />
+    <Compile Include="DetalleLaboratorioDAO.cs" />
     <Compile Include="DetalleMedicionPresionArterialDAO.cs" />
     <Compile Include="DetallePulsoArterialDAO.cs" />
     <Compile Include="DetalleValorReferenciaDAO.cs" />

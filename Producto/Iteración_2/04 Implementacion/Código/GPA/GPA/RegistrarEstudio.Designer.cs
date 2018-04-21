@@ -43,8 +43,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombrePractica = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
@@ -58,7 +61,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(511, 231);
+            this.btnSalir.Location = new System.Drawing.Point(550, 267);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(81, 25);
             this.btnSalir.TabIndex = 8;
@@ -68,7 +71,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(409, 231);
+            this.btnCancelar.Location = new System.Drawing.Point(448, 267);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(81, 25);
             this.btnCancelar.TabIndex = 7;
@@ -78,7 +81,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(305, 231);
+            this.btnAceptar.Location = new System.Drawing.Point(344, 267);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(81, 25);
             this.btnAceptar.TabIndex = 6;
@@ -88,6 +91,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.btnAgregarInstitucion);
             this.groupBox1.Controls.Add(this.cboInstitucion);
             this.groupBox1.Controls.Add(this.btnSalir);
@@ -103,7 +107,7 @@
             this.groupBox1.Controls.Add(this.txtNombrePractica);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(935, 262);
+            this.groupBox1.Size = new System.Drawing.Size(935, 298);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del estudio";
@@ -139,7 +143,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtInforme);
-            this.groupBox2.Location = new System.Drawing.Point(344, 16);
+            this.groupBox2.Location = new System.Drawing.Point(344, 104);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(571, 157);
             this.groupBox2.TabIndex = 9;
@@ -195,11 +199,29 @@
             this.txtNombrePractica.Size = new System.Drawing.Size(221, 20);
             this.txtNombrePractica.TabIndex = 3;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtObservaciones);
+            this.groupBox3.Location = new System.Drawing.Point(344, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(571, 87);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Observaciones";
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Location = new System.Drawing.Point(6, 19);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(571, 60);
+            this.txtObservaciones.TabIndex = 10;
+            // 
             // RegistrarEstudio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 286);
+            this.ClientSize = new System.Drawing.Size(959, 322);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistrarEstudio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -209,6 +231,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,6 +254,8 @@
         private System.Windows.Forms.TextBox txtNombrePractica;
         private System.Windows.Forms.ComboBox cboInstitucion;
         private System.Windows.Forms.Button btnAgregarInstitucion;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtObservaciones;
     }
 }
 

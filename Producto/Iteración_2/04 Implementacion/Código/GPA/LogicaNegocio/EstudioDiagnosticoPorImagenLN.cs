@@ -13,5 +13,6 @@ namespace LogicaNegocio
         {
             return EstudioDiagnosticoPorImagenDAO.obtenerEstudioDiagnosticoPorImagen(idRazonamiento);
         }
+
     }
 }
