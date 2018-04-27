@@ -172,7 +172,7 @@
             this.cboParteCuerpo = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtDescQueSientePaciente = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnAñadirQueSientePaciente = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -1657,7 +1657,7 @@
             this.groupBox6.Controls.Add(this.cboParteCuerpo);
             this.groupBox6.Controls.Add(this.label20);
             this.groupBox6.Controls.Add(this.txtDescQueSientePaciente);
-            this.groupBox6.Controls.Add(this.button11);
+            this.groupBox6.Controls.Add(this.btnAñadirQueSientePaciente);
             this.groupBox6.Controls.Add(this.label21);
             this.groupBox6.Controls.Add(this.label19);
             this.groupBox6.Controls.Add(this.label18);
@@ -1892,14 +1892,15 @@
             this.txtDescQueSientePaciente.Size = new System.Drawing.Size(429, 29);
             this.txtDescQueSientePaciente.TabIndex = 4;
             // 
-            // button11
+            // btnAñadirQueSientePaciente
             // 
-            this.button11.Location = new System.Drawing.Point(286, 24);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 3;
-            this.button11.Text = "Añadir";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnAñadirQueSientePaciente.Location = new System.Drawing.Point(286, 24);
+            this.btnAñadirQueSientePaciente.Name = "btnAñadirQueSientePaciente";
+            this.btnAñadirQueSientePaciente.Size = new System.Drawing.Size(75, 24);
+            this.btnAñadirQueSientePaciente.TabIndex = 3;
+            this.btnAñadirQueSientePaciente.Text = "Añadir";
+            this.btnAñadirQueSientePaciente.UseVisualStyleBackColor = true;
+            this.btnAñadirQueSientePaciente.Click += new System.EventHandler(this.btnAñadirQueSientePaciente_Click);
             // 
             // label21
             // 
@@ -4553,7 +4554,7 @@
         private System.Windows.Forms.ComboBox cboParteCuerpo;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtDescQueSientePaciente;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnAñadirQueSientePaciente;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;

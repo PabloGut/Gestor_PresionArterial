@@ -1775,7 +1775,7 @@ namespace GPA
             txtUntuosidadPiel.Text = "Normal";
             txtTurgorPiel.Text = "Normal";
             txtLesionesPiel.Text = "Normal";
-            cboTemperaturaPiel.SelectedIndex = 1;
+            cboTemperaturaPiel.SelectedIndex = 0;
 
             cboUbicacionGanglio.SelectedIndex = 1;
             cboTamañoGanglio.SelectedIndex = 1;
@@ -2178,7 +2178,7 @@ namespace GPA
         private void generarNuevaConsultaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             generarNuevaConsulta();
-            cargarDatosDeEjemplo();
+            //cargarDatosDeEjemplo();
         }
 
         private void registrarAnálisisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2427,6 +2427,14 @@ namespace GPA
 
              manejadorModificarEstadoDiagnostico.updateRazonamientoDiagnostico(diagnosticoSeleccionado);
              
+        }
+
+        private void btnAñadirQueSientePaciente_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Actualizar tipo de síntoma";
+            ac.ShowDialog();
+            presentarTipoSintomas();
         }
     }
 }

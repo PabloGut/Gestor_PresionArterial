@@ -846,12 +846,28 @@ drop table DetalleLaboratorio
 select * from itemLaboratorio
 select * from ItemEstudioLaboratorio
 select * from DetalleItemLaboratorio
+select * from DetalleValorReferencia
 
 
-select *
-from RazonamientoDiagnostico
+select ie.id_itemEstudioLaboratorio,ie.id_itemLaboratorio_fk, il.nombre,il.id_itemLaboratorio
+from ItemEstudioLaboratorio ie, itemLaboratorio il, DetalleItemLaboratorio dil, DetalleValorReferencia dvr
+where ie.id_itemLaboratorio_fk=il.id_itemLaboratorio
+and dil.id_item_fk=ie.id_itemEstudioLaboratorio
+and dvr.id_detalleItemLaboratorio_fk=dil.id_detalleItemLaboratorio
 
+select ie.id_itemEstudioLaboratorio,ie.id_itemLaboratorio_fk, il.nombre,il.id_itemLaboratorio, dil.nombre,dil.valorDesde, dil.valorHasta, dvr.descripcion,dvr.valorDesde, dvr.valorHasta
+from ItemEstudioLaboratorio ie full outer join itemLaboratorio il on ie.id_itemLaboratorio_fk=il.id_itemLaboratorio
+full outer join DetalleItemLaboratorio dil on dil.id_item_fk=ie.id_itemEstudioLaboratorio
+full outer join DetalleValorReferencia dvr on dvr.id_detalleItemLaboratorio_fk=dil.id_detalleItemLaboratorio
+
+select * from DetalleValorReferencia
+select * from DetalleItemLaboratorio
 select id_nombreEstudio 
 from NombreEstudio 
 where nombre like 'Ecografía Renal'
 
+select *
+from TipoSintoma
+
+select * from TipoSintoma 
+where nombre not like '--Seleccionar--'

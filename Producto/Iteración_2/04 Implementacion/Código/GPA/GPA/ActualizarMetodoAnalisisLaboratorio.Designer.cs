@@ -102,6 +102,7 @@
             this.btnSalirMetodoAnalisisLaboratorio.TabIndex = 6;
             this.btnSalirMetodoAnalisisLaboratorio.Text = "Salir";
             this.btnSalirMetodoAnalisisLaboratorio.UseVisualStyleBackColor = true;
+            this.btnSalirMetodoAnalisisLaboratorio.Click += new System.EventHandler(this.btnSalirMetodoAnalisisLaboratorio_Click);
             // 
             // ActualizarMetodoAnalisisLaboratorio
             // 

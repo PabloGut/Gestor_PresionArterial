@@ -115,5 +115,10 @@ namespace GPA
         {
             nuevo();
         }
+
+        private void btnSalirMetodoAnalisisLaboratorio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

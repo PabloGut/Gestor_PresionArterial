@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarCaracteristicas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarCaracteristicas.Designer.cs">
+      <DependentUpon>ActualizarCaracteristicas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarFormaAdministracionMedicamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +221,9 @@
       <DependentUpon>RegistrarTratamiento.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="ActualizarCaracteristicas.resx">
+      <DependentUpon>ActualizarCaracteristicas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ActualizarFormaAdministracionMedicamento.resx">
       <DependentUpon>ActualizarFormaAdministracionMedicamento.cs</DependentUpon>
     </EmbeddedResource>
