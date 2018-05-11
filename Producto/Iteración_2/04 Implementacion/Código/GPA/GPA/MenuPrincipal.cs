@@ -41,6 +41,7 @@ namespace GPA
         private Boolean consultaGenerada;
         private ExamenGeneral examen;
         private List<SistemaLinfatico> listaTerritoriosExaminados;
+        private Boolean medicionesAutomaticaConExamenGeneral { set; get; }
         public RazonamientoDiagnostico diagnosticoSeleccionado { set; get; }
         private int idDiagnosticoSeleccionado { set; get; }
 
@@ -53,7 +54,7 @@ namespace GPA
             manejadorConsultarHc = null;
             manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
             manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
-            
+            medicionesAutomaticaConExamenGeneral = false;
 
             consulta = null;
             consultaGenerada = false;
@@ -2177,8 +2178,10 @@ namespace GPA
 
         private void generarNuevaConsultaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            
             generarNuevaConsulta();
-            //cargarDatosDeEjemplo();
+            cargarDatosDeEjemplo();
+            medicionesAutomaticaConExamenGeneral = true;
         }
 
         private void registrarAnálisisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2433,8 +2436,58 @@ namespace GPA
         {
             ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
             ac.Text = "Actualizar tipo de síntoma";
-            ac.ShowDialog();
-            presentarTipoSintomas();
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarTipoSintomas();
+            }
+        }
+
+        private void btnParteDelCuerpoSintoma_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Actualizar parte del cuerpo donde presenta el síntoma";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarParteDelCuerpo();
+            }
+        }
+
+        private void registroDesdeTensiómetroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No se seleccionó el paciente que recibe atención médica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            
+            if (medicionesAutomaticaConExamenGeneral==false)
+            {
+                if (hc == null)
+                {
+                    hc = consultarHistoriaClinica(pacienteSeleccionado);
+                }
+
+                if (hc != null)
+                {
+                    RegistrarMedicionesAutomaticamente rma = new RegistrarMedicionesAutomaticamente(hc.id_hc);
+                    rma.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("El paciente no tiene historia clínica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
+            else
+            {
+                RegistrarMedicionesAutomaticamente rma = new RegistrarMedicionesAutomaticamente();
+                if (rma.ShowDialog() == DialogResult.OK)
+                {
+                    manejadorRegistrarExamenGeneral.medicion = rma.getMedicion();
+                }
+            }
+              
+
         }
     }
 }

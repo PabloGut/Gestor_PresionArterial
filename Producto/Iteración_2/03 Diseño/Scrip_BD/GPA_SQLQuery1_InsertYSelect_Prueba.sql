@@ -871,3 +871,18 @@ from TipoSintoma
 
 select * from TipoSintoma 
 where nombre not like '--Seleccionar--'
+
+select * from DetalleMedicionPresionArterial
+select * from MedicionDePrecionArterial
+
+
+select *
+from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d
+where m.id_medicion=d.id_medicion_fk
+and m.id_hc_fk=34
+
+
+select * from ExamenGeneral
+
+select * from Consulta
+where id_medicion_fk=34

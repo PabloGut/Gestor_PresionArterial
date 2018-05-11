@@ -98,6 +98,7 @@
     <Compile Include="Manejadores\ManejadorRegistrarEstudiosPracticas.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarExamenGeneral.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarLaboratorio.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarMedicionPresionArterial.cs" />
     <Compile Include="PresentarInformacionHistoriaClinica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +197,12 @@
     <Compile Include="RegistrarMedicamento.Designer.cs">
       <DependentUpon>RegistrarMedicamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarMedicionesAutomaticamente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarMedicionesAutomaticamente.Designer.cs">
+      <DependentUpon>RegistrarMedicionesAutomaticamente.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarMedicamento.resx">
       <DependentUpon>RegistrarMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarMedicionesAutomaticamente.resx">
+      <DependentUpon>RegistrarMedicionesAutomaticamente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarPaciente.resx">
       <DependentUpon>RegistrarPaciente.cs</DependentUpon>

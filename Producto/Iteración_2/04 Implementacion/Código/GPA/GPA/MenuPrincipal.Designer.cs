@@ -167,7 +167,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.rbNoDolor = new System.Windows.Forms.RadioButton();
             this.rbSiDolor = new System.Windows.Forms.RadioButton();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnParteDelCuerpoSintoma = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.cboParteCuerpo = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -422,6 +422,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroDesdeTensiómetroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -498,7 +500,8 @@
             this.ediciónToolStripMenuItem,
             this.tratamientoToolStripMenuItem,
             this.atenciónEnConsultorioToolStripMenuItem,
-            this.laboratorioToolStripMenuItem});
+            this.laboratorioToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
@@ -1652,7 +1655,7 @@
             this.groupBox6.Controls.Add(this.label23);
             this.groupBox6.Controls.Add(this.rbNoDolor);
             this.groupBox6.Controls.Add(this.rbSiDolor);
-            this.groupBox6.Controls.Add(this.button10);
+            this.groupBox6.Controls.Add(this.btnParteDelCuerpoSintoma);
             this.groupBox6.Controls.Add(this.label22);
             this.groupBox6.Controls.Add(this.cboParteCuerpo);
             this.groupBox6.Controls.Add(this.label20);
@@ -1849,14 +1852,15 @@
             this.rbSiDolor.Text = "Si";
             this.rbSiDolor.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnParteDelCuerpoSintoma
             // 
-            this.button10.Location = new System.Drawing.Point(460, 102);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 24);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "Añadir";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnParteDelCuerpoSintoma.Location = new System.Drawing.Point(460, 102);
+            this.btnParteDelCuerpoSintoma.Name = "btnParteDelCuerpoSintoma";
+            this.btnParteDelCuerpoSintoma.Size = new System.Drawing.Size(75, 24);
+            this.btnParteDelCuerpoSintoma.TabIndex = 6;
+            this.btnParteDelCuerpoSintoma.Text = "Añadir";
+            this.btnParteDelCuerpoSintoma.UseVisualStyleBackColor = true;
+            this.btnParteDelCuerpoSintoma.Click += new System.EventHandler(this.btnParteDelCuerpoSintoma_Click);
             // 
             // label22
             // 
@@ -4331,6 +4335,21 @@
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroDesdeTensiómetroToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(80, 20);
+            this.toolStripMenuItem1.Text = "Mediciones";
+            // 
+            // registroDesdeTensiómetroToolStripMenuItem
+            // 
+            this.registroDesdeTensiómetroToolStripMenuItem.Name = "registroDesdeTensiómetroToolStripMenuItem";
+            this.registroDesdeTensiómetroToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.registroDesdeTensiómetroToolStripMenuItem.Text = "Registro desde tensiómetro";
+            this.registroDesdeTensiómetroToolStripMenuItem.Click += new System.EventHandler(this.registroDesdeTensiómetroToolStripMenuItem_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4549,7 +4568,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.RadioButton rbNoDolor;
         private System.Windows.Forms.RadioButton rbSiDolor;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnParteDelCuerpoSintoma;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox cboParteCuerpo;
         private System.Windows.Forms.Label label20;
@@ -4837,5 +4856,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAceptarDiagnostico;
         private System.Windows.Forms.Button btnBuscarDiagnosticos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem registroDesdeTensiómetroToolStripMenuItem;
     }
 }

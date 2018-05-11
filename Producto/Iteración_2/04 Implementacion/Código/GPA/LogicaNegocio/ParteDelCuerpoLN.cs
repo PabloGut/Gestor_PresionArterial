@@ -18,5 +18,21 @@ namespace LogicaNegocio
         {
             return ParteDelCuerpoDAO.mostrarPartesDelCuerpoHumano();
         }
+        public static List<ParteDelCuerpo> presentarPartesDelCuerpo()
+        {
+            return ParteDelCuerpoDAO.presentarPartesDelCuerpo();
+        }
+        public static void insertParteDelCuerpo(ParteDelCuerpo parteDelCuerpo)
+        {
+            ParteDelCuerpoDAO.insertPartesDelCuerpo(parteDelCuerpo);
+        }
+        public static void updateParteDelCuerpo(ParteDelCuerpo parteDelCuerpo)
+        {
+            ParteDelCuerpoDAO.updatePartesDelCuerpo(parteDelCuerpo);
+        }
+        public static void deleteParteDelCuerpo(ParteDelCuerpo parteDelCuerpo)
+        {
+            ParteDelCuerpoDAO.deletePartesDelCuerpo(parteDelCuerpo);
+        }
     }
 }

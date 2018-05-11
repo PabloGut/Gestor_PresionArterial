@@ -16,7 +16,9 @@ namespace Entidades.Clases
         public MomentoDia momento { set; get; }
         public SitioMedicion sitio { set; get; }
         public DateTime horaInicio { set; get; }
+        public Extremidad extremidad { set; get; }
         public UbicacionExtremidad ubicacion { set; get; }
+        public int idHc { set; get; }
         public List<DetalleMedicionPresionArterial> mediciones { set; get; }
 
         public MedicionDePresionArterial()

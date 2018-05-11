@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCaracteristica = new System.Windows.Forms.Label();
             this.txtCaracteristica = new System.Windows.Forms.TextBox();
             this.dgvGrilla = new System.Windows.Forms.DataGridView();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -37,14 +37,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblCaracteristica
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Que siente el paciente:";
+            this.lblCaracteristica.AutoSize = true;
+            this.lblCaracteristica.Location = new System.Drawing.Point(6, 30);
+            this.lblCaracteristica.Name = "lblCaracteristica";
+            this.lblCaracteristica.Size = new System.Drawing.Size(0, 13);
+            this.lblCaracteristica.TabIndex = 0;
             // 
             // txtCaracteristica
             // 
@@ -102,7 +101,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvGrilla);
             this.Controls.Add(this.txtCaracteristica);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCaracteristica);
             this.Name = "ActualizarCaracteristicas";
             this.Text = "ActualizarCaracteristicas";
             this.Load += new System.EventHandler(this.ActualizarCaracteristicas_Load);
@@ -114,7 +113,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCaracteristica;
         private System.Windows.Forms.TextBox txtCaracteristica;
         private System.Windows.Forms.DataGridView dgvGrilla;
         private System.Windows.Forms.Button btnGuardar;

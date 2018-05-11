@@ -14,6 +14,8 @@ namespace GPA
     public partial class ActualizarCaracteristicas : Form
     {
         public TipoSintoma tipoSintoma{set;get;}
+        public ParteDelCuerpo parteDelCuerpo { set; get; }
+
         public ActualizarCaracteristicas()
         {
             InitializeComponent();
@@ -29,8 +31,14 @@ namespace GPA
             switch (this.Text)
             {
                 case "Actualizar tipo de síntoma":
+                    lblCaracteristica.Text = "Tipo de síntoma";
                     List<TipoSintoma> tipos=TipoSintomaLN.presentarTipoSintoma();
                     presentarDatosGrilla(tipos);
+                    break;
+                case  "Actualizar parte del cuerpo donde presenta el síntoma":
+                    lblCaracteristica.Text = "Parte del cuerpo";
+                    List<ParteDelCuerpo> partes = ParteDelCuerpoLN.presentarPartesDelCuerpo();
+                    presentarDatosGrilla(partes);
                     break;
             }
         }
@@ -46,6 +54,14 @@ namespace GPA
                     {
                         dgvGrilla.Rows.Add(tipo.id_tipoSintoma, tipo.nombre);
                     }
+            }
+            if (lista[0].GetType().Equals(typeof(ParteDelCuerpo)))
+            {
+                List<ParteDelCuerpo> partes = lista.Cast<ParteDelCuerpo>().ToList();
+                foreach (ParteDelCuerpo parte in partes)
+                {
+                    dgvGrilla.Rows.Add(parte.id_parteCuerpo, parte.nombre);
+                }
             }
         }
         public void cargarColumnas()
@@ -78,7 +94,7 @@ namespace GPA
                     TipoSintomaLN.insertTipoSintoma(tipoSintoma);
                     presentarCaracteristicas();
                     txtCaracteristica.Clear();
-
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
@@ -93,6 +109,45 @@ namespace GPA
                     }
                     TipoSintomaLN.updateTipoSintoma(tipoSintoma);
                     presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+
+
+            if (this.Text.Equals("Actualizar parte del cuerpo donde presenta el síntoma"))
+            {
+                if (parteDelCuerpo == null)
+                {
+                    parteDelCuerpo = new ParteDelCuerpo();
+
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        parteDelCuerpo.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    ParteDelCuerpoLN.insertParteDelCuerpo(parteDelCuerpo);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        parteDelCuerpo.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    ParteDelCuerpoLN.updateParteDelCuerpo(parteDelCuerpo);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
                 }
             }
         }
@@ -111,6 +166,19 @@ namespace GPA
                 }
                 btnEliminar.Enabled = true;
             }
+
+            if (this.Text.Equals("Actualizar parte del cuerpo donde presenta el síntoma"))
+            {
+                parteDelCuerpo = new ParteDelCuerpo();
+                parteDelCuerpo.id_parteCuerpo = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                parteDelCuerpo.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (parteDelCuerpo != null)
+                {
+                    txtCaracteristica.Text = parteDelCuerpo.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -123,6 +191,15 @@ namespace GPA
                     nuevo();
                 }
             }
+
+            if (this.Text.Equals("Actualizar parte del cuerpo donde presenta el síntoma"))
+            {
+                if (parteDelCuerpo != null)
+                {
+                    ParteDelCuerpoLN.deleteParteDelCuerpo(parteDelCuerpo);
+                    nuevo();
+                }
+            }
         }
         public void nuevo()
         {
@@ -130,6 +207,7 @@ namespace GPA
             txtCaracteristica.Clear();
             btnEliminar.Enabled = false;
             tipoSintoma = null;
+            parteDelCuerpo = null;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

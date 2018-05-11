@@ -9,6 +9,7 @@ namespace Entidades.Clases
     public class DetalleMedicionPresionArterial
     {
         public int id_nroMedicion { set; get; }
+        public int id_medicion { set; get; }
         public DateTime hora { set; get; }
         public int pulso { set; get; }
         public int valorMaximo { set; get; }

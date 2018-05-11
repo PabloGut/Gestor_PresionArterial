@@ -85,7 +85,7 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@lesiones", DBNull.Value);
                 }
 
-                if (piel.temperatura.id_temperatura >0)
+                if (piel.temperatura!=null && piel.temperatura.id_temperatura >0)
                 {
                     cmd.Parameters.AddWithValue("@id_Temperatura_fk", piel.temperatura.id_temperatura);
                 }

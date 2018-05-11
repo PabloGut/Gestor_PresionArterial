@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Entidades.Clases;
 using DAO;
 using System.Data;
+using System.IO.Ports;
+using System.IO;
 
 namespace LogicaNegocio
 {
@@ -48,6 +50,10 @@ namespace LogicaNegocio
         public static int registrarMedicionDePresionArterial(MedicionDePresionArterial medicion)
         {
             return MedicionDePresionArterialDAO.registrarMedicionDePresionArterial(medicion);
+        }
+        public static void registrarMedicionPresionArterialEnHistoriaClinicia(MedicionDePresionArterial medicion)
+        {
+            MedicionDePresionArterialDAO.registrarMedicionDePresionArterialEnHistoriaClinica(medicion);
         }
     }
 }

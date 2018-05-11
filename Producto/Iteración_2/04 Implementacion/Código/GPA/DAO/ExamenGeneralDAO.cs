@@ -250,12 +250,14 @@ namespace DAO
 
                 examen.id_examenGeneral = Convert.ToInt32(cmd1.ExecuteScalar());
 
-                foreach(SistemaLinfatico territorio in examen.territoriosExaminados)
+                if (examen.territoriosExaminados != null)
                 {
-                    territorio.id_examenGeneral = examen.id_examenGeneral;
-                    SistemaLinfaticoDAO.registrarSistemaLinfatico(territorio, tran, cn);
+                    foreach (SistemaLinfatico territorio in examen.territoriosExaminados)
+                    {
+                        territorio.id_examenGeneral = examen.id_examenGeneral;
+                        SistemaLinfaticoDAO.registrarSistemaLinfatico(territorio, tran, cn);
+                    }
                 }
-
                 if (examen.listaDiagnosticos != null)
                 {
                     foreach (RazonamientoDiagnostico diagnostico in examen.listaDiagnosticos)
