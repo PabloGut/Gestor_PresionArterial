@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11B4B829-1ED8-4BFA-9EEF-F06287FE317F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GPA</RootNamespace>
+    <AssemblyName>GPA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConsultarEstudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarEstudio.Designer.cs">
+      <DependentUpon>ConsultarEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarHistoriaClínica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarHistoriaClínica.Designer.cs">
+      <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarPaciente.Designer.cs">
+      <DependentUpon>ConsultarPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manejadores\ManejadorConsultarHC.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarHC.cs" />
+    <Compile Include="RegistrarHistoriClinica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarHistoriClinica.Designer.cs">
+      <DependentUpon>RegistrarHistoriClinica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InicioSesión.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioSesión.Designer.cs">
+      <DependentUpon>InicioSesión.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manejadores\ManejadorInicioSesion.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarEstudio.cs" />
+    <Compile Include="Manejadores\ManejadorRegistrarInstitucion.cs" />
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarEstudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarEstudio.Designer.cs">
+      <DependentUpon>RegistrarEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrar Análisis de Laboratorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Análisis de Laboratorio.Designer.cs">
+      <DependentUpon>Registrar Análisis de Laboratorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarInstitucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarInstitucion.Designer.cs">
+      <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ConsultarEstudio.resx">
+      <DependentUpon>ConsultarEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarHistoriaClínica.resx">
+      <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarPaciente.resx">
+      <DependentUpon>ConsultarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarHistoriClinica.resx">
+      <DependentUpon>RegistrarHistoriClinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioSesión.resx">
+      <DependentUpon>InicioSesión.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarEstudio.resx">
+      <DependentUpon>RegistrarEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Registrar Análisis de Laboratorio.resx">
+      <DependentUpon>Registrar Análisis de Laboratorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarInstitucion.resx">
+      <DependentUpon>RegistrarInstitucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{129cb41c-1f36-4fed-bbcc-a484478d7dc9}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{1b361fb6-e327-468b-940c-cc1afa3c7236}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
