@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Providers.Core.es</id>
+    <version>1.2</version>
+    <title>Recursos en español para las bibliotecas principales de Microsoft ASP.NET Universal Providers</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/Providers_1_eula_ESN.htm</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Este paquete contiene los ensamblados satélites en español para ASP.NET Universal Providers.</description>
+    <summary>Recursos en español para el paquete Microsoft.AspNet.Providers.Core</summary>
+    <language>es</language>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Providers.Core" version="[1.2]" />
+    </dependencies>
+  </metadata>
+</package>

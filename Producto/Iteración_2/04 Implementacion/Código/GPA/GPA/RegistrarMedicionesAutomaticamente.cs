@@ -361,6 +361,8 @@ namespace GPA
                     manejador = new ManejadorRegistrarMedicionPresionArterial();
 
                 manejador.registrarMedicioPresionArterialEnHistoriaClinica(medicion);
+                MessageBox.Show("Registro de mediciones completo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limpiar();
             }
             else
             {
@@ -374,6 +376,21 @@ namespace GPA
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             guardarMediciones();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            myPort.Close();
+            this.Close();
+        }
+        public void limpiar()
+        {
+            in_data = null;
+            texto = null;
+            txtMediciones.Clear();
+            lstMediciones = null;
+            dgvMediciones.Rows.Clear();
+            medicion = null;
         }
     }
 }

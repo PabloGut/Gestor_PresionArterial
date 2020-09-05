@@ -2354,7 +2354,9 @@ namespace GPA
         }
 
         private void btnSalir_Click_1(object sender, EventArgs e)
-        {
+        {   
+            //Modificar!!! Debe cerrar la ventana sin preguntar guardar cambios.
+            /*
             DialogResult rd;
             if (string.IsNullOrEmpty(txtmotivoConsulta.Text) || listaAlergiaInsectos.Count > 0 || listaAlergiaMedicamento.Count > 0 || listaAlergiasAlimento.Count > 0 || listaAlergiasSustanciaAmbiente.Count > 0 || listaAlergiaSustanciaContactoPiel.Count > 0 || listaAntecedentesFamiliares.Count > 0 || listaAntecedentesMorbidos.Count > 0 || listaHabitosActividadFisica.Count > 0 || listaHabitosAlcoholismo.Count > 0 || listaHabitosDrogasIlicitas.Count > 0 || listaHabitosMedicamentos.Count > 0 || listaHabitosTabaquismo.Count > 0)
             {
@@ -2368,15 +2370,132 @@ namespace GPA
                 {
                     this.Close();
                 }
-            }
+            }*/
+            this.Close();
             
         }
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            limpiar();
         }
+        public void limpiar()
+        {   
+            
+            txtmotivoConsulta.Clear();
+            txtTratamientoAntecedenteMorbido.Clear();
+            txtEvoluciónAntecedenteMorbido.Clear();
+            txtCantTiempoAntecedenteMorbido.Clear();
+            dgvAntecedentesMorbidos.Rows.Clear();
+            rbPresentaAntecedentesMorbidos.Checked = true;
+            listaAntecedentesMorbidos = null;
 
+            rbSiTieneEmbarazos.Checked = true;
+            txtCantidadEmbarazos.Clear();
+            txtCantidadEmbarazosATermino.Clear();
+            txtCantidadEmbarazosPosTermino.Clear();
+            txtCantidadEmbarazosPrematuro.Clear();
+            antecedenteGinecoObtetrico = null;
+            
+
+            rbSiTieneAbortos.Checked = true;
+            txtCantidadAbortos.Clear();
+            txtCantidadTipoAborto1.Clear();
+            txtCantidadTipoAborto2.Clear();
+            txtCantidadHijosVivos.Clear();
+            txtProblemasEmbarazo.Clear();
+
+            rbSiViveFamiliar.Checked = true;
+            chbAsma.Checked = false;
+            chbAnemias.Checked = false;
+            chbDiabetes.Checked = false;
+            chbHipertensión.Checked = false;
+            chbTuberculosis.Checked = false;
+            chbLepra.Checked = false;
+            chbHepatitis.Checked = false;
+            chbParasitismo.Checked = false;
+            chbTranstornosNutricionales.Checked = false;
+
+            rbNoOtraEnfermedad.Checked = true;
+            txtDescripcionOtraEnfermedad.Clear();
+            txtCausaMuerte.Clear();
+            txtObservacionesAntecedentesPatologicosFamiliares.Clear();
+            dgvAntecedentesPatologicosFamiliares.Rows.Clear();
+            listaAntecedentesFamiliares = null;
+
+            rbNoOtraEnfermedadPP.Checked = true;
+            txtDescOtrasEnfermedadesPP.Clear();
+            rbNoAlergicoAlimentos.Checked = true;
+            txtEfectosAlergiaAlimentos.Clear();
+            dgvAlergiasAlimentos.Rows.Clear();
+            listaAlergiasAlimento = null;
+
+            rbNoAlergiaSustanciaAmbiente.Checked = true;
+            txtEfectosAlergiaSustanciaAmbiente.Clear();
+            dgvAlergiasSustanciaAmbiente.Rows.Clear();
+            listaAlergiasSustanciaAmbiente = null;
+
+            rbNoAlergiaSustanciaContactoPiel.Checked = true;
+            txtEfectosAlergiaSustanciaContactoPiel.Clear();
+            dgvAlergiasSustanciasContactoPiel.Rows.Clear();
+            listaAlergiaSustanciaContactoPiel = null;
+
+            rbNoAlergiaMedicamento.Checked = true;
+            txtEfectosAlergiasMedicamentos.Clear();
+            dgvAlergiasMedicamentos.Rows.Clear();
+            listaAlergiaMedicamento = null;
+
+            rbNoAlergiaInsecto.Checked = true;
+            txtEfectosAlergiaInsecto.Clear();
+            dgvAlergiasInsectos.Rows.Clear();
+            listaAlergiaInsectos = null;
+
+            rbNoFuma.Checked = true;
+            txtCantidadQueFuma.Clear();
+            txtCantidadAñosFumando.Clear();
+            cbDejoFumar.Checked = true;
+            txtCantiTiempoDejoFumar.Clear();
+            txtCantidadFumaba.Clear();
+            dgvHabitosFumar.Rows.Clear();
+            listaHabitosTabaquismo = null;
+
+            rbNoConsumeAlcohol.Checked = true;
+            txtCantidadConsume.Clear();
+            dgvHabitosAlcoholismo.Rows.Clear();
+            listaHabitosAlcoholismo = null;
+
+            rbNoConsumeDrogas.Checked = true;
+            txtCantidadTiempoConsumiendo.Clear();
+            dgvHabitosDrogasIlicitas.Rows.Clear();
+            listaHabitosDrogasIlicitas = null;
+
+            rbNoConsumeMedicamentos.Checked = true;
+            rbMedicamentoActual.Checked = true;
+            txtNumeradorCantidad1.Clear();
+            txtDenominadorCantidad1.Clear();
+            mtbHora1.Clear();
+
+            txtNumeradorCantidad2.Clear();
+            txtDenominadorCantidad2.Clear();
+            mtbHora2.Clear();
+
+            txtNumeradorCantidad3.Clear();
+            txtDenominadorCantidad3.Clear();
+            mtbHora3.Clear();
+
+            txtMotivoCancelacion.Clear();
+            txtMotivoConsumo.Clear();
+            txtCantidadTiempoConsumoMedicamento.Clear();
+            txtCantTiempoCancelacionMedicamento.Clear();
+            listaHabitosMedicamentos = null;
+
+            rbNoActividadFisica.Checked = true;
+            dgvHabitosActividadFisica.Rows.Clear();
+            listaHabitosActividadFisica = null;
+            
+
+
+        }
 
        
     }

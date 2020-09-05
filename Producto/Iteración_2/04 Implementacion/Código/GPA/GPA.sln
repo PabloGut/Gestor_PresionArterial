@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicacionEscritorio", "GPA\AplicacionEscritorio.csproj", "{11B4B829-1ED8-4BFA-9EEF-F06287FE317F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{1B361FB6-E327-468B-940C-CC1AFA3C7236}"
@@ -10,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocio", "LogicaNegocio\LogicaNegocio.csproj", "{91C34CEC-AB63-43AF-BAAA-8AF94EF916EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shiart_AppWeb", "Shiart_AppWeb\Shiart_AppWeb.csproj", "{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shiart_AplicacionWeb", "Shiart_AplicacionWeb\Shiart_AplicacionWeb.csproj", "{2CB31465-C6E4-45B6-989C-ECB4C470539A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,8 +41,15 @@ Global
 		{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEE8834D-9F5D-48BF-A189-6A6FB9F272BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CB31465-C6E4-45B6-989C-ECB4C470539A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB31465-C6E4-45B6-989C-ECB4C470539A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB31465-C6E4-45B6-989C-ECB4C470539A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB31465-C6E4-45B6-989C-ECB4C470539A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F8FEE73-05B7-43D5-A491-ABEDFC0909B7}
 	EndGlobalSection
 EndGlobal

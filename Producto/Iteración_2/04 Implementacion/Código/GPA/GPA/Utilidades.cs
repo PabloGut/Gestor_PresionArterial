@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data;
-
 namespace GPA
 {
     public class Utilidades
@@ -69,7 +68,6 @@ namespace GPA
             combo.DisplayMember = displayMember;
             combo.DataSource = lista;
         }
-
         public static void agregarColumnaAntecedentesMorbidos(DataGridView dgv)
         {
             string[] nombreColumnasAntecedenteMorbido = new string[6] { "Fecha de registro","Tipo", "Nombre", "Tratamiento", "Evolución", "Cantidad de tiempo en que ocurrió" };

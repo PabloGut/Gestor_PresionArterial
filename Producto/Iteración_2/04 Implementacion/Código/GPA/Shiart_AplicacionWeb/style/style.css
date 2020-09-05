@@ -1,0 +1,53 @@
+﻿@import url('bootstrap.min.css');
+@import url('normalize.css');
+h2{
+    text-align:center;
+}
+.contenedor {
+
+    border:5px;
+    border:solid;
+}
+.login {
+    border:1px solid #E1E1E1;
+    border-radius:5px;
+    padding:17px;
+    width:300px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+body, html {
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.formularioRegistro {
+    position:relative;
+    left:20px;
+}
+.funciones {
+    background-color: aquamarine;
+    text-align:center;
+
+}
+.contenedorMenu {
+    padding-left:1px;
+    padding-right:1px;
+}
+.nombreUsuario {
+    padding-left:50px;
+}
+.grupoInformacionGeneral {
+    position:relative;
+    width:100%;
+    padding:20px;
+}
+.titulo {
+    text-align:center;
+}
+
+

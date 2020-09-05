@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Membership.OpenAuth.es</id>
+    <version>1.0.1</version>
+    <title>Recursos en español para Microsoft DotNetOpenAuth ASP.NET Membership</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/WebDeveloperTools_1_eula_ESN.htm</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Este paquete contiene los ensamblados satélites en español para ASP.NET DotNetOpen Membership.</description>
+    <summary>Recursos en español para el paquete Microsoft.AspNet.Membership.OpenAuth</summary>
+    <language>es</language>
+    <tags>Microsoft AspNet OpenId OAuth authentication</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Membership.OpenAuth" version="[1.0.1]" />
+    </dependencies>
+  </metadata>
+</package>

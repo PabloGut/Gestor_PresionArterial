@@ -229,13 +229,16 @@ namespace GPA
          */
         public void cargarComboTipoDocumento()
         {
-            cboTipoDocPaciente.DataSource = manejadorConsultarPaciente.mostrarTiposDocumentos();
-            cboTipoDocPaciente.ValueMember = "id_tipoDoc";
-            cboTipoDocPaciente.DisplayMember = "nombre";
+            if (medicoLogueado != null)
+            {
+                cboTipoDocPaciente.DataSource = manejadorConsultarPaciente.mostrarTiposDocumentos();
+                cboTipoDocPaciente.ValueMember = "id_tipoDoc";
+                cboTipoDocPaciente.DisplayMember = "nombre";
+            }
         }
         private void cargarDataGridPacientesDelProfesional()
         {
-            dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+          dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
         }
         private void crearHistoriaClínicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -998,6 +1001,11 @@ namespace GPA
                 return;
             }
             registrarExamenGeneralYConsulta();
+
+            registrarAnálisisToolStripMenuItem.Enabled = true;
+            btnAgregarPresionArterial.Enabled = true;
+            medicionesAutomaticaConExamenGeneral = false;
+
         }
         public void registrarExamenGeneralYConsulta()
         {
@@ -1617,6 +1625,8 @@ namespace GPA
             dgvPresionArterial.Rows.Add(DateTime.Today.ToShortDateString(), DateTime.Now.ToShortTimeString(), extremidad.nombre, ubicacion.nombre, posicion.nombre, sitio.nombre, txtSistolicaPresionArterial.Text + "mmHg", txtDiastolicaPresionArterial.Text + "mmHg", txtPulsoPresionArterial.Text, momento.nombre);
             DateTime hora = DateTime.Now; int pulso = Convert.ToInt32(txtPulsoPresionArterial.Text); int valorMinimo = Convert.ToInt32(txtDiastolicaPresionArterial.Text); int valorMaximo = Convert.ToInt32(txtSistolicaPresionArterial.Text);
             manejadorRegistrarExamenGeneral.registrarDetalleDeMedicion(hora, pulso, valorMinimo, valorMaximo);
+
+            registrarAnálisisToolStripMenuItem.Enabled = false;
         }
 
         public void presentarCalculosPresionArterial(string promedio, string categoria, string rangoValorMaximo, string rangoValorMinimo)
@@ -2484,6 +2494,7 @@ namespace GPA
                 if (rma.ShowDialog() == DialogResult.OK)
                 {
                     manejadorRegistrarExamenGeneral.medicion = rma.getMedicion();
+                    btnAgregarPresionArterial.Enabled = false;
                 }
             }
               

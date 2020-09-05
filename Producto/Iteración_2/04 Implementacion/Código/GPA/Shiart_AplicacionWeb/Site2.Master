@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="Shiart_AplicacionWeb.Site2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie-edge" />
+    <title></title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="style/style.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+ <div class="container-fluid border contenedorMenu">
+     <form id="form2" runat="server">
+         <nav class="navbar navbar-expand-sm navbar-light bg-light col-xl-12">
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+
+             <!-- logo -->
+             <a class="navbar-brand" href="#">
+                 <img src="http://www.tutorialesprogramacionya.com/imagenes/foto1.jpg" width="30" height="30" alt="" />
+             </a>
+
+             <!-- enlaces -->
+             <div class="collapse navbar-collapse" id="opciones">
+                 <ul class="navbar-nav">
+                     <li class="nav-item">
+                         <asp:LinkButton ID="lbCerrarSesión" class="nav-link" runat="server" OnClick="lbCerrarSesión_Click">Cerrar Sesión</asp:LinkButton>
+                     </li>
+                     <li class="nav-item">
+                          <asp:LinkButton ID="ConsultarHistoriaClinica" class="nav-link" runat="server">Historia Clínica</asp:LinkButton>
+                     </li>
+                     <li class="nav-item">
+                         <asp:LinkButton ID="CargaManual" class="nav-link" runat="server">Carga Manual</asp:LinkButton>
+                     </li>
+                     <li class="nav-item">
+                          <asp:LinkButton ID="CargaAutomatica" class="nav-link" runat="server">Carga Automática</asp:LinkButton>
+                     </li>
+                      <li class="nav-item">
+                        <div class="container ">
+                            <div class="row justify-content-start">
+                                <div class="col-12 border">
+                                    <asp:Label ID="lblUsuarioLogueado" runat="server" Text="Usuario" CssClass="col-sm-8"></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                 </ul>
+             </div>
+         </nav>
+
+         <div>
+             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+             </asp:ContentPlaceHolder>
+         </div>
+     </form>
+    </div>
+
+       
+
+
+
+   
+
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

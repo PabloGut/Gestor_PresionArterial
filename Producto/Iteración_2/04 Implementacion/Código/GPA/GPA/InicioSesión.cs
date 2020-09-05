@@ -27,6 +27,7 @@ namespace GPA
          */
         private void button1_Click(object sender, EventArgs e)
         {
+            ProfesionaMedico pm = null;
             if (string.IsNullOrEmpty(txtUsuario.Text) && string.IsNullOrEmpty(txtPass.Text))
             {
                 MessageBox.Show("Falta ingresar usuario o contraseña","Atención",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
@@ -39,13 +40,10 @@ namespace GPA
 
             if (usuario.Count > 0)
             {
-                ProfesionaMedico pm = manejador.buscarMedicoDelUsuario(usuario[0].id_usuario);
-
+                pm = manejador.buscarMedicoDelUsuario(usuario[0].id_usuario);
                 MenuPrincipal mp = new MenuPrincipal(pm);
                 mp.Show();
                 this.Hide();
-                
-
             }
             else
             {

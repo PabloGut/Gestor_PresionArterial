@@ -174,5 +174,48 @@ namespace DAO
             cn.Close();
             return usuarios;
         }
+        public static Usuario buscarUsuarioLogueado(string nombre, string pass)
+        {
+            setCadenaConexion();
+            Usuario usuario = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            try
+            {
+
+                cn.Open();
+
+                string consulta = "select id_usuario, nombre_usuario from Usuario where nombre_usuario=@nombre and pwdcompare(@pass,contraseña)=1";
+
+                SqlCommand cmd = new SqlCommand();
+
+
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@pass", pass);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    usuario = new Usuario();
+                    usuario.id_usuario = (int)dr["id_usuario"];
+                    usuario.nombre=dr["nombre_usuario"].ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error al buscar el usuario logueado: " + e.Message);
+            }
+            cn.Close();
+            return usuario;
+        }
     }
 }

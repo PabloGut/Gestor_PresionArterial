@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.AspNet.Membership.OpenAuth</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.#ctor">
+      <summary>Inicializa una nueva instancia de la clase <see cref="T:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager" />.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.Add(System.String,System.Func{DotNetOpenAuth.AspNet.IAuthenticationClient})"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.Add(System.String,System.Func{DotNetOpenAuth.AspNet.IAuthenticationClient},System.Collections.Generic.IDictionary{System.String,System.String})"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.Add(System.String,System.Func{DotNetOpenAuth.AspNet.IAuthenticationClient},System.Object)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.GetAll"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.GetByProviderName(System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.GetDisplayName(System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager.TryGetByProviderName(System.String,DotNetOpenAuth.AspNet.IAuthenticationClient@)"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddFacebook(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddFacebook(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager,System.String,System.String,System.Object)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddGoogle(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddGoogle(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager,System.Object)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddMicrosoft(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddMicrosoft(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager,System.String,System.String,System.Object)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddTwitter(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManagerExtensions.AddTwitter(Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager,System.String,System.String,System.Object)"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.CreateResult"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.CreateResult.ErrorMessage"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.CreateResult.IsSuccessful"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase">
+      <summary>Una implementación para almacenar datos de asociación de usuarios de pertenencia a proveedores de OAuth/OpenID mediante Code First de Entity Framework.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase.#ctor(System.String,System.String,System.Func{System.String,System.String})"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase.AddAccount(System.String,System.String,System.String,System.String,System.Boolean)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase.DeleteAccount(System.String,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase.GetAccountsForUser(System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase.GetMembershipUserName(System.String,System.String,System.Boolean)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase.HasLocalPassword(System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.EFOpenAuthMembershipDatabase.SetHasLocalPassword(System.String,System.Boolean)"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.IMembership"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.IMembership.ApplicationName"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.IMembership.CreateUser(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Web.Security.MembershipCreateStatus@)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.IMembership.DeleteUser(System.Object,System.Boolean)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.IMembership.DeleteUser(System.String,System.Boolean)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.IMembership.GeneratePassword(System.Int32,System.Int32)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.IMembership.GetUser(System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.IMembership.UpdateUser(System.Web.Security.MembershipUser)"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter">
+      <summary>Encapsula las API del sistema de pertenencia estático.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.#ctor"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.ApplicationName"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.CreateUser(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Web.Security.MembershipCreateStatus@)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.DeleteUser(System.Object,System.Boolean)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.DeleteUser(System.String,System.Boolean)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.GeneratePassword(System.Int32,System.Int32)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.GetUser(System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.MembershipAdapter.UpdateUser(System.Web.Security.MembershipUser)"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.OpenAuth">
+      <summary>Proporciona métodos estáticos para administrar los datos de cuenta e inicio de sesión de OpenAuth en una aplicación ASP.NET.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.AddAccountToExistingUser(System.String,System.String,System.String,System.String)">
+      <summary>Agrega una cuenta de inicio de sesión externa a un usuario de pertenencia existente.</summary>
+      <param name="providerName">El nombre del proveedor de autenticación externo.</param>
+      <param name="providerUserId">El identificador de usuario del usuario con el proveedor de autenticación externo.</param>
+      <param name="providerUserName">El nombre de usuario del usuario con el proveedor de autenticación externo.</param>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia local.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.AddLocalPassword(System.String,System.String)">
+      <summary>Agrega una contraseña local para el usuario local especificado.</summary>
+      <param name="userName">Nombre de usuario.</param>
+      <param name="password">La contraseña local nueva.</param>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.AuthenticationClients">
+      <summary>Proveedores de servicio de autenticación externo que se usan.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.ConnectionString">
+      <summary>Obtiene o define el nombre de la cadena de conexión para la cuenta de OpenAuth de base de datos que contiene los detalles.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.CreateUser(System.String,System.String,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.CreateUser(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.DeleteAccount(System.String,System.String,System.String)">
+      <summary>Elimina la asociación de la cuenta externa especificada para el usuario de pertenencia especificado.</summary>
+      <returns>Si la asociación se eliminó correctamente, el valor es true. Si no se encontró, es false.</returns>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia local.</param>
+      <param name="providerName">El nombre del proveedor de autenticación.</param>
+      <param name="providerUserId">El identificador de usuario del usuario con el proveedor de autenticación.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.GetAccountsForUser(System.String)">
+      <summary>Devuelve los detalles de las cuentas externas registradas para el usuario de pertenencia especificado.</summary>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia local.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.GetProviderDisplayName(System.String)">
+      <summary>Obtiene el nombre para mostrar del proveedor.</summary>
+      <param name="providerName">Nombre del proveedor.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.GetProviderNameFromCurrentRequest">
+      <summary>Obtiene el nombre del proveedor de autenticación externo que redirigió a la solicitud actual.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.HasLocalPassword(System.String)">
+      <summary>Determina si el usuario especificado tiene una contraseña local en el sitio.</summary>
+      <param name="membershipUserName">El nombre de usuario de pertenencia local.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.IsLocalUrl(System.String)">
+      <summary>Determina si la URL especificada es local del sitio web.</summary>
+      <param name="url">Dirección URL.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.Login(System.String,System.String,System.Boolean)">
+      <summary>Inicia la sesión de un usuario a través de OpenAuth mediante el proveedor de autenticación y el identificador de usuario de proveedor especificados. El usuario debe estar registrado en el sitio con este proveedor de OpenAuth.</summary>
+      <returns>Si el usuario inició sesión correctamente, true. En caso de error, por ejemplo, si el usuario no está registrado, false.</returns>
+      <param name="providerName">El nombre del proveedor de autenticación.</param>
+      <param name="providerUserId">El identificador de usuario del usuario con el proveedor de autenticación.</param>
+      <param name="createPersistentCookie">Una marca que indica si la cookie de inicio de sesión que se crea debe ser persistente.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.RequestAuthentication(System.String,System.String)">
+      <summary>Solicita autenticación del proveedor especificado. Para ello, redirige al usuario a la página de inicio de sesión del servicio.</summary>
+      <param name="providerName">El nombre del proveedor de autenticación.</param>
+      <param name="returnUrl">La URL local a la que se regresa.</param>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.UsersAccountsTableName">
+      <summary>Obtiene o define el nombre de la tabla de base de datos que contiene los detalles de la cuenta externa de OpenAuth.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.UsersDataTableName">
+      <summary>Obtiene o define el nombre de la tabla de base de datos que contiene los detalles del usuario de OpenAuth.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuth.VerifyAuthentication(System.String)">
+      <summary>Comprueba el resultado de proveedor en la solicitud actual.</summary>
+      <param name="returnUrl">La URL de retorno que se pasa al proveedor de autenticación externo. Debe coincidir con la URL de retorno pasada a la llamada de RequestAuthentication.</param>
+    </member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData.#ctor(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime})">
+      <summary>Inicializa una nueva instancia de la clase <see cref="T:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData" />.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData.LastUsedUtc"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData.ProviderDisplayName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData.ProviderName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData.ProviderUserId"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData.ProviderUserName"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager">
+      <summary>Proporciona métodos para administrar los datos de cuenta e inicio de sesión de OpenAuth en una aplicación ASP.NET.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.#ctor(Microsoft.AspNet.Membership.OpenAuth.IMembership,Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase,Microsoft.AspNet.Membership.OpenAuth.AuthenticationClientManager)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.AddAccountToExistingUser(System.String,System.String,System.String,System.String)">
+      <summary>Agrega una cuenta de inicio de sesión externa a un usuario de pertenencia existente.</summary>
+      <param name="providerName">El nombre del proveedor de autenticación externo.</param>
+      <param name="providerUserId">El identificador de usuario del usuario con el proveedor de autenticación externo.</param>
+      <param name="providerUserName">El nombre de usuario del usuario con el proveedor de autenticación externo.</param>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia local.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.AddLocalPassword(System.String,System.String)">
+      <summary>Agrega una contraseña local para el usuario local especificado.</summary>
+      <param name="userName">Nombre de usuario.</param>
+      <param name="password">La contraseña local nueva.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.CreateRandomPassword">
+      <summary>Crea una contraseña aleatoria para usarla al crear un usuario de pertenencia local. De forma predeterminada, este método invoca el método Membership.GeneratePassword.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.CreateUser(System.String,System.String,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.CreateUser(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.DeleteAccount(System.String,System.String,System.String)">
+      <summary>Elimina la asociación de la cuenta externa especificada para el usuario de pertenencia especificado.</summary>
+      <returns>Si la asociación se eliminó correctamente, el valor es true. Si no se encontró, es false.</returns>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia local.</param>
+      <param name="providerName">El nombre del proveedor de autenticación.</param>
+      <param name="providerUserId">El identificador de usuario del usuario con el proveedor de autenticación.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.GetAccountsForUser(System.String)">
+      <summary>Devuelve los detalles de las cuentas externas registradas para el usuario de pertenencia especificado.</summary>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia local.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.GetProviderDisplayName(System.String)">
+      <summary>Obtiene el nombre para mostrar del proveedor.</summary>
+      <param name="providerName">Nombre del proveedor.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.GetProviderName(System.Web.HttpContextBase)">
+      <summary>Obtiene el nombre del proveedor de autenticación externo que redirigió a la solicitud especificada.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.HasLocalPassword(System.String)">
+      <summary>Determina si el usuario de pertenencia especificado tiene una contraseña local en el sitio.</summary>
+      <param name="membershipUserName">El nombre de usuario de pertenencia local.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.IsLocalUrl(System.String)">
+      <summary>Determina si la URL especificada es local del sitio web.</summary>
+      <param name="url">Dirección URL.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.Login(System.Web.HttpContextBase,System.String,System.String,System.Boolean)">
+      <summary>Inicia la sesión de un usuario a través de OpenAuth mediante el proveedor de autenticación y el identificador de usuario de proveedor especificados. El usuario debe estar registrado en el sitio con este proveedor de OpenAuth.</summary>
+      <returns>Si el usuario inició sesión correctamente, true. En caso de error, por ejemplo, si el usuario no está registrado, false.</returns>
+      <param name="providerName">El nombre del proveedor de autenticación.</param>
+      <param name="providerUserId">El identificador de usuario del usuario con el proveedor de autenticación.</param>
+      <param name="createPersistentCookie">Una marca que indica si la cookie de inicio de sesión que se crea debe ser persistente.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.RequestAuthentication(System.Web.HttpContextBase,System.String,System.String)">
+      <summary>Solicita autenticación del proveedor especificado. Para ello, redirige al usuario a la página de inicio de sesión del servicio.</summary>
+      <param name="context">El contexto HTTP actual.</param>
+      <param name="providerName">El nombre del proveedor de autenticación.</param>
+      <param name="returnUrl">La URL local a la que se regresa.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthManager.VerifyAuthentication(System.Web.HttpContextBase,System.String)">
+      <summary>Comprueba el resultado de proveedor en la solicitud actual.</summary>
+      <param name="context">El contexto HTTP actual.</param>
+      <param name="returnUrl">La URL de retorno que se pasa al proveedor de autenticación externo. Debe coincidir con la URL de retorno pasada a la llamada de RequestAuthentication.</param>
+    </member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase">
+      <summary>Representa la base de datos para almacenar datos de asociación de usuarios de pertenencia a proveedores de OAuth/OpenID.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.#ctor(System.String)">
+      <summary>Crea una instancia.</summary>
+      <param name="applicationName">El nombre de la aplicación de pertenencia.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.AddAccount(System.String,System.String,System.String,System.String,System.Boolean)">
+      <summary>Agrega un registro que asocia una cuenta de OAuth/OpenID con un usuario de pertenencia.</summary>
+      <param name="providerName">El nombre del proveedor de OAuth/OpenID.</param>
+      <param name="providerUserId">El identificador de usuario de OAuth/OpenID.</param>
+      <param name="providerUserName">El nombre de usuario de OAuth/OpenID.</param>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia.</param>
+      <param name="isNewMembershipUser">Una marca que indica si la asociación de cuenta es para un usuario de pertenencia nuevo.</param>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.ApplicationName">
+      <summary>El nombre de la aplicación de pertenencia.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.DeleteAccount(System.String,System.String,System.String)">
+      <summary>Elimina el registro de asociación de la cuenta de OAuth/OpenID del usuario de pertenencia especificado.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.GetAccountsForUser(System.String)">
+      <summary>Devuelve los detalles de los proveedores de OAuth/OpenID registrados para el usuario de pertenencia especificado.</summary>
+      <param name="membershipUserName">El nombre de usuario de pertenencia.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.GetMembershipUserName(System.String,System.String,System.Boolean)">
+      <summary>Obtiene el nombre de usuario del usuario de pertenencia asociado actualmente al proveedor de OAuth/OpenID especificado.</summary>
+      <param name="providerName">El nombre del proveedor de OAuth/OpenID.</param>
+      <param name="providerUserId">El identificador de usuario de OAuth/OpenID.</param>
+      <param name="updateLastUsed">Una marca que indica si se actualiza el campo del último uso.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.HasLocalPassword(System.String)">
+      <summary>Devuelve una marca que indica si el usuario de pertenencia especificado tiene una contraseña local definida.</summary>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.OpenAuthMembershipDatabase.SetHasLocalPassword(System.String,System.Boolean)">
+      <summary>Define una marca que indica si el usuario de pertenencia especificado tiene una contraseña local definida.</summary>
+      <param name="membershipUserName">El nombre de usuario del usuario de pertenencia.</param>
+      <param name="value">El valor de la marca.</param>
+    </member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.ProviderDetails"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.ProviderDetails.DataBag"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.ProviderDetails.ExtraData"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.ProviderDetails.ProviderDisplayName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.ProviderDetails.ProviderName"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.SetPasswordResult"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.SetPasswordResult.ErrorMessage"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.SetPasswordResult.IsSuccessful"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.#ctor">
+      <summary>Inicializa una nueva instancia de la clase <see cref="T:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount" />.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.ApplicationName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.LastUsedUtc"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.MembershipUserName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.ProviderName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.ProviderUserId"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.ProviderUserName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthAccount.UserData"></member>
+    <member name="T:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthUserData"></member>
+    <member name="M:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthUserData.#ctor">
+      <summary>Inicializa una nueva instancia de la clase <see cref="T:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthUserData" />.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthUserData.Accounts"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthUserData.ApplicationName"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthUserData.HasLocalPassword"></member>
+    <member name="P:Microsoft.AspNet.Membership.OpenAuth.Data.OpenAuthUserData.MembershipUserName"></member>
+  </members>
+</doc>
