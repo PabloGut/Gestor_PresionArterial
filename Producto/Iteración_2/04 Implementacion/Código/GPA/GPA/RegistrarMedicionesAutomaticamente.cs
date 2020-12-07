@@ -67,7 +67,7 @@ namespace GPA
         {
             myPort = new SerialPort();
             myPort.BaudRate = 115200;
-            myPort.PortName = "COM6";
+            myPort.PortName = "COM3";
             myPort.DataReceived += myPort_DataReceived;
 
             try
@@ -80,21 +80,39 @@ namespace GPA
             }
         }
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
+        {   
             in_data = myPort.ReadLine();
             this.Invoke(new EventHandler(display_dataevent));
         }
 
         private void display_dataevent(object sender, EventArgs e)
-        {
+        {  
             if (leer == true)
-            {
-                texto += in_data;
-                txtMediciones.AppendText(in_data + "\n");
-                lstMediciones.Items.Add(in_data);
-                //contar();
-                contarConBarraProgreso();
+            {   
+                if(primeraFila==true && buscarCadena(in_data) && in_data.Length==23)
+                {
+                    texto += in_data;
+                    txtMediciones.AppendText(in_data + "\n");
+                    lstMediciones.Items.Add(in_data);
+                    //contar();
+                    contarConBarraProgreso();
+                }
+                else
+                {
+                    if(primeraFila==false)
+                    {
+                        texto += in_data;
+                        txtMediciones.AppendText(in_data + "\n");
+                        lstMediciones.Items.Add(in_data);
+                        //contar();
+                        contarConBarraProgreso();
+                    }
+                }
             }
+        }
+        public Boolean buscarCadena(String cadena)
+        {
+            return cadena.Contains("Number of measures");  
         }
         public void contarConBarraProgreso()
         {
@@ -140,12 +158,14 @@ namespace GPA
             string año = "";
             string hora = "";
 
+            string prueba = "";
             txtNroMediciones.Text = lstMediciones.Items[0].ToString().Substring(20);
 
             int i = 2;
             //while
             while (i <= lstMediciones.Items.Count)
             {
+                prueba = lstMediciones.Items[i].ToString().Substring(15);
                 nroMedicion = Convert.ToInt32(lstMediciones.Items[i].ToString().Substring(15));
                 i++;
                 // Obtener Fecha

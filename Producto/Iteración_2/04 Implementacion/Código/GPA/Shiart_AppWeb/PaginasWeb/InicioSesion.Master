@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="InicioSesion.master.cs" Inherits="Shiart_AppWeb.PaginasWeb.InicioSesion" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie-edge" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../Estilos/StylePrincipal.css" />
+
+    <title>Shiart</title>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="row">
+            <div class="col-sm-4 col-lg-2 titulo">
+                <a href="/PaginasWeb/Inicio.aspx">SHIART</a>
+            </div>
+            <div class="col-sm-4 col-lg-8 titulo">
+                <p>Bienvenido!!</p>
+                 <asp:ContentPlaceHolder ID="NombreUsuario" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class=" col-sm-4 col-lg-2 encabezado">
+                     <a href="/PaginasWeb/IniciarSesion.aspx">Iniciar sesión</a>
+            </div>
+        </div>
+        <div class="row">
+            <asp:ContentPlaceHolder ID="ContenedorInicio" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <asp:ScriptReference Path="~/js/jquery-3.5.1.slim.min.js" />
+                <asp:ScriptReference Path="~/css/bootstrap.css" />
+                <asp:ScriptReference Path="~/js/popper.min.js" />
+            </Scripts>
+        </asp:ScriptManager>
+    </form>
+</body>
+</html>

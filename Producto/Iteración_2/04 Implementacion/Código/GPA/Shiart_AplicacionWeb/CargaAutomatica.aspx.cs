@@ -19,7 +19,7 @@ namespace WebApplication1
                 cargarDropDownList(ddlPosicion, PosicionLN.mostrarPosiciones(), "id_posicion", "nombre");
                 cargarDropDownList(ddlSitioMedicion, SitioMedicionLN.mostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
                 cargarDropDownList(ddlMomentoDelDia, MomentoDiaLN.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
-                cargarDropDownList(ddlUbicación, UbicacionExtremidadLN.buscarUbicacionesExtremidadDeExtremidad(Convert.ToInt32(ddlExtremidad.SelectedValue)), "id_ubicacionExtremidad", "nombre");
+                /*cargarDropDownList(ddlUbicación, UbicacionExtremidadLN.buscarUbicacionesExtremidadDeExtremidad(Convert.ToInt32(ddlExtremidad.SelectedValue)), "id_ubicacionExtremidad", "nombre");*/
             }
         }
         public void cargarDropDownList<T>(DropDownList ddl, List<T> lista, string valueField, string textField)

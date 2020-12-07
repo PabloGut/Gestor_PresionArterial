@@ -576,9 +576,9 @@ namespace GPA
                 }
             }
             txtNroHistoriaClinica.Text = Convert.ToString(hc.nro_hc);
-            mtbFechaCreacionHc.Text = Convert.ToString(hc.fecha);
+            mtbFechaCreacionHc.Text = Convert.ToString(hc.fecha.ToShortDateString());
             mtbHoraCreacionHc.Text = Convert.ToString(hc.hora.ToShortTimeString());
-            mtbFechaInicioAntecionHc.Text = Convert.ToString(hc.fechaInicioAtencion);
+            mtbFechaInicioAntecionHc.Text = Convert.ToString(hc.fechaInicioAtencion.ToShortDateString());
             txtMotivoPrimeraConsulta.Text = hc.motivoConsulta;
 
            
@@ -750,7 +750,7 @@ namespace GPA
         }
         private void presentarInformacionAntecedentesMorbidos(DataGridView dgv)
         {
-            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["fechaRegistro"].Value);
             String cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
             cadena += "\r\nTipo de antecedente mórbido: " + Convert.ToString(dgv.CurrentRow.Cells["Tipo de Antecedente Mórbido"].Value);
             cadena += "\r\nNombre:" + Convert.ToString(dgv.CurrentRow.Cells["Nombre"].Value);
@@ -1000,12 +1000,23 @@ namespace GPA
                 MessageBox.Show("Antes de registrar la atención en consultorio y el examen general\n debe generar una nueva consulta", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            registrarExamenGeneralYConsulta();
+            //registrarExamenGeneralYConsulta();
+
+            MessageBox.Show("Consulta y Examen General registrado correctamente!!!", "Atención en consultorio", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             registrarAnálisisToolStripMenuItem.Enabled = true;
             btnAgregarPresionArterial.Enabled = true;
             medicionesAutomaticaConExamenGeneral = false;
 
+            Utilidades.limpiarLosControles(tabControl2);
+            Utilidades.limpiarLosControles(tabPage4);
+
+            listaSintoma.Clear();
+            manejadorRegistrarExamenGeneral = null;
+            manejadorRegistrarAtencionMedicaEnConsultorio = null;
+            listaTerritoriosExaminados = null;
+            listaTemperaturas = null;
+            consulta = null;
         }
         public void registrarExamenGeneralYConsulta()
         {
@@ -1812,7 +1823,7 @@ namespace GPA
 
             cboQueSienteElPaciente.SelectedIndex = 1;
             txtDescQueSientePaciente.Text = "Dolor de cabeza";
-            cboParteCuerpo.SelectedIndex = 1;
+            //cboParteCuerpo.SelectedIndex = 1;
             rbSiDolor.Checked = true;
             cboCaracterDolor.SelectedIndex = 1;
             txtCantTiempoInicioSintoma.Text = "5";
@@ -2203,6 +2214,9 @@ namespace GPA
         private void btnBuscarPracticasPendientes_Click(object sender, EventArgs e)
         {
             Utilidades.limpiarGrilla(dgvDiagnosticosPaciente);
+            Utilidades.limpiarGrilla(dgvEstudiosPendientes);
+            Utilidades.limpiarGrilla(dgvPracticasPendientes);
+            Utilidades.limpiarGrilla(dgvAnalisisLaboratorioPendientes);
             if (pacienteSeleccionado==null)
             {
                 MessageBox.Show("Falta seleccionar un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2222,6 +2236,9 @@ namespace GPA
             /*Primero Buscar los diagnosticos del paciente con estado Tentativo
              Segundo Mostrar en la grilla la lista de diagnosticos
              Tercero al seleccionar en la grilla de diagnósticos una fila, listar en las grillas los estudio, análisis y prácticas. Además completar los compos con los datos del diagnóstico.*/
+            
+
+            
             if(manejadorModificarEstadoDiagnostico==null)
                 manejadorModificarEstadoDiagnostico = new ManejadorModificarEstadoDiagnostico();
 
@@ -2242,13 +2259,17 @@ namespace GPA
         }
         private void cargarGrillaDiagnosticos(List<RazonamientoDiagnostico> diagnosticos)
         {
-            List<string> columnasDiagnosticos = new List<string>();
-            columnasDiagnosticos.Add("Diagnóstico");
-            columnasDiagnosticos.Add("idRazonamiento");
-            columnasDiagnosticos.Add("idEstado");
-            columnasDiagnosticos.Add("conceptoInicial");
-            columnasDiagnosticos.Add("id_diagnostico");
 
+            List<string> columnasDiagnosticos = new List<string>();
+            if (dgvDiagnosticosPaciente.Columns.Count == 0)
+            {
+                columnasDiagnosticos.Add("Diagnóstico");
+                columnasDiagnosticos.Add("idRazonamiento");
+                columnasDiagnosticos.Add("idEstado");
+                columnasDiagnosticos.Add("conceptoInicial");
+                columnasDiagnosticos.Add("id_diagnostico");
+                columnasDiagnosticos.Add("Estado");
+            }
             Utilidades.agregarColumnasDataGridView(dgvDiagnosticosPaciente, columnasDiagnosticos);
 
             dgvDiagnosticosPaciente.Columns[1].Visible = false;
@@ -2258,7 +2279,7 @@ namespace GPA
 
             for (int i = 0; i < diagnosticos.Count; i++)
             {
-                dgvDiagnosticosPaciente.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico,diagnosticos[i].conceptoInicial);
+                dgvDiagnosticosPaciente.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico,diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento, diagnosticos[i].estado.nombre);
             }
 
         }
@@ -2297,11 +2318,14 @@ namespace GPA
         {
             
             List<string> columnasEstudios = new List<string>();
-            columnasEstudios.Add("Nombre del Estudio");
-            columnasEstudios.Add("Fecha de Solicitud");
-            columnasEstudios.Add("Indicaciones");
-            columnasEstudios.Add("idEstudio");
 
+            if (dgvEstudiosPendientes.Columns.Count == 0 || dgvAnalisisLaboratorioPendientes.Columns.Count == 0 || dgvPracticasPendientes.Columns.Count == 0)
+            {
+                columnasEstudios.Add("Nombre del Estudio");
+                columnasEstudios.Add("Fecha de Solicitud");
+                columnasEstudios.Add("Indicaciones");
+                columnasEstudios.Add("idEstudio");
+            }
 
             Utilidades.agregarColumnasDataGridView(dgvEstudiosPendientes, columnasEstudios);
 
@@ -2315,13 +2339,18 @@ namespace GPA
 
         private void dgvDiagnosticosPaciente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            Utilidades.limpiarGrilla(dgvEstudiosPendientes);
+            Utilidades.limpiarGrilla(dgvAnalisisLaboratorioPendientes);
+            Utilidades.limpiarGrilla(dgvPracticasPendientes);
+
             if (dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value==null || string.IsNullOrEmpty(dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value.ToString()))
                 return;
             if (dgvDiagnosticosPaciente.ColumnCount <= 1)
                 return;
 
             txtDiagnosticoCambiarEstado.Text = dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value.ToString();
-            cboEstadoDiagnosticoCambio.SelectedIndex =(int) dgvDiagnosticosPaciente.CurrentRow.Cells[2].Value;
+            cboEstadoDiagnosticoCambio.SelectedIndex =((int) dgvDiagnosticosPaciente.CurrentRow.Cells[2].Value) - 1;
             txtConceptoInicialExamen.Text = dgvDiagnosticosPaciente.CurrentRow.Cells[3].Value.ToString();
 
             if (manejadorModificarEstadoDiagnostico == null)
@@ -2498,6 +2527,11 @@ namespace GPA
                 }
             }
               
+
+        }
+
+        private void groupBox18_Enter(object sender, EventArgs e)
+        {
 
         }
     }

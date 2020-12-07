@@ -630,7 +630,6 @@
             // mtbFechaActual
             // 
             this.mtbFechaActual.Location = new System.Drawing.Point(82, 44);
-            this.mtbFechaActual.Mask = "00/00/0000";
             this.mtbFechaActual.Name = "mtbFechaActual";
             this.mtbFechaActual.Size = new System.Drawing.Size(79, 20);
             this.mtbFechaActual.TabIndex = 3;
@@ -1215,6 +1214,7 @@
             this.button9.TabIndex = 12;
             this.button9.Text = "Añadir";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 

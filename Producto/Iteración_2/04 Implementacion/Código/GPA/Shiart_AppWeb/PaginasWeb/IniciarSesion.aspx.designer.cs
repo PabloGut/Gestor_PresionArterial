@@ -7,20 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Shiart_AppWeb.PaginasWeb {
-    
-    
-    public partial class IniciarSesion {
-        
-        /// <summary>
-        /// Control form1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+namespace Shiart_AppWeb.PaginasWeb
+{
+
+
+    public partial class IniciarSesion
+    {
+
         /// <summary>
         /// Control logInicioSesion.
         /// </summary>

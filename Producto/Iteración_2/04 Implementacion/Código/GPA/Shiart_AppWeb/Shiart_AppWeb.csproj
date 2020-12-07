@@ -52,6 +52,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -200,11 +201,17 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="Estilos\style.css" />
+    <Content Include="Estilos\StylePrincipal.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
+    <Content Include="Images\ConsultarHistoriaClinica.png" />
+    <Content Include="Images\ConsultarMediciones.png" />
     <Content Include="Images\Fondo.jpg" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\imagenConsulta.png" />
+    <Content Include="Images\imagenMoleculas.png" />
+    <Content Include="Images\imagenMundo.jpg" />
+    <Content Include="Images\Medicina.jpg" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -215,14 +222,20 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\RegistrarMediciones.png" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery-3.5.1.min.js" />
+    <Content Include="js\jquery-3.5.1.slim.min.js" />
+    <Content Include="js\popper.min.js" />
     <Content Include="packages.config" />
+    <Content Include="PaginasWeb\ConsultarMediciones.aspx" />
     <Content Include="PaginasWeb\HistoriaClinica.aspx" />
     <Content Include="PaginasWeb\IniciarSesion.aspx" />
     <Content Include="PaginasWeb\Inicio.aspx" />
+    <Content Include="PaginasWeb\InicioLogueado.aspx" />
     <Content Include="PaginasWeb\RegistrarMediciones.aspx" />
     <Content Include="PaginasWeb\ShiartMaster.Master" />
     <Content Include="css\bootstrap-grid.css.map" />
@@ -260,6 +273,10 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="PaginasWeb\Principal.Master" />
+    <Content Include="PaginasWeb\InicioSesion.Master" />
+    <Content Include="PaginasWeb\EstructuraBase.Master" />
+    <Content Include="PaginasWeb\PrincipalLogueado.Master" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -412,6 +429,7 @@
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Clases\MedicionesTensiometro.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -428,6 +446,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasWeb\ConsultarMediciones.aspx.cs">
+      <DependentUpon>ConsultarMediciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasWeb\ConsultarMediciones.aspx.designer.cs">
+      <DependentUpon>ConsultarMediciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasWeb\EstructuraBase.Master.cs">
+      <DependentUpon>EstructuraBase.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasWeb\EstructuraBase.Master.designer.cs">
+      <DependentUpon>EstructuraBase.Master</DependentUpon>
     </Compile>
     <Compile Include="PaginasWeb\HistoriaClinica.aspx.cs">
       <DependentUpon>HistoriaClinica.aspx</DependentUpon>
@@ -449,6 +481,34 @@
     </Compile>
     <Compile Include="PaginasWeb\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasWeb\InicioLogueado.aspx.cs">
+      <DependentUpon>InicioLogueado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasWeb\InicioLogueado.aspx.designer.cs">
+      <DependentUpon>InicioLogueado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasWeb\InicioSesion.Master.cs">
+      <DependentUpon>InicioSesion.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasWeb\InicioSesion.Master.designer.cs">
+      <DependentUpon>InicioSesion.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasWeb\Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasWeb\Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasWeb\PrincipalLogueado.Master.cs">
+      <DependentUpon>PrincipalLogueado.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasWeb\PrincipalLogueado.Master.designer.cs">
+      <DependentUpon>PrincipalLogueado.Master</DependentUpon>
     </Compile>
     <Compile Include="PaginasWeb\RegistrarMediciones.aspx.cs">
       <DependentUpon>RegistrarMediciones.aspx</DependentUpon>
@@ -522,6 +582,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Clases\MedicionesTensiometro.resx">
+      <DependentUpon>MedicionesTensiometro.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

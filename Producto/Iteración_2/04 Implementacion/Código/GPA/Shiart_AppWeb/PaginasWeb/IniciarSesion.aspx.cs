@@ -11,6 +11,7 @@ namespace Shiart_AppWeb.PaginasWeb
 {
     public partial class IniciarSesion : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,13 +27,21 @@ namespace Shiart_AppWeb.PaginasWeb
 
             Paciente paciente = PacienteLN.buscarUnPaciente(idUsuario);
 
-            HttpCookie pacienteCookie = new HttpCookie("Paciente");
-            pacienteCookie["Nombre"]=paciente.nombre;
-            pacienteCookie["Apellido"] = paciente.apellido;
+            if (paciente.id_hc != 0)
+            {
+                HttpCookie idHcCookie = new HttpCookie("idHc", Convert.ToString(paciente.id_hc));
+                //pacienteCookie["idHc"]=Convert.ToString(paciente.id_hc);
 
-            Response.Cookies.Add(pacienteCookie);
-            Response.Redirect("HistoriaClinica.aspx");
+                Response.Cookies.Add(idHcCookie);
 
+                Session["pacienteLogueado"] = paciente;
+                Session["usuarioLogueado"] = paciente.nombre + ", " + paciente.apellido;
+                Response.Redirect("InicioLogueado.aspx");
+            }
+           
+
+
+            //Usar en html para leer valor de variable desde codebehind <%=nombrePaciente %>
         }
     }
 }

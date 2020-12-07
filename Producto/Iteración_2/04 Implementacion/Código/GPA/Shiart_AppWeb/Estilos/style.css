@@ -109,7 +109,7 @@ h1.titulo{
 .titulo {
 }
 .centro{
-	background-image:url(/Images/Fondo.jpg);
+	/**background-image:url(/Images/Fondo.jpg);*/
 	background-size:cover;
 	padding: 300px 20px;
 	background-color:white;
@@ -169,6 +169,8 @@ h2.nombreSistema{
     width:500px;
     
 }
+
+
  /*{ 
   border: 1px solid rgba(0, 0, 0, 0.3);
 }*/

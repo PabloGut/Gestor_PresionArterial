@@ -54,5 +54,193 @@ namespace DAO
             }
 
         }
+        public static DataTable obtenerDetalleMedicionesPresionArterial(int idHistoriaClinica, int idMedicion)
+        {
+            DataTable detalleMediciones = new DataTable();
+            DataRow fila;
+
+            detalleMediciones.Columns.Add("NroMedición");
+            detalleMediciones.Columns.Add("Hora");
+            detalleMediciones.Columns.Add("Valor Máximo");
+            detalleMediciones.Columns.Add("Valor Mínimo");
+            detalleMediciones.Columns.Add("Pulso");
+
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlCommand cmd = new SqlCommand();
+
+            string consulta = @"select d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso
+                                from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
+                                where m.id_medicion=d.id_medicion_fk
+                                and m.id_extremidad_fk=ex.id_extremidad
+                                and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
+                                and m.id_posicion_fk=p.id_posicion
+                                and m.id_momentoDelDia_fk=md.id_momentoDelDia
+                                and m.id_sitioMedicion_fk= sm.id_sitioMedicion
+                                and m.id_hc_fk=@idHc
+                                and m.id_medicion=@IdMedicion
+                                group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso";
+
+            cmd.Parameters.AddWithValue("@idHc", idHistoriaClinica);
+            cmd.Parameters.AddWithValue("@IdMedicion", idMedicion);
+            SqlDataReader dr = null;
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    fila = detalleMediciones.NewRow();
+                    fila["NroMedición"] = (int)dr["id_nroMedicion"];
+                    fila["Hora"] = dr["hora"].ToString();
+                    fila["Valor Máximo"] = (int)dr["valorMaximo"];
+                    fila["Valor Mínimo"] = (int)dr["valorMinimo"];
+                    fila["Pulso"] = (int)dr["pulso"];
+
+                    detalleMediciones.Rows.Add(fila);
+                }
+
+                cn.Close();
+                return detalleMediciones;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+        public static DataTable calcularPromedioDetalle(int idHistoriaClinica, int idMedicion)
+        {
+            DataTable promedios = new DataTable();
+            DataRow fila;
+
+            promedios.Columns.Add("Promedio Valor Máximo");
+            promedios.Columns.Add("Promedio Valor Mínimo");
+            promedios.Columns.Add("Promedio Pulso");
+
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlCommand cmd = new SqlCommand();
+
+            string consulta = @"select AVG(valorMaximo) as 'PromedioValorMaximo',AVG(valorMinimo) as 'PromedioValorMinimo',AVG(pulso) as 'PromedioPulso'
+                                from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d
+                                where m.id_medicion=d.id_medicion_fk
+                                and m.id_hc_fk=@idHc
+                                and m.id_medicion=@IdMedicion
+                                group by m.id_medicion;";
+
+            cmd.Parameters.AddWithValue("@idHc", idHistoriaClinica);
+            cmd.Parameters.AddWithValue("@IdMedicion", idMedicion);
+
+            SqlDataReader dr = null;
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    fila = promedios.NewRow();
+                    fila["Promedio Valor Máximo"] = Convert.ToDouble(dr["PromedioValorMaximo"]);
+                    fila["Promedio Valor Mínimo"] = Convert.ToDouble(dr["PromedioValorMinimo"]);
+                    fila["Promedio Pulso"] = Convert.ToDouble(dr["PromedioPulso"]);
+
+                    promedios.Rows.Add(fila);
+                }
+
+                cn.Close();
+                return promedios;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+        public static DataTable obtenerDetalleMedicionesConFiltro(int idHistoriaClinica)
+        {
+            DataTable detalleMediciones = new DataTable();
+            DataRow fila;
+
+            detalleMediciones.Columns.Add("NroMedición");
+            detalleMediciones.Columns.Add("Fecha");
+            detalleMediciones.Columns.Add("Hora");
+            detalleMediciones.Columns.Add("Valor Máximo");
+            detalleMediciones.Columns.Add("Valor Mínimo");
+            detalleMediciones.Columns.Add("Pulso");
+
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlCommand cmd = new SqlCommand();
+
+            string consulta = @"select top(40) d.id_nroMedicion, m.fecha, d.hora,d.valorMaximo,d.valorMinimo,d.pulso
+                                from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
+                                where m.id_medicion=d.id_medicion_fk
+                                and m.id_extremidad_fk=ex.id_extremidad
+                                and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
+                                and m.id_posicion_fk=p.id_posicion
+                                and m.id_momentoDelDia_fk=md.id_momentoDelDia
+                                and m.id_sitioMedicion_fk= sm.id_sitioMedicion
+                                and m.id_hc_fk=@idHc
+                                group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso
+                                order by m.fecha desc";
+
+            cmd.Parameters.AddWithValue("@idHc", idHistoriaClinica);
+            SqlDataReader dr = null;
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    fila = detalleMediciones.NewRow();
+                    fila["NroMedición"] = (int)dr["id_nroMedicion"];
+                    fila["Fecha"] = Convert.ToDateTime( dr["fecha"].ToString()).ToShortDateString() +" "+ Convert.ToDateTime(dr["hora"].ToString()).ToShortTimeString();
+                    //fila["Hora"] = dr["fecha"].ToString()+ dr["hora"].ToString();
+                    fila["Valor Máximo"] = (int)dr["valorMaximo"];
+                    fila["Valor Mínimo"] = (int)dr["valorMinimo"];
+                    fila["Pulso"] = (int)dr["pulso"];
+
+                    detalleMediciones.Rows.Add(fila);
+                }
+
+                cn.Close();
+                return detalleMediciones;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
     }
 }

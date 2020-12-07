@@ -145,7 +145,6 @@
             // mtbFechaInicio
             // 
             this.mtbFechaInicio.Location = new System.Drawing.Point(381, 12);
-            this.mtbFechaInicio.Mask = "00/00/0000";
             this.mtbFechaInicio.Name = "mtbFechaInicio";
             this.mtbFechaInicio.Size = new System.Drawing.Size(131, 20);
             this.mtbFechaInicio.TabIndex = 6;

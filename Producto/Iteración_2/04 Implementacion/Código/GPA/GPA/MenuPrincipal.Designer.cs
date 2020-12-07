@@ -43,6 +43,8 @@
             this.generarNuevaConsultaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.laboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarAnálisisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroDesdeTensiómetroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -422,8 +424,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.registroDesdeTensiómetroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -547,28 +547,28 @@
             // barriosToolStripMenuItem
             // 
             this.barriosToolStripMenuItem.Name = "barriosToolStripMenuItem";
-            this.barriosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.barriosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.barriosToolStripMenuItem.Text = "Barrios";
             this.barriosToolStripMenuItem.Click += new System.EventHandler(this.barriosToolStripMenuItem_Click);
             // 
             // especialidadesToolStripMenuItem
             // 
             this.especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
-            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.especialidadesToolStripMenuItem.Text = "Especialidades";
             this.especialidadesToolStripMenuItem.Click += new System.EventHandler(this.especialidadesToolStripMenuItem_Click);
             // 
             // localidadesToolStripMenuItem
             // 
             this.localidadesToolStripMenuItem.Name = "localidadesToolStripMenuItem";
-            this.localidadesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.localidadesToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.localidadesToolStripMenuItem.Text = "Localidades";
             this.localidadesToolStripMenuItem.Click += new System.EventHandler(this.localidadesToolStripMenuItem_Click);
             // 
             // tiposDeDocumentoToolStripMenuItem
             // 
             this.tiposDeDocumentoToolStripMenuItem.Name = "tiposDeDocumentoToolStripMenuItem";
-            this.tiposDeDocumentoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.tiposDeDocumentoToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.tiposDeDocumentoToolStripMenuItem.Text = "Tipos de Documento";
             this.tiposDeDocumentoToolStripMenuItem.Click += new System.EventHandler(this.tiposDeDocumentoToolStripMenuItem_Click);
             // 
@@ -577,13 +577,13 @@
             this.tratamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoTratamientoToolStripMenuItem});
             this.tratamientoToolStripMenuItem.Name = "tratamientoToolStripMenuItem";
-            this.tratamientoToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.tratamientoToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.tratamientoToolStripMenuItem.Text = "Tratamiento";
             // 
             // nuevoTratamientoToolStripMenuItem
             // 
             this.nuevoTratamientoToolStripMenuItem.Name = "nuevoTratamientoToolStripMenuItem";
-            this.nuevoTratamientoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.nuevoTratamientoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.nuevoTratamientoToolStripMenuItem.Text = "Nuevo Tratamiento";
             this.nuevoTratamientoToolStripMenuItem.Click += new System.EventHandler(this.nuevoTratamientoToolStripMenuItem_Click);
             // 
@@ -616,6 +616,21 @@
             this.registrarAnálisisToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.registrarAnálisisToolStripMenuItem.Text = "Registrar análisis";
             this.registrarAnálisisToolStripMenuItem.Click += new System.EventHandler(this.registrarAnálisisToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroDesdeTensiómetroToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(80, 20);
+            this.toolStripMenuItem1.Text = "Mediciones";
+            // 
+            // registroDesdeTensiómetroToolStripMenuItem
+            // 
+            this.registroDesdeTensiómetroToolStripMenuItem.Name = "registroDesdeTensiómetroToolStripMenuItem";
+            this.registroDesdeTensiómetroToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.registroDesdeTensiómetroToolStripMenuItem.Text = "Registro desde tensiómetro";
+            this.registroDesdeTensiómetroToolStripMenuItem.Click += new System.EventHandler(this.registroDesdeTensiómetroToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -1467,8 +1482,7 @@
             // 
             // mtbFechaInicioAntecionHc
             // 
-            this.mtbFechaInicioAntecionHc.Location = new System.Drawing.Point(142, 109);
-            this.mtbFechaInicioAntecionHc.Mask = "00/00/0000";
+            this.mtbFechaInicioAntecionHc.Location = new System.Drawing.Point(150, 109);
             this.mtbFechaInicioAntecionHc.Name = "mtbFechaInicioAntecionHc";
             this.mtbFechaInicioAntecionHc.Size = new System.Drawing.Size(100, 20);
             this.mtbFechaInicioAntecionHc.TabIndex = 11;
@@ -1501,7 +1515,6 @@
             // mtbFechaCreacionHc
             // 
             this.mtbFechaCreacionHc.Location = new System.Drawing.Point(142, 43);
-            this.mtbFechaCreacionHc.Mask = "00/00/0000";
             this.mtbFechaCreacionHc.Name = "mtbFechaCreacionHc";
             this.mtbFechaCreacionHc.Size = new System.Drawing.Size(100, 20);
             this.mtbFechaCreacionHc.TabIndex = 9;
@@ -2023,7 +2036,6 @@
             // mtbFechaConsulta
             // 
             this.mtbFechaConsulta.Location = new System.Drawing.Point(418, 29);
-            this.mtbFechaConsulta.Mask = "00/00/0000";
             this.mtbFechaConsulta.Name = "mtbFechaConsulta";
             this.mtbFechaConsulta.Size = new System.Drawing.Size(83, 23);
             this.mtbFechaConsulta.TabIndex = 5;
@@ -3936,7 +3948,6 @@
             // mtbFechaDiagnostico
             // 
             this.mtbFechaDiagnostico.Location = new System.Drawing.Point(463, 117);
-            this.mtbFechaDiagnostico.Mask = "00/00/0000";
             this.mtbFechaDiagnostico.Name = "mtbFechaDiagnostico";
             this.mtbFechaDiagnostico.Size = new System.Drawing.Size(100, 23);
             this.mtbFechaDiagnostico.TabIndex = 26;
@@ -4124,10 +4135,11 @@
             this.groupBox18.Controls.Add(this.dgvDiagnosticosPaciente);
             this.groupBox18.Location = new System.Drawing.Point(6, 4);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(846, 238);
+            this.groupBox18.Size = new System.Drawing.Size(843, 238);
             this.groupBox18.TabIndex = 2;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Diagnóstico";
+            this.groupBox18.Enter += new System.EventHandler(this.groupBox18_Enter);
             // 
             // btnBuscarDiagnosticos
             // 
@@ -4142,7 +4154,6 @@
             // mtbFechaCambioEstadoDiagnostico
             // 
             this.mtbFechaCambioEstadoDiagnostico.Location = new System.Drawing.Point(685, 154);
-            this.mtbFechaCambioEstadoDiagnostico.Mask = "00/00/0000";
             this.mtbFechaCambioEstadoDiagnostico.Name = "mtbFechaCambioEstadoDiagnostico";
             this.mtbFechaCambioEstadoDiagnostico.Size = new System.Drawing.Size(145, 20);
             this.mtbFechaCambioEstadoDiagnostico.TabIndex = 12;
@@ -4245,7 +4256,7 @@
             this.groupBox17.Controls.Add(this.dgvEstudiosPendientes);
             this.groupBox17.Location = new System.Drawing.Point(12, 248);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(846, 250);
+            this.groupBox17.Size = new System.Drawing.Size(837, 250);
             this.groupBox17.TabIndex = 1;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Prácticas solicitadas pendientes";
@@ -4334,21 +4345,6 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Registrar Nuevo Paciente";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registroDesdeTensiómetroToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(80, 20);
-            this.toolStripMenuItem1.Text = "Mediciones";
-            // 
-            // registroDesdeTensiómetroToolStripMenuItem
-            // 
-            this.registroDesdeTensiómetroToolStripMenuItem.Name = "registroDesdeTensiómetroToolStripMenuItem";
-            this.registroDesdeTensiómetroToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.registroDesdeTensiómetroToolStripMenuItem.Text = "Registro desde tensiómetro";
-            this.registroDesdeTensiómetroToolStripMenuItem.Click += new System.EventHandler(this.registroDesdeTensiómetroToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 

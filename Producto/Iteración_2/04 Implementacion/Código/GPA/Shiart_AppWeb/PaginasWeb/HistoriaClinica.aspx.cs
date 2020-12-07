@@ -13,11 +13,11 @@ namespace Shiart_AppWeb.PaginasWeb
         {
             if (Response.Cookies["Paciente"] == null)
             {
-                lblPacienteLogueado.Text = "Ingresar un usuario para ver su hitoria clínica";
+               // lblPacienteLogueado.Text = "Ingresar un usuario para ver su hitoria clínica";
             }
             else
             {
-                lblPacienteLogueado.Text = Request.Cookies["Paciente"]["Nombre"] + " " + Request.Cookies["Paciente"]["Apellido"];
+               // lblPacienteLogueado.Text = Request.Cookies["Paciente"]["Nombre"] + " " + Request.Cookies["Paciente"]["Apellido"];
             }
         }
     }

@@ -5,7 +5,7 @@
 
       <div class="container-fluid">
         <div class="row border">
-            <img class="img-fluid float-center" src="Images/Medicina.jpg" alt="Chania" width="100%">
+            <img class="img-fluid float-center" src="Images/Medicina.jpg" alt="Chania" width="100%"/>
         </div>
     </div>
 

@@ -83,3 +83,5 @@ C:\Users\usuario\Desktop\ProyectoFinal\ProyectoFinal\Gestor_PresiónArterial\tru
 C:\Users\usuario\Desktop\ProyectoFinal\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Shiart_AppWeb\obj\Debug\Shiart_AppWeb.csproj.CopyComplete
 C:\Users\usuario\Desktop\ProyectoFinal\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Shiart_AppWeb\obj\Debug\Shiart_AppWeb.dll
 C:\Users\usuario\Desktop\ProyectoFinal\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Shiart_AppWeb\obj\Debug\Shiart_AppWeb.pdb
+C:\Users\usuario\Desktop\ProyectoFinal\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Shiart_AppWeb\obj\Debug\Shiart_AppWeb.Clases.MedicionesTensiometro.resources
+C:\Users\usuario\Desktop\ProyectoFinal\ProyectoFinal\Gestor_PresiónArterial\trunk\Producto\Iteración_2\04 Implementacion\Código\GPA\Shiart_AppWeb\obj\Debug\Shiart_AppWeb.csproj.GenerateResource.cache

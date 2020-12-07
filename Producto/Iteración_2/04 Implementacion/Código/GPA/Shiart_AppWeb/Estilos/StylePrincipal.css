@@ -1,0 +1,164 @@
+﻿body {
+}
+.container {
+    margin-top: 20px;
+}
+
+.first {
+    background: #adf3ff;
+    border: 1px solid black;
+    text-align:center;
+}
+
+.second {
+    background: #adf3ff;
+    border: 1px solid black;
+    text-align: center;
+    /*border: 5px solid blue;*/
+}
+.third {
+    background: #adf3ff;
+    border: 1px solid black;
+    text-align: center;
+}
+.encabezado {
+    background: #A7E3C9;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+.titulo {
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 10px;
+    background: #A7E3C9;
+}
+.centro {
+    background: grey;
+}
+.imagen {
+    background-image: url(/Images/imagenMoleculas.png);
+    background-size: cover;
+    background-color: rgba(0,0,0,0);
+    height:400px;
+}
+.caracteristicas {
+    width: 400px;
+    position: center;
+    /*border: 5px solid blue;*/
+}
+.imagenCaracteristica {
+    padding-right: 50px;
+    padding-top: 10px;
+    margin-right: 20px;
+    padding: 40px;
+    padding-left:140px;
+}
+.descripcion {
+    text-align: center;
+    height: 90px;
+    width: 410px;
+    font-size: xx-large;
+    box-sizing: content-box;
+    border: 5px solid blue;
+}
+.descCaracateristica{
+    padding:30px;
+    text-align:center;
+    width:360px;
+    margin:15px;
+}
+.descSistema {
+    text-align: center;
+    position: absolute;
+    left: 20%;
+    top: 10%;
+    right: 20%;
+   /* border: 5px solid blue;*/
+    box-sizing:content-box;
+    width:auto;
+    height:330px;
+    font-size:20px;
+    margin:10px;
+    padding:10px;
+}
+.descSistema h1{
+    font-size:25px;
+}
+.login {
+    position: absolute;
+    left: 1px;
+    border: 5px solid blue;
+    box-sizing: content-box;
+    width:auto;
+    margin:50px;
+}
+.izq {
+    /*border: 5px solid black;*/
+    height:100px;
+    background:white;
+
+}
+.centro {
+    border: 1px solid black;
+    height: 200px;
+    background: white;
+    padding-right: 10px;
+}
+.der {
+    /*border: 5px solid black;*/
+    height: 100px;
+    background: white;
+}
+.menu {
+    border: 1px solid black;
+}
+.RegMedicionesForm{
+    padding:20px;
+}
+
+.filaRegMedicion {
+   /* border: 1px solid black;*/
+    margin:5px;
+}
+.columna1RegMedicion {
+    border: 1px solid green;
+    height:600px;
+}
+.columna2RegMedicion {
+   /* border: 1px solid red;
+    height: 500px;*/
+}
+
+/*Para prueba Eliminar*/
+.grillaMediciones {
+    padding-top: 20px;
+    /*border: 1px solid red;*/
+}
+.infoHistoriaClinica {
+    padding-top: 20px;
+    border: 1px solid black;
+}
+.botonHistoriaClinica {
+    padding-top: 20px;
+}
+.listaMediciones {
+    border: 5px solid black;
+    margin: 5px;
+    padding: 10px;
+}
+.grillaDetalle {
+    padding: 20px;
+    border: 2px solid black;
+}
+.graficoMediciones {
+    
+    /*border: 2px solid red;*/
+    /*padding:10px;*/
+    margin-right:0px;
+}
+.bordePrueba {
+    /*border: 2px solid green;*/
+    overflow: scroll;
+}
+

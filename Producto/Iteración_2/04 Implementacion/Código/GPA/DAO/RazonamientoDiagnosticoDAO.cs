@@ -215,9 +215,9 @@ namespace DAO
 
             SqlConnection cn = new SqlConnection(getCadenaConexion());
 
+            EstadoDiagnostico estado = null;
 
-
-            string consulta = @"select r.diagnostico, r.id_razonamiento,r.id_estadoDiagnostico_fk,r.conceptoInicial
+            string consulta = @"select r.diagnostico, r.id_razonamiento,r.id_estadoDiagnostico_fk,r.conceptoInicial,ediag.nombre
                                 from Historia_Clinica hc,Paciente p, Consulta c, ExamenGeneral ex, RazonamientoDiagnostico r, EstadoDiagnostico ediag
                                 where p.id_hc_fk=hc.id_hc
                                 and hc.id_hc=c.id_hc_fk 
@@ -246,6 +246,11 @@ namespace DAO
                     diagnostico.id_razonamiento = (int)dr["id_razonamiento"];
                     diagnostico.id_estadoDiagnostico = (int)dr["id_estadoDiagnostico_fk"];
                     diagnostico.conceptoInicial = dr["conceptoInicial"].ToString();
+                    
+                    estado = new EstadoDiagnostico();
+                    estado.nombre = dr["nombre"].ToString();
+
+                    diagnostico.estado = estado;
 
                     diagnosticos.Add(diagnostico);
                 }

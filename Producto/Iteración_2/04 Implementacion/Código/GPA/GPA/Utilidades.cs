@@ -43,6 +43,11 @@ namespace GPA
                     ListBox listBox = (ListBox)control;
                     listBox.ClearSelected();
                 }
+                if(control is DataGridView)
+                {
+                    DataGridView grilla = (DataGridView)control;
+                    grilla.Rows.Clear();
+                }
             }
         }
 

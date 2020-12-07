@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="EstructuraBase.master.cs" Inherits="Shiart_AppWeb.PaginasWeb.EstructuraBase" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie-edge" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../Estilos/StylePrincipal.css" />
+   
+<asp:ContentPlaceHolder ID="HeaderLinkGrafico" runat="server">
+        </asp:ContentPlaceHolder>
+
+ 
+    <title>Shiart</title>
+
+</head>
+<body>
+    <form id="form1" runat="server" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 col-lg-2 titulo">
+                <a href="/PaginasWeb/InicioLogueado.aspx">SHIART</a>
+            </div>
+            <div class="col-sm-4 col-lg-8 titulo">
+                <p>Bienvenido!!</p>
+                <p><%=nombrePaciente %></p>
+            </div>
+            <div class=" col-sm-4 col-lg-2 encabezado">
+                 <asp:LinkButton runat="server" ID="cerrarSesion" OnClick="cerrarSesion_Click">Cerrar Sesión</asp:LinkButton>
+            </div>
+        </div>
+
+        <div class="row menu">
+
+            <nav class="navbar navbar-expand-md navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="main-navigation">
+                  
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="InicioLogueado.aspx">Home</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="HistoriaClinica.aspx">Historia Clínica</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="RegistrarMediciones.aspx">Registrar Mediciones</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="ConsultarMediciones.aspx">Consultar Mediciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+        </div>
+          <asp:ScriptManager runat="server" ID="ScriptManager">
+            <Scripts>
+                <asp:ScriptReference Path="~/js/jquery-3.5.1.slim.min.js" />
+                <asp:ScriptReference Path="~/css/bootstrap.css" />
+                <asp:ScriptReference Path="~/js/popper.min.js" />
+                <asp:ScriptReference Path="~/js/bootstrap.min.js" />
+                <asp:ScriptReference Path="~/js/jquery-3.5.1.min.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
+        <asp:ContentPlaceHolder ID="RegistrarMedicion" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="HistoriaClinica" runat="server">
+        </asp:ContentPlaceHolder>
+
+         <asp:ContentPlaceHolder ID="ConsultarMediciones" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

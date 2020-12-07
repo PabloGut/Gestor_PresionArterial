@@ -5,10 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-     <link href="https://fonts.googleapis.com/css?family=Oswald:300,700|Varela+Round" rel="stylesheet"/>
-	 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"/>
-	 <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bangers|Josefin+Sans|Miltonian+Tattoo" rel="stylesheet"/>
-	 <link rel="stylesheet" type="text/css" href="/Estilos/style.css"/>
+<meta name="viewport" content="width=device-width, initial-scale, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie-edge" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,700|Varela+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bangers|Josefin+Sans|Miltonian+Tattoo" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="/Estilos/style.css"/>
+    
     <title>SHIAR</title>
    
 </head>

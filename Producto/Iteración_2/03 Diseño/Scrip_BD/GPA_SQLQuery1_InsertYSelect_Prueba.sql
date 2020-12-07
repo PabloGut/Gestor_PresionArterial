@@ -1,3 +1,5 @@
+
+
 Insert into Historia_Clinica(nro_hc,fecha_creación,diagnostico,antecedentes,fecha_inicio_atencion_con_profesional)
 values ('1','15/06/2016','HTA','Sin antecedentes','15/06/2016')
 
@@ -20,16 +22,8 @@ values ('Tuyuti', '620','5008',null,null,null,4)
 Insert into Estudio("fecha_estudio","doctorACargo",informe_estudio,id_hc_fk,id_institucion_fk)
 values ('15/06/2016','Diaz','Normal','1','1')
 
-select *
-from TiposAntecedentesMorbidos
 
 
-
-select *
-from EstudiosDiagnosticoPorImagen
-
-select *
-from TipoSintoma
 
 delete from Historia_Clinica
 where nro_hc=3
@@ -57,7 +51,7 @@ values ('Rio Ceballos')
 
 insert into TipoDocumento(nombre)values('DNI')
 
-select * from ProfesionalMedico
+select * from Paciente
 
 ALTER TABLE Usuario 
 ALTER COLUMN contraseña varbinary(MAX) not null;
@@ -72,11 +66,17 @@ where id_tipoDoc_fk=1 and nro_documento='12036547'
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('Usuario1',PWDENCRYPT(123456),'16/06/2016')
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('Usuario1',PWDENCRYPT(654321),'16/06/2016')
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('MedicoUsuario1',PWDENCRYPT(102030),'16/06/2016')
-insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('LJ',102030,'16/06/2016')
+insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('LJ',PWDENCRYPT(123),TRY_CONVERT(date,'25/05/2020',103));
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('EA',PWDENCRYPT(123456),'24/06/2016')
 insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('EE',PWDENCRYPT(123456),'24/06/2016')
 
 
+insert into Usuario(nombre_usuario,contraseña,fecha_creacion) values ('admin',PWDENCRYPT(123),TRY_CONVERT(date,'25/05/2020',103));
+
+select *
+from Usuario
+
+delete from Usuario
 
 insert into Estado(nombre,descripcion) values ('Activo',NUll)
 insert into Estado(nombre,descripcion) values ('Inactivo',NUll)
@@ -97,7 +97,7 @@ insert into Especialidad(nombre,descripcion)
 values('Nefrología','Parte de la medicina que se ocupa de la anatomía, la fisiología y las enfermedades del riñón.')
 
 insert into ProfesionalMedico(id_tipoDoc_fk,nro_documento,nombre,apellido,telefono,nroCelular,email,id_usuario_fk,id_estado_fk,id_especialidad_fk,matricula_profesional)
-values ('1','15036547','Luis','Juncos','4760021','152568741','LuisJuncos@hotmail.com','10','1','1','222545')
+values ('1','15036547','Luis','Juncos','4760021','152568741','LuisJuncos@hotmail.com','6','1','1','222545')
 
 Insert into Barrio(nombre,descripcion,id_localidad_fk)
 values('Las Margaritas',null,1)
@@ -194,13 +194,11 @@ select id_estudio,nombre as 'Nombre del estudio',fecha_estudio,doctorACargo,info
 alter table TipoAntecedenteMorbido
 drop column descripcion
 
-alter table TipoAntecedenteMorbido
-drop column id_nombrePorTipo_fk
+
 
 drop table Operaciones
 
-alter table Traumatismos
-add descripcion text
+
 
 select m.nombreGenerico as 'Nombre genérico', nc.nombre as 'Nombre comercial', em.concentracion as 'Concentracción', um.nombre as 'Unidad de medida', fa.nombre as 'Forma de administración', pm.nombre as 'Presentación del medicamento', em.cantidadComprimidos as 'Cantidad de comprimidos', m.id_medicamento,em.id_especificacion, em.id_medicamento_fk,em.id_formaAdministracion_fk,em.id_unidadMedida_fk,em.id_presentacionMedicamento_fk
 from Medicamento m,EspecificacionMedicamento em, NombreComercial nc,UnidadMedida um,UnidadMedidaXMedicamento umm, FormaAdministracion fa, FormaAdministracionXMedicamento fam, PresentacionMedicamento pm, PresentacionMedicamentoXMedicamento prem 
@@ -740,8 +738,12 @@ select * from Historia_Clinica
 alter table AntecedentesPatologicosPersonales
 alter column descripcion_otrasEnfermedades text
 
-alter table RazonamientoDiagnostico
-drop column motivoConfirmado
+alter table TipoSintoma
+drop column nombre
+alter table TipoSintoma
+add nombre nvarchar(50)
+
+
 alter table RazonamientoDiagnostico
 drop column fechaConfirmado
 alter table RazonamientoDiagnostico
@@ -838,7 +840,7 @@ add id_itemLaboratorio int
 alter table ItemEstudioLaboratorio
 add foreign key (id_itemLaboratorio) references itemLaboratorio(id_itemLaboratorio)
 
-drop table DetalleValorReferencia
+drop table TipoSintoma
 drop table DetalleItemLaboratorio
 drop table DetalleLaboratorio
 
@@ -882,7 +884,165 @@ where m.id_medicion=d.id_medicion_fk
 and m.id_hc_fk=34
 
 
-select * from ExamenGeneral
+select * 
+from Historia_Clinica hc, Paciente p
+where hc.id_nrodoc_paciente_fk=p.nro_documento
+and hc.id_tipodoc_paciente_fk=p.id_tipoDoc_fk
+and hc.id_hc=23
 
 select * from Consulta
 where id_medicion_fk=34
+
+select *
+from Sexo
+
+select *
+from Paciente
+
+delete from Paciente
+
+
+select p.nombre as 'Nombre', p.apellido as 'Apellido', td.nombre as 'TipoDocumento', p.id_tipoDoc_fk, p.nro_documento as 'Número de documento', d.calle, d.numero, b.nombre as 'Barrio', l.nombre as 'Localidad', e.nombre as 'Estado', s.nombre as'Sexo'
+ from Paciente p, TipoDocumento td, Domicilio d, Barrio b, Localidad l, Estado e, Sexo s
+where p.id_profesionalMedico_tipoDoc_fk='8' and p.id_profesionalMedico_nroDoc_fk='15036547'
+and p.id_tipoDoc_fk=td.id_tipoDoc and p.id_domicilio_fk=d.id_domicilio 
+and d.id_barrio_fk=b.id_barrio and b.id_localidad_fk=l.id_localidad
+and p.id_estado_fk=e.id_estado and p.id_sexo_fk= s.id_sexo
+
+
+update ProfesionalMedico 
+set  id_tipodoc_fk=1
+
+
+
+---------------------------------------------------------------------------------------------------
+
+/*
+usuario prueba
+usaurio: shaba1
+pass: 2chd05qk
+
+
+usuario prueba
+usaurio: mgonzalez1
+pass: 1s3vibbq
+*/
+--quitar y agregar una columna 
+alter table CaracterDelDolor
+drop column nombre
+alter table CaracterDelDolor
+add nombre text
+
+
+select *
+from Paciente
+
+select *
+from MedicionDePrecionArterial
+
+select *
+from SitioMedicion
+
+select *
+from ParteDelCuerpo
+
+select *
+from UbicacionExtremidad
+
+select *
+from MedicionDePrecionArterial
+
+select *
+from DetalleMedicionPresionArterial
+
+
+select distinct m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición'
+from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
+where m.id_medicion=d.id_medicion_fk
+and m.id_extremidad_fk=ex.id_extremidad
+and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
+and m.id_posicion_fk=p.id_posicion
+and m.id_momentoDelDia_fk=md.id_momentoDelDia
+and m.id_sitioMedicion_fk= sm.id_sitioMedicion
+and m.id_hc_fk=2
+--and m.id_medicion=54
+group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100))
+
+
+select distinct m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad'
+from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
+where m.id_medicion=d.id_medicion_fk
+and m.id_extremidad_fk=ex.id_extremidad
+and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
+and m.id_posicion_fk=p.id_posicion
+and m.id_momentoDelDia_fk=md.id_momentoDelDia
+and m.id_sitioMedicion_fk= sm.id_sitioMedicion
+and m.id_hc_fk=2
+--and m.id_medicion=54
+group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100))
+
+
+select top(10) m.fecha, d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso,AVG(valorMaximo),AVG(valorMinimo)
+from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
+where m.id_medicion=d.id_medicion_fk
+and m.id_extremidad_fk=ex.id_extremidad
+and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
+and m.id_posicion_fk=p.id_posicion
+and m.id_momentoDelDia_fk=md.id_momentoDelDia
+and m.id_sitioMedicion_fk= sm.id_sitioMedicion
+and m.id_hc_fk=2
+and m.id_medicion=54
+group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso
+
+
+
+select AVG(valorMaximo) as 'PromedioValorMaximo',AVG(valorMinimo) as 'PromedioValorMinimo',AVG(pulso) as 'PromedioPulso'
+from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d
+where m.id_medicion=d.id_medicion_fk
+and m.id_hc_fk=2
+and m.id_medicion=54
+group by m.id_medicion;
+
+select *
+from Consulta
+
+select *
+from ClasificacionPresionArterial
+
+select *
+from RazonamientoDiagnostico
+
+select *
+from RazonamientoDiagnostico
+
+select *
+from EstadoDiagnostico
+
+select *
+from EstudiosDiagnosticoPorImagen
+
+select r.*
+from Consulta c, ExamenGeneral e, RazonamientoDiagnostico r
+where c.id_examenGeneral_fk=e.id_examenGeneral
+and r.id_examenGeneral_fk=e.id_examenGeneral
+and c.id_consulta=3
+
+
+
+select ed.fechaSolicitud,ne.nombre,ed.indicaciones,ed.id_estudioDiagnosticoPorImagen
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne
+                                where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and ed.id_razonamientoDiagnostico_fk=r.id_razonamiento
+                                and ed.id_nombreEstudio_fk=ne.id_nombreEstudio
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and r.id_razonamiento=1
+
+
+select ed.fechaSolicitud,ne.nombre,ed.indicaciones,ed.id_estudioDiagnosticoPorImagen
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne
+                                where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and ed.id_razonamientoDiagnostico_fk=r.id_razonamiento
+                                and ed.id_nombreEstudio_fk=ne.id_nombreEstudio
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and ed.fechaRealizacion is null
+								and r.id_razonamiento=3

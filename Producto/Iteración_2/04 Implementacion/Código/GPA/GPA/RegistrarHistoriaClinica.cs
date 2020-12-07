@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -230,6 +231,7 @@ namespace GPA
         {
             mtbFechaActual.Text = manejadorRegistrarHC.mostrarFechaActual();
             mtbHoraActual.Text = manejadorRegistrarHC.mostrarHoraActual();
+
         }
         /*
          * Método para mostrar los tipos de síntomas en el combo box correspondiente.
@@ -2497,6 +2499,9 @@ namespace GPA
 
         }
 
-       
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -55,5 +55,17 @@ namespace LogicaNegocio
         {
             MedicionDePresionArterialDAO.registrarMedicionDePresionArterialEnHistoriaClinica(medicion);
         }
+        public static DataTable obtenerMedicionesPresionArterial(int idHc)
+        {
+            return MedicionDePresionArterialDAO.obtenerMedicionesPresionArterial(idHc);
+        }
+        public static DataTable obtenerDetalleMedicionesPresionArterial(int idHc, int idMedicion)
+        {
+            return DetalleMedicionPresionArterialDAO.obtenerDetalleMedicionesPresionArterial(idHc, idMedicion);
+        }
+        public static DataTable obtenerDetalleMedicionesConFiltro(int idHc)
+        {
+            return DetalleMedicionPresionArterialDAO.obtenerDetalleMedicionesConFiltro(idHc);
+        }
     }
 }
