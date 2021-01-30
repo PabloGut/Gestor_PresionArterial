@@ -127,6 +127,7 @@ namespace DAO
             {
                 while (dr.Read())
                 {
+                    string valor = dr["id_hc_fk"].ToString();
                     if (dr["id_hc_fk"] == DBNull.Value)
                     {
                         return false;

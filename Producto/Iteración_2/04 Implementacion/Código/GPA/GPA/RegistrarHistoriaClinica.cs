@@ -615,14 +615,15 @@ namespace GPA
          */
         private void btnVerificarHC_Click(object sender, EventArgs e)
         {
-            if (manejadorRegistrarHC.existeHC(paciente.id_tipoDoc, paciente.nroDoc) == false)
+            if (manejadorRegistrarHC.existeHC(paciente.id_tipoDoc, paciente.nroDoc) == true)
             {
-                MessageBox.Show("El paciente no posee historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                habilitarDeshabilitarTabPageYBotones(true);
+                MessageBox.Show("El paciente ya tiene historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                habilitarDeshabilitarTabPageYBotones(false);
             }
             else
             {
-                MessageBox.Show("El paciente ya tiene historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                MessageBox.Show("El paciente no posee historia clínica!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                habilitarDeshabilitarTabPageYBotones(true);
             }
         }
         /*

@@ -32,13 +32,14 @@ namespace DAO
 
 
 
-            string consulta = @"select l.id_laboratorio, l.fechaSolicitud,al.nombre,l.indicaciones
-                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, Laboratorio l, AnalisisLaboratorio al
+            string consulta = @"select l.id_laboratorio, l.fechaSolicitud,il.nombre,l.indicaciones
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, LaboratorioNueva l, ItemLaboratorio il
                                 where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
                                 and l.id_razonamientoDiagnostico_fk=r.id_razonamiento
-                                and l.id_analisisLaboratorio_fk=al.id_analisisLaboratorio
+                                and l.id_itemLaboratorio_fk=il.id_itemLaboratorio
                                 and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
-                                and r.id_razonamiento=@idRazonamiento";
+                                and r.id_razonamiento=@idRazonamiento
+                                and l.fechaRealizacion is null";
 
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.AddWithValue("@idRazonamiento", idRazonamiento);
@@ -81,12 +82,15 @@ namespace DAO
         {
             SqlCommand cmd = new SqlCommand();
 
-            string consulta = @"update Laboratorio
-                                set fechaRealizacion=@fechaRealizacion, doctorACargo=@doctorACargo,
-                                id_institucion_fk=@idInstitucion, observacionDeLosResultados=@observaciones,
-                                id_metodoAnalisisLaboratorio_fk=@idMetodo, 
-                                id_analisisLaboratorio_fk=@idAnalisisLaboratorio
-                                where id_laboratorio=@idLaboratorio";    
+            //string consulta = @"update LaboratorioNueva
+            //                    set fechaRealizacion=@fechaRealizacion, doctorACargo=@doctorACargo,
+            //                    id_institucion_fk=@idInstitucion, observacionDeLosResultados=@observaciones,
+            //                    id_metodoAnalisisLaboratorio_fk=@idMetodo
+            //                    where id_laboratorio=@idLaboratorio and id_razonamientoDiagnostico_fk=@idRazonamiento";
+
+            string consulta = @"update LaboratorioNueva
+                                set fechaRealizacion=@fechaRealizacion
+                                where id_laboratorio=@idLaboratorio and id_razonamientoDiagnostico_fk=@idRazonamiento";
 
             cmd.Parameters.AddWithValue("@fechaRealizacion", laboratorio.fechaRealizacion);
             cmd.Parameters.AddWithValue("@doctorACargo", laboratorio.DoctorACargo);
@@ -98,9 +102,9 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@observaciones", laboratorio.observaciones);
 
             cmd.Parameters.AddWithValue("@idMetodo", laboratorio.id_metodoLaboratorio);
-            cmd.Parameters.AddWithValue("@idAnalisisLaboratorio", laboratorio.id_analisisLaboratorio_fk);
+            //cmd.Parameters.AddWithValue("@idAnalisisLaboratorio", laboratorio.id_analisisLaboratorio_fk);
             cmd.Parameters.AddWithValue("@idLaboratorio", laboratorio.id_laboratorio);
-
+            cmd.Parameters.AddWithValue("@idRazonamiento", laboratorio.id_razonamientoDiagnostico);
 
             try
             {
@@ -126,6 +130,60 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
 
+        }
+        public static void insertResultadosEstudioLaboratorio(Laboratorio laboratorio)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+            SqlCommand cmd = new SqlCommand();
+
+            string consulta = @"update LaboratorioNueva
+                               set fechaRealizacion=@fechaRealizacion,doctorACargo=@doctorACargo,id_institucion_fk=@idInstitucion,observacionDeLosResultados=@observacionDeLosResultados,id_itemLaboratorio_fk=@idItemLaboratorio,id_metodoAnalisisLAboratorio_fk=@idMetodoAnalisisLaboratorio
+                               where id_laboratorio=@idLaboratorio";
+
+            cmd.Parameters.AddWithValue("@fechaRealizacion", laboratorio.fechaRealizacion);
+            cmd.Parameters.AddWithValue("@doctorACargo", laboratorio.DoctorACargo);
+            cmd.Parameters.AddWithValue("@idInstitucion", laboratorio.id_institucion);
+            cmd.Parameters.AddWithValue("@observacionDeLosResultados", laboratorio.observaciones);
+            cmd.Parameters.AddWithValue("@idMetodoAnalisisLaboratorio", laboratorio.id_metodoLaboratorio);
+            cmd.Parameters.AddWithValue("@idLaboratorio", laboratorio.id_laboratorio);
+            cmd.Parameters.AddWithValue("@idItemLaboratorio", laboratorio.id_analisisLaboratorio_fk);
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                cmd.Connection = cn;
+                cmd.Transaction = tran;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.ExecuteNonQuery();
+
+                //SqlCommand cmd1 = new SqlCommand("select IDENT_CURRENT('Laboratorio')", cn, tran);
+
+                //laboratorio.id_laboratorio = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                //llamar al metodo UpdateDetalleLaboratorio
+                foreach (DetalleLaboratorio detalle in laboratorio.listaDetalle)
+                {
+                    detalle.idLaboratorio = laboratorio.id_laboratorio;
+                    DetalleLaboratorioDAO.insertarDetalleLaboratorio(detalle, cn, tran);
+                }
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                throw e;
+            }
         }
     }
 }

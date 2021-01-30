@@ -43,6 +43,8 @@
             this.generarNuevaConsultaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.laboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarAnálisisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarAnalisisLaboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarMétodoAnalisisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDesdeTensiómetroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -310,11 +312,6 @@
             this.pulsoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.momentoPA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregarPresionArterial = new System.Windows.Forms.Button();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.lblValorMinPresionArterial = new System.Windows.Forms.Label();
-            this.lblValorMaxPresionArterial = new System.Windows.Forms.Label();
-            this.lblCategoriaPresionArterial = new System.Windows.Forms.Label();
-            this.lblPromedioPresionArterial = new System.Windows.Forms.Label();
             this.txtPulsoPresionArterial = new System.Windows.Forms.TextBox();
             this.lblPulsoPresionArterial = new System.Windows.Forms.Label();
             this.txtDiastolicaPresionArterial = new System.Windows.Forms.TextBox();
@@ -382,6 +379,7 @@
             this.label84 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.chbNuevoDiagnostico = new System.Windows.Forms.CheckBox();
             this.mtbFechaDiagnostico = new System.Windows.Forms.MaskedTextBox();
             this.txtMotivoDiagnostico = new System.Windows.Forms.TextBox();
             this.lblFechaDescartado = new System.Windows.Forms.Label();
@@ -398,8 +396,9 @@
             this.btnRegistrarAtención = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.dgvTratamientosDiagnostico = new System.Windows.Forms.DataGridView();
+            this.btnCancelarDiagnostico = new System.Windows.Forms.Button();
             this.btnAceptarDiagnostico = new System.Windows.Forms.Button();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnBuscarDiagnosticos = new System.Windows.Forms.Button();
@@ -423,7 +422,7 @@
             this.dgvEstudiosPendientes = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.registrarMedicamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -474,7 +473,6 @@
             this.tabPage9.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPresionArterial)).BeginInit();
-            this.groupBox11.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -483,6 +481,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).BeginInit();
             this.tabPage11.SuspendLayout();
             this.panel13.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTratamientosDiagnostico)).BeginInit();
             this.groupBox18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticosPaciente)).BeginInit();
             this.groupBox17.SuspendLayout();
@@ -575,7 +575,8 @@
             // tratamientoToolStripMenuItem
             // 
             this.tratamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoTratamientoToolStripMenuItem});
+            this.nuevoTratamientoToolStripMenuItem,
+            this.registrarMedicamentoToolStripMenuItem});
             this.tratamientoToolStripMenuItem.Name = "tratamientoToolStripMenuItem";
             this.tratamientoToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.tratamientoToolStripMenuItem.Text = "Tratamiento";
@@ -605,7 +606,9 @@
             // laboratorioToolStripMenuItem
             // 
             this.laboratorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registrarAnálisisToolStripMenuItem});
+            this.registrarAnálisisToolStripMenuItem,
+            this.actualizarAnalisisLaboratorioToolStripMenuItem,
+            this.actualizarMétodoAnalisisToolStripMenuItem});
             this.laboratorioToolStripMenuItem.Name = "laboratorioToolStripMenuItem";
             this.laboratorioToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
             this.laboratorioToolStripMenuItem.Text = " Análisis de Laboratorio";
@@ -613,9 +616,23 @@
             // registrarAnálisisToolStripMenuItem
             // 
             this.registrarAnálisisToolStripMenuItem.Name = "registrarAnálisisToolStripMenuItem";
-            this.registrarAnálisisToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.registrarAnálisisToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
             this.registrarAnálisisToolStripMenuItem.Text = "Registrar análisis";
             this.registrarAnálisisToolStripMenuItem.Click += new System.EventHandler(this.registrarAnálisisToolStripMenuItem_Click);
+            // 
+            // actualizarAnalisisLaboratorioToolStripMenuItem
+            // 
+            this.actualizarAnalisisLaboratorioToolStripMenuItem.Name = "actualizarAnalisisLaboratorioToolStripMenuItem";
+            this.actualizarAnalisisLaboratorioToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.actualizarAnalisisLaboratorioToolStripMenuItem.Text = "Actualizar Analisis Laboratorio";
+            this.actualizarAnalisisLaboratorioToolStripMenuItem.Click += new System.EventHandler(this.actualizarAnalisisLaboratorioToolStripMenuItem_Click);
+            // 
+            // actualizarMétodoAnalisisToolStripMenuItem
+            // 
+            this.actualizarMétodoAnalisisToolStripMenuItem.Name = "actualizarMétodoAnalisisToolStripMenuItem";
+            this.actualizarMétodoAnalisisToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.actualizarMétodoAnalisisToolStripMenuItem.Text = "Actualizar Método Analisis";
+            this.actualizarMétodoAnalisisToolStripMenuItem.Click += new System.EventHandler(this.actualizarMétodoAnalisisToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -741,6 +758,7 @@
             // 
             // cboTipoDocPaciente
             // 
+            this.cboTipoDocPaciente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocPaciente.FormattingEnabled = true;
             this.cboTipoDocPaciente.Location = new System.Drawing.Point(139, 47);
             this.cboTipoDocPaciente.Name = "cboTipoDocPaciente";
@@ -1720,6 +1738,7 @@
             // 
             // cboElementoModificacion
             // 
+            this.cboElementoModificacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementoModificacion.FormattingEnabled = true;
             this.cboElementoModificacion.Location = new System.Drawing.Point(595, 291);
             this.cboElementoModificacion.Name = "cboElementoModificacion";
@@ -1745,6 +1764,7 @@
             // 
             // cboComoModificaSintoma
             // 
+            this.cboComoModificaSintoma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComoModificaSintoma.FormattingEnabled = true;
             this.cboComoModificaSintoma.Location = new System.Drawing.Point(158, 287);
             this.cboComoModificaSintoma.Name = "cboComoModificaSintoma";
@@ -1762,6 +1782,7 @@
             // 
             // cboCuandoComenzo
             // 
+            this.cboCuandoComenzo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCuandoComenzo.FormattingEnabled = true;
             this.cboCuandoComenzo.Location = new System.Drawing.Point(158, 251);
             this.cboCuandoComenzo.Name = "cboCuandoComenzo";
@@ -1779,6 +1800,7 @@
             // 
             // cboElementoTiempo
             // 
+            this.cboElementoTiempo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementoTiempo.FormattingEnabled = true;
             this.cboElementoTiempo.Location = new System.Drawing.Point(553, 215);
             this.cboElementoTiempo.Name = "cboElementoTiempo";
@@ -1828,6 +1850,7 @@
             // 
             // cboCaracterDolor
             // 
+            this.cboCaracterDolor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaracterDolor.FormattingEnabled = true;
             this.cboCaracterDolor.Location = new System.Drawing.Point(410, 147);
             this.cboCaracterDolor.Name = "cboCaracterDolor";
@@ -1886,6 +1909,7 @@
             // 
             // cboParteCuerpo
             // 
+            this.cboParteCuerpo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboParteCuerpo.FormattingEnabled = true;
             this.cboParteCuerpo.Location = new System.Drawing.Point(302, 103);
             this.cboParteCuerpo.Name = "cboParteCuerpo";
@@ -1948,6 +1972,7 @@
             // 
             // cboQueSienteElPaciente
             // 
+            this.cboQueSienteElPaciente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboQueSienteElPaciente.FormattingEnabled = true;
             this.cboQueSienteElPaciente.Location = new System.Drawing.Point(178, 24);
             this.cboQueSienteElPaciente.Name = "cboQueSienteElPaciente";
@@ -2179,6 +2204,7 @@
             // 
             // cboTemperaturaPiel
             // 
+            this.cboTemperaturaPiel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTemperaturaPiel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTemperaturaPiel.FormattingEnabled = true;
             this.cboTemperaturaPiel.Location = new System.Drawing.Point(107, 168);
@@ -2633,6 +2659,7 @@
             // 
             // cboConsistencia
             // 
+            this.cboConsistencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboConsistencia.FormattingEnabled = true;
             this.cboConsistencia.Location = new System.Drawing.Point(101, 103);
             this.cboConsistencia.Name = "cboConsistencia";
@@ -2651,6 +2678,7 @@
             // 
             // cboAproximacionNumerica
             // 
+            this.cboAproximacionNumerica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAproximacionNumerica.FormattingEnabled = true;
             this.cboAproximacionNumerica.Location = new System.Drawing.Point(673, 50);
             this.cboAproximacionNumerica.Name = "cboAproximacionNumerica";
@@ -2669,6 +2697,7 @@
             // 
             // cboTamañoGanglio
             // 
+            this.cboTamañoGanglio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTamañoGanglio.FormattingEnabled = true;
             this.cboTamañoGanglio.Location = new System.Drawing.Point(349, 50);
             this.cboTamañoGanglio.Name = "cboTamañoGanglio";
@@ -2687,6 +2716,7 @@
             // 
             // cboUbicacionGanglio
             // 
+            this.cboUbicacionGanglio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUbicacionGanglio.FormattingEnabled = true;
             this.cboUbicacionGanglio.Location = new System.Drawing.Point(79, 50);
             this.cboUbicacionGanglio.Name = "cboUbicacionGanglio";
@@ -2881,6 +2911,7 @@
             // 
             // cboPulso1
             // 
+            this.cboPulso1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso1.FormattingEnabled = true;
             this.cboPulso1.Location = new System.Drawing.Point(9, 29);
@@ -2890,6 +2921,7 @@
             // 
             // cboPulso2
             // 
+            this.cboPulso2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso2.FormattingEnabled = true;
             this.cboPulso2.Location = new System.Drawing.Point(9, 75);
@@ -2899,6 +2931,7 @@
             // 
             // cboPulso3
             // 
+            this.cboPulso3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso3.FormattingEnabled = true;
             this.cboPulso3.Location = new System.Drawing.Point(9, 117);
@@ -2908,6 +2941,7 @@
             // 
             // cboPulso4
             // 
+            this.cboPulso4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso4.FormattingEnabled = true;
             this.cboPulso4.Location = new System.Drawing.Point(9, 156);
@@ -2917,6 +2951,7 @@
             // 
             // cboPulso5
             // 
+            this.cboPulso5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso5.FormattingEnabled = true;
             this.cboPulso5.Location = new System.Drawing.Point(9, 203);
@@ -2926,6 +2961,7 @@
             // 
             // cboPulso6
             // 
+            this.cboPulso6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso6.FormattingEnabled = true;
             this.cboPulso6.Location = new System.Drawing.Point(9, 245);
@@ -2935,6 +2971,7 @@
             // 
             // cboPulso7
             // 
+            this.cboPulso7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso7.FormattingEnabled = true;
             this.cboPulso7.Location = new System.Drawing.Point(9, 286);
@@ -2944,6 +2981,7 @@
             // 
             // cboPulso8
             // 
+            this.cboPulso8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPulso8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPulso8.FormattingEnabled = true;
             this.cboPulso8.Location = new System.Drawing.Point(9, 324);
@@ -2953,6 +2991,7 @@
             // 
             // cboPI8
             // 
+            this.cboPI8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI8.FormattingEnabled = true;
             this.cboPI8.Location = new System.Drawing.Point(128, 324);
@@ -2962,6 +3001,7 @@
             // 
             // cboPD8
             // 
+            this.cboPD8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD8.FormattingEnabled = true;
             this.cboPD8.Location = new System.Drawing.Point(300, 324);
@@ -2971,6 +3011,7 @@
             // 
             // cboPD7
             // 
+            this.cboPD7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD7.FormattingEnabled = true;
             this.cboPD7.Location = new System.Drawing.Point(300, 286);
@@ -2980,6 +3021,7 @@
             // 
             // cboPD6
             // 
+            this.cboPD6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD6.FormattingEnabled = true;
             this.cboPD6.Location = new System.Drawing.Point(300, 245);
@@ -2989,6 +3031,7 @@
             // 
             // cboPD5
             // 
+            this.cboPD5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD5.FormattingEnabled = true;
             this.cboPD5.Location = new System.Drawing.Point(300, 203);
@@ -2998,6 +3041,7 @@
             // 
             // cboPD4
             // 
+            this.cboPD4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD4.FormattingEnabled = true;
             this.cboPD4.Location = new System.Drawing.Point(300, 157);
@@ -3007,6 +3051,7 @@
             // 
             // cboPD3
             // 
+            this.cboPD3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD3.FormattingEnabled = true;
             this.cboPD3.Location = new System.Drawing.Point(300, 117);
@@ -3016,6 +3061,7 @@
             // 
             // cboPD2
             // 
+            this.cboPD2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD2.FormattingEnabled = true;
             this.cboPD2.Location = new System.Drawing.Point(300, 75);
@@ -3025,6 +3071,7 @@
             // 
             // cboPD1
             // 
+            this.cboPD1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPD1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPD1.FormattingEnabled = true;
             this.cboPD1.Location = new System.Drawing.Point(300, 29);
@@ -3034,6 +3081,7 @@
             // 
             // cboPI7
             // 
+            this.cboPI7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI7.FormattingEnabled = true;
             this.cboPI7.Location = new System.Drawing.Point(128, 286);
@@ -3043,6 +3091,7 @@
             // 
             // cboPI6
             // 
+            this.cboPI6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI6.FormattingEnabled = true;
             this.cboPI6.Location = new System.Drawing.Point(128, 245);
@@ -3052,6 +3101,7 @@
             // 
             // cboPI5
             // 
+            this.cboPI5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI5.FormattingEnabled = true;
             this.cboPI5.Location = new System.Drawing.Point(128, 203);
@@ -3061,6 +3111,7 @@
             // 
             // cboPI4
             // 
+            this.cboPI4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI4.FormattingEnabled = true;
             this.cboPI4.Location = new System.Drawing.Point(128, 157);
@@ -3070,6 +3121,7 @@
             // 
             // cboPI3
             // 
+            this.cboPI3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI3.FormattingEnabled = true;
             this.cboPI3.Location = new System.Drawing.Point(128, 117);
@@ -3079,6 +3131,7 @@
             // 
             // cboPI2
             // 
+            this.cboPI2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI2.FormattingEnabled = true;
             this.cboPI2.Location = new System.Drawing.Point(128, 75);
@@ -3088,6 +3141,7 @@
             // 
             // cboPI1
             // 
+            this.cboPI1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPI1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPI1.FormattingEnabled = true;
             this.cboPI1.Location = new System.Drawing.Point(128, 29);
@@ -3134,7 +3188,6 @@
             this.groupBox9.Controls.Add(this.lblUbicacionPresionArterial);
             this.groupBox9.Controls.Add(this.dgvPresionArterial);
             this.groupBox9.Controls.Add(this.btnAgregarPresionArterial);
-            this.groupBox9.Controls.Add(this.groupBox11);
             this.groupBox9.Controls.Add(this.txtPulsoPresionArterial);
             this.groupBox9.Controls.Add(this.lblPulsoPresionArterial);
             this.groupBox9.Controls.Add(this.txtDiastolicaPresionArterial);
@@ -3162,6 +3215,7 @@
             // 
             // cmbUbicacionPresionArterial
             // 
+            this.cmbUbicacionPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUbicacionPresionArterial.FormattingEnabled = true;
             this.cmbUbicacionPresionArterial.Location = new System.Drawing.Point(90, 61);
             this.cmbUbicacionPresionArterial.Name = "cmbUbicacionPresionArterial";
@@ -3191,9 +3245,9 @@
             this.diastolicaPA,
             this.pulsoPA,
             this.momentoPA});
-            this.dgvPresionArterial.Location = new System.Drawing.Point(349, 134);
+            this.dgvPresionArterial.Location = new System.Drawing.Point(11, 134);
             this.dgvPresionArterial.Name = "dgvPresionArterial";
-            this.dgvPresionArterial.Size = new System.Drawing.Size(483, 144);
+            this.dgvPresionArterial.Size = new System.Drawing.Size(821, 144);
             this.dgvPresionArterial.TabIndex = 20;
             // 
             // fechaPA
@@ -3256,55 +3310,6 @@
             this.btnAgregarPresionArterial.UseVisualStyleBackColor = true;
             this.btnAgregarPresionArterial.Click += new System.EventHandler(this.btnAgregarPresionArterial_Click);
             // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.lblValorMinPresionArterial);
-            this.groupBox11.Controls.Add(this.lblValorMaxPresionArterial);
-            this.groupBox11.Controls.Add(this.lblCategoriaPresionArterial);
-            this.groupBox11.Controls.Add(this.lblPromedioPresionArterial);
-            this.groupBox11.Location = new System.Drawing.Point(6, 134);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(330, 144);
-            this.groupBox11.TabIndex = 18;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Clasificación";
-            // 
-            // lblValorMinPresionArterial
-            // 
-            this.lblValorMinPresionArterial.AutoSize = true;
-            this.lblValorMinPresionArterial.Location = new System.Drawing.Point(6, 113);
-            this.lblValorMinPresionArterial.Name = "lblValorMinPresionArterial";
-            this.lblValorMinPresionArterial.Size = new System.Drawing.Size(137, 17);
-            this.lblValorMinPresionArterial.TabIndex = 19;
-            this.lblValorMinPresionArterial.Text = "Rango valor mínimo:";
-            // 
-            // lblValorMaxPresionArterial
-            // 
-            this.lblValorMaxPresionArterial.AutoSize = true;
-            this.lblValorMaxPresionArterial.Location = new System.Drawing.Point(6, 84);
-            this.lblValorMaxPresionArterial.Name = "lblValorMaxPresionArterial";
-            this.lblValorMaxPresionArterial.Size = new System.Drawing.Size(140, 17);
-            this.lblValorMaxPresionArterial.TabIndex = 2;
-            this.lblValorMaxPresionArterial.Text = "Rango valor máximo:";
-            // 
-            // lblCategoriaPresionArterial
-            // 
-            this.lblCategoriaPresionArterial.AutoSize = true;
-            this.lblCategoriaPresionArterial.Location = new System.Drawing.Point(6, 56);
-            this.lblCategoriaPresionArterial.Name = "lblCategoriaPresionArterial";
-            this.lblCategoriaPresionArterial.Size = new System.Drawing.Size(73, 17);
-            this.lblCategoriaPresionArterial.TabIndex = 1;
-            this.lblCategoriaPresionArterial.Text = "Categoría:";
-            // 
-            // lblPromedioPresionArterial
-            // 
-            this.lblPromedioPresionArterial.AutoSize = true;
-            this.lblPromedioPresionArterial.Location = new System.Drawing.Point(6, 29);
-            this.lblPromedioPresionArterial.Name = "lblPromedioPresionArterial";
-            this.lblPromedioPresionArterial.Size = new System.Drawing.Size(72, 17);
-            this.lblPromedioPresionArterial.TabIndex = 0;
-            this.lblPromedioPresionArterial.Text = "Promedio:";
-            // 
             // txtPulsoPresionArterial
             // 
             this.txtPulsoPresionArterial.Location = new System.Drawing.Point(772, 61);
@@ -3355,6 +3360,7 @@
             // 
             // cmbMomentoDiaPresionArterial
             // 
+            this.cmbMomentoDiaPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMomentoDiaPresionArterial.FormattingEnabled = true;
             this.cmbMomentoDiaPresionArterial.Location = new System.Drawing.Point(126, 104);
             this.cmbMomentoDiaPresionArterial.Name = "cmbMomentoDiaPresionArterial";
@@ -3390,6 +3396,7 @@
             // 
             // cmbSitioMedicionPresionArterial
             // 
+            this.cmbSitioMedicionPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSitioMedicionPresionArterial.FormattingEnabled = true;
             this.cmbSitioMedicionPresionArterial.Location = new System.Drawing.Point(675, 22);
             this.cmbSitioMedicionPresionArterial.Name = "cmbSitioMedicionPresionArterial";
@@ -3398,6 +3405,7 @@
             // 
             // cmbPosicionPresionArterial
             // 
+            this.cmbPosicionPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPosicionPresionArterial.FormattingEnabled = true;
             this.cmbPosicionPresionArterial.Location = new System.Drawing.Point(409, 22);
             this.cmbPosicionPresionArterial.Name = "cmbPosicionPresionArterial";
@@ -3406,6 +3414,7 @@
             // 
             // cmbExtremidadPresionArterial
             // 
+            this.cmbExtremidadPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbExtremidadPresionArterial.FormattingEnabled = true;
             this.cmbExtremidadPresionArterial.Location = new System.Drawing.Point(90, 22);
             this.cmbExtremidadPresionArterial.Name = "cmbExtremidadPresionArterial";
@@ -3695,6 +3704,7 @@
             // 
             // cboSitioMedicion3
             // 
+            this.cboSitioMedicion3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSitioMedicion3.FormattingEnabled = true;
             this.cboSitioMedicion3.Location = new System.Drawing.Point(127, 124);
             this.cboSitioMedicion3.Name = "cboSitioMedicion3";
@@ -3703,6 +3713,7 @@
             // 
             // cboSitioMedicion4
             // 
+            this.cboSitioMedicion4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSitioMedicion4.FormattingEnabled = true;
             this.cboSitioMedicion4.Location = new System.Drawing.Point(127, 168);
             this.cboSitioMedicion4.Name = "cboSitioMedicion4";
@@ -3711,6 +3722,7 @@
             // 
             // cboSitioMedicion2
             // 
+            this.cboSitioMedicion2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSitioMedicion2.FormattingEnabled = true;
             this.cboSitioMedicion2.Location = new System.Drawing.Point(127, 81);
             this.cboSitioMedicion2.Name = "cboSitioMedicion2";
@@ -3719,6 +3731,7 @@
             // 
             // cboSitioMedicion1
             // 
+            this.cboSitioMedicion1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSitioMedicion1.FormattingEnabled = true;
             this.cboSitioMedicion1.Location = new System.Drawing.Point(127, 32);
             this.cboSitioMedicion1.Name = "cboSitioMedicion1";
@@ -3813,6 +3826,7 @@
             // 
             // cboPracticasComplementariasARealizar
             // 
+            this.cboPracticasComplementariasARealizar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPracticasComplementariasARealizar.FormattingEnabled = true;
             this.cboPracticasComplementariasARealizar.Location = new System.Drawing.Point(172, 205);
             this.cboPracticasComplementariasARealizar.Name = "cboPracticasComplementariasARealizar";
@@ -3892,6 +3906,7 @@
             // 
             // cboAnalisiLaboratorioARealizar
             // 
+            this.cboAnalisiLaboratorioARealizar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAnalisiLaboratorioARealizar.FormattingEnabled = true;
             this.cboAnalisiLaboratorioARealizar.Location = new System.Drawing.Point(159, 114);
             this.cboAnalisiLaboratorioARealizar.Name = "cboAnalisiLaboratorioARealizar";
@@ -3900,6 +3915,7 @@
             // 
             // cboEstudioARealizar
             // 
+            this.cboEstudioARealizar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstudioARealizar.FormattingEnabled = true;
             this.cboEstudioARealizar.Location = new System.Drawing.Point(66, 24);
             this.cboEstudioARealizar.Name = "cboEstudioARealizar";
@@ -3926,6 +3942,7 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.chbNuevoDiagnostico);
             this.groupBox10.Controls.Add(this.mtbFechaDiagnostico);
             this.groupBox10.Controls.Add(this.txtMotivoDiagnostico);
             this.groupBox10.Controls.Add(this.lblFechaDescartado);
@@ -3945,26 +3962,37 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Razonamiento Diagnóstico";
             // 
+            // chbNuevoDiagnostico
+            // 
+            this.chbNuevoDiagnostico.AutoSize = true;
+            this.chbNuevoDiagnostico.Location = new System.Drawing.Point(417, 50);
+            this.chbNuevoDiagnostico.Name = "chbNuevoDiagnostico";
+            this.chbNuevoDiagnostico.Size = new System.Drawing.Size(146, 21);
+            this.chbNuevoDiagnostico.TabIndex = 27;
+            this.chbNuevoDiagnostico.Text = "Nuevo Diagnóstico";
+            this.chbNuevoDiagnostico.UseVisualStyleBackColor = true;
+            this.chbNuevoDiagnostico.CheckedChanged += new System.EventHandler(this.chbNuevoDiagnostico_CheckedChanged);
+            // 
             // mtbFechaDiagnostico
             // 
-            this.mtbFechaDiagnostico.Location = new System.Drawing.Point(463, 117);
+            this.mtbFechaDiagnostico.Location = new System.Drawing.Point(397, 140);
             this.mtbFechaDiagnostico.Name = "mtbFechaDiagnostico";
-            this.mtbFechaDiagnostico.Size = new System.Drawing.Size(100, 23);
+            this.mtbFechaDiagnostico.Size = new System.Drawing.Size(166, 23);
             this.mtbFechaDiagnostico.TabIndex = 26;
             this.mtbFechaDiagnostico.ValidatingType = typeof(System.DateTime);
             // 
             // txtMotivoDiagnostico
             // 
-            this.txtMotivoDiagnostico.Location = new System.Drawing.Point(9, 175);
+            this.txtMotivoDiagnostico.Location = new System.Drawing.Point(66, 175);
             this.txtMotivoDiagnostico.Multiline = true;
             this.txtMotivoDiagnostico.Name = "txtMotivoDiagnostico";
-            this.txtMotivoDiagnostico.Size = new System.Drawing.Size(556, 43);
+            this.txtMotivoDiagnostico.Size = new System.Drawing.Size(498, 43);
             this.txtMotivoDiagnostico.TabIndex = 25;
             // 
             // lblFechaDescartado
             // 
             this.lblFechaDescartado.AutoSize = true;
-            this.lblFechaDescartado.Location = new System.Drawing.Point(410, 120);
+            this.lblFechaDescartado.Location = new System.Drawing.Point(340, 143);
             this.lblFechaDescartado.Name = "lblFechaDescartado";
             this.lblFechaDescartado.Size = new System.Drawing.Size(51, 17);
             this.lblFechaDescartado.TabIndex = 22;
@@ -3973,7 +4001,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(7, 155);
+            this.label53.Location = new System.Drawing.Point(7, 175);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(53, 17);
             this.label53.TabIndex = 21;
@@ -3981,8 +4009,9 @@
             // 
             // cboEstadoDiagnostico
             // 
+            this.cboEstadoDiagnostico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstadoDiagnostico.FormattingEnabled = true;
-            this.cboEstadoDiagnostico.Location = new System.Drawing.Point(159, 117);
+            this.cboEstadoDiagnostico.Location = new System.Drawing.Point(159, 140);
             this.cboEstadoDiagnostico.Name = "cboEstadoDiagnostico";
             this.cboEstadoDiagnostico.Size = new System.Drawing.Size(175, 24);
             this.cboEstadoDiagnostico.TabIndex = 20;
@@ -3990,7 +4019,7 @@
             // lblEstadoDiagnostico
             // 
             this.lblEstadoDiagnostico.AutoSize = true;
-            this.lblEstadoDiagnostico.Location = new System.Drawing.Point(6, 120);
+            this.lblEstadoDiagnostico.Location = new System.Drawing.Point(6, 143);
             this.lblEstadoDiagnostico.Name = "lblEstadoDiagnostico";
             this.lblEstadoDiagnostico.Size = new System.Drawing.Size(155, 17);
             this.lblEstadoDiagnostico.TabIndex = 19;
@@ -4003,6 +4032,7 @@
             this.dataGridViewTextBoxColumn1});
             this.dgvDiagnosticos.Location = new System.Drawing.Point(570, 29);
             this.dgvDiagnosticos.Name = "dgvDiagnosticos";
+            this.dgvDiagnosticos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDiagnosticos.Size = new System.Drawing.Size(253, 189);
             this.dgvDiagnosticos.TabIndex = 15;
             // 
@@ -4014,17 +4044,17 @@
             // 
             // txtDiagnostico
             // 
-            this.txtDiagnostico.Location = new System.Drawing.Point(119, 73);
+            this.txtDiagnostico.Location = new System.Drawing.Point(119, 96);
             this.txtDiagnostico.Multiline = true;
             this.txtDiagnostico.Name = "txtDiagnostico";
-            this.txtDiagnostico.Size = new System.Drawing.Size(444, 38);
+            this.txtDiagnostico.Size = new System.Drawing.Size(444, 31);
             this.txtDiagnostico.TabIndex = 14;
             // 
             // label85
             // 
             this.label85.AutoSize = true;
             this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.Location = new System.Drawing.Point(31, 88);
+            this.label85.Location = new System.Drawing.Point(5, 99);
             this.label85.Name = "label85";
             this.label85.Size = new System.Drawing.Size(86, 17);
             this.label85.TabIndex = 13;
@@ -4032,17 +4062,18 @@
             // 
             // txtConceptoInicial
             // 
-            this.txtConceptoInicial.Location = new System.Drawing.Point(118, 29);
+            this.txtConceptoInicial.Location = new System.Drawing.Point(119, 47);
             this.txtConceptoInicial.Multiline = true;
             this.txtConceptoInicial.Name = "txtConceptoInicial";
-            this.txtConceptoInicial.Size = new System.Drawing.Size(445, 38);
+            this.txtConceptoInicial.Size = new System.Drawing.Size(284, 40);
             this.txtConceptoInicial.TabIndex = 1;
+            this.txtConceptoInicial.TextChanged += new System.EventHandler(this.txtConceptoInicial_TextChanged);
             // 
             // label80
             // 
             this.label80.AutoSize = true;
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.Location = new System.Drawing.Point(6, 35);
+            this.label80.Location = new System.Drawing.Point(7, 50);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(111, 17);
             this.label80.TabIndex = 0;
@@ -4081,8 +4112,8 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.button4);
-            this.panel13.Controls.Add(this.button2);
+            this.panel13.Controls.Add(this.groupBox19);
+            this.panel13.Controls.Add(this.btnCancelarDiagnostico);
             this.panel13.Controls.Add(this.btnAceptarDiagnostico);
             this.panel13.Controls.Add(this.groupBox18);
             this.panel13.Controls.Add(this.groupBox17);
@@ -4091,27 +4122,40 @@
             this.panel13.Size = new System.Drawing.Size(852, 603);
             this.panel13.TabIndex = 0;
             // 
-            // button4
+            // groupBox19
             // 
-            this.button4.Location = new System.Drawing.Point(450, 564);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Salir";
-            this.button4.UseVisualStyleBackColor = true;
+            this.groupBox19.Controls.Add(this.dgvTratamientosDiagnostico);
+            this.groupBox19.Location = new System.Drawing.Point(6, 441);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(843, 117);
+            this.groupBox19.TabIndex = 5;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Tratamientos";
             // 
-            // button2
+            // dgvTratamientosDiagnostico
             // 
-            this.button2.Location = new System.Drawing.Point(369, 564);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.dgvTratamientosDiagnostico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTratamientosDiagnostico.Location = new System.Drawing.Point(6, 19);
+            this.dgvTratamientosDiagnostico.Name = "dgvTratamientosDiagnostico";
+            this.dgvTratamientosDiagnostico.Size = new System.Drawing.Size(831, 92);
+            this.dgvTratamientosDiagnostico.TabIndex = 0;
+            this.dgvTratamientosDiagnostico.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTratamientosDiagnostico_CellContentClick);
+            this.dgvTratamientosDiagnostico.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvTratamientosDiagnostico_CurrentCellDirtyStateChanged);
+            this.dgvTratamientosDiagnostico.Click += new System.EventHandler(this.dgvTratamientosDiagnostico_Click);
+            // 
+            // btnCancelarDiagnostico
+            // 
+            this.btnCancelarDiagnostico.Location = new System.Drawing.Point(458, 564);
+            this.btnCancelarDiagnostico.Name = "btnCancelarDiagnostico";
+            this.btnCancelarDiagnostico.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarDiagnostico.TabIndex = 4;
+            this.btnCancelarDiagnostico.Text = "Cancelar";
+            this.btnCancelarDiagnostico.UseVisualStyleBackColor = true;
+            this.btnCancelarDiagnostico.Click += new System.EventHandler(this.btnCancelarDiagnostico_Click);
             // 
             // btnAceptarDiagnostico
             // 
-            this.btnAceptarDiagnostico.Location = new System.Drawing.Point(288, 564);
+            this.btnAceptarDiagnostico.Location = new System.Drawing.Point(372, 564);
             this.btnAceptarDiagnostico.Name = "btnAceptarDiagnostico";
             this.btnAceptarDiagnostico.Size = new System.Drawing.Size(75, 23);
             this.btnAceptarDiagnostico.TabIndex = 3;
@@ -4135,7 +4179,7 @@
             this.groupBox18.Controls.Add(this.dgvDiagnosticosPaciente);
             this.groupBox18.Location = new System.Drawing.Point(6, 4);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(843, 238);
+            this.groupBox18.Size = new System.Drawing.Size(843, 228);
             this.groupBox18.TabIndex = 2;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Diagnóstico";
@@ -4145,7 +4189,7 @@
             // 
             this.btnBuscarDiagnosticos.Location = new System.Drawing.Point(6, 22);
             this.btnBuscarDiagnosticos.Name = "btnBuscarDiagnosticos";
-            this.btnBuscarDiagnosticos.Size = new System.Drawing.Size(218, 23);
+            this.btnBuscarDiagnosticos.Size = new System.Drawing.Size(256, 23);
             this.btnBuscarDiagnosticos.TabIndex = 6;
             this.btnBuscarDiagnosticos.Text = "Buscar diagnósticos";
             this.btnBuscarDiagnosticos.UseVisualStyleBackColor = true;
@@ -4166,6 +4210,7 @@
             this.cboEstadoDiagnosticoCambio.Name = "cboEstadoDiagnosticoCambio";
             this.cboEstadoDiagnosticoCambio.Size = new System.Drawing.Size(171, 21);
             this.cboEstadoDiagnosticoCambio.TabIndex = 11;
+            this.cboEstadoDiagnosticoCambio.SelectedIndexChanged += new System.EventHandler(this.cboEstadoDiagnosticoCambio_SelectedIndexChanged);
             // 
             // txtMotivoCambioEstado
             // 
@@ -4254,9 +4299,9 @@
             this.groupBox17.Controls.Add(this.dgvAnalisisLaboratorioPendientes);
             this.groupBox17.Controls.Add(this.label58);
             this.groupBox17.Controls.Add(this.dgvEstudiosPendientes);
-            this.groupBox17.Location = new System.Drawing.Point(12, 248);
+            this.groupBox17.Location = new System.Drawing.Point(6, 239);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(837, 250);
+            this.groupBox17.Size = new System.Drawing.Size(843, 196);
             this.groupBox17.TabIndex = 1;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Prácticas solicitadas pendientes";
@@ -4264,7 +4309,7 @@
             // label82
             // 
             this.label82.AutoSize = true;
-            this.label82.Location = new System.Drawing.Point(551, 65);
+            this.label82.Location = new System.Drawing.Point(553, 21);
             this.label82.Name = "label82";
             this.label82.Size = new System.Drawing.Size(133, 13);
             this.label82.TabIndex = 5;
@@ -4273,7 +4318,7 @@
             // dgvPracticasPendientes
             // 
             this.dgvPracticasPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPracticasPendientes.Location = new System.Drawing.Point(554, 81);
+            this.dgvPracticasPendientes.Location = new System.Drawing.Point(556, 37);
             this.dgvPracticasPendientes.Name = "dgvPracticasPendientes";
             this.dgvPracticasPendientes.Size = new System.Drawing.Size(275, 150);
             this.dgvPracticasPendientes.TabIndex = 4;
@@ -4282,7 +4327,7 @@
             // label81
             // 
             this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(279, 65);
+            this.label81.Location = new System.Drawing.Point(283, 21);
             this.label81.Name = "label81";
             this.label81.Size = new System.Drawing.Size(109, 13);
             this.label81.TabIndex = 3;
@@ -4291,7 +4336,7 @@
             // dgvAnalisisLaboratorioPendientes
             // 
             this.dgvAnalisisLaboratorioPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnalisisLaboratorioPendientes.Location = new System.Drawing.Point(272, 81);
+            this.dgvAnalisisLaboratorioPendientes.Location = new System.Drawing.Point(274, 37);
             this.dgvAnalisisLaboratorioPendientes.Name = "dgvAnalisisLaboratorioPendientes";
             this.dgvAnalisisLaboratorioPendientes.Size = new System.Drawing.Size(276, 150);
             this.dgvAnalisisLaboratorioPendientes.TabIndex = 2;
@@ -4300,7 +4345,7 @@
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(6, 65);
+            this.label58.Location = new System.Drawing.Point(8, 21);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(50, 13);
             this.label58.TabIndex = 1;
@@ -4309,7 +4354,7 @@
             // dgvEstudiosPendientes
             // 
             this.dgvEstudiosPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEstudiosPendientes.Location = new System.Drawing.Point(6, 81);
+            this.dgvEstudiosPendientes.Location = new System.Drawing.Point(8, 37);
             this.dgvEstudiosPendientes.Name = "dgvEstudiosPendientes";
             this.dgvEstudiosPendientes.Size = new System.Drawing.Size(260, 150);
             this.dgvEstudiosPendientes.TabIndex = 0;
@@ -4318,7 +4363,6 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnRegistraMedicamento);
-            this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(896, 30);
             this.groupBox3.Name = "groupBox3";
@@ -4329,7 +4373,7 @@
             // 
             // btnRegistraMedicamento
             // 
-            this.btnRegistraMedicamento.Location = new System.Drawing.Point(6, 70);
+            this.btnRegistraMedicamento.Location = new System.Drawing.Point(0, 22);
             this.btnRegistraMedicamento.Name = "btnRegistraMedicamento";
             this.btnRegistraMedicamento.Size = new System.Drawing.Size(264, 28);
             this.btnRegistraMedicamento.TabIndex = 1;
@@ -4337,14 +4381,12 @@
             this.btnRegistraMedicamento.UseVisualStyleBackColor = true;
             this.btnRegistraMedicamento.Click += new System.EventHandler(this.btnRegistraMedicamento_Click);
             // 
-            // button3
+            // registrarMedicamentoToolStripMenuItem
             // 
-            this.button3.Location = new System.Drawing.Point(6, 32);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(264, 28);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Registrar Nuevo Paciente";
-            this.button3.UseVisualStyleBackColor = true;
+            this.registrarMedicamentoToolStripMenuItem.Name = "registrarMedicamentoToolStripMenuItem";
+            this.registrarMedicamentoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.registrarMedicamentoToolStripMenuItem.Text = "Registrar Medicamento";
+            this.registrarMedicamentoToolStripMenuItem.Click += new System.EventHandler(this.registrarMedicamentoToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -4429,8 +4471,6 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPresionArterial)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.tabPage10.ResumeLayout(false);
@@ -4442,6 +4482,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticos)).EndInit();
             this.tabPage11.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTratamientosDiagnostico)).EndInit();
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnosticosPaciente)).EndInit();
@@ -4544,7 +4586,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ComboBox cboElementoModificacion;
@@ -4694,11 +4735,6 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.Button btnAgregarDiagnostico;
         private System.Windows.Forms.Button btnAgregarPresionArterial;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Label lblValorMinPresionArterial;
-        private System.Windows.Forms.Label lblValorMaxPresionArterial;
-        private System.Windows.Forms.Label lblCategoriaPresionArterial;
-        private System.Windows.Forms.Label lblPromedioPresionArterial;
         private System.Windows.Forms.TextBox txtPulsoPresionArterial;
         private System.Windows.Forms.Label lblPulsoPresionArterial;
         private System.Windows.Forms.TextBox txtDiastolicaPresionArterial;
@@ -4821,7 +4857,6 @@
         private System.Windows.Forms.Button btnPracticasComplementariasARealizar;
         private System.Windows.Forms.ComboBox cboPracticasComplementariasARealizar;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button btnCancelarAtencionEnConsultorio;
         private System.Windows.Forms.ToolStripMenuItem atenciónEnConsultorioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generarNuevaConsultaToolStripMenuItem1;
@@ -4848,11 +4883,17 @@
         private System.Windows.Forms.TextBox txtConceptoInicialExamen;
         private System.Windows.Forms.Label label86;
         private System.Windows.Forms.DataGridView dgvDiagnosticosPaciente;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancelarDiagnostico;
         private System.Windows.Forms.Button btnAceptarDiagnostico;
         private System.Windows.Forms.Button btnBuscarDiagnosticos;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem registroDesdeTensiómetroToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chbNuevoDiagnostico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ToolStripMenuItem actualizarAnalisisLaboratorioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem actualizarMétodoAnalisisToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.DataGridView dgvTratamientosDiagnostico;
+        private System.Windows.Forms.ToolStripMenuItem registrarMedicamentoToolStripMenuItem;
     }
 }

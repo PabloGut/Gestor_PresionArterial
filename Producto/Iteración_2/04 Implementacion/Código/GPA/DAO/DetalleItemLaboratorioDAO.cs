@@ -75,7 +75,7 @@ namespace DAO
                 throw new Exception("Error al insertar: " + e.Message);
             }
         }
-        public List<DetalleItemLaboratorio> obtenerIdDetalleItemLaboratorio(int idDetalleItemLaboratorio)
+        public static List<DetalleItemLaboratorio> obtenerIdDetalleItemLaboratorio(int idDetalleItemLaboratorio)
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
@@ -86,7 +86,7 @@ namespace DAO
 
             List<DetalleItemLaboratorio> detalles = new List<DetalleItemLaboratorio>();
 
-            string consulta = @"select d.id_detalleItemLaboratorio
+            string consulta = @"select d.id_detalleItemLaboratorio,nombre
                                 from ItemEstudioLaboratorio i, DetalleItemLaboratorio d
                                 where i.id_itemEstudioLaboratorio=d.id_item_fk
                                 and d.id_item_fk=@idItemEstudioLaboratorio";
@@ -107,7 +107,8 @@ namespace DAO
                 {
                     detalles.Add(new DetalleItemLaboratorio()
                     {
-                        id_detalleItemLaboratorio=(int)dr["id_detalleItemLaboratorio"]
+                        id_detalleItemLaboratorio=(int)dr["id_detalleItemLaboratorio"],
+                        nombre= dr["nombre"].ToString()
                     });
                 }
 
@@ -120,7 +121,44 @@ namespace DAO
                 {
                     cn.Close();
                 }
-                throw new Exception("Error al insertar: " + e.Message);
+                throw new Exception("Error: " + e.Message);
+            }
+        }
+        public static void insertarDetalleResultadoEstudio(DetalleResultadoEstudio detalleItem, SqlConnection cn, SqlTransaction tran)
+        {
+            string consulta = @"insert into DetalleResultadoEstudio(id_detalleLaboratorio,id_detalleItemLaboratorio, valorResultado, id_unidadMedida)
+                                values(@idDetalleLaboratorio,@idDetalleItemLaboratorio,@valorResultado,@idUnidadMedida)";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idDetalleLaboratorio", detalleItem.idDetalleLaboratorio);
+                cmd.Parameters.AddWithValue("@idDetalleItemLaboratorio", detalleItem.idDetalleItemLaboratorio);
+                cmd.Parameters.AddWithValue("@valorResultado", detalleItem.valorResultado);
+
+                if (detalleItem.idUnidadMedida == -1)
+                {
+                    cmd.Parameters.AddWithValue("@idUnidadMedida", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@idUnidadMedida", detalleItem.idUnidadMedida);
+                }
+
+                //cmd.Parameters.AddWithValue("@id_item_fk", detalleItem.idDetalleItemLaboratorio);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Transaction = tran;
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }

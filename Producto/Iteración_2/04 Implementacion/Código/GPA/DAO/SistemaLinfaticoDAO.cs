@@ -193,7 +193,8 @@ namespace DAO
                     cn.Close();
                     tran.Rollback();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                //throw new ApplicationException("Error:" + e.Message);
+                throw e;
             }
 
         }

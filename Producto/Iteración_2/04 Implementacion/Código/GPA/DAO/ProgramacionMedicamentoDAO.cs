@@ -297,7 +297,8 @@ namespace DAO
                 {
                     cn.Close();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                //throw new ApplicationException("Error:" + e.Message);
+                throw e;
             }
 
         }

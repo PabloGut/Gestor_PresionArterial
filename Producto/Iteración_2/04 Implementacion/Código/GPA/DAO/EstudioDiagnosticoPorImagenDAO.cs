@@ -56,7 +56,8 @@ namespace DAO
                     cn.Close();
                     tran.Rollback();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                //throw new ApplicationException("Error:" + e.Message);
+                throw e;
             }
 
         }
@@ -77,7 +78,8 @@ namespace DAO
                                 and ed.id_razonamientoDiagnostico_fk=r.id_razonamiento
                                 and ed.id_nombreEstudio_fk=ne.id_nombreEstudio
                                 and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
-                                and r.id_razonamiento=@idRazonamiento";
+                                and r.id_razonamiento=@idRazonamiento
+                                and ed.fechaRealizacion is null";
 
             SqlCommand cmd = new SqlCommand();
             cmd.Parameters.AddWithValue("@idRazonamiento", idRazonamiento);

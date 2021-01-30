@@ -58,7 +58,7 @@ namespace DAO
                     tran.Rollback();
                     cn.Close();
                 }
-                throw new Exception("Error al insertar medición de presión arterial: " + e.Message);
+                throw new Exception("Error: " + e.Message);
             }
                               
         }

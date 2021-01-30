@@ -27,14 +27,19 @@ namespace GPA.Manejadores
         }
         public int obteneridItemEstudioLaboratorio(string nombreEstudio)
         {
-            return ItemEstudioLaboratorioLN.obtenerIdItemEstudioLaboratorio(nombreEstudio);
+            return ItemEstudioLaboratorioLN.buscarIdItemEstudioLaboratorio(nombreEstudio);
         }
-        public DetalleLaboratorio crearDetalleLaboratorio(double valorResultado,int idUnidadMedida,ItemEstudioLaboratorio itemEstudioLaboratorio)
+        public DetalleLaboratorio crearDetalleLaboratorio()
+        {
+            DetalleLaboratorio detalle = new DetalleLaboratorio();
+            return detalle;
+        }
+        public DetalleLaboratorio crearDetalleLaboratorio(double valorResultado, int idUnidadMedida, DetalleResultadoEstudio detalleResultadoEstudio)
         {
             DetalleLaboratorio detalle = new DetalleLaboratorio();
             detalle.valorResultado = valorResultado;
             detalle.idUnidadMedida = idUnidadMedida;
-            detalle.itemEstudioLaboratorio = itemEstudioLaboratorio;
+            detalle.detalleResultadoEstudio = detalleResultadoEstudio;
 
             return detalle;
         }
@@ -45,9 +50,27 @@ namespace GPA.Manejadores
 
             return item;
         }
+        public DetalleResultadoEstudio crearDetalleResultadoEstudio()
+        {
+            DetalleResultadoEstudio item = new DetalleResultadoEstudio();
+
+            return item;
+        }
         public int obtenerIdAnalisisLaboratorio(string nombre)
         {
-            return AnalisisLaboratorioLN.obtenerAnalisisLaboratorio(nombre);
+            //return AnalisisLaboratorioLN.obtenerAnalisisLaboratorio(nombre);
+            return ItemEstudioLaboratorioLN.buscarIdItemEstudioLaboratorio(nombre);
+
+        }
+        public void insertResultadoEstudioLaboratorio(Laboratorio laboratorio)
+        {
+            try { 
+            LaboratorioLN.insertResultadosEstudioLaboratorio(laboratorio);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

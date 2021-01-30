@@ -50,7 +50,8 @@ namespace DAO
                 {
                     cn.Close();
                 }
-                throw new Exception("Error al insertar detalles de medición de presión arterial:" + e.Message);
+                //throw new Exception("Error al insertar detalles de medición de presión arterial:" + e.Message);
+                throw e;
             }
 
         }

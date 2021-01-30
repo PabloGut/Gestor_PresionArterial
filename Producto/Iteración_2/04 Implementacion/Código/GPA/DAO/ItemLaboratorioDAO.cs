@@ -150,5 +150,46 @@ namespace DAO
 
 
         }
+        public static int obtenerItemLaboratorio(string nombreItemLaboratorio)
+        {
+            setCadenaConexion();
+
+            int idItemLaboratorio = 0;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+
+            string consulta = @"select id_itemLaboratorio from ItemLaboratorio where nombre like @nombreItemLaboratorio";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@nombreItemLaboratorio", nombreItemLaboratorio);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    idItemLaboratorio = (int)dr["id_itemLaboratorio"];
+                }
+
+                cn.Close();
+                return idItemLaboratorio;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
     }
 }

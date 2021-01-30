@@ -38,7 +38,25 @@ namespace LogicaNegocio
         }
         public static void registrarConsultaYExamenGeneral(Consulta consulta)
         {
-            ConsultaDAO.registrarConsultaYExameGeneral(consulta);
+            try
+            {
+                ConsultaDAO.registrarConsultaYExameGeneral(consulta);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public static void registrarConsultaYExamenGeneral(Consulta consulta,List<EvolucionDiagnostico> lista)
+        {
+            try
+            {
+                ConsultaDAO.registrarConsultaYExameGeneralDiagnosticoExistente(consulta, lista);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
         public static DataTable mostrarConsultasAnteriores(int idHc)
         {

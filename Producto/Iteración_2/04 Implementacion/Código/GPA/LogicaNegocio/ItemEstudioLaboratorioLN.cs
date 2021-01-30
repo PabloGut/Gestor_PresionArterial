@@ -12,9 +12,9 @@ namespace LogicaNegocio
 {
     public class ItemEstudioLaboratorioLN
     {
-        public static int obtenerIdItemEstudioLaboratorio(string nombreEstudio)
+        public static int buscarIdItemEstudioLaboratorio(string nombreEstudio)
         {
-            return ItemEstudioLaboratorioDAO.obtenerIdItemEstudioLaboratorio(nombreEstudio);
+            return ItemEstudioLaboratorioDAO.buscarIdItemLaboratorio(nombreEstudio);
         }
     }
 }

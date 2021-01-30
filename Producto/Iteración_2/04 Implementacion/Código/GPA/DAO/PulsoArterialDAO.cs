@@ -138,7 +138,7 @@ namespace DAO
                     tran.Rollback();
                     cn.Close();
                 }
-                throw new ApplicationException("Error: " + e.Message);
+                throw e;
             }
             return pulsoArterial.id_pulsoArterial;
 

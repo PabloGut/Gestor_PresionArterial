@@ -19,5 +19,13 @@ namespace LogicaNegocio
         {
             return ItemLaboratorioDAO.buscarItemLaboratorio(nombre);
         }
+        public static List<DetalleItemLaboratorio> obtenerDetalleItemLaboratorio(int idItemLaboratorio)
+        {
+            return DetalleItemLaboratorioDAO.obtenerIdDetalleItemLaboratorio(idItemLaboratorio);
+        }
+        public static int obtenerItemLaboratorio(string nombreItemLaboratorio)
+        {
+            return ItemEstudioLaboratorioDAO.buscarIdItemLaboratorio(nombreItemLaboratorio);
+        }
     }
 }

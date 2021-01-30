@@ -24,9 +24,11 @@ namespace Entidades.Clases
         public List<EstudioDiagnosticoPorImagen> estudios { set; get; }
         public List<PracticaComplementaria> practicas { set; get; }
         public List<Tratamiento> tratamientos { set; get; }
-        
-       
-        
+
+        public List<Tratamiento> tratamientosACancelar { set; get; }
+
+
+
 
     }
 }

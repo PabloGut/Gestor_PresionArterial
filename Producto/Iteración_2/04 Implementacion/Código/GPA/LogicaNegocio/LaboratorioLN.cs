@@ -13,5 +13,17 @@ namespace LogicaNegocio
         {
             return LaboratorioDAO.obtenerAnalisisLaboratorio(idRazonamiento);
         }
+        public static void insertResultadosEstudioLaboratorio(Laboratorio laboratorio)
+        {
+            try
+            {
+                LaboratorioDAO.insertResultadosEstudioLaboratorio(laboratorio);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+           
+        }
     }
 }

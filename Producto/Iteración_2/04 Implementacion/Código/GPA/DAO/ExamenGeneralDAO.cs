@@ -121,7 +121,7 @@ namespace DAO
             }
             return idExamen;
         }*/
-        public static int registrarExamenGeneral(ExamenGeneral examen,SqlTransaction tran, SqlConnection cn)
+        public static int registrarExamenGeneral(ExamenGeneral examen,SqlTransaction tran, SqlConnection cn, int id_hc)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace DAO
                 int id_medicion_fk=0;
                 if (examen.medicion != null)
                 {
-                    id_medicion_fk = MedicionDePresionArterialDAO.registrarMedicionDePresionArterial(examen.medicion, tran, cn);
+                    id_medicion_fk = MedicionDePresionArterialDAO.registrarMedicionDePresionArterial(examen.medicion, tran, cn, id_hc);
                 }
                 int id_piel_fk = 0;
                 if (examen.examenPiel != null)
@@ -266,16 +266,17 @@ namespace DAO
                         RazonamientoDiagnosticoDAO.registrarRazonamientoDiagnostico(diagnostico, tran, cn);
                     }
                 }
+
             }
             catch (Exception e)
             {
 
-                if (cn.State == ConnectionState.Open)
-                {
-                    cn.Close();
-                    tran.Rollback();
-                }
-                throw new ApplicationException("Error: " + e.Message);
+                //if (cn.State == ConnectionState.Open)
+                //{
+                //    cn.Close();
+                //    tran.Rollback();
+                //}
+                throw e;
             }
             return examen.id_examenGeneral;
         }

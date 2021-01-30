@@ -302,9 +302,10 @@ namespace GPA
             ItemLaboratorio itemLaboratorio = manejador.crearItemLaboratorio(nombreEstudio);
 
             itemEstudio = manejador.crearItemEstudioLaboratorio(itemLaboratorio);
-
             if (listaDetalles != null && listaDetalles.Count > 0)
                 itemEstudio.detalles = listaDetalles;
+
+
 
             manejador.registrarItemEstudioLaboratorio(itemEstudio);
 

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades.Clases;
 using GPA.Manejadores;
+using LogicaNegocio;
+
 namespace GPA
 {
     public partial class MenuPrincipal : Form
@@ -36,6 +38,7 @@ namespace GPA
         List<Laboratorio> listaLaboratorioConInforme;
         List<EstudioDiagnosticoPorImagen> listaEstudioDiagnosticoImagenConInforme;
         List<PracticaComplementaria> listaPracticasConInforme;
+        List<Tratamiento> tratamientosACancelar;
 
         private Consulta consulta;
         private Boolean consultaGenerada;
@@ -45,6 +48,8 @@ namespace GPA
         public RazonamientoDiagnostico diagnosticoSeleccionado { set; get; }
         private int idDiagnosticoSeleccionado { set; get; }
 
+        private RazonamientoDiagnostico razonamientoDiagnosticoExistente;
+        private List<EvolucionDiagnostico> listaEvolucionDiagnostico;
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
@@ -110,7 +115,6 @@ namespace GPA
 
             agregarColumnasSistemaLinfatico();
             agregarColumnasExamenesARealizar();
-           
         }
         private void presentarTipoSintomas()
         {
@@ -1000,9 +1004,32 @@ namespace GPA
                 MessageBox.Show("Antes de registrar la atención en consultorio y el examen general\n debe generar una nueva consulta", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            //registrarExamenGeneralYConsulta();
 
-            MessageBox.Show("Consulta y Examen General registrado correctamente!!!", "Atención en consultorio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (chbNuevoDiagnostico.Checked == true)
+            {
+                try
+                {
+                    registrarExamenGeneralYConsulta();
+                    MessageBox.Show("Consulta y Examen General registrado correctamente!!!", "Atención en consultorio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar consulta. Error: " + ex.Message + " StackTrace: "+ ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            } 
+            else
+            {
+                try
+                {
+                   registrarExamenGeneralYConsultaDiagnosticoExistente();
+                    MessageBox.Show("Consulta y Examen General registrado correctamente!!!", "Atención en consultorio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error al registrar consulta. Error: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+               
 
             registrarAnálisisToolStripMenuItem.Enabled = true;
             btnAgregarPresionArterial.Enabled = true;
@@ -1011,9 +1038,9 @@ namespace GPA
             Utilidades.limpiarLosControles(tabControl2);
             Utilidades.limpiarLosControles(tabPage4);
 
-            listaSintoma.Clear();
-            manejadorRegistrarExamenGeneral = null;
-            manejadorRegistrarAtencionMedicaEnConsultorio = null;
+            listaSintoma=null;
+            //manejadorRegistrarExamenGeneral = null;
+            //manejadorRegistrarAtencionMedicaEnConsultorio = null;
             listaTerritoriosExaminados = null;
             listaTemperaturas = null;
             consulta = null;
@@ -1050,8 +1077,58 @@ namespace GPA
 
             consulta.examen = examen;//Agrega el examen general a la consulta
 
-            manejadorRegistrarAtencionMedicaEnConsultorio.registrarConsultaYExamenGeneral(consulta);//Registra todo el examen general en la base de datos.
+            try
+            {
+                manejadorRegistrarAtencionMedicaEnConsultorio.registrarConsultaYExamenGeneral(consulta);//Registra todo el examen general en la base de datos.
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             ////Falta agregar la "fecha desde" a la programación del medicamento. 
+        }
+        public void registrarExamenGeneralYConsultaDiagnosticoExistente()
+        {
+            //Codigo para registrar exámen general y consulta con una sola transacción en DAO.
+
+            examen = crearExamenGeneral();//Crea ObjetoExamenGeneral.
+
+            examen.examenPiel = crearExamenPiel();//Agrega el análisis de la piel al examen general.
+
+            if (examen != null && listaTerritoriosExaminados != null && listaTerritoriosExaminados.Count > 0)
+                examen.territoriosExaminados = listaTerritoriosExaminados; //Agrega el análisis del sistema linfático al examen
+
+            examen.pulso = crearPulsoArterial();//Crea ObjetoPulsoArterial
+
+            Respiracion respiracion = crearRespiracion();//Agrega los datos de la respiración al examen
+            examen.descripcionComoRespira = respiracion.descripcion;
+            examen.observacionesRespiracion = respiracion.observaciones;
+
+            //Agrega datos de temperatura al examen
+            crearMedicionTemperatura();
+            if (examen != null && manejadorRegistrarExamenGeneral != null && listaTemperaturas != null && listaTemperaturas.Count > 0)
+                examen.listaTemperaturas = listaTemperaturas;//Agrega la lista de temperaturas corporales al examen general.
+
+            if (examen != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
+                examen.medicion = manejadorRegistrarExamenGeneral.medicion;//Agrega las mediciones de presión arterial al examen
+
+            //if (examen != null && manejadorRegistrarExamenGeneral != null && listaDiagnosticos != null && listaDiagnosticos.Count > 0)
+            //    examen.listaDiagnosticos = listaDiagnosticos;//agrega al examen la lista de diagnosticos. Cada objeto de la lista ya contiene sus correspondientes tratamientos, exploraciones complementarias, programación de medicamentos.
+
+
+            consulta = CrearConsulta();//Crea un objeto consulta y agrega una lista con los sintomas.
+
+            consulta.examen = examen;//Agrega el examen general a la consulta
+
+            try
+            {
+                manejadorRegistrarAtencionMedicaEnConsultorio.registrarConsultaYExamenGeneral(consulta,listaEvolucionDiagnostico);//Registra todo el examen general en la base de datos.
+                ////Falta agregar la "fecha desde" a la programación del medicamento. 
+            }
+             catch (Exception e)
+            {
+                throw e;
+            }
         }
         /*
         * Crea un objeto consulta.
@@ -1630,22 +1707,25 @@ namespace GPA
                 cmbPosicionPresionArterial.Enabled = false;
                 cmbSitioMedicionPresionArterial.Enabled = false;
                 cmbMomentoDiaPresionArterial.Enabled = false;
-                manejadorRegistrarExamenGeneral.registrarMedicion(DateTime.Today, DateTime.Now, posicion, ubicacion, sitio, momento);
+                manejadorRegistrarExamenGeneral.registrarMedicion(DateTime.Today, DateTime.Now, posicion, ubicacion, sitio, momento, extremidad);
             }
 
             dgvPresionArterial.Rows.Add(DateTime.Today.ToShortDateString(), DateTime.Now.ToShortTimeString(), extremidad.nombre, ubicacion.nombre, posicion.nombre, sitio.nombre, txtSistolicaPresionArterial.Text + "mmHg", txtDiastolicaPresionArterial.Text + "mmHg", txtPulsoPresionArterial.Text, momento.nombre);
             DateTime hora = DateTime.Now; int pulso = Convert.ToInt32(txtPulsoPresionArterial.Text); int valorMinimo = Convert.ToInt32(txtDiastolicaPresionArterial.Text); int valorMaximo = Convert.ToInt32(txtSistolicaPresionArterial.Text);
             manejadorRegistrarExamenGeneral.registrarDetalleDeMedicion(hora, pulso, valorMinimo, valorMaximo);
 
+            txtSistolicaPresionArterial.Clear();
+            txtDiastolicaPresionArterial.Clear();
+            txtPulsoPresionArterial.Clear();
             registrarAnálisisToolStripMenuItem.Enabled = false;
         }
 
         public void presentarCalculosPresionArterial(string promedio, string categoria, string rangoValorMaximo, string rangoValorMinimo)
         {
-            lblPromedioPresionArterial.Text = promedio;
-            lblCategoriaPresionArterial.Text = categoria;
-            lblValorMaxPresionArterial.Text = rangoValorMaximo;
-            lblValorMinPresionArterial.Text = rangoValorMinimo;
+            //lblPromedioPresionArterial.Text = promedio;
+            //lblCategoriaPresionArterial.Text = categoria;
+            //lblValorMaxPresionArterial.Text = rangoValorMaximo;
+            //lblValorMinPresionArterial.Text = rangoValorMinimo;
         }
 
         private void AgregarHipotesisInicial_Click(object sender, EventArgs e)
@@ -1665,9 +1745,11 @@ namespace GPA
             DateTime fecha;
             string motivo;
 
-            if(cboEstadoDiagnostico.SelectedIndex>0 && string.IsNullOrEmpty(txtDiagnostico.Text) == false)
+            EstadoDiagnostico estadoSeleccionado = null;
+
+            if (chbNuevoDiagnostico.Checked==true && cboEstadoDiagnostico.SelectedIndex>0 && string.IsNullOrEmpty(txtDiagnostico.Text) == false)
             {
-                EstadoDiagnostico estadoSeleccionado= (EstadoDiagnostico) cboEstadoDiagnostico.SelectedItem;
+                estadoSeleccionado = (EstadoDiagnostico) cboEstadoDiagnostico.SelectedItem;
                 nombreEstado=estadoSeleccionado.nombre;
                 id_estado=estadoSeleccionado.id_estado;
                 
@@ -1682,6 +1764,7 @@ namespace GPA
                 EstadoDiagnostico estado= manejadorRegistrarExamenGeneral.crearEstadoDiagnostico(id_estado,nombreEstado);
 
                 RazonamientoDiagnostico diagnostico = manejadorRegistrarExamenGeneral.crearRazonamientoDiagnostico(conceptoInicial, descDiagnostico, estado, motivo, fecha, listaLaboratorio, listaEstudios,listaPracticasComplementarias, listaTratamiento);
+                //aqui agregar validacion y creacion de diagnostico existente!!!!
 
                 DialogResult dr = MessageBox.Show("Desea registrar tratamientos?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
                 if (dr == DialogResult.Yes)
@@ -1702,6 +1785,45 @@ namespace GPA
 
                 dgvDiagnosticos.Rows.Add(txtDiagnostico.Text, nombreEstado);
             }
+            else
+            {
+                if (listaEvolucionDiagnostico == null)
+                    listaEvolucionDiagnostico = new List<EvolucionDiagnostico>();
+
+                EvolucionDiagnostico evolucionDiagnostico = new EvolucionDiagnostico();
+
+                evolucionDiagnostico.idHc = pacienteSeleccionado.id_hc;
+                evolucionDiagnostico.idDiagnostico = Convert.ToInt32(dgvDiagnosticos.CurrentRow.Cells[5].Value);
+                evolucionDiagnostico.fecha = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                evolucionDiagnostico.idEstadoDiagnostico =Convert.ToInt32(dgvDiagnosticos.CurrentRow.Cells[3].Value);
+
+                razonamientoDiagnosticoExistente = new RazonamientoDiagnostico();
+                razonamientoDiagnosticoExistente.id_razonamiento = Convert.ToInt32(dgvDiagnosticos.CurrentRow.Cells[5].Value);
+                razonamientoDiagnosticoExistente.analisis = listaLaboratorio;
+                razonamientoDiagnosticoExistente.estudios = listaEstudios;
+                razonamientoDiagnosticoExistente.practicas = listaPracticasComplementarias;
+
+                
+
+                DialogResult dr = MessageBox.Show("Desea registrar tratamientos?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    RegistrarTratamiento rt = new RegistrarTratamiento(manejadorRegistrarExamenGeneral);
+
+                    if (rt.ShowDialog() == DialogResult.OK)
+                    {
+                        listaTratamiento = rt.listaTratamientos;
+                    }
+                }
+
+                if (listaTratamiento != null && listaTratamiento.Count > 0)
+                {
+                    razonamientoDiagnosticoExistente.tratamientos = listaTratamiento;
+                }
+                evolucionDiagnostico.diagnostico = razonamientoDiagnosticoExistente;
+                listaEvolucionDiagnostico.Add(evolucionDiagnostico);
+                MessageBox.Show("Información del diagnostico agregada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             
         }
         private void btnEstudioARealizar_Click(object sender, EventArgs e)
@@ -1716,6 +1838,16 @@ namespace GPA
             string estudio;
             int id_estudio;
             string indicaciones = "";
+
+            if(chbNuevoDiagnostico.Checked == true)
+            {
+
+            }
+
+
+
+
+
             if (cboEstudioARealizar.SelectedIndex > 0)
             {
                 NombreEstudio nombreSeleccionado = (NombreEstudio)cboEstudioARealizar.SelectedItem;
@@ -1799,6 +1931,7 @@ namespace GPA
             txtLesionesPiel.Text = "Normal";
             cboTemperaturaPiel.SelectedIndex = 0;
 
+            cboTemperaturaPiel.SelectedIndex = 1;
             cboUbicacionGanglio.SelectedIndex = 1;
             cboTamañoGanglio.SelectedIndex = 1;
             cboConsistencia.SelectedIndex = 1;
@@ -1817,6 +1950,14 @@ namespace GPA
             cboPD2.SelectedIndex = 3;
 
             txtDescripcionRespiracion.Text = "Respiración normal";
+            txtObservacionesRespiracion.Text = "Normal";
+            txtValorTemperatura1.Text = "36";
+            txtValorTemperatura2.Text = "36";
+
+            cmbUbicacionPresionArterial.SelectedIndex = 1;
+            cmbMomentoDiaPresionArterial.SelectedIndex = 2;
+            cmbPosicionPresionArterial.SelectedIndex = 2;
+            cmbSitioMedicionPresionArterial.SelectedIndex = 2;
 
             cboSitioMedicion1.SelectedIndex = 1;
             cboSitioMedicion2.SelectedIndex = 2;
@@ -2203,6 +2344,8 @@ namespace GPA
             generarNuevaConsulta();
             cargarDatosDeEjemplo();
             medicionesAutomaticaConExamenGeneral = true;
+ 
+            chbNuevoDiagnostico.Checked = true;
         }
 
         private void registrarAnálisisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2283,9 +2426,39 @@ namespace GPA
             }
 
         }
+        private void cargarGrillaDiagnosticos(List<RazonamientoDiagnostico> diagnosticos, DataGridView dgv)
+        {
+
+            List<string> columnasDiagnosticos = new List<string>();
+            if (dgv.Columns.Count == 0)
+            {
+                columnasDiagnosticos.Add("Diagnóstico");
+                columnasDiagnosticos.Add("Estado");
+                columnasDiagnosticos.Add("idRazonamiento");
+                columnasDiagnosticos.Add("idEstado");
+                columnasDiagnosticos.Add("conceptoInicial");
+                columnasDiagnosticos.Add("id_diagnostico");
+                
+            }
+            Utilidades.agregarColumnasDataGridView(dgv, columnasDiagnosticos);
+
+            dgv.Columns[2].Visible = false;
+            dgv.Columns[3].Visible = false;
+            dgv.Columns[4].Visible = false;
+            dgv.Columns[5].Visible = false;
+
+            for (int i = 0; i < diagnosticos.Count; i++)
+            {
+                dgv.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].estado.nombre, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico, diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento);
+            }
+
+        }
         private void cargarEnGrillaPracticasComplementarias<T>(List<T> lista)
         {
-            
+            if(lista.Count==0)
+            {
+                return;
+            }
             string tipo = Convert.ToString(lista[0].GetType());
             switch (tipo)
             {
@@ -2310,9 +2483,36 @@ namespace GPA
                         dgvAnalisisLaboratorioPendientes.Rows.Add(laboratorio.analisis.nombre, laboratorio.fechaSolicitud, laboratorio.indicaciones, laboratorio.id_laboratorio);
                     }
                     break;
+                case "Entidades.Clases.Tratamiento":
+                    foreach (object obj in lista)
+                    {
+                        Tratamiento tratamiento = (Tratamiento)obj;
+                        dgvTratamientosDiagnostico.Rows.Add(0,tratamiento.id_tratamiento, tratamiento.fechaInicio, tratamiento.indicaciones, tratamiento.terapia.id_terapia, tratamiento.terapia.nombre);
+                    }
+                    break;
             }
            
             
+        }
+        private void cargarColumnasGrillasTratamientos()
+        {
+
+            List<string> columnasEstudios = new List<string>();
+
+            if (dgvTratamientosDiagnostico.Columns.Count == 0 )
+            {
+                columnasEstudios.Add("Cancelar");
+                columnasEstudios.Add("IdTratamiento");
+                columnasEstudios.Add("Fecha de Inicio");
+                columnasEstudios.Add("Indicaciones");
+                columnasEstudios.Add("idTerapia");
+                columnasEstudios.Add("Terapia");
+            }
+
+            Utilidades.agregarColumnasDataGridViewTratamientos(dgvTratamientosDiagnostico, columnasEstudios);
+
+           // dgvTratamientosDiagnostico.Columns[1].Visible = false;
+            //dgvTratamientosDiagnostico.Columns[4].Visible = false;
         }
         private void cargarColumnasGrillasPracticasDeDiagnostico()
         {
@@ -2343,6 +2543,7 @@ namespace GPA
             Utilidades.limpiarGrilla(dgvEstudiosPendientes);
             Utilidades.limpiarGrilla(dgvAnalisisLaboratorioPendientes);
             Utilidades.limpiarGrilla(dgvPracticasPendientes);
+            Utilidades.limpiarGrilla(dgvTratamientosDiagnostico);
 
             if (dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value==null || string.IsNullOrEmpty(dgvDiagnosticosPaciente.CurrentRow.Cells[0].Value.ToString()))
                 return;
@@ -2357,6 +2558,7 @@ namespace GPA
                 manejadorModificarEstadoDiagnostico = new ManejadorModificarEstadoDiagnostico();
 
              cargarColumnasGrillasPracticasDeDiagnostico();
+             cargarColumnasGrillasTratamientos();
 
              List<EstudioDiagnosticoPorImagen> estudios= manejadorModificarEstadoDiagnostico.presentarEstudiosDiagnosticoPorImagen((int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value);
              cargarEnGrillaPracticasComplementarias(estudios);
@@ -2367,6 +2569,16 @@ namespace GPA
              List<Laboratorio> analisis = manejadorModificarEstadoDiagnostico.presentarAnalisisLaboratorio((int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value);
              cargarEnGrillaPracticasComplementarias(analisis);
 
+            try
+            {
+                List<Tratamiento> tratamientos = manejadorModificarEstadoDiagnostico.presentarTratamientos((int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value);
+                cargarEnGrillaPracticasComplementarias(tratamientos);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al consultar los tratamientos en la grilla. Error: " + ex.Message, "Tratamientos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+             
         }
 
         private void dgvEstudiosPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -2397,9 +2609,9 @@ namespace GPA
             string nombre = (string)dgvPracticasPendientes.CurrentRow.Cells[0].Value;
             TipoPracticaComplementaria tipo = manejadorModificarEstadoDiagnostico.crearTipoPracticaComplementaria(nombre);
 
-            DateTime fechaSolicitud = (DateTime)dgvEstudiosPendientes.CurrentRow.Cells[1].Value;
-            string indicaciones = (string)dgvEstudiosPendientes.CurrentRow.Cells[2].Value;
-            int idPractica = (int)dgvEstudiosPendientes.CurrentRow.Cells[3].Value;
+            DateTime fechaSolicitud = (DateTime)dgvPracticasPendientes.CurrentRow.Cells[1].Value;
+            string indicaciones = (string)dgvPracticasPendientes.CurrentRow.Cells[2].Value;
+            int idPractica = (int)dgvPracticasPendientes.CurrentRow.Cells[3].Value;
             string observacopnes = txtObservaciones.Text;
             PracticaComplementaria practica = manejadorModificarEstadoDiagnostico.crearPracticaComplementaria(tipo, fechaSolicitud, indicaciones, idPractica, observacopnes);
 
@@ -2438,6 +2650,8 @@ namespace GPA
 
         private void btnAceptarDiagnostico_Click(object sender, EventArgs e)
         {
+            EvolucionDiagnostico evolucionDiagnostico = new EvolucionDiagnostico();
+
              diagnosticoSeleccionado = new RazonamientoDiagnostico();//Crear un objeto diagnostico a partir de los datos anteriores.
              diagnosticoSeleccionado.id_razonamiento=(int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value;
              EstadoDiagnostico estado = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
@@ -2449,7 +2663,7 @@ namespace GPA
                      diagnosticoSeleccionado.motivoTentativo = txtMotivoCambioEstado.Text;
                      diagnosticoSeleccionado.fechaTentativo = Convert.ToDateTime(mtbFechaCambioEstadoDiagnostico.Text);
                      break;
-                 case "Confirmado":
+                 case "Definitivo":
                      diagnosticoSeleccionado.motivoConfirmado = txtMotivoCambioEstado.Text;
                      diagnosticoSeleccionado.fechaConfirmado = Convert.ToDateTime(mtbFechaCambioEstadoDiagnostico.Text);
                      break;
@@ -2467,8 +2681,28 @@ namespace GPA
              if(listaPracticasConInforme!=null && listaPracticasConInforme.Count>0)
                  diagnosticoSeleccionado.practicas = listaPracticasConInforme;
 
-             manejadorModificarEstadoDiagnostico.updateRazonamientoDiagnostico(diagnosticoSeleccionado);
-             
+            if (tratamientosACancelar != null && tratamientosACancelar.Count > 0)
+                diagnosticoSeleccionado.tratamientosACancelar = tratamientosACancelar;
+
+
+            evolucionDiagnostico.diagnostico = diagnosticoSeleccionado;
+            evolucionDiagnostico.idHc = hc.id_hc;
+
+            try
+            {
+                EvolucionDiagnosticoLN.insertEvolucionDiagnostico(evolucionDiagnostico);
+                Utilidades.limpiarGrilla(dgvDiagnosticosPaciente);
+                Utilidades.limpiarGrilla(dgvEstudiosPendientes);
+                Utilidades.limpiarGrilla(dgvPracticasPendientes);
+                Utilidades.limpiarGrilla(dgvAnalisisLaboratorioPendientes);
+                Utilidades.limpiarGrilla(dgvTratamientosDiagnostico);
+                txtMotivoCambioEstado.Clear();
+            }
+            catch(Exception excepcion)
+            {
+                MessageBox.Show("Error al actualiza informacion del diagnóstico. Error: " + excepcion.Message, "Atención en consultorio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+    
         }
 
         private void btnAñadirQueSientePaciente_Click(object sender, EventArgs e)
@@ -2533,6 +2767,157 @@ namespace GPA
         private void groupBox18_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboEstadoDiagnosticoCambio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnCancelarDiagnostico_Click(object sender, EventArgs e)
+        {
+            Utilidades.limpiarGrilla(dgvDiagnosticosPaciente);
+            Utilidades.limpiarGrilla(dgvEstudiosPendientes);
+            Utilidades.limpiarGrilla(dgvPracticasPendientes);
+            Utilidades.limpiarGrilla(dgvAnalisisLaboratorioPendientes);
+            Utilidades.limpiarGrilla(dgvTratamientosDiagnostico);
+            txtMotivoCambioEstado.Clear();
+        }
+
+        private void txtConceptoInicial_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chbNuevoDiagnostico_CheckedChanged(object sender, EventArgs e)
+        {
+            List<RazonamientoDiagnostico> diagnosticos = null;
+
+
+            if (chbNuevoDiagnostico.Checked == false)
+            {
+                Utilidades.limpiarGrilla(dgvDiagnosticos);
+                dgvDiagnosticos.Columns.Clear();
+
+                if (manejadorModificarEstadoDiagnostico == null)
+                    manejadorModificarEstadoDiagnostico = new ManejadorModificarEstadoDiagnostico();
+
+                    diagnosticos = manejadorModificarEstadoDiagnostico.presentarDiagnosticos(hc.id_hc);
+
+                if (diagnosticos.Count == 0)
+                {
+                    Utilidades.mostrarFilaNoSeEncontraronResultados(dgvDiagnosticos);
+                }
+                else
+                {
+                    cargarGrillaDiagnosticos(diagnosticos, dgvDiagnosticos);
+                }
+            }
+            else
+            {
+                Utilidades.limpiarGrilla(dgvDiagnosticos);
+                dgvDiagnosticos.Columns.Clear();
+
+                diagnosticos = null;
+                List<String> columnasGrillaDiagnosticos = new List<string>();
+                columnasGrillaDiagnosticos.Add("Diagnósticos");
+
+                Utilidades.agregarColumnasDataGridView(dgvDiagnosticos, columnasGrillaDiagnosticos);
+            }
+        }
+
+        private void actualizarAnalisisLaboratorioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarAnalisisLaboratorio actualizarAnalisis = new ActualizarAnalisisLaboratorio();
+            actualizarAnalisis.ShowDialog();
+        }
+
+        private void actualizarMétodoAnalisisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarMetodoAnalisisLaboratorio actualizarMetodoAnalisis = new ActualizarMetodoAnalisisLaboratorio();
+            actualizarMetodoAnalisis.ShowDialog();
+        }
+
+        private void dgvTratamientosDiagnostico_Click(object sender, EventArgs e)
+        {
+            //Tratamiento tratamientoACancelar = null;
+            //List<Tratamiento> tratamientosACancelar = new List<Tratamiento>();
+            //int id;
+            ////Boolean estaSeleccionada=(bool)dgvTratamientosDiagnostico.Rows[e.].Cells[0].Value;
+
+            //foreach (DataGridViewRow r in dgvTratamientosDiagnostico.Rows)
+            //{
+            //    id = dgvTratamientosDiagnostico.Rows.IndexOf(r);
+            //    bool isChecked = Convert.ToBoolean(r.Cells["Cancelar"].Value);
+            //    if (isChecked)
+            //    {
+
+            //        MotivoFinTratamiento re = new MotivoFinTratamiento();
+            //       // re.Text = "Registrar informe estudio de diagnóstico por imagen.";
+            //        if (re.ShowDialog() == DialogResult.OK)
+            //        {
+            //            tratamientoACancelar= re.tratamiento;
+            //            tratamientoACancelar.id_tratamiento = Convert.ToInt32(dgvTratamientosDiagnostico.Rows[id].Cells[0].Value);
+            //            tratamientosACancelar.Add(tratamientoACancelar);
+            //        }
+            //    }
+            //}
+        }
+
+        private void dgvTratamientosDiagnostico_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvTratamientosDiagnostico.IsCurrentCellDirty)
+            {
+                dgvTratamientosDiagnostico.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dgvTratamientosDiagnostico_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            bool isCellChecked = (bool)dgvTratamientosDiagnostico.Rows[e.RowIndex].Cells[0].Value;
+            Tratamiento tratamientoACancelar = null;
+            tratamientosACancelar = new List<Tratamiento>();
+
+            if (isCellChecked)
+            {
+                //System.Diagnostics.Debug.WriteLine("Fila " + e.RowIndex + " seleccionada");
+                MotivoFinTratamiento re = new MotivoFinTratamiento();
+                // re.Text = "Registrar informe estudio de diagnóstico por imagen.";
+                if (re.ShowDialog() == DialogResult.OK)
+                {
+                    tratamientoACancelar = re.tratamiento;
+                    tratamientoACancelar.id_tratamiento = Convert.ToInt32(dgvTratamientosDiagnostico.Rows[e.RowIndex].Cells[1].Value);
+                    tratamientosACancelar.Add(tratamientoACancelar);
+                }
+            }
+
+            //Tratamiento tratamientoACancelar = null;
+            //List<Tratamiento> tratamientosACancelar = new List<Tratamiento>();
+
+
+            //foreach (DataGridViewRow r in dgvTratamientosDiagnostico.Rows)
+            //{
+            //    id = dgvTratamientosDiagnostico.Rows.IndexOf(r);
+            //    bool isChecked = Convert.ToBoolean(r.Cells["Cancelar"].Value);
+            //    if (isChecked)
+            //    {
+
+            //        MotivoFinTratamiento re = new MotivoFinTratamiento();
+            //        // re.Text = "Registrar informe estudio de diagnóstico por imagen.";
+            //        if (re.ShowDialog() == DialogResult.OK)
+            //        {
+            //            tratamientoACancelar = re.tratamiento;
+            //            tratamientoACancelar.id_tratamiento = Convert.ToInt32(dgvTratamientosDiagnostico.Rows[id].Cells[0].Value);
+            //            tratamientosACancelar.Add(tratamientoACancelar);
+            //        }
+            //    }
+            //}
+        }
+
+        private void registrarMedicamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistrarMedicamento formRegistrarMedicamento = new RegistrarMedicamento();
+            formRegistrarMedicamento.ShowDialog();
         }
     }
 }

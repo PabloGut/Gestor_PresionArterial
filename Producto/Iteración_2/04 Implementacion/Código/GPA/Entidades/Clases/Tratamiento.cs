@@ -19,5 +19,7 @@ namespace Entidades.Clases
         public Terapia terapia { set; get; }
         public int id_razonamiento_fk { set; get; }
 
+        public int idTerapia { set; get; }
+
     }
 }

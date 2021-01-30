@@ -85,6 +85,7 @@
     <Compile Include="EstadoProgramacionDAO.cs" />
     <Compile Include="EstudioDAO.cs" />
     <Compile Include="EstudioDiagnosticoPorImagenDAO.cs" />
+    <Compile Include="EvolucionDiagnosticoDAO.cs" />
     <Compile Include="ExamenGeneralDAO.cs" />
     <Compile Include="ExtremidadDAO.cs" />
     <Compile Include="FamiliarDAO.cs" />

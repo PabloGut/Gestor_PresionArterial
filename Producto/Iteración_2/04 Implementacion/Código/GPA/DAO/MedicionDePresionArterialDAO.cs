@@ -55,6 +55,7 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@paramId_sitioMedicion_fk", medicion.sitio.id_sitioMedicion);
                 cmd.Parameters.AddWithValue("@paramHoraInicio", medicion.horaInicio.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
                 cmd.Parameters.AddWithValue("@paramId_ubicacionExtremidad_fk", medicion.ubicacion.id_ubicacionExtremidad);
+                
 
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
@@ -86,10 +87,10 @@ namespace DAO
             return medicion.id_medicion;
         }
 
-        public static int registrarMedicionDePresionArterial(MedicionDePresionArterial medicion, SqlTransaction tran, SqlConnection cn)
+        public static int registrarMedicionDePresionArterial(MedicionDePresionArterial medicion, SqlTransaction tran, SqlConnection cn , int id_hc)
         {
-            string consulta = @"INSERT INTO MedicionDePrecionArterial(fecha,id_posicion_fk,id_clasificacion_fk,id_momentoDelDia_fk,promedio,id_sitioMedicion_fk,horaInicio,id_ubicacionExtremidad_fk)
-                                VALUES (@paramFecha,@paramId_posicion_fk,@paramId_clasificacion_fk,@paramId_momentoDelDia_fk,@paramPromedio,@paramId_sitioMedicion_fk,@paramHoraInicio,@paramId_ubicacionExtremidad_fk)";
+            string consulta = @"INSERT INTO MedicionDePrecionArterial(fecha,id_posicion_fk,id_clasificacion_fk,id_momentoDelDia_fk,promedio,id_sitioMedicion_fk,horaInicio,id_extremidad_fk,id_ubicacionExtremidad_fk, id_hc_fk)
+                                VALUES (@paramFecha,@paramId_posicion_fk,@paramId_clasificacion_fk,@paramId_momentoDelDia_fk,@paramPromedio,@paramId_sitioMedicion_fk,@paramHoraInicio,@paramId_extremidad,@paramId_ubicacionExtremidad_fk,@paramId_hc)";
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -109,6 +110,8 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@paramId_sitioMedicion_fk", medicion.sitio.id_sitioMedicion);
                 cmd.Parameters.AddWithValue("@paramHoraInicio", medicion.horaInicio.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
                 cmd.Parameters.AddWithValue("@paramId_ubicacionExtremidad_fk", medicion.ubicacion.id_ubicacionExtremidad);
+                cmd.Parameters.AddWithValue("@paramId_extremidad", medicion.extremidad.id_extremidad);
+                cmd.Parameters.AddWithValue("@paramId_hc", id_hc);
 
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
@@ -132,7 +135,8 @@ namespace DAO
                     tran.Rollback();
                     cn.Close();
                 }
-                throw new Exception("Error al insertar medición de presión arterial: " + e.Message);
+                throw e;
+                //throw new Exception("Error al insertar medición de presión arterial: " + e.Message);
             }
             return medicion.id_medicion;
         }

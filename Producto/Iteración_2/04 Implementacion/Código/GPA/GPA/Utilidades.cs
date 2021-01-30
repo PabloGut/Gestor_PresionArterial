@@ -129,8 +129,40 @@ namespace GPA
             {
                 DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
                 columna.HeaderText = nombreColumnas[i];
-                columna.Width = 200;
+                columna.Width = 280;
                 dgv.Columns.Add(columna);
+            }
+        }
+        public static void agregarColumnasDataGridViewTratamientos(DataGridView dgv, List<String> nombreColumnas)
+        {
+         
+
+            for (int i = 0; i < nombreColumnas.Count; i++)
+            {
+                if(i==0)
+                {
+                    //var doWork = new DataGridViewCheckBoxColumn();
+                    //doWork.Name = "Cancelar";
+                    //doWork.HeaderText = "Cancelar";
+                    //doWork.FalseValue = "1";
+                    //doWork.TrueValue = "0";
+
+                    //dgv.Columns.Add(doWork);
+
+                    DataGridViewCheckBoxColumn CheckBoxColumn = new DataGridViewCheckBoxColumn();
+                    CheckBoxColumn.HeaderText = "Cancelar";
+                    dgv.Columns.Add(CheckBoxColumn);
+                    //dgv.Rows.Add(false);
+                    //dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+                    dgv.AllowUserToAddRows = false;
+                }
+                else{
+                    DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                    columna.HeaderText = nombreColumnas[i];
+                    columna.Width = 280;
+                    dgv.Columns.Add(columna);
+                }
+               
             }
         }
         public static void limpiarGrilla(DataGridView grilla)

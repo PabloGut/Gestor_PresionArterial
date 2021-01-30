@@ -36,7 +36,7 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = "select * from AnalisisLaboratorio";
+                string consulta = "select * from ItemLaboratorio order by id_itemLaboratorio desc";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = CommandType.Text;
@@ -48,8 +48,9 @@ namespace DAO
                 {
                     analisis.Add(new AnalisisLaboratorio()
                     {
-                        id_analisis = (int)dr["id_analisisLaboratorio"],
-                        nombre = dr["nombre"].ToString()
+                        id_analisis = (int)dr["id_itemLaboratorio"],//se cambia la tabla para q busque los datos de ItemLaboratorio y no de AnalisisLaboratorio
+                        nombre = dr["nombre"].ToString(),
+                        //descripcion = dr["descripcion"].ToString()
                     });
                 }
 
@@ -167,5 +168,124 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static void insertAnalisisLaboratorio(AnalisisLaboratorio analisis)
+        {
+                setCadenaConexion();
+
+                string consulta = @"insert into AnalisisLaboratorio(nombre,descipcion)
+                                values(@nombre,@descripcion)";
+
+                SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+                SqlCommand cmd = new SqlCommand();
+
+                try
+                {
+                    cn.Open();
+
+                    cmd.Parameters.AddWithValue("@nombre", analisis.nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", analisis.descripcion);
+
+                    cmd.Connection = cn;
+                    cmd.CommandText = consulta;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.ExecuteNonQuery();
+
+                    cn.Close();
+
+                }
+                catch (Exception e)
+                {
+                    if (cn.State == ConnectionState.Open)
+                    {
+                        cn.Close();
+                    }
+                    throw new Exception("Error al insertar: " + e.Message);
+                }
+        }
+        public static void updateAnalisisLaboratorio(AnalisisLaboratorio analisis)
+        {
+            setCadenaConexion();
+
+            string consulta = @"update AnalisisLaboratorio
+                                set nombre=@nombre, descripcion=@descripcion
+                                where id_analisisLaboratorio=@id_analisis";
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.Open();
+
+                cmd.Parameters.AddWithValue("@nombre", analisis.nombre);
+                cmd.Parameters.AddWithValue("@descripcion", analisis.descripcion);
+                cmd.Parameters.AddWithValue("@id_analisis", analisis.id_analisis);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new Exception("Error al insertar: " + e.Message);
+            }
+        }
+        public static AnalisisLaboratorio obtenerLaboratorioPorId(int idAnalisis)
+        {
+            setCadenaConexion();
+
+            AnalisisLaboratorio nomAnalisis = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"select id_analisisLaboratorio,a.nombre,a.descripcion
+                                from AnalisisLaboratorio a
+                                where id_analisisLaboratorio=@idAnalisis";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idAnalisis", idAnalisis);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    nomAnalisis = new AnalisisLaboratorio();
+                    nomAnalisis.id_analisis = (int)dr["id_AnalisisLaboratorio"];
+                    nomAnalisis.nombre = dr["nombre"].ToString();
+                    nomAnalisis.descripcion = dr["descripcion"].ToString(); 
+                }
+
+                cn.Close();
+                return nomAnalisis;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
+            
     }
 }

@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarAnalisisLaboratorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarAnalisisLaboratorio.Designer.cs">
+      <DependentUpon>ActualizarAnalisisLaboratorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarCaracteristicas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,12 @@
     <Compile Include="Manejadores\ManejadorRegistrarExamenGeneral.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarLaboratorio.cs" />
     <Compile Include="Manejadores\ManejadorRegistrarMedicionPresionArterial.cs" />
+    <Compile Include="MotivoFinTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MotivoFinTratamiento.Designer.cs">
+      <DependentUpon>MotivoFinTratamiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresentarInformacionHistoriaClinica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +240,9 @@
       <DependentUpon>RegistrarTratamiento.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="ActualizarAnalisisLaboratorio.resx">
+      <DependentUpon>ActualizarAnalisisLaboratorio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ActualizarCaracteristicas.resx">
       <DependentUpon>ActualizarCaracteristicas.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarHistoriaClínica.resx">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MotivoFinTratamiento.resx">
+      <DependentUpon>MotivoFinTratamiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PresentarInformacionHistoriaClinica.resx">
       <DependentUpon>PresentarInformacionHistoriaClinica.cs</DependentUpon>

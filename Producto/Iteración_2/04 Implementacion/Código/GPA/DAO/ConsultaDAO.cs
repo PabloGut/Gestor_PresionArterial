@@ -150,7 +150,7 @@ namespace DAO
 
                 if (consultaPaciente.examen != null)
                 {
-                    consultaPaciente.id_examenGeneral = ExamenGeneralDAO.registrarExamenGeneral(consultaPaciente.examen, tran, cn);
+                    consultaPaciente.id_examenGeneral = ExamenGeneralDAO.registrarExamenGeneral(consultaPaciente.examen, tran, cn , consultaPaciente.id_hc);
                 }
 
                 string consulta = @"insert into Consulta(nroConsulta,fechaConsulta,horaConsulta,motivoConsulta,id_examenGeneral_fk,id_hc_fk)
@@ -204,7 +204,88 @@ namespace DAO
                     tran.Rollback();
                     cn.Close();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                throw e;
+            }
+        }
+        public static void registrarConsultaYExameGeneralDiagnosticoExistente(Consulta consultaPaciente,List<EvolucionDiagnostico> listaEvolucionDiagnostico)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+
+                if (consultaPaciente.examen != null)
+                {
+                    consultaPaciente.id_examenGeneral = ExamenGeneralDAO.registrarExamenGeneral(consultaPaciente.examen, tran, cn, consultaPaciente.id_hc);
+                }
+
+                string consulta = @"insert into Consulta(nroConsulta,fechaConsulta,horaConsulta,motivoConsulta,id_examenGeneral_fk,id_hc_fk)
+                                    values(@nroConsulta,@fechaConsulta,@horaConsulta,@motivoConsulta,@id_examenGeneral_fk,@id_hc_fk)";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@nroConsulta", consultaPaciente.nroConsulta);
+                cmd.Parameters.AddWithValue("@fechaConsulta", consultaPaciente.fecha);
+                cmd.Parameters.AddWithValue("@horaConsulta", consultaPaciente.hora);
+                cmd.Parameters.AddWithValue("@motivoConsulta", consultaPaciente.motivoConsulta);
+
+                if (consultaPaciente.id_examenGeneral == 0)
+                {
+                    cmd.Parameters.AddWithValue("@id_examenGeneral_fk", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@id_examenGeneral_fk", consultaPaciente.id_examenGeneral);
+                }
+
+                cmd.Parameters.AddWithValue("@id_hc_fk", consultaPaciente.id_hc);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Transaction = tran;
+
+                cmd.ExecuteNonQuery();
+
+                if (consultaPaciente.sintoma != null && consultaPaciente.sintoma.Count > 0)
+                {
+                    SqlCommand cmd1 = new SqlCommand("select IDENT_CURRENT('Consulta')", cn, tran);
+                    consultaPaciente.id_consulta = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                    foreach (Sintoma sintoma in consultaPaciente.sintoma)
+                    {
+                        sintoma.id_consulta = consultaPaciente.id_consulta;
+                        SintomaDAO.registrarSintomasDeConsulta(sintoma, cn, tran);
+                    }
+                }
+
+                if (listaEvolucionDiagnostico != null && listaEvolucionDiagnostico.Count > 0)
+                {
+                    foreach (EvolucionDiagnostico evolucion in listaEvolucionDiagnostico)
+                    {
+                        if (consultaPaciente.id_examenGeneral != 0)
+                            evolucion.idExamenGeneral = consultaPaciente.id_examenGeneral;
+
+                        EvolucionDiagnosticoDAO.registrarEvolucionDiagnosticoConExamenGeneral(evolucion, cn, tran);
+                    }
+                }
+                tran.Commit();
+                cn.Close();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                //throw new ApplicationException(e.Message);
+                throw e;
             }
         }
         public static DataTable mostrarConsultasAnteriores(int id_hc)

@@ -39,7 +39,26 @@ namespace GPA.Manejadores
         }
         public void registrarConsultaYExamenGeneral(Consulta consulta)
         {
-            ConsultaLN.registrarConsultaYExamenGeneral(consulta);
+            try
+            {
+                ConsultaLN.registrarConsultaYExamenGeneral(consulta);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+           
+        }
+        public void registrarConsultaYExamenGeneral(Consulta consulta,List<EvolucionDiagnostico> lista)
+        {
+            try
+            {
+                ConsultaLN.registrarConsultaYExamenGeneral(consulta, lista);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
         /*
          * Crear un objeto consulta.

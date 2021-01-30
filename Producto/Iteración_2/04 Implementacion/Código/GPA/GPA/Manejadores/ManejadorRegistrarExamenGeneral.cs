@@ -160,9 +160,9 @@ namespace GPA.Manejadores
             pantalla.presentarUbicacionesExtremidadDeExtremidad(UbicacionExtremidadLN.buscarUbicacionesExtremidadDeExtremidad(id_extremidad));
         }
 
-        public void registrarMedicion(DateTime fecha, DateTime horaInicio, Posicion posicion, UbicacionExtremidad ubicacion, SitioMedicion sitio, MomentoDia momento)
+        public void registrarMedicion(DateTime fecha, DateTime horaInicio, Posicion posicion, UbicacionExtremidad ubicacion, SitioMedicion sitio, MomentoDia momento, Extremidad extremidad)
         {
-            medicion.posicion = posicion; medicion.fecha = fecha; medicion.horaInicio = horaInicio; medicion.ubicacion = ubicacion; medicion.sitio = sitio; medicion.momento = momento;
+            medicion.posicion = posicion; medicion.fecha = fecha; medicion.horaInicio = horaInicio; medicion.ubicacion = ubicacion; medicion.sitio = sitio; medicion.momento = momento; medicion.extremidad = extremidad;
         }
 
         public void registrarDetalleDeMedicion(DateTime hora, int pulso, int valorMinimo, int valorMaximo)
@@ -170,7 +170,7 @@ namespace GPA.Manejadores
             DetalleMedicionPresionArterial detalle = new DetalleMedicionPresionArterial();
             detalle.id_nroMedicion = medicion.mediciones.Count + 1; detalle.hora = hora; detalle.pulso = pulso; detalle.valorMinimo = valorMinimo; detalle.valorMaximo = valorMaximo;
             medicion.mediciones.Add(detalle);
-            calcularPromedioYClasificacionDePresionArterial();
+            //calcularPromedioYClasificacionDePresionArterial();
         }
 
         public void calcularPromedioYClasificacionDePresionArterial()

@@ -11,6 +11,18 @@ namespace DAO
 {
     public class TratamientoDAO
     {
+        private static string cadenaConexion;
+
+        public static void setCadenaConexion()
+        {
+            CadenaConexion singleton = CadenaConexion.getInstancia();
+            cadenaConexion = singleton.getCadena();
+        }
+
+        public static string getCadenaConexion()
+        {
+            return cadenaConexion;
+        }
         public static void registrarTratamientos(Tratamiento tratamiento, SqlConnection cn, SqlTransaction tran)
         {
             string consulta = @"insert into Tratamiento(indicaciones,fechaInicio,motivoInicioTratamiento,id_terapia_fk, id_razonamientoDiagnostico_fk)
@@ -67,9 +79,95 @@ namespace DAO
                     cn.Close();
                     tran.Rollback();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                //throw new ApplicationException("Error:" + e.Message);
+                throw e;
             }
 
+        }
+        public static List<Tratamiento> mostrarTratamientos(int idRazonamientoDiagnostico)
+        {
+            setCadenaConexion();
+            List<Tratamiento> tratamientos = new List<Tratamiento>();
+            Terapia terapia = null;
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select  t.id_tratamiento,t.indicaciones,t.fechaInicio,t.motivoInicioTratamiento, te.id_terapia, te.nombre
+                                    from Tratamiento t , Terapia te
+                                    where t.id_terapia_fk=te.id_terapia
+                                    and t.id_razonamientoDiagnostico_fk=@idRazonamientoDiagnostico
+                                    and t.fechaFin is null";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idRazonamientoDiagnostico", idRazonamientoDiagnostico);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    tratamientos.Add(new Tratamiento()
+                    {
+                        id_tratamiento = (int)dr["id_tratamiento"],
+                        indicaciones = dr["indicaciones"].ToString(),
+                        fechaInicio = Convert.ToDateTime(dr["fechaInicio"].ToString()),
+                        motivoInicio= dr["motivoInicioTratamiento"].ToString(),
+                        terapia= new Terapia()
+                        {
+                            id_terapia= (int)dr["id_terapia"],
+                            nombre = dr["nombre"].ToString()
+                        }
+
+                    });;
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return tratamientos;
+
+        }
+        public static void cancelarTratamiento(Tratamiento tratamiento, SqlConnection cn, SqlTransaction tran)
+        {
+            SqlCommand cmd = new SqlCommand();
+
+            string consulta = @"update Tratamiento
+                                set fechaFin=@fechaFin, motivoFinTratamiento=@motivoFin
+                                where id_tratamiento=@idTratamiento
+                                and id_razonamientoDiagnostico_fk=@idRazonamientoDiagnostico";
+            try
+            {
+                cmd.Parameters.AddWithValue("@fechaFin", tratamiento.fechaFin);
+                cmd.Parameters.AddWithValue("@motivoFin", tratamiento.motivoFin);
+                cmd.Parameters.AddWithValue("@idTratamiento", tratamiento.id_tratamiento);
+                cmd.Parameters.AddWithValue("@idRazonamientoDiagnostico", tratamiento.id_razonamiento_fk);
+
+                cmd.Connection = cn;
+                cmd.Transaction = tran;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />
     <Compile Include="EstudioDiagnosticoPorImagenLN.cs" />
+    <Compile Include="EvolucionDiagnosticoLN.cs" />
     <Compile Include="ExamenGeneralLN.cs" />
     <Compile Include="ExtremidadLN.cs" />
     <Compile Include="FamiliarLN.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="TipoPartoLN.cs" />
     <Compile Include="TipoPracticaComplementariaLN.cs" />
     <Compile Include="TipoSintomaLN.cs" />
+    <Compile Include="TratamientoLN.cs" />
     <Compile Include="TraumatismoLN.cs" />
     <Compile Include="UbicacionExtremidadLN.cs" />
     <Compile Include="UbicacionLN.cs" />

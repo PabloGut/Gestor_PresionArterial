@@ -23,5 +23,17 @@ namespace LogicaNegocio
         {
             return AnalisisLaboratorioDAO.obtenerLaboratorio(nombreAnalisis);
         }
+        public static AnalisisLaboratorio obtenerAnalisisLaboratorioPorId(int idAnalisis)
+        {
+            return AnalisisLaboratorioDAO.obtenerLaboratorioPorId(idAnalisis);
+        }
+        public static void insertAnalisisLaboratorio(AnalisisLaboratorio analisis)
+        {
+            AnalisisLaboratorioDAO.insertAnalisisLaboratorio(analisis);
+        }
+        public static void updateAnalisisLaboratorio(AnalisisLaboratorio analisis)
+        {
+            AnalisisLaboratorioDAO.updateAnalisisLaboratorio(analisis);
+        }
     }
 }

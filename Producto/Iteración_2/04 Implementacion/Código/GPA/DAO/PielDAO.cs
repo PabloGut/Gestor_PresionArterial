@@ -111,7 +111,8 @@ namespace DAO
                     tran.Rollback();
                     cn.Close();
                 }
-                throw new ApplicationException("Error: " + e.Message);
+                //throw new ApplicationException("Error: " + e.Message);
+                throw e;
             }
             return piel.id_piel;
         }

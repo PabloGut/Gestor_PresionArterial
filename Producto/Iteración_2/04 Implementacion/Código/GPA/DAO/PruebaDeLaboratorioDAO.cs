@@ -26,8 +26,8 @@ namespace DAO
         {
             try
             {
-                string consulta = @"insert into Laboratorio(fechaSolicitud,indicaciones,id_analisisLaboratorio_fk, id_razonamientoDiagnostico_fk)
-                                  values(@fechaSolicitud,@indicaciones,@id_analisisLaboratorio_fk,@id_razonamientoDiagnostico_fk)";
+                string consulta = @"insert into LaboratorioNueva(fechaSolicitud,indicaciones,id_itemLaboratorio_fk, id_razonamientoDiagnostico_fk)
+                                  values(@fechaSolicitud,@indicaciones,@id_itemLaboratorio_fk,@id_razonamientoDiagnostico_fk)";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
@@ -43,7 +43,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@indicaciones", DBNull.Value);
                 }
-                cmd.Parameters.AddWithValue("@id_analisisLaboratorio_fk", prueba.analisis.id_analisis);
+                cmd.Parameters.AddWithValue("@id_itemLaboratorio_fk", prueba.analisis.id_analisis);
                 cmd.Parameters.AddWithValue("@id_razonamientoDiagnostico_fk", prueba.id_razonamientoDiagnostico);
 
                 cmd.ExecuteNonQuery();
@@ -55,7 +55,8 @@ namespace DAO
                     cn.Close();
                     tran.Rollback();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                //throw new ApplicationException("Error:" + e.Message);
+                throw e;
             }
 
         }

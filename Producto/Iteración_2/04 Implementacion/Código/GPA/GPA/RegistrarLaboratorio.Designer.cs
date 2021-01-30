@@ -41,11 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarEstudio = new System.Windows.Forms.Button();
+            this.dgvDetalleResultado = new System.Windows.Forms.DataGridView();
             this.btnAgregarUnidadMedida = new System.Windows.Forms.Button();
             this.btnAgregarMetodoAnalisisLaboratorio = new System.Windows.Forms.Button();
             this.btnNuevoAnalisis = new System.Windows.Forms.Button();
             this.btnAgregarResultadoAnalisis = new System.Windows.Forms.Button();
-            this.dgvListaResultadosAnalisis = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.cboUnidadDeMedida = new System.Windows.Forms.ComboBox();
             this.txtResultado = new System.Windows.Forms.TextBox();
@@ -64,7 +65,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResultadosAnalisis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleResultado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListadoItemsEstudioLaboratorio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,11 +187,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnAgregarEstudio);
+            this.groupBox2.Controls.Add(this.dgvDetalleResultado);
             this.groupBox2.Controls.Add(this.btnAgregarUnidadMedida);
             this.groupBox2.Controls.Add(this.btnAgregarMetodoAnalisisLaboratorio);
             this.groupBox2.Controls.Add(this.btnNuevoAnalisis);
             this.groupBox2.Controls.Add(this.btnAgregarResultadoAnalisis);
-            this.groupBox2.Controls.Add(this.dgvListaResultadosAnalisis);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.cboUnidadDeMedida);
             this.groupBox2.Controls.Add(this.txtResultado);
@@ -206,16 +208,35 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(12, 207);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(869, 269);
+            this.groupBox2.Size = new System.Drawing.Size(869, 280);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informe del análisis";
             // 
+            // btnAgregarEstudio
+            // 
+            this.btnAgregarEstudio.Location = new System.Drawing.Point(448, 251);
+            this.btnAgregarEstudio.Name = "btnAgregarEstudio";
+            this.btnAgregarEstudio.Size = new System.Drawing.Size(106, 23);
+            this.btnAgregarEstudio.TabIndex = 19;
+            this.btnAgregarEstudio.Text = "AgregarEstudio";
+            this.btnAgregarEstudio.UseVisualStyleBackColor = true;
+            this.btnAgregarEstudio.Click += new System.EventHandler(this.btnAgregarEstudio_Click);
+            // 
+            // dgvDetalleResultado
+            // 
+            this.dgvDetalleResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalleResultado.Location = new System.Drawing.Point(384, 97);
+            this.dgvDetalleResultado.Name = "dgvDetalleResultado";
+            this.dgvDetalleResultado.Size = new System.Drawing.Size(303, 148);
+            this.dgvDetalleResultado.TabIndex = 18;
+            this.dgvDetalleResultado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleResultado_CellClick);
+            // 
             // btnAgregarUnidadMedida
             // 
-            this.btnAgregarUnidadMedida.Location = new System.Drawing.Point(665, 71);
+            this.btnAgregarUnidadMedida.Location = new System.Drawing.Point(665, 59);
             this.btnAgregarUnidadMedida.Name = "btnAgregarUnidadMedida";
-            this.btnAgregarUnidadMedida.Size = new System.Drawing.Size(159, 23);
+            this.btnAgregarUnidadMedida.Size = new System.Drawing.Size(145, 23);
             this.btnAgregarUnidadMedida.TabIndex = 17;
             this.btnAgregarUnidadMedida.Text = "Agregar Unidad de Medida";
             this.btnAgregarUnidadMedida.UseVisualStyleBackColor = true;
@@ -223,9 +244,9 @@
             // 
             // btnAgregarMetodoAnalisisLaboratorio
             // 
-            this.btnAgregarMetodoAnalisisLaboratorio.Location = new System.Drawing.Point(217, 31);
+            this.btnAgregarMetodoAnalisisLaboratorio.Location = new System.Drawing.Point(241, 22);
             this.btnAgregarMetodoAnalisisLaboratorio.Name = "btnAgregarMetodoAnalisisLaboratorio";
-            this.btnAgregarMetodoAnalisisLaboratorio.Size = new System.Drawing.Size(99, 23);
+            this.btnAgregarMetodoAnalisisLaboratorio.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarMetodoAnalisisLaboratorio.TabIndex = 16;
             this.btnAgregarMetodoAnalisisLaboratorio.Text = "Agregar método";
             this.btnAgregarMetodoAnalisisLaboratorio.UseVisualStyleBackColor = true;
@@ -233,7 +254,7 @@
             // 
             // btnNuevoAnalisis
             // 
-            this.btnNuevoAnalisis.Location = new System.Drawing.Point(220, 120);
+            this.btnNuevoAnalisis.Location = new System.Drawing.Point(241, 120);
             this.btnNuevoAnalisis.Name = "btnNuevoAnalisis";
             this.btnNuevoAnalisis.Size = new System.Drawing.Size(75, 39);
             this.btnNuevoAnalisis.TabIndex = 15;
@@ -243,26 +264,18 @@
             // 
             // btnAgregarResultadoAnalisis
             // 
-            this.btnAgregarResultadoAnalisis.Location = new System.Drawing.Point(757, 101);
+            this.btnAgregarResultadoAnalisis.Location = new System.Drawing.Point(693, 97);
             this.btnAgregarResultadoAnalisis.Name = "btnAgregarResultadoAnalisis";
-            this.btnAgregarResultadoAnalisis.Size = new System.Drawing.Size(106, 23);
+            this.btnAgregarResultadoAnalisis.Size = new System.Drawing.Size(117, 23);
             this.btnAgregarResultadoAnalisis.TabIndex = 14;
             this.btnAgregarResultadoAnalisis.Text = "Agregar resultado";
             this.btnAgregarResultadoAnalisis.UseVisualStyleBackColor = true;
             this.btnAgregarResultadoAnalisis.Click += new System.EventHandler(this.btnAgregarResultadoAnalisis_Click);
             // 
-            // dgvListaResultadosAnalisis
-            // 
-            this.dgvListaResultadosAnalisis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaResultadosAnalisis.Location = new System.Drawing.Point(358, 101);
-            this.dgvListaResultadosAnalisis.Name = "dgvListaResultadosAnalisis";
-            this.dgvListaResultadosAnalisis.Size = new System.Drawing.Size(393, 154);
-            this.dgvListaResultadosAnalisis.TabIndex = 13;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(483, 77);
+            this.label11.Location = new System.Drawing.Point(383, 62);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(97, 13);
             this.label11.TabIndex = 12;
@@ -272,22 +285,22 @@
             // 
             this.cboUnidadDeMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnidadDeMedida.FormattingEnabled = true;
-            this.cboUnidadDeMedida.Location = new System.Drawing.Point(586, 72);
+            this.cboUnidadDeMedida.Location = new System.Drawing.Point(486, 59);
             this.cboUnidadDeMedida.Name = "cboUnidadDeMedida";
-            this.cboUnidadDeMedida.Size = new System.Drawing.Size(73, 21);
+            this.cboUnidadDeMedida.Size = new System.Drawing.Size(156, 21);
             this.cboUnidadDeMedida.TabIndex = 11;
             // 
             // txtResultado
             // 
-            this.txtResultado.Location = new System.Drawing.Point(419, 73);
+            this.txtResultado.Location = new System.Drawing.Point(712, 27);
             this.txtResultado.Name = "txtResultado";
-            this.txtResultado.Size = new System.Drawing.Size(58, 20);
+            this.txtResultado.Size = new System.Drawing.Size(98, 20);
             this.txtResultado.TabIndex = 10;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(355, 77);
+            this.label10.Location = new System.Drawing.Point(648, 32);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 13);
             this.label10.TabIndex = 9;
@@ -295,7 +308,7 @@
             // 
             // txtEstudioSeleccionado
             // 
-            this.txtEstudioSeleccionado.Location = new System.Drawing.Point(448, 33);
+            this.txtEstudioSeleccionado.Location = new System.Drawing.Point(486, 26);
             this.txtEstudioSeleccionado.Name = "txtEstudioSeleccionado";
             this.txtEstudioSeleccionado.ReadOnly = true;
             this.txtEstudioSeleccionado.Size = new System.Drawing.Size(156, 20);
@@ -304,17 +317,17 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(355, 36);
+            this.label9.Location = new System.Drawing.Point(390, 27);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 13);
+            this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 7;
-            this.label9.Text = "Estudio realizado";
+            this.label9.Text = "Estudio realizado:";
             // 
             // txtEstudioBuscado
             // 
             this.txtEstudioBuscado.Location = new System.Drawing.Point(51, 94);
             this.txtEstudioBuscado.Name = "txtEstudioBuscado";
-            this.txtEstudioBuscado.Size = new System.Drawing.Size(158, 20);
+            this.txtEstudioBuscado.Size = new System.Drawing.Size(183, 20);
             this.txtEstudioBuscado.TabIndex = 6;
             this.txtEstudioBuscado.TextChanged += new System.EventHandler(this.txtEstudioBuscado_TextChanged);
             // 
@@ -329,7 +342,7 @@
             // 
             // btnBuscarItemEstudioLaboratorio
             // 
-            this.btnBuscarItemEstudioLaboratorio.Location = new System.Drawing.Point(220, 92);
+            this.btnBuscarItemEstudioLaboratorio.Location = new System.Drawing.Point(241, 92);
             this.btnBuscarItemEstudioLaboratorio.Name = "btnBuscarItemEstudioLaboratorio";
             this.btnBuscarItemEstudioLaboratorio.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarItemEstudioLaboratorio.TabIndex = 4;
@@ -340,7 +353,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 72);
+            this.label7.Location = new System.Drawing.Point(6, 64);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 3;
@@ -353,7 +366,7 @@
             this.dgvListadoItemsEstudioLaboratorio.Name = "dgvListadoItemsEstudioLaboratorio";
             this.dgvListadoItemsEstudioLaboratorio.ReadOnly = true;
             this.dgvListadoItemsEstudioLaboratorio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListadoItemsEstudioLaboratorio.Size = new System.Drawing.Size(205, 135);
+            this.dgvListadoItemsEstudioLaboratorio.Size = new System.Drawing.Size(226, 154);
             this.dgvListadoItemsEstudioLaboratorio.TabIndex = 2;
             this.dgvListadoItemsEstudioLaboratorio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListadoItemsEstudioLaboratorio_CellClick);
             // 
@@ -361,7 +374,7 @@
             // 
             this.cboMetodoAnalisisLaboratorio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMetodoAnalisisLaboratorio.FormattingEnabled = true;
-            this.cboMetodoAnalisisLaboratorio.Location = new System.Drawing.Point(55, 33);
+            this.cboMetodoAnalisisLaboratorio.Location = new System.Drawing.Point(78, 24);
             this.cboMetodoAnalisisLaboratorio.Name = "cboMetodoAnalisisLaboratorio";
             this.cboMetodoAnalisisLaboratorio.Size = new System.Drawing.Size(156, 21);
             this.cboMetodoAnalisisLaboratorio.TabIndex = 1;
@@ -369,7 +382,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 36);
+            this.label6.Location = new System.Drawing.Point(29, 27);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 0;
@@ -377,7 +390,7 @@
             // 
             // btnGuardarInformeAnalisis
             // 
-            this.btnGuardarInformeAnalisis.Location = new System.Drawing.Point(9, 482);
+            this.btnGuardarInformeAnalisis.Location = new System.Drawing.Point(9, 493);
             this.btnGuardarInformeAnalisis.Name = "btnGuardarInformeAnalisis";
             this.btnGuardarInformeAnalisis.Size = new System.Drawing.Size(75, 23);
             this.btnGuardarInformeAnalisis.TabIndex = 24;
@@ -387,7 +400,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(90, 482);
+            this.btnCancelar.Location = new System.Drawing.Point(90, 493);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 25;
@@ -397,7 +410,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(171, 482);
+            this.btnSalir.Location = new System.Drawing.Point(171, 493);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 26;
@@ -422,7 +435,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResultadosAnalisis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleResultado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListadoItemsEstudioLaboratorio)).EndInit();
             this.ResumeLayout(false);
 
@@ -457,12 +470,13 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cboUnidadDeMedida;
         private System.Windows.Forms.Button btnAgregarResultadoAnalisis;
-        private System.Windows.Forms.DataGridView dgvListaResultadosAnalisis;
         private System.Windows.Forms.Button btnGuardarInformeAnalisis;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnNuevoAnalisis;
         private System.Windows.Forms.Button btnAgregarMetodoAnalisisLaboratorio;
         private System.Windows.Forms.Button btnAgregarUnidadMedida;
+        private System.Windows.Forms.DataGridView dgvDetalleResultado;
+        private System.Windows.Forms.Button btnAgregarEstudio;
     }
 }
