@@ -191,8 +191,7 @@ where  id_tipoAntecedenteMorbido_fk='1'
 
 select id_estudio,nombre as 'Nombre del estudio',fecha_estudio,doctorACargo,informe_estudio,id_hc_fk,id_institucion_fk from Estudio where id_hc_fk=8
 
-alter table TipoAntecedenteMorbido
-drop column descripcion
+
 
 
 
@@ -609,6 +608,7 @@ add id_razonamiento_fk int
 alter table ExamenGeneral
 add foreign key(id_razonamiento_fk) references RazonamientoDiagnostico(id_razonamiento)
 
+
 select * from ExamenGeneral
 
 sp_rename 'PulsoArterial.ausculacion', 'auscultacion' --Cambia nombre de columna
@@ -926,6 +926,9 @@ pass: 2chd05qk
 usuario prueba
 usaurio: mgonzalez1
 pass: 1s3vibbq
+
+usuario: amoreno1
+pass: envk00lp
 */
 --quitar y agregar una columna 
 alter table CaracterDelDolor
@@ -934,11 +937,18 @@ alter table CaracterDelDolor
 add nombre text
 
 
-select *
-from Paciente
+alter table EvolucionDiagnostico
+add id_estadoDiagnostico int
+
+alter table EvolucionDiagnostico
+add foreign key (id_estadoDiagnostico) references EstadoDiagnostico(id_estadoDiagnostico)
+
 
 select *
-from MedicionDePrecionArterial
+from EstadoDiagnostico
+
+select *
+from EvolucionDiagnostico
 
 select *
 from SitioMedicion
@@ -949,14 +959,14 @@ from ParteDelCuerpo
 select *
 from UbicacionExtremidad
 
+
+
 select *
-from MedicionDePrecionArterial
-
-select *
-from DetalleMedicionPresionArterial
+from MedicionDePrecionArterial m
+where m.id_hc_fk=4
 
 
-select distinct m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición'
+select m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición'
 from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
 where m.id_medicion=d.id_medicion_fk
 and m.id_extremidad_fk=ex.id_extremidad
@@ -964,7 +974,7 @@ and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
 and m.id_posicion_fk=p.id_posicion
 and m.id_momentoDelDia_fk=md.id_momentoDelDia
 and m.id_sitioMedicion_fk= sm.id_sitioMedicion
-and m.id_hc_fk=2
+and m.id_hc_fk=4
 --and m.id_medicion=54
 group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100))
 
@@ -977,7 +987,7 @@ and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
 and m.id_posicion_fk=p.id_posicion
 and m.id_momentoDelDia_fk=md.id_momentoDelDia
 and m.id_sitioMedicion_fk= sm.id_sitioMedicion
-and m.id_hc_fk=2
+--and m.id_hc_fk=2
 --and m.id_medicion=54
 group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100))
 
@@ -990,8 +1000,8 @@ and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
 and m.id_posicion_fk=p.id_posicion
 and m.id_momentoDelDia_fk=md.id_momentoDelDia
 and m.id_sitioMedicion_fk= sm.id_sitioMedicion
-and m.id_hc_fk=2
-and m.id_medicion=54
+and m.id_hc_fk=4
+--and m.id_medicion=54
 group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso
 
 
@@ -1004,22 +1014,28 @@ and m.id_medicion=54
 group by m.id_medicion;
 
 select *
-from Consulta
-
-select *
-from ClasificacionPresionArterial
-
-select *
-from RazonamientoDiagnostico
-
-select *
-from RazonamientoDiagnostico
+from Consulta c, ExamenGeneral e
+where c.id_examenGeneral_fk=e.id_examenGeneral
 
 select *
 from EstadoDiagnostico
 
 select *
-from EstudiosDiagnosticoPorImagen
+from RazonamientoDiagnostico
+
+select *
+from Consulta
+
+select *
+from EvolucionDiagnostico e,RazonamientoDiagnostico r
+where e.id_diagnostico=r.id_razonamiento
+and e.id_hc=4
+
+drop table EvolucionDiagnostico
+
+select *
+from EvolucionDiagnostico
+
 
 select r.*
 from Consulta c, ExamenGeneral e, RazonamientoDiagnostico r
@@ -1028,6 +1044,15 @@ and r.id_examenGeneral_fk=e.id_examenGeneral
 and c.id_consulta=3
 
 
+select r.diagnostico, r.id_razonamiento,r.id_estadoDiagnostico_fk,r.conceptoInicial,r.fechaTentativo,r.fechaTentativo,r.fechaConfirmado, r.motivoDescartado, ediag.nombre
+                                from Historia_Clinica hc,Paciente p, Consulta c, ExamenGeneral ex, RazonamientoDiagnostico r, EstadoDiagnostico ediag
+                                where p.id_hc_fk=hc.id_hc
+                                and hc.id_hc=c.id_hc_fk 
+                                and c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ex.id_examenGeneral=r.id_ExamenGeneral_fk
+                                and r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and hc.id_hc=3
 
 select ed.fechaSolicitud,ne.nombre,ed.indicaciones,ed.id_estudioDiagnosticoPorImagen
                                 from RazonamientoDiagnostico r, EstadoDiagnostico ediag, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne
@@ -1046,3 +1071,284 @@ select ed.fechaSolicitud,ne.nombre,ed.indicaciones,ed.id_estudioDiagnosticoPorIm
                                 and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
                                 and ed.fechaRealizacion is null
 								and r.id_razonamiento=3
+
+
+select c.id_consulta,r.id_razonamiento,c.fechaConsulta,e.id_examenGeneral
+from Consulta c,ExamenGeneral e,RazonamientoDiagnostico r
+where c.id_examenGeneral_fk=e.id_examenGeneral 
+and e.id_examenGeneral=r.id_examenGeneral_fk
+and c.id_hc_fk=3
+and c.id_consulta=3
+and e.id_examenGeneral=3
+
+select *
+from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d
+where m.id_medicion=d.id_medicion_fk
+and m.id_hc_fk=4
+
+select *
+from Laboratorio
+
+select r.*
+from RazonamientoDiagnostico r,EstudiosDiagnosticoPorImagen es, Laboratorio l, PracticaComplementaria p
+where r.id_razonamiento=es.id_razonamientoDiagnostico_fk
+and r.id_razonamiento= l.id_razonamientoDiagnostico_fk
+and r.id_razonamiento=p.id_razonamientoDiagnostico_fk
+and r.id_razonamiento=13;
+
+select *
+from RazonamientoDiagnostico r, EstudiosDiagnosticoPorImagen es
+where r.id_razonamiento=es.id_razonamientoDiagnostico_fk
+and es.id_razonamientoDiagnostico_fk=13
+
+select *
+from Laboratorio es
+where es.id_razonamientoDiagnostico_fk=13
+
+select *
+from PracticaComplementaria p
+where p.id_razonamientoDiagnostico_fk=13
+
+select id_hc_fk from Paciente where id_tipoDoc_fk=@id_tipoDoc and nro_documento=@nroDocumento
+
+select l.fechaSolicitud,l.fechaRealizacion,l.doctorACargo,l.observacionDeLosResultados,a.nombre,ma.nombre,dl.valorResultado,itl.nombre,dvr.descripcion,dvr.valorDesde,dvr.valorHasta,dil.nombre
+from Laboratorio l, AnalisisLaboratorio a, MetodoAnalisisLaboratorio ma,DetalleLaboratorio dl,ItemEstudioLaboratorio il,itemLaboratorio itl,DetalleItemLaboratorio dil,DetalleValorReferencia dvr
+where l.id_metodoAnalisisLaboratorio_fk=a.id_analisisLaboratorio
+and ma.id_metodo=l.id_metodoAnalisisLaboratorio_fk
+and l.id_laboratorio=dl.id_laboratorio_fk
+and dl.id_itemEstudioLaboratorio_fk=il.id_itemEstudioLaboratorio
+and il.id_itemLaboratorio_fk=itl.id_itemLaboratorio
+and il.id_itemEstudioLaboratorio=dil.id_detalleItemLaboratorio
+and dvr.id_detalleItemLaboratorio_fk=dil.id_detalleItemLaboratorio
+
+select *
+from Laboratorio
+
+select *
+from itemLaboratorio
+
+select *
+from DetalleResultadoEstudio
+
+
+select il.*,dil.*,dvr.*
+from ItemLaboratorio il, DetalleItemLaboratorio dil,DetalleValorReferencia dvr
+where il.id_itemLaboratorio=dil.id_item_fk
+and dil.id_detalleItemLaboratorio=dvr.id_detalleItemLaboratorio_fk
+
+
+select il.*,dil.*
+from ItemLaboratorio il, DetalleItemLaboratorio dil
+where il.id_itemLaboratorio=dil.id_item_fk
+--delete 
+--from ItemEstudioLaboratorio
+--where id_itemEstudioLaboratorio in (7,8)
+--and id_itemLaboratorio_fk in (7,8)
+
+--delete 
+--from itemLaboratorio
+--where id_itemLaboratorio in (7,8)
+
+select *
+from DetalleLaboratorio
+
+drop detalleLaboratorio
+update Laboratorio
+ set observacionDeLosResultados='prueba'
+where id_laboratorio=15
+
+
+update Laboratorio
+set doctorACargo='Juncos'
+where id_laboratorio=15 and id_razonamientoDiagnostico_fk=13
+
+
+alter table AnalisisLaboratorio
+drop column descripcion
+
+
+
+select m.*,d.*
+from Consulta c, ExamenGeneral e , Historia_Clinica h , MedicionDePrecionArterial m , DetalleMedicionPresionArterial d
+where c.id_examenGeneral_fk=e.id_examenGeneral
+and c.id_hc_fk=h.id_hc
+and e.id_medicion_fk= m.id_medicion
+and e.id_medicion_fk=d.id_medicion_fk
+and h.id_hc=2
+
+
+select top(10) m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición'
+                                from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
+                                where m.id_medicion=d.id_medicion_fk
+                                and m.id_extremidad_fk=ex.id_extremidad
+                                and m.id_ubicacionExtremidad_fk=uex.id_ubicacionExtremidad
+                                and m.id_posicion_fk=p.id_posicion
+                                and m.id_momentoDelDia_fk=md.id_momentoDelDia
+                                and m.id_sitioMedicion_fk= sm.id_sitioMedicion
+                                and m.id_hc_fk=4
+                                group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100))
+                                order by m.fecha desc
+
+
+select r.diagnostico, r.id_razonamiento,r.id_estadoDiagnostico_fk,r.conceptoInicial,ediag.nombre
+                                from Historia_Clinica hc,Paciente p, Consulta c, ExamenGeneral ex, RazonamientoDiagnostico r, EstadoDiagnostico ediag
+                                where p.id_hc_fk=hc.id_hc
+                                and hc.id_hc=c.id_hc_fk 
+                                and c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ex.id_examenGeneral=r.id_ExamenGeneral_fk
+                                and r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and hc.id_hc=4;
+
+								select ed.fechaSolicitud,ne.nombre,ed.indicaciones,ed.id_estudioDiagnosticoPorImagen, r.id_razonamiento
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne
+                                where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and ed.id_razonamientoDiagnostico_fk=r.id_razonamiento
+                                and ed.id_nombreEstudio_fk=ne.id_nombreEstudio
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and r.id_razonamiento=13;
+
+
+								select *
+								from DetalleLaboratorio
+
+
+								
+alter table LaboratorioNueva
+add primary key integer IDENTITY  (id_laboratorio) 
+
+
+
+ALTER TABLE LaboratorioNueva
+ADD CONSTRAINT id_laboratorio_pk PRIMARY KEY identity (id_labortorio);
+
+alter table LaboratorioNueva
+alter column id_laboratorio integer unsigned auto_increment
+
+CREATE TABLE LaboratorioNueva(
+id_laboratorio integer PRIMARY KEY identity,
+fechaSolicitud date not null,
+fechaRealizacion date,
+doctorACargo varchar(50),
+id_institucion_fk integer,
+observacionDeLosResultados text,
+indicaciones text,
+id_itemLaboratorio_fk int not null,
+id_metodoAnalisisLaboratorio_fk int ,
+id_razonamientoDiagnostico_fk int not null,
+FOREIGN KEY (id_institucion_fk) REFERENCES Institucion(id_institucion),
+FOREIGN KEY (id_itemLaboratorio_fk) REFERENCES ItemLaboratorio(id_itemLaboratorio),
+FOREIGN KEY (id_metodoAnalisisLaboratorio_fk) REFERENCES MetodoAnalisisLaboratorio(id_metodo),
+foreign key (id_razonamientoDiagnostico_fk) references RazonamientoDiagnostico(id_razonamiento))
+
+
+
+create table DetalleLaboratorioNuevo(
+id_detalleLaboratorio int identity,
+valorResultado float,
+id_unidadMedida_fk int,
+id_itemLaboratorio_fk int,
+id_laboratorio_fk int,
+constraint id_detallelabnuevo_pk primary key (id_detalleLaboratorio),
+constraint id_unidadMedidanuevo_fk foreign key (id_unidadMedida_fk) references UnidadMedida(id_unidadMedida),
+constraint id_itemLaboratorionuevo_fk foreign key (id_itemLaboratorio_fk) references ItemLaboratorio(id_itemLaboratorio),
+constraint id_laboratorionuevo_fk foreign key (id_laboratorio_fk) references Laboratorio(id_laboratorio))
+
+insert into DetalleLaboratorioNuevo(id_detalleLaboratorio,valorResultado,id_unidadMedida_fk,id_itemLaboratorio_fk,id_laboratorio_fk)
+select id_detalleLaboratorio,valorResultado,id_unidadMedida_fk,id_itemEstudioLaboratorio_fk,id_laboratorio_fk
+from DetalleLaboratorio
+
+drop table DetalleItemLaboratorio
+---------------------------------------------------------------------------------------------
+select ln.fechaSolicitud, ln.doctorACargo,ln.observacionDeLosResultados,il.nombre,rd.conceptoInicial,rd.diagnostico,dre.valorResultado
+from LaboratorioNueva ln,itemLaboratorio il,DetalleLaboratorio dl,RazonamientoDiagnostico rd,DetalleResultadoEstudio dre
+where ln.id_itemLaboratorio_fk=il.id_itemLaboratorio
+and ln.id_laboratorio=dl.id_laboratorio_fk
+and rd.id_razonamiento=ln.id_razonamientoDiagnostico_fk
+and dl.id_detalleLaboratorio=dre.id_detalleLaboratorio
+-------------------------------------------------------------------------------------
+select *
+from DetalleLaboratorio
+
+ALTER TABLE Laboratorio DROP constraint id_analisisLaboratorio_fk
+ALTER TABLE DetalleLaboratorio ADD FOREIGN KEY (id_laboratorio_fk) REFERENCES LaboratorioNueva(id_laboratorio)
+
+ALTER TABLE DetalleLaboratorio DROP CONSTRAINT id_itemEstudioLaboratorio_fk
+ALTER TABLE DetalleLaboratorio ADD FOREIGN KEY (id_itemEstudioLaboratorio_fk) REFERENCES ItemLaboratorio(id_itemLaboratorio)
+
+alter table DetalleLaboratorio
+nocheck constraint id_unidadMedida_fk
+
+insert into LaboratorioNueva(id_laboratorio,fechaSolicitud,fechaRealizacion,doctorACargo,id_institucion_fk,observacionDeLosResultados,indicaciones,id_itemLaboratorio_fk,id_metodoAnalisisLaboratorio_fk,id_razonamientoDiagnostico_fk)
+select *
+from Laboratorio
+where id_laboratorio=15;
+
+SET IDENTITY_INSERT LaboratorioNueva ON
+
+SET IDENTITY_INSERT DetalleLaboratorio ON
+
+ALTER TABLE LaboratorioNueva NOCHECK CONSTRAINT FK__Laborator__id_it__1293BD5E;
+ALTER TABLE LaboratorioNueva NOCHECK CONSTRAINT FK__Laborator__id_ra__147C05D0;
+
+delete from LaboratorioNueva
+drop table Laboratorio
+
+
+select *
+from LaboratorioNueva ln,DetalleLaboratorio dl,itemLaboratorio il
+where ln.id_laboratorio=dl.id_laboratorio_fk and dl.id_itemEstudioLaboratorio_fk=il.id_itemLaboratorio
+
+select *
+from DetalleLaboratorio
+
+select *
+from DetalleResultadoEstudio
+
+select *
+from DetalleLaboratorio
+insert into DetalleLaboratorio(id_unidadMedida_fk,id_itemEstudioLaboratorio_fk,id_laboratorio_fk)
+                                values(1,2,15)
+
+
+select l.id_laboratorio, l.fechaSolicitud,il.nombre,l.indicaciones
+                                from RazonamientoDiagnostico r, EstadoDiagnostico ediag, LaboratorioNueva l, ItemLaboratorio il
+                                where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
+                                and l.id_razonamientoDiagnostico_fk=r.id_razonamiento
+                                and l.id_itemLaboratorio_fk=il.id_itemLaboratorio
+                                and (ediag.nombre like 'Tentativo' or ediag.nombre like 'Definitivo')
+                                and r.id_razonamiento=13
+                                and l.fechaRealizacion is null
+
+
+select *
+from EvolucionDiagnostico ed, RazonamientoDiagnostico rd,Tratamiento t
+where ed.id_diagnostico=rd.id_razonamiento
+and t.id_razonamientoDiagnostico_fk=rd.id_razonamiento
+
+select *
+from Tratamiento
+
+select *
+from ProgramacionMedicamento
+
+
+select  id_tratamiento,indicaciones,fechaInicio,motivoInicioTratamiento, id_terapia_fk
+                                    from Tratamiento t , Terapia te
+                                    where t.id_terapia_fk=te.id_terapia
+                                    and t.id_razonamientoDiagnostico_fk=13
+                                    and t.fechaFin is null
+
+
+update Tratamiento
+set fechaFin=null, motivoFinTratamiento=null
+where id_tratamiento=9 
+and id_razonamientoDiagnostico_fk=13;
+
+
+
+select  t.id_tratamiento,t.indicaciones,t.fechaInicio,t.motivoInicioTratamiento, te.id_terapia, te.nombre
+                                    from Tratamiento t , Terapia te
+                                    where t.id_terapia_fk=te.id_terapia
+                                    and t.id_razonamientoDiagnostico_fk=@idRazonamientoDiagnostico
+                                    and t.fechaFin is null

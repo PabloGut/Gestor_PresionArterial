@@ -1010,4 +1010,28 @@ constraint antecedentePatologicoPersonal_pk primary key(id_antecedentePatologico
 constraint antecedentePatologicoPersonal_fk foreign key (id_hc_fk) references Historia_Clinica (id_hc))
 
 
+create table EvolucionDiagnostico(
+id_evolucionDiagnostico int identity,
+id_hc int,
+id_diagnostico int,
+fecha date,
+id_examenGeneral int,
+id_estadoDiagnostico int,
+constraint evolucionDiagnostico_pk primary key(id_evolucionDiagnostico,id_hc,id_diagnostico),
+constraint evolucionDiagnosticoHc_fk foreign key (id_hc) references Historia_Clinica(id_hc),
+constraint evolucionDiagnosticodiagnostico_fk foreign key (id_diagnostico) references RazonamientoDiagnostico(id_razonamiento),
+constraint evolucionDiagnosticoEstado_fk foreign key (id_estadoDiagnostico) references EstadoDiagnostico(id_estadoDiagnostico))
+
+
+create table DetalleResultadoEstudio(
+id_detalleResultadoEstudio int identity,
+id_detalleLaboratorio int,
+id_detalleItemLaboratorio int,
+valorResultado int,
+id_unidadMedida int,
+constraint detalleResultadoEstudio_pk primary key(id_detalleResultadoEstudio),
+constraint id_detalleLaboratorio_fk foreign key (id_detalleLaboratorio) references DetalleLaboratorio(id_detalleLaboratorio),
+constraint id_detalleItemLaboratorio_fk foreign key (id_detalleItemLaboratorio) references DetalleItemLaboratorio(id_detalleItemLaboratorio),
+constraint id_UnidadMedidaDetalleResultado_fk foreign key (id_unidadMedida) references UnidadMedida(id_unidadMedida))
+
 
