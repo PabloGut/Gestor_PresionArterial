@@ -73,7 +73,7 @@
             <div class="col">
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblFiltroTipoExtremidad" Text="Extremidad" CssClass="col-sm-2"></asp:Label>
-                    <asp:DropDownList runat="server" ID="ddlFiltroExtremidad" CssClass="form-control" AutoPostBack="True" AppendDataBoundItems="True"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlFiltroExtremidad" CssClass="form-control" AutoPostBack="True" AppendDataBoundItems="True" OnSelectedIndexChanged="ddlFiltroExtremidad_SelectedIndexChanged"></asp:DropDownList>
                 </div>
             </div> 
             <div class="col">
@@ -108,7 +108,7 @@
 
         <div class="row justify-content-around">
             <div class="form-group">
-                <asp:Button runat="server" ID="btnBuscarMediciones" CssClass="btn btn-primary" AutoPostBack="True" Text="Buscar"></asp:Button>
+                <asp:Button runat="server" ID="btnBuscarMediciones" CssClass="btn btn-primary" AutoPostBack="True" Text="Buscar" OnClick="btnBuscarMediciones_Click"></asp:Button>
             </div>
         </div>
        
