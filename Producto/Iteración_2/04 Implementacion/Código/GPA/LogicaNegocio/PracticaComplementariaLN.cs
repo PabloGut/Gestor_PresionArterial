@@ -15,6 +15,17 @@ namespace LogicaNegocio
         {
             return PracticaComplementariaDAO.obtenerPracticasComplementarias(idRazonamiento);
         }
+        public static List<PracticaComplementaria> obtenerPracticaComplementariaIdConsulta(int idConsulta)
+        {
+            try
+            {
+                return PracticaComplementariaDAO.obtenerEstudioPracticaComplementariaIdConsulta(idConsulta);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
       
     }
 }

@@ -55,17 +55,33 @@ namespace LogicaNegocio
         {
             MedicionDePresionArterialDAO.registrarMedicionDePresionArterialEnHistoriaClinica(medicion);
         }
-        public static DataTable obtenerMedicionesPresionArterial(int idHc)
+        public static DataTable obtenerMedicionesPresionArterial(int idHc,DateTime? fechaDesde,DateTime? fechaHasta,String extremidad,String momentoDia,String posicion,String ubicacionExtremidad,String sitioMedicion)
         {
-            return MedicionDePresionArterialDAO.obtenerMedicionesPresionArterial(idHc);
+            return MedicionDePresionArterialDAO.obtenerMedicionesPresionArterial(idHc,fechaDesde,fechaHasta,extremidad,momentoDia,posicion,ubicacionExtremidad, sitioMedicion);
         }
-        public static DataTable obtenerDetalleMedicionesPresionArterial(int idHc, int idMedicion)
+        public static DataTable obtenerDetalleMedicionesPresionArterial(int idHc, int idMedicion,DateTime? fechaDesde, DateTime? fechaHasta, String extremidad, String momentoDia, String posicion, String ubicacionExtremidad, String sitioMedicion)
         {
-            return DetalleMedicionPresionArterialDAO.obtenerDetalleMedicionesPresionArterial(idHc, idMedicion);
+            return DetalleMedicionPresionArterialDAO.obtenerDetalleMedicionesPresionArterial(idHc, idMedicion, fechaDesde,fechaHasta,extremidad,momentoDia,posicion,ubicacionExtremidad,sitioMedicion);
         }
         public static DataTable obtenerDetalleMedicionesConFiltro(int idHc)
         {
             return DetalleMedicionPresionArterialDAO.obtenerDetalleMedicionesConFiltro(idHc);
         }
+        public static List<MedicionDePresionArterial> obtenerMedicionesPresionArterialIdConsulta(int idConsulta)
+        {
+            try
+            {
+                return MedicionDePresionArterialDAO.obtenerMedicionesPresionArterialIdConsulta(idConsulta);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+        public static DataTable obtenerMedicionesConFiltro(int idHistoriaClinica, DateTime? fechaDesde, DateTime? fechaHasta,String idExtremidad, String idMomentoDia, String idPosicion, String idUbicacionExtremidad, String idSitioMedicion)
+        {
+            return MedicionDePresionArterialDAO.obtenerMedicionesPresionArterialConFiltro(idHistoriaClinica, fechaDesde, fechaHasta, idExtremidad, idMomentoDia, idPosicion, idUbicacionExtremidad, idSitioMedicion);
+        }
+
     }
 }

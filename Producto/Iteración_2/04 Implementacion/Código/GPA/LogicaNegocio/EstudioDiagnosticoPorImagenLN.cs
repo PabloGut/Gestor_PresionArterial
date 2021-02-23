@@ -13,6 +13,17 @@ namespace LogicaNegocio
         {
             return EstudioDiagnosticoPorImagenDAO.obtenerEstudioDiagnosticoPorImagen(idRazonamiento);
         }
+        public static List<EstudioDiagnosticoPorImagen> obtenerEstudioDiagnosticoPorImagenIdConsulta(int idConsulta)
+        {
+            try
+            {
+                return EstudioDiagnosticoPorImagenDAO.obtenerEstudioDiagnosticoPorImagenIdConsulta(idConsulta);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
 
     }
 }

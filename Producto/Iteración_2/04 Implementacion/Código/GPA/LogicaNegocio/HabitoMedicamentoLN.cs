@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             HabitoMedicamentoDAO.registrarHabitosMedicamento(habitos, idHc);
         }
+        public static DataTable MostrarHabitosMedicamento(int idHc)
+        {
+            return HabitoMedicamentoDAO.MostrarHabitosMedicamentos(idHc);
+        }
     }
 }

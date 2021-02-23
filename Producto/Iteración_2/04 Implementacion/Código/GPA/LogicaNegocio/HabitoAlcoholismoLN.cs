@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             HabitoAlcoholismoDAO.registrarHabitosAlcoholismo(habitosAlcoholismo, idHc);
         }
+        public static DataTable MostrarHabitosAlcoholismo(int idHc)
+        {
+            return HabitoAlcoholismoDAO.MostrarHabitosAlcoholismo(idHc);
+        }
     }
 }

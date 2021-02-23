@@ -25,5 +25,17 @@ namespace LogicaNegocio
             }
            
         }
+        public static List<Laboratorio> obtenerLaboratorioIdConsulta(int idConsulta)
+        {
+            try
+            {
+                return LaboratorioDAO.obtenerLaboratorioIdConsulta(idConsulta);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
     }
 }

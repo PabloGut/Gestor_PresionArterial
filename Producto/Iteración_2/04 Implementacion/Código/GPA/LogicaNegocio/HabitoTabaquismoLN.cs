@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             HabitoTabaquismoDAO.registrarHabitosTabaquismo(habitosTabaquismo, idHc);
         }
+        public static DataTable MostrarHabitosTabaquismo(int idHc)
+        {
+            return HabitoTabaquismoDAO.MostrarHabitosTabaquismo(idHc);
+        }
     }
 }

@@ -19,7 +19,19 @@ namespace LogicaNegocio
         {
             RazonamientoDiagnosticoDAO.updateRazonamientoDiagnostico(diagnostico);
         }
-        
+        public static Boolean ExisteEstadoRazonamiento(int idRazonamiento, int idEstado)
+        {
+            int estadoActual = RazonamientoDiagnosticoDAO.obtenerEstadoRazonamiento(idRazonamiento);
+
+            if(idEstado == estadoActual)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
     
 }

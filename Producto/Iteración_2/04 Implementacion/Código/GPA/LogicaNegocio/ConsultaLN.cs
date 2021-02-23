@@ -62,5 +62,16 @@ namespace LogicaNegocio
         {
             return ConsultaDAO.mostrarConsultasAnteriores(idHc);
         }
+        public static Consulta obtenerConsultaIdConsulta(int idConsulta)
+        {
+            try
+            {
+                return ConsultaDAO.obtenerConsulta(idConsulta);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

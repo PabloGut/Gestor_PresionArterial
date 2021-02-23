@@ -15,5 +15,9 @@ namespace LogicaNegocio
         {
             HabitoActividadFisicaDAO.registrarHabitosActividadFisica(habitos, idHc);
         }
+        public static DataTable MostrarHabitoActividadFisica(int idHc)
+        {
+            return HabitoActividadFisicaDAO.MostrarHabitosActividadFisica(idHc);
+        }
     }
 }

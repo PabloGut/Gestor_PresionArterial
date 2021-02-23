@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades.Clases;
 using DAO;
+using System.Data;
+
 namespace LogicaNegocio
 {
     public class AntecedentePatologicoPersonalLN
@@ -12,6 +14,10 @@ namespace LogicaNegocio
         public static void registrarAntecedentePatologicoPersonal(AntecedentePatologicoPersonal antecedente)
         {
             AntecedentePatologicoPersonalDAO.registrarAntecedentesPatologicosPersonales(antecedente);
+        }
+        public static DataTable mostrarAntecedentesPatologicosPersonales(int idHc)
+        {
+            return AntecedentePatologicoPersonalDAO.MostrarAntecedentesPatologicosPersonales(idHc);
         }
     }
 }
