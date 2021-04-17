@@ -38,6 +38,19 @@ namespace LogicaNegocio
         {
             return PacienteDAO.mostrarPacienteBuscado(tipoDocMedico,nroDocMedico,tipoDocPaciente,nroDocPaciente);
         }
+        public static Paciente mostrarPacienteBuscado(int idHc)
+        {
+            try
+            {
+                return PacienteDAO.mostrarPacienteBuscado(idHc);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
+           
+        }
         public static Boolean existeHC(int tipoDoc, long nroDoc)
         {
             return PacienteDAO.ExisteHC(tipoDoc, nroDoc);
@@ -45,6 +58,10 @@ namespace LogicaNegocio
         public static Paciente buscarUnPaciente(int idUsuarioPaciente)
         {
             return PacienteDAO.buscarUnPaciente(idUsuarioPaciente);
+        }
+        public static DataSet MostrarPacienteReporteHistoriaClinica(int idHc, DataSet ds)
+        {
+            return PacienteDAO.MostrarPacienteReporteHistoriaClinica(idHc,ds);
         }
     }
 }

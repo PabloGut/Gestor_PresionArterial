@@ -32,13 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -96,6 +103,12 @@
     </Compile>
     <Compile Include="ConsultarHistoriaClínica.Designer.cs">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarMedicionesPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarMedicionesPaciente.Designer.cs">
+      <DependentUpon>ConsultarMedicionesPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="Manejadores\ManejadorActualizarMetodoAnalisisLaboratorio.cs" />
     <Compile Include="Manejadores\ManejadorEstudiosLaboratorio.cs" />
@@ -264,6 +277,9 @@
     <EmbeddedResource Include="ConsultarHistoriaClínica.resx">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarMedicionesPaciente.resx">
+      <DependentUpon>ConsultarMedicionesPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MotivoFinTratamiento.resx">
       <DependentUpon>MotivoFinTratamiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -327,6 +343,7 @@
     <EmbeddedResource Include="RegistrarTratamiento.resx">
       <DependentUpon>RegistrarTratamiento.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

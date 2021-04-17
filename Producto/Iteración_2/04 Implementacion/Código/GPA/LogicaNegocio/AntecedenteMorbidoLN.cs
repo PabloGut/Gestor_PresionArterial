@@ -27,5 +27,9 @@ namespace LogicaNegocio
         {
             return AntecedenteMorbidoDAO.mostrarAntecedentesMorbidosTraumatismosDeHc(idHc);
         }
+        public static DataSet MostrarAntecedentesMorbidosEnfermedades(int idHc,DataSet ds)
+        {
+            return AntecedenteMorbidoDAO.mostrarAntecedentesMorbidosEnfermedadesDeHc(idHc, ds);
+        }
     }
 }

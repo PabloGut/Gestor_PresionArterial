@@ -96,5 +96,43 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static DataTable MostrarAntecedentesFamiliares(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select af.fechaRegistro as 'Fecha de registro',f.nombre as 'Familiar',af.familiarVive 'Vive',af.enfermedades as 'Enfermedades',af.descripcionOtrasEnfermedades as 'Otras enfermedades',af.causaMuerte as 'Causa de muerte',af.observaciones as 'Observaciones'
+                                    from AntecedentesFamiliares af,Familiar f
+                                    where af.id_familiar_fk=f.id_familiar
+                                    and id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable("AntecedentesFamiliares");
+                da.Fill(dt);
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dt;
+        }
     }
 }

@@ -302,5 +302,58 @@ namespace DAO
             }
 
         }
+        public static DataTable MostrarTratamientoMedicamento(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            string consulta = @"select  t.id_tratamiento,t.indicaciones,t.fechaInicio,t.motivoInicioTratamiento, te.id_terapia, te.nombre  as 'Terapia', t.fechaFin,t.motivoFinTratamiento,rd.diagnostico, me.nombreGenerico 'Nombre Medicamento',me.nombreGenerico,me.concentracion, fre.nombre as 'Frecuencia', md1.nombre as 'Momento dia 1', md2.nombre as 'Momento dia 2', md3.nombre as 'Momento dia 3', CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) as 'Dosis 1',CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) as 'Dosis 2',CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) as 'Dosis 3', pre1.nombre 'Presentación Medicamento 1', pre2.nombre 'Presentación Medicamento 2', pre3.nombre 'Presentación Medicamento 3',pm.hora1, pm.hora2,pm.hora3, um.nombre, estp.nombre, um2.nombre as 'UnidadMedida Concentracion',esp.concentracion as 'Cantidad'
+                                from Tratamiento t , Terapia te, RazonamientoDiagnostico rd, ExamenGeneral eg, Consulta c, ProgramacionMedicamento pm, Medicamento me, Frecuencia fre, MomentoDelDia md1,MomentoDelDia md2,MomentoDelDia md3, PresentacionMedicamento pre1, PresentacionMedicamento pre2, PresentacionMedicamento pre3, EstadoProgramacion estp, EspecificacionMedicamento esp, UnidadMedida um,UnidadMedida um2
+                                where c.id_examenGeneral_fk=eg.id_examenGeneral
+								and t.id_terapia_fk=te.id_terapia
+								and rd.id_examenGeneral_fk=eg.id_examenGeneral
+                                and t.id_razonamientoDiagnostico_fk=rd.id_razonamiento
+								and c.id_hc_fk=@id_hc
+								and te.nombre like 'Medicamentos'
+								and t.id_tratamiento=pm.id_tratamiento_fk
+								and pm.id_medicamento_fk=me.id_medicamento
+								and pm.id_frecuencia_fk=fre.id_frecuencia
+								and pm.id_momentoDia1_fk=md1.id_momentoDelDia
+								and pm.id_momentoDia2_fk=md2.id_momentoDelDia
+								and pm.id_momentoDia3_fk=md3.id_momentoDelDia
+								and pm.id_presentacionMedicamento1_fk=pre1.id_presentacionMedicamento
+								and pm.id_presentacionMedicamento2_fk=pre2.id_presentacionMedicamento
+								and pm.id_presentacionMedicamento3_fk=pre3.id_presentacionMedicamento
+								and pm.id_estado_fk=estp.id_estadoProgramacion
+								and pm.id_especificacionMedicamento_fk=esp.id_especificacion
+								and esp.id_unidadMedida_fk=um.id_unidadMedida
+                                and esp.id_unidadMedida_fk=um2.id_unidadMedida";
+            try
+            {
+                cn.Close();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@id_hc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return dt;
+        }
     }
 }

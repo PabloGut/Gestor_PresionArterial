@@ -185,5 +185,99 @@ namespace DAO
                 throw e;
             }
         }
+        public static List<Laboratorio> obtenerLaboratorioIdConsulta(int idConsulta)
+        {
+            setCadenaConexion();
+
+            List<Laboratorio> analisis = new List<Laboratorio>();
+            AnalisisLaboratorio analisisLaboratorio = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"select ilab.nombre as 'Estudio',ln.fechaSolicitud as 'Fecha de Solicitud',ln.indicaciones
+                                from RazonamientoDiagnostico rd, LaboratorioNueva ln, EstadoDiagnostico ed,itemLaboratorio ilab,ExamenGeneral ex,Consulta c
+                                where rd.id_razonamiento=ln.id_razonamientoDiagnostico_fk
+                                and rd.id_estadoDiagnostico_fk=ed.id_estadoDiagnostico
+                                and ln.id_itemLaboratorio_fk=ilab.id_itemLaboratorio
+                                and rd.id_examenGeneral_fk=ex.id_examenGeneral
+                                and c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ed.nombre not like 'Descartado'
+                                and c.id_consulta=@idConsulta";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idConsulta", idConsulta);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    analisisLaboratorio = new AnalisisLaboratorio();
+                    analisisLaboratorio.nombre = dr["Estudio"].ToString();
+
+                    Laboratorio laboratorio = new Laboratorio();
+                    laboratorio.fechaSolicitud = Convert.ToDateTime(dr["Fecha de Solicitud"]);
+                    laboratorio.analisis = analisisLaboratorio;
+                    laboratorio.indicaciones = dr["indicaciones"].ToString();
+
+                    analisis.Add(laboratorio);
+                }
+                return analisis;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
+        public static DataTable MostrarEstudiosLaboratorio(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            string consulta = @"select ilab.nombre as 'Estudio',ln.fechaSolicitud as 'Fecha de Solicitud',ln.indicaciones,c.id_hc_fk,ln.observacionDeLosResultados as 'Observaciones',ln.fechaRealizacion as 'Fecha Realizacion'
+                                from RazonamientoDiagnostico rd, LaboratorioNueva ln,itemLaboratorio ilab,ExamenGeneral ex,Consulta c
+                                where rd.id_razonamiento=ln.id_razonamientoDiagnostico_fk
+                                and ln.id_itemLaboratorio_fk=ilab.id_itemLaboratorio
+                                and rd.id_examenGeneral_fk=ex.id_examenGeneral
+                                and c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and c.id_hc_fk=@id_hc";
+            try
+            {
+                cn.Close();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@id_hc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return dt;
+        }
+
     }
 }

@@ -36,6 +36,7 @@
             this.txtInfoHc.Location = new System.Drawing.Point(12, 12);
             this.txtInfoHc.Multiline = true;
             this.txtInfoHc.Name = "txtInfoHc";
+            this.txtInfoHc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtInfoHc.Size = new System.Drawing.Size(574, 237);
             this.txtInfoHc.TabIndex = 0;
             // 

@@ -1628,10 +1628,13 @@ namespace GPA
                 {
                     programacion.motivoCancelacion = txtMotivoCancelacion.Text;
 
-                    programacion.cantidadCancelacion =Convert.ToInt32(txtCantTiempoCancelacionMedicamento.Text);
-                    ElementoDelTiempo elementoTiempoCancelacion = (ElementoDelTiempo)cboElementoTiempoCancelacionMedicamento.SelectedItem;
-                    programacion.id_elementoTiempo2 = elementoTiempoCancelacion.id_elementoDelTiempo;
-
+                    if (!String.IsNullOrEmpty(txtCantTiempoCancelacionMedicamento.Text))
+                    {
+                        programacion.cantidadCancelacion = Convert.ToInt32(txtCantTiempoCancelacionMedicamento.Text);
+                        ElementoDelTiempo elementoTiempoCancelacion = (ElementoDelTiempo)cboElementoTiempoCancelacionMedicamento.SelectedItem;
+                        programacion.id_elementoTiempo2 = elementoTiempoCancelacion.id_elementoDelTiempo;
+                        programacion.id_estado = 2;
+                    }
                 }
                 if (chbAutomedicado.Checked == true)
                 {

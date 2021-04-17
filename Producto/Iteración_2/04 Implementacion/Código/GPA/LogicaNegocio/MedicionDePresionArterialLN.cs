@@ -82,6 +82,10 @@ namespace LogicaNegocio
         {
             return MedicionDePresionArterialDAO.obtenerMedicionesPresionArterialConFiltro(idHistoriaClinica, fechaDesde, fechaHasta, idExtremidad, idMomentoDia, idPosicion, idUbicacionExtremidad, idSitioMedicion);
         }
+        public static DataTable obtenerMediciones(int idHc)
+        {
+            return MedicionDePresionArterialDAO.obtenerMediciones(idHc);
+        }
 
     }
 }

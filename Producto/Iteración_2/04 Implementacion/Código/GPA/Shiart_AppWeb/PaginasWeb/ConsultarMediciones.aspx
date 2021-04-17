@@ -45,8 +45,8 @@
             <div class="col-6">
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblFechaDesde" Text="Fecha Desde" CssClass="col-sm-2"></asp:Label>
-                    <asp:TextBox runat="server" ID="txtFechaDesde" CssClass="form-control" AutoPostBack="True"></asp:TextBox>
-
+                    <asp:TextBox runat="server" ID="txtFechaDesde" CssClass="form-control" AutoPostBack="false"></asp:TextBox>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtFechaDesde"></asp:CompareValidator>
                 </div>
                 <div class="form-group">
                     <asp:Calendar runat="server" ID="cFechaDesde" OnSelectionChanged="cFechaDesde_SelectionChanged"></asp:Calendar>
@@ -57,7 +57,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <asp:Label runat="server" ID="Label1" Text="Fecha Desde" CssClass="col-sm-2"></asp:Label>
-                    <asp:TextBox runat="server" ID="txtFechaHasta" CssClass="form-control" AutoPostBack="True"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtFechaHasta" CssClass="form-control" AutoPostBack="false"></asp:TextBox>
 
                 </div>
 
@@ -73,19 +73,19 @@
             <div class="col">
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblFiltroTipoExtremidad" Text="Extremidad" CssClass="col-sm-2"></asp:Label>
-                    <asp:DropDownList runat="server" ID="ddlFiltroExtremidad" CssClass="form-control" AutoPostBack="True" AppendDataBoundItems="True" OnSelectedIndexChanged="ddlFiltroExtremidad_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlFiltroExtremidad" CssClass="form-control" AutoPostBack="false" AppendDataBoundItems="True" OnSelectedIndexChanged="ddlFiltroExtremidad_SelectedIndexChanged"></asp:DropDownList>
                 </div>
             </div> 
             <div class="col">
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblFiltroUbicacion" Text="Ubicacion" CssClass="col-sm-2"></asp:Label>
-                    <asp:DropDownList runat="server" ID="ddlFiltroUbicacion" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlFiltroUbicacion" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblFiltroPosicion" Text="Posición" CssClass="col-sm-2"></asp:Label>
-                    <asp:DropDownList runat="server" ID="ddlFiltroPosicion" CssClass="form-control" AutoPostBack="True" AppendDataBoundItems="True"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlFiltroPosicion" CssClass="form-control" AutoPostBack="false" AppendDataBoundItems="True"></asp:DropDownList>
                 </div>
             </div> 
         </div>
@@ -94,13 +94,13 @@
             <div class="col">
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblFiltroMomentoDia" Text="Momento del día" CssClass="col-sm-2"></asp:Label>
-                    <asp:DropDownList runat="server" ID="ddlFiltroMomentoDia" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlFiltroMomentoDia" CssClass="form-control" AutoPostBack="false"></asp:DropDownList>
                 </div>
             </div>
              <div class="col">
                  <div class="form-group">
                      <asp:Label runat="server" ID="lblFiltroSitioMedicion" Text="Sitio de Medición" CssClass="col-sm-2"></asp:Label>
-                     <asp:DropDownList runat="server" ID="ddlFiltroSitioMedicion" CssClass="form-control" AutoPostBack="True" ControlToValidate="ddlSitioMedicion"></asp:DropDownList>
+                     <asp:DropDownList runat="server" ID="ddlFiltroSitioMedicion" CssClass="form-control" AutoPostBack="false" ControlToValidate="ddlSitioMedicion"></asp:DropDownList>
                  </div>
              </div>
         </div>
@@ -108,7 +108,7 @@
 
         <div class="row justify-content-around">
             <div class="form-group">
-                <asp:Button runat="server" ID="btnBuscarMediciones" CssClass="btn btn-primary" AutoPostBack="True" Text="Buscar" OnClick="btnBuscarMediciones_Click"></asp:Button>
+                <asp:Button runat="server" ID="btnBuscarMediciones" CssClass="btn btn-primary" AutoPostBack="false" Text="Buscar" OnClick="btnBuscarMediciones_Click"></asp:Button>
             </div>
         </div>
        

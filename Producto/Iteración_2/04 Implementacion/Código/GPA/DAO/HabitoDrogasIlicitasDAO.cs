@@ -67,5 +67,44 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static DataTable MostrarHabitosDrogasIlicitas(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select hd.fechaRegistro as 'Fecha de registro',s.nombre as 'Sustancia',hd.tiempoConsumiendo as 'Tiempo Consumiendo',et.nombre as 'Unidad de tiempo'
+                                    from HabitosDrogasIlicitas hd, Sustancia s, ElementoDelTiempo et
+                                    where hd.id_sustancia_fk=s.id_sustancia
+                                    and hd.id_ElementoDelTiempo_fk=et.id_elementoDelTiempo
+                                    and hd.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable("HabitosDrogasIlicitas");
+                da.Fill(dt);
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dt;
+        }
     }
 }

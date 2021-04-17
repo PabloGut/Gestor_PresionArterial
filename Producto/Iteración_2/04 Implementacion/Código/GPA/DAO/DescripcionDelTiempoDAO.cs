@@ -27,7 +27,7 @@ namespace DAO
         * No recibe valores como parámetros.
         * Retorna una lista de objetos DescripcionDelTiempo.
         */
-        public static List<DescripcionDelTiempo> mostrarDescripcionesDelTiempo()
+        public static List<DescripcionDelTiempo> MostrarDescripcionesDelTiempo()
         {
             setCadenaConexion();
             List<DescripcionDelTiempo> descripcionesDelTiempo = new List<DescripcionDelTiempo>();
@@ -66,6 +66,104 @@ namespace DAO
             }
             cn.Close();
             return descripcionesDelTiempo;
+        }
+        public static void InsertDescripcionTiempo(DescripcionDelTiempo Descripcion)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"insert into DescripcionDelTiempo(nombre)
+                                values(@nombre)";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", Descripcion.nombre);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en insert:" + e.Message);
+            }
+        }
+        public static void DeleteDescripcionTiempo(DescripcionDelTiempo Descripcion)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"delete from DescripcionDelTiempo
+                                where id_descripcionDelTiempo=@idDescripcionTiempo";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@idDescripcionTiempo", Descripcion.id_descripcionDelTiempo);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en delete:" + e.Message);
+            }
+        }
+        public static void UpdateDescripcionTiempo(DescripcionDelTiempo Descripcion)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"update DescripcionDelTiempo
+                                set nombre=@nombre
+                                where id_descripcionDelTiempo=@idDescripcionTiempo";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", Descripcion.nombre);
+                cmd.Parameters.AddWithValue("@idDescripcionTiempo", Descripcion.id_descripcionDelTiempo);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en update:" + e.Message);
+            }
         }
     }
 }

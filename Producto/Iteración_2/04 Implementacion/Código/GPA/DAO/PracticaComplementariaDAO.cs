@@ -116,6 +116,47 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static DataTable MostrarEstudiosPracticasComplementarias(int id_hc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            string consulta = @"select tpc.nombre as 'Estudio',  pc.fechaSolicitud as 'Fecha de solicitud', pc.indicaciones, pc.informe as 'Informe', pc.fechaRealizacion as 'Fecha Realización'
+                                from Consulta c, ExamenGeneral ex, RazonamientoDiagnostico rd, EstadoDiagnostico ed, PracticaComplementaria pc,TipoPracticaComplementaria tpc
+                                where c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ex.id_examenGeneral=rd.id_examenGeneral_fk
+                                and rd.id_estadoDiagnostico_fk=ed.id_estadoDiagnostico
+                                and ed.nombre not like 'Descartado'
+                                and pc.id_razonamientoDiagnostico_fk=rd.id_razonamiento
+                                and pc.id_tipoPractica_fk=tpc.id_tipoPractica
+								and c.id_hc_fk=@id_hc";
+            try
+            {
+                cn.Close();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@id_hc", id_hc);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return dt;
+        }
         public static void updatePracticaComplementaria(PracticaComplementaria practica, SqlConnection cn, SqlTransaction tran)
         {
             SqlCommand cmd = new SqlCommand();
@@ -151,6 +192,63 @@ namespace DAO
                     cn.Close();
                 }
                 throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+        public static List<PracticaComplementaria> obtenerEstudioPracticaComplementariaIdConsulta(int idConsulta)
+        {
+            setCadenaConexion();
+
+            List<PracticaComplementaria> practicas = new List<PracticaComplementaria>();
+            TipoPracticaComplementaria  tipoPractica = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+
+            string consulta = @"select tpc.nombre as 'Estudio',  pc.fechaSolicitud as 'Fecha de solicitud', pc.indicaciones
+                                from Consulta c, ExamenGeneral ex, RazonamientoDiagnostico rd, EstadoDiagnostico ed, PracticaComplementaria pc,TipoPracticaComplementaria tpc
+                                where c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ex.id_examenGeneral=rd.id_examenGeneral_fk
+                                and rd.id_estadoDiagnostico_fk=ed.id_estadoDiagnostico
+                                and ed.nombre not like 'Descartado'
+                                and pc.id_razonamientoDiagnostico_fk=rd.id_razonamiento
+                                and pc.id_tipoPractica_fk=tpc.id_tipoPractica
+                                and c.id_consulta=@idConsulta";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idConsulta", idConsulta);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    tipoPractica = new TipoPracticaComplementaria();
+                    tipoPractica.nombre = dr["Estudio"].ToString();
+
+                    PracticaComplementaria practica = new PracticaComplementaria();
+                    practica.fechaSolicitud = Convert.ToDateTime(dr["Fecha de solicitud"]);
+                    practica.tipo = tipoPractica;
+                    practica.indicaciones = dr["indicaciones"].ToString();
+
+                    practicas.Add(practica);
+                }
+
+                return practicas;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
             }
         }
     }

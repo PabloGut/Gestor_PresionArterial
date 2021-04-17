@@ -543,5 +543,113 @@ namespace DAO
             }
             return paciente;
         }
+        public static Paciente mostrarPacienteBuscado(int idHc)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            Paciente paciente = null;
+            try
+            {
+                cn.Open();
+                String consulta = @"select p.nombre as 'Nombre', p.apellido as 'Apellido', p.telefono, p.nroCelular, p.email, p.fecha_nacimiento, p.altura, p.peso, p.id_domicilio_fk, p.id_profesionalMedico_tipoDoc_fk, p.id_profesionalMedico_nroDoc_fk, p.id_hc_fk,p.nro_documento,p.id_tipoDoc_fk as 'idTipoDocumento', pm.nombre as 'nombreMedico', pm.apellido as 'apellidoMedico'
+                                     from Paciente p,ProfesionalMedico pm
+                                    where p.id_hc_fk=@idHc
+                                    and p.id_profesionalMedico_tipoDoc_fk=pm.id_tipodoc_fk
+                                    and p.id_profesionalMedico_nroDoc_fk=pm.nro_documento";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+        
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    paciente = new Paciente();
+                    paciente.nombre = dr["Nombre"].ToString();
+                    paciente.apellido = dr["Apellido"].ToString();
+                    paciente.id_tipoDoc = (int)dr["idTipoDocumento"];
+                    paciente.nroDoc = Convert.ToInt64(dr["nro_documento"]);
+                    paciente.telefono = Convert.ToInt64(dr["telefono"].ToString());
+                    paciente.nroCelular = Convert.ToInt64(dr["nroCelular"].ToString());
+                    paciente.mail = dr["email"].ToString();
+                    paciente.fechaNacimiento = Convert.ToDateTime(dr["fecha_nacimiento"].ToString());
+                    paciente.altura = Convert.ToInt32(dr["altura"].ToString());
+                    paciente.peso = (int)dr["peso"];
+                    paciente.id_domicilio = (int)dr["id_domicilio_fk"];
+                    paciente.id_tipodoc_medico = (int)dr["id_profesionalMedico_tipoDoc_fk"];
+                    paciente.nrodoc_medico = Convert.ToInt64(dr["id_profesionalMedico_nroDoc_fk"].ToString());
+
+                    ProfesionaMedico medico = new ProfesionaMedico();
+                    medico.nombre = dr["nombreMedico"].ToString();
+                    medico.apellido = dr["apellidoMedico"].ToString();
+
+                    paciente.medico = medico;
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+            if (paciente != null)
+            {
+                paciente.domicilio = DomicilioDAO.mostrarDomicilioDelPaciente(paciente.id_domicilio);
+                paciente.medico = ProfesionalMedicoDAO.buscarProfesionalMedicoPorTipoNroDocumento(paciente.id_tipodoc_medico, paciente.nrodoc_medico);
+                paciente.tipoDoc = TipoDocumentoDAO.mostrarTipoDocumento(paciente.id_tipoDoc);
+            }
+            return paciente;
+        }
+        public static DataSet MostrarPacienteReporteHistoriaClinica(int idHc, DataSet dataSet)
+        {
+            setCadenaConexion();
+            //DataSet dataSet = new DataSet();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            try
+            {
+                cn.Open();
+                string consulta = "select nombre,apellido from Paciente where id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                //dataSet = new DataSet();
+                
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                dataAdapter.SelectCommand = cmd;
+
+                dataAdapter.Fill(dataSet, "Paciente");
+
+                int cant = dataSet.Tables[0].Rows.Count;
+                cn.Close();
+                return dataSet;
+            }
+            catch(Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
+      
     }
 }

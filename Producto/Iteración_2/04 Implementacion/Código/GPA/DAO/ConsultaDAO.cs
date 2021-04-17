@@ -294,7 +294,7 @@ namespace DAO
             SqlConnection cn = new SqlConnection(getCadenaConexion());
             DataTable dt = null;
             SqlDataAdapter da = null;
-            string consulta = @"select c.nroConsulta, c.fechaConsulta,c.horaConsulta,c.motivoConsulta, ex.posicionYDecubito,ex.marchaYDeambulacion,ex.facieExpresionFisonomia,ex.concienciaEstadoPsiquico,ex.constitucionEstadoNutritivo,ex.peso,ex.talla
+            string consulta = @"select c.id_consulta,c.nroConsulta, c.fechaConsulta,c.horaConsulta,c.motivoConsulta, ex.posicionYDecubito,ex.marchaYDeambulacion,ex.facieExpresionFisonomia,ex.concienciaEstadoPsiquico,ex.constitucionEstadoNutritivo,ex.peso,ex.talla
                                 from Consulta c, ExamenGeneral ex, Historia_Clinica hc
                                 where c.id_examenGeneral_fk=ex.id_examenGeneral
                                 and hc.id_hc=c.id_hc_fk and hc.id_hc=@id_hc";
@@ -325,6 +325,57 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
             return dt;
+        }
+        public static Consulta obtenerConsulta(int idConsulta)
+        {
+            setCadenaConexion();
+            Consulta c=null;
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand();
+                String consulta = @"select CONCAT(c.fechaConsulta,' ',c.horaConsulta) as 'Fecha y Hora',c.motivoConsulta
+                                    from Consulta c, ExamenGeneral ex, Historia_Clinica hc
+                                    where c.id_examenGeneral_fk=ex.id_examenGeneral
+                                    and c.id_hc_fk= hc.id_hc
+                                    and c.id_consulta=@idConsulta
+                                    order by CONCAT(c.fechaConsulta,' ',c.horaConsulta) desc";
+
+                cmd.Parameters.AddWithValue("@idConsulta", idConsulta);
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.HasRows)
+                {   
+                    while (dr.Read())
+                    {
+                        c = new Consulta();
+                        c.fecha = Convert.ToDateTime(dr["Fecha y Hora"].ToString());
+                        c.motivoConsulta = dr["motivoConsulta"].ToString();
+                        
+                    }
+                    cn.Close();
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
         }
     }
 }

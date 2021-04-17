@@ -135,7 +135,7 @@ namespace DAO
                 da = new SqlDataAdapter(cmd);
                 dt = new DataTable("AntecedentesMorbidosEnfermedades");
                 da.Fill(dt);
-               
+
                 cn.Close();
             }
             catch (Exception e)
@@ -147,6 +147,48 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
             return dt;
+        }
+        public static DataSet mostrarAntecedentesMorbidosEnfermedadesDeHc(int idHc,DataSet ds)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+   
+
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select am.fechaRegistro as 'Fecha de registro', tam.nombre as 'Tipo de Antecedente Mórbido', enf.nombre as 'Nombre', am.evolucion as 'Evolución', am.tratamiento as 'Tratamiento',CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
+                                  from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Enfermedades enf,ElementoDelTiempo et
+                                  where hc.id_hc= am.id_hc_fk and hc.id_hc= @idHc and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+                                  and am.id_enfermedad_fk=enf.id_enfermedad
+                                  and am.id_elementoTiempo_fk=et.id_elementoDelTiempo";
+
+                SqlDataAdapter da = new SqlDataAdapter();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                da.SelectCommand = cmd;
+
+                da.Fill(ds, "AntecedentesMorbidosEnfermedades");
+
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return ds;
         }
         public static DataTable mostrarAntecedentesMorbidosTraumatismosDeHc(int idHc)
         {
@@ -201,7 +243,7 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"select am.fechaRegistro,tam.nombre as 'Tipo de Antecedente Mórbido', ope.nombre as 'Nombre', am.evolucion as 'Evolución', am.tratamiento as 'Tratamiento',CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
+                string consulta = @"select am.fechaRegistro as 'Fecha de registro',tam.nombre as 'Tipo de Antecedente Mórbido', ope.nombre as 'Nombre', am.evolucion as 'Evolución', am.tratamiento as 'Tratamiento',CONCAT(am.cantidadTiempo,' ',et.nombre) as 'Cantidad de tiempo en que ocurrió'
                                   from Historia_Clinica hc, AntecedentesMorbidos am, TiposAntecedentesMorbidos tam, Operaciones ope,ElementoDelTiempo et
                                   where hc.id_hc= am.id_hc_fk and hc.id_hc= @idHc and am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
                                   and am.id_operacion_fk=ope.id_operacion 

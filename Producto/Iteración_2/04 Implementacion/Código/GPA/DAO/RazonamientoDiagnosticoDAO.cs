@@ -484,6 +484,47 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static int obtenerEstadoRazonamiento(int idRazonamiento)
+        {
+            int idEstado = 0;
+            setCadenaConexion();
+             
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+            string consulta = @"select id_estadoDiagnostico_fk
+                                from RazonamientoDiagnostico
+                                where id_razonamiento=@idRazonamiento";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idRazonamiento", idRazonamiento);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    idEstado = (int)dr["id_estadoDiagnostico_fk"];
+                }
+
+                return idEstado;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
 
     }
 }

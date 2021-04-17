@@ -50,6 +50,22 @@ namespace GPA
 
         private RazonamientoDiagnostico razonamientoDiagnosticoExistente;
         private List<EvolucionDiagnostico> listaEvolucionDiagnostico;
+
+        private Boolean cambioEstadoDiagnostico;
+        private EstadoDiagnostico estadoInicial;
+
+        private Boolean verGinecooptetricos=false;
+        private Boolean verenfermedades=false;
+        private Boolean verTraumatismos=false;
+        private Boolean verOperaciones=false;
+        private Boolean verAntecedentesFamiliares = false;
+        private Boolean verAntecedentesPersonales = false;
+
+        private Boolean verHabitosDrogaIlicita = false;
+        private Boolean verHabitosTabaquismo = false;
+        private Boolean verHabitosAlcoholismo = false;
+        private Boolean verHabitosMedicamentos = false;
+        private Boolean verHabitosActividadFisica = false;
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
@@ -115,6 +131,8 @@ namespace GPA
 
             agregarColumnasSistemaLinfatico();
             agregarColumnasExamenesARealizar();
+
+            cambioEstadoDiagnostico = false;
         }
         private void presentarTipoSintomas()
         {
@@ -382,6 +400,7 @@ namespace GPA
 
         private void btnSeleccionaPaciente_Click(object sender, EventArgs e)
         {
+            hc = null;
             presentarPaciente();
 
         }
@@ -634,6 +653,10 @@ namespace GPA
         }
         private void btnEnfermedades_Click(object sender, EventArgs e)
         {
+            verenfermedades = true;
+            verGinecooptetricos = false;
+            verTraumatismos = false;
+            verOperaciones = false;
             presentarEnfermedades();
         }
         private void presentarEnfermedades()
@@ -654,6 +677,10 @@ namespace GPA
         }
         private void btnTraumatismos_Click(object sender, EventArgs e)
         {
+            verenfermedades = false;
+            verGinecooptetricos = false;
+            verTraumatismos = true;
+            verOperaciones = false;
             presentarTraumatismos();
         }
         private void presentarTraumatismos()
@@ -674,6 +701,10 @@ namespace GPA
         }
         private void btnOperaciones_Click(object sender, EventArgs e)
         {
+            verenfermedades = false;
+            verGinecooptetricos = false;
+            verTraumatismos = true;
+            verOperaciones = true;
             presentarOperaciones();
         }
         private void presentarOperaciones()
@@ -694,6 +725,10 @@ namespace GPA
         }
         private void btnEmbarazosAbortos_Click(object sender, EventArgs e)
         {
+            verGinecooptetricos = true;
+            verenfermedades = false;
+            verTraumatismos = false;
+            verOperaciones = false;
             presentarEmbarazos();
         }
         private void presentarEmbarazos()
@@ -710,7 +745,7 @@ namespace GPA
                 return;
             }
             DataTable dt = manejadorConsultarHc.mostrarAntecedentesGinecoObstetricos(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesGinecoObstetricos);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
         }
         private void btnAbortos_Click(object sender, EventArgs e)
         {
@@ -738,11 +773,26 @@ namespace GPA
             Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
         }
         private void dgvAntecedentesMorbidos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
+        {   
+            if(verGinecooptetricos==true)
+                presentarInformacionAntecedentesGinecoObstetricos(dgvAntecedentesPatologicos);
+
+            if(verenfermedades==true)
+                presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
+
+            if(verTraumatismos==true)
+                presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
+
+            if (verOperaciones == true)
+                presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
+
         }
         private void presentarInformacionAlergias(DataGridView dgv)
         {
+            if (dgv.Columns.Count == 1 || dgv.CurrentRow == null)
+            {
+                return;
+            }
             DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
             String cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
             cadena += "\r\nNombre del alérgeno: " + Convert.ToString(dgv.CurrentRow.Cells["Nombre del alérgeno"].Value);
@@ -754,7 +804,11 @@ namespace GPA
         }
         private void presentarInformacionAntecedentesMorbidos(DataGridView dgv)
         {
-            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["fechaRegistro"].Value);
+            if(dgv.Columns.Count== 1 || dgv.CurrentRow == null)
+            {
+                return;
+            }
+            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["fecha de registro"].Value);
             String cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
             cadena += "\r\nTipo de antecedente mórbido: " + Convert.ToString(dgv.CurrentRow.Cells["Tipo de Antecedente Mórbido"].Value);
             cadena += "\r\nNombre:" + Convert.ToString(dgv.CurrentRow.Cells["Nombre"].Value);
@@ -767,7 +821,11 @@ namespace GPA
         }
         private void presentarInformacionAntecedentesGinecoObstetricos(DataGridView dgv)
         {
-            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+            if (dgv.Columns.Count == 1 || dgv.CurrentRow == null)
+            {
+                return;
+            }
+            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["fechaRegistro"].Value);
             String cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
             cadena += "\r\nCantidad de embarazos: " + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de embarazos"].Value);
             cadena += "\r\nCantidad de embarazos prematuros:" + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de embarazos prematuros"].Value);
@@ -874,7 +932,7 @@ namespace GPA
 
         private void dgvAntecedentesGinecoObstetricos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            presentarInformacionAntecedentesGinecoObstetricos(dgvAntecedentesGinecoObstetricos);
+            presentarInformacionAntecedentesPatologicos(dgvAntecedentesPatologicos);
         }
 
         private void btnAgregarRegionEstudiada_Click(object sender, EventArgs e)
@@ -2340,7 +2398,6 @@ namespace GPA
 
         private void generarNuevaConsultaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
             generarNuevaConsulta();
             cargarDatosDeEjemplo();
             medicionesAutomaticaConExamenGeneral = true;
@@ -2398,6 +2455,7 @@ namespace GPA
                 cargarGrillaDiagnosticos(diagnosticos);
 
                 Utilidades.cargarCombo(cboEstadoDiagnosticoCambio, manejadorModificarEstadoDiagnostico.presentarEstadoDiagnostico(), "id_EstadoDiagnostico", "nombre");
+                estadoInicial = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
             }
         }
         private void cargarGrillaDiagnosticos(List<RazonamientoDiagnostico> diagnosticos)
@@ -2578,7 +2636,8 @@ namespace GPA
             {
                 MessageBox.Show("Error al consultar los tratamientos en la grilla. Error: " + ex.Message, "Tratamientos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-             
+            //if(estadoInicial == null)
+            //    estadoInicial = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
         }
 
         private void dgvEstudiosPendientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -2650,12 +2709,26 @@ namespace GPA
 
         private void btnAceptarDiagnostico_Click(object sender, EventArgs e)
         {
+            EstadoDiagnostico estado = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
             EvolucionDiagnostico evolucionDiagnostico = new EvolucionDiagnostico();
 
-             diagnosticoSeleccionado = new RazonamientoDiagnostico();//Crear un objeto diagnostico a partir de los datos anteriores.
-             diagnosticoSeleccionado.id_razonamiento=(int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value;
-             EstadoDiagnostico estado = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
-             diagnosticoSeleccionado.id_estadoDiagnostico = estado.id_estado;
+            diagnosticoSeleccionado = new RazonamientoDiagnostico();//Crear un objeto diagnostico a partir de los datos anteriores.
+            diagnosticoSeleccionado.id_razonamiento = (int)dgvDiagnosticosPaciente.CurrentRow.Cells[1].Value;
+
+            diagnosticoSeleccionado.id_estadoDiagnostico = estado.id_estado;
+
+            if (cambioEstadoDiagnostico == false)
+            {
+                MessageBox.Show("No hay diagnósticos seleccionados. Para continuar seleccione uno.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if(RazonamientoDiagnosticoLN.ExisteEstadoRazonamiento(diagnosticoSeleccionado.id_razonamiento, estado.id_estado) && (listaEstudioDiagnosticoImagenConInforme == null || listaEstudioDiagnosticoImagenConInforme.Count == 0) && (listaLaboratorioConInforme == null || listaLaboratorioConInforme.Count == 0) && (listaPracticasConInforme == null || listaPracticasConInforme.Count == 0) && (tratamientosACancelar== null || tratamientosACancelar.Count == 0))
+            {
+                MessageBox.Show("El estado del diagnostico no modificó y no se agregaron estudios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+         
              
              switch (estado.nombre)
              {
@@ -2771,7 +2844,20 @@ namespace GPA
 
         private void cboEstadoDiagnosticoCambio_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            //cambioEstadoDiagnostico = true;
+            //estadoInicial = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
+            //if (estadoInicial == null)
+            //    estadoInicial = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
+
+            EstadoDiagnostico estado = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
+            if (estado.nombre.Equals("--Seleccionar--") || cboEstadoDiagnosticoCambio.SelectedIndex == 0)
+            {
+                cambioEstadoDiagnostico = false;
+            }
+            else
+            {
+                cambioEstadoDiagnostico = true;
+            }
         }
 
         private void btnCancelarDiagnostico_Click(object sender, EventArgs e)
@@ -2918,6 +3004,507 @@ namespace GPA
         {
             RegistrarMedicamento formRegistrarMedicamento = new RegistrarMedicamento();
             formRegistrarMedicamento.ShowDialog();
+            ManejadorRegistrarHC manejador = new ManejadorRegistrarHC();
+            //pacienteSeleccionado.id_hc=manejador.mostrarIdHc(pacienteSeleccionado.id_tipoDoc, pacienteSeleccionado.nroDoc);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Registrar_Análisis_de_Laboratorio formAnalisis = new Registrar_Análisis_de_Laboratorio();
+            formAnalisis.ShowDialog();
+        }
+
+        private void btnRegistrarAnalisis_Click(object sender, EventArgs e)
+        {
+            Registrar_Análisis_de_Laboratorio formAnalisis = new Registrar_Análisis_de_Laboratorio();
+            formAnalisis.ShowDialog();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            verHabitosDrogaIlicita = false;
+            verHabitosTabaquismo = false;
+            verHabitosAlcoholismo = false;
+            verHabitosMedicamentos = true;
+            verHabitosActividadFisica = false;
+            PresentarHabitosMedicamentos();
+        }
+        private void PresentarHabitosMedicamentos()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.mostrarHabitosMedicamentos(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
+
+            for (int i = 0; i < dgvHabitos.Rows.Count  - 1; i++)
+            {
+                if (string.IsNullOrEmpty(dgvHabitos.Rows[i].Cells[7].Value.ToString()) || dgvHabitos.Rows[i].Cells[7].Value.ToString().Equals("/"))
+                {
+                    dgvHabitos.Rows[i].Cells["Dosis 1"].Value = "";
+                }
+                if (dgvHabitos.Rows[i].Cells["Dosis 2"].Value.Equals("/"))
+                {
+                    dgvHabitos.Rows[i].Cells["Dosis 2"].Value = "";
+                }
+                if (dgvHabitos.Rows[i].Cells["Dosis 3"].Value.Equals("/"))
+                {
+                    dgvHabitos.Rows[i].Cells["Dosis 3"].Value = "";
+                }
+            }
+
+        }
+        private void btnAPPersonales_Click(object sender, EventArgs e)
+        {
+            verAntecedentesFamiliares = false;
+            verAntecedentesPersonales = true;
+            presentarAntecedentesPatologicosPersonales();
+        }
+        private void presentarAntecedentesPatologicosPersonales()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.mostrarAntecedentesPatologicosPersonales(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesPatologicos);
+        }
+        private void presentarHabitosTabaquismo()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.MostrarHabitosTabaquismo(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
+        }
+        private void presentarAntecedentesPatologicosFamiliares()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.MostrarAntecesPatologicosFamiliares(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesPatologicos);
+        }
+        private void presentarHabitosAlcoholismo()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.MostrarHabitosAlcoholismo(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
+        }
+        private void presentarHabitosActividadFisica()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.mostrarHabitosActividadFisica(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
+        }
+        private void btnAPFamiliares_Click(object sender, EventArgs e)
+        {
+            verAntecedentesFamiliares = true;
+            verAntecedentesPersonales = false;
+            presentarAntecedentesPatologicosFamiliares();
+        }
+
+        private void btnTabaquismo_Click(object sender, EventArgs e)
+        {
+            verHabitosDrogaIlicita = false;
+            verHabitosTabaquismo = true;
+            verHabitosAlcoholismo = false;
+            verHabitosMedicamentos = false;
+            verHabitosActividadFisica = false;
+            presentarHabitosTabaquismo();
+        }
+
+        private void btnAlcoholismo_Click(object sender, EventArgs e)
+        {
+            verHabitosDrogaIlicita = false;
+            verHabitosTabaquismo = false;
+            verHabitosAlcoholismo = true;
+            verHabitosMedicamentos = false;
+            verHabitosActividadFisica = false;
+            presentarHabitosAlcoholismo();
+        }
+
+        private void btnActividadFisica_Click(object sender, EventArgs e)
+        {
+            verHabitosDrogaIlicita = false;
+            verHabitosTabaquismo = false;
+            verHabitosAlcoholismo = false;
+            verHabitosMedicamentos = false;
+            verHabitosActividadFisica = true;
+            presentarHabitosActividadFisica();
+        }
+
+        private void dgvConsultas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            presentarConsulta(dgvConsultas);
+        }
+        private void presentarConsulta(DataGridView dgv)
+        {
+            if (dgv.Columns.Count == 1 || dgv.CurrentRow == null)
+            {
+                return;
+            }
+            int idConsulta = (int)dgv.CurrentRow.Cells["id_consulta"].Value;
+            Consulta consulta = ConsultaLN.obtenerConsultaIdConsulta(idConsulta);
+            StringBuilder s = new StringBuilder();
+            String cadena = null;
+            
+            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["fechaConsulta"].Value);
+            cadena += "\r\nConsulta Número: " + Convert.ToString(dgv.CurrentRow.Cells["nroConsulta"].Value);
+            cadena += "\t\tFecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+
+            cadena += "\r\n\r\nMotivo de Consulta: \r\n" + consulta.motivoConsulta + "\r\n";
+
+            List<MedicionDePresionArterial> mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterialIdConsulta(idConsulta);
+            
+            if(mediciones !=null && mediciones.Count > 0 )
+            {
+                cadena += "\r\n Mediciones de presion arterial: " + "\r\n";
+
+                foreach (MedicionDePresionArterial m in mediciones)
+                {
+                    cadena += "\r\n Fecha y Hora: " + m.fecha;
+                    cadena += "\r\n Extremidad: " + m.extremidad.nombre;
+                    cadena += "\r\n Ubicación Extremidad: " + m.ubicacion.nombre;
+                    cadena += "\r\n Sitio de medición: " + m.sitio.nombre;
+                    cadena += "\r\n Posición: " + m.posicion.nombre;
+                    cadena += "\r\n Momento del día: " + m.momento.nombre;
+
+                    cadena += "\r\n\r\n Detalle de Medición: \r\n";
+
+                    foreach (DetalleMedicionPresionArterial d in m.mediciones)
+                    {
+                        cadena += "\r\n Hora: " + d.hora.ToShortTimeString();
+                        cadena += "\r\n Diastólica: " + d.valorMaximo;
+                        cadena += "\r\n Sistólica: " + d.valorMinimo;
+                        cadena += "\r\n Pulso: " + d.pulso + "\r\n";
+                        cadena += "\r\n-------------------------------------------";
+                    }
+
+                }
+            }
+
+            List<EstudioDiagnosticoPorImagen> estudios = EstudioDiagnosticoPorImagenLN.obtenerEstudioDiagnosticoPorImagenIdConsulta(idConsulta);
+            
+            if(estudios !=null && estudios.Count > 0)
+            {
+                cadena += "\r\nEstudios solicitados y pendientes asociados al diagnóstico:";
+                foreach(EstudioDiagnosticoPorImagen e in estudios)
+                {
+                    cadena += "\r\n\r\nEstudio: " + e.nombreEstudio.nombre;
+
+                    cadena += "\t\tFecha de solicitud: " + Convert.ToString(e.fechaSolicitud.ToShortDateString());
+
+                    if(string.IsNullOrEmpty(e.indicaciones))
+                    {
+                        cadena += "\r\n\r\nIndicaciones: N/A\r\n";
+                    }
+                    else
+                    {
+                       cadena += "\r\n\r\nIndicaciones: \r\n" + e.indicaciones + "\r\n";
+                    }
+                }
+            }
+            cadena += "\r\n-------------------------------------------";
+            List<Laboratorio> analisis = LaboratorioLN.obtenerLaboratorioIdConsulta(idConsulta);
+
+            if (analisis != null && analisis.Count > 0)
+            {
+                cadena += "\r\nAnalisis de Laboratorio solicitados y pendientes asociados al diagnóstico:";
+                foreach (Laboratorio e in analisis)
+                {
+                    cadena += "\r\n\r\nEstudio: " + e.analisis.nombre;
+
+                    cadena += "\t\tFecha de solicitud: " + Convert.ToString(e.fechaSolicitud.ToShortDateString());
+
+                    if (string.IsNullOrEmpty(e.indicaciones))
+                    {
+                        cadena += "\r\n\r\nIndicaciones: N/A\r\n";
+                    }
+                    else
+                    {
+                        cadena += "\r\n\r\nIndicaciones: \r\n" + e.indicaciones + "\r\n";
+                    }
+                }
+            }
+            cadena += "\r\n-------------------------------------------";
+            List<PracticaComplementaria> practicas = PracticaComplementariaLN.obtenerPracticaComplementariaIdConsulta(idConsulta);
+
+            if (practicas != null && practicas.Count > 0)
+            {
+                cadena += "\r\nPrácticas complementarias solicitados y pendientes asociados al diagnóstico:";
+                foreach (PracticaComplementaria e in practicas)
+                {
+                    cadena += "\r\n\r\nEstudio: " + e.tipo.nombre;
+
+                    cadena += "\t\tFecha de solicitud: " + Convert.ToString(e.fechaSolicitud.ToShortDateString());
+
+                    if (string.IsNullOrEmpty(e.indicaciones))
+                    {
+                        cadena += "\r\n\r\nIndicaciones: N/A\r\n";
+                    }
+                    else
+                    {
+                        cadena += "\r\n\r\nIndicaciones: \r\n" + e.indicaciones + "\r\n";
+                    }
+                }
+            }
+            frmInformacionHistoriaClinica form = new frmInformacionHistoriaClinica(cadena);
+            form.ShowDialog();
+            form.Dispose();
+        }
+        private void presentarInformacionAntecedentesPatologicos(DataGridView dgv)
+        {
+            if (dgv.Columns.Count == 1 || dgv.CurrentRow == null)
+            {
+                return;
+            }
+            String cadena = null;
+            if (verAntecedentesFamiliares ==true)
+            {
+                DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+                cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+                cadena += "\r\nFamiliar: " + Convert.ToString(dgv.CurrentRow.Cells["Familiar"].Value);
+                cadena += "\r\nVive:" + Convert.ToString(dgv.CurrentRow.Cells["Vive"].Value);
+                cadena += "\r\nEnfermedades:" + Convert.ToString(dgv.CurrentRow.Cells["Enfermedades"].Value);
+                cadena += "\r\nOtras enfermedades:" + Convert.ToString(dgv.CurrentRow.Cells["Otras enfermedades"].Value);
+                cadena += "\r\nCausa de muerte:" + Convert.ToString(dgv.CurrentRow.Cells["Causa de muerte"].Value);
+                cadena += "\r\nObservaciones:" + Convert.ToString(dgv.CurrentRow.Cells["Observaciones"].Value);
+            }
+            else if(verAntecedentesPersonales==true)
+            {
+                DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+                cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+                cadena += "\r\nEnfermedades: " + Convert.ToString(dgv.CurrentRow.Cells["Enfermedades"].Value);
+                cadena += "\r\nOtras Enfermedades:" + Convert.ToString(dgv.CurrentRow.Cells["Otras Enfermedades"].Value);
+            }
+
+            frmInformacionHistoriaClinica form = new frmInformacionHistoriaClinica(cadena);
+            form.ShowDialog();
+            form.Dispose();
+        }
+
+        private void DrogasIlicitas_Click(object sender, EventArgs e)
+        {
+            verHabitosDrogaIlicita = true;
+            verHabitosTabaquismo = false;
+            verHabitosAlcoholismo = false;
+            verHabitosMedicamentos = false;
+            verHabitosActividadFisica = false;
+            presentarHabitosDrogasIlicitas();
+        }
+        private void presentarHabitosDrogasIlicitas()
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (hc == null)
+            {
+                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable dt = manejadorConsultarHc.MostrarHabitosDrogasIlicitas(hc.id_hc);
+            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
+        }
+        private void presentarInformacionHabitos(DataGridView dgv)
+        {
+            if (dgv.Columns.Count == 1 || dgv.CurrentRow == null)
+            {
+                return;
+            }
+            String cadena = null;
+            if (verHabitosDrogaIlicita == true)
+            {
+                DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+                cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+                cadena += "\r\nSustancia: " + Convert.ToString(dgv.CurrentRow.Cells["Sustancia"].Value);
+                cadena += "\r\nTiempo Consumiendo:" + Convert.ToString(dgv.CurrentRow.Cells["Tiempo consumiendo"].Value);
+                cadena += "\r\nUnidad de tiempo:" + Convert.ToString(dgv.CurrentRow.Cells["Unidad de tiempo"].Value);
+            }
+            else if (verHabitosTabaquismo == true)
+            {
+                DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["fechaRegistro"].Value);
+                cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+                cadena += "\r\nNombre: " + Convert.ToString(dgv.CurrentRow.Cells["nombre"].Value);
+                cadena += "\r\nCantidad:" + Convert.ToString(dgv.CurrentRow.Cells["cantidad"].Value);
+                cadena += "\r\nUnidad de tiempo:" + Convert.ToString(dgv.CurrentRow.Cells["Unidad de Tiempo"].Value);
+                cadena += "\r\nAños Fumando:" + Convert.ToString(dgv.CurrentRow.Cells["añosFumando"].Value);
+            }
+            else if (verHabitosAlcoholismo==true)
+            {
+                DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+                cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+                cadena += "\r\nNombre de la Bebida: " + Convert.ToString(dgv.CurrentRow.Cells["Nombre Bebida"].Value);
+                cadena += "\r\nMedida:" + Convert.ToString(dgv.CurrentRow.Cells["Medida"].Value);
+                cadena += "\r\nDescripción:" + Convert.ToString(dgv.CurrentRow.Cells["Descripcion"].Value);
+                cadena += "\r\nComponente del Tiempo:" + Convert.ToString(dgv.CurrentRow.Cells["Componente del tiempo"].Value);
+            }
+            else if (verHabitosMedicamentos==true)
+            {
+                DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha de registro"].Value);
+                cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+                cadena += "\r\nNombre Genérico:" + Convert.ToString(dgv.CurrentRow.Cells["Nombre generico"].Value);
+                cadena += "\r\nConcentración:" + Convert.ToString(dgv.CurrentRow.Cells["Concentracion"].Value);
+                cadena += "\r\nCantidad de comprimidos:" + Convert.ToString(dgv.CurrentRow.Cells["Cantidad de comprimidos"].Value);
+                cadena += "\r\nFrecuencia:" + Convert.ToString(dgv.CurrentRow.Cells["Frecuencia"].Value);
+
+                cadena += "\r\n\r\nDosis en el día";
+                cadena += "\r\n--------------------------------------------------------------------------";
+                cadena += "\r\nMomento del Día:" + Convert.ToString(dgv.CurrentRow.Cells["Momento del dia 1"].Value);
+                cadena += "\r\nDosis:" + Convert.ToString(dgv.CurrentRow.Cells["Dosis 1"].Value);
+                cadena += "\r\nPresentación Medicamento:" + Convert.ToString(dgv.CurrentRow.Cells["Presentacion medicamento 1"].Value);
+                cadena += "\r\nHora:" + Convert.ToString(dgv.CurrentRow.Cells["Hora 1"].Value);
+                cadena += "\r\n--------------------------------------------------------------------------";
+                cadena += "\r\nMomento del Día:" + Convert.ToString(dgv.CurrentRow.Cells["Momento del dia 2"].Value);
+                cadena += "\r\nDosis:" + Convert.ToString(dgv.CurrentRow.Cells["Dosis 2"].Value);
+                cadena += "\r\nPresentación Medicamento:" + Convert.ToString(dgv.CurrentRow.Cells["Presentacion medicamento 2"].Value);
+                cadena += "\r\nHora:" + Convert.ToString(dgv.CurrentRow.Cells["Hora 2"].Value);
+                cadena += "\r\n--------------------------------------------------------------------------";
+                cadena += "\r\nMomento del Día:" + Convert.ToString(dgv.CurrentRow.Cells["Momento del dia 3"].Value);
+                cadena += "\r\nDosis:" + Convert.ToString(dgv.CurrentRow.Cells["Dosis 3"].Value);
+                cadena += "\r\nPresentación Medicamento:" + Convert.ToString(dgv.CurrentRow.Cells["Presentacion medicamento 3"].Value);
+                cadena += "\r\nHora:" + Convert.ToString(dgv.CurrentRow.Cells["Hora 3"].Value);
+            }
+            else if(verHabitosActividadFisica==true)
+            {
+                DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["Fecha registro"].Value);
+                cadena = "Fecha de registro: " + Convert.ToString(fecha.ToShortDateString());
+                cadena += "\r\nDeporte: " + Convert.ToString(dgv.CurrentRow.Cells["Deporte/Actividad"].Value);
+                cadena += "\r\nDescripción: " + Convert.ToString(dgv.CurrentRow.Cells["Descripción deporte o actividad"].Value);
+                cadena += "\r\nGrado de actividad:" + Convert.ToString(dgv.CurrentRow.Cells["Grado actividad"].Value);
+                cadena += "\r\nDescripción grado de actividad:" + Convert.ToString(dgv.CurrentRow.Cells["Descripcion grado actividad"].Value);
+                cadena += "\r\nIntensidad:" + Convert.ToString(dgv.CurrentRow.Cells["Intesidad Actividad Física"].Value);
+            }
+            frmInformacionHistoriaClinica form = new frmInformacionHistoriaClinica(cadena);
+            form.ShowDialog();
+            form.Dispose();
+        }
+
+        private void dgvHabitos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            presentarInformacionHabitos(dgvHabitos);
+        }
+
+        private void consultarMedicionesPacienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No se seleccionó el paciente que recibe atención médica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (hc == null)
+            {
+                hc = consultarHistoriaClinica(pacienteSeleccionado);
+            }
+
+            if (hc != null)
+            {
+                ConsultarMedicionesPaciente cmp = new ConsultarMedicionesPaciente(hc.id_hc);
+                cmp.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("El paciente no tiene historia clínica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+
+
+        }
+
+        private void btnCaracterDelDolor_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Caracter del dolor";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarCaracterDolor();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Como se Modifica";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarComoModificaSintoma();
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Comienzo Síntoma";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarDescripcionTiempo();
+            }
+        }
+
+        private void btnElementoModificacion_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Elemento Modificacion";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarElementoModificacion();
+            }
         }
     }
 }

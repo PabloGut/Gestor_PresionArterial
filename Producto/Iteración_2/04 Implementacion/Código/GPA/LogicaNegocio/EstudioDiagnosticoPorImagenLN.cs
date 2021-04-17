@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades.Clases;
 using DAO;
+using System.Data;
+
 namespace LogicaNegocio
 {
     public class EstudioDiagnosticoPorImagenLN
@@ -23,6 +25,10 @@ namespace LogicaNegocio
             {
                 throw e;
             }
+        }
+        public static DataTable MostrarEstudiosDiagnosticosPorImagen(int idHc)
+        {
+            return EstudioDiagnosticoPorImagenDAO.MostrarEstudioDiagnosticoPorImagen(idHc);
         }
 
     }

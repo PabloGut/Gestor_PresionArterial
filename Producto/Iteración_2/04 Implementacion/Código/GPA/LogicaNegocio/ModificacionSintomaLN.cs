@@ -14,6 +14,18 @@ namespace LogicaNegocio
         {
             return ModificacionSintomaDAO.mostrarModificacionesDelSintoma();
         }
+        public static void InsertModificacionSintoma(ModificacionSintoma Modificacion)
+        {
+            ModificacionSintomaDAO.InsertModificacionSintoma(Modificacion);
+        }
+        public static void DeleteMoficicacionSintoma(ModificacionSintoma Modificacion)
+        {
+            ModificacionSintomaDAO.DeleteModificacionSintoma(Modificacion);
+        }
+        public static void UpdateModificacionSintoma(ModificacionSintoma Modificacion)
+        {
+            ModificacionSintomaDAO.UpdateModificacionSintoma(Modificacion);
+        }
 
     }
 }

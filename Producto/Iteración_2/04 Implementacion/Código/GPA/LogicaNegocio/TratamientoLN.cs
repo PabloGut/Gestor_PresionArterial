@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades.Clases;
 using DAO;
-
+using System.Data;
 
 namespace LogicaNegocio
 {
@@ -22,6 +22,28 @@ namespace LogicaNegocio
                 throw e;
             }
            
+        }
+        public static DataTable MostrarTratamientos(int idHc)
+        {
+            try
+            {
+                return TratamientoDAO.MostrarTratamientos(idHc);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+        public static DataTable MostrarTratamientoMedicamento(int idHc)
+        {
+            try
+            {
+                return ProgramacionMedicamentoDAO.MostrarTratamientoMedicamento(idHc);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

@@ -39,6 +39,7 @@
             this.tiposDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tratamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoTratamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarMedicamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atenciónEnConsultorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarNuevaConsultaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.laboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +48,7 @@
             this.actualizarMétodoAnalisisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDesdeTensiómetroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarMedicionesPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -121,11 +123,16 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label100 = new System.Windows.Forms.Label();
             this.label101 = new System.Windows.Forms.Label();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.btnEmbarazosAbortos = new System.Windows.Forms.Button();
-            this.dgvAntecedentesGinecoObstetricos = new System.Windows.Forms.DataGridView();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.btnAlergiaMedicamentos = new System.Windows.Forms.Button();
+            this.btnAlergiaInsectos = new System.Windows.Forms.Button();
+            this.btnAlergiaSustanciaContactoPiel = new System.Windows.Forms.Button();
+            this.btnAlergiaSustanciaAmbiente = new System.Windows.Forms.Button();
+            this.btnAlergiaAlimentos = new System.Windows.Forms.Button();
+            this.dgvAlergias = new System.Windows.Forms.DataGridView();
             this.label102 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnEmbarazosAbortos = new System.Windows.Forms.Button();
             this.btnTraumatismos = new System.Windows.Forms.Button();
             this.btnOperaciones = new System.Windows.Forms.Button();
             this.btnEnfermedades = new System.Windows.Forms.Button();
@@ -138,34 +145,38 @@
             this.mtbHoraCreacionHc = new System.Windows.Forms.MaskedTextBox();
             this.txtMotivoPrimeraConsulta = new System.Windows.Forms.TextBox();
             this.mtbFechaCreacionHc = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.btnActividadFisica = new System.Windows.Forms.Button();
+            this.btnDrogasLicitas = new System.Windows.Forms.Button();
+            this.DrogasIlicitas = new System.Windows.Forms.Button();
+            this.btnAlcoholismo = new System.Windows.Forms.Button();
+            this.btnTabaquismo = new System.Windows.Forms.Button();
+            this.dgvHabitos = new System.Windows.Forms.DataGridView();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnAPPersonales = new System.Windows.Forms.Button();
+            this.btnAPFamiliares = new System.Windows.Forms.Button();
+            this.dgvAntecedentesPatologicos = new System.Windows.Forms.DataGridView();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnConsultas = new System.Windows.Forms.Button();
             this.dgvConsultas = new System.Windows.Forms.DataGridView();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.btnAlergiaMedicamentos = new System.Windows.Forms.Button();
-            this.btnAlergiaInsectos = new System.Windows.Forms.Button();
-            this.btnAlergiaSustanciaContactoPiel = new System.Windows.Forms.Button();
-            this.btnAlergiaSustanciaAmbiente = new System.Windows.Forms.Button();
-            this.btnAlergiaAlimentos = new System.Windows.Forms.Button();
-            this.dgvAlergias = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnAgregarSintoma = new System.Windows.Forms.Button();
             this.btnVerSintomas = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnElementoModificacion = new System.Windows.Forms.Button();
             this.cboElementoModificacion = new System.Windows.Forms.ComboBox();
             this.txtObservacionesSintoma = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnComoModifica = new System.Windows.Forms.Button();
             this.cboComoModificaSintoma = new System.Windows.Forms.ComboBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnCuandoComenzo = new System.Windows.Forms.Button();
             this.cboCuandoComenzo = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.cboElementoTiempo = new System.Windows.Forms.ComboBox();
             this.mtbFechaComienzoSintoma = new System.Windows.Forms.MaskedTextBox();
             this.txtHaciaDondeIrradia = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnCaracterDelDolor = new System.Windows.Forms.Button();
             this.txtCantTiempoInicioSintoma = new System.Windows.Forms.TextBox();
             this.cboCaracterDolor = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -421,8 +432,8 @@
             this.label58 = new System.Windows.Forms.Label();
             this.dgvEstudiosPendientes = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnRegistrarAnalisis = new System.Windows.Forms.Button();
             this.btnRegistraMedicamento = new System.Windows.Forms.Button();
-            this.registrarMedicamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -442,14 +453,16 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesGinecoObstetricos)).BeginInit();
-            this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).BeginInit();
-            this.groupBox16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultas)).BeginInit();
             this.groupBox14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlergias)).BeginInit();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).BeginInit();
+            this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitos)).BeginInit();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesPatologicos)).BeginInit();
+            this.groupBox16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultas)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -584,9 +597,16 @@
             // nuevoTratamientoToolStripMenuItem
             // 
             this.nuevoTratamientoToolStripMenuItem.Name = "nuevoTratamientoToolStripMenuItem";
-            this.nuevoTratamientoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.nuevoTratamientoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.nuevoTratamientoToolStripMenuItem.Text = "Nuevo Tratamiento";
             this.nuevoTratamientoToolStripMenuItem.Click += new System.EventHandler(this.nuevoTratamientoToolStripMenuItem_Click);
+            // 
+            // registrarMedicamentoToolStripMenuItem
+            // 
+            this.registrarMedicamentoToolStripMenuItem.Name = "registrarMedicamentoToolStripMenuItem";
+            this.registrarMedicamentoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.registrarMedicamentoToolStripMenuItem.Text = "Registrar Medicamento";
+            this.registrarMedicamentoToolStripMenuItem.Click += new System.EventHandler(this.registrarMedicamentoToolStripMenuItem_Click);
             // 
             // atenciónEnConsultorioToolStripMenuItem
             // 
@@ -637,7 +657,8 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registroDesdeTensiómetroToolStripMenuItem});
+            this.registroDesdeTensiómetroToolStripMenuItem,
+            this.consultarMedicionesPacienteToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(80, 20);
             this.toolStripMenuItem1.Text = "Mediciones";
@@ -645,9 +666,16 @@
             // registroDesdeTensiómetroToolStripMenuItem
             // 
             this.registroDesdeTensiómetroToolStripMenuItem.Name = "registroDesdeTensiómetroToolStripMenuItem";
-            this.registroDesdeTensiómetroToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.registroDesdeTensiómetroToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.registroDesdeTensiómetroToolStripMenuItem.Text = "Registro desde tensiómetro";
             this.registroDesdeTensiómetroToolStripMenuItem.Click += new System.EventHandler(this.registroDesdeTensiómetroToolStripMenuItem_Click);
+            // 
+            // consultarMedicionesPacienteToolStripMenuItem
+            // 
+            this.consultarMedicionesPacienteToolStripMenuItem.Name = "consultarMedicionesPacienteToolStripMenuItem";
+            this.consultarMedicionesPacienteToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.consultarMedicionesPacienteToolStripMenuItem.Text = "Consultar Mediciones Paciente";
+            this.consultarMedicionesPacienteToolStripMenuItem.Click += new System.EventHandler(this.consultarMedicionesPacienteToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -1338,7 +1366,7 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.label100);
             this.splitContainer1.Panel1.Controls.Add(this.label101);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox13);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox14);
             this.splitContainer1.Panel1.Controls.Add(this.label102);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox12);
             this.splitContainer1.Panel1.Controls.Add(this.label103);
@@ -1352,8 +1380,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox13);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox11);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox16);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox14);
             this.splitContainer1.Size = new System.Drawing.Size(852, 606);
             this.splitContainer1.SplitterDistance = 430;
             this.splitContainer1.TabIndex = 20;
@@ -1376,37 +1405,81 @@
             this.label101.TabIndex = 1;
             this.label101.Text = "Fecha de creación";
             // 
-            // groupBox13
+            // groupBox14
             // 
-            this.groupBox13.Controls.Add(this.btnEmbarazosAbortos);
-            this.groupBox13.Controls.Add(this.dgvAntecedentesGinecoObstetricos);
-            this.groupBox13.Location = new System.Drawing.Point(9, 410);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(409, 174);
-            this.groupBox13.TabIndex = 18;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Antecedentes GinecoObstetricos";
+            this.groupBox14.Controls.Add(this.btnAlergiaMedicamentos);
+            this.groupBox14.Controls.Add(this.btnAlergiaInsectos);
+            this.groupBox14.Controls.Add(this.btnAlergiaSustanciaContactoPiel);
+            this.groupBox14.Controls.Add(this.btnAlergiaSustanciaAmbiente);
+            this.groupBox14.Controls.Add(this.btnAlergiaAlimentos);
+            this.groupBox14.Controls.Add(this.dgvAlergias);
+            this.groupBox14.Location = new System.Drawing.Point(8, 410);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(410, 186);
+            this.groupBox14.TabIndex = 19;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Alergias";
             // 
-            // btnEmbarazosAbortos
+            // btnAlergiaMedicamentos
             // 
-            this.btnEmbarazosAbortos.Location = new System.Drawing.Point(6, 19);
-            this.btnEmbarazosAbortos.Name = "btnEmbarazosAbortos";
-            this.btnEmbarazosAbortos.Size = new System.Drawing.Size(75, 23);
-            this.btnEmbarazosAbortos.TabIndex = 15;
-            this.btnEmbarazosAbortos.Text = "Embarazos";
-            this.btnEmbarazosAbortos.UseVisualStyleBackColor = true;
-            this.btnEmbarazosAbortos.Click += new System.EventHandler(this.btnEmbarazosAbortos_Click);
+            this.btnAlergiaMedicamentos.Location = new System.Drawing.Point(319, 17);
+            this.btnAlergiaMedicamentos.Name = "btnAlergiaMedicamentos";
+            this.btnAlergiaMedicamentos.Size = new System.Drawing.Size(85, 48);
+            this.btnAlergiaMedicamentos.TabIndex = 5;
+            this.btnAlergiaMedicamentos.Text = "Medicamentos";
+            this.btnAlergiaMedicamentos.UseVisualStyleBackColor = true;
+            this.btnAlergiaMedicamentos.Click += new System.EventHandler(this.btnAlergiaMedicamentos_Click);
             // 
-            // dgvAntecedentesGinecoObstetricos
+            // btnAlergiaInsectos
             // 
-            this.dgvAntecedentesGinecoObstetricos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAntecedentesGinecoObstetricos.Location = new System.Drawing.Point(6, 48);
-            this.dgvAntecedentesGinecoObstetricos.Name = "dgvAntecedentesGinecoObstetricos";
-            this.dgvAntecedentesGinecoObstetricos.ReadOnly = true;
-            this.dgvAntecedentesGinecoObstetricos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAntecedentesGinecoObstetricos.Size = new System.Drawing.Size(389, 120);
-            this.dgvAntecedentesGinecoObstetricos.TabIndex = 14;
-            this.dgvAntecedentesGinecoObstetricos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAntecedentesGinecoObstetricos_CellClick);
+            this.btnAlergiaInsectos.Location = new System.Drawing.Point(238, 17);
+            this.btnAlergiaInsectos.Name = "btnAlergiaInsectos";
+            this.btnAlergiaInsectos.Size = new System.Drawing.Size(75, 48);
+            this.btnAlergiaInsectos.TabIndex = 4;
+            this.btnAlergiaInsectos.Text = "Insectos";
+            this.btnAlergiaInsectos.UseVisualStyleBackColor = true;
+            this.btnAlergiaInsectos.Click += new System.EventHandler(this.btnAlergiaInsectos_Click);
+            // 
+            // btnAlergiaSustanciaContactoPiel
+            // 
+            this.btnAlergiaSustanciaContactoPiel.Location = new System.Drawing.Point(157, 17);
+            this.btnAlergiaSustanciaContactoPiel.Name = "btnAlergiaSustanciaContactoPiel";
+            this.btnAlergiaSustanciaContactoPiel.Size = new System.Drawing.Size(75, 48);
+            this.btnAlergiaSustanciaContactoPiel.TabIndex = 3;
+            this.btnAlergiaSustanciaContactoPiel.Text = "Sustancias contacto con piel";
+            this.btnAlergiaSustanciaContactoPiel.UseVisualStyleBackColor = true;
+            this.btnAlergiaSustanciaContactoPiel.Click += new System.EventHandler(this.btnAlergiaSustanciaContactoPiel_Click);
+            // 
+            // btnAlergiaSustanciaAmbiente
+            // 
+            this.btnAlergiaSustanciaAmbiente.Location = new System.Drawing.Point(76, 17);
+            this.btnAlergiaSustanciaAmbiente.Name = "btnAlergiaSustanciaAmbiente";
+            this.btnAlergiaSustanciaAmbiente.Size = new System.Drawing.Size(75, 48);
+            this.btnAlergiaSustanciaAmbiente.TabIndex = 2;
+            this.btnAlergiaSustanciaAmbiente.Text = "Sustancias del ambiente";
+            this.btnAlergiaSustanciaAmbiente.UseVisualStyleBackColor = true;
+            this.btnAlergiaSustanciaAmbiente.Click += new System.EventHandler(this.btnAlergiaSustanciaAmbiente_Click);
+            // 
+            // btnAlergiaAlimentos
+            // 
+            this.btnAlergiaAlimentos.Location = new System.Drawing.Point(6, 17);
+            this.btnAlergiaAlimentos.Name = "btnAlergiaAlimentos";
+            this.btnAlergiaAlimentos.Size = new System.Drawing.Size(64, 48);
+            this.btnAlergiaAlimentos.TabIndex = 1;
+            this.btnAlergiaAlimentos.Text = "Alimentos";
+            this.btnAlergiaAlimentos.UseVisualStyleBackColor = true;
+            this.btnAlergiaAlimentos.Click += new System.EventHandler(this.btnAlergiaAlimentos_Click);
+            // 
+            // dgvAlergias
+            // 
+            this.dgvAlergias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlergias.Location = new System.Drawing.Point(6, 71);
+            this.dgvAlergias.Name = "dgvAlergias";
+            this.dgvAlergias.ReadOnly = true;
+            this.dgvAlergias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlergias.Size = new System.Drawing.Size(398, 105);
+            this.dgvAlergias.TabIndex = 0;
+            this.dgvAlergias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlergias_CellClick);
             // 
             // label102
             // 
@@ -1419,6 +1492,7 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.btnEmbarazosAbortos);
             this.groupBox12.Controls.Add(this.btnTraumatismos);
             this.groupBox12.Controls.Add(this.btnOperaciones);
             this.groupBox12.Controls.Add(this.btnEnfermedades);
@@ -1428,7 +1502,17 @@
             this.groupBox12.Size = new System.Drawing.Size(409, 193);
             this.groupBox12.TabIndex = 17;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Antecedentes Morbidos";
+            this.groupBox12.Text = "Antecedentes";
+            // 
+            // btnEmbarazosAbortos
+            // 
+            this.btnEmbarazosAbortos.Location = new System.Drawing.Point(259, 28);
+            this.btnEmbarazosAbortos.Name = "btnEmbarazosAbortos";
+            this.btnEmbarazosAbortos.Size = new System.Drawing.Size(106, 23);
+            this.btnEmbarazosAbortos.TabIndex = 15;
+            this.btnEmbarazosAbortos.Text = "GinecoObstetricos";
+            this.btnEmbarazosAbortos.UseVisualStyleBackColor = true;
+            this.btnEmbarazosAbortos.Click += new System.EventHandler(this.btnEmbarazosAbortos_Click);
             // 
             // btnTraumatismos
             // 
@@ -1463,9 +1547,9 @@
             // dgvAntecedentesMorbidos
             // 
             this.dgvAntecedentesMorbidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAntecedentesMorbidos.Location = new System.Drawing.Point(6, 64);
+            this.dgvAntecedentesMorbidos.Location = new System.Drawing.Point(6, 67);
             this.dgvAntecedentesMorbidos.Name = "dgvAntecedentesMorbidos";
-            this.dgvAntecedentesMorbidos.Size = new System.Drawing.Size(389, 120);
+            this.dgvAntecedentesMorbidos.Size = new System.Drawing.Size(397, 117);
             this.dgvAntecedentesMorbidos.TabIndex = 12;
             this.dgvAntecedentesMorbidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAntecedentesMorbidos_CellClick);
             this.dgvAntecedentesMorbidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAntecedentesMorbidos_CellContentClick);
@@ -1538,13 +1622,130 @@
             this.mtbFechaCreacionHc.TabIndex = 9;
             this.mtbFechaCreacionHc.ValidatingType = typeof(System.DateTime);
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.btnActividadFisica);
+            this.groupBox13.Controls.Add(this.btnDrogasLicitas);
+            this.groupBox13.Controls.Add(this.DrogasIlicitas);
+            this.groupBox13.Controls.Add(this.btnAlcoholismo);
+            this.groupBox13.Controls.Add(this.btnTabaquismo);
+            this.groupBox13.Controls.Add(this.dgvHabitos);
+            this.groupBox13.Location = new System.Drawing.Point(9, 199);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(395, 205);
+            this.groupBox13.TabIndex = 22;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Hábitos";
+            // 
+            // btnActividadFisica
+            // 
+            this.btnActividadFisica.Location = new System.Drawing.Point(6, 50);
+            this.btnActividadFisica.Name = "btnActividadFisica";
+            this.btnActividadFisica.Size = new System.Drawing.Size(92, 23);
+            this.btnActividadFisica.TabIndex = 5;
+            this.btnActividadFisica.Text = "ActividadFisica";
+            this.btnActividadFisica.UseVisualStyleBackColor = true;
+            this.btnActividadFisica.Click += new System.EventHandler(this.btnActividadFisica_Click);
+            // 
+            // btnDrogasLicitas
+            // 
+            this.btnDrogasLicitas.Location = new System.Drawing.Point(257, 21);
+            this.btnDrogasLicitas.Name = "btnDrogasLicitas";
+            this.btnDrogasLicitas.Size = new System.Drawing.Size(88, 23);
+            this.btnDrogasLicitas.TabIndex = 4;
+            this.btnDrogasLicitas.Text = "Medicamentos";
+            this.btnDrogasLicitas.UseVisualStyleBackColor = true;
+            this.btnDrogasLicitas.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // DrogasIlicitas
+            // 
+            this.DrogasIlicitas.Location = new System.Drawing.Point(168, 21);
+            this.DrogasIlicitas.Name = "DrogasIlicitas";
+            this.DrogasIlicitas.Size = new System.Drawing.Size(83, 23);
+            this.DrogasIlicitas.TabIndex = 3;
+            this.DrogasIlicitas.Text = "Drogas Ilicitas";
+            this.DrogasIlicitas.UseVisualStyleBackColor = true;
+            this.DrogasIlicitas.Click += new System.EventHandler(this.DrogasIlicitas_Click);
+            // 
+            // btnAlcoholismo
+            // 
+            this.btnAlcoholismo.Location = new System.Drawing.Point(87, 21);
+            this.btnAlcoholismo.Name = "btnAlcoholismo";
+            this.btnAlcoholismo.Size = new System.Drawing.Size(75, 23);
+            this.btnAlcoholismo.TabIndex = 2;
+            this.btnAlcoholismo.Text = "Alcoholismo";
+            this.btnAlcoholismo.UseVisualStyleBackColor = true;
+            this.btnAlcoholismo.Click += new System.EventHandler(this.btnAlcoholismo_Click);
+            // 
+            // btnTabaquismo
+            // 
+            this.btnTabaquismo.Location = new System.Drawing.Point(6, 21);
+            this.btnTabaquismo.Name = "btnTabaquismo";
+            this.btnTabaquismo.Size = new System.Drawing.Size(75, 23);
+            this.btnTabaquismo.TabIndex = 1;
+            this.btnTabaquismo.Text = "Tabaquismo";
+            this.btnTabaquismo.UseVisualStyleBackColor = true;
+            this.btnTabaquismo.Click += new System.EventHandler(this.btnTabaquismo_Click);
+            // 
+            // dgvHabitos
+            // 
+            this.dgvHabitos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHabitos.Location = new System.Drawing.Point(6, 79);
+            this.dgvHabitos.Name = "dgvHabitos";
+            this.dgvHabitos.Size = new System.Drawing.Size(383, 120);
+            this.dgvHabitos.TabIndex = 0;
+            this.dgvHabitos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHabitos_CellClick);
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.btnAPPersonales);
+            this.groupBox11.Controls.Add(this.btnAPFamiliares);
+            this.groupBox11.Controls.Add(this.dgvAntecedentesPatologicos);
+            this.groupBox11.Location = new System.Drawing.Point(9, 6);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(395, 187);
+            this.groupBox11.TabIndex = 21;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Antecedentes Patológicos";
+            // 
+            // btnAPPersonales
+            // 
+            this.btnAPPersonales.Location = new System.Drawing.Point(87, 24);
+            this.btnAPPersonales.Name = "btnAPPersonales";
+            this.btnAPPersonales.Size = new System.Drawing.Size(75, 23);
+            this.btnAPPersonales.TabIndex = 16;
+            this.btnAPPersonales.Text = "Personales";
+            this.btnAPPersonales.UseVisualStyleBackColor = true;
+            this.btnAPPersonales.Click += new System.EventHandler(this.btnAPPersonales_Click);
+            // 
+            // btnAPFamiliares
+            // 
+            this.btnAPFamiliares.Location = new System.Drawing.Point(6, 24);
+            this.btnAPFamiliares.Name = "btnAPFamiliares";
+            this.btnAPFamiliares.Size = new System.Drawing.Size(75, 23);
+            this.btnAPFamiliares.TabIndex = 15;
+            this.btnAPFamiliares.Text = "Familiares";
+            this.btnAPFamiliares.UseVisualStyleBackColor = true;
+            this.btnAPFamiliares.Click += new System.EventHandler(this.btnAPFamiliares_Click);
+            // 
+            // dgvAntecedentesPatologicos
+            // 
+            this.dgvAntecedentesPatologicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAntecedentesPatologicos.Location = new System.Drawing.Point(6, 55);
+            this.dgvAntecedentesPatologicos.Name = "dgvAntecedentesPatologicos";
+            this.dgvAntecedentesPatologicos.ReadOnly = true;
+            this.dgvAntecedentesPatologicos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAntecedentesPatologicos.Size = new System.Drawing.Size(383, 120);
+            this.dgvAntecedentesPatologicos.TabIndex = 14;
+            this.dgvAntecedentesPatologicos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAntecedentesGinecoObstetricos_CellClick);
+            // 
             // groupBox16
             // 
             this.groupBox16.Controls.Add(this.btnConsultas);
             this.groupBox16.Controls.Add(this.dgvConsultas);
-            this.groupBox16.Location = new System.Drawing.Point(3, 198);
+            this.groupBox16.Location = new System.Drawing.Point(9, 427);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(410, 174);
+            this.groupBox16.Size = new System.Drawing.Size(395, 169);
             this.groupBox16.TabIndex = 20;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Consultas anteriores";
@@ -1564,84 +1765,9 @@
             this.dgvConsultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultas.Location = new System.Drawing.Point(6, 59);
             this.dgvConsultas.Name = "dgvConsultas";
-            this.dgvConsultas.Size = new System.Drawing.Size(398, 109);
+            this.dgvConsultas.Size = new System.Drawing.Size(383, 106);
             this.dgvConsultas.TabIndex = 0;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.btnAlergiaMedicamentos);
-            this.groupBox14.Controls.Add(this.btnAlergiaInsectos);
-            this.groupBox14.Controls.Add(this.btnAlergiaSustanciaContactoPiel);
-            this.groupBox14.Controls.Add(this.btnAlergiaSustanciaAmbiente);
-            this.groupBox14.Controls.Add(this.btnAlergiaAlimentos);
-            this.groupBox14.Controls.Add(this.dgvAlergias);
-            this.groupBox14.Location = new System.Drawing.Point(3, 6);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(410, 186);
-            this.groupBox14.TabIndex = 19;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Alergias";
-            // 
-            // btnAlergiaMedicamentos
-            // 
-            this.btnAlergiaMedicamentos.Location = new System.Drawing.Point(319, 17);
-            this.btnAlergiaMedicamentos.Name = "btnAlergiaMedicamentos";
-            this.btnAlergiaMedicamentos.Size = new System.Drawing.Size(85, 48);
-            this.btnAlergiaMedicamentos.TabIndex = 5;
-            this.btnAlergiaMedicamentos.Text = "Medicamentos";
-            this.btnAlergiaMedicamentos.UseVisualStyleBackColor = true;
-            this.btnAlergiaMedicamentos.Click += new System.EventHandler(this.btnAlergiaMedicamentos_Click);
-            // 
-            // btnAlergiaInsectos
-            // 
-            this.btnAlergiaInsectos.Location = new System.Drawing.Point(238, 17);
-            this.btnAlergiaInsectos.Name = "btnAlergiaInsectos";
-            this.btnAlergiaInsectos.Size = new System.Drawing.Size(75, 48);
-            this.btnAlergiaInsectos.TabIndex = 4;
-            this.btnAlergiaInsectos.Text = "Insectos";
-            this.btnAlergiaInsectos.UseVisualStyleBackColor = true;
-            this.btnAlergiaInsectos.Click += new System.EventHandler(this.btnAlergiaInsectos_Click);
-            // 
-            // btnAlergiaSustanciaContactoPiel
-            // 
-            this.btnAlergiaSustanciaContactoPiel.Location = new System.Drawing.Point(157, 17);
-            this.btnAlergiaSustanciaContactoPiel.Name = "btnAlergiaSustanciaContactoPiel";
-            this.btnAlergiaSustanciaContactoPiel.Size = new System.Drawing.Size(75, 48);
-            this.btnAlergiaSustanciaContactoPiel.TabIndex = 3;
-            this.btnAlergiaSustanciaContactoPiel.Text = "Sustancias contacto con piel";
-            this.btnAlergiaSustanciaContactoPiel.UseVisualStyleBackColor = true;
-            this.btnAlergiaSustanciaContactoPiel.Click += new System.EventHandler(this.btnAlergiaSustanciaContactoPiel_Click);
-            // 
-            // btnAlergiaSustanciaAmbiente
-            // 
-            this.btnAlergiaSustanciaAmbiente.Location = new System.Drawing.Point(76, 17);
-            this.btnAlergiaSustanciaAmbiente.Name = "btnAlergiaSustanciaAmbiente";
-            this.btnAlergiaSustanciaAmbiente.Size = new System.Drawing.Size(75, 48);
-            this.btnAlergiaSustanciaAmbiente.TabIndex = 2;
-            this.btnAlergiaSustanciaAmbiente.Text = "Sustancias del ambiente";
-            this.btnAlergiaSustanciaAmbiente.UseVisualStyleBackColor = true;
-            this.btnAlergiaSustanciaAmbiente.Click += new System.EventHandler(this.btnAlergiaSustanciaAmbiente_Click);
-            // 
-            // btnAlergiaAlimentos
-            // 
-            this.btnAlergiaAlimentos.Location = new System.Drawing.Point(6, 17);
-            this.btnAlergiaAlimentos.Name = "btnAlergiaAlimentos";
-            this.btnAlergiaAlimentos.Size = new System.Drawing.Size(64, 48);
-            this.btnAlergiaAlimentos.TabIndex = 1;
-            this.btnAlergiaAlimentos.Text = "Alimentos";
-            this.btnAlergiaAlimentos.UseVisualStyleBackColor = true;
-            this.btnAlergiaAlimentos.Click += new System.EventHandler(this.btnAlergiaAlimentos_Click);
-            // 
-            // dgvAlergias
-            // 
-            this.dgvAlergias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAlergias.Location = new System.Drawing.Point(6, 71);
-            this.dgvAlergias.Name = "dgvAlergias";
-            this.dgvAlergias.ReadOnly = true;
-            this.dgvAlergias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlergias.Size = new System.Drawing.Size(398, 105);
-            this.dgvAlergias.TabIndex = 0;
-            this.dgvAlergias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlergias_CellClick);
+            this.dgvConsultas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsultas_CellClick);
             // 
             // tabPage4
             // 
@@ -1668,19 +1794,19 @@
             // 
             this.groupBox6.Controls.Add(this.btnAgregarSintoma);
             this.groupBox6.Controls.Add(this.btnVerSintomas);
-            this.groupBox6.Controls.Add(this.button6);
+            this.groupBox6.Controls.Add(this.btnElementoModificacion);
             this.groupBox6.Controls.Add(this.cboElementoModificacion);
             this.groupBox6.Controls.Add(this.txtObservacionesSintoma);
-            this.groupBox6.Controls.Add(this.button5);
+            this.groupBox6.Controls.Add(this.btnComoModifica);
             this.groupBox6.Controls.Add(this.cboComoModificaSintoma);
-            this.groupBox6.Controls.Add(this.button8);
+            this.groupBox6.Controls.Add(this.btnCuandoComenzo);
             this.groupBox6.Controls.Add(this.cboCuandoComenzo);
             this.groupBox6.Controls.Add(this.label25);
             this.groupBox6.Controls.Add(this.cboElementoTiempo);
             this.groupBox6.Controls.Add(this.mtbFechaComienzoSintoma);
             this.groupBox6.Controls.Add(this.txtHaciaDondeIrradia);
             this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.button9);
+            this.groupBox6.Controls.Add(this.btnCaracterDelDolor);
             this.groupBox6.Controls.Add(this.txtCantTiempoInicioSintoma);
             this.groupBox6.Controls.Add(this.cboCaracterDolor);
             this.groupBox6.Controls.Add(this.label23);
@@ -1727,14 +1853,15 @@
             this.btnVerSintomas.Text = "Ver Síntomas";
             this.btnVerSintomas.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnElementoModificacion
             // 
-            this.button6.Location = new System.Drawing.Point(722, 291);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 21;
-            this.button6.Text = "Añadir";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnElementoModificacion.Location = new System.Drawing.Point(722, 291);
+            this.btnElementoModificacion.Name = "btnElementoModificacion";
+            this.btnElementoModificacion.Size = new System.Drawing.Size(75, 23);
+            this.btnElementoModificacion.TabIndex = 21;
+            this.btnElementoModificacion.Text = "Añadir";
+            this.btnElementoModificacion.UseVisualStyleBackColor = true;
+            this.btnElementoModificacion.Click += new System.EventHandler(this.btnElementoModificacion_Click);
             // 
             // cboElementoModificacion
             // 
@@ -1753,14 +1880,15 @@
             this.txtObservacionesSintoma.Size = new System.Drawing.Size(588, 35);
             this.txtObservacionesSintoma.TabIndex = 17;
             // 
-            // button5
+            // btnComoModifica
             // 
-            this.button5.Location = new System.Drawing.Point(292, 288);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 19;
-            this.button5.Text = "Añadir";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnComoModifica.Location = new System.Drawing.Point(292, 288);
+            this.btnComoModifica.Name = "btnComoModifica";
+            this.btnComoModifica.Size = new System.Drawing.Size(75, 23);
+            this.btnComoModifica.TabIndex = 19;
+            this.btnComoModifica.Text = "Añadir";
+            this.btnComoModifica.UseVisualStyleBackColor = true;
+            this.btnComoModifica.Click += new System.EventHandler(this.button5_Click);
             // 
             // cboComoModificaSintoma
             // 
@@ -1771,14 +1899,15 @@
             this.cboComoModificaSintoma.Size = new System.Drawing.Size(121, 24);
             this.cboComoModificaSintoma.TabIndex = 18;
             // 
-            // button8
+            // btnCuandoComenzo
             // 
-            this.button8.Location = new System.Drawing.Point(292, 251);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 17;
-            this.button8.Text = "Añadir";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnCuandoComenzo.Location = new System.Drawing.Point(292, 251);
+            this.btnCuandoComenzo.Name = "btnCuandoComenzo";
+            this.btnCuandoComenzo.Size = new System.Drawing.Size(75, 23);
+            this.btnCuandoComenzo.TabIndex = 17;
+            this.btnCuandoComenzo.Text = "Añadir";
+            this.btnCuandoComenzo.UseVisualStyleBackColor = true;
+            this.btnCuandoComenzo.Click += new System.EventHandler(this.button8_Click);
             // 
             // cboCuandoComenzo
             // 
@@ -1832,14 +1961,15 @@
             this.label24.TabIndex = 12;
             this.label24.Text = "¿Elemento que lo modifica?";
             // 
-            // button9
+            // btnCaracterDelDolor
             // 
-            this.button9.Location = new System.Drawing.Point(553, 147);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 10;
-            this.button9.Text = "Añadir";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnCaracterDelDolor.Location = new System.Drawing.Point(553, 147);
+            this.btnCaracterDelDolor.Name = "btnCaracterDelDolor";
+            this.btnCaracterDelDolor.Size = new System.Drawing.Size(75, 23);
+            this.btnCaracterDelDolor.TabIndex = 10;
+            this.btnCaracterDelDolor.Text = "Añadir";
+            this.btnCaracterDelDolor.UseVisualStyleBackColor = true;
+            this.btnCaracterDelDolor.Click += new System.EventHandler(this.btnCaracterDelDolor_Click);
             // 
             // txtCantTiempoInicioSintoma
             // 
@@ -4362,6 +4492,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnRegistrarAnalisis);
             this.groupBox3.Controls.Add(this.btnRegistraMedicamento);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(896, 30);
@@ -4371,22 +4502,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones generales";
             // 
+            // btnRegistrarAnalisis
+            // 
+            this.btnRegistrarAnalisis.Location = new System.Drawing.Point(6, 56);
+            this.btnRegistrarAnalisis.Name = "btnRegistrarAnalisis";
+            this.btnRegistrarAnalisis.Size = new System.Drawing.Size(264, 28);
+            this.btnRegistrarAnalisis.TabIndex = 2;
+            this.btnRegistrarAnalisis.Text = "Registrar Análisis";
+            this.btnRegistrarAnalisis.UseVisualStyleBackColor = true;
+            this.btnRegistrarAnalisis.Click += new System.EventHandler(this.btnRegistrarAnalisis_Click);
+            // 
             // btnRegistraMedicamento
             // 
-            this.btnRegistraMedicamento.Location = new System.Drawing.Point(0, 22);
+            this.btnRegistraMedicamento.Location = new System.Drawing.Point(6, 22);
             this.btnRegistraMedicamento.Name = "btnRegistraMedicamento";
             this.btnRegistraMedicamento.Size = new System.Drawing.Size(264, 28);
             this.btnRegistraMedicamento.TabIndex = 1;
             this.btnRegistraMedicamento.Text = "Registrar Medicamento";
             this.btnRegistraMedicamento.UseVisualStyleBackColor = true;
             this.btnRegistraMedicamento.Click += new System.EventHandler(this.btnRegistraMedicamento_Click);
-            // 
-            // registrarMedicamentoToolStripMenuItem
-            // 
-            this.registrarMedicamentoToolStripMenuItem.Name = "registrarMedicamentoToolStripMenuItem";
-            this.registrarMedicamentoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.registrarMedicamentoToolStripMenuItem.Text = "Registrar Medicamento";
-            this.registrarMedicamentoToolStripMenuItem.Click += new System.EventHandler(this.registrarMedicamentoToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -4429,14 +4563,16 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesGinecoObstetricos)).EndInit();
-            this.groupBox12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).EndInit();
-            this.groupBox16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultas)).EndInit();
             this.groupBox14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlergias)).EndInit();
+            this.groupBox12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesMorbidos)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHabitos)).EndInit();
+            this.groupBox11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAntecedentesPatologicos)).EndInit();
+            this.groupBox16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultas)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -4587,19 +4723,19 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnElementoModificacion;
         private System.Windows.Forms.ComboBox cboElementoModificacion;
         private System.Windows.Forms.TextBox txtObservacionesSintoma;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnComoModifica;
         private System.Windows.Forms.ComboBox cboComoModificaSintoma;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnCuandoComenzo;
         private System.Windows.Forms.ComboBox cboCuandoComenzo;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cboElementoTiempo;
         private System.Windows.Forms.MaskedTextBox mtbFechaComienzoSintoma;
         private System.Windows.Forms.TextBox txtHaciaDondeIrradia;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnCaracterDelDolor;
         private System.Windows.Forms.TextBox txtCantTiempoInicioSintoma;
         private System.Windows.Forms.ComboBox cboCaracterDolor;
         private System.Windows.Forms.Label label23;
@@ -4768,14 +4904,13 @@
         private System.Windows.Forms.Label label102;
         private System.Windows.Forms.Label label101;
         private System.Windows.Forms.Label label100;
-        private System.Windows.Forms.DataGridView dgvAntecedentesGinecoObstetricos;
+        private System.Windows.Forms.DataGridView dgvAntecedentesPatologicos;
         private System.Windows.Forms.DataGridView dgvAntecedentesMorbidos;
         private System.Windows.Forms.Button btnVerHistoriaClinica;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Button btnTraumatismos;
         private System.Windows.Forms.Button btnOperaciones;
         private System.Windows.Forms.Button btnEnfermedades;
-        private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Button btnEmbarazosAbortos;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Button btnAlergiaMedicamentos;
@@ -4895,5 +5030,17 @@
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.DataGridView dgvTratamientosDiagnostico;
         private System.Windows.Forms.ToolStripMenuItem registrarMedicamentoToolStripMenuItem;
+        private System.Windows.Forms.Button btnRegistrarAnalisis;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Button btnAPPersonales;
+        private System.Windows.Forms.Button btnAPFamiliares;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button btnTabaquismo;
+        private System.Windows.Forms.DataGridView dgvHabitos;
+        private System.Windows.Forms.Button btnDrogasLicitas;
+        private System.Windows.Forms.Button DrogasIlicitas;
+        private System.Windows.Forms.Button btnAlcoholismo;
+        private System.Windows.Forms.Button btnActividadFisica;
+        private System.Windows.Forms.ToolStripMenuItem consultarMedicionesPacienteToolStripMenuItem;
     }
 }

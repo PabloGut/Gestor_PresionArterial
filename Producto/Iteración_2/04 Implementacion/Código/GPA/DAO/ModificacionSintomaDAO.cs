@@ -68,5 +68,103 @@ namespace DAO
             return modificacionesSintoma;
 
         }
+        public static void InsertModificacionSintoma(ModificacionSintoma Modificacion)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"insert into ModificacionSintoma(nombre)
+                                values(@nombre)";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", Modificacion.nombre);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en insert:" + e.Message);
+            }
+        }
+        public static void DeleteModificacionSintoma(ModificacionSintoma Modificacion)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"delete from ModificacionSintoma
+                                where id_modificacionesSintoma=@idModificacionSintoma";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@idModificacionSintoma", Modificacion.id_modificacionSintoma);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en delete:" + e.Message);
+            }
+        }
+        public static void UpdateModificacionSintoma(ModificacionSintoma Modificacion)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"update ModificacionSintoma
+                                set nombre=@nombre
+                                where id_modificacionesSintoma=@idModificacionSintoma";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", Modificacion.nombre);
+                cmd.Parameters.AddWithValue("@idModificacionSintoma", Modificacion.id_modificacionSintoma);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en update:" + e.Message);
+            }
+        }
     }
 }

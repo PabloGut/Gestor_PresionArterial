@@ -65,5 +65,103 @@ namespace DAO
             cn.Close();
             return caracterDolor;
         }
+        public static void updateCaracterDolor(CaracterDelDolor caracter)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"update CaracterDelDolor
+                                set nombre=@nombre
+                                where id_caracterDelDolor=@idCaracterDelDolor";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", caracter.nombre);
+                cmd.Parameters.AddWithValue("@idCaracterDelDolor", caracter.id_caracterDelDolor);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en update:" + e.Message);
+            }
+        }
+        public static void deleteCaracterDolor(CaracterDelDolor caracter)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"delete from CaracterDelDolor
+                                where id_caracterDelDolor=@idCaracterDelDolor";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@idCaracterDelDolor", caracter.id_caracterDelDolor);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en delete:" + e.Message);
+            }
+        }
+        public static void insertCaracterDolor(CaracterDelDolor caracter)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"insert into CaracterDelDolor(nombre)
+                                values(@nombre)";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", caracter.nombre);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en insert:" + e.Message);
+            }
+        }
     }
 }

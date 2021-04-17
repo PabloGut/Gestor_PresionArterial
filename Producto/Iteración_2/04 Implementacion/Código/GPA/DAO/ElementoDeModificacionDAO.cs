@@ -67,6 +67,104 @@ namespace DAO
             return elementosDeModificacion;
 
         }
+        public static void InsertElementoModificacion(ElementoDeModificacion Elemento)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"insert into ElementoDeModificacion(nombre)
+                                values(@nombre)";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", Elemento.nombre);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en insert:" + e.Message);
+            }
+        }
+        public static void DeleteElementoModificacion(ElementoDeModificacion Elemento)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"delete from ElementoDeModificacion
+                                where id_elementoDeModificacion=@idElementoModificacion";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@idElementoModificacion", Elemento.id_elementoDeModificacion);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en delete:" + e.Message);
+            }
+        }
+        public static void UpdateElementoModificacion(ElementoDeModificacion Elemento)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            string consulta = @"update ElementoDeModificacion
+                                set nombre=@nombre
+                                where id_elementoDeModificacion=@idElementoModificacion";
+
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@nombre", Elemento.nombre);
+                cmd.Parameters.AddWithValue("@idElementoModificacion", Elemento.id_elementoDeModificacion);
+
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error en update:" + e.Message);
+            }
+        }
     }
     
 }

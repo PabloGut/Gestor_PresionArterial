@@ -153,5 +153,105 @@ namespace DAO
                 throw new ApplicationException("Error al actualizar estudio diagnostico por imagen: " + e.Message);
             }
         }
+        public static List<EstudioDiagnosticoPorImagen> obtenerEstudioDiagnosticoPorImagenIdConsulta(int idConsulta)
+        {
+            setCadenaConexion();
+
+            List<EstudioDiagnosticoPorImagen> estudios = new List<EstudioDiagnosticoPorImagen>();
+            NombreEstudio nomEstudio = null;
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+
+
+            string consulta = @"select ne.nombre as 'Estudio', edi.fechaSolicitud as 'Fecha de solicitud', edi.indicaciones
+                                from Consulta c, ExamenGeneral ex, RazonamientoDiagnostico rd, EstadoDiagnostico ed, EstudiosDiagnosticoPorImagen edi,NombreEstudio ne
+                                where c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ex.id_examenGeneral=rd.id_examenGeneral_fk
+                                and rd.id_estadoDiagnostico_fk=ed.id_estadoDiagnostico
+                                and ed.nombre not like 'Descartado'
+                                and edi.id_razonamientoDiagnostico_fk=rd.id_razonamiento
+                                and edi.id_nombreEstudio_fk=ne.id_nombreEstudio
+                                and c.id_consulta=@idConsulta";
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Parameters.AddWithValue("@idConsulta", idConsulta);
+
+            try
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    nomEstudio = new NombreEstudio();
+                    nomEstudio.nombre = dr["Estudio"].ToString();
+
+                    EstudioDiagnosticoPorImagen estudio = new EstudioDiagnosticoPorImagen();
+                    estudio.fechaSolicitud = Convert.ToDateTime(dr["Fecha de solicitud"]);
+                    estudio.nombreEstudio = nomEstudio;
+                    estudio.indicaciones = dr["indicaciones"].ToString();
+
+                    estudios.Add(estudio);
+                }
+
+                return estudios;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+        public static DataTable MostrarEstudioDiagnosticoPorImagen(int id_hc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            string consulta = @"select ne.nombre as 'Estudio', edi.fechaSolicitud as 'Fecha de solicitud', edi.indicaciones, edi.fechaRealizacion as 'Fecha de Realizacion',edi.informe as 'Informe',edi.observacionDeLosResultados as 'Observaciones'
+                                from Consulta c, ExamenGeneral ex, RazonamientoDiagnostico rd, EstadoDiagnostico ed, EstudiosDiagnosticoPorImagen edi,NombreEstudio ne
+                                where c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and ex.id_examenGeneral=rd.id_examenGeneral_fk
+                                and rd.id_estadoDiagnostico_fk=ed.id_estadoDiagnostico
+                                and ed.nombre not like 'Descartado'
+                                and edi.id_razonamientoDiagnostico_fk=rd.id_razonamiento
+                                and edi.id_nombreEstudio_fk=ne.id_nombreEstudio
+                                and c.id_consulta=@id_hc";
+            try
+            {
+                cn.Close();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@id_hc", id_hc);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            return dt;
+        }
     }
 }

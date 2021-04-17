@@ -209,6 +209,8 @@ namespace DAO
                 throw new ApplicationException("Error: " + e.Message);
             }
         }
+
+
      /*
         public static int insertarHC(HistoriaClinica hc)
         {

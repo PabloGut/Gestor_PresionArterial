@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades.Clases;
 using DAO;
+using System.Data;
+
 namespace LogicaNegocio
 {
     public class LaboratorioLN
@@ -36,6 +38,10 @@ namespace LogicaNegocio
                 throw e;
             }
 
+        }
+        public static DataTable MostrarEstudiosLaboratorio(int idHc)
+        {
+            return LaboratorioDAO.MostrarEstudiosLaboratorio(idHc);
         }
     }
 }

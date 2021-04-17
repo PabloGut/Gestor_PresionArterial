@@ -34,35 +34,34 @@ namespace Shiart_AppWeb.PaginasWeb
                 cargarCombos();
                 if (cookie != null)
                 {
-                    mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
-                    //mediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
+                    //mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
+                    mediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
                     RepeaterMediciones.DataSource = mediciones;
                     RepeaterMediciones.DataBind();
                 }
             }
-            else
-            {
+            //else
+            //{
+            //    if (!String.IsNullOrEmpty(txtFechaDesde.Text))
+            //        fechaDesde = DateTime.Parse(txtFechaDesde.Text);
+            //    if (!String.IsNullOrEmpty(txtFechaHasta.Text))
+            //        fechaHasta = DateTime.Parse(txtFechaHasta.Text);
+            //    if (!String.IsNullOrEmpty(ddlFiltroExtremidad.SelectedItem.Text) && !ddlFiltroExtremidad.SelectedItem.Text.Equals("--Seleccionar--"))
+            //        extremidad = ddlFiltroExtremidad.SelectedItem.Text;
+            //    if (!String.IsNullOrEmpty(ddlFiltroMomentoDia.SelectedItem.Text) && !ddlFiltroMomentoDia.SelectedItem.Text.Equals("--Seleccionar--"))
+            //        momentoDiaSeleccionado = ddlFiltroMomentoDia.SelectedItem.Text;
+            //    if (!String.IsNullOrEmpty(ddlFiltroPosicion.SelectedItem.Text) && !ddlFiltroPosicion.SelectedItem.Text.Equals("--Seleccionar--"))
+            //        posicionSeleccionada = ddlFiltroPosicion.SelectedItem.Text;
+            //    if (!String.IsNullOrEmpty(ddlFiltroUbicacion.SelectedItem.Text) && !ddlFiltroUbicacion.SelectedItem.Text.Equals("--Seleccionar--"))
+            //        ubicacionExtremidadSeleccionada = ddlFiltroUbicacion.SelectedItem.Text;
+            //    if (!String.IsNullOrEmpty(ddlFiltroSitioMedicion.SelectedItem.Text) && !ddlFiltroSitioMedicion.SelectedItem.Text.Equals("--Seleccionar--"))
+            //        sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
 
-                if (!String.IsNullOrEmpty(txtFechaDesde.Text))
-                    fechaDesde = DateTime.Parse(txtFechaDesde.Text);
-                if (!String.IsNullOrEmpty(txtFechaHasta.Text))
-                    fechaHasta = DateTime.Parse(txtFechaHasta.Text);
-                if (!String.IsNullOrEmpty(ddlFiltroExtremidad.SelectedItem.Text) && !ddlFiltroExtremidad.SelectedItem.Text.Equals("--Seleccionar--"))
-                    extremidad = ddlFiltroExtremidad.SelectedItem.Text;
-                if (!String.IsNullOrEmpty(ddlFiltroMomentoDia.SelectedItem.Text) && !ddlFiltroMomentoDia.SelectedItem.Text.Equals("--Seleccionar--"))
-                    momentoDiaSeleccionado = ddlFiltroMomentoDia.SelectedItem.Text;
-                if (!String.IsNullOrEmpty(ddlFiltroPosicion.SelectedItem.Text) && !ddlFiltroPosicion.SelectedItem.Text.Equals("--Seleccionar--"))
-                    posicionSeleccionada = ddlFiltroPosicion.SelectedItem.Text;
-                if (!String.IsNullOrEmpty(ddlFiltroUbicacion.SelectedItem.Text) && !ddlFiltroUbicacion.SelectedItem.Text.Equals("--Seleccionar--"))
-                    ubicacionExtremidadSeleccionada = ddlFiltroUbicacion.SelectedItem.Text;
-                if (!String.IsNullOrEmpty(ddlFiltroSitioMedicion.SelectedItem.Text) && !ddlFiltroSitioMedicion.SelectedItem.Text.Equals("--Seleccionar--"))
-                    sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
-
-                mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
-                //mediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
-                RepeaterMediciones.DataSource = mediciones;
-                RepeaterMediciones.DataBind();
-            }
+            //    mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
+            //    mediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
+            //    RepeaterMediciones.DataSource = mediciones;
+            //    RepeaterMediciones.DataBind();
+            //}
 
         }
 
@@ -88,7 +87,11 @@ namespace Shiart_AppWeb.PaginasWeb
             if (!String.IsNullOrEmpty(ddlFiltroSitioMedicion.SelectedItem.Text) && !ddlFiltroSitioMedicion.SelectedItem.Text.Equals("--Seleccionar--"))
                 sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
 
-            detalleMediciones = MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), Convert.ToInt32(idMedicion),fechaDesde,fechaHasta,extremidad,momentoDiaSeleccionado,posicionSeleccionada,ubicacionExtremidadSeleccionada,sitioMedicionSeleccionado);
+            if(!IsPostBack)
+                detalleMediciones = MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), Convert.ToInt32(idMedicion),null,null,null,null,null,null,null);
+            else
+                detalleMediciones = MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), Convert.ToInt32(idMedicion), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
+
 
             System.Web.UI.WebControls.GridView gvDetalleMediciones = (e.Item.FindControl("gvDetalleMediciones") as System.Web.UI.WebControls.GridView);
             gvDetalleMediciones.DataSource = detalleMediciones;
@@ -118,6 +121,9 @@ namespace Shiart_AppWeb.PaginasWeb
 
 
             detalleMedicionesConFiltro = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value),fechaDesde,fechaHasta,extremidad,momentoDiaSeleccionado,posicionSeleccionada,ubicacionExtremidadSeleccionada,sitioMedicionSeleccionado);
+         
+            if (detalleMedicionesConFiltro.Rows.Count == 0)
+                return null;
 
             //detalleMedicionesConFiltro = MedicionDePresionArterialLN.obtenerDetalleMedicionesConFiltro(Convert.ToInt32(cookie.Value));
 
@@ -198,7 +204,29 @@ namespace Shiart_AppWeb.PaginasWeb
 
             //HttpCookie cookie = Request.Cookies["idHc"];
 
-            //DataTable mediciones=MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value),)
+            //DataTable mediciones = MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value),)
+
+            HttpCookie cookie = Request.Cookies["idHc"];
+            if (!String.IsNullOrEmpty(txtFechaDesde.Text))
+                fechaDesde = DateTime.Parse(txtFechaDesde.Text);
+            if (!String.IsNullOrEmpty(txtFechaHasta.Text))
+                fechaHasta = DateTime.Parse(txtFechaHasta.Text);
+            if (!String.IsNullOrEmpty(ddlFiltroExtremidad.SelectedItem.Text) && !ddlFiltroExtremidad.SelectedItem.Text.Equals("--Seleccionar--"))
+                extremidad = ddlFiltroExtremidad.SelectedItem.Text;
+            if (!String.IsNullOrEmpty(ddlFiltroMomentoDia.SelectedItem.Text) && !ddlFiltroMomentoDia.SelectedItem.Text.Equals("--Seleccionar--"))
+                momentoDiaSeleccionado = ddlFiltroMomentoDia.SelectedItem.Text;
+            if (!String.IsNullOrEmpty(ddlFiltroPosicion.SelectedItem.Text) && !ddlFiltroPosicion.SelectedItem.Text.Equals("--Seleccionar--"))
+                posicionSeleccionada = ddlFiltroPosicion.SelectedItem.Text;
+            if (!String.IsNullOrEmpty(ddlFiltroUbicacion.SelectedItem.Text) && !ddlFiltroUbicacion.SelectedItem.Text.Equals("--Seleccionar--"))
+                ubicacionExtremidadSeleccionada = ddlFiltroUbicacion.SelectedItem.Text;
+            if (!String.IsNullOrEmpty(ddlFiltroSitioMedicion.SelectedItem.Text) && !ddlFiltroSitioMedicion.SelectedItem.Text.Equals("--Seleccionar--"))
+                sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
+
+            //mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
+            mediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
+            RepeaterMediciones.DataSource = mediciones;
+            RepeaterMediciones.DataBind();
+
         }
     }
 }

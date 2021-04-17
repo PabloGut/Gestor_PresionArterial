@@ -11,9 +11,22 @@ namespace LogicaNegocio
 {
     public class DescripcionDelTiempoLN
     {
-        public static List<DescripcionDelTiempo> mostrarDescripcionesDelTiempo()
+        public static List<DescripcionDelTiempo> MostrarDescripcionesDelTiempo()
         {
-            return DescripcionDelTiempoDAO.mostrarDescripcionesDelTiempo();
+            return DescripcionDelTiempoDAO.MostrarDescripcionesDelTiempo();
+        }
+        public static void InsertarDescripcionDelTiempo(DescripcionDelTiempo descripcion)
+        {
+            DescripcionDelTiempoDAO.InsertDescripcionTiempo(descripcion);
+        }
+        public static void DeleteDescripcionTiempo(DescripcionDelTiempo Descripcion)
+        {
+            DescripcionDelTiempoDAO.DeleteDescripcionTiempo(Descripcion);
+        }
+        public static void UpdateDescripcionTiempo(DescripcionDelTiempo Descripcion)
+        {
+            DescripcionDelTiempoDAO.UpdateDescripcionTiempo(Descripcion);
         }
     }
+   
 }

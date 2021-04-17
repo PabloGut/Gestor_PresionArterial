@@ -13,5 +13,17 @@ namespace LogicaNegocio
         {
             return ElementoDeModificacionDAO.mostrarElementosDeModificacionesDelSintoma();
         }
+        public static void InsertElementoModificacion(ElementoDeModificacion Elemento)
+        {
+            ElementoDeModificacionDAO.InsertElementoModificacion(Elemento);
+        }
+        public static void DeleteElementoModificacion(ElementoDeModificacion Elemento)
+        {
+            ElementoDeModificacionDAO.DeleteElementoModificacion(Elemento);
+        }
+        public static void UpdateElementoModificacion(ElementoDeModificacion Elemento)
+        {
+            ElementoDeModificacionDAO.UpdateElementoModificacion(Elemento);
+        }
     }
 }

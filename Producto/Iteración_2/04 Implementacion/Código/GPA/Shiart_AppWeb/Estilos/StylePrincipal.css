@@ -158,7 +158,11 @@
     margin-right:0px;
 }
 .bordePrueba {
-    /*border: 2px solid green;*/
+    border: 2px solid green;
     overflow: scroll;
+}
+.borde {
+    border: 10px solid blue;
+
 }
 

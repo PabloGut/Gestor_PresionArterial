@@ -14,5 +14,18 @@ namespace LogicaNegocio
         {
             return CaracterDelDolorDAO.mostrarCaracterDelDolor();
         }
+        public static void updateCaracterDolor(CaracterDelDolor caracter)
+        {
+            CaracterDelDolorDAO.updateCaracterDolor(caracter);
+        }
+        public static void insertarCaracterDolor(CaracterDelDolor caracter)
+        {
+            CaracterDelDolorDAO.insertCaracterDolor(caracter);
+        }
+        public static void deleteCaracterDolor(CaracterDelDolor caracter)
+        {
+            CaracterDelDolorDAO.deleteCaracterDolor(caracter);
+        }
+        
     }
 }

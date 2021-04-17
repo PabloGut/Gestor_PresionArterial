@@ -55,7 +55,7 @@ namespace DAO
             }
 
         }
-        public static DataTable obtenerDetalleMedicionesPresionArterial(int idHistoriaClinica, int idMedicion)
+        public static DataTable obtenerDetalleMedicionesPresionArterial(int idHistoriaClinica, int idMedicion, DateTime? fechaDesde, DateTime? fechaHasta, String extremidad, String momentoDia, String posicion, String ubicacionExtremidad, String sitioMedicion)
         {
             DataTable detalleMediciones = new DataTable();
             DataRow fila;
@@ -82,10 +82,52 @@ namespace DAO
                                 and m.id_sitioMedicion_fk= sm.id_sitioMedicion
                                 and m.id_hc_fk=@idHc
                                 and m.id_medicion=@IdMedicion
-                                group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso";
+                                and 1=1";
 
             cmd.Parameters.AddWithValue("@idHc", idHistoriaClinica);
             cmd.Parameters.AddWithValue("@IdMedicion", idMedicion);
+
+
+            if (fechaDesde.HasValue)
+            {
+                consulta += " and m.fecha >= @fechaDesde";
+                cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Value);
+            }
+            if (fechaHasta.HasValue)
+            {
+                consulta += " and m.fecha <= @fechaHasta";
+                cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Value);
+            }
+            if (!String.IsNullOrEmpty(extremidad))
+            {
+                consulta += " and ex.nombre like @extremidad";
+                cmd.Parameters.AddWithValue("@extremidad", extremidad);
+            }
+            if (!String.IsNullOrEmpty(ubicacionExtremidad))
+            {
+                consulta += " and uex.nombre like @ubicacionExtremidad";
+                cmd.Parameters.AddWithValue("@ubicacionExtremidad", ubicacionExtremidad);
+            }
+            if (!String.IsNullOrEmpty(momentoDia))
+            {
+                consulta += " and  md.nombre like @momentoDia";
+                cmd.Parameters.AddWithValue("@momentoDia", momentoDia);
+            }
+            if (!String.IsNullOrEmpty(posicion))
+            {
+                consulta += " and  p.nombre like @posicion";
+                cmd.Parameters.AddWithValue("@posicion", posicion);
+            }
+            if (!String.IsNullOrEmpty(sitioMedicion))
+            {
+                consulta += " and  sm.nombre like @sitioMedicion";
+                cmd.Parameters.AddWithValue("@sitioMedicion", sitioMedicion);
+            }
+
+            consulta += " group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso";
+
+
+
             SqlDataReader dr = null;
             try
             {
@@ -241,6 +283,52 @@ namespace DAO
                     cn.Close();
                 }
                 throw new ApplicationException("Error:" + e.Message);
+            }
+        }
+        public static List<DetalleMedicionPresionArterial> obtenerDetalleMedicionesPresionArterialIdConsulta(int idMedicion,SqlTransaction tran,SqlConnection cn)
+        {
+            setCadenaConexion();
+            DetalleMedicionPresionArterial detalle = null;
+            List<DetalleMedicionPresionArterial> detalles = new List<DetalleMedicionPresionArterial>();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                String consulta = @"select *
+                                    from DetalleMedicionPresionArterial
+                                    where id_medicion_fk=@idMedicion";
+
+                cmd.Parameters.AddWithValue("@idMedicion", idMedicion);
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                cmd.Transaction = tran;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        detalles.Add(detalle = (new DetalleMedicionPresionArterial()
+                                                {
+                                                    hora = Convert.ToDateTime(dr["hora"].ToString()),
+                                                    pulso = (int)dr["pulso"],
+                                                    valorMaximo=(int)dr["valorMaximo"],
+                                                    valorMinimo=(int)dr["valorMinimo"]
+                                                })
+                        );
+
+                    }
+                    cn.Close();
+                    return detalles;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
             }
         }
     }

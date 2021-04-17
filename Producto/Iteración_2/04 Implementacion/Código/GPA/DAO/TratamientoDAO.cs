@@ -169,5 +169,45 @@ namespace DAO
                 throw e;
             }
         }
+        public static DataTable MostrarTratamientos(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            string consulta = @"select  t.id_tratamiento,t.indicaciones,t.fechaInicio,t.motivoInicioTratamiento, te.id_terapia, te.nombre, t.fechaFin,t.motivoFinTratamiento,rd.diagnostico
+                                from Tratamiento t , Terapia te, RazonamientoDiagnostico rd, ExamenGeneral eg, Consulta c
+                                where c.id_examenGeneral_fk=eg.id_examenGeneral
+								and t.id_terapia_fk=te.id_terapia
+								and rd.id_examenGeneral_fk=eg.id_examenGeneral
+                                and t.id_razonamientoDiagnostico_fk=rd.id_razonamiento
+								and c.id_hc_fk=@id_hc
+								and te.nombre not like 'Medicamentos'";
+            try
+            {
+                cn.Close();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@id_hc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return dt;
+        }
     }
 }

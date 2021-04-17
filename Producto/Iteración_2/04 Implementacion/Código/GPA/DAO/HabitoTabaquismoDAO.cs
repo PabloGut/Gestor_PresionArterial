@@ -92,6 +92,45 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static DataTable MostrarHabitosTabaquismo(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select ht.fechaRegistro,ef.nombre,ht.cantidad,ct.nombre as 'Unidad de Tiempo',ht.añosFumando
+                                    from HabitosTabaquismo ht, ElementoQueFuma ef,ComponenteDelTiempo ct
+                                    where ht.id_elementoQueFuma_fk=ef.id_elemento
+                                    and ht.id_ComponenteDelTiempo_fk=ct.id_componenteTiempo
+                                    and ht.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable("HabitosTabaquismo");
+                da.Fill(dt);
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dt;
+        }
 
     }
 }

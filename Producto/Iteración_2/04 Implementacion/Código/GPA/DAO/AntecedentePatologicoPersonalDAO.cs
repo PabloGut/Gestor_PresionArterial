@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entidades.Clases;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.Common;
 
 namespace DAO
 {
@@ -74,6 +75,43 @@ namespace DAO
             }
 
        
+        }
+        public static DataTable MostrarAntecedentesPatologicosPersonales(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select fechaRegistro as 'Fecha de registro',enfermedades as 'Enfermedades', descripcion_otrasEnfermedades as 'Otras Enfermedades'
+                                    from AntecedentesPatologicosPersonales
+                                    where id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable("AntecedentesPatologicosPersonales");
+                da.Fill(dt);
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dt;
         }
     }
 }

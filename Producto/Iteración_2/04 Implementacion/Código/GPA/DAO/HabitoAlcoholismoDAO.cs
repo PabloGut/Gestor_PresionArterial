@@ -67,5 +67,45 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
+        public static DataTable MostrarHabitosAlcoholismo(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select ha.fechaRegistro as 'Fecha de registro',tb.nombre as 'Nombre Bebida',m.nombre as 'Medida',m.descripcion as 'Descripcion', ct.nombre as 'Componente del tiempo', ha.cantidad
+                                    from HabitosAlcoholismo ha, TipoBebida tb, Medida m, ComponenteDelTiempo ct
+                                    where ha.id_tipoBebida_fk=tb.id_tipoBebida
+                                    and m.id_medida=ha.id_medida_fk
+                                    and ha.id_componenteTiempo_fk=ct.id_componenteTiempo
+                                    and ha.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable("HabitosAlcoholismo");
+                da.Fill(dt);
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dt;
+        }
     }
 }

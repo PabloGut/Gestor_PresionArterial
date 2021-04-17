@@ -26,6 +26,10 @@ namespace LogicaNegocio
                 throw e;
             }
         }
+        public static DataTable MostrarEstudioPracticaComplentarias(int idHc)
+        {
+            return PracticaComplementariaDAO.MostrarEstudiosPracticasComplementarias(idHc);
+        }
       
     }
 }

@@ -21,7 +21,7 @@ namespace GPA.Manejadores
         }
         public List<DescripcionDelTiempo> mostrarDescripcionesDelTiempo()
         {
-            return DescripcionDelTiempoLN.mostrarDescripcionesDelTiempo();
+            return DescripcionDelTiempoLN.MostrarDescripcionesDelTiempo();
         }
         public List<ElementoDelTiempo> mostrarElementosDelTiempo()
         {

@@ -167,8 +167,8 @@ namespace DAO
                         cmd.Parameters.AddWithValue("@fechaInicioSintoma", DBNull.Value);
                     }
                     else
-                    {
-                        cmd.Parameters.AddWithValue("@fechaInicioSintoma", sintoma.fechaInicioSintoma.ToShortDateString());
+                    {   
+                        cmd.Parameters.AddWithValue("@fechaInicioSintoma", sintoma.fechaInicioSintoma);
                     }
                     if (sintoma.cantidadTiempo == 0)
                     {
@@ -244,7 +244,7 @@ namespace DAO
                     }
 
 
-                    cmd.Parameters.AddWithValue("@fechaRegistro", sintoma.fechaRegistro.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@fechaRegistro", sintoma.fechaRegistro);
                     cmd.Parameters.AddWithValue("@id_consulta_fk", sintoma.id_consulta);
 
                     cmd.ExecuteNonQuery();
