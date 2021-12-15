@@ -78,6 +78,9 @@
     <Compile Include="Clases\EscalaPulso.cs" />
     <Compile Include="Clases\Especialidad.cs" />
     <Compile Include="Clases\EspecificacionMedicamento.cs" />
+    <Compile Include="Clases\EstadisticaCantidadPorSexo.cs" />
+    <Compile Include="Clases\EstadisticaModaEdad.cs" />
+    <Compile Include="Clases\EstadisticaPromedioEdad.cs" />
     <Compile Include="Clases\Estado.cs" />
     <Compile Include="Clases\EstadoDiagnostico.cs" />
     <Compile Include="Clases\EstadoHipotesis.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Clases\NombreComercial.cs" />
     <Compile Include="Clases\NombreEstudio.cs" />
     <Compile Include="Clases\Nota.cs" />
+    <Compile Include="Clases\EstadisticaCategoriaSitio.cs" />
     <Compile Include="Clases\Operacion.cs" />
     <Compile Include="Clases\Paciente.cs" />
     <Compile Include="Clases\ParteDelCuerpo.cs" />
