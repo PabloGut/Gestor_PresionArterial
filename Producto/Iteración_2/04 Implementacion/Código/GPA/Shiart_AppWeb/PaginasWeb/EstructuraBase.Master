@@ -61,6 +61,9 @@
                         <li>
                             <a class="nav-link active" href="ConsultarMediciones.aspx">Consultar Mediciones</a>
                         </li>
+                        <li>
+                            <a class="nav-link active" href="CambiarContrasena.aspx">Modificar Contraseña</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -84,6 +87,9 @@
         </asp:ContentPlaceHolder>
 
          <asp:ContentPlaceHolder ID="ConsultarMediciones" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="ModificarContrasena" runat="server">
         </asp:ContentPlaceHolder>
     </form>
 </body>

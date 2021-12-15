@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetAntecedentesMorbidos" targetNamespace="http://tempuri.org/DataSetAntecedentesMorbidos.xsd" xmlns:mstns="http://tempuri.org/DataSetAntecedentesMorbidos.xsd" xmlns="http://tempuri.org/DataSetAntecedentesMorbidos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetAntecedentesMorbidos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetAntecedentesMorbidos" msprop:Generator_UserDSName="DataSetAntecedentesMorbidos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AncetedenteMorbido" msprop:Generator_TableClassName="AncetedenteMorbidoDataTable" msprop:Generator_TableVarName="tableAncetedenteMorbido" msprop:Generator_TablePropName="AncetedenteMorbido" msprop:Generator_RowDeletingName="AncetedenteMorbidoRowDeleting" msprop:Generator_RowChangingName="AncetedenteMorbidoRowChanging" msprop:Generator_RowEvHandlerName="AncetedenteMorbidoRowChangeEventHandler" msprop:Generator_RowDeletedName="AncetedenteMorbidoRowDeleted" msprop:Generator_UserTableName="AncetedenteMorbido" msprop:Generator_RowChangedName="AncetedenteMorbidoRowChanged" msprop:Generator_RowEvArgName="AncetedenteMorbidoRowChangeEvent" msprop:Generator_RowClassName="AncetedenteMorbidoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechaRegistro" msprop:Generator_ColumnVarNameInTable="columnfechaRegistro" msprop:Generator_ColumnPropNameInRow="fechaRegistro" msprop:Generator_ColumnPropNameInTable="fechaRegistroColumn" msprop:Generator_UserColumnName="fechaRegistro" type="xs:string" minOccurs="0" />
+              <xs:element name="tipoAntecedentes" msprop:Generator_ColumnVarNameInTable="columntipoAntecedentes" msprop:Generator_ColumnPropNameInRow="tipoAntecedentes" msprop:Generator_ColumnPropNameInTable="tipoAntecedentesColumn" msprop:Generator_UserColumnName="tipoAntecedentes" type="xs:string" minOccurs="0" />
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="evolucion" msprop:Generator_ColumnVarNameInTable="columnevolucion" msprop:Generator_ColumnPropNameInRow="evolucion" msprop:Generator_ColumnPropNameInTable="evolucionColumn" msprop:Generator_UserColumnName="evolucion" type="xs:string" minOccurs="0" />
+              <xs:element name="tratamiento" msprop:Generator_ColumnVarNameInTable="columntratamiento" msprop:Generator_ColumnPropNameInRow="tratamiento" msprop:Generator_ColumnPropNameInTable="tratamientoColumn" msprop:Generator_UserColumnName="tratamiento" type="xs:string" minOccurs="0" />
+              <xs:element name="cantidad_x0020_de_x0020_tiempo" msprop:Generator_ColumnVarNameInTable="columncantidad_de_tiempo" msprop:Generator_ColumnPropNameInRow="cantidad_de_tiempo" msprop:Generator_ColumnPropNameInTable="cantidad_de_tiempoColumn" msprop:Generator_UserColumnName="cantidad de tiempo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

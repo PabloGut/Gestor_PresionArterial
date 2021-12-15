@@ -9,7 +9,18 @@
            <div class="row">
                <div class="col col-sm-12 col-md-12 col-lg-12">
                    <h1>Generar Informe de Historia Clínica</h1>
-                   <p>Seleccionar la información a incluir en el informe</p>
+                   <div class="col col-sm-12 col-md-12 col-lg-12">
+                       <div class="form-check-inline">
+                           <label class="form-check-label">
+                               <p>Seleccionar la información a incluir en el informe</p>
+                           </label>
+                   </div>
+                       <div class="form-check-inline">
+                           <label class="form-check-label">
+                               <asp:CheckBox runat="server" type="checkbox" class="form-check-input" value="" ID="cbSeleccionarTodos" Text="Seleccionar Todos" OnCheckedChanged="CbSeleccionarTodos_CheckedChanged" AutoPostBack="True" />
+                           </label>
+                       </div>
+                   </div>
                </div>
            </div>
 
@@ -103,6 +114,12 @@
                              <asp:CheckBox runat="server" type="checkbox" class="form-check-input" value="" id="cbConsultas" Text="Consultas"/>
                        </label>
                    </div>
+
+                   <div class="form-check-inline">
+                       <label class="form-check-label">
+                             <asp:CheckBox runat="server" type="checkbox" class="form-check-input" value="" id="cbExamenesGenerales" Text="Exámenes"/>
+                       </label>
+                   </div>
                </div>
            </div>
 
@@ -136,13 +153,17 @@
 
                     <div class="form-check-inline">
                        <label class="form-check-label">
-                           <input runat="server" type="checkbox" class="form-check-input" value="">Análisis Clínicos
+                             <label class="form-check-label">
+                                 <asp:CheckBox runat="server" type="checkbox" class="form-check-input" value="" ID="cbAnalisisClinicos" Text="Análisis Clínicos" />
+                             </label>
                        </label>
                    </div>
 
                     <div class="form-check-inline">
                        <label class="form-check-label">
-                           <input runat="server" type="checkbox" class="form-check-input" value="">Prácticas Complementarias
+                                <label class="form-check-label">
+                                    <asp:CheckBox runat="server" type="checkbox" class="form-check-input" value="" ID="cbPracticasComplementarias" Text="Prácticas Complementarias" />
+                                </label>
                        </label>
                    </div>
                </div>
@@ -170,18 +191,6 @@
              
    </div>
 
-    <div class="modal-body card-body bg-default-gradient">
-          <div class="row">
-               <div class="col-md-12">
-                  <div class="form-group" style="overflow: scroll; width: 100%; height: 50%">
-                      <div id="reporteFinal">
-                       <CR:CrystalReportViewer ID="crDatosHistoriaClinica" runat="server" AutoDataBind="true"  BorderColor="#333300" EnableDatabaseLogonPrompt="false"/>
-                          </div>
-                  </div>
-                   
-
-               </div>
-           </div>
-    </div>
+   
       
 </asp:Content>

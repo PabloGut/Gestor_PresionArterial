@@ -71,29 +71,30 @@ namespace Shiart_AppWeb.PaginasWeb
         public void PresentarReporteHistoriaClinica()
         {
 
-            HttpCookie cookie = Request.Cookies["idHc"];
-            int idHc = Convert.ToInt32(cookie.Value);
-            DataSetHistoriaClinica ds = new DataSetHistoriaClinica();
+            //HttpCookie cookie = Request.Cookies["idHc"];
+            //int idHc = Convert.ToInt32(cookie.Value);
+            //DataSetHistoriaClinica ds = new DataSetHistoriaClinica();
 
-            ReportDocument rd = new ReportDocument();
-            rd.Load(Server.MapPath("~/Reportes/ReporteHistoriaClinica.rpt"));
+            //ReportDocument rd = new ReportDocument();
+            //rd.Load(Server.MapPath("~/Reportes/ReporteHistoriaClinica.rpt"));
 
-            PacienteLN.MostrarPacienteReporteHistoriaClinica(idHc, ds);
+            //PacienteLN.MostrarPacienteReporteHistoriaClinica(idHc, ds);
             //rd.SetDataSource(PacienteLN.MostrarPacienteReporteHistoriaClinica(idHc, ds));
-            rd.Database.Tables["Paciente"].SetDataSource(ds.Tables["Paciente"]);
-            crDatosHistoriaClinica.ReportSource = rd;
-            crDatosHistoriaClinica.RefreshReport();
-            
-            DataSetAntecedentesMorbidos am = new DataSetAntecedentesMorbidos();
-            ReportDocument rd2 = new ReportDocument();
-            rd2.Load(Server.MapPath("~/Reportes/AntecedentesMorbidos.rpt"));
-            
-            rd2.SetDataSource(AntecedenteMorbidoLN.MostrarAntecedentesMorbidosEnfermedades(idHc, am));
+            //rd.Database.Tables["Paciente"].SetDataSource(ds.Tables["Paciente"]);
+            //crDatosHistoriaClinica.ReportSource = rd;
+            //crDatosHistoriaClinica.RefreshReport();
+
+            //DataSetAntecedentesMorbidos am = new DataSetAntecedentesMorbidos();
+            //ReportDocument rd2 = new ReportDocument();
+            //rd2.Load(Server.MapPath("~/Reportes/AntecedentesMorbidos.rpt"));
+
+            //rd2.SetDataSource(AntecedenteMorbidoLN.MostrarAntecedentesMorbidosEnfermedades(idHc, am));
             //am.Tables.Add(AntecedenteMorbidoLN.mostrarAntecedentesMorbidosEnfermedades(idHc));
             //rd2.Database.Tables["AntecedenteMorbido"].SetDataSource(am.Tables["AntecedentesMorbidosEnfermedades"]);
-            crDatosHistoriaClinica.ReportSource = rd2;
-             crDatosHistoriaClinica.RefreshReport();
+            //crDatosHistoriaClinica.ReportSource = rd2;
+            //crDatosHistoriaClinica.RefreshReport();
 
+         
             //if (cbAntecedentesMorbidos.Checked == true)
             //{
             //    DataSetAntecedentesMorbidos am = new DataSetAntecedentesMorbidos();
@@ -398,13 +399,13 @@ namespace Shiart_AppWeb.PaginasWeb
                 document = generarDatosPDFMostrarEstudiosDiagnosticoPorImagen(document);
             }
             //Estudio Prácticas Complementarias
-            if (cbEstudioDiagnosticoPorImagen.Checked == true)
+            if (cbPracticasComplementarias.Checked == true)
             {
                 document = generarTituloPDF("Información Prácticas y Estudios", document);
                 document = generarDatosPDFMostrarEstudiosPracticasComplementarias(document);
             }
             //Analisis Laboratorio
-            if (cbEstudioDiagnosticoPorImagen.Checked == true)
+            if (cbAnalisisClinicos.Checked == true)
             {
                 document = generarTituloPDF("Información Prácticas y Estudios", document);
                 document = generarDatosPDFMostrarEstudiosAnalisisLaboratorio(document);
@@ -429,6 +430,11 @@ namespace Shiart_AppWeb.PaginasWeb
                 document = generarDatosPDFMostrarMedicionesPresionArterial(document);
             }
 
+            if(cbExamenesGenerales.Checked==true)
+            {
+                document = generarTituloPDF("Resumen Exámenes Generales", document);
+                document = GenerarDatosPDFExamenGeneral(document);
+            }
             document.Close();
             Process.Start("C:/Users/usuario/HistoriaClinica.pdf");
 
@@ -793,7 +799,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 listaValores.Add(fecha.ToShortDateString());
                 listaValores.Add(Convert.ToString(datosAntecedentesPatologicosPersonales.Rows[i]["Enfermedades"].ToString()));
 
-                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 3);
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 3,true);
 
                 listaCampos = new List<string>();
                 listaValores = new List<string>();
@@ -872,7 +878,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 listaValores.Add(datosAntecedentesPatologicosFamiliares.Rows[i]["Vive"].ToString());
                 listaValores.Add(datosAntecedentesPatologicosFamiliares.Rows[i]["Enfermedades"].ToString());
 
-                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2,true);
 
                 listaCampos = new List<string>();
                 listaValores = new List<string>();
@@ -1497,7 +1503,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 DateTime fecha = Convert.ToDateTime(datosHabitos.Rows[i]["Fecha de registro"]);
                 listaValores.Add(fecha.ToShortDateString());
 
-                listaValores.Add(Convert.ToString(datosHabitos.Rows[i]["Nombre Genérico"].ToString()));
+                listaValores.Add(Convert.ToString(datosHabitos.Rows[i]["Nombre generico"].ToString()));
 
                 resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
 
@@ -1606,9 +1612,9 @@ namespace Shiart_AppWeb.PaginasWeb
                 DateTime fecha = Convert.ToDateTime(datosHabitos.Rows[i]["Fecha registro"]);
                 listaValores.Add(fecha.ToShortDateString());
 
-                listaValores.Add(Convert.ToString(datosHabitos.Rows[i]["Descripción deporte o actividad"].ToString()));
+                listaValores.Add(Convert.ToString(datosHabitos.Rows[i]["Deporte/Actividad"].ToString()));
 
-                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2,true);
 
                 listaCampos = new List<string>();
                 listaValores = new List<string>();
@@ -1623,7 +1629,7 @@ namespace Shiart_AppWeb.PaginasWeb
 
                 listaValores.Add(Convert.ToString(datosHabitos.Rows[i]["Descripcion grado actividad"].ToString()));
 
-                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2,true);
 
                 listaCampos = new List<string>();
                 listaValores = new List<string>();
@@ -1698,7 +1704,7 @@ namespace Shiart_AppWeb.PaginasWeb
 
                 listaValores.Add(datosHabitos.Rows[i]["motivoConsulta"].ToString());
 
-                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2,true);
 
                 listaCampos = new List<string>();
                 listaValores = new List<string>();
@@ -1819,7 +1825,7 @@ namespace Shiart_AppWeb.PaginasWeb
             HttpCookie cookie = Request.Cookies["idHc"];
             int idHc = Convert.ToInt32(cookie.Value);
             DataTable datosEstudios = PracticaComplementariaLN.MostrarEstudioPracticaComplentarias(idHc);
-            Document resultado = generarSubTituloPDF("Estudios Prácticas Complmementarias", documento);
+            Document resultado = generarSubTituloPDF("Estudios Prácticas Complemementarias", documento);
             if (datosEstudios.Rows.Count == 0)
             {
                 Font fuenteTexto = new Font(FontFactory.GetFont("Arial", 12, Font.NORMAL));
@@ -1856,13 +1862,13 @@ namespace Shiart_AppWeb.PaginasWeb
                 {
                     Font fuenteTexto = new Font(FontFactory.GetFont("Arial", 12, Font.NORMAL));
                     listaValores.Add("N/A");
-                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 1);
+                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 3);
                 }
                 else
                 {
                     DateTime fecha2 = Convert.ToDateTime(datosEstudios.Rows[i]["Fecha Realización"].ToString());
                     listaValores.Add(fecha2.ToShortDateString());
-                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 4);
+                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 3);
                 }
 
                 listaCampos = new List<string>();
@@ -1956,13 +1962,13 @@ namespace Shiart_AppWeb.PaginasWeb
                 {
                     Font fuenteTexto = new Font(FontFactory.GetFont("Arial", 12, Font.NORMAL));
                     listaValores.Add("N/A");
-                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 1);
+                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 3);
                 }
                 else
                 {
                     DateTime fecha2 = Convert.ToDateTime(datosEstudios.Rows[i]["Fecha Realizacion"].ToString());
                     listaValores.Add(fecha2.ToShortDateString());
-                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 4);
+                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 3);
                 }
 
                 listaCampos = new List<string>();
@@ -1971,7 +1977,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 cadena1 = "indicaciones: ";
                 listaCampos.Add(cadena1);
 
-                if (string.IsNullOrEmpty(datosEstudios.Rows[i]["indicaciones"].ToString()))
+                if (string.IsNullOrEmpty(datosEstudios.Rows[i]["Indicaciones"].ToString()))
                 {
                     Font fuenteTexto = new Font(FontFactory.GetFont("Arial", 12, Font.NORMAL));
                     listaValores.Add("N/A");
@@ -1979,7 +1985,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 }
                 else
                 {
-                    listaValores.Add(datosEstudios.Rows[i]["indicaciones"].ToString());
+                    listaValores.Add(datosEstudios.Rows[i]["Indicaciones"].ToString());
                     resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
                 }
 
@@ -2108,7 +2114,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 }
                 else
                 {
-                    listaValores.Add(datosEstudios.Rows[i]["fechaFin"].ToString());
+                    listaValores.Add( Convert.ToDateTime(datosEstudios.Rows[i]["fechaFin"].ToString()).ToShortDateString()) ;
                     resultado = generarCampoPDF(listaCampos, listaValores, resultado, 4);
                 }
 
@@ -2126,8 +2132,8 @@ namespace Shiart_AppWeb.PaginasWeb
                 }
                 else
                 {
-                    DateTime fecha2 = Convert.ToDateTime(datosEstudios.Rows[i]["motivoFinTratamiento"].ToString());
-                    listaValores.Add(fecha2.ToShortDateString());
+                    cadena2 = datosEstudios.Rows[i]["motivoFinTratamiento"].ToString();
+                    listaValores.Add(cadena2);
                     resultado = generarCampoPDF(listaCampos, listaValores, resultado, 4);
                 }
 
@@ -2528,7 +2534,7 @@ namespace Shiart_AppWeb.PaginasWeb
 
             HttpCookie cookie = Request.Cookies["idHc"];
             int idHc = Convert.ToInt32(cookie.Value);
-            DataTable datosMedicionesPresionArterial = MedicionDePresionArterialLN.obtenerMediciones(idHc);
+            DataTable datosMedicionesPresionArterial = MedicionDePresionArterialLN.ObtenerMediciones(idHc);
             Document resultado = generarSubTituloPDF("Mediciones Presión Arterial", documento);
             if (datosMedicionesPresionArterial.Rows.Count == 0)
             {
@@ -2616,7 +2622,7 @@ namespace Shiart_AppWeb.PaginasWeb
 
                 int id_medicion = Convert.ToInt32(datosMedicionesPresionArterial.Rows[i]["id_medicion"]);
 
-                DataTable datosDetalleMedicionesPresionArterial = MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(idHc, id_medicion, null, null, null, null, null, null, null);
+                DataTable datosDetalleMedicionesPresionArterial = MedicionDePresionArterialLN.ObtenerDetalleMedicionesPresionArterial(idHc, id_medicion, null, null, null, null, null, null, null);
 
                 resultado=generarSubTituloPDF("Detalle de la medición", resultado);
 
@@ -2638,8 +2644,8 @@ namespace Shiart_AppWeb.PaginasWeb
                     listaCampos = new List<string>();
                     listaValores = new List<string>();
 
-                    cadena1 = "Valor Máximo: ";
-                    cadena2 = "Valor Mínimo: ";
+                    cadena1 = "Sistólica: ";
+                    cadena2 = "Diastólica: ";
                     cadena3 = "Pulso: ";
                     listaCampos.Add(cadena1);
                     listaCampos.Add(cadena2);
@@ -2649,8 +2655,105 @@ namespace Shiart_AppWeb.PaginasWeb
                     listaValores.Add(datosDetalleMedicionesPresionArterial.Rows[j]["Valor Mínimo"].ToString());
                     listaValores.Add(datosDetalleMedicionesPresionArterial.Rows[j]["Pulso"].ToString());
 
-                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 1);
+                    resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
+                    resultado = generarLineaSeparacion(resultado, 2f, 100f);
                 }
+                resultado = generarLineaSeparacion(resultado, 2f, 100f);
+            }
+            resultado.Add(Chunk.NEWLINE);
+            return resultado;
+        }
+        public Document GenerarDatosPDFExamenGeneral(Document documento)
+        {
+            List<String> listaCampos = null;
+            List<String> listaValores = null;
+            String cadena1;
+            String cadena2;
+            String cadena3;
+
+            HttpCookie cookie = Request.Cookies["idHc"];
+            int idHc = Convert.ToInt32(cookie.Value);
+            DataTable datosExamenes = ExamenGeneralLN.MostrarResumenExamenGeneral(idHc);
+            Document resultado = generarSubTituloPDF("Exámenes Generales", documento);
+            if (datosExamenes.Rows.Count == 0)
+            {
+                Font fuenteTexto = new Font(FontFactory.GetFont("Arial", 12, Font.NORMAL));
+                resultado = generarLineaSinDatos(resultado, fuenteTexto);
+                resultado = generarLineaSeparacion(resultado, 2f, 100f);
+                return resultado;
+            }
+
+            for (int i = 0; i < datosExamenes.Rows.Count; i++)
+            {
+                listaCampos = new List<string>();
+                listaValores = new List<string>();
+
+                cadena1 = "Número de consulta: ";
+                cadena2 = "Fecha Consulta: ";
+
+
+                listaCampos.Add(cadena1);
+                listaCampos.Add(cadena2);
+
+
+                listaValores.Add(datosExamenes.Rows[i]["nroConsulta"].ToString());
+
+                DateTime fecha = Convert.ToDateTime(datosExamenes.Rows[i]["fechaConsulta"]);
+                listaValores.Add(fecha.ToShortDateString());
+
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2);
+
+                listaCampos = new List<string>();
+                listaValores = new List<string>();
+
+                cadena1 = "Hora: ";
+                cadena2 = "Motivo Consulta: ";
+
+                listaCampos.Add(cadena1);
+                listaCampos.Add(cadena2);
+
+                DateTime hora = Convert.ToDateTime(datosExamenes.Rows[i]["horaConsulta"].ToString());
+                listaValores.Add(hora.ToShortTimeString());
+
+                listaValores.Add(datosExamenes.Rows[i]["motivoConsulta"].ToString());
+
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2, true);
+
+                listaCampos = new List<string>();
+                listaValores = new List<string>();
+
+                cadena1 = "Concepto Inicial: ";
+                cadena2 = "Diagnóstico: ";
+
+                listaCampos.Add(cadena1);
+                listaCampos.Add(cadena2);
+
+                listaValores.Add(datosExamenes.Rows[i]["conceptoInicial"].ToString());
+
+                listaValores.Add(datosExamenes.Rows[i]["motivoConsulta"].ToString());
+
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2, true);
+
+                listaCampos = new List<string>();
+                listaValores = new List<string>();
+
+                cadena1 = "Estado Diagnóstico: ";
+                cadena2 = "Motivo Cambio Estado: ";
+                cadena3 = "Fecha cambio estado: ";
+
+                listaCampos.Add(cadena1);
+                listaCampos.Add(cadena2);
+                listaCampos.Add(cadena3);
+
+                listaValores.Add(datosExamenes.Rows[i]["Estado Diagnóstico"].ToString());
+
+                listaValores.Add(datosExamenes.Rows[i]["Motivo Cambio Estado"].ToString());
+
+                DateTime fechaCambioEstado = Convert.ToDateTime(datosExamenes.Rows[i]["Fecha cambio estado"].ToString());
+                listaValores.Add(fechaCambioEstado.ToShortDateString());
+
+                resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2, true);
+
                 resultado = generarLineaSeparacion(resultado, 2f, 100f);
             }
             resultado.Add(Chunk.NEWLINE);
@@ -2681,7 +2784,7 @@ namespace Shiart_AppWeb.PaginasWeb
         public Document generarCampoPDF(List<String> nuevosCampos,List<String> nuevosValores, Document documento, int cantTab)
         {
             Font fuenteTexto = new Font(FontFactory.GetFont("Arial", 12, Font.NORMAL));
-            Font fuenteTextoSubrayado = new Font(FontFactory.GetFont("Arial", 12, Font.UNDERLINE));
+            Font fuenteTextoSubrayado = new Font(FontFactory.GetFont("Arial", 12, Font.ITALIC));
 
             Chunk chunk = null;
             Phrase campo = null;
@@ -2705,11 +2808,51 @@ namespace Shiart_AppWeb.PaginasWeb
                 {
                     parrafoDedatos.Add(Chunk.TABBING);
                 }
-               
             }
             
             documento.Add(parrafoDedatos);
             documento.Add(Chunk.NEWLINE);
+            return documento;
+        }
+        public Document generarCampoPDF(List<String> nuevosCampos, List<String> nuevosValores, Document documento, int cantTab,Boolean nuevaLinea)
+        {
+            Font fuenteTexto = new Font(FontFactory.GetFont("Arial", 12, Font.NORMAL));
+            Font fuenteTextoSubrayado = new Font(FontFactory.GetFont("Arial", 12, Font.ITALIC));
+
+            Chunk chunk = null;
+            Phrase campo = null;
+            Paragraph parrafoDedatos = null;
+
+            String text = null;
+            for (int i = 0; i < nuevosCampos.Count; i++)
+            {
+                text = nuevosValores[i];
+                chunk = new Chunk(nuevosCampos[i].ToString(), fuenteTextoSubrayado);
+                campo = new Phrase();
+                campo.Font = fuenteTexto;
+                campo.Add(chunk);
+                campo.Add(text);
+               
+
+                if (nuevaLinea == true)
+                {
+                    campo.Add(Chunk.NEWLINE);
+                    campo.Add(Chunk.NEWLINE);
+                }
+
+                if (i == 0)
+                    parrafoDedatos = new Paragraph();
+
+                parrafoDedatos.Add(campo);
+                //for (int j = 0; j < cantTab; j++)
+                //{
+                //    parrafoDedatos.Add(Chunk.TABBING);
+                //}
+             
+            }
+
+            documento.Add(parrafoDedatos);
+            //documento.Add(Chunk.NEWLINE);
             return documento;
         }
         public Document generarLineaSeparacion(Document documento, float ancho, float porcentaje)
@@ -2793,6 +2936,53 @@ namespace Shiart_AppWeb.PaginasWeb
 
             Process.Start("C:/Users/usuario/HistoriaClinica.pdf");
         
+        }
+
+        protected void CbSeleccionarTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbSeleccionarTodos.Checked ==true)
+            {
+                cbAntecedentesMorbidos.Checked = true;
+                cbAntecedentesGinecoObstetricos.Checked = true;
+                cbAntecedentesPatologicosFamiliares.Checked = true;
+                cbAntecedentesPersonales.Checked = true;
+                cbAlergias.Checked = true;
+                cbHabitoTabaquismo.Checked = true;
+                cbHabitoAlcoholismo.Checked = true;
+                cbHabitoDrogasIlicitas.Checked = true;
+                cbHabitoDrogasLicitas.Checked = true;
+                cbHabitoActividadFisica.Checked = true;
+                cbConsultas.Checked = true;
+                cbExamenesGenerales.Checked = true;
+                cbTratamientos.Checked = true;
+                cbTratamientoMedicamento.Checked = true;
+                cbEstudioDiagnosticoPorImagen.Checked = true;
+                cbAnalisisClinicos.Checked = true;
+                cbPracticasComplementarias.Checked = true;
+                cbMedicionesPresionArterial.Checked = true;
+            }
+            else
+            {
+                cbAntecedentesMorbidos.Checked = false;
+                cbAntecedentesGinecoObstetricos.Checked = false;
+                cbAntecedentesPatologicosFamiliares.Checked = false;
+                cbAntecedentesPersonales.Checked = false;
+                cbAlergias.Checked = false;
+                cbHabitoTabaquismo.Checked = false;
+                cbHabitoAlcoholismo.Checked = false;
+                cbHabitoDrogasIlicitas.Checked = false;
+                cbHabitoDrogasLicitas.Checked = false;
+                cbHabitoActividadFisica.Checked = false;
+                cbConsultas.Checked = false;
+                cbExamenesGenerales.Checked = false;
+                cbTratamientos.Checked = false;
+                cbTratamientoMedicamento.Checked = false;
+                cbEstudioDiagnosticoPorImagen.Checked = false;
+                cbAnalisisClinicos.Checked = false;
+                cbPracticasComplementarias.Checked = false;
+                cbMedicionesPresionArterial.Checked = false;
+            }
+
         }
     }
 }

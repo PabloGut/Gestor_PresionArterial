@@ -824,6 +824,7 @@
     <Content Include="js\jquery-3.5.1.slim.min.js" />
     <Content Include="js\popper.min.js" />
     <Content Include="packages.config" />
+    <Content Include="PaginasWeb\CambiarContrasena.aspx" />
     <Content Include="PaginasWeb\ConsultarMediciones.aspx" />
     <Content Include="PaginasWeb\HistoriaClinica.aspx" />
     <Content Include="PaginasWeb\IniciarSesion.aspx" />
@@ -1071,6 +1072,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasWeb\CambiarContrasena.aspx.cs">
+      <DependentUpon>CambiarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasWeb\CambiarContrasena.aspx.designer.cs">
+      <DependentUpon>CambiarContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaginasWeb\ConsultarMediciones.aspx.cs">
       <DependentUpon>ConsultarMediciones.aspx</DependentUpon>

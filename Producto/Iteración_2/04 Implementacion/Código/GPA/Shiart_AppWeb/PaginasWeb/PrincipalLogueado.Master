@@ -52,6 +52,10 @@
                         <li>
                             <a class="nav-link active" href="ConsultarMediciones.aspx">Consultar Mediciones</a>
                         </li>
+
+                         <li>
+                            <a class="nav-link active" href="CambiarContrasena.aspx">Modificar Contraseña</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

@@ -52,6 +52,9 @@
                         <li>
                             <a class="nav-link active" href="IniciarSesion.aspx">Consultar Mediciones</a>
                         </li>
+                         <li>
+                            <a class="nav-link active" href="IniciarSesion.aspx">Modficar Contraseña</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

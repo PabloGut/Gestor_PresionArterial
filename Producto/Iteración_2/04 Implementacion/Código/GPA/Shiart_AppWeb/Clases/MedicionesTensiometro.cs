@@ -188,7 +188,7 @@ namespace Shiart_AppWeb.Clases
                     medicion.ubicacion = uex;
                     medicion.sitio = s;
                     medicion.idHc = hc;
-                    MedicionDePresionArterialLN.registrarMedicionPresionArterialEnHistoriaClinicia(medicion);
+                    MedicionDePresionArterialLN.RegistrarMedicionPresionArterialEnHistoriaClinicia(medicion);
                 }
             }
         }

@@ -35,7 +35,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 if (cookie != null)
                 {
                     //mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
-                    mediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
+                    mediciones = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
                     RepeaterMediciones.DataSource = mediciones;
                     RepeaterMediciones.DataBind();
                 }
@@ -88,9 +88,9 @@ namespace Shiart_AppWeb.PaginasWeb
                 sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
 
             if(!IsPostBack)
-                detalleMediciones = MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), Convert.ToInt32(idMedicion),null,null,null,null,null,null,null);
+                detalleMediciones = MedicionDePresionArterialLN.ObtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), Convert.ToInt32(idMedicion),null,null,null,null,null,null,null);
             else
-                detalleMediciones = MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), Convert.ToInt32(idMedicion), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
+                detalleMediciones = MedicionDePresionArterialLN.ObtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), Convert.ToInt32(idMedicion), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
 
 
             System.Web.UI.WebControls.GridView gvDetalleMediciones = (e.Item.FindControl("gvDetalleMediciones") as System.Web.UI.WebControls.GridView);
@@ -120,7 +120,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
 
 
-            detalleMedicionesConFiltro = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value),fechaDesde,fechaHasta,extremidad,momentoDiaSeleccionado,posicionSeleccionada,ubicacionExtremidadSeleccionada,sitioMedicionSeleccionado);
+            detalleMedicionesConFiltro = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value),fechaDesde,fechaHasta,extremidad,momentoDiaSeleccionado,posicionSeleccionada,ubicacionExtremidadSeleccionada,sitioMedicionSeleccionado);
          
             if (detalleMedicionesConFiltro.Rows.Count == 0)
                 return null;
@@ -162,10 +162,10 @@ namespace Shiart_AppWeb.PaginasWeb
         public void cargarCombos()
         {
 
-            cargarCombo(ddlFiltroExtremidad, ExtremidadLN.mostrarExtremidades(), "id_extremidad", "nombre");
-            cargarCombo(ddlFiltroPosicion, PosicionLN.mostrarPosiciones(), "id_posicion", "nombre");
-            cargarCombo(ddlFiltroMomentoDia, MomentoDiaLN.mostrarMomentosDelDia(), "idmomentoDia", "nombre");
-            cargarCombo(ddlFiltroSitioMedicion, SitioMedicionLN.mostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
+            cargarCombo(ddlFiltroExtremidad, ExtremidadLN.MostrarExtremidades(), "id_extremidad", "nombre");
+            cargarCombo(ddlFiltroPosicion, PosicionLN.MostrarPosiciones(), "id_posicion", "nombre");
+            cargarCombo(ddlFiltroMomentoDia, MomentoDiaLN.MostrarMomentosDelDia(), "idmomentoDia", "nombre");
+            cargarCombo(ddlFiltroSitioMedicion, SitioMedicionLN.MostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
 
             if (Convert.ToInt32(ddlFiltroExtremidad.SelectedItem.Value) == 1)
             {
@@ -223,7 +223,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
 
             //mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
-            mediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
+            mediciones = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
             RepeaterMediciones.DataSource = mediciones;
             RepeaterMediciones.DataBind();
 

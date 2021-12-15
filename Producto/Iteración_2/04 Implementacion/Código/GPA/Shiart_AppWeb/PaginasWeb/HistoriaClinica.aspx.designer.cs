@@ -15,6 +15,15 @@ namespace Shiart_AppWeb.PaginasWeb
     {
 
         /// <summary>
+        /// Control cbSeleccionarTodos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbSeleccionarTodos;
+
+        /// <summary>
         /// Control cbAntecedentesMorbidos.
         /// </summary>
         /// <remarks>
@@ -114,6 +123,15 @@ namespace Shiart_AppWeb.PaginasWeb
         protected global::System.Web.UI.WebControls.CheckBox cbConsultas;
 
         /// <summary>
+        /// Control cbExamenesGenerales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbExamenesGenerales;
+
+        /// <summary>
         /// Control cbTratamientos.
         /// </summary>
         /// <remarks>
@@ -141,6 +159,24 @@ namespace Shiart_AppWeb.PaginasWeb
         protected global::System.Web.UI.WebControls.CheckBox cbEstudioDiagnosticoPorImagen;
 
         /// <summary>
+        /// Control cbAnalisisClinicos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbAnalisisClinicos;
+
+        /// <summary>
+        /// Control cbPracticasComplementarias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbPracticasComplementarias;
+
+        /// <summary>
         /// Control cbMedicionesPresionArterial.
         /// </summary>
         /// <remarks>
@@ -157,14 +193,5 @@ namespace Shiart_AppWeb.PaginasWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGenerarInformeHistoriClinica;
-
-        /// <summary>
-        /// Control crDatosHistoriaClinica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer crDatosHistoriaClinica;
     }
 }

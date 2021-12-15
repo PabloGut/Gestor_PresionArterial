@@ -102,7 +102,7 @@
 .centro {
     border: 1px solid black;
     height: 200px;
-    background: white;
+    /*background: green;*/
     padding-right: 10px;
 }
 .der {
@@ -162,7 +162,10 @@
     overflow: scroll;
 }
 .borde {
-    border: 10px solid blue;
-
+    border: 1px solid black;
+}
+.borde2 {
+    border: 1px solid green;
+    height:10px;
 }
 

@@ -33,7 +33,7 @@ namespace Shiart_AppWeb.PaginasWeb
                 //pacienteCookie["idHc"]=Convert.ToString(paciente.id_hc);
 
                 Response.Cookies.Add(idHcCookie);
-
+                Session["idUsuario"] = idUsuario;
                 Session["pacienteLogueado"] = paciente;
                 Session["usuarioLogueado"] = paciente.nombre + ", " + paciente.apellido;
                 Response.Redirect("InicioLogueado.aspx");

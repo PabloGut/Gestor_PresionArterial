@@ -59,10 +59,10 @@ namespace Shiart_AppWeb.PaginasWeb
         public void cargarCombos()
         {
             
-            cargarCombo(ddlExtremidad, ExtremidadLN.mostrarExtremidades(),"id_extremidad", "nombre");
-            cargarCombo(ddlPosicion, PosicionLN.mostrarPosiciones(), "id_posicion","nombre");
-            cargarCombo(ddlMomentoDia, MomentoDiaLN.mostrarMomentosDelDia(),"idmomentoDia", "nombre");
-            cargarCombo(ddlSitioMedicion, SitioMedicionLN.mostrarSitiosDeMedicion(), "id_sitioMedicion","nombre");
+            cargarCombo(ddlExtremidad, ExtremidadLN.MostrarExtremidades(),"id_extremidad", "nombre");
+            cargarCombo(ddlPosicion, PosicionLN.MostrarPosiciones(), "id_posicion","nombre");
+            cargarCombo(ddlMomentoDia, MomentoDiaLN.MostrarMomentosDelDia(),"idmomentoDia", "nombre");
+            cargarCombo(ddlSitioMedicion, SitioMedicionLN.MostrarSitiosDeMedicion(), "id_sitioMedicion","nombre");
             
             if(Convert.ToInt32(ddlExtremidad.SelectedItem.Value)== 1)
             { 
@@ -255,7 +255,7 @@ namespace Shiart_AppWeb.PaginasWeb
                     medicion.ubicacion = uex;
                     medicion.sitio = s;
                     medicion.idHc = hc;
-                    MedicionDePresionArterialLN.registrarMedicionPresionArterialEnHistoriaClinicia(medicion);
+                    MedicionDePresionArterialLN.RegistrarMedicionPresionArterialEnHistoriaClinicia(medicion);
                     generarAlerta("Carga finalizada!!!");
                     Session["medicionesPresionArterial"] = medicion;
                 }
