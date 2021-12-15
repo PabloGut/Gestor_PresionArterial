@@ -65,6 +65,7 @@
     <Compile Include="EscalaPulsoLN.cs" />
     <Compile Include="EspecialidadLN.cs" />
     <Compile Include="EspecificacionMedicamentoLN.cs" />
+    <Compile Include="EstadisticasLN.cs" />
     <Compile Include="EstadoDiagnosticoLN.cs" />
     <Compile Include="EstadoLN.cs" />
     <Compile Include="EstadoProgramacionLN.cs" />

@@ -10,9 +10,16 @@ namespace LogicaNegocio
 {
     public class TipoDocumentoLN
     {
-        public static List<TipoDocumento> mostrarTipoDocumento()
+        public static List<TipoDocumento> MostrarTipoDocumento()
         {
-            return TipoDocumentoDAO.buscarTiposDoc();
+            try
+            {
+                return TipoDocumentoDAO.BuscarTiposDoc();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -26,5 +26,17 @@ namespace LogicaNegocio
             }
 
         }
+        public static int ObtenerIdResultadoTemperatura(String resultado)
+        {
+            try
+            {
+                return TemperaturaDAO.ObtenerIdResultadoTemperatura(resultado);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

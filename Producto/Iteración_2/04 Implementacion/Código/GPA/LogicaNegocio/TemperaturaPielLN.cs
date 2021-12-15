@@ -10,9 +10,16 @@ namespace LogicaNegocio
 {
     public class TemperaturaPielLN
     {
-        public static List<TemperaturaPiel> obtenerTemperaturasPiel()
+        public static List<TemperaturaPiel> ObtenerTemperaturasPiel()
         {
-            return TemperaturaPielDAO.obtenerTemperaturaPiel();
+            try
+            {
+                return TemperaturaPielDAO.obtenerTemperaturaPiel();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -26,13 +26,27 @@ namespace LogicaNegocio
         {
             return PacienteDAO.mostrarPacientesDelProfesional(tipoDocMedico, nroDocMedico);
         }
-        public static DataTable mostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, int tipoDocPaciente, long nroDocPaciente, string nombreYApellidoPaciente)
+        public static DataTable MostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, int tipoDocPaciente, long nroDocPaciente, string nombreYApellidoPaciente)
         {
-            return PacienteDAO.mostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, tipoDocPaciente, nroDocPaciente, nombreYApellidoPaciente);
+            try
+            {
+                return PacienteDAO.MostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, tipoDocPaciente, nroDocPaciente, nombreYApellidoPaciente);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public static DataTable mostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, string nombreYApellidoPaciente)
+        public static DataTable MostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, string nombreYApellidoPaciente)
         {
-            return PacienteDAO.mostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, nombreYApellidoPaciente);
+            try
+            {
+                return PacienteDAO.mostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, nombreYApellidoPaciente);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public static Paciente mostrarPacienteBuscado(int tipoDocMedico, long nroDocMedico, int tipoDocPaciente, long nroDocPaciente)
         {

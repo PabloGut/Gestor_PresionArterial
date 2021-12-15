@@ -11,9 +11,16 @@ namespace LogicaNegocio
 {
     public class ConsistenciaLN
     {
-        public static List<Consistencia> mostrarConsistencia()
+        public static List<Consistencia> MostrarConsistencia()
         {
-            return ConsistenciaDAO.mostrarConsistencia();
+            try
+            {
+                return ConsistenciaDAO.MostrarConsistencia();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

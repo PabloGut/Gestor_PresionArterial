@@ -14,5 +14,10 @@ namespace LogicaNegocio
         {
             return TipoAntecedenteMorbidoDAO.mostrarTiposAntecedentesMorbidos();
         }
+        public static TipoAntecedenteMorbido MostrarNombrePorTipo(int TipoAntecedente)
+        {
+            return TipoAntecedenteMorbidoDAO.MostrarNombrePorTipo(TipoAntecedente);
+        }
     }
+   
 }

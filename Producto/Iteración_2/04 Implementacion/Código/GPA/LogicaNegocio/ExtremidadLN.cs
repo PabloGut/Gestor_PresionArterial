@@ -11,9 +11,16 @@ namespace LogicaNegocio
 {
     public class ExtremidadLN
     {
-        public static List<Extremidad> mostrarExtremidades()
+        public static List<Extremidad> MostrarExtremidades()
         {
-            return ExtremidadDAO.mostrarExtremidades();
+            try
+            {
+                return ExtremidadDAO.MostrarExtremidades();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
       
     }

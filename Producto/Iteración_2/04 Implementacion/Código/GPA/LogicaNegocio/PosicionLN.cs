@@ -11,9 +11,16 @@ namespace LogicaNegocio
 {
     public class PosicionLN
     {
-        public static List<Posicion> mostrarPosiciones()
+        public static List<Posicion> MostrarPosiciones()
         {
-            return PosicionDAO.mostrarPosiciones();
+            try
+            {
+                return PosicionDAO.MostrarPosiciones();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

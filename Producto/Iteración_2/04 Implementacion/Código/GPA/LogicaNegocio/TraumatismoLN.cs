@@ -15,5 +15,14 @@ namespace LogicaNegocio
         {
             return TraumatismoDAO.mostrarTraumatismos(id_tipoAntecedenteMorbido);
         }
+        public static void RegistrarTraumatismo(Traumatismo traumatismo)
+        {
+            TraumatismoDAO.RegistrarTraumatismo(traumatismo);
+        }
+        public static void ActualizarTraumatismo(Traumatismo traumatismo)
+        {
+            TraumatismoDAO.ActualizarTraumatismo(traumatismo);
+        }
+
     }
 }

@@ -19,6 +19,5 @@ namespace LogicaNegocio
         {
             return AlergiaAlimentoDAO.mostrarAlegiasAlimentos(idHc);
         }
-        
     }
 }

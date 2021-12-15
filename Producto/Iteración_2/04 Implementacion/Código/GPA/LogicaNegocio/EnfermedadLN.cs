@@ -15,5 +15,13 @@ namespace LogicaNegocio
         {
             return EnfermedadesDAO.mostrarEnfermedades(id_tipoAntecedenteMorbido);
         }
+        public static void RegistrarEnfermedad(Enfermedad enfermedad)
+        {
+            EnfermedadesDAO.RegistrarEnfermedad(enfermedad);
+        }
+        public static void ActualizarEnfermedad(Enfermedad enfermedad)
+        {
+            EnfermedadesDAO.ActualizarEnfermedad(enfermedad);
+        }
     }
 }

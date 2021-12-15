@@ -15,5 +15,27 @@ namespace LogicaNegocio
         {
             return MedicamentoAlergiaDAO.mostrarMedicamentosQueProducenAlergia();
         }
+        public static void RegistrarMedicamentoAlergia(MedicamentoAlergia Medicamento)
+        {
+            try
+            {
+                MedicamentoAlergiaDAO.RegistrarMedicamentoAlergia(Medicamento);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ActualizarMedicamentoAlergia(MedicamentoAlergia Medicamento)
+        {
+            try
+            {
+                MedicamentoAlergiaDAO.ActualizarSustanciaContactoPielAlergia(Medicamento);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

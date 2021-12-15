@@ -15,5 +15,27 @@ namespace LogicaNegocio
         {
             return TipoBebidaDAO.mostrarTiposDeBebidas();
         }
+        public static void RegistrarTipoBebida(TipoBebida Tipo)
+        {
+            try
+            {
+                TipoBebidaDAO.RegistrarTipoBebida(Tipo);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ActualizarTipoBebida(TipoBebida Tipo)
+        {
+            try
+            {
+                TipoBebidaDAO.ActualizarTipoBebida(Tipo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

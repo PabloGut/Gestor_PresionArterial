@@ -11,9 +11,16 @@ namespace LogicaNegocio
 {
     public class SitioMedicionLN
     {
-        public static List<SitioMedicion> mostrarSitiosDeMedicion()
+        public static List<SitioMedicion> MostrarSitiosDeMedicion()
         {
-            return SitioMedicionDAO.mostrarSitiosDeMedicion();
+            try
+            {
+                return SitioMedicionDAO.MostrarSitiosDeMedicion();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -11,7 +11,14 @@ namespace LogicaNegocio
     {
         public static List<SitioMedicionTemperatura> mostrarSitioMedicionTemperatura()
         {
-            return SitioMedicionTemperaturaDAO.mostrarSitioMedicionTemperatura();
+            try
+            {
+                return SitioMedicionTemperaturaDAO.mostrarSitioMedicionTemperatura();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

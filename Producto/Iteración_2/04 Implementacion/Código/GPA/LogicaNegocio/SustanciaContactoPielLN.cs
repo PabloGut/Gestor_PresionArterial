@@ -15,5 +15,28 @@ namespace LogicaNegocio
         {
             return SustanciaContactoPielDAO.mostrarSustanciasContactoPiel();
         }
+        public static void RegistrarSustanciaContactoPielAlergia(SustanciaContactoPiel Sustancia)
+        {
+            try
+            {
+                SustanciaContactoPielDAO.RegistrarSustanciaContactoPielAlergia(Sustancia);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ActualizarSustanciaContactoPielAlergia(SustanciaContactoPiel Sustancia)
+        {
+            try
+            {
+                SustanciaContactoPielDAO.ActualizarSustanciaContactoPielAlergia(Sustancia);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
+ 
 }

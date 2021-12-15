@@ -19,7 +19,14 @@ namespace LogicaNegocio
          */
         public static DataTable mostrarPacientesDelMedico(int tipodocMedico, long nroDocMedico)
         {
-            return ProfesionalMedicoDAO.mostrarPacientesDelMedicoLogueado(tipodocMedico, nroDocMedico);
+            try
+            {
+                return ProfesionalMedicoDAO.mostrarPacientesDelMedicoLogueado(tipodocMedico, nroDocMedico);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public static void insertarProfesionalMédico(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, DateTime fecha_nacimiento, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, int id_especialidad, int matricula, string nombre_usuario, string contraseña, DateTime fecha_creacion, int id_estado)
         {

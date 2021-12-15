@@ -15,5 +15,27 @@ namespace LogicaNegocio
         {
             return FamiliarDAO.mostrarFamiliares();
         }
+        public static void RegistrarFamiliar(Familiar familiar)
+        {
+            try
+            {
+                FamiliarDAO.RegistrarFamiliar(familiar);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+        public static void ActualizarFamiliar(Familiar familiar)
+        {
+            try
+            {
+                FamiliarDAO.ActualizarFamiliar(familiar);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

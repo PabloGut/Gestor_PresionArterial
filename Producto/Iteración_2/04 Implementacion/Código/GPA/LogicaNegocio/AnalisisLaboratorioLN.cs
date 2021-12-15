@@ -11,9 +11,16 @@ namespace LogicaNegocio
 {
     public class AnalisisLaboratorioLN
     {
-        public static List<AnalisisLaboratorio> mostrarAnalisisLaboratorio()
+        public static List<AnalisisLaboratorio> MostrarAnalisisLaboratorio()
         {
-            return AnalisisLaboratorioDAO.mostrarAnalisisLaboratorio();
+            try
+            {
+                return AnalisisLaboratorioDAO.MostrarAnalisisLaboratorio();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public static void registrarItemEstudioLaboratorio(ItemEstudioLaboratorio item)
         {

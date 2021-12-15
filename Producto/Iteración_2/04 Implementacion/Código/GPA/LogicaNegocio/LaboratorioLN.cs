@@ -13,7 +13,7 @@ namespace LogicaNegocio
     {
         public static List<Laboratorio> obtenerAnalisisLaboratorio(int idRazonamiento)
         {
-            return LaboratorioDAO.obtenerAnalisisLaboratorio(idRazonamiento);
+            return LaboratorioDAO.ObtenerAnalisisLaboratorio(idRazonamiento);
         }
         public static void insertResultadosEstudioLaboratorio(Laboratorio laboratorio)
         {

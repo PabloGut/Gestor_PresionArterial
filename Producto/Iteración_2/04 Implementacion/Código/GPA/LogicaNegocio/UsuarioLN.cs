@@ -35,5 +35,29 @@ namespace LogicaNegocio
         {
             return UsuarioDAO.buscarUsuarioLogueado(nombre, pass);
         }
+        public static void UpdateContrasena(int id_usuario,string contrasena)
+        {
+            try
+            {
+                UsuarioDAO.UpdateContrasenaPaciente(id_usuario, contrasena);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
+        public static Boolean VerificarPassContrasena(int idUsuario,String pass)
+        {
+            try
+            {
+                return UsuarioDAO.VerificarPassCorrecta(idUsuario, pass);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

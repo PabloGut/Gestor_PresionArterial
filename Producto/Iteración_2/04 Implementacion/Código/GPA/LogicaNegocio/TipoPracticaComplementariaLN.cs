@@ -10,9 +10,16 @@ namespace LogicaNegocio
 {
     public class TipoPracticaComplementariaLN
     {
-        public static List<TipoPracticaComplementaria> mostrarPracticasComplementarias()
+        public static List<TipoPracticaComplementaria> MostrarPracticasComplementarias()
         {
-            return TipoPracticaComplementariaDAO.mostrarPracticasComplementarias();
+            try
+            {
+                return TipoPracticaComplementariaDAO.MostrarPracticasComplementarias();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public static int mostrarTipoPracticaComplementaria(string nombre)
         {

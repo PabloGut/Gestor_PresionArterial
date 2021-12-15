@@ -14,5 +14,27 @@ namespace LogicaNegocio
         {
             return AlimentoDAO.mostrarAlimentos();
         }
+        public static void RegistrarAlimentoAlergia(Alimento Alimento)
+        {
+            try
+            {
+                AlimentoDAO.RegistrarAlimentoAlergia(Alimento);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public static void ActualizarAlimentoAlergia(Alimento Alimento)
+        {
+            try
+            {
+                AlimentoDAO.ActualizarAlimentoAlergia(Alimento);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

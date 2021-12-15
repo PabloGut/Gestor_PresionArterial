@@ -11,9 +11,9 @@ namespace LogicaNegocio
 {
     public class ExamenGeneralLN
     {
-        /*public static int registrarExamenGeneral(ExamenGeneral examen)
+        public static DataTable MostrarResumenExamenGeneral(int idHc)
         {
-            return ExamenGeneralDAO.registrarExamenGeneral(examen);
-        }*/
+            return ExamenGeneralDAO.MostrarResumenExamenGeneral(idHc);
+        }
     }
 }

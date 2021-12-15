@@ -13,7 +13,7 @@ namespace LogicaNegocio
     public class ConsultaLN
     {
         public static int calcularSiguinteNroConsulta(int idHc)
-        {
+        {   
             int ultimoNro = buscarNroConsulta(idHc);
 
             int siguienteNroConsulta = ultimoNro + 1;
@@ -69,6 +69,17 @@ namespace LogicaNegocio
                 return ConsultaDAO.obtenerConsulta(idConsulta);
             }
             catch(Exception e)
+            {
+                throw e;
+            }
+        }
+        public static DataSet MostrarConsultas(int idHc)
+        {
+            try
+            {
+                return ConsultaDAO.MostrarConsultas(idHc);
+            }
+            catch (Exception e)
             {
                 throw e;
             }

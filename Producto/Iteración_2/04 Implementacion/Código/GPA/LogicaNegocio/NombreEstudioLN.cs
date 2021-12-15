@@ -11,9 +11,16 @@ namespace LogicaNegocio
 {
     public class NombreEstudioLN
     {
-        public static List<NombreEstudio> mostrarNombreEstudios()
+        public static List<NombreEstudio> MostrarNombreEstudios()
         {
-            return NombreEstudioDAO.mostrarNombreEstudio();
+            try
+            {
+                return NombreEstudioDAO.MostrarNombreEstudio();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public static int obtenerNombreEstudio(string nombre)
         {

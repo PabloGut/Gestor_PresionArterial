@@ -11,13 +11,20 @@ namespace LogicaNegocio
 {
     public class EstadoDiagnosticoLN
     {
-        public static int mostrarIdEstadoDiagnostico(string nombreEstado)
+        public static int MostrarIdEstadoDiagnostico(string nombreEstado)
         {
-            return EstadoDiagnosticoDAO.mostrarIdEstadoDiagnostico(nombreEstado);
+            return EstadoDiagnosticoDAO.MostrarIdEstadoDiagnostico(nombreEstado);
         }
-        public static List<EstadoDiagnostico> obtenerEstadosDiagnostico()
+        public static List<EstadoDiagnostico> ObtenerEstadosDiagnostico()
         {
-            return EstadoDiagnosticoDAO.obtenerEstadosDiagnosticos();
+            try
+            {
+                return EstadoDiagnosticoDAO.ObtenerEstadosDiagnosticos();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

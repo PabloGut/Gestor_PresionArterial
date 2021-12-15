@@ -10,9 +10,16 @@ namespace LogicaNegocio
 {
     public class MomentoDiaLN
     {
-        public static List<MomentoDia> mostrarMomentosDelDia()
+        public static List<MomentoDia> MostrarMomentosDelDia()
         {
-            return MomentoDiaDAO.mostrarMomentosDelDia();
+            try
+            {
+                return MomentoDiaDAO.MostrarMomentosDelDia();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

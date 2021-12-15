@@ -13,7 +13,14 @@ namespace LogicaNegocio
     {
         public static List<Pulso> mostrarPulsos()
         {
-            return PulsoDAO.mostrarPulsos();
+            try
+            {
+                return PulsoDAO.mostrarPulsos();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

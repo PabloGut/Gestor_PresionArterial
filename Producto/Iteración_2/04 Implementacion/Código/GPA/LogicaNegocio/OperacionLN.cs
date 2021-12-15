@@ -15,5 +15,13 @@ namespace LogicaNegocio
         {
             return OperacionesDAO.mostrarOperaciones(id_tipoAntecedenteMorbido);
         }
+        public static void RegistraOperacion(Operacion operacion)
+        {
+            OperacionesDAO.RegistrarOperacion(operacion);
+        }
+        public static void ActualizarOperacion(Operacion operacion)
+        {
+            OperacionesDAO.ActualizarOperacion(operacion);
+        }
     }
 }

@@ -14,5 +14,27 @@ namespace LogicaNegocio
         {
             return InsectoDAO.mostrarInsectos();
         }
+        public static void RegistrarInsectoAlergia(Insecto insecto)
+        {
+            try
+            {
+                InsectoDAO.RegistrarInsectoAlergia(insecto);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ActualizarInsectoAlergia(Insecto insecto)
+        {
+            try
+            {
+                InsectoDAO.ActualizarInsectoAlergia(insecto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

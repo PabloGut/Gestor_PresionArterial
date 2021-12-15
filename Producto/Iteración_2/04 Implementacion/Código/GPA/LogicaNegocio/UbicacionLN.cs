@@ -12,7 +12,14 @@ namespace LogicaNegocio
     {
         public static List<Ubicacion> mostrarUbicaciones()
         {
-            return UbicacionDAO.mostrarUbicaciones();
+            try
+            {
+                return UbicacionDAO.mostrarUbicaciones();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
