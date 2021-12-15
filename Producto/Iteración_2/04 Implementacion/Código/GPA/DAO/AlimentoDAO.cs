@@ -65,5 +65,79 @@ namespace DAO
             cn.Close();
             return alimentos;
         }
+        public static void RegistrarAlimentoAlergia(Alimento Alimento)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"insert into Alimento(nombre)
+                                  values(@nombre)";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", Alimento.nombre);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw e;
+            }
+        }
+        public static void ActualizarAlimentoAlergia(Alimento Alimento)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"update Alimento
+                                    set nombre=@nombre
+                                    where id_alimento=@idAlimento";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", Alimento.nombre);
+                cmd.Parameters.AddWithValue("@idAlimento", Alimento.id_alimento);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw e;
+            }
+        }
     }
 }

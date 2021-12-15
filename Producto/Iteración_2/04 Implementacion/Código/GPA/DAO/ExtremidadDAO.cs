@@ -13,12 +13,12 @@ namespace DAO
     {
         private static string cadenaConexion;
 
-        public static void setCadenaConexion()
+        public static void SetCadenaConexion()
         {
             CadenaConexion singleton = CadenaConexion.getInstancia();
             cadenaConexion = singleton.getCadena();
         }
-        public static string getCadenaConexion()
+        public static string GetCadenaConexion()
         {
             return cadenaConexion;
         }
@@ -27,20 +27,24 @@ namespace DAO
 * No recibe parámetros.
 * Retorna una lista de objetos Extremidad.
 */
-        public static List<Extremidad> mostrarExtremidades()
+        public static List<Extremidad> MostrarExtremidades()
         {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlConnection cn = null;
             List<Extremidad> extremidades = new List<Extremidad>();
             try
             {
+                SetCadenaConexion();
+                cn = new SqlConnection(GetCadenaConexion());
                 cn.Open();
 
                 string consulta = "select * from Extremidad";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cn;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = cn,
+                    CommandType = CommandType.Text,
+                    CommandText = consulta
+                };
 
                 SqlDataReader dr = cmd.ExecuteReader();
 

@@ -71,5 +71,85 @@ namespace DAO
             return tiposAntecedentesMorbidos;
             
         }
+        public static TipoAntecedenteMorbido MostrarNombrePorTipo(int tipoAntecedente)
+        {
+            setCadenaConexion();
+            TipoAntecedenteMorbido tiposAntecedentesMorbidos = new TipoAntecedenteMorbido();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            string consulta = null;
+
+            try
+            {
+                cn.Open();
+
+                if(tipoAntecedente == 1)
+                {
+                     consulta = @"select id_efermedad,nombre, id_tipoAntecedenteMorbido_fk
+                                   from Enfermedades
+                                   where id_tipoAntecedenteMorbido_fk =@idTipoAntecedente";
+                }
+                if(tipoAntecedente == 2)
+                {
+                     consulta = @"select id_operacion,nombre, id_tipoAntecedenteMorbido_fk
+                                   from Operaciones
+                                   where id_tipoAntecedenteMorbido_fk =@idTipoAntecedente";
+                }
+                if (tipoAntecedente == 2)
+                {
+                     consulta = @"select id_traumatismo,nombre, id_tipoAntecedenteMorbido_fk
+                                   from Traumatismos
+                                   where id_tipoAntecedenteMorbido_fk =@idTipoAntecedente";
+                }
+
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@idTipoAntecedente", tipoAntecedente);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    tiposAntecedentesMorbidos = new TipoAntecedenteMorbido();
+                    
+                    if (tipoAntecedente == 1)
+                    {
+                        tiposAntecedentesMorbidos.enfermedades = new List<Enfermedad>();
+                        Enfermedad enfermedad = new Enfermedad();
+                        tiposAntecedentesMorbidos.id_tipoAntecedenteMorbido = (int)dr["id_enfermedad"];
+                    }
+                    if (tipoAntecedente == 2)
+                    {
+                        tiposAntecedentesMorbidos.operaciones = new List<Operacion>();
+                        Operacion operacion = new Operacion();
+                        tiposAntecedentesMorbidos.id_tipoAntecedenteMorbido = (int)dr["id_operacion"];
+                    }
+                    if (tipoAntecedente == 3)
+                    {
+                        tiposAntecedentesMorbidos.traumatismos = new List<Traumatismo>();
+                        Traumatismo traumatismo = new Traumatismo();
+                        tiposAntecedentesMorbidos.id_tipoAntecedenteMorbido = (int)dr["id_traumatismo"];
+                    }
+
+                    tiposAntecedentesMorbidos.nombre = dr["nombre"].ToString();
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+            return tiposAntecedentesMorbidos;
+
+        }
     }
 }

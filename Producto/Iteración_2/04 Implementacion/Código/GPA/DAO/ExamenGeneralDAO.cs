@@ -133,7 +133,7 @@ namespace DAO
                 int id_medicion_fk=0;
                 if (examen.medicion != null)
                 {
-                    id_medicion_fk = MedicionDePresionArterialDAO.registrarMedicionDePresionArterial(examen.medicion, tran, cn, id_hc);
+                    id_medicion_fk = MedicionDePresionArterialDAO.RegistrarMedicionDePresionArterial(examen.medicion, tran, cn, id_hc);
                 }
                 int id_piel_fk = 0;
                 if (examen.examenPiel != null)
@@ -267,6 +267,16 @@ namespace DAO
                     }
                 }
 
+                if(examen.listaTemperaturas !=null)
+                {
+                    foreach (Temperatura temp in examen.listaTemperaturas)
+                    {
+                        temp.id_examenGeneral = examen.id_examenGeneral;
+                        TemperaturaDAO.RegistrarTemperatura(temp, tran, cn);
+
+                    }
+                }
+
             }
             catch (Exception e)
             {
@@ -279,6 +289,53 @@ namespace DAO
                 throw e;
             }
             return examen.id_examenGeneral;
+        }
+        public static DataTable MostrarResumenExamenGeneral(int id_hc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            DataTable dt = null;
+            SqlDataAdapter da = null;
+            string consulta = @"select c.nroConsulta,c.fechaConsulta,c.HoraConsulta,c.motivoConsulta,rd.conceptoInicial,rd.diagnostico,ed.nombre as 'Estado Diagnóstico', 
+                                CASE ed.nombre WHEN 'Tentativo' THEN rd.motivoTentativo
+                                WHEN 'Definitivo' THEN rd.motivoConfirmado
+                                WHEN 'Descartado' THEN rd.motivoDescartado
+                                END as 'Motivo Cambio Estado',
+                                CASE ed.nombre WHEN 'Tentativo' THEN rd.fechaTentativo
+                                WHEN 'Definitivo' THEN rd.fechaConfirmado
+                                WHEN 'Descartado' THEN rd.fechaDescartado
+                                END as 'Fecha cambio estado'
+                                from Consulta c, ExamenGeneral ex, Historia_Clinica hc, RazonamientoDiagnostico rd, EstadoDiagnostico ed
+                                where c.id_examenGeneral_fk=ex.id_examenGeneral
+                                and hc.id_hc=c.id_hc_fk 
+                                and ex.id_examenGeneral=rd.id_examenGeneral_fk
+                                and rd.id_estadoDiagnostico_fk=ed.id_estadoDiagnostico
+                                and hc.id_hc=@id_hc";
+            try
+            {
+                cn.Close();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@id_hc", id_hc);
+
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            return dt;
         }
     }
 }

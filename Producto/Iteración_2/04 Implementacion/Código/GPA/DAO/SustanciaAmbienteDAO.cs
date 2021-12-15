@@ -65,5 +65,77 @@ namespace DAO
             cn.Close();
             return sustanciasDelAmbiente;
         }
+        public static void RegistrarSustanciaAmbienteAlergia(SustaciaAmbiente sustanciaAmbiente)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"insert into SustanciaAmbiente(nombre)
+                                  values(@nombre)";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", sustanciaAmbiente.nombre);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
+        public static void ActualizarSustanciaAmbienteAlergia(SustaciaAmbiente sustaciaAmbiente)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"update SustanciaAmbiente
+                                    set nombre=@nombre
+                                    where id_sustanciaAmbiente=@idSustanciaAmbiente";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", sustaciaAmbiente.nombre);
+                cmd.Parameters.AddWithValue("@idSustanciaAmbiente", sustaciaAmbiente.id_sustanciaAmbiente);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
     }
 }

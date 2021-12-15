@@ -80,6 +80,7 @@
     <Compile Include="EscalaPulsoDAO.cs" />
     <Compile Include="EspecialidadDAO.cs" />
     <Compile Include="EspecificacionMedicamentoDAO.cs" />
+    <Compile Include="EstadisticasDAO.cs" />
     <Compile Include="EstadoDAO.cs" />
     <Compile Include="EstadoDiagnosticoDAO.cs" />
     <Compile Include="EstadoProgramacionDAO.cs" />

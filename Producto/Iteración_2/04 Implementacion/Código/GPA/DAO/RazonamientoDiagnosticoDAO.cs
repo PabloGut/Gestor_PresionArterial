@@ -346,7 +346,7 @@ namespace DAO
                     foreach (Laboratorio laboratorio in razonamientoDiagnostico.analisis)
                     {
                         laboratorio.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
-                        LaboratorioDAO.updateLaboratorio(laboratorio, cn, tran);
+                        LaboratorioDAO.UpdateLaboratorio(laboratorio, cn, tran);
                     }
                 }
 
@@ -449,7 +449,7 @@ namespace DAO
                     foreach (Laboratorio laboratorio in razonamientoDiagnostico.analisis)
                     {
                         laboratorio.id_razonamientoDiagnostico = razonamientoDiagnostico.id_razonamiento;
-                        LaboratorioDAO.updateLaboratorio(laboratorio, cn, tran);
+                        LaboratorioDAO.UpdateLaboratorio(laboratorio, cn, tran);
                     }
                 }
 

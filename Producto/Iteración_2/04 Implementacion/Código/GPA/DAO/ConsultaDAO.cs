@@ -14,7 +14,7 @@ namespace DAO
         private static string cadenaConexion;
 
         public static void setCadenaConexion()
-        {
+        {   
             CadenaConexion singleton = CadenaConexion.getInstancia();
             cadenaConexion = singleton.getCadena();
         }
@@ -270,6 +270,7 @@ namespace DAO
                         if (consultaPaciente.id_examenGeneral != 0)
                             evolucion.idExamenGeneral = consultaPaciente.id_examenGeneral;
 
+                        evolucion.idHc = consultaPaciente.id_hc;
                         EvolucionDiagnosticoDAO.registrarEvolucionDiagnosticoConExamenGeneral(evolucion, cn, tran);
                     }
                 }
@@ -376,6 +377,48 @@ namespace DAO
                 }
                 throw e;
             }
+        }
+        public static DataSet MostrarConsultas(int idHc)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            
+            DataSet dsConsultas = new DataSet();
+            
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select c.nroConsulta, c.fechaConsulta, c.horaConsulta,c.motivoConsulta
+                                    from Consulta c, Historia_Clinica hc
+                                    where hc.id_hc=c.id_hc_fk 
+                                    and hc.id_hc=@idHc";
+
+                SqlDataAdapter da = new SqlDataAdapter();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                da.SelectCommand = cmd;
+
+                da.Fill(dsConsultas,"Consultas");
+
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return dsConsultas;
         }
     }
 }

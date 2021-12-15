@@ -12,23 +12,23 @@ namespace DAO
     {
         private static string cadenaConexion;
 
-        public static void setCadenaConexion()
+        public static void SetCadenaConexion()
         {
             CadenaConexion singleton = CadenaConexion.getInstancia();
             cadenaConexion = singleton.getCadena();
         }
-        public static string getCadenaConexion()
+        public static string GetCadenaConexion()
         {
             return cadenaConexion;
         }
-        public static List<Laboratorio> obtenerAnalisisLaboratorio(int idRazonamiento)
+        public static List<Laboratorio> ObtenerAnalisisLaboratorio(int idRazonamiento)
         {
-            setCadenaConexion();
+            SetCadenaConexion();
 
             List<Laboratorio> analisis = new List<Laboratorio>();
             AnalisisLaboratorio analisisLaboratorio = null;
 
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
 
 
 
@@ -78,7 +78,7 @@ namespace DAO
                 throw new ApplicationException("Error:" + e.Message);
             }
         }
-        public static void updateLaboratorio(Laboratorio laboratorio, SqlConnection cn, SqlTransaction tran)
+        public static void UpdateLaboratorio(Laboratorio laboratorio, SqlConnection cn, SqlTransaction tran)
         {
             SqlCommand cmd = new SqlCommand();
 
@@ -133,9 +133,9 @@ namespace DAO
         }
         public static void insertResultadosEstudioLaboratorio(Laboratorio laboratorio)
         {
-            setCadenaConexion();
+            SetCadenaConexion();
 
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
             SqlTransaction tran = null;
             SqlCommand cmd = new SqlCommand();
 
@@ -187,12 +187,12 @@ namespace DAO
         }
         public static List<Laboratorio> obtenerLaboratorioIdConsulta(int idConsulta)
         {
-            setCadenaConexion();
+            SetCadenaConexion();
 
             List<Laboratorio> analisis = new List<Laboratorio>();
             AnalisisLaboratorio analisisLaboratorio = null;
 
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
 
             string consulta = @"select ilab.nombre as 'Estudio',ln.fechaSolicitud as 'Fecha de Solicitud',ln.indicaciones
                                 from RazonamientoDiagnostico rd, LaboratorioNueva ln, EstadoDiagnostico ed,itemLaboratorio ilab,ExamenGeneral ex,Consulta c
@@ -241,8 +241,8 @@ namespace DAO
         }
         public static DataTable MostrarEstudiosLaboratorio(int idHc)
         {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SetCadenaConexion();
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
             DataTable dt = null;
             SqlDataAdapter da = null;
             string consulta = @"select ilab.nombre as 'Estudio',ln.fechaSolicitud as 'Fecha de Solicitud',ln.indicaciones,c.id_hc_fk,ln.observacionDeLosResultados as 'Observaciones',ln.fechaRealizacion as 'Fecha Realizacion'

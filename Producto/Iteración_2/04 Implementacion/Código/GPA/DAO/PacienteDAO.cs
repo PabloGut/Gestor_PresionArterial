@@ -346,7 +346,7 @@ namespace DAO
                 {
                     cn.Close();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                throw e;
             }
             cn.Close();
             return dt;
@@ -357,7 +357,7 @@ namespace DAO
          * Recibe como parámetros tipoDocPaciente, nroDocPaciente y nombreYApellidoPaciente relacionados al Paciente que está siendo buscado.
          * Retorna un dataTable
          */
-        public static DataTable mostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico,int tipoDocPaciente, long nroDocPaciente, string nombreYApellidoPaciente)
+        public static DataTable MostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico,int tipoDocPaciente, long nroDocPaciente, string nombreYApellidoPaciente)
         {
 
             setCadenaConexion();
@@ -650,6 +650,7 @@ namespace DAO
                 throw e;
             }
         }
-      
+     
+
     }
 }

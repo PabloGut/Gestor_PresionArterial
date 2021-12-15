@@ -68,5 +68,79 @@ namespace DAO
             return familiares;
 
         }
+        public static void RegistrarFamiliar(Familiar familiar)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"insert into Familiar(nombre)
+                                  values(@nombre)";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", familiar.nombre);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw e;
+            }
+        }
+        public static void ActualizarFamiliar(Familiar familiar)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"update Familiar
+                                    set nombre=@nombre
+                                    where id_familiar=@idFamiliar";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", familiar.nombre);
+                cmd.Parameters.AddWithValue("@idFamiliar", familiar.id_familiar);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw e;
+            }
+        }
     }
 }

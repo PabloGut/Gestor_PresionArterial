@@ -56,7 +56,8 @@ namespace DAO
                     traumatismos.Add(new Traumatismo()
                     {
                         id_traumatismo = (int)dr["id_traumatismo"],
-                        nombre = dr["nombre"].ToString()
+                        nombre = dr["nombre"].ToString(),
+                        id_tipoAntecedenteMorbido= (int)dr["id_tipoAntecedenteMorbido_fk"]
                     });
                 }
 
@@ -73,6 +74,82 @@ namespace DAO
 
             return traumatismos;
 
+        }
+        public static void RegistrarTraumatismo(Traumatismo traumatismo)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"insert into Traumatismos(nombre,id_tipoAntecedenteMorbido_fk)
+                                    values(@nombre,@idTipoAntecedente)";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", traumatismo.nombre);
+                cmd.Parameters.AddWithValue("@idTipoAntecedente", traumatismo.id_tipoAntecedenteMorbido);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw e;
+            }
+        }
+        public static void ActualizarTraumatismo(Traumatismo traumatismo)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"update Traumatismos
+                                    set nombre=@nombre
+                                    where id_traumatismo=@idTraumatismo and id_tipoAntecedenteMorbido_fk=@idTipoAntecedente";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", traumatismo.nombre);
+                cmd.Parameters.AddWithValue("@idTraumatismo", traumatismo.id_traumatismo);
+                cmd.Parameters.AddWithValue("@idTipoAntecedente", traumatismo.id_tipoAntecedenteMorbido);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw e;
+            }
         }
     }
 }

@@ -112,7 +112,14 @@ namespace DAO
          */
         public static DataTable mostrarPacientesDelMedicoLogueado(int id_tipodoc_medico, long nroDocMedico)
         {
-            return PacienteDAO.mostrarPacientesDelProfesional(id_tipodoc_medico, nroDocMedico);
+            try
+            {
+                return PacienteDAO.mostrarPacientesDelProfesional(id_tipodoc_medico, nroDocMedico);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         /*
          * Método para buscar los datos de un profesional médico a través de tipo y número de documento.

@@ -65,5 +65,77 @@ namespace DAO
             cn.Close();
             return sustanciasContactoPiel;
         }
+        public static void RegistrarSustanciaContactoPielAlergia(SustanciaContactoPiel Sustancia)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"insert into SustanciaContactoPiel(nombre)
+                                  values(@nombre)";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", Sustancia.nombre);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
+        public static void ActualizarSustanciaContactoPielAlergia(SustanciaContactoPiel Sustancia)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"update SustanciaContactoPiel
+                                    set nombre=@nombre
+                                    where id_sustanciaContactoPiel=@idSustanciaContactoPiel";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", Sustancia.nombre);
+                cmd.Parameters.AddWithValue("@idSustanciaContactoPiel", Sustancia.id_sustanciaContactoPiel);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+        }
     }
 }

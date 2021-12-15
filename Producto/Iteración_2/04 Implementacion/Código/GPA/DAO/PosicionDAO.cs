@@ -13,12 +13,12 @@ namespace DAO
     {
         private static string cadenaConexion;
 
-        public static void setCadenaConexion()
+        public static void SetCadenaConexion()
         {
             CadenaConexion singleton = CadenaConexion.getInstancia();
             cadenaConexion = singleton.getCadena();
         }
-        public static string getCadenaConexion()
+        public static string GetCadenaConexion()
         {
             return cadenaConexion;
         }
@@ -27,13 +27,14 @@ namespace DAO
 * No recibe parámetros.
 * Retorna una lista de objetos Posicion.
 */
-        public static List<Posicion> mostrarPosiciones()
+        public static List<Posicion> MostrarPosiciones()
         {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = null;
             List<Posicion> posiciones = new List<Posicion>();
             try
             {
+                SetCadenaConexion();
+                cn = new SqlConnection(GetCadenaConexion());
                 cn.Open();
 
                 string consulta = "select * from Posicion";

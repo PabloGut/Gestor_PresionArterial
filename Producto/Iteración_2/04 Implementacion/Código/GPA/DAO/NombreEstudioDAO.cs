@@ -27,7 +27,7 @@ namespace DAO
        * No recibe parámetros.
        * Retorna una lista de objetos NombreEstudio.
        */
-        public static List<NombreEstudio> mostrarNombreEstudio()
+        public static List<NombreEstudio> MostrarNombreEstudio()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());

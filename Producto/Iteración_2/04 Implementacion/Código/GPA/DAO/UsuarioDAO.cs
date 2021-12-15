@@ -145,6 +145,46 @@ namespace DAO
             cn.Close();
             return idUsuario;
         }
+        public static Boolean VerificarPassCorrecta(int idUsuario, string pass)
+        {
+            setCadenaConexion();
+
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            try
+            {
+
+                cn.Open();
+
+                string consulta = "select id_usuario from Usuario where id_usuario=@idUsuario and pwdcompare(@pass,contraseña)=1";
+
+                SqlCommand cmd = new SqlCommand();
+
+
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                cmd.Parameters.AddWithValue("@pass", pass);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if(dr.HasRows)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            cn.Close();
+        }
         public static List<Usuario> buscarUsuarioPorNombre(string nombre)
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -216,6 +256,44 @@ namespace DAO
             }
             cn.Close();
             return usuario;
+        }
+        public static void UpdateContrasenaPaciente(int id_usuario, string contraseña)
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            SqlTransaction tran = null;
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+
+                string consultaInsertarUsuario = @"UPDATE Usuario 
+                                                   SET contraseña=PWDENCRYPT(@paramContraseña)
+                                                    where id_usuario=@IdUsuario";
+
+                SqlCommand cmdUpdateUsuario = new SqlCommand();
+
+                cmdUpdateUsuario.Parameters.AddWithValue("@paramContraseña", contraseña);
+                cmdUpdateUsuario.Parameters.AddWithValue("@IdUsuario", id_usuario);
+
+                cmdUpdateUsuario.CommandText = consultaInsertarUsuario;
+                cmdUpdateUsuario.CommandType = CommandType.Text;
+                cmdUpdateUsuario.Connection = cn;
+                cmdUpdateUsuario.Transaction = tran;
+
+                cmdUpdateUsuario.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (SqlException ex)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    tran.Rollback();
+                    cn.Close();
+                }
+                throw ex;
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace DAO
       * No recibe parámetros.
       * Retorna una lista de objetos AnalisisLaboratorio.
       */
-        public static List<AnalisisLaboratorio> mostrarAnalisisLaboratorio()
+        public static List<AnalisisLaboratorio> MostrarAnalisisLaboratorio()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());

@@ -13,22 +13,23 @@ namespace DAO
     {
         private static string cadenaConexion;
 
-        public static void setCadenaConexion()
+        public static void SetCadenaConexion()
         {
             CadenaConexion singleton = CadenaConexion.getInstancia();
             cadenaConexion = singleton.getCadena();
         }
-        public static string getCadenaConexion()
+        public static string GetCadenaConexion()
         {
             return cadenaConexion;
         }
-        public static List<MomentoDia> mostrarMomentosDelDia()
+        public static List<MomentoDia> MostrarMomentosDelDia()
         {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = null;
             List<MomentoDia> momentosDia = new List<MomentoDia>();
             try
             {
+                SetCadenaConexion();
+                cn = new SqlConnection(GetCadenaConexion());
                 cn.Open();
 
                 string consulta = "select * from MomentoDelDia";

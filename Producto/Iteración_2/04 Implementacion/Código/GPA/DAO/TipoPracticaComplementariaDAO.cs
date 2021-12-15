@@ -26,7 +26,7 @@ namespace DAO
        * No recibe parámetros.
        * Retorna una lista de objetos TipoPracticaComplementaria.
        */
-        public static List<TipoPracticaComplementaria> mostrarPracticasComplementarias()
+        public static List<TipoPracticaComplementaria> MostrarPracticasComplementarias()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());

@@ -22,7 +22,7 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static int mostrarIdEstadoDiagnostico(string estado)
+        public static int MostrarIdEstadoDiagnostico(string estado)
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());
@@ -59,7 +59,7 @@ namespace DAO
             cn.Close();
             return idEstado;
         }
-        public static List<EstadoDiagnostico> obtenerEstadosDiagnosticos()
+        public static List<EstadoDiagnostico> ObtenerEstadosDiagnosticos()
         {
             string consulta = @"select * from EstadoDiagnostico";
 

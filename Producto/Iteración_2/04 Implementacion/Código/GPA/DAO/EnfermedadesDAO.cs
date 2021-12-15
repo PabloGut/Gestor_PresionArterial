@@ -56,7 +56,8 @@ namespace DAO
                     enfermedades.Add(new Enfermedad()
                     {
                         id_enfermedad = (int)dr["id_enfermedad"],
-                        nombre = dr["nombre"].ToString()
+                        nombre = dr["nombre"].ToString(),
+                        id_tipoAntecedenteMorbido = (int)dr["id_TipoAntecedenteMorbido_fk"]
                     });
                 }
 
@@ -73,6 +74,82 @@ namespace DAO
 
             return enfermedades;
 
+        }
+        public static void RegistrarEnfermedad(Enfermedad enfermedad)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"insert into Enfermedades(nombre,id_tipoAntecedenteMorbido_fk)
+                                  values(@nombre,@idTipoAntecedente)";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", enfermedad.nombre);
+                cmd.Parameters.AddWithValue("@idTipoAntecedente", enfermedad.id_tipoAntecedenteMorbido);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    //tran.Rollback();
+                }
+                throw e;
+            }
+        }
+        public static void ActualizarEnfermedad(Enfermedad enfermedad)
+        {
+            setCadenaConexion();
+            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlTransaction tran = null;
+
+            try
+            {
+                cn.Open();
+                tran = cn.BeginTransaction();
+                string consulta = @"update Enfermedades
+                                    set nombre=@nombre
+                                    where id_enfermedad=@idEnfermedad and id_tipoAntecedenteMorbido_fk=@idTipoAntecedente";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Transaction = tran;
+                cmd.Connection = cn;
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@nombre", enfermedad.nombre);
+                cmd.Parameters.AddWithValue("@idEnfermedad", enfermedad.id_enfermedad);
+                cmd.Parameters.AddWithValue("@idTipoAntecedente", enfermedad.id_tipoAntecedenteMorbido);
+
+                cmd.ExecuteNonQuery();
+
+                tran.Commit();
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                    tran.Rollback();
+                }
+                throw e;
+            }
         }
     }
 }

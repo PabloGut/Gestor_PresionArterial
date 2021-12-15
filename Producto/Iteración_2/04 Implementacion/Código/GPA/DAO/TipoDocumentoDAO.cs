@@ -23,34 +23,43 @@ namespace DAO
         {
             return cadenaConexion;
         }
-        public static List<TipoDocumento> buscarTiposDoc()
+        public static List<TipoDocumento> BuscarTiposDoc()
         {
             setCadenaConexion();
             List<TipoDocumento> tiposDoc = new List<TipoDocumento>();
 
             SqlConnection cn = new SqlConnection(cadenaConexion);
-            cn.Open();
 
-            string consulta="select id_TipoDoc,nombre,descripcion from TipoDocumento";
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = consulta;
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = cn;
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            try
             {
-                tiposDoc.Add(new TipoDocumento()
+                cn.Open();
+
+                string consulta = "select id_TipoDoc,nombre,descripcion from TipoDocumento";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
                 {
-                    id_tipoDoc = (int)dr["id_TipoDoc"],
-                    nombre = dr["nombre"].ToString(),
-                    descripcion = dr["descripcion"].ToString()
-                });
+                    tiposDoc.Add(new TipoDocumento()
+                    {
+                        id_tipoDoc = (int)dr["id_TipoDoc"],
+                        nombre = dr["nombre"].ToString(),
+                        descripcion = dr["descripcion"].ToString()
+                    });
+                }
+                cn.Close();
+                return tiposDoc;
             }
-            cn.Close();
-            return tiposDoc;
+            catch(Exception ex)
+            {
+                cn.Close();
+                throw ex;
+            }
         }
 
         public static int insertarTipoDoc(string nombre, string descripcion)

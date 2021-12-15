@@ -14,17 +14,17 @@ namespace DAO
     {
         private static string cadenaConexion;
 
-        public static void setCadenaConexion()
+        public static void SetCadenaConexion()
         {
             CadenaConexion singleton = CadenaConexion.getInstancia();
             cadenaConexion = singleton.getCadena();
         }
-        public static string getCadenaConexion()
+        public static string GetCadenaConexion()
         {
             return cadenaConexion;
         }
 
-        public static int registrarMedicionDePresionArterial(MedicionDePresionArterial medicion)
+        public static int RegistrarMedicionDePresionArterial(MedicionDePresionArterial medicion)
         {
 
             SqlTransaction tran = null;
@@ -32,7 +32,7 @@ namespace DAO
             string consulta = @"INSERT INTO MedicionDePrecionArterial(fecha,id_posicion_fk,id_clasificacion_fk,id_momentoDelDia_fk,promedio,id_sitioMedicion_fk,horaInicio,id_ubicacionExtremidad_fk)
                                 VALUES (@paramFecha,@paramId_posicion_fk,@paramId_clasificacion_fk,@paramId_momentoDelDia_fk,@paramPromedio,@paramId_sitioMedicion_fk,@paramHoraInicio,@paramId_ubicacionExtremidad_fk)";
 
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
 
             try
             {
@@ -88,7 +88,7 @@ namespace DAO
             return medicion.id_medicion;
         }
 
-        public static int registrarMedicionDePresionArterial(MedicionDePresionArterial medicion, SqlTransaction tran, SqlConnection cn , int id_hc)
+        public static int RegistrarMedicionDePresionArterial(MedicionDePresionArterial medicion, SqlTransaction tran, SqlConnection cn , int id_hc)
         {
             string consulta = @"INSERT INTO MedicionDePrecionArterial(fecha,id_posicion_fk,id_clasificacion_fk,id_momentoDelDia_fk,promedio,id_sitioMedicion_fk,horaInicio,id_extremidad_fk,id_ubicacionExtremidad_fk, id_hc_fk)
                                 VALUES (@paramFecha,@paramId_posicion_fk,@paramId_clasificacion_fk,@paramId_momentoDelDia_fk,@paramPromedio,@paramId_sitioMedicion_fk,@paramHoraInicio,@paramId_extremidad,@paramId_ubicacionExtremidad_fk,@paramId_hc)";
@@ -141,10 +141,10 @@ namespace DAO
             }
             return medicion.id_medicion;
         }
-        public static void registrarMedicionDePresionArterialEnHistoriaClinica(MedicionDePresionArterial medicion)
+        public static void RegistrarMedicionDePresionArterialEnHistoriaClinica(MedicionDePresionArterial medicion)
         {
-            setCadenaConexion();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+
+            SqlConnection cn=null;
 
             string consulta = @"INSERT INTO MedicionDePrecionArterial(fecha,horaInicio,id_extremidad_fk,id_ubicacionExtremidad_fk,id_posicion_fk,id_clasificacion_fk,id_momentoDelDia_fk,id_sitioMedicion_fk,id_hc_fk)
                                 VALUES (@paramFecha,@paramHoraInicio,@paramId_extremidad_fk,@paramId_ubicacionExtremidad_fk,@paramId_posicion_fk,@paramId_clasificacion_fk,@paramId_momentoDelDia_fk,@paramId_sitioMedicion_fk,@idHc)";
@@ -153,7 +153,8 @@ namespace DAO
             SqlTransaction tran = null;
             try
             {
-                
+                SetCadenaConexion();
+                cn = new SqlConnection(GetCadenaConexion());
 
                 cmd.Parameters.AddWithValue("@paramFecha", medicion.fecha.ToString("s", System.Globalization.CultureInfo.InvariantCulture));
                 cmd.Parameters.AddWithValue("@paramId_posicion_fk", medicion.posicion.id_posicion);
@@ -202,11 +203,12 @@ namespace DAO
                 throw new Exception("Error al insertar medición de presión arterial: " + e.Message);
             }
         }
-        public static DataTable obtenerMedicionesPresionArterial(int idHistoriaClinica, DateTime? fechaDesde, DateTime? fechaHasta, String extremidad, String momentoDia, String posicion, String ubicacionExtremidad, String sitioMedicion)
+        public static DataTable ObtenerMedicionesPresionArterial(int idHistoriaClinica, DateTime? fechaDesde, DateTime? fechaHasta, String extremidad, String momentoDia, String posicion, String ubicacionExtremidad, String sitioMedicion)
         {
             DataTable mediciones = new DataTable();
             DataTable promedios = new DataTable();
             DataRow fila;
+            SqlConnection cn = null;
 
             mediciones.Columns.Add("id_medicion");
             mediciones.Columns.Add("Hora Inicio");
@@ -220,10 +222,11 @@ namespace DAO
             mediciones.Columns.Add("Promedio Valor Máximo");
             mediciones.Columns.Add("Promedio Valor Mínimo");
             mediciones.Columns.Add("Promedio Pulso");
+            try
+            {
+                SetCadenaConexion();
 
-            setCadenaConexion();
-
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            cn = new SqlConnection(GetCadenaConexion());
 
             SqlCommand cmd = new SqlCommand();
 
@@ -279,8 +282,7 @@ namespace DAO
             consulta +=" group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)) order by m.fecha desc";
             
             SqlDataReader dr = null;
-            try
-            {
+
                 cn.Open();
                 cmd.Connection = cn;
                 cmd.CommandText = consulta;
@@ -318,16 +320,16 @@ namespace DAO
                 {
                     cn.Close();
                 }
-                throw new ApplicationException("Error:" + e.Message);
+                throw e;
             }
         }
 
-        public static List<MedicionDePresionArterial> obtenerMedicionesPresionArterialIdConsulta(int idConsulta)
+        public static List<MedicionDePresionArterial> ObtenerMedicionesPresionArterialIdConsulta(int idConsulta)
         {
-            setCadenaConexion();
+            SetCadenaConexion();
             MedicionDePresionArterial medicion = null;
             List<MedicionDePresionArterial> listaMediciones = new List<MedicionDePresionArterial>();
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
             SqlTransaction tran = null;
             try
             {
@@ -414,7 +416,7 @@ namespace DAO
                 throw e;
             }
         }
-        public static DataTable obtenerMedicionesPresionArterialConFiltro(int idHistoriaClinica, DateTime? fechaDesde, DateTime? fechaHasta,String extremidad, String momentoDia, String posicion, String ubicacionExtremidad,String sitioMedicion)
+        public static DataTable ObtenerMedicionesPresionArterialConFiltro(int idHistoriaClinica, DateTime? fechaDesde, DateTime? fechaHasta,String extremidad, String momentoDia, String posicion, String ubicacionExtremidad,String sitioMedicion)
         {
             DataTable mediciones = new DataTable();
             DataTable promedios = new DataTable();
@@ -439,13 +441,13 @@ namespace DAO
             mediciones.Columns.Add("Pulso");
 
             mediciones.Columns.Add("FechaHora");
-            setCadenaConexion();
+            SetCadenaConexion();
 
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
 
             SqlCommand cmd = new SqlCommand();
 
-            string consulta = @"select distinct top(20) m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición',d.hora,d.valorMaximo,d.valorMinimo,d.pulso
+            string consulta = @"select top(20) m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición',d.hora,d.valorMaximo,d.valorMinimo,d.pulso
                                 from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
                                 where m.id_medicion=d.id_medicion_fk
                                 and m.id_extremidad_fk=ex.id_extremidad
@@ -550,7 +552,7 @@ namespace DAO
             }
         }
 
-        public static DataTable obtenerMediciones(int idHistoriaClinica)
+        public static DataTable ObtenerMediciones(int idHistoriaClinica)
         {
             DataTable mediciones = new DataTable();
             DataTable promedios = new DataTable();
@@ -569,9 +571,9 @@ namespace DAO
             mediciones.Columns.Add("Promedio Valor Mínimo");
             mediciones.Columns.Add("Promedio Pulso");
 
-            setCadenaConexion();
+            SetCadenaConexion();
 
-            SqlConnection cn = new SqlConnection(getCadenaConexion());
+            SqlConnection cn = new SqlConnection(GetCadenaConexion());
 
             SqlCommand cmd = new SqlCommand();
 

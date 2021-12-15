@@ -27,7 +27,7 @@ namespace DAO
        * No recibe parámetros.
        * Retorna una lista de objetos Consistencia.
        */
-        public static List<Consistencia> mostrarConsistencia()
+        public static List<Consistencia> MostrarConsistencia()
         {
             setCadenaConexion();
             SqlConnection cn = new SqlConnection(getCadenaConexion());

@@ -27,7 +27,7 @@ namespace DAO
             int idAborto;
             try
             {
-                string consulta = @"insert into Aborto(cantidadTotal,cantidadProvocados, id_TipoAborto1_fk, cantidadEspontaneo, id_TipoAborto2_fk,nroHijosVivos,problemasAsociadosAlEmbarazo)
+                string consulta = @"insert into Aborto(cantidadTotal,cantidadAbortoTipo1, id_TipoAborto1_fk, cantidadAbortoTipo2, id_TipoAborto2_fk,nroHijosVivos,problemasAsociadosAlEmbarazo)
                                   values(@cantidadTotal,@cantidadProvocados,@iTipoAborto1,@cantidadEspontaneos,@idTipoAborto2,@nroHijosVivos,@problemasAsociadosAlEmbarazo)";
 
                 SqlCommand cmd = new SqlCommand();

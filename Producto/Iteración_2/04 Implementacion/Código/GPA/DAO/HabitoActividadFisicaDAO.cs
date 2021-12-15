@@ -78,7 +78,7 @@ namespace DAO
             {
                 cn.Open();
 
-                string consulta = @"select haf.fechaRegistro as 'Fecha registro',af.nombre 'Deporte/Actividad',af.descripcion as 'Descripción deporte o actividad',ga.nombre as 'Grado actividad',ga.descripcion as 'Descripcion grado actividad',iaf.nombre as 'Intesidad Actividad Física'
+                string consulta = @"select haf.fechaRegistro as 'Fecha registro',af.nombre 'Deporte/Actividad',af.descripcion as 'Descripción deporte o actividad',ga.nombre as 'Grado actividad',ga.descripcion as 'Descripcion grado actividad',iaf.nombre as 'Intensidad Actividad Física'
                                     from HabitosActividadFisica haf, ActividadFisica af, GradoActividad ga, IntensidadActividadFisica iaf
                                     where haf.id_actividadFisica_fk=af.id_actividadFisica
                                     and haf.id_gradoActividadFisica_fk=ga.id_gradoActividad
