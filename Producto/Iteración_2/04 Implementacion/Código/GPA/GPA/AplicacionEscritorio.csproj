@@ -32,12 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
@@ -45,6 +47,8 @@
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -80,6 +84,12 @@
     <Compile Include="ActualizarMetodoAnalisisLaboratorio.Designer.cs">
       <DependentUpon>ActualizarMetodoAnalisisLaboratorio.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActualizarNombrePorTipoAntecedenteMorbido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarNombrePorTipoAntecedenteMorbido.Designer.cs">
+      <DependentUpon>ActualizarNombrePorTipoAntecedenteMorbido.cs</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarPresentacionMedicamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,11 +102,29 @@
     <Compile Include="ActualizarUnidadMedida.Designer.cs">
       <DependentUpon>ActualizarUnidadMedida.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarEstadisticas_PromedioPorcentajeModa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarEstadisticas_PromedioPorcentajeModa.Designer.cs">
+      <DependentUpon>ConsultarEstadisticas_PromedioPorcentajeModa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarEstadistica_PromedioSitioMedicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarEstadistica_PromedioSitioMedicion.Designer.cs">
+      <DependentUpon>ConsultarEstadistica_PromedioSitioMedicion.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarEstudio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsultarEstudio.Designer.cs">
       <DependentUpon>ConsultarEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarEstudios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarEstudios.Designer.cs">
+      <DependentUpon>ConsultarEstudios.cs</DependentUpon>
     </Compile>
     <Compile Include="ConsultarHistoriaClínica.cs">
       <SubType>Form</SubType>
@@ -109,6 +137,18 @@
     </Compile>
     <Compile Include="ConsultarMedicionesPaciente.Designer.cs">
       <DependentUpon>ConsultarMedicionesPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_EstadisticasMedicionesPromedio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultar_EstadisticasMedicionesPromedio.Designer.cs">
+      <DependentUpon>Consultar_EstadisticasMedicionesPromedio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerarEstadisticas.Designer.cs">
+      <DependentUpon>GenerarEstadisticas.cs</DependentUpon>
     </Compile>
     <Compile Include="Manejadores\ManejadorActualizarMetodoAnalisisLaboratorio.cs" />
     <Compile Include="Manejadores\ManejadorEstudiosLaboratorio.cs" />
@@ -252,6 +292,329 @@
     <Compile Include="RegistrarTratamiento.Designer.cs">
       <DependentUpon>RegistrarTratamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\crAntecedentesPatologicosPersonales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crAntecedentesPatologicosPersonales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crEstadisticas_1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crEstadisticas_1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crExamenGeneralMedicionPresionArterial.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crExamenGeneralMedicionPresionArterial.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crExamenGeneralSistemaLinfatico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crExamenGeneralSistemaLinfatico.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crExamenGeneralTemperatura.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crExamenGeneralTemperatura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHabitoDrogasIlicitas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHabitoDrogasIlicitas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaAnalisisLaboratorio.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaAnalisisLaboratorio.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaAntecedentesGinecoObstetricos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaAntecedentesGinecoObstetricos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaEstudioDiagnosticoPorImagen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaEstudioDiagnosticoPorImagen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaHabitoActividadFisica.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaHabitoActividadFisica.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaHabitoMedicamento.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaHabitoMedicamento.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaHabitosAlcoholismo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaHabitosAlcoholismo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaHabitosTabaquismo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaHabitosTabaquismo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crAntecedentesPatologicosFamiliares.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crAntecedentesPatologicosFamiliares.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaAlergias.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaAlergias.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaConsultas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaConsultas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaEnfermedades.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaEnfermedades.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaPiel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaPiel.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crHistoriaClinicaPracticaComplementaria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crHistoriaClinicaPracticaComplementaria.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crExamenesGenerales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crExamenesGenerales.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crMensaje.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crMensaje.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crOtrosTratamientos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crOtrosTratamientos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crSubExamenGeneralPosicionDecubito.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSubExamenGeneralPosicionDecubito.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crSubExamenGeneralPulso.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSubExamenGeneralPulso.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crSubExamenGeneralSintomas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSubExamenGeneralSintomas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crTratamientoMedicamento.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crTratamientoMedicamento.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crTratamientos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crTratamientos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\dsAlergias.cs">
+      <DependentUpon>dsAlergias.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsAlergias.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAlergias.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsAntecedentesGineco.cs">
+      <DependentUpon>dsAntecedentesGineco.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsAntecedentesGineco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAntecedentesGineco.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsAntecedentesMorbidos.cs">
+      <DependentUpon>dsAntecedentesMorbidos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsAntecedentesMorbidos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAntecedentesMorbidos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsAntecedentesPatologicosFamiliares.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAntecedentesPatologicosFamiliares.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsAntecedentesPatologicosPersonales.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAntecedentesPatologicosPersonales.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsEstadisticaCantidadPorSexo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEstadisticaCantidadPorSexo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsEstadisticas.cs">
+      <DependentUpon>dsEstadisticas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsEstadisticas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEstadisticas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsExamenGeneralMedicionesPresionArterial.cs">
+      <DependentUpon>dsExamenGeneralMedicionesPresionArterial.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsExamenGeneralMedicionesPresionArterial.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExamenGeneralMedicionesPresionArterial.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsExamenGeneralPulso.cs">
+      <DependentUpon>dsExamenGeneralPulso.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsExamenGeneralPulso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExamenGeneralPulso.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsExamenGeneralSintomas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExamenGeneralSintomas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsExamenGeneralSistemaLinfatico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExamenGeneralSistemaLinfatico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsExamenGeneralTemperatura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExamenGeneralTemperatura.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaAnalisisLaboratorio.cs">
+      <DependentUpon>dsHistoriaClinicaAnalisisLaboratorio.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaAnalisisLaboratorio.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaAnalisisLaboratorio.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaConsultas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaConsultas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaEstudioDiagnosticoPorImagen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaExamenGeneral.cs">
+      <DependentUpon>dsHistoriaClinicaExamenGeneral.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaExamenGeneral.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaExamenGeneral.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitoActividadFisica.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaHabitoActividadFisica.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitosAlcoholismo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaHabitosAlcoholismo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitosDrogasIlicitas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaHabitosDrogasIlicitas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitosMedicamentos.cs">
+      <DependentUpon>dsHistoriaClinicaHabitosMedicamentos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitosMedicamentos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaHabitosMedicamentos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitosTabaquismo.cs">
+      <DependentUpon>dsHistoriaClinicaHabitosTabaquismo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitosTabaquismo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaHabitosTabaquismo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaPiel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaPiel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaPracticaComplementaria.cs">
+      <DependentUpon>dsHistoriaClinicaPracticaComplementaria.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaPracticaComplementaria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHistoriaClinicaPracticaComplementaria.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsTratamientoMedicamento.cs">
+      <DependentUpon>dsTratamientoMedicamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsTratamientoMedicamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTratamientoMedicamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsTratamientos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTratamientos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades.cs" />
     <EmbeddedResource Include="ActualizarAnalisisLaboratorio.resx">
       <DependentUpon>ActualizarAnalisisLaboratorio.cs</DependentUpon>
@@ -265,20 +628,38 @@
     <EmbeddedResource Include="ActualizarMetodoAnalisisLaboratorio.resx">
       <DependentUpon>ActualizarMetodoAnalisisLaboratorio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarNombrePorTipoAntecedenteMorbido.resx">
+      <DependentUpon>ActualizarNombrePorTipoAntecedenteMorbido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ActualizarPresentacionMedicamento.resx">
       <DependentUpon>ActualizarPresentacionMedicamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ActualizarUnidadMedida.resx">
       <DependentUpon>ActualizarUnidadMedida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarEstadisticas_PromedioPorcentajeModa.resx">
+      <DependentUpon>ConsultarEstadisticas_PromedioPorcentajeModa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarEstadistica_PromedioSitioMedicion.resx">
+      <DependentUpon>ConsultarEstadistica_PromedioSitioMedicion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultarEstudio.resx">
       <DependentUpon>ConsultarEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarEstudios.resx">
+      <DependentUpon>ConsultarEstudios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarHistoriaClínica.resx">
       <DependentUpon>ConsultarHistoriaClínica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarMedicionesPaciente.resx">
       <DependentUpon>ConsultarMedicionesPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultar_EstadisticasMedicionesPromedio.resx">
+      <DependentUpon>Consultar_EstadisticasMedicionesPromedio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerarEstadisticas.resx">
+      <DependentUpon>GenerarEstadisticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MotivoFinTratamiento.resx">
       <DependentUpon>MotivoFinTratamiento.cs</DependentUpon>
@@ -343,6 +724,114 @@
     <EmbeddedResource Include="RegistrarTratamiento.resx">
       <DependentUpon>RegistrarTratamiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crAntecedentesPatologicosPersonales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crAntecedentesPatologicosPersonales.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crEstadisticas_1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crEstadisticas_1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crExamenGeneralMedicionPresionArterial.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crExamenGeneralMedicionPresionArterial.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crExamenGeneralSistemaLinfatico.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crExamenGeneralSistemaLinfatico.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crExamenGeneralTemperatura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crExamenGeneralTemperatura.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHabitoDrogasIlicitas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHabitoDrogasIlicitas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaAnalisisLaboratorio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaAnalisisLaboratorio.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaAntecedentesGinecoObstetricos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaAntecedentesGinecoObstetricos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaEstudioDiagnosticoPorImagen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaEstudioDiagnosticoPorImagen.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaHabitoActividadFisica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaHabitoActividadFisica.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaHabitoMedicamento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaHabitoMedicamento.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaHabitosAlcoholismo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaHabitosAlcoholismo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaHabitosTabaquismo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaHabitosTabaquismo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crAntecedentesPatologicosFamiliares.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crAntecedentesPatologicosFamiliares.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaAlergias.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaAlergias.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaConsultas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaConsultas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaEnfermedades.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaEnfermedades.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaPiel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaPiel.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crHistoriaClinicaPracticaComplementaria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crHistoriaClinicaPracticaComplementaria.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crExamenesGenerales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crExamenesGenerales.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crMensaje.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crMensaje.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crOtrosTratamientos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crOtrosTratamientos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crSubExamenGeneralPosicionDecubito.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSubExamenGeneralPosicionDecubito.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crSubExamenGeneralPulso.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSubExamenGeneralPulso.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crSubExamenGeneralSintomas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSubExamenGeneralSintomas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crTratamientoMedicamento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crTratamientoMedicamento.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crTratamientos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crTratamientos.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -353,6 +842,281 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reportes\dsAlergias.xsc">
+      <DependentUpon>dsAlergias.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAlergias.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAlergias.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsAlergias.xss">
+      <DependentUpon>dsAlergias.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesGineco.xsc">
+      <DependentUpon>dsAntecedentesGineco.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesGineco.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAntecedentesGineco.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsAntecedentesGineco.xss">
+      <DependentUpon>dsAntecedentesGineco.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesMorbidos.xsc">
+      <DependentUpon>dsAntecedentesMorbidos.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesMorbidos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAntecedentesMorbidos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsAntecedentesMorbidos.xss">
+      <DependentUpon>dsAntecedentesMorbidos.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesPatologicosFamiliares.xsc">
+      <DependentUpon>dsAntecedentesPatologicosFamiliares.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesPatologicosFamiliares.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAntecedentesPatologicosFamiliares.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsAntecedentesPatologicosFamiliares.xss">
+      <DependentUpon>dsAntecedentesPatologicosFamiliares.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesPatologicosPersonales.xsc">
+      <DependentUpon>dsAntecedentesPatologicosPersonales.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsAntecedentesPatologicosPersonales.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAntecedentesPatologicosPersonales.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsAntecedentesPatologicosPersonales.xss">
+      <DependentUpon>dsAntecedentesPatologicosPersonales.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsEstadisticaCantidadPorSexo.xsc">
+      <DependentUpon>dsEstadisticaCantidadPorSexo.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsEstadisticaCantidadPorSexo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEstadisticaCantidadPorSexo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsEstadisticaCantidadPorSexo.xss">
+      <DependentUpon>dsEstadisticaCantidadPorSexo.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsEstadisticas.xsc">
+      <DependentUpon>dsEstadisticas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsEstadisticas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEstadisticas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsEstadisticas.xss">
+      <DependentUpon>dsEstadisticas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralMedicionesPresionArterial.xsc">
+      <DependentUpon>dsExamenGeneralMedicionesPresionArterial.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralMedicionesPresionArterial.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExamenGeneralMedicionesPresionArterial.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsExamenGeneralMedicionesPresionArterial.xss">
+      <DependentUpon>dsExamenGeneralMedicionesPresionArterial.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralPulso.xsc">
+      <DependentUpon>dsExamenGeneralPulso.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralPulso.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExamenGeneralPulso.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsExamenGeneralPulso.xss">
+      <DependentUpon>dsExamenGeneralPulso.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralSintomas.xsc">
+      <DependentUpon>dsExamenGeneralSintomas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralSintomas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExamenGeneralSintomas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsExamenGeneralSintomas.xss">
+      <DependentUpon>dsExamenGeneralSintomas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralSistemaLinfatico.xsc">
+      <DependentUpon>dsExamenGeneralSistemaLinfatico.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralSistemaLinfatico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExamenGeneralSistemaLinfatico.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsExamenGeneralSistemaLinfatico.xss">
+      <DependentUpon>dsExamenGeneralSistemaLinfatico.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralTemperatura.xsc">
+      <DependentUpon>dsExamenGeneralTemperatura.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsExamenGeneralTemperatura.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExamenGeneralTemperatura.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsExamenGeneralTemperatura.xss">
+      <DependentUpon>dsExamenGeneralTemperatura.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaAnalisisLaboratorio.xsc">
+      <DependentUpon>dsHistoriaClinicaAnalisisLaboratorio.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaAnalisisLaboratorio.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaAnalisisLaboratorio.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaAnalisisLaboratorio.xss">
+      <DependentUpon>dsHistoriaClinicaAnalisisLaboratorio.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaConsultas.xsc">
+      <DependentUpon>dsHistoriaClinicaConsultas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaConsultas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaConsultas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaConsultas.xss">
+      <DependentUpon>dsHistoriaClinicaConsultas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsc">
+      <DependentUpon>dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaEstudioDiagnosticoPorImagen.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaEstudioDiagnosticoPorImagen.xss">
+      <DependentUpon>dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaExamenGeneral.xsc">
+      <DependentUpon>dsHistoriaClinicaExamenGeneral.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaExamenGeneral.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaExamenGeneral.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaExamenGeneral.xss">
+      <DependentUpon>dsHistoriaClinicaExamenGeneral.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitoActividadFisica.xsc">
+      <DependentUpon>dsHistoriaClinicaHabitoActividadFisica.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitoActividadFisica.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaHabitoActividadFisica.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitoActividadFisica.xss">
+      <DependentUpon>dsHistoriaClinicaHabitoActividadFisica.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosAlcoholismo.xsc">
+      <DependentUpon>dsHistoriaClinicaHabitosAlcoholismo.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosAlcoholismo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaHabitosAlcoholismo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosAlcoholismo.xss">
+      <DependentUpon>dsHistoriaClinicaHabitosAlcoholismo.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosDrogasIlicitas.xsc">
+      <DependentUpon>dsHistoriaClinicaHabitosDrogasIlicitas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosDrogasIlicitas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaHabitosDrogasIlicitas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosDrogasIlicitas.xss">
+      <DependentUpon>dsHistoriaClinicaHabitosDrogasIlicitas.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosMedicamentos.xsc">
+      <DependentUpon>dsHistoriaClinicaHabitosMedicamentos.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosMedicamentos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaHabitosMedicamentos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosMedicamentos.xss">
+      <DependentUpon>dsHistoriaClinicaHabitosMedicamentos.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosTabaquismo.xsc">
+      <DependentUpon>dsHistoriaClinicaHabitosTabaquismo.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosTabaquismo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaHabitosTabaquismo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaHabitosTabaquismo.xss">
+      <DependentUpon>dsHistoriaClinicaHabitosTabaquismo.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaPiel.xsc">
+      <DependentUpon>dsHistoriaClinicaPiel.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaPiel.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaPiel.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaPiel.xss">
+      <DependentUpon>dsHistoriaClinicaPiel.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaPracticaComplementaria.xsc">
+      <DependentUpon>dsHistoriaClinicaPracticaComplementaria.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaPracticaComplementaria.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHistoriaClinicaPracticaComplementaria.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsHistoriaClinicaPracticaComplementaria.xss">
+      <DependentUpon>dsHistoriaClinicaPracticaComplementaria.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsTratamientoMedicamento.xsc">
+      <DependentUpon>dsTratamientoMedicamento.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsTratamientoMedicamento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTratamientoMedicamento.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsTratamientoMedicamento.xss">
+      <DependentUpon>dsTratamientoMedicamento.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsTratamientos.xsc">
+      <DependentUpon>dsTratamientos.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsTratamientos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTratamientos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsTratamientos.xss">
+      <DependentUpon>dsTratamientos.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -373,7 +1137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\" />
-    <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

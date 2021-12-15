@@ -32,7 +32,7 @@ namespace GPA.Manejadores
         }
         public List<MomentoDia> mostrarMomentosDelDia()
         {
-            return MomentoDiaLN.mostrarMomentosDelDia();
+            return MomentoDiaLN.MostrarMomentosDelDia();
         }
         public List<PresentacionMedicamento> mostrarPresentacionesMedicamento()
         {

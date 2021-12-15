@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAlergias" targetNamespace="http://tempuri.org/dsAlergias.xsd" xmlns:mstns="http://tempuri.org/dsAlergias.xsd" xmlns="http://tempuri.org/dsAlergias.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAlergias" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAlergias" msprop:Generator_UserDSName="dsAlergias">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Alergias" msprop:Generator_TableClassName="AlergiasDataTable" msprop:Generator_TableVarName="tableAlergias" msprop:Generator_TablePropName="Alergias" msprop:Generator_RowDeletingName="AlergiasRowDeleting" msprop:Generator_RowChangingName="AlergiasRowChanging" msprop:Generator_RowEvHandlerName="AlergiasRowChangeEventHandler" msprop:Generator_RowDeletedName="AlergiasRowDeleted" msprop:Generator_UserTableName="Alergias" msprop:Generator_RowChangedName="AlergiasRowChanged" msprop:Generator_RowEvArgName="AlergiasRowChangeEvent" msprop:Generator_RowClassName="AlergiasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha_x0020_de_x0020_registro" msprop:Generator_ColumnVarNameInTable="columnFecha_de_registro" msprop:Generator_ColumnPropNameInRow="Fecha_de_registro" msprop:Generator_ColumnPropNameInTable="Fecha_de_registroColumn" msprop:Generator_UserColumnName="Fecha de registro" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombre_x0020_del_x0020_alérgeno" msprop:Generator_ColumnVarNameInTable="columnNombre_del_alérgeno" msprop:Generator_ColumnPropNameInRow="Nombre_del_alérgeno" msprop:Generator_ColumnPropNameInTable="Nombre_del_alérgenoColumn" msprop:Generator_UserColumnName="Nombre del alérgeno" type="xs:string" minOccurs="0" />
+              <xs:element name="Efectos_x0020_de_x0020_la_x0020_alergia" msprop:Generator_ColumnVarNameInTable="columnEfectos_de_la_alergia" msprop:Generator_ColumnPropNameInRow="Efectos_de_la_alergia" msprop:Generator_ColumnPropNameInTable="Efectos_de_la_alergiaColumn" msprop:Generator_UserColumnName="Efectos de la alergia" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

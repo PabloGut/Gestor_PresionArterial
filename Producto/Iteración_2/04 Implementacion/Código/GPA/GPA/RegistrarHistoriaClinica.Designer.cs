@@ -100,8 +100,7 @@
             this.rbPresentaAntecedentesMorbidos = new System.Windows.Forms.RadioButton();
             this.dgvAntecedentesMorbidos = new System.Windows.Forms.DataGridView();
             this.btnAgregarAntecedenteMorbido = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnAñadirNombrePorTipo = new System.Windows.Forms.Button();
             this.txtEvoluciónAntecedenteMorbido = new System.Windows.Forms.TextBox();
             this.txtTratamientoAntecedenteMorbido = new System.Windows.Forms.TextBox();
             this.txtCantTiempoAntecedenteMorbido = new System.Windows.Forms.TextBox();
@@ -173,7 +172,7 @@
             this.chbDiabetes = new System.Windows.Forms.CheckBox();
             this.chbAsma = new System.Windows.Forms.CheckBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
+            this.btnAgregarFamiliar = new System.Windows.Forms.Button();
             this.rbNoViveFamiliar = new System.Windows.Forms.RadioButton();
             this.rbSiViveFamiliar = new System.Windows.Forms.RadioButton();
             this.cboFamiliar = new System.Windows.Forms.ComboBox();
@@ -219,7 +218,7 @@
             this.btnAgregarAlergiaAlimentos = new System.Windows.Forms.Button();
             this.dgvAlergiasAlimentos = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnAñadirAlimento = new System.Windows.Forms.Button();
+            this.btnAgregarAlimento = new System.Windows.Forms.Button();
             this.txtEfectosAlergiaAlimentos = new System.Windows.Forms.TextBox();
             this.cboAlimentos = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -284,7 +283,7 @@
             this.txtDescripcionMedida = new System.Windows.Forms.TextBox();
             this.btnAgregarHabitoAlcoholismo = new System.Windows.Forms.Button();
             this.dgvHabitosAlcoholismo = new System.Windows.Forms.DataGridView();
-            this.brnAñadiTipoBebida = new System.Windows.Forms.Button();
+            this.brnAgregarTipoBebida = new System.Windows.Forms.Button();
             this.cboComponenteTiempoAlcoholismo = new System.Windows.Forms.ComboBox();
             this.label77 = new System.Windows.Forms.Label();
             this.txtCantidadConsume = new System.Windows.Forms.TextBox();
@@ -492,10 +491,11 @@
             // 
             // txtApellidoPaciente
             // 
+            this.txtApellidoPaciente.Enabled = false;
             this.txtApellidoPaciente.Location = new System.Drawing.Point(290, 26);
             this.txtApellidoPaciente.Name = "txtApellidoPaciente";
             this.txtApellidoPaciente.Size = new System.Drawing.Size(130, 20);
-            this.txtApellidoPaciente.TabIndex = 6;
+            this.txtApellidoPaciente.TabIndex = 2;
             // 
             // label1
             // 
@@ -525,17 +525,18 @@
             this.btnVerificarHC.Location = new System.Drawing.Point(580, 24);
             this.btnVerificarHC.Name = "btnVerificarHC";
             this.btnVerificarHC.Size = new System.Drawing.Size(75, 23);
-            this.btnVerificarHC.TabIndex = 7;
+            this.btnVerificarHC.TabIndex = 2;
             this.btnVerificarHC.Text = "VerificarHC";
             this.btnVerificarHC.UseVisualStyleBackColor = true;
             this.btnVerificarHC.Click += new System.EventHandler(this.btnVerificarHC_Click);
             // 
             // txtNombrePaciente
             // 
+            this.txtNombrePaciente.Enabled = false;
             this.txtNombrePaciente.Location = new System.Drawing.Point(57, 26);
             this.txtNombrePaciente.Name = "txtNombrePaciente";
             this.txtNombrePaciente.Size = new System.Drawing.Size(130, 20);
-            this.txtNombrePaciente.TabIndex = 5;
+            this.txtNombrePaciente.TabIndex = 1;
             // 
             // label3
             // 
@@ -565,6 +566,7 @@
             // 
             // txtTipoDocumentoDoctor
             // 
+            this.txtTipoDocumentoDoctor.Enabled = false;
             this.txtTipoDocumentoDoctor.Location = new System.Drawing.Point(111, 26);
             this.txtTipoDocumentoDoctor.Name = "txtTipoDocumentoDoctor";
             this.txtTipoDocumentoDoctor.Size = new System.Drawing.Size(207, 20);
@@ -590,6 +592,7 @@
             // 
             // txtApellidoDoctor
             // 
+            this.txtApellidoDoctor.Enabled = false;
             this.txtApellidoDoctor.Location = new System.Drawing.Point(393, 70);
             this.txtApellidoDoctor.Name = "txtApellidoDoctor";
             this.txtApellidoDoctor.Size = new System.Drawing.Size(262, 20);
@@ -597,6 +600,7 @@
             // 
             // txtNombreDoctor
             // 
+            this.txtNombreDoctor.Enabled = false;
             this.txtNombreDoctor.Location = new System.Drawing.Point(393, 23);
             this.txtNombreDoctor.Name = "txtNombreDoctor";
             this.txtNombreDoctor.Size = new System.Drawing.Size(262, 20);
@@ -604,6 +608,7 @@
             // 
             // txtNroDocumentoDoctor
             // 
+            this.txtNroDocumentoDoctor.Enabled = false;
             this.txtNroDocumentoDoctor.Location = new System.Drawing.Point(127, 70);
             this.txtNroDocumentoDoctor.Name = "txtNroDocumentoDoctor";
             this.txtNroDocumentoDoctor.Size = new System.Drawing.Size(191, 20);
@@ -629,6 +634,7 @@
             // 
             // mtbFechaActual
             // 
+            this.mtbFechaActual.Enabled = false;
             this.mtbFechaActual.Location = new System.Drawing.Point(82, 44);
             this.mtbFechaActual.Name = "mtbFechaActual";
             this.mtbFechaActual.Size = new System.Drawing.Size(79, 20);
@@ -659,6 +665,7 @@
             // 
             // mtbHoraActual
             // 
+            this.mtbHoraActual.Enabled = false;
             this.mtbHoraActual.Location = new System.Drawing.Point(393, 44);
             this.mtbHoraActual.Mask = "00:00";
             this.mtbHoraActual.Name = "mtbHoraActual";
@@ -694,7 +701,7 @@
             this.txtmotivoConsulta.Multiline = true;
             this.txtmotivoConsulta.Name = "txtmotivoConsulta";
             this.txtmotivoConsulta.Size = new System.Drawing.Size(448, 90);
-            this.txtmotivoConsulta.TabIndex = 13;
+            this.txtmotivoConsulta.TabIndex = 1;
             this.txtmotivoConsulta.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label11
@@ -1144,8 +1151,7 @@
             this.groupBox7.Controls.Add(this.rbPresentaAntecedentesMorbidos);
             this.groupBox7.Controls.Add(this.dgvAntecedentesMorbidos);
             this.groupBox7.Controls.Add(this.btnAgregarAntecedenteMorbido);
-            this.groupBox7.Controls.Add(this.button9);
-            this.groupBox7.Controls.Add(this.button8);
+            this.groupBox7.Controls.Add(this.btnAñadirNombrePorTipo);
             this.groupBox7.Controls.Add(this.txtEvoluciónAntecedenteMorbido);
             this.groupBox7.Controls.Add(this.txtTratamientoAntecedenteMorbido);
             this.groupBox7.Controls.Add(this.txtCantTiempoAntecedenteMorbido);
@@ -1170,7 +1176,7 @@
             this.rbNoPresentaAntecedentesMorbidos.Location = new System.Drawing.Point(342, 20);
             this.rbNoPresentaAntecedentesMorbidos.Name = "rbNoPresentaAntecedentesMorbidos";
             this.rbNoPresentaAntecedentesMorbidos.Size = new System.Drawing.Size(151, 17);
-            this.rbNoPresentaAntecedentesMorbidos.TabIndex = 17;
+            this.rbNoPresentaAntecedentesMorbidos.TabIndex = 4;
             this.rbNoPresentaAntecedentesMorbidos.TabStop = true;
             this.rbNoPresentaAntecedentesMorbidos.Text = "No presenta antecedentes";
             this.rbNoPresentaAntecedentesMorbidos.UseVisualStyleBackColor = true;
@@ -1182,7 +1188,7 @@
             this.rbPresentaAntecedentesMorbidos.Location = new System.Drawing.Point(180, 19);
             this.rbPresentaAntecedentesMorbidos.Name = "rbPresentaAntecedentesMorbidos";
             this.rbPresentaAntecedentesMorbidos.Size = new System.Drawing.Size(135, 17);
-            this.rbPresentaAntecedentesMorbidos.TabIndex = 16;
+            this.rbPresentaAntecedentesMorbidos.TabIndex = 3;
             this.rbPresentaAntecedentesMorbidos.TabStop = true;
             this.rbPresentaAntecedentesMorbidos.Text = "Presenta antecedentes";
             this.rbPresentaAntecedentesMorbidos.UseVisualStyleBackColor = true;
@@ -1201,58 +1207,50 @@
             this.btnAgregarAntecedenteMorbido.Location = new System.Drawing.Point(502, 127);
             this.btnAgregarAntecedenteMorbido.Name = "btnAgregarAntecedenteMorbido";
             this.btnAgregarAntecedenteMorbido.Size = new System.Drawing.Size(172, 23);
-            this.btnAgregarAntecedenteMorbido.TabIndex = 14;
+            this.btnAgregarAntecedenteMorbido.TabIndex = 11;
             this.btnAgregarAntecedenteMorbido.Text = "Agregar antecedente mórbido";
             this.btnAgregarAntecedenteMorbido.UseVisualStyleBackColor = true;
             this.btnAgregarAntecedenteMorbido.Click += new System.EventHandler(this.btnAgregarAntecedenteMorbido_Click);
             // 
-            // button9
+            // btnAñadirNombrePorTipo
             // 
-            this.button9.Location = new System.Drawing.Point(179, 83);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 12;
-            this.button9.Text = "Añadir";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(179, 41);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 11;
-            this.button8.Text = "Añadir";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnAñadirNombrePorTipo.Location = new System.Drawing.Point(179, 83);
+            this.btnAñadirNombrePorTipo.Name = "btnAñadirNombrePorTipo";
+            this.btnAñadirNombrePorTipo.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadirNombrePorTipo.TabIndex = 12;
+            this.btnAñadirNombrePorTipo.Text = "Añadir";
+            this.btnAñadirNombrePorTipo.UseVisualStyleBackColor = true;
+            this.btnAñadirNombrePorTipo.Click += new System.EventHandler(this.button9_Click);
             // 
             // txtEvoluciónAntecedenteMorbido
             // 
             this.txtEvoluciónAntecedenteMorbido.Location = new System.Drawing.Point(340, 86);
             this.txtEvoluciónAntecedenteMorbido.Name = "txtEvoluciónAntecedenteMorbido";
             this.txtEvoluciónAntecedenteMorbido.Size = new System.Drawing.Size(334, 20);
-            this.txtEvoluciónAntecedenteMorbido.TabIndex = 10;
+            this.txtEvoluciónAntecedenteMorbido.TabIndex = 8;
             // 
             // txtTratamientoAntecedenteMorbido
             // 
             this.txtTratamientoAntecedenteMorbido.Location = new System.Drawing.Point(340, 43);
             this.txtTratamientoAntecedenteMorbido.Name = "txtTratamientoAntecedenteMorbido";
             this.txtTratamientoAntecedenteMorbido.Size = new System.Drawing.Size(334, 20);
-            this.txtTratamientoAntecedenteMorbido.TabIndex = 9;
+            this.txtTratamientoAntecedenteMorbido.TabIndex = 7;
             // 
             // txtCantTiempoAntecedenteMorbido
             // 
             this.txtCantTiempoAntecedenteMorbido.Location = new System.Drawing.Point(180, 127);
             this.txtCantTiempoAntecedenteMorbido.Name = "txtCantTiempoAntecedenteMorbido";
             this.txtCantTiempoAntecedenteMorbido.Size = new System.Drawing.Size(60, 20);
-            this.txtCantTiempoAntecedenteMorbido.TabIndex = 8;
+            this.txtCantTiempoAntecedenteMorbido.TabIndex = 9;
             // 
             // cboNombrePorTipoAntecedenteMorbido
             // 
+            this.cboNombrePorTipoAntecedenteMorbido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNombrePorTipoAntecedenteMorbido.FormattingEnabled = true;
             this.cboNombrePorTipoAntecedenteMorbido.Location = new System.Drawing.Point(52, 85);
             this.cboNombrePorTipoAntecedenteMorbido.Name = "cboNombrePorTipoAntecedenteMorbido";
             this.cboNombrePorTipoAntecedenteMorbido.Size = new System.Drawing.Size(121, 21);
-            this.cboNombrePorTipoAntecedenteMorbido.TabIndex = 1;
+            this.cboNombrePorTipoAntecedenteMorbido.TabIndex = 6;
             this.cboNombrePorTipoAntecedenteMorbido.SelectedIndexChanged += new System.EventHandler(this.cboNombrePorTipoAntecedenteMorbido_SelectedIndexChanged);
             // 
             // label30
@@ -1266,11 +1264,12 @@
             // 
             // cboTipoAntecedenteMorbido
             // 
+            this.cboTipoAntecedenteMorbido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoAntecedenteMorbido.FormattingEnabled = true;
             this.cboTipoAntecedenteMorbido.Location = new System.Drawing.Point(37, 43);
             this.cboTipoAntecedenteMorbido.Name = "cboTipoAntecedenteMorbido";
             this.cboTipoAntecedenteMorbido.Size = new System.Drawing.Size(136, 21);
-            this.cboTipoAntecedenteMorbido.TabIndex = 0;
+            this.cboTipoAntecedenteMorbido.TabIndex = 5;
             this.cboTipoAntecedenteMorbido.SelectedIndexChanged += new System.EventHandler(this.cboTipoAntecedenteMorbido_SelectedIndexChanged);
             // 
             // label29
@@ -1284,11 +1283,12 @@
             // 
             // cboTiempoOcurridoAntMorbido
             // 
+            this.cboTiempoOcurridoAntMorbido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTiempoOcurridoAntMorbido.FormattingEnabled = true;
             this.cboTiempoOcurridoAntMorbido.Location = new System.Drawing.Point(246, 127);
             this.cboTiempoOcurridoAntMorbido.Name = "cboTiempoOcurridoAntMorbido";
             this.cboTiempoOcurridoAntMorbido.Size = new System.Drawing.Size(121, 21);
-            this.cboTiempoOcurridoAntMorbido.TabIndex = 2;
+            this.cboTiempoOcurridoAntMorbido.TabIndex = 10;
             // 
             // label28
             // 
@@ -1355,13 +1355,14 @@
             this.groupBox8.TabIndex = 9;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Antecedentes Ginecoobstétricos";
+            this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
             // 
             // btnAgregarAntecedenteGinecoObstetrico
             // 
             this.btnAgregarAntecedenteGinecoObstetrico.Location = new System.Drawing.Point(220, 228);
             this.btnAgregarAntecedenteGinecoObstetrico.Name = "btnAgregarAntecedenteGinecoObstetrico";
             this.btnAgregarAntecedenteGinecoObstetrico.Size = new System.Drawing.Size(220, 23);
-            this.btnAgregarAntecedenteGinecoObstetrico.TabIndex = 40;
+            this.btnAgregarAntecedenteGinecoObstetrico.TabIndex = 30;
             this.btnAgregarAntecedenteGinecoObstetrico.Text = "Agregar Antecedente GinecoObstetrico";
             this.btnAgregarAntecedenteGinecoObstetrico.UseVisualStyleBackColor = true;
             this.btnAgregarAntecedenteGinecoObstetrico.Click += new System.EventHandler(this.btnAgregarAntecedenteGinecoObstetrico_Click_1);
@@ -1381,7 +1382,7 @@
             this.rbNoTieneAbortos.Location = new System.Drawing.Point(41, 3);
             this.rbNoTieneAbortos.Name = "rbNoTieneAbortos";
             this.rbNoTieneAbortos.Size = new System.Drawing.Size(39, 17);
-            this.rbNoTieneAbortos.TabIndex = 37;
+            this.rbNoTieneAbortos.TabIndex = 22;
             this.rbNoTieneAbortos.TabStop = true;
             this.rbNoTieneAbortos.Text = "No";
             this.rbNoTieneAbortos.UseVisualStyleBackColor = true;
@@ -1392,7 +1393,7 @@
             this.rbSiTieneAbortos.Location = new System.Drawing.Point(1, 3);
             this.rbSiTieneAbortos.Name = "rbSiTieneAbortos";
             this.rbSiTieneAbortos.Size = new System.Drawing.Size(34, 17);
-            this.rbSiTieneAbortos.TabIndex = 36;
+            this.rbSiTieneAbortos.TabIndex = 21;
             this.rbSiTieneAbortos.TabStop = true;
             this.rbSiTieneAbortos.Text = "Si";
             this.rbSiTieneAbortos.UseVisualStyleBackColor = true;
@@ -1412,7 +1413,7 @@
             this.rbNoTieneEmbarazos.Location = new System.Drawing.Point(41, 3);
             this.rbNoTieneEmbarazos.Name = "rbNoTieneEmbarazos";
             this.rbNoTieneEmbarazos.Size = new System.Drawing.Size(39, 17);
-            this.rbNoTieneEmbarazos.TabIndex = 37;
+            this.rbNoTieneEmbarazos.TabIndex = 13;
             this.rbNoTieneEmbarazos.TabStop = true;
             this.rbNoTieneEmbarazos.Text = "No";
             this.rbNoTieneEmbarazos.UseVisualStyleBackColor = true;
@@ -1423,25 +1424,26 @@
             this.rbSiTieneEmbarazos.Location = new System.Drawing.Point(1, 3);
             this.rbSiTieneEmbarazos.Name = "rbSiTieneEmbarazos";
             this.rbSiTieneEmbarazos.Size = new System.Drawing.Size(34, 17);
-            this.rbSiTieneEmbarazos.TabIndex = 36;
+            this.rbSiTieneEmbarazos.TabIndex = 12;
             this.rbSiTieneEmbarazos.TabStop = true;
             this.rbSiTieneEmbarazos.Text = "Si";
             this.rbSiTieneEmbarazos.UseVisualStyleBackColor = true;
             // 
             // cboTipoPartoPostermino
             // 
+            this.cboTipoPartoPostermino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoPartoPostermino.FormattingEnabled = true;
             this.cboTipoPartoPostermino.Location = new System.Drawing.Point(150, 142);
             this.cboTipoPartoPostermino.Name = "cboTipoPartoPostermino";
             this.cboTipoPartoPostermino.Size = new System.Drawing.Size(121, 21);
-            this.cboTipoPartoPostermino.TabIndex = 35;
+            this.cboTipoPartoPostermino.TabIndex = 20;
             // 
             // txtCantidadEmbarazosPosTermino
             // 
             this.txtCantidadEmbarazosPosTermino.Location = new System.Drawing.Point(82, 142);
             this.txtCantidadEmbarazosPosTermino.Name = "txtCantidadEmbarazosPosTermino";
             this.txtCantidadEmbarazosPosTermino.Size = new System.Drawing.Size(62, 20);
-            this.txtCantidadEmbarazosPosTermino.TabIndex = 34;
+            this.txtCantidadEmbarazosPosTermino.TabIndex = 19;
             // 
             // label106
             // 
@@ -1457,7 +1459,7 @@
             this.txtCantidadHijosVivos.Location = new System.Drawing.Point(446, 151);
             this.txtCantidadHijosVivos.Name = "txtCantidadHijosVivos";
             this.txtCantidadHijosVivos.Size = new System.Drawing.Size(66, 20);
-            this.txtCantidadHijosVivos.TabIndex = 32;
+            this.txtCantidadHijosVivos.TabIndex = 28;
             // 
             // label105
             // 
@@ -1479,26 +1481,28 @@
             // 
             // cboTipoAborto2
             // 
+            this.cboTipoAborto2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoAborto2.FormattingEnabled = true;
             this.cboTipoAborto2.Location = new System.Drawing.Point(372, 116);
             this.cboTipoAborto2.Name = "cboTipoAborto2";
             this.cboTipoAborto2.Size = new System.Drawing.Size(121, 21);
-            this.cboTipoAborto2.TabIndex = 28;
+            this.cboTipoAborto2.TabIndex = 26;
             // 
             // cboTipoAborto1
             // 
+            this.cboTipoAborto1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoAborto1.FormattingEnabled = true;
             this.cboTipoAborto1.Location = new System.Drawing.Point(372, 76);
             this.cboTipoAborto1.Name = "cboTipoAborto1";
             this.cboTipoAborto1.Size = new System.Drawing.Size(121, 21);
-            this.cboTipoAborto1.TabIndex = 27;
+            this.cboTipoAborto1.TabIndex = 24;
             // 
             // txtCantidadTipoAborto2
             // 
             this.txtCantidadTipoAborto2.Location = new System.Drawing.Point(573, 116);
             this.txtCantidadTipoAborto2.Name = "txtCantidadTipoAborto2";
             this.txtCantidadTipoAborto2.Size = new System.Drawing.Size(62, 20);
-            this.txtCantidadTipoAborto2.TabIndex = 26;
+            this.txtCantidadTipoAborto2.TabIndex = 27;
             // 
             // txtCantidadTipoAborto1
             // 
@@ -1512,7 +1516,7 @@
             this.txtCantidadAbortos.Location = new System.Drawing.Point(394, 39);
             this.txtCantidadAbortos.Name = "txtCantidadAbortos";
             this.txtCantidadAbortos.Size = new System.Drawing.Size(66, 20);
-            this.txtCantidadAbortos.TabIndex = 24;
+            this.txtCantidadAbortos.TabIndex = 23;
             // 
             // label43
             // 
@@ -1543,19 +1547,21 @@
             // 
             // cboTipoPartoATermino
             // 
+            this.cboTipoPartoATermino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoPartoATermino.FormattingEnabled = true;
             this.cboTipoPartoATermino.Location = new System.Drawing.Point(150, 115);
             this.cboTipoPartoATermino.Name = "cboTipoPartoATermino";
             this.cboTipoPartoATermino.Size = new System.Drawing.Size(121, 21);
-            this.cboTipoPartoATermino.TabIndex = 20;
+            this.cboTipoPartoATermino.TabIndex = 18;
             // 
             // cboTipoPartoPretermino
             // 
+            this.cboTipoPartoPretermino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoPartoPretermino.FormattingEnabled = true;
             this.cboTipoPartoPretermino.Location = new System.Drawing.Point(150, 88);
             this.cboTipoPartoPretermino.Name = "cboTipoPartoPretermino";
             this.cboTipoPartoPretermino.Size = new System.Drawing.Size(121, 21);
-            this.cboTipoPartoPretermino.TabIndex = 19;
+            this.cboTipoPartoPretermino.TabIndex = 16;
             // 
             // txtProblemasEmbarazo
             // 
@@ -1563,28 +1569,28 @@
             this.txtProblemasEmbarazo.Multiline = true;
             this.txtProblemasEmbarazo.Name = "txtProblemasEmbarazo";
             this.txtProblemasEmbarazo.Size = new System.Drawing.Size(656, 38);
-            this.txtProblemasEmbarazo.TabIndex = 18;
+            this.txtProblemasEmbarazo.TabIndex = 29;
             // 
             // txtCantidadEmbarazosATermino
             // 
             this.txtCantidadEmbarazosATermino.Location = new System.Drawing.Point(82, 115);
             this.txtCantidadEmbarazosATermino.Name = "txtCantidadEmbarazosATermino";
             this.txtCantidadEmbarazosATermino.Size = new System.Drawing.Size(62, 20);
-            this.txtCantidadEmbarazosATermino.TabIndex = 14;
+            this.txtCantidadEmbarazosATermino.TabIndex = 17;
             // 
             // txtCantidadEmbarazosPrematuro
             // 
             this.txtCantidadEmbarazosPrematuro.Location = new System.Drawing.Point(82, 89);
             this.txtCantidadEmbarazosPrematuro.Name = "txtCantidadEmbarazosPrematuro";
             this.txtCantidadEmbarazosPrematuro.Size = new System.Drawing.Size(62, 20);
-            this.txtCantidadEmbarazosPrematuro.TabIndex = 13;
+            this.txtCantidadEmbarazosPrematuro.TabIndex = 15;
             // 
             // txtCantidadEmbarazos
             // 
             this.txtCantidadEmbarazos.Location = new System.Drawing.Point(140, 62);
             this.txtCantidadEmbarazos.Name = "txtCantidadEmbarazos";
             this.txtCantidadEmbarazos.Size = new System.Drawing.Size(66, 20);
-            this.txtCantidadEmbarazos.TabIndex = 12;
+            this.txtCantidadEmbarazos.TabIndex = 14;
             // 
             // label42
             // 
@@ -1674,7 +1680,7 @@
             this.panel2.Controls.Add(this.label40);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label39);
-            this.panel2.Controls.Add(this.button13);
+            this.panel2.Controls.Add(this.btnAgregarFamiliar);
             this.panel2.Controls.Add(this.rbNoViveFamiliar);
             this.panel2.Controls.Add(this.rbSiViveFamiliar);
             this.panel2.Controls.Add(this.cboFamiliar);
@@ -1909,14 +1915,15 @@
             this.label39.TabIndex = 6;
             this.label39.Text = "Seleccionar las enfermedades que padece o padeció";
             // 
-            // button13
+            // btnAgregarFamiliar
             // 
-            this.button13.Location = new System.Drawing.Point(226, 13);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
-            this.button13.TabIndex = 5;
-            this.button13.Text = "Añadir";
-            this.button13.UseVisualStyleBackColor = true;
+            this.btnAgregarFamiliar.Location = new System.Drawing.Point(226, 13);
+            this.btnAgregarFamiliar.Name = "btnAgregarFamiliar";
+            this.btnAgregarFamiliar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarFamiliar.TabIndex = 5;
+            this.btnAgregarFamiliar.Text = "Añadir";
+            this.btnAgregarFamiliar.UseVisualStyleBackColor = true;
+            this.btnAgregarFamiliar.Click += new System.EventHandler(this.btnAgregarFamiliar_Click);
             // 
             // rbNoViveFamiliar
             // 
@@ -1924,7 +1931,7 @@
             this.rbNoViveFamiliar.Location = new System.Drawing.Point(413, 16);
             this.rbNoViveFamiliar.Name = "rbNoViveFamiliar";
             this.rbNoViveFamiliar.Size = new System.Drawing.Size(39, 17);
-            this.rbNoViveFamiliar.TabIndex = 4;
+            this.rbNoViveFamiliar.TabIndex = 33;
             this.rbNoViveFamiliar.TabStop = true;
             this.rbNoViveFamiliar.Text = "No";
             this.rbNoViveFamiliar.UseVisualStyleBackColor = true;
@@ -1935,7 +1942,7 @@
             this.rbSiViveFamiliar.Location = new System.Drawing.Point(373, 16);
             this.rbSiViveFamiliar.Name = "rbSiViveFamiliar";
             this.rbSiViveFamiliar.Size = new System.Drawing.Size(34, 17);
-            this.rbSiViveFamiliar.TabIndex = 3;
+            this.rbSiViveFamiliar.TabIndex = 32;
             this.rbSiViveFamiliar.TabStop = true;
             this.rbSiViveFamiliar.Text = "Si";
             this.rbSiViveFamiliar.UseVisualStyleBackColor = true;
@@ -1943,11 +1950,12 @@
             // 
             // cboFamiliar
             // 
+            this.cboFamiliar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFamiliar.FormattingEnabled = true;
             this.cboFamiliar.Location = new System.Drawing.Point(51, 15);
             this.cboFamiliar.Name = "cboFamiliar";
             this.cboFamiliar.Size = new System.Drawing.Size(169, 21);
-            this.cboFamiliar.TabIndex = 2;
+            this.cboFamiliar.TabIndex = 31;
             // 
             // label37
             // 
@@ -2359,7 +2367,7 @@
             this.groupBox3.Controls.Add(this.btnAgregarAlergiaAlimentos);
             this.groupBox3.Controls.Add(this.dgvAlergiasAlimentos);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.btnAñadirAlimento);
+            this.groupBox3.Controls.Add(this.btnAgregarAlimento);
             this.groupBox3.Controls.Add(this.txtEfectosAlergiaAlimentos);
             this.groupBox3.Controls.Add(this.cboAlimentos);
             this.groupBox3.Controls.Add(this.label5);
@@ -2401,14 +2409,15 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Lista de alimentos";
             // 
-            // btnAñadirAlimento
+            // btnAgregarAlimento
             // 
-            this.btnAñadirAlimento.Location = new System.Drawing.Point(451, 13);
-            this.btnAñadirAlimento.Name = "btnAñadirAlimento";
-            this.btnAñadirAlimento.Size = new System.Drawing.Size(57, 23);
-            this.btnAñadirAlimento.TabIndex = 12;
-            this.btnAñadirAlimento.Text = "Añadir";
-            this.btnAñadirAlimento.UseVisualStyleBackColor = true;
+            this.btnAgregarAlimento.Location = new System.Drawing.Point(451, 13);
+            this.btnAgregarAlimento.Name = "btnAgregarAlimento";
+            this.btnAgregarAlimento.Size = new System.Drawing.Size(57, 23);
+            this.btnAgregarAlimento.TabIndex = 12;
+            this.btnAgregarAlimento.Text = "Añadir";
+            this.btnAgregarAlimento.UseVisualStyleBackColor = true;
+            this.btnAgregarAlimento.Click += new System.EventHandler(this.btnAgregarAlimento_Click);
             // 
             // txtEfectosAlergiaAlimentos
             // 
@@ -2420,6 +2429,7 @@
             // 
             // cboAlimentos
             // 
+            this.cboAlimentos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAlimentos.FormattingEnabled = true;
             this.cboAlimentos.Location = new System.Drawing.Point(282, 15);
             this.cboAlimentos.Name = "cboAlimentos";
@@ -2542,6 +2552,7 @@
             // 
             // cboSustanciaAmbiente
             // 
+            this.cboSustanciaAmbiente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSustanciaAmbiente.FormattingEnabled = true;
             this.cboSustanciaAmbiente.Location = new System.Drawing.Point(282, 15);
             this.cboSustanciaAmbiente.Name = "cboSustanciaAmbiente";
@@ -2665,6 +2676,7 @@
             this.btnAñadirSustanciaContactoPiel.TabIndex = 12;
             this.btnAñadirSustanciaContactoPiel.Text = "Añadir";
             this.btnAñadirSustanciaContactoPiel.UseVisualStyleBackColor = true;
+            this.btnAñadirSustanciaContactoPiel.Click += new System.EventHandler(this.btnAñadirSustanciaContactoPiel_Click);
             // 
             // txtEfectosAlergiaSustanciaContactoPiel
             // 
@@ -2676,6 +2688,7 @@
             // 
             // cboSustanciaContactoPiel
             // 
+            this.cboSustanciaContactoPiel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSustanciaContactoPiel.FormattingEnabled = true;
             this.cboSustanciaContactoPiel.Location = new System.Drawing.Point(376, 12);
             this.cboSustanciaContactoPiel.Name = "cboSustanciaContactoPiel";
@@ -2786,6 +2799,7 @@
             this.btnAñadirMedicamento.TabIndex = 12;
             this.btnAñadirMedicamento.Text = "Añadir";
             this.btnAñadirMedicamento.UseVisualStyleBackColor = true;
+            this.btnAñadirMedicamento.Click += new System.EventHandler(this.btnAñadirMedicamento_Click);
             // 
             // txtEfectosAlergiasMedicamentos
             // 
@@ -2797,6 +2811,7 @@
             // 
             // cboMedicamentosAlergia
             // 
+            this.cboMedicamentosAlergia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMedicamentosAlergia.FormattingEnabled = true;
             this.cboMedicamentosAlergia.Location = new System.Drawing.Point(282, 15);
             this.cboMedicamentosAlergia.Name = "cboMedicamentosAlergia";
@@ -2907,6 +2922,7 @@
             this.btnAñadirInsecto.TabIndex = 12;
             this.btnAñadirInsecto.Text = "Añadir";
             this.btnAñadirInsecto.UseVisualStyleBackColor = true;
+            this.btnAñadirInsecto.Click += new System.EventHandler(this.btnAñadirInsecto_Click);
             // 
             // txtEfectosAlergiaInsecto
             // 
@@ -2918,6 +2934,7 @@
             // 
             // cboInsectos
             // 
+            this.cboInsectos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboInsectos.FormattingEnabled = true;
             this.cboInsectos.Location = new System.Drawing.Point(282, 16);
             this.cboInsectos.Name = "cboInsectos";
@@ -3013,7 +3030,7 @@
             this.groupBox14.Controls.Add(this.txtDescripcionMedida);
             this.groupBox14.Controls.Add(this.btnAgregarHabitoAlcoholismo);
             this.groupBox14.Controls.Add(this.dgvHabitosAlcoholismo);
-            this.groupBox14.Controls.Add(this.brnAñadiTipoBebida);
+            this.groupBox14.Controls.Add(this.brnAgregarTipoBebida);
             this.groupBox14.Controls.Add(this.cboComponenteTiempoAlcoholismo);
             this.groupBox14.Controls.Add(this.label77);
             this.groupBox14.Controls.Add(this.txtCantidadConsume);
@@ -3067,17 +3084,19 @@
             this.dgvHabitosAlcoholismo.Size = new System.Drawing.Size(484, 100);
             this.dgvHabitosAlcoholismo.TabIndex = 15;
             // 
-            // brnAñadiTipoBebida
+            // brnAgregarTipoBebida
             // 
-            this.brnAñadiTipoBebida.Location = new System.Drawing.Point(201, 71);
-            this.brnAñadiTipoBebida.Name = "brnAñadiTipoBebida";
-            this.brnAñadiTipoBebida.Size = new System.Drawing.Size(58, 23);
-            this.brnAñadiTipoBebida.TabIndex = 14;
-            this.brnAñadiTipoBebida.Text = "Añadir";
-            this.brnAñadiTipoBebida.UseVisualStyleBackColor = true;
+            this.brnAgregarTipoBebida.Location = new System.Drawing.Point(201, 72);
+            this.brnAgregarTipoBebida.Name = "brnAgregarTipoBebida";
+            this.brnAgregarTipoBebida.Size = new System.Drawing.Size(58, 23);
+            this.brnAgregarTipoBebida.TabIndex = 14;
+            this.brnAgregarTipoBebida.Text = "Añadir";
+            this.brnAgregarTipoBebida.UseVisualStyleBackColor = true;
+            this.brnAgregarTipoBebida.Click += new System.EventHandler(this.brnAgregarTipoBebida_Click);
             // 
             // cboComponenteTiempoAlcoholismo
             // 
+            this.cboComponenteTiempoAlcoholismo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComponenteTiempoAlcoholismo.FormattingEnabled = true;
             this.cboComponenteTiempoAlcoholismo.Location = new System.Drawing.Point(554, 73);
             this.cboComponenteTiempoAlcoholismo.Name = "cboComponenteTiempoAlcoholismo";
@@ -3103,6 +3122,7 @@
             // 
             // cboMedidaConsumeAlcohol
             // 
+            this.cboMedidaConsumeAlcohol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMedidaConsumeAlcohol.FormattingEnabled = true;
             this.cboMedidaConsumeAlcohol.Location = new System.Drawing.Point(407, 73);
             this.cboMedidaConsumeAlcohol.Name = "cboMedidaConsumeAlcohol";
@@ -3112,6 +3132,7 @@
             // 
             // cboTipoBebida
             // 
+            this.cboTipoBebida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoBebida.FormattingEnabled = true;
             this.cboTipoBebida.Location = new System.Drawing.Point(98, 73);
             this.cboTipoBebida.Name = "cboTipoBebida";
@@ -3254,6 +3275,7 @@
             // 
             // cboComponenteTiempoFumaba
             // 
+            this.cboComponenteTiempoFumaba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComponenteTiempoFumaba.FormattingEnabled = true;
             this.cboComponenteTiempoFumaba.Location = new System.Drawing.Point(554, 131);
             this.cboComponenteTiempoFumaba.Name = "cboComponenteTiempoFumaba";
@@ -3262,6 +3284,7 @@
             // 
             // cboElementoFumaba
             // 
+            this.cboElementoFumaba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementoFumaba.FormattingEnabled = true;
             this.cboElementoFumaba.Location = new System.Drawing.Point(407, 131);
             this.cboElementoFumaba.Name = "cboElementoFumaba";
@@ -3277,6 +3300,7 @@
             // 
             // cboDescripcionDelTiempoFumaba
             // 
+            this.cboDescripcionDelTiempoFumaba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDescripcionDelTiempoFumaba.FormattingEnabled = true;
             this.cboDescripcionDelTiempoFumaba.Location = new System.Drawing.Point(121, 131);
             this.cboDescripcionDelTiempoFumaba.Name = "cboDescripcionDelTiempoFumaba";
@@ -3285,6 +3309,7 @@
             // 
             // cboElementosDelTiempoFumaba
             // 
+            this.cboElementosDelTiempoFumaba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementosDelTiempoFumaba.FormattingEnabled = true;
             this.cboElementosDelTiempoFumaba.Location = new System.Drawing.Point(434, 97);
             this.cboElementosDelTiempoFumaba.Name = "cboElementosDelTiempoFumaba";
@@ -3307,6 +3332,7 @@
             this.cbDejoFumar.TabIndex = 8;
             this.cbDejoFumar.Text = "Dejó de fumar";
             this.cbDejoFumar.UseVisualStyleBackColor = true;
+            this.cbDejoFumar.CheckedChanged += new System.EventHandler(this.DejoDeFumar);
             // 
             // label69
             // 
@@ -3335,6 +3361,7 @@
             // 
             // cboElementoQueFuma
             // 
+            this.cboElementoQueFuma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementoQueFuma.FormattingEnabled = true;
             this.cboElementoQueFuma.Location = new System.Drawing.Point(118, 66);
             this.cboElementoQueFuma.Name = "cboElementoQueFuma";
@@ -3343,6 +3370,7 @@
             // 
             // cboComponenteTiempoFuma
             // 
+            this.cboComponenteTiempoFuma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComponenteTiempoFuma.FormattingEnabled = true;
             this.cboComponenteTiempoFuma.Location = new System.Drawing.Point(265, 65);
             this.cboComponenteTiempoFuma.Name = "cboComponenteTiempoFuma";
@@ -3515,6 +3543,7 @@
             // 
             // cboCantidadComprimidos
             // 
+            this.cboCantidadComprimidos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCantidadComprimidos.FormattingEnabled = true;
             this.cboCantidadComprimidos.Location = new System.Drawing.Point(476, 122);
             this.cboCantidadComprimidos.Name = "cboCantidadComprimidos";
@@ -3523,6 +3552,7 @@
             // 
             // cboConcentracion
             // 
+            this.cboConcentracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboConcentracion.FormattingEnabled = true;
             this.cboConcentracion.Location = new System.Drawing.Point(416, 65);
             this.cboConcentracion.Name = "cboConcentracion";
@@ -3559,6 +3589,7 @@
             // 
             // cboElementoTiempoCancelacionMedicamento
             // 
+            this.cboElementoTiempoCancelacionMedicamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementoTiempoCancelacionMedicamento.FormattingEnabled = true;
             this.cboElementoTiempoCancelacionMedicamento.Location = new System.Drawing.Point(538, 309);
             this.cboElementoTiempoCancelacionMedicamento.Name = "cboElementoTiempoCancelacionMedicamento";
@@ -3599,6 +3630,7 @@
             // 
             // cboElementoTiempoMedicamento
             // 
+            this.cboElementoTiempoMedicamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementoTiempoMedicamento.FormattingEnabled = true;
             this.cboElementoTiempoMedicamento.Location = new System.Drawing.Point(538, 283);
             this.cboElementoTiempoMedicamento.Name = "cboElementoTiempoMedicamento";
@@ -3725,6 +3757,7 @@
             // 
             // cboPresentacionMedicamento1
             // 
+            this.cboPresentacionMedicamento1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPresentacionMedicamento1.FormattingEnabled = true;
             this.cboPresentacionMedicamento1.Location = new System.Drawing.Point(436, 14);
             this.cboPresentacionMedicamento1.Name = "cboPresentacionMedicamento1";
@@ -3796,6 +3829,7 @@
             // 
             // cboMomentoDia1
             // 
+            this.cboMomentoDia1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMomentoDia1.FormattingEnabled = true;
             this.cboMomentoDia1.Location = new System.Drawing.Point(93, 17);
             this.cboMomentoDia1.Name = "cboMomentoDia1";
@@ -3813,6 +3847,7 @@
             // 
             // cboMomentoDia2
             // 
+            this.cboMomentoDia2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMomentoDia2.FormattingEnabled = true;
             this.cboMomentoDia2.Location = new System.Drawing.Point(93, 48);
             this.cboMomentoDia2.Name = "cboMomentoDia2";
@@ -3821,6 +3856,7 @@
             // 
             // cboPresentacionMedicamento3
             // 
+            this.cboPresentacionMedicamento3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPresentacionMedicamento3.FormattingEnabled = true;
             this.cboPresentacionMedicamento3.Location = new System.Drawing.Point(436, 74);
             this.cboPresentacionMedicamento3.Name = "cboPresentacionMedicamento3";
@@ -3829,6 +3865,7 @@
             // 
             // cboMomentoDia3
             // 
+            this.cboMomentoDia3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMomentoDia3.FormattingEnabled = true;
             this.cboMomentoDia3.Location = new System.Drawing.Point(93, 77);
             this.cboMomentoDia3.Name = "cboMomentoDia3";
@@ -3837,6 +3874,7 @@
             // 
             // cboPresentacionMedicamento2
             // 
+            this.cboPresentacionMedicamento2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPresentacionMedicamento2.FormattingEnabled = true;
             this.cboPresentacionMedicamento2.Location = new System.Drawing.Point(436, 44);
             this.cboPresentacionMedicamento2.Name = "cboPresentacionMedicamento2";
@@ -3891,6 +3929,7 @@
             // 
             // cboFrecuencia
             // 
+            this.cboFrecuencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFrecuencia.FormattingEnabled = true;
             this.cboFrecuencia.Location = new System.Drawing.Point(400, 148);
             this.cboFrecuencia.Name = "cboFrecuencia";
@@ -3899,6 +3938,7 @@
             // 
             // cboPresentacionMedicamento
             // 
+            this.cboPresentacionMedicamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPresentacionMedicamento.FormattingEnabled = true;
             this.cboPresentacionMedicamento.Location = new System.Drawing.Point(152, 127);
             this.cboPresentacionMedicamento.Name = "cboPresentacionMedicamento";
@@ -3927,6 +3967,7 @@
             this.rbMedicamentoActual.TabStop = true;
             this.rbMedicamentoActual.Text = "Medicamento actual";
             this.rbMedicamentoActual.UseVisualStyleBackColor = true;
+            this.rbMedicamentoActual.CheckedChanged += new System.EventHandler(this.rbMedicamentoActual_CheckedChanged);
             // 
             // button31
             // 
@@ -3939,6 +3980,7 @@
             // 
             // cboFormaAdministración
             // 
+            this.cboFormaAdministración.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFormaAdministración.FormattingEnabled = true;
             this.cboFormaAdministración.Location = new System.Drawing.Point(458, 93);
             this.cboFormaAdministración.Name = "cboFormaAdministración";
@@ -3975,6 +4017,7 @@
             // 
             // cboUnidadMedida
             // 
+            this.cboUnidadMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnidadMedida.FormattingEnabled = true;
             this.cboUnidadMedida.Location = new System.Drawing.Point(471, 65);
             this.cboUnidadMedida.Name = "cboUnidadMedida";
@@ -3984,6 +4027,7 @@
             // 
             // cboNombreComercial
             // 
+            this.cboNombreComercial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNombreComercial.FormattingEnabled = true;
             this.cboNombreComercial.Location = new System.Drawing.Point(104, 100);
             this.cboNombreComercial.Name = "cboNombreComercial";
@@ -3993,6 +4037,7 @@
             // 
             // cboNombreGenerico
             // 
+            this.cboNombreGenerico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNombreGenerico.FormattingEnabled = true;
             this.cboNombreGenerico.Location = new System.Drawing.Point(104, 72);
             this.cboNombreGenerico.Name = "cboNombreGenerico";
@@ -4119,6 +4164,7 @@
             // 
             // cboElementoTiempoDrogasIlicitas
             // 
+            this.cboElementoTiempoDrogasIlicitas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboElementoTiempoDrogasIlicitas.FormattingEnabled = true;
             this.cboElementoTiempoDrogasIlicitas.Location = new System.Drawing.Point(504, 58);
             this.cboElementoTiempoDrogasIlicitas.Name = "cboElementoTiempoDrogasIlicitas";
@@ -4127,6 +4173,7 @@
             // 
             // cboSustanciaDrogaIlicita
             // 
+            this.cboSustanciaDrogaIlicita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSustanciaDrogaIlicita.FormattingEnabled = true;
             this.cboSustanciaDrogaIlicita.Location = new System.Drawing.Point(337, 23);
             this.cboSustanciaDrogaIlicita.Name = "cboSustanciaDrogaIlicita";
@@ -4290,6 +4337,7 @@
             // 
             // cboIntensidad
             // 
+            this.cboIntensidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboIntensidad.FormattingEnabled = true;
             this.cboIntensidad.Location = new System.Drawing.Point(74, 189);
             this.cboIntensidad.Name = "cboIntensidad";
@@ -4298,6 +4346,7 @@
             // 
             // cboGradoActividadFisica
             // 
+            this.cboGradoActividadFisica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGradoActividadFisica.FormattingEnabled = true;
             this.cboGradoActividadFisica.Location = new System.Drawing.Point(147, 91);
             this.cboGradoActividadFisica.Name = "cboGradoActividadFisica";
@@ -4325,6 +4374,7 @@
             // 
             // cboActividadFisica
             // 
+            this.cboActividadFisica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboActividadFisica.FormattingEnabled = true;
             this.cboActividadFisica.Location = new System.Drawing.Point(110, 55);
             this.cboActividadFisica.Name = "cboActividadFisica";
@@ -4553,8 +4603,7 @@
         private System.Windows.Forms.TabPage tpAntecedentes;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnAgregarAntecedenteMorbido;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnAñadirNombrePorTipo;
         private System.Windows.Forms.TextBox txtEvoluciónAntecedenteMorbido;
         private System.Windows.Forms.TextBox txtTratamientoAntecedenteMorbido;
         private System.Windows.Forms.TextBox txtCantTiempoAntecedenteMorbido;
@@ -4602,7 +4651,7 @@
         private System.Windows.Forms.CheckBox chbDiabetes;
         private System.Windows.Forms.CheckBox chbAsma;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btnAgregarFamiliar;
         private System.Windows.Forms.RadioButton rbNoViveFamiliar;
         private System.Windows.Forms.RadioButton rbSiViveFamiliar;
         private System.Windows.Forms.ComboBox cboFamiliar;
@@ -4671,7 +4720,7 @@
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Label label75;
         private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.Button brnAñadiTipoBebida;
+        private System.Windows.Forms.Button brnAgregarTipoBebida;
         private System.Windows.Forms.Button btnAgregarHabitoAlcoholismo;
         private System.Windows.Forms.DataGridView dgvHabitosAlcoholismo;
         private System.Windows.Forms.Button btnAgregarHabitoTabaquismo;
@@ -4797,7 +4846,7 @@
         private System.Windows.Forms.Button btnAgregarAlergiaAlimentos;
         private System.Windows.Forms.DataGridView dgvAlergiasAlimentos;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnAñadirAlimento;
+        private System.Windows.Forms.Button btnAgregarAlimento;
         private System.Windows.Forms.TextBox txtEfectosAlergiaAlimentos;
         private System.Windows.Forms.ComboBox cboAlimentos;
         private System.Windows.Forms.Label label5;

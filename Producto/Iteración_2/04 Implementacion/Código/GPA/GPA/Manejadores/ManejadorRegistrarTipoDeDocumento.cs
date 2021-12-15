@@ -22,7 +22,7 @@ namespace GPA.Manejadores
 
         public void mostrarTiposDocumento()
         {
-            tiposDocumento=TipoDocumentoDAO.buscarTiposDoc();
+            tiposDocumento=TipoDocumentoDAO.BuscarTiposDoc();
             pantalla.presentarTiposDocumento(tiposDocumento);
         }
 

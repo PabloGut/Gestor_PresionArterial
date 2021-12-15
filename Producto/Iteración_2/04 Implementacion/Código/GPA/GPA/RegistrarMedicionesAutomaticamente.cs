@@ -24,12 +24,19 @@ namespace GPA
 
         private Boolean leer;
         private Boolean primeraFila;
+        private Boolean primeraToma;
         private int ciclo;
 
         private MedicionDePresionArterial medicion;
         private List<DetalleMedicionPresionArterial> listaDetalleMedicion;
         private Boolean registrarEnHc { set; get; }
         private ManejadorRegistrarMedicionPresionArterial manejador;
+        private bool registroDate=false;
+        private bool registroMesureNumber=false;
+        private bool registroSystolic = false;
+        private bool registroDiastolic;
+        private bool registroPulso;
+
         private int idHc{set;get;}
         public RegistrarMedicionesAutomaticamente(int idHc)
         {
@@ -41,6 +48,7 @@ namespace GPA
             ciclo = 0;
             inicializarBarraProgreso();
             registrarEnHc = true;
+            primeraToma = true;
         }
         public RegistrarMedicionesAutomaticamente()
         {
@@ -51,6 +59,7 @@ namespace GPA
             ciclo = 0;
             inicializarBarraProgreso();
             registrarEnHc = false;
+            primeraToma = true;
         }
         public MedicionDePresionArterial getMedicion()
         {
@@ -64,7 +73,7 @@ namespace GPA
             pbBarraProgreso.Step = 1;
         }
         public void iniciar()
-        {
+        {   
             myPort = new SerialPort();
             myPort.BaudRate = 115200;
             myPort.PortName = "COM3";
@@ -78,9 +87,15 @@ namespace GPA
             {
                 MessageBox.Show("Error:" + a.Message);
             }
+
+            if (leer == false)
+                leer = true;
         }
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {   
+        {
+            if (myPort.IsOpen == false)
+                myPort.Open();
+
             in_data = myPort.ReadLine();
             this.Invoke(new EventHandler(display_dataevent));
         }
@@ -96,19 +111,55 @@ namespace GPA
                     lstMediciones.Items.Add(in_data);
                     //contar();
                     contarConBarraProgreso();
+
                 }
                 else
                 {
                     if(primeraFila==false)
                     {
+                        //texto += in_data;
+                        ////txtMediciones.AppendText(in_data + "\n");
+                        //lstMediciones.Items.Add(in_data);
+                        ////contar();
+                        //contarConBarraProgreso();
+
+
                         texto += in_data;
-                        txtMediciones.AppendText(in_data + "\n");
-                        lstMediciones.Items.Add(in_data);
-                        //contar();
-                        contarConBarraProgreso();
+
+                        if (texto.Contains("Measure number") == true)
+                        {
+                            lstMediciones.Items.Add(in_data);
+                            registroMesureNumber = true;
+                            contarConBarraProgreso();
+                        }
+                        if(texto.Contains("Date")==true && registroMesureNumber == true)
+                        {
+                            lstMediciones.Items.Add(in_data);
+                            registroDate = true;
+                            contarConBarraProgreso();
+                        }
+                        if (texto.Contains("Systolic value") && registroDate == true)
+                        {
+                            lstMediciones.Items.Add(in_data);
+                            registroSystolic = true;
+                            contarConBarraProgreso();
+                        }
+                        if (texto.Contains("Diastolic value") && registroDate == true && registroSystolic == true)
+                        {
+                            lstMediciones.Items.Add(in_data);
+                            registroDiastolic = true;
+                            contarConBarraProgreso();
+                        }
+                        if (texto.Contains("Pulse value") && registroDate == true && registroSystolic == true && registroDiastolic == true)
+                        {
+                            lstMediciones.Items.Add(in_data);
+                            registroPulso = true;
+                            contarConBarraProgreso();
+                        }
                     }
                 }
             }
+            texto = "";
         }
         public Boolean buscarCadena(String cadena)
         {
@@ -124,7 +175,8 @@ namespace GPA
                 totalMediciones = Convert.ToInt32(CadenaTotalMediciones);
                 primeraFila = false;
 
-                pbBarraProgreso.Step = pbBarraProgreso.Maximum / totalMediciones;
+                if(totalMediciones >0)
+                    pbBarraProgreso.Step = pbBarraProgreso.Maximum / totalMediciones;
             }
             int indice = lstMediciones.Items.Count;
 
@@ -137,14 +189,15 @@ namespace GPA
                 pbBarraProgreso.PerformStep();
             }
 
-            if (ciclo == totalMediciones)
+            if (ciclo == totalMediciones && primeraToma==true)
             {
                 leer = false;
-                cargarDatos();
+                CargarDatos();
                 MessageBox.Show("Carga completa", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
-        public void cargarDatos()
+        public void CargarDatos()
         {
             int nroMedicion;
             string fecha = DateTime.Today.ToShortDateString();
@@ -152,18 +205,19 @@ namespace GPA
             int diastolica;
             int pulso;
 
-            string cadenaFecha = "";
+            string cadenaFecha;
             string nroDia = "";
             string mes = "";
             string año = "";
             string hora = "";
 
             string prueba = "";
+            
             txtNroMediciones.Text = lstMediciones.Items[0].ToString().Substring(20);
 
-            int i = 2;
+            int i = 1;
             //while
-            while (i <= lstMediciones.Items.Count)
+            while (i < lstMediciones.Items.Count)
             {
                 prueba = lstMediciones.Items[i].ToString().Substring(15);
                 nroMedicion = Convert.ToInt32(lstMediciones.Items[i].ToString().Substring(15));
@@ -223,7 +277,7 @@ namespace GPA
                 //i++;
 
                 dgvMediciones.Rows.Add(nroMedicion, fecha, sistolica, diastolica, pulso);
-                i = i + 2;
+                i = i + 1;
 
                 fecha = "";
                 nroDia = "";
@@ -308,13 +362,19 @@ namespace GPA
         }
         private void RegistrarMedicionesAutomaticamente_Load(object sender, EventArgs e)
         {
-            txtMediciones.Visible = false;
-            cargarColumnas();
-            Utilidades.cargarCombo(cmbExtremidadPresionArterial, ExtremidadLN.mostrarExtremidades(), "id_extremidad", "nombre");
-            Utilidades.cargarCombo(cmbPosicionPresionArterial, PosicionLN.mostrarPosiciones(), "id_posicion", "nombre");
-            Utilidades.cargarCombo(cmbSitioMedicionPresionArterial, SitioMedicionLN.mostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
-            Utilidades.cargarCombo(cmbMomentoDiaPresionArterial, MomentoDiaLN.mostrarMomentosDelDia(), "id_momentoDelDia", "nombre");
-
+            try
+            {
+                txtMediciones.Visible = false;
+                cargarColumnas();
+                Utilidades.cargarCombo(cmbExtremidadPresionArterial, ExtremidadLN.MostrarExtremidades(), "id_extremidad", "nombre");
+                Utilidades.cargarCombo(cmbPosicionPresionArterial, PosicionLN.MostrarPosiciones(), "id_posicion", "nombre");
+                Utilidades.cargarCombo(cmbSitioMedicionPresionArterial, SitioMedicionLN.MostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
+                Utilidades.cargarCombo(cmbMomentoDiaPresionArterial, MomentoDiaLN.MostrarMomentosDelDia(), "id_momentoDelDia", "nombre");
+            }
+            catch(Exception ex)
+            {
+                Utilidades.MensajeError(ex);
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -322,6 +382,7 @@ namespace GPA
             try
             {
                 myPort.Close();
+                limpiar();
             }
             catch (Exception ex)
             {
@@ -331,6 +392,11 @@ namespace GPA
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
+            if (primeraToma == false)
+            {
+                MessageBox.Show("La lectura de mediciones se completado. Cargar el tensiometro con nuevas mediciones.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             iniciar();
         }
 
@@ -380,9 +446,18 @@ namespace GPA
                 if (manejador == null)
                     manejador = new ManejadorRegistrarMedicionPresionArterial();
 
-                manejador.registrarMedicioPresionArterialEnHistoriaClinica(medicion);
+                try
+                {
+                    manejador.registrarMedicioPresionArterialEnHistoriaClinica(medicion);
+                }
+                catch(Exception ex)
+                {
+                    Utilidades.MensajeError(ex);
+                }
                 MessageBox.Show("Registro de mediciones completo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                primeraToma = false;
                 limpiar();
+               
             }
             else
             {
@@ -401,6 +476,7 @@ namespace GPA
         private void button2_Click(object sender, EventArgs e)
         {
             myPort.Close();
+            limpiar();
             this.Close();
         }
         public void limpiar()
@@ -408,9 +484,12 @@ namespace GPA
             in_data = null;
             texto = null;
             txtMediciones.Clear();
-            lstMediciones = null;
             dgvMediciones.Rows.Clear();
             medicion = null;
+            myPort.Close();
+            lstMediciones.Items.Clear();
+            txtNroMediciones.Clear();
+            pbBarraProgreso.Value = 0;
         }
     }
 }

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaHabitosMedicamentos" targetNamespace="http://tempuri.org/dsHistoriaClinicaHabitosMedicamentos.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaHabitosMedicamentos.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaHabitosMedicamentos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaHabitosMedicamentos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaHabitosMedicamentos" msprop:Generator_UserDSName="dsHistoriaClinicaHabitosMedicamentos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HabitosMedicamento" msprop:Generator_TableClassName="HabitosMedicamentoDataTable" msprop:Generator_TableVarName="tableHabitosMedicamento" msprop:Generator_TablePropName="HabitosMedicamento" msprop:Generator_RowDeletingName="HabitosMedicamentoRowDeleting" msprop:Generator_RowChangingName="HabitosMedicamentoRowChanging" msprop:Generator_RowEvHandlerName="HabitosMedicamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="HabitosMedicamentoRowDeleted" msprop:Generator_UserTableName="HabitosMedicamento" msprop:Generator_RowChangedName="HabitosMedicamentoRowChanged" msprop:Generator_RowEvArgName="HabitosMedicamentoRowChangeEvent" msprop:Generator_RowClassName="HabitosMedicamentoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha_x0020_de_x0020_registro" msprop:Generator_ColumnVarNameInTable="columnFecha_de_registro" msprop:Generator_ColumnPropNameInRow="Fecha_de_registro" msprop:Generator_ColumnPropNameInTable="Fecha_de_registroColumn" msprop:Generator_UserColumnName="Fecha de registro" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombre_x0020_generico" msprop:Generator_ColumnVarNameInTable="columnNombre_generico" msprop:Generator_ColumnPropNameInRow="Nombre_generico" msprop:Generator_ColumnPropNameInTable="Nombre_genericoColumn" msprop:Generator_UserColumnName="Nombre generico" type="xs:string" minOccurs="0" />
+              <xs:element name="Concentracion" msprop:Generator_ColumnVarNameInTable="columnConcentracion" msprop:Generator_ColumnPropNameInRow="Concentracion" msprop:Generator_ColumnPropNameInTable="ConcentracionColumn" msprop:Generator_UserColumnName="Concentracion" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad_x0020_de_x0020_comprimidos" msprop:Generator_ColumnVarNameInTable="columnCantidad_de_comprimidos" msprop:Generator_ColumnPropNameInRow="Cantidad_de_comprimidos" msprop:Generator_ColumnPropNameInTable="Cantidad_de_comprimidosColumn" msprop:Generator_UserColumnName="Cantidad de comprimidos" type="xs:string" minOccurs="0" />
+              <xs:element name="Frecuencia" msprop:Generator_ColumnVarNameInTable="columnFrecuencia" msprop:Generator_ColumnPropNameInRow="Frecuencia" msprop:Generator_ColumnPropNameInTable="FrecuenciaColumn" msprop:Generator_UserColumnName="Frecuencia" type="xs:string" minOccurs="0" />
+              <xs:element name="Momento_x0020_del_x0020_dia_x0020_1" msprop:Generator_ColumnVarNameInTable="columnMomento_del_dia_1" msprop:Generator_ColumnPropNameInRow="Momento_del_dia_1" msprop:Generator_ColumnPropNameInTable="Momento_del_dia_1Column" msprop:Generator_UserColumnName="Momento del dia 1" type="xs:string" minOccurs="0" />
+              <xs:element name="Dosis_x0020_1" msprop:Generator_ColumnVarNameInTable="columnDosis_1" msprop:Generator_ColumnPropNameInRow="Dosis_1" msprop:Generator_ColumnPropNameInTable="Dosis_1Column" msprop:Generator_UserColumnName="Dosis 1" type="xs:string" minOccurs="0" />
+              <xs:element name="Presentacion_x0020_medicamento_x0020_1" msprop:Generator_ColumnVarNameInTable="columnPresentacion_medicamento_1" msprop:Generator_ColumnPropNameInRow="Presentacion_medicamento_1" msprop:Generator_ColumnPropNameInTable="Presentacion_medicamento_1Column" msprop:Generator_UserColumnName="Presentacion medicamento 1" type="xs:string" minOccurs="0" />
+              <xs:element name="Hora_x0020_1" msprop:Generator_ColumnVarNameInTable="columnHora_1" msprop:Generator_ColumnPropNameInRow="Hora_1" msprop:Generator_ColumnPropNameInTable="Hora_1Column" msprop:Generator_UserColumnName="Hora 1" type="xs:string" minOccurs="0" />
+              <xs:element name="Momento_x0020_del_x0020_dia_x0020_2" msprop:Generator_ColumnVarNameInTable="columnMomento_del_dia_2" msprop:Generator_ColumnPropNameInRow="Momento_del_dia_2" msprop:Generator_ColumnPropNameInTable="Momento_del_dia_2Column" msprop:Generator_UserColumnName="Momento del dia 2" type="xs:string" minOccurs="0" />
+              <xs:element name="Dosis_x0020_2" msprop:Generator_ColumnVarNameInTable="columnDosis_2" msprop:Generator_ColumnPropNameInRow="Dosis_2" msprop:Generator_ColumnPropNameInTable="Dosis_2Column" msprop:Generator_UserColumnName="Dosis 2" type="xs:string" minOccurs="0" />
+              <xs:element name="Presentacion_x0020_Medicamento_x0020_2" msprop:Generator_ColumnVarNameInTable="columnPresentacion_Medicamento_2" msprop:Generator_ColumnPropNameInRow="Presentacion_Medicamento_2" msprop:Generator_ColumnPropNameInTable="Presentacion_Medicamento_2Column" msprop:Generator_UserColumnName="Presentacion Medicamento 2" type="xs:string" minOccurs="0" />
+              <xs:element name="Hora_x0020_2" msprop:Generator_ColumnVarNameInTable="columnHora_2" msprop:Generator_ColumnPropNameInRow="Hora_2" msprop:Generator_ColumnPropNameInTable="Hora_2Column" msprop:Generator_UserColumnName="Hora 2" type="xs:string" minOccurs="0" />
+              <xs:element name="Dosis_x0020_3" msprop:Generator_ColumnVarNameInTable="columnDosis_3" msprop:Generator_ColumnPropNameInRow="Dosis_3" msprop:Generator_ColumnPropNameInTable="Dosis_3Column" msprop:Generator_UserColumnName="Dosis 3" type="xs:string" minOccurs="0" />
+              <xs:element name="Presentacion_x0020_Medicamento_x0020_3" msprop:Generator_ColumnVarNameInTable="columnPresentacion_Medicamento_3" msprop:Generator_ColumnPropNameInRow="Presentacion_Medicamento_3" msprop:Generator_ColumnPropNameInTable="Presentacion_Medicamento_3Column" msprop:Generator_UserColumnName="Presentacion Medicamento 3" type="xs:string" minOccurs="0" />
+              <xs:element name="Hora_x0020_3" msprop:Generator_ColumnVarNameInTable="columnHora_3" msprop:Generator_ColumnPropNameInRow="Hora_3" msprop:Generator_ColumnPropNameInTable="Hora_3Column" msprop:Generator_UserColumnName="Hora 3" type="xs:string" minOccurs="0" />
+              <xs:element name="Momento_x0020_del_x0020_Dia_x0020_3" msprop:Generator_ColumnVarNameInTable="columnMomento_del_Dia_3" msprop:Generator_ColumnPropNameInRow="Momento_del_Dia_3" msprop:Generator_ColumnPropNameInTable="Momento_del_Dia_3Column" msprop:Generator_UserColumnName="Momento del Dia 3" type="xs:string" minOccurs="0" />
+              <xs:element name="Unidad_x0020_de_x0020_Medica" msprop:Generator_ColumnVarNameInTable="columnUnidad_de_Medica" msprop:Generator_ColumnPropNameInRow="Unidad_de_Medica" msprop:Generator_ColumnPropNameInTable="Unidad_de_MedicaColumn" msprop:Generator_UserColumnName="Unidad de Medica" type="xs:string" minOccurs="0" />
+              <xs:element name="Motivo_x0020_Consumo" msprop:Generator_ColumnVarNameInTable="columnMotivo_Consumo" msprop:Generator_ColumnPropNameInRow="Motivo_Consumo" msprop:Generator_ColumnPropNameInTable="Motivo_ConsumoColumn" msprop:Generator_UserColumnName="Motivo Consumo" type="xs:string" minOccurs="0" />
+              <xs:element name="Automedicado" msprop:Generator_ColumnVarNameInTable="columnAutomedicado" msprop:Generator_ColumnPropNameInRow="Automedicado" msprop:Generator_ColumnPropNameInTable="AutomedicadoColumn" msprop:Generator_UserColumnName="Automedicado" type="xs:string" minOccurs="0" />
+              <xs:element name="Motivo_x0020_Cancelación_x0020_Consumo" msprop:Generator_ColumnVarNameInTable="columnMotivo_Cancelación_Consumo" msprop:Generator_ColumnPropNameInRow="Motivo_Cancelación_Consumo" msprop:Generator_ColumnPropNameInTable="Motivo_Cancelación_ConsumoColumn" msprop:Generator_UserColumnName="Motivo Cancelación Consumo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

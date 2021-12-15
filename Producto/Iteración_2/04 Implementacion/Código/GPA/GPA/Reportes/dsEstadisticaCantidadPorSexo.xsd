@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsEstadisticaCantidadPorSexo" targetNamespace="http://tempuri.org/dsEstadisticaCantidadPorSexo.xsd" xmlns:mstns="http://tempuri.org/dsEstadisticaCantidadPorSexo.xsd" xmlns="http://tempuri.org/dsEstadisticaCantidadPorSexo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsEstadisticaCantidadPorSexo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsEstadisticaCantidadPorSexo" msprop:Generator_UserDSName="dsEstadisticaCantidadPorSexo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EstadisticaCantidadSexo" msprop:Generator_TableClassName="EstadisticaCantidadSexoDataTable" msprop:Generator_TableVarName="tableEstadisticaCantidadSexo" msprop:Generator_TablePropName="EstadisticaCantidadSexo" msprop:Generator_RowDeletingName="EstadisticaCantidadSexoRowDeleting" msprop:Generator_RowChangingName="EstadisticaCantidadSexoRowChanging" msprop:Generator_RowEvHandlerName="EstadisticaCantidadSexoRowChangeEventHandler" msprop:Generator_RowDeletedName="EstadisticaCantidadSexoRowDeleted" msprop:Generator_UserTableName="EstadisticaCantidadSexo" msprop:Generator_RowChangedName="EstadisticaCantidadSexoRowChanged" msprop:Generator_RowEvArgName="EstadisticaCantidadSexoRowChangeEvent" msprop:Generator_RowClassName="EstadisticaCantidadSexoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha_registro" msprop:Generator_ColumnVarNameInTable="columnfecha_registro" msprop:Generator_ColumnPropNameInRow="fecha_registro" msprop:Generator_ColumnPropNameInTable="fecha_registroColumn" msprop:Generator_UserColumnName="fecha_registro" type="xs:string" minOccurs="0" />
+              <xs:element name="id_sexo" msprop:Generator_ColumnVarNameInTable="columnid_sexo" msprop:Generator_ColumnPropNameInRow="id_sexo" msprop:Generator_ColumnPropNameInTable="id_sexoColumn" msprop:Generator_UserColumnName="id_sexo" type="xs:string" minOccurs="0" />
+              <xs:element name="sexo" msprop:Generator_ColumnVarNameInTable="columnsexo" msprop:Generator_ColumnPropNameInRow="sexo" msprop:Generator_ColumnPropNameInTable="sexoColumn" msprop:Generator_UserColumnName="sexo" type="xs:string" minOccurs="0" />
+              <xs:element name="cantidadPacientesPorSexo" msprop:Generator_ColumnVarNameInTable="columncantidadPacientesPorSexo" msprop:Generator_ColumnPropNameInRow="cantidadPacientesPorSexo" msprop:Generator_ColumnPropNameInTable="cantidadPacientesPorSexoColumn" msprop:Generator_UserColumnName="cantidadPacientesPorSexo" type="xs:string" minOccurs="0" />
+              <xs:element name="cantidadTotalPacientes" msprop:Generator_ColumnVarNameInTable="columncantidadTotalPacientes" msprop:Generator_ColumnPropNameInRow="cantidadTotalPacientes" msprop:Generator_ColumnPropNameInTable="cantidadTotalPacientesColumn" msprop:Generator_UserColumnName="cantidadTotalPacientes" type="xs:string" minOccurs="0" />
+              <xs:element name="Porcentaje" msprop:Generator_ColumnVarNameInTable="columnPorcentaje" msprop:Generator_ColumnPropNameInRow="Porcentaje" msprop:Generator_ColumnPropNameInTable="PorcentajeColumn" msprop:Generator_UserColumnName="Porcentaje" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

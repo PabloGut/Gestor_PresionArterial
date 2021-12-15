@@ -14,36 +14,71 @@ namespace GPA.Manejadores
         private List<ClasificacionPresionArterial> clasificaciones;
         public MedicionDePresionArterial medicion {get; set;}
 
-        public void registrarExamenGeneral(MenuPrincipal mp)
+        public void RegistrarExamenGeneral(MenuPrincipal mp)
         {
             pantalla = mp;
             medicion = new MedicionDePresionArterial();
             mostrarPresionArterial();
         }
 
-        public List<Ubicacion> mostrarUbicaciones()
+        public List<Ubicacion> MostrarUbicaciones()
         {
-            return UbicacionLN.mostrarUbicaciones();
+            try
+            {
+                return UbicacionLN.mostrarUbicaciones();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public List<Tamaño> mostrarTamañoGanglio()
         {
             return TamañoLN.mostrarTamañosGanglios();
         }
-        public List<EscalaPulso> mostrarEscalaPulso()
+        public List<EscalaPulso> MostrarEscalaPulso()
         {
-            return EscalaPulsoLN.mostrarEscalaPulso();
+            try
+            {
+                return EscalaPulsoLN.mostrarEscalaPulso();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public List<Pulso> mostrarPulsos()
         {
-            return PulsoLN.mostrarPulsos();
+            try
+            {
+                return PulsoLN.mostrarPulsos();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public List<Consistencia> mostrarConsistencia()
+        public List<Consistencia> MostrarConsistencia()
         {
-            return ConsistenciaLN.mostrarConsistencia();
+            try
+            {
+                return ConsistenciaLN.MostrarConsistencia();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public List<SitioMedicionTemperatura> mostrarSitioMedicionTemperatura()
         {
-            return SitioMedicionTemperaturaLN.mostrarSitioMedicionTemperatura();
+            try
+            {
+                return SitioMedicionTemperaturaLN.mostrarSitioMedicionTemperatura();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public string mostrarClasificacionTemperatura(float valor)
         {
@@ -122,7 +157,7 @@ namespace GPA.Manejadores
 
             return respiracion;
         }
-        public Temperatura crearTemperaturaPaso4(int sitioMedicion, string resultado, float valorTemperatura)
+        public Temperatura crearTemperaturaPaso4(int sitioMedicion, string resultado, float valorTemperatura,int id_resultadoTemperatura)
         {
             Temperatura temperatura = new Temperatura();
 
@@ -135,6 +170,7 @@ namespace GPA.Manejadores
             ResultadoTemperatura nuevoResultado = new ResultadoTemperatura();
             nuevoResultado.nombre = resultado;
 
+            temperatura.id_resultadoTemperatura=id_resultadoTemperatura;
             temperatura.resultado = nuevoResultado;
             temperatura.valorTemperatura = valorTemperatura;
 
@@ -147,7 +183,7 @@ namespace GPA.Manejadores
         }
         public void mostrarPresionArterial()
         {
-            pantalla.presentarExamenGeneralPresionArterial(ExtremidadLN.mostrarExtremidades(), PosicionLN.mostrarPosiciones(), SitioMedicionLN.mostrarSitiosDeMedicion(), MomentoDiaLN.mostrarMomentosDelDia());
+            pantalla.presentarExamenGeneralPresionArterial(ExtremidadLN.MostrarExtremidades(), PosicionLN.MostrarPosiciones(), SitioMedicionLN.MostrarSitiosDeMedicion(), MomentoDiaLN.MostrarMomentosDelDia());
         }
 
         public void buscarClasificacionesDePresionArterial()
@@ -155,13 +191,17 @@ namespace GPA.Manejadores
             clasificaciones = ClasificacionPresionArterialLN.mostrarClasificacionesDePresionArterial();
         }
 
-        public void mostrarUbicacionesDeExtremidad(int id_extremidad)
+        public void mostrarUbicacionesDeExtremidad(int id_extremidad, MenuPrincipal mp)
         {
+            pantalla = mp;
             pantalla.presentarUbicacionesExtremidadDeExtremidad(UbicacionExtremidadLN.buscarUbicacionesExtremidadDeExtremidad(id_extremidad));
         }
 
         public void registrarMedicion(DateTime fecha, DateTime horaInicio, Posicion posicion, UbicacionExtremidad ubicacion, SitioMedicion sitio, MomentoDia momento, Extremidad extremidad)
         {
+            if (medicion == null)
+                medicion = new MedicionDePresionArterial();
+
             medicion.posicion = posicion; medicion.fecha = fecha; medicion.horaInicio = horaInicio; medicion.ubicacion = ubicacion; medicion.sitio = sitio; medicion.momento = momento; medicion.extremidad = extremidad;
         }
 
@@ -175,9 +215,9 @@ namespace GPA.Manejadores
 
         public void calcularPromedioYClasificacionDePresionArterial()
         {
-            medicion.promedio = MedicionDePresionArterialLN.calcularPromedio(medicion.mediciones);
-            int promedioSistolica = MedicionDePresionArterialLN.calcularPromedioValorMinimo(medicion.mediciones);
-            int promedioDiastolica = MedicionDePresionArterialLN.calcularPromedioValorMaximo(medicion.mediciones);
+            medicion.promedio = MedicionDePresionArterialLN.CalcularPromedio(medicion.mediciones);
+            int promedioSistolica = MedicionDePresionArterialLN.CalcularPromedioValorMinimo(medicion.mediciones);
+            int promedioDiastolica = MedicionDePresionArterialLN.CalcularPromedioValorMaximo(medicion.mediciones);
             bool clasificado = false;
             foreach (ClasificacionPresionArterial clasificacion in clasificaciones)
             {
@@ -195,21 +235,42 @@ namespace GPA.Manejadores
             }
         }
 
-        public List<NombreEstudio> mostrarNombreEstudios()
+        public List<NombreEstudio> MostrarNombreEstudios()
         {
-            return NombreEstudioLN.mostrarNombreEstudios();
+            try
+            {
+                return NombreEstudioLN.MostrarNombreEstudios();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public List<AnalisisLaboratorio> mostrarAnalisisLaboratorio()
+        public List<AnalisisLaboratorio> MostrarAnalisisLaboratorio()
         {
-            return AnalisisLaboratorioLN.mostrarAnalisisLaboratorio();
+            try
+            {
+                return AnalisisLaboratorioLN.MostrarAnalisisLaboratorio();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public List<TipoPracticaComplementaria> mostrarTipoPracticaComplementaria()
+        public List<TipoPracticaComplementaria> MostrarTipoPracticaComplementaria()
         {
-            return TipoPracticaComplementariaLN.mostrarPracticasComplementarias();
+            try
+            {
+                return TipoPracticaComplementariaLN.MostrarPracticasComplementarias();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public int mostrarIdEstadoDiagnostico(string nombreEstado)
         {
-            return EstadoDiagnosticoLN.mostrarIdEstadoDiagnostico(nombreEstado);
+            return EstadoDiagnosticoLN.MostrarIdEstadoDiagnostico(nombreEstado);
         }
         /*public int registrarRazonamientoDiagnostico(RazonamientoDiagnostico razonamiento)
         {
@@ -370,11 +431,25 @@ namespace GPA.Manejadores
         }
         public List<EstadoDiagnostico> obtenerEstadoDiagnostico()
         {
-            return EstadoDiagnosticoLN.obtenerEstadosDiagnostico();
+            try
+            {
+                return EstadoDiagnosticoLN.ObtenerEstadosDiagnostico();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public List<TemperaturaPiel> obtenerTemperaturasPiel()
+        public List<TemperaturaPiel> ObtenerTemperaturasPiel()
         {
-            return TemperaturaPielLN.obtenerTemperaturasPiel();
+            try
+            {
+                return TemperaturaPielLN.ObtenerTemperaturasPiel();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public List<Terapia> mostrarTerapias()
         {
@@ -414,7 +489,7 @@ namespace GPA.Manejadores
         }
         public List<MomentoDia> mostrarMomentosDelDia()
         {
-            return MomentoDiaLN.mostrarMomentosDelDia();
+            return MomentoDiaLN.MostrarMomentosDelDia();
         }
         public List<PresentacionMedicamento> mostrarPresentacionesMedicamento()
         {

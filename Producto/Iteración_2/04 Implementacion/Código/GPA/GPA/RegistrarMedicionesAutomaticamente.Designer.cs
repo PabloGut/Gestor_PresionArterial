@@ -47,7 +47,6 @@
             this.txtMediciones = new System.Windows.Forms.TextBox();
             this.pbBarraProgreso = new System.Windows.Forms.ProgressBar();
             this.lstMediciones = new System.Windows.Forms.ListBox();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -205,7 +204,6 @@
             this.groupBox2.Controls.Add(this.txtMediciones);
             this.groupBox2.Controls.Add(this.pbBarraProgreso);
             this.groupBox2.Controls.Add(this.lstMediciones);
-            this.groupBox2.Controls.Add(this.btnCerrar);
             this.groupBox2.Controls.Add(this.btnIniciar);
             this.groupBox2.Location = new System.Drawing.Point(12, 125);
             this.groupBox2.Name = "groupBox2";
@@ -236,16 +234,6 @@
             this.lstMediciones.Name = "lstMediciones";
             this.lstMediciones.Size = new System.Drawing.Size(358, 225);
             this.lstMediciones.TabIndex = 9;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Location = new System.Drawing.Point(92, 309);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(77, 23);
-            this.btnCerrar.TabIndex = 8;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnIniciar
             // 
@@ -321,7 +309,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ProgressBar pbBarraProgreso;
         private System.Windows.Forms.ListBox lstMediciones;
-        private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.TextBox txtMediciones;
         private System.Windows.Forms.Button btnGuardar;

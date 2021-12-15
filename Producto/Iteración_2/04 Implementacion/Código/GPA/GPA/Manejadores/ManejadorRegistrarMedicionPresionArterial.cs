@@ -11,7 +11,14 @@ namespace GPA.Manejadores
     {
         public void registrarMedicioPresionArterialEnHistoriaClinica(MedicionDePresionArterial medicion)
         {
-            MedicionDePresionArterialLN.registrarMedicionPresionArterialEnHistoriaClinicia(medicion);
+            try
+            {
+                MedicionDePresionArterialLN.RegistrarMedicionPresionArterialEnHistoriaClinicia(medicion);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

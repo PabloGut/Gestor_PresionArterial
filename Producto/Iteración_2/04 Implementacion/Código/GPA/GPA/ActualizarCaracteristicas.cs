@@ -23,6 +23,21 @@ namespace GPA
         public ModificacionSintoma Modificacion { get; set; }
 
         public ElementoDeModificacion ElementoModificacion { get; set; }
+
+        public Familiar Familiar { set; get; }
+
+        public Alimento Alimento { get; set; }
+
+        public SustaciaAmbiente sustanciaAmbiente { get; set; }
+
+        public SustanciaContactoPiel SustanciaContactoPiel { get; set; }
+
+        public Insecto Insecto { get; set; }
+
+        public TipoBebida TipoBebida { get; set; }
+
+        public MedicamentoAlergia Medicamento { set; get; }
+
         public ActualizarCaracteristicas()
         {
             InitializeComponent();
@@ -66,6 +81,41 @@ namespace GPA
                     lblCaracteristica.Text = "Elemento Modificacion";
                     List<ElementoDeModificacion> elemento = ElementoDeModificacionLN.mostrarElementosDeModificacion();
                     presentarDatosGrilla(elemento);
+                    break;
+                case "Familiar":
+                    lblCaracteristica.Text = "Familiar";
+                    List<Familiar> familiares = FamiliarLN.mostrarFamiliares();
+                    presentarDatosGrilla(familiares);
+                    break;
+                case "Alergia Alimento":
+                    lblCaracteristica.Text = "Alimento";
+                    List<Alimento> alimentos = AlimentoLN.mostrarAlimentos();
+                    presentarDatosGrilla(alimentos);
+                    break;
+                case "Alergia Sustancia Ambiente":
+                    lblCaracteristica.Text = "Sustancia Ambiente";
+                    List<SustaciaAmbiente> sustanciaAmbiente = SustanciaAmbienteLN.mostrarSustanciasDelAmbiente();
+                    presentarDatosGrilla(sustanciaAmbiente);
+                    break;
+                case "Alergia SustanciaContacto Piel":
+                    lblCaracteristica.Text = "Sustancia ";
+                    List<SustanciaContactoPiel> sustanciaContactoPiel = SustanciaContactoPielLN.mostrarSustaciasContactoPiel();
+                    presentarDatosGrilla(sustanciaContactoPiel);
+                    break;
+                case "Alergia Insecto":
+                    lblCaracteristica.Text = "Insecto ";
+                    List<Insecto> insecto = InsectoLN.mostrarInsectos();
+                    presentarDatosGrilla(insecto);
+                    break;
+                case "Alergia Medicamento":
+                    lblCaracteristica.Text = "Medicamento ";
+                    List<MedicamentoAlergia> Medicamento = MedicamentoAlergiaLN.mostrarMedicamentosQueProducenAlergia();
+                    presentarDatosGrilla(Medicamento);
+                    break;
+                case "Tipo Bebida":
+                    lblCaracteristica.Text = "Tipo ";
+                    List<TipoBebida> Tipo = TipoBebidaLN.mostrarTiposDeBebidas();
+                    presentarDatosGrilla(Tipo);
                     break;
             }
                         
@@ -121,6 +171,62 @@ namespace GPA
                 foreach (ElementoDeModificacion elemento in Elementos)
                 {
                     dgvGrilla.Rows.Add(elemento.id_elementoDeModificacion, elemento.nombre);
+                }
+            }
+            if (lista[0].GetType().Equals(typeof(Familiar)))
+            {
+                List<Familiar> Elementos = lista.Cast<Familiar>().ToList();
+                foreach (Familiar elemento in Elementos)
+                {
+                    dgvGrilla.Rows.Add(elemento.id_familiar, elemento.nombre);
+                }
+            }
+            if (lista[0].GetType().Equals(typeof(Alimento)))
+            {
+                List<Alimento> Elementos = lista.Cast<Alimento>().ToList();
+                foreach (Alimento elemento in Elementos)
+                {
+                    dgvGrilla.Rows.Add(elemento.id_alimento, elemento.nombre);
+                }
+            }
+            if (lista[0].GetType().Equals(typeof(SustaciaAmbiente)))
+            {
+                List<SustaciaAmbiente> Elementos = lista.Cast<SustaciaAmbiente>().ToList();
+                foreach (SustaciaAmbiente elemento in Elementos)
+                {
+                    dgvGrilla.Rows.Add(elemento.id_sustanciaAmbiente, elemento.nombre);
+                }
+            }
+            if (lista[0].GetType().Equals(typeof(SustanciaContactoPiel)))
+            {
+                List<SustanciaContactoPiel> Elementos = lista.Cast<SustanciaContactoPiel>().ToList();
+                foreach (SustanciaContactoPiel elemento in Elementos)
+                {
+                    dgvGrilla.Rows.Add(elemento.id_sustanciaContactoPiel, elemento.nombre);
+                }
+            }
+            if (lista[0].GetType().Equals(typeof(Insecto)))
+            {
+                List<Insecto> Elementos = lista.Cast<Insecto>().ToList();
+                foreach (Insecto elemento in Elementos)
+                {
+                    dgvGrilla.Rows.Add(elemento.id_insecto, elemento.nombre);
+                }
+            }
+            if (lista[0].GetType().Equals(typeof(MedicamentoAlergia)))
+            {
+                List<MedicamentoAlergia> Elementos = lista.Cast<MedicamentoAlergia>().ToList();
+                foreach (MedicamentoAlergia elemento in Elementos)
+                {
+                    dgvGrilla.Rows.Add(elemento.idMedicamentoAlergia, elemento.nombre);
+                }
+            }
+            if (lista[0].GetType().Equals(typeof(TipoBebida)))
+            {
+                List<TipoBebida> Elementos = lista.Cast<TipoBebida>().ToList();
+                foreach (TipoBebida elemento in Elementos)
+                {
+                    dgvGrilla.Rows.Add(elemento.id_tipoBebida, elemento.nombre);
                 }
             }
         }
@@ -360,6 +466,258 @@ namespace GPA
                     DialogResult = DialogResult.OK;
                 }
             }
+            if(this.Text.Equals("Familiar"))
+            {
+                if(Familiar == null )
+                {
+                    Familiar = new Familiar();
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        Familiar.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    FamiliarLN.RegistrarFamiliar(Familiar);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        Familiar.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta seleccionar el Familiar a actualizar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    //Desarrollar los metodos consultar insertar update y borrar
+                    FamiliarLN.ActualizarFamiliar(Familiar);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            if (this.Text.Equals("Alergia Alimento"))
+            {
+                if (Alimento == null)
+                {
+                    Alimento = new Alimento();
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        Alimento.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    AlimentoLN.RegistrarAlimentoAlergia(Alimento);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        Alimento.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta seleccionar el Alimento a actualizar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    //Desarrollar los metodos consultar insertar update y borrar
+                    AlimentoLN.ActualizarAlimentoAlergia(Alimento);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            if (this.Text.Equals("Alergia Sustancia Ambiente"))
+            {
+                if (sustanciaAmbiente == null)
+                {
+                    SustaciaAmbiente sustancia = new SustaciaAmbiente();
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        sustancia.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    SustanciaAmbienteLN.RegistrarSustanciaAmbienteAlergia(sustancia);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        sustanciaAmbiente.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta seleccionar sustancia a actualizar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    //Desarrollar los metodos consultar insertar update y borrar
+                    SustanciaAmbienteLN.ActualizarSustanciaAmbienteAlergia(sustanciaAmbiente);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            if (this.Text.Equals("Alergia SustanciaContacto Piel"))
+            {
+                if (SustanciaContactoPiel == null)
+                {
+                    SustanciaContactoPiel sustancia = new SustanciaContactoPiel();
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        sustancia.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    SustanciaContactoPielLN.RegistrarSustanciaContactoPielAlergia(sustancia);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        SustanciaContactoPiel.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta seleccionar sustancia a actualizar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    //Desarrollar los metodos consultar insertar update y borrar
+                    SustanciaContactoPielLN.ActualizarSustanciaContactoPielAlergia(SustanciaContactoPiel);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            if (this.Text.Equals("Alergia Insecto"))
+            {
+                if (Insecto == null)
+                {
+                    Insecto insecto = new Insecto();
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        insecto.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    InsectoLN.RegistrarInsectoAlergia(insecto);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        Insecto.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta seleccionar nombre a actualizar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    //Desarrollar los metodos consultar insertar update y borrar
+                    InsectoLN.ActualizarInsectoAlergia(Insecto);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            if (this.Text.Equals("Alergia Medicamento"))
+            {
+                if (Medicamento == null)
+                {
+                    MedicamentoAlergia medicamento = new MedicamentoAlergia();
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        medicamento.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el nombre", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    MedicamentoAlergiaLN.RegistrarMedicamentoAlergia(medicamento);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        Medicamento.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta seleccionar nombre a actualizar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    //Desarrollar los metodos consultar insertar update y borrar
+                    MedicamentoAlergiaLN.ActualizarMedicamentoAlergia(Medicamento);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            if (this.Text.Equals("Tipo Bebida"))
+            {
+                if (TipoBebida == null)
+                {
+                    TipoBebida Tipo = new TipoBebida();
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        Tipo.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta ingresar el tipo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    TipoBebidaLN.RegistrarTipoBebida(Tipo);
+                    presentarCaracteristicas();
+                    txtCaracteristica.Clear();
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtCaracteristica.Text))
+                    {
+                        TipoBebida.nombre = txtCaracteristica.Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta seleccionar Tipo a actualizar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    //Desarrollar los metodos consultar insertar update y borrar
+                    TipoBebidaLN.ActualizarTipoBebida(TipoBebida);
+                    presentarCaracteristicas();
+                    DialogResult = DialogResult.OK;
+                }
+            }
 
         }
 
@@ -438,6 +796,90 @@ namespace GPA
                 }
                 btnEliminar.Enabled = true;
             }
+            if (this.Text.Equals("Familiar"))
+            {
+                Familiar = new Familiar();
+                Familiar.id_familiar = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                Familiar.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (Familiar != null)
+                {
+                    txtCaracteristica.Text = Familiar.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
+            if (this.Text.Equals("Alergia Alimento"))
+            {
+                Alimento = new Alimento();
+                Alimento.id_alimento = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                Alimento.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (Alimento != null)
+                {
+                    txtCaracteristica.Text = Alimento.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
+            if (this.Text.Equals("Alergia Sustancia Ambiente"))
+            {
+                sustanciaAmbiente = new SustaciaAmbiente();
+                sustanciaAmbiente.id_sustanciaAmbiente = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                sustanciaAmbiente.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (sustanciaAmbiente != null)
+                {
+                    txtCaracteristica.Text = sustanciaAmbiente.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
+            if (this.Text.Equals("Alergia SustanciaContacto Piel"))
+            {
+                SustanciaContactoPiel = new SustanciaContactoPiel();
+                SustanciaContactoPiel.id_sustanciaContactoPiel = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                SustanciaContactoPiel.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (SustanciaContactoPiel != null)
+                {
+                    txtCaracteristica.Text = SustanciaContactoPiel.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
+            if (this.Text.Equals("Alergia Insecto"))
+            {
+                Insecto = new Insecto();
+                Insecto.id_insecto = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                Insecto.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (Insecto != null)
+                {
+                    txtCaracteristica.Text = Insecto.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
+            if (this.Text.Equals("Alergia Medicamento"))
+            {
+                Medicamento = new MedicamentoAlergia();
+                Medicamento.idMedicamentoAlergia = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                Medicamento.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (Medicamento != null)
+                {
+                    txtCaracteristica.Text = Medicamento.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
+            if (this.Text.Equals("Tipo Bebida"))
+            {
+                TipoBebida = new TipoBebida();
+                TipoBebida.id_tipoBebida = (int)dgvGrilla.CurrentRow.Cells[0].Value;
+                TipoBebida.nombre = (string)dgvGrilla.CurrentRow.Cells[1].Value;
+
+                if (TipoBebida != null)
+                {
+                    txtCaracteristica.Text = TipoBebida.nombre;
+                }
+                btnEliminar.Enabled = true;
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -512,5 +954,9 @@ namespace GPA
             nuevo();
         }
 
+        private void dgvGrilla_CellBorderStyleChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

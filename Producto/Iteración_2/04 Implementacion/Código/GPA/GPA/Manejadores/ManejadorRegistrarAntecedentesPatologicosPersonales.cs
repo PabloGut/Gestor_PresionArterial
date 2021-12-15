@@ -28,14 +28,16 @@ namespace GPA.Manejadores
         public string crearCadena(List<String> enfermedades)
         {
             string listaEnfermedades = "";
-
+            int i = 0;
             if (enfermedades.Count > 1)
             {
                 foreach (string nombreenfermedad in enfermedades)
-                {
+                {   
                     listaEnfermedades += nombreenfermedad;
 
-                    listaEnfermedades += ", ";
+                    i++;
+                    if(i<enfermedades.Count)
+                        listaEnfermedades += ", ";
                 }
             }
             else

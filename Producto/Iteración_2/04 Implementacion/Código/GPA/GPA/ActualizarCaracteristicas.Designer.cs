@@ -55,10 +55,11 @@
             // dgvGrilla
             // 
             this.dgvGrilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGrilla.Location = new System.Drawing.Point(24, 90);
+            this.dgvGrilla.Location = new System.Drawing.Point(15, 90);
             this.dgvGrilla.Name = "dgvGrilla";
             this.dgvGrilla.Size = new System.Drawing.Size(248, 150);
             this.dgvGrilla.TabIndex = 2;
+            this.dgvGrilla.CellBorderStyleChanged += new System.EventHandler(this.dgvGrilla_CellBorderStyleChanged);
             this.dgvGrilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGrilla_CellClick);
             // 
             // btnGuardar

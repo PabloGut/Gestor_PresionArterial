@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaHabitosTabaquismo" targetNamespace="http://tempuri.org/dsHistoriaClinicaHabitosTabaquismo.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaHabitosTabaquismo.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaHabitosTabaquismo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaHabitosTabaquismo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaHabitosTabaquismo" msprop:Generator_UserDSName="dsHistoriaClinicaHabitosTabaquismo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HabitosTabaquismo" msprop:Generator_TableClassName="HabitosTabaquismoDataTable" msprop:Generator_TableVarName="tableHabitosTabaquismo" msprop:Generator_RowChangedName="HabitosTabaquismoRowChanged" msprop:Generator_TablePropName="HabitosTabaquismo" msprop:Generator_RowDeletingName="HabitosTabaquismoRowDeleting" msprop:Generator_RowChangingName="HabitosTabaquismoRowChanging" msprop:Generator_RowEvHandlerName="HabitosTabaquismoRowChangeEventHandler" msprop:Generator_RowDeletedName="HabitosTabaquismoRowDeleted" msprop:Generator_RowClassName="HabitosTabaquismoRow" msprop:Generator_UserTableName="HabitosTabaquismo" msprop:Generator_RowEvArgName="HabitosTabaquismoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechaRegistro" msprop:Generator_ColumnVarNameInTable="columnfechaRegistro" msprop:Generator_ColumnPropNameInRow="fechaRegistro" msprop:Generator_ColumnPropNameInTable="fechaRegistroColumn" msprop:Generator_UserColumnName="fechaRegistro" type="xs:string" minOccurs="0" />
+              <xs:element name="ElementoQueFuma" msprop:Generator_ColumnVarNameInTable="columnElementoQueFuma" msprop:Generator_ColumnPropNameInRow="ElementoQueFuma" msprop:Generator_ColumnPropNameInTable="ElementoQueFumaColumn" msprop:Generator_UserColumnName="ElementoQueFuma" type="xs:string" minOccurs="0" />
+              <xs:element name="CantidadFuma" msprop:Generator_ColumnVarNameInTable="columnCantidadFuma" msprop:Generator_ColumnPropNameInRow="CantidadFuma" msprop:Generator_ColumnPropNameInTable="CantidadFumaColumn" msprop:Generator_UserColumnName="CantidadFuma" type="xs:string" minOccurs="0" />
+              <xs:element name="UnidadDeTiempoFuma" msprop:Generator_ColumnVarNameInTable="columnUnidadDeTiempoFuma" msprop:Generator_ColumnPropNameInRow="UnidadDeTiempoFuma" msprop:Generator_ColumnPropNameInTable="UnidadDeTiempoFumaColumn" msprop:Generator_UserColumnName="UnidadDeTiempoFuma" type="xs:string" minOccurs="0" />
+              <xs:element name="TiempoFumando" msprop:Generator_ColumnVarNameInTable="columnTiempoFumando" msprop:Generator_ColumnPropNameInRow="TiempoFumando" msprop:Generator_ColumnPropNameInTable="TiempoFumandoColumn" msprop:Generator_UserColumnName="TiempoFumando" type="xs:string" minOccurs="0" />
+              <xs:element name="TiempoDejoFumar" msprop:Generator_ColumnVarNameInTable="columnTiempoDejoFumar" msprop:Generator_ColumnPropNameInRow="TiempoDejoFumar" msprop:Generator_ColumnPropNameInTable="TiempoDejoFumarColumn" msprop:Generator_UserColumnName="TiempoDejoFumar" type="xs:string" minOccurs="0" />
+              <xs:element name="ElementoTiempoDejoDeFumar" msprop:Generator_ColumnVarNameInTable="columnElementoTiempoDejoDeFumar" msprop:Generator_ColumnPropNameInRow="ElementoTiempoDejoDeFumar" msprop:Generator_ColumnPropNameInTable="ElementoTiempoDejoDeFumarColumn" msprop:Generator_UserColumnName="ElementoTiempoDejoDeFumar" type="xs:string" minOccurs="0" />
+              <xs:element name="CantidadFumaba" msprop:Generator_ColumnVarNameInTable="columnCantidadFumaba" msprop:Generator_ColumnPropNameInRow="CantidadFumaba" msprop:Generator_ColumnPropNameInTable="CantidadFumabaColumn" msprop:Generator_UserColumnName="CantidadFumaba" type="xs:string" minOccurs="0" />
+              <xs:element name="ElementoQueFumaba" msprop:Generator_ColumnVarNameInTable="columnElementoQueFumaba" msprop:Generator_ColumnPropNameInRow="ElementoQueFumaba" msprop:Generator_ColumnPropNameInTable="ElementoQueFumabaColumn" msprop:Generator_UserColumnName="ElementoQueFumaba" type="xs:string" minOccurs="0" />
+              <xs:element name="ComponenteTiempoFumaba" msprop:Generator_ColumnVarNameInTable="columnComponenteTiempoFumaba" msprop:Generator_ColumnPropNameInRow="ComponenteTiempoFumaba" msprop:Generator_ColumnPropNameInTable="ComponenteTiempoFumabaColumn" msprop:Generator_UserColumnName="ComponenteTiempoFumaba" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

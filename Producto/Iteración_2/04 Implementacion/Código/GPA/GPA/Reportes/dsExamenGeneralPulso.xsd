@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsExamenGeneralPulso" targetNamespace="http://tempuri.org/dsExamenGeneralPulso.xsd" xmlns:mstns="http://tempuri.org/dsExamenGeneralPulso.xsd" xmlns="http://tempuri.org/dsExamenGeneralPulso.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsExamenGeneralPulso" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsExamenGeneralPulso" msprop:Generator_UserDSName="dsExamenGeneralPulso">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PulsoArterial" msprop:Generator_TableClassName="PulsoArterialDataTable" msprop:Generator_TableVarName="tablePulsoArterial" msprop:Generator_RowChangedName="PulsoArterialRowChanged" msprop:Generator_TablePropName="PulsoArterial" msprop:Generator_RowDeletingName="PulsoArterialRowDeleting" msprop:Generator_RowChangingName="PulsoArterialRowChanging" msprop:Generator_RowEvHandlerName="PulsoArterialRowChangeEventHandler" msprop:Generator_RowDeletedName="PulsoArterialRowDeleted" msprop:Generator_RowClassName="PulsoArterialRow" msprop:Generator_UserTableName="PulsoArterial" msprop:Generator_RowEvArgName="PulsoArterialRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="auscultacion" msprop:Generator_ColumnVarNameInTable="columnauscultacion" msprop:Generator_ColumnPropNameInRow="auscultacion" msprop:Generator_ColumnPropNameInTable="auscultacionColumn" msprop:Generator_UserColumnName="auscultacion" type="xs:string" minOccurs="0" />
+              <xs:element name="observaciones" msprop:Generator_ColumnVarNameInTable="columnobservaciones" msprop:Generator_ColumnPropNameInRow="observaciones" msprop:Generator_ColumnPropNameInTable="observacionesColumn" msprop:Generator_UserColumnName="observaciones" type="xs:string" minOccurs="0" />
+              <xs:element name="Pulso" msprop:Generator_ColumnVarNameInTable="columnPulso" msprop:Generator_ColumnPropNameInRow="Pulso" msprop:Generator_ColumnPropNameInTable="PulsoColumn" msprop:Generator_UserColumnName="Pulso" type="xs:string" minOccurs="0" />
+              <xs:element name="EscalaIzquierdo" msprop:Generator_ColumnVarNameInTable="columnEscalaIzquierdo" msprop:Generator_ColumnPropNameInRow="EscalaIzquierdo" msprop:Generator_ColumnPropNameInTable="EscalaIzquierdoColumn" msprop:Generator_UserColumnName="EscalaIzquierdo" type="xs:string" minOccurs="0" />
+              <xs:element name="EscalaDerecho" msprop:Generator_ColumnVarNameInTable="columnEscalaDerecho" msprop:Generator_ColumnPropNameInRow="EscalaDerecho" msprop:Generator_ColumnPropNameInTable="EscalaDerechoColumn" msprop:Generator_UserColumnName="EscalaDerecho" type="xs:string" minOccurs="0" />
+              <xs:element name="nroConsulta" msprop:Generator_ColumnVarNameInTable="columnnroConsulta" msprop:Generator_ColumnPropNameInRow="nroConsulta" msprop:Generator_ColumnPropNameInTable="nroConsultaColumn" msprop:Generator_UserColumnName="nroConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="id_examenGeneral" msprop:Generator_ColumnVarNameInTable="columnid_examenGeneral" msprop:Generator_ColumnPropNameInRow="id_examenGeneral" msprop:Generator_ColumnPropNameInTable="id_examenGeneralColumn" msprop:Generator_UserColumnName="id_examenGeneral" type="xs:string" minOccurs="0" />
+              <xs:element name="id_consulta" msprop:Generator_ColumnVarNameInTable="columnid_consulta" msprop:Generator_ColumnPropNameInRow="id_consulta" msprop:Generator_ColumnPropNameInTable="id_consultaColumn" msprop:Generator_UserColumnName="id_consulta" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

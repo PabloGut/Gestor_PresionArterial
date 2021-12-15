@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAntecedentesGineco" targetNamespace="http://tempuri.org/dsAntecedentesGineco.xsd" xmlns:mstns="http://tempuri.org/dsAntecedentesGineco.xsd" xmlns="http://tempuri.org/dsAntecedentesGineco.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAntecedentesGineco" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAntecedentesGineco" msprop:Generator_UserDSName="dsAntecedentesGineco">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AntecedentesGinecoObstetricos" msprop:Generator_TableClassName="AntecedentesGinecoObstetricosDataTable" msprop:Generator_TableVarName="tableAntecedentesGinecoObstetricos" msprop:Generator_TablePropName="AntecedentesGinecoObstetricos" msprop:Generator_RowDeletingName="AntecedentesGinecoObstetricosRowDeleting" msprop:Generator_RowChangingName="AntecedentesGinecoObstetricosRowChanging" msprop:Generator_RowEvHandlerName="AntecedentesGinecoObstetricosRowChangeEventHandler" msprop:Generator_RowDeletedName="AntecedentesGinecoObstetricosRowDeleted" msprop:Generator_UserTableName="AntecedentesGinecoObstetricos" msprop:Generator_RowChangedName="AntecedentesGinecoObstetricosRowChanged" msprop:Generator_RowEvArgName="AntecedentesGinecoObstetricosRowChangeEvent" msprop:Generator_RowClassName="AntecedentesGinecoObstetricosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechaRegistro" msprop:Generator_ColumnVarNameInTable="columnfechaRegistro" msprop:Generator_ColumnPropNameInRow="fechaRegistro" msprop:Generator_ColumnPropNameInTable="fechaRegistroColumn" msprop:Generator_UserColumnName="fechaRegistro" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad_x0020_de_x0020_embarazos" msprop:Generator_ColumnVarNameInTable="columnCantidad_de_embarazos" msprop:Generator_ColumnPropNameInRow="Cantidad_de_embarazos" msprop:Generator_ColumnPropNameInTable="Cantidad_de_embarazosColumn" msprop:Generator_UserColumnName="Cantidad de embarazos" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad_x0020_de_x0020_embarazos_x0020_prematuros" msprop:Generator_ColumnVarNameInTable="columnCantidad_de_embarazos_prematuros" msprop:Generator_ColumnPropNameInRow="Cantidad_de_embarazos_prematuros" msprop:Generator_ColumnPropNameInTable="Cantidad_de_embarazos_prematurosColumn" msprop:Generator_UserColumnName="Cantidad de embarazos prematuros" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad_x0020_de_x0020_embarazos_x0020_a_x0020_término" msprop:Generator_ColumnVarNameInTable="columnCantidad_de_embarazos_a_término" msprop:Generator_ColumnPropNameInRow="Cantidad_de_embarazos_a_término" msprop:Generator_ColumnPropNameInTable="Cantidad_de_embarazos_a_términoColumn" msprop:Generator_UserColumnName="Cantidad de embarazos a término" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad_x0020_de_x0020_embarazos_x0020_postérmino" msprop:Generator_ColumnVarNameInTable="columnCantidad_de_embarazos_postérmino" msprop:Generator_ColumnPropNameInRow="Cantidad_de_embarazos_postérmino" msprop:Generator_ColumnPropNameInTable="Cantidad_de_embarazos_postérminoColumn" msprop:Generator_UserColumnName="Cantidad de embarazos postérmino" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad_x0020_de_x0020_abortos" msprop:Generator_ColumnVarNameInTable="columnCantidad_de_abortos" msprop:Generator_ColumnPropNameInRow="Cantidad_de_abortos" msprop:Generator_ColumnPropNameInTable="Cantidad_de_abortosColumn" msprop:Generator_UserColumnName="Cantidad de abortos" type="xs:string" minOccurs="0" />
+              <xs:element name="CantidadTipo1" msprop:Generator_ColumnVarNameInTable="columnCantidadTipo1" msprop:Generator_ColumnPropNameInRow="CantidadTipo1" msprop:Generator_ColumnPropNameInTable="CantidadTipo1Column" msprop:Generator_UserColumnName="CantidadTipo1" type="xs:string" minOccurs="0" />
+              <xs:element name="CantidadTipo2" msprop:Generator_ColumnVarNameInTable="columnCantidadTipo2" msprop:Generator_ColumnPropNameInRow="CantidadTipo2" msprop:Generator_ColumnPropNameInTable="CantidadTipo2Column" msprop:Generator_UserColumnName="CantidadTipo2" type="xs:string" minOccurs="0" />
+              <xs:element name="Número_x0020_de_x0020_hijos_x0020_vivos" msprop:Generator_ColumnVarNameInTable="columnNúmero_de_hijos_vivos" msprop:Generator_ColumnPropNameInRow="Número_de_hijos_vivos" msprop:Generator_ColumnPropNameInTable="Número_de_hijos_vivosColumn" msprop:Generator_UserColumnName="Número de hijos vivos" type="xs:string" minOccurs="0" />
+              <xs:element name="Problemas_x0020_asociados_x0020_al_x0020_embarazo" msprop:Generator_ColumnVarNameInTable="columnProblemas_asociados_al_embarazo" msprop:Generator_ColumnPropNameInRow="Problemas_asociados_al_embarazo" msprop:Generator_ColumnPropNameInTable="Problemas_asociados_al_embarazoColumn" msprop:Generator_UserColumnName="Problemas asociados al embarazo" type="xs:string" minOccurs="0" />
+              <xs:element name="cantidadProvocados" msprop:Generator_ColumnVarNameInTable="columncantidadProvocados" msprop:Generator_ColumnPropNameInRow="cantidadProvocados" msprop:Generator_ColumnPropNameInTable="cantidadProvocadosColumn" msprop:Generator_UserColumnName="cantidadProvocados" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

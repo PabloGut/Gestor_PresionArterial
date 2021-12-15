@@ -169,5 +169,9 @@ namespace GPA
         {
             grilla.Rows.Clear();
         }
+        public static void MensajeError(Exception ex)
+        {
+            MessageBox.Show(" Error: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

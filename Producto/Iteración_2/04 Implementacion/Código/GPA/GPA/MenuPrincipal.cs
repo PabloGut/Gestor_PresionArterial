@@ -10,6 +10,12 @@ using System.Windows.Forms;
 using Entidades.Clases;
 using GPA.Manejadores;
 using LogicaNegocio;
+using GPA.Reportes;
+using DAO;
+using System.Data.SqlClient;
+using System.Data.OleDb;
+using CrystalDecisions.Shared;
+using CrystalDecisions.ReportAppServer;
 
 namespace GPA
 {
@@ -103,82 +109,118 @@ namespace GPA
         }
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-            cargarComboTipoDocumento();
-            //dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
-            cargarDataGridPacientesDelProfesional();
-            dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
-            TextBoxSoloLectura(true);
-            manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
-            manejadorRegistrarExamenGeneral.registrarExamenGeneral(this);
+            try
+            {
+                CargarComboTipoDocumento();
+                //dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+                CargarDataGridPacientesDelProfesional();
+                dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
+                TextBoxSoloLectura(true);
+                manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
+                manejadorRegistrarExamenGeneral.RegistrarExamenGeneral(this);
 
-            presentarTipoSintomas();
-            presentarParteDelCuerpo();
-            presentarCaracterDolor();
-            presentarElementoTiempoEnfermedadActual();
-            presentarDescripcionTiempo();
-            presentarComoModificaSintoma();
-            presentarElementoModificacion();
-            presentarUbicacionGanglio();
-            presentarTamañosGanglio();
-            presentarAproximacionNúmericaDeTamaño();
-            presentarEscalaPulso();
-            presentarTiposDePulso();
-            presentarSitioMedicionTemperatura();
-            presentarConsistencia();
-            presentarTemperaturaPiel();
-            presentarEstadosDiagnostico();
-            presentarEstudiosYAnalisis();
+         
+                PresentarTipoSintomas();
+                PresentarParteDelCuerpo();
+                PresentarCaracterDolor();
+                PresentarElementoTiempoEnfermedadActual();
+                PresentarDescripcionTiempo();
+                PresentarComoModificaSintoma();
+                PresentarElementoModificacion();
+                PresentarUbicacionGanglio();
+                PresentarTamañosGanglio();
+                PresentarAproximacionNúmericaDeTamaño();
+                PresentarEscalaPulso();
+                PresentarTiposDePulso();
+                PresentarSitioMedicionTemperatura();
+                PresentarConsistencia();
+                PresentarTemperaturaPiel();
+                presentarEstadosDiagnostico();
+                PresentarEstudiosYAnalisis();
 
-            agregarColumnasSistemaLinfatico();
-            agregarColumnasExamenesARealizar();
+                agregarColumnasSistemaLinfatico();
+                agregarColumnasExamenesARealizar();
 
-            cambioEstadoDiagnostico = false;
+                cambioEstadoDiagnostico = false;
+            }
+            catch(Exception ex)
+            {
+                Utilidades.MensajeError(ex);
+            }
         }
-        private void presentarTipoSintomas()
+        private void PresentarTipoSintomas()
         {
             Utilidades.cargarCombo(cboQueSienteElPaciente, manejadorRegistrarEnfermedadActual.mostrarTiposSintomas(), "id_TipoSintoma", "nombre");
         }
-        private void presentarParteDelCuerpo()
+        private void PresentarParteDelCuerpo()
         {
-            Utilidades.cargarCombo(cboParteCuerpo, manejadorRegistrarEnfermedadActual.mostrarPartesDelCuerpoHumano(), "id_parteCuerpo", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboParteCuerpo, manejadorRegistrarEnfermedadActual.mostrarPartesDelCuerpoHumano(), "id_parteCuerpo", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        private void presentarCaracterDolor()
+        private void PresentarCaracterDolor()
         {
             Utilidades.cargarCombo(cboCaracterDolor, manejadorRegistrarEnfermedadActual.mostrarCaracterDelDolor(), "id_caracterDelDolor", "nombre");
         }
-        private void presentarElementoTiempoEnfermedadActual()
+        private void PresentarElementoTiempoEnfermedadActual()
         {
             Utilidades.cargarCombo(cboElementoTiempo, manejadorRegistrarEnfermedadActual.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
         }
-        private void presentarDescripcionTiempo()
+        private void PresentarDescripcionTiempo()
         {
             Utilidades.cargarCombo(cboCuandoComenzo, manejadorRegistrarEnfermedadActual.mostrarDescripcionesDelTiempo(), "id_descripcionDelTiempo", "nombre");
         }
-        private void presentarComoModificaSintoma()
+        private void PresentarComoModificaSintoma()
         {
             Utilidades.cargarCombo(cboComoModificaSintoma, manejadorRegistrarEnfermedadActual.mostrarModificacionesDelSintoma(), "id_modificacionSintoma", "nombre");
         }
-        private void presentarElementoModificacion()
+        private void PresentarElementoModificacion()
         {
             Utilidades.cargarCombo(cboElementoModificacion, manejadorRegistrarEnfermedadActual.mostrarElementosDeModificacion(), "id_elementoDeModificacion", "nombre");
         }
-        public void presentarUbicacionGanglio()
+        public void PresentarUbicacionGanglio()
         {
-            Utilidades.cargarCombo(cboUbicacionGanglio, manejadorRegistrarExamenGeneral.mostrarUbicaciones(), "id_ubicacion", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboUbicacionGanglio, manejadorRegistrarExamenGeneral.MostrarUbicaciones(), "id_ubicacion", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public void presentarTamañosGanglio()
+        public void PresentarTamañosGanglio()
         {
             Utilidades.cargarCombo(cboTamañoGanglio, manejadorRegistrarExamenGeneral.mostrarTamañoGanglio(), "id_tamaño", "nombre");
         }
-        public void presentarConsistencia()
+        public void PresentarConsistencia()
         {
-            Utilidades.cargarCombo(cboConsistencia, manejadorRegistrarExamenGeneral.mostrarConsistencia(), "id_consistencia", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboConsistencia, manejadorRegistrarExamenGeneral.MostrarConsistencia(), "id_consistencia", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public void presentarTemperaturaPiel()
+        public void PresentarTemperaturaPiel()
         {
-            Utilidades.cargarCombo(cboTemperaturaPiel, manejadorRegistrarExamenGeneral.obtenerTemperaturasPiel(), "id_temperatura", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboTemperaturaPiel, manejadorRegistrarExamenGeneral.ObtenerTemperaturasPiel(), "id_temperatura", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public void presentarAproximacionNúmericaDeTamaño()
+        public void PresentarAproximacionNúmericaDeTamaño()
         {
            
             int nro = 0;
@@ -190,26 +232,33 @@ namespace GPA
             }
             cboAproximacionNumerica.SelectedIndex = 0;
         }
-        public void presentarEscalaPulso()
+        public void PresentarEscalaPulso()
         {
-            Utilidades.cargarCombo(cboPI1, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD1, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPI2, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD2, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPI3, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD3, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPI4, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD4, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPI5, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD5, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPI6, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD6, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPI7, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD7, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPI8, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
-            Utilidades.cargarCombo(cboPD8, manejadorRegistrarExamenGeneral.mostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboPI1, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD1, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPI2, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD2, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPI3, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD3, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPI4, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD4, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPI5, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD5, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPI6, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD6, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPI7, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD7, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPI8, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+                Utilidades.cargarCombo(cboPD8, manejadorRegistrarExamenGeneral.MostrarEscalaPulso(), "id_escalaPulso", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public void presentarTiposDePulso()
+        public void PresentarTiposDePulso()
         {
             Utilidades.cargarCombo(cboPulso1, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
             Utilidades.cargarCombo(cboPulso2, manejadorRegistrarExamenGeneral.mostrarPulsos(), "id_Pulso", "nombre");
@@ -222,21 +271,41 @@ namespace GPA
         }
         public void presentarEstadosDiagnostico()
         {
-            Utilidades.cargarCombo(cboEstadoDiagnostico, manejadorRegistrarExamenGeneral.obtenerEstadoDiagnostico(), "id_estadoDiagnostico", "nombre");
-           
+            try
+            {
+                Utilidades.cargarCombo(cboEstadoDiagnostico, manejadorRegistrarExamenGeneral.obtenerEstadoDiagnostico(), "id_estadoDiagnostico", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public void presentarEstudiosYAnalisis()
+        public void PresentarEstudiosYAnalisis()
         {
-            Utilidades.cargarCombo(cboEstudioARealizar, manejadorRegistrarExamenGeneral.mostrarNombreEstudios(), "id_nombreEstudio", "nombre");
-            Utilidades.cargarCombo(cboAnalisiLaboratorioARealizar, manejadorRegistrarExamenGeneral.mostrarAnalisisLaboratorio(), "id_analisisLaboratorio", "nombre");
-            Utilidades.cargarCombo(cboPracticasComplementariasARealizar, manejadorRegistrarExamenGeneral.mostrarTipoPracticaComplementaria(), "id_tipoPractica", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboEstudioARealizar, manejadorRegistrarExamenGeneral.MostrarNombreEstudios(), "id_nombreEstudio", "nombre");
+                Utilidades.cargarCombo(cboAnalisiLaboratorioARealizar, manejadorRegistrarExamenGeneral.MostrarAnalisisLaboratorio(), "id_analisisLaboratorio", "nombre");
+                Utilidades.cargarCombo(cboPracticasComplementariasARealizar, manejadorRegistrarExamenGeneral.MostrarTipoPracticaComplementaria(), "id_tipoPractica", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
-        public void presentarSitioMedicionTemperatura()
+        public void PresentarSitioMedicionTemperatura()
         {
-            Utilidades.cargarCombo(cboSitioMedicion1, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
-            Utilidades.cargarCombo(cboSitioMedicion2, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
-            Utilidades.cargarCombo(cboSitioMedicion3, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
-            Utilidades.cargarCombo(cboSitioMedicion4, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboSitioMedicion1, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+                Utilidades.cargarCombo(cboSitioMedicion2, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+                Utilidades.cargarCombo(cboSitioMedicion3, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+                Utilidades.cargarCombo(cboSitioMedicion4, manejadorRegistrarExamenGeneral.mostrarSitioMedicionTemperatura(), "id_sitioMedicionTemperatura", "nombre");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public void presentarFechaYHoraActual()
         {
@@ -249,20 +318,34 @@ namespace GPA
          * Llama al método mostrarTiposDocumentos del manejador consultar paciente.
          * No recibe parámetros.
          */
-        public void cargarComboTipoDocumento()
+        public void CargarComboTipoDocumento()
         {
-            if (medicoLogueado != null)
+            try
             {
-                cboTipoDocPaciente.DataSource = manejadorConsultarPaciente.mostrarTiposDocumentos();
-                cboTipoDocPaciente.ValueMember = "id_tipoDoc";
-                cboTipoDocPaciente.DisplayMember = "nombre";
+                if (medicoLogueado != null)
+                {
+                    cboTipoDocPaciente.DataSource = manejadorConsultarPaciente.mostrarTiposDocumentos();
+                    cboTipoDocPaciente.ValueMember = "id_tipoDoc";
+                    cboTipoDocPaciente.DisplayMember = "nombre";
+                }
+            }
+            catch(Exception ex)
+            {
+                Utilidades.MensajeError(ex);
             }
         }
-        private void cargarDataGridPacientesDelProfesional()
+        private void CargarDataGridPacientesDelProfesional()
         {
-          dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+            try
+            {
+                dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
+            }
+            catch(Exception ex)
+            {
+                Utilidades.MensajeError(ex);
+            }
         }
-        private void crearHistoriaClínicaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CrearHistoriaClínicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -388,13 +471,20 @@ namespace GPA
          */
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNroDocPaciente.Text) == false)
+            try
             {
-                dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacienteBuscadoDelProfesional(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, (int)cboTipoDocPaciente.SelectedValue, Convert.ToInt64(txtNroDocPaciente.Text), txtNombreApellidoPaciente.Text);
+                if (string.IsNullOrEmpty(txtNroDocPaciente.Text) == false)
+                {
+                    dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.MostrarPacienteBuscadoDelProfesional(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, (int)cboTipoDocPaciente.SelectedValue, Convert.ToInt64(txtNroDocPaciente.Text), txtNombreApellidoPaciente.Text);
+                }
+                else
+                {
+                    dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.MostrarPacienteBuscadoDelProfesional(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, txtNombreApellidoPaciente.Text);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                dgvPacientesDelProfesionalLogueado.DataSource = manejadorConsultarPaciente.mostrarPacienteBuscadoDelProfesional(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, txtNombreApellidoPaciente.Text);
+                Utilidades.MensajeError(ex);
             }
         }
 
@@ -402,7 +492,11 @@ namespace GPA
         {
             hc = null;
             presentarPaciente();
+            inicializar();
+            Utilidades.limpiarLosControles(tabControl2);
+            Utilidades.limpiarLosControles(tabPage4);
 
+            MessageBox.Show("Paciente seleccionado correctamente", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         /*
          * Método para tomar el tipo y número de documento del paciente seleccionado del datagridview, obtener el objeto correspondiente al paciente y llamar al método para mostrar los datos en el formulario.
@@ -416,8 +510,7 @@ namespace GPA
 
             int tipoDocPaciente =(int) dgvPacientesDelProfesionalLogueado.CurrentRow.Cells["id_tipoDoc_fk"].Value;
             long nroDocPaciente=(int) dgvPacientesDelProfesionalLogueado.CurrentRow.Cells["Número de documento"].Value;
-            
-            
+
             pacienteSeleccionado = manejadorConsultarPaciente.mostrarPacienteBuscado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc, tipoDocPaciente, nroDocPaciente);
             setDatosProfesionalLogueado(pacienteSeleccionado.medico);
             cargarDatosPacienteSeleccionado();
@@ -548,12 +641,17 @@ namespace GPA
                 txtNroCelularMedico.Enabled = valor;
             }
         }
-
         private void btnCrearHistoriaClinica_Click(object sender, EventArgs e)
         {
+
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No se seleccionó el paciente que recibe atención médica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             RegistrarHistoriaClínica regHC = new RegistrarHistoriaClínica(medicoLogueado,pacienteSeleccionado);
             regHC.ShowDialog();
-            
         }
 
         private void btnRegistraMedicamento_Click(object sender, EventArgs e)
@@ -572,7 +670,7 @@ namespace GPA
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            cargarDataGridPacientesDelProfesional();
+            CargarDataGridPacientesDelProfesional();
         }
 
         private void btnVerHistoriaClinica_Click(object sender, EventArgs e)
@@ -651,140 +749,100 @@ namespace GPA
                 return;
             }
         }
+
         private void btnEnfermedades_Click(object sender, EventArgs e)
         {
-            verenfermedades = true;
-            verGinecooptetricos = false;
-            verTraumatismos = false;
-            verOperaciones = false;
+            if (ValidarUsuarioYHc() == false)
+                return;
+
             presentarEnfermedades();
         }
         private void presentarEnfermedades()
         {
+            crHistoriaClinicaEnfermedades crE = new crHistoriaClinicaEnfermedades();
+            dsAntecedentesMorbidos dsAntecedenteMorbido = null;
+            try
+            {
+                dsAntecedenteMorbido = MostrarAntecedentesMorbidosEnfermedadesDeHc(hc.id_hc);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Error al consultar antecedentes mórbidos: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            try
+            {
+                if(dsAntecedenteMorbido!= null && dsAntecedenteMorbido.Tables[0].Rows.Count > 0)
+                {
+                    crE.SetDataSource(dsAntecedenteMorbido);
+                    crystalReportViewer1.ReportSource = crE;
+                    crystalReportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Error al generar el reporte: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public dsAntecedentesMorbidos MostrarAntecedentesMorbidosEnfermedadesDeHc(int idHc)
+        {
+            EnfermedadesDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(@"Data Source=DESKTOP-6DMIHKT\SQLEXPRESS;Initial Catalog=SHIART_DB_PRUEBA;Integrated Security=True;Pooling=False");
+            SqlDataAdapter da = null;
+            dsAntecedentesMorbidos ds = new dsAntecedentesMorbidos();
+            try
+            {
+
+                cn.Open();
+
+                string consulta = @"select am.fechaRegistro, am.evolucion, am.tratamiento,tam.nombre as 'tipo'
+                                    from  AntecedentesMorbidos am, TiposAntecedentesMorbidos tam
+                                    where am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
+                                    and am.id_hc_fk= @idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds, "AntecedentesMorbidos");
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error:" + e.Message);
+            }
+            return ds;
+        }
+        public Boolean ValidarUsuarioYHc()
+        {
             if (pacienteSeleccionado == null)
             {
                 MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                return false;
             }
 
             if (hc == null)
             {
                 MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosEnfermedades(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
-        }
-        private void btnTraumatismos_Click(object sender, EventArgs e)
-        {
-            verenfermedades = false;
-            verGinecooptetricos = false;
-            verTraumatismos = true;
-            verOperaciones = false;
-            presentarTraumatismos();
-        }
-        private void presentarTraumatismos()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                return false;
             }
 
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosTraumatismos(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
-        }
-        private void btnOperaciones_Click(object sender, EventArgs e)
-        {
-            verenfermedades = false;
-            verGinecooptetricos = false;
-            verTraumatismos = true;
-            verOperaciones = true;
-            presentarOperaciones();
-        }
-        private void presentarOperaciones()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAntecedentesMorbidosOperaciones(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
-        }
-        private void btnEmbarazosAbortos_Click(object sender, EventArgs e)
-        {
-            verGinecooptetricos = true;
-            verenfermedades = false;
-            verTraumatismos = false;
-            verOperaciones = false;
-            presentarEmbarazos();
-        }
-        private void presentarEmbarazos()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAntecedentesGinecoObstetricos(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesMorbidos);
-        }
-        private void btnAbortos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAlergiaAlimentos_Click(object sender, EventArgs e)
-        {
-            presentarAlergiaAlimentos();
-        }
-        private void presentarAlergiaAlimentos()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAlergiasAlimentos(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
+            return true;
         }
         private void dgvAntecedentesMorbidos_CellClick(object sender, DataGridViewCellEventArgs e)
         {   
-            if(verGinecooptetricos==true)
-                presentarInformacionAntecedentesGinecoObstetricos(dgvAntecedentesPatologicos);
-
-            if(verenfermedades==true)
-                presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
-
-            if(verTraumatismos==true)
-                presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
-
-            if (verOperaciones == true)
-                presentarInformacionAntecedentesMorbidos(dgvAntecedentesMorbidos);
 
         }
         private void presentarInformacionAlergias(DataGridView dgv)
@@ -842,89 +900,29 @@ namespace GPA
         }
         private void dgvAlergias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           presentarInformacionAlergias(dgvAlergias);
+          // presentarInformacionAlergias(dgvAlergias);
         }
 
         private void btnAlergiaSustanciaAmbiente_Click(object sender, EventArgs e)
         {
-            presentarAlergiaSustanciaAmbiente();
+            //presentarAlergiaSustanciaAmbiente();
         }
-        private void presentarAlergiaSustanciaAmbiente()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAlergiasSustanciasAmbiente(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
-        }
+      
         private void btnAlergiaSustanciaContactoPiel_Click(object sender, EventArgs e)
         {
-            presentarAlergiaSustanciaContactoPiel();
+            //presentarAlergiaSustanciaContactoPiel();
         }
-        private void presentarAlergiaSustanciaContactoPiel()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAlergiasSustanciaContactoPiel(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
-        }
+       
         private void btnAlergiaInsectos_Click(object sender, EventArgs e)
         {
-            presentarAlergiaInsectos();
+            //presentarAlergiaInsectos();
         }
-        private void presentarAlergiaInsectos()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAlergiasInsectos(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
-        }
+     
         private void btnAlergiaMedicamentos_Click(object sender, EventArgs e)
         {
-            presentarAlergiaMedicamentos();
+           //presentarAlergiaMedicamentos();
         }
-        private void presentarAlergiaMedicamentos()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAlergiasMedicamentos(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAlergias);
-        }
+     
         private void dgvAntecedentesMorbidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -932,7 +930,7 @@ namespace GPA
 
         private void dgvAntecedentesGinecoObstetricos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            presentarInformacionAntecedentesPatologicos(dgvAntecedentesPatologicos);
+           // presentarInformacionAntecedentesPatologicos(dgvAntecedentesPatologicos);
         }
 
         private void btnAgregarRegionEstudiada_Click(object sender, EventArgs e)
@@ -1097,11 +1095,20 @@ namespace GPA
             Utilidades.limpiarLosControles(tabPage4);
 
             listaSintoma=null;
-            //manejadorRegistrarExamenGeneral = null;
-            //manejadorRegistrarAtencionMedicaEnConsultorio = null;
+            manejadorRegistrarExamenGeneral = null;
+            manejadorRegistrarAtencionMedicaEnConsultorio = null;
             listaTerritoriosExaminados = null;
             listaTemperaturas = null;
+            listaTratamiento = null;
+            listaEstudios = null;
+            listaLaboratorio = null;
+            listaPracticasComplementarias = null;
             consulta = null;
+            cmbExtremidadPresionArterial.Enabled = true;
+            cmbMomentoDiaPresionArterial.Enabled = true;
+            cmbPosicionPresionArterial.Enabled = true;
+            cmbSitioMedicionPresionArterial.Enabled = true;
+            cmbUbicacionPresionArterial.Enabled = true;
         }
         public void registrarExamenGeneralYConsulta()
         {
@@ -1121,7 +1128,15 @@ namespace GPA
             examen.observacionesRespiracion = respiracion.observaciones;
 
             //Agrega datos de temperatura al examen
-            crearMedicionTemperatura();
+            try
+            {
+                crearMedicionTemperatura();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al obtener datos temperatura: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
             if (examen != null && manejadorRegistrarExamenGeneral != null && listaTemperaturas != null && listaTemperaturas.Count > 0)
                 examen.listaTemperaturas = listaTemperaturas;//Agrega la lista de temperaturas corporales al examen general.
 
@@ -1167,7 +1182,7 @@ namespace GPA
             if (examen != null && manejadorRegistrarExamenGeneral != null && listaTemperaturas != null && listaTemperaturas.Count > 0)
                 examen.listaTemperaturas = listaTemperaturas;//Agrega la lista de temperaturas corporales al examen general.
 
-            if (examen != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
+            if (examen != null && manejadorRegistrarExamenGeneral != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
                 examen.medicion = manejadorRegistrarExamenGeneral.medicion;//Agrega las mediciones de presión arterial al examen
 
             //if (examen != null && manejadorRegistrarExamenGeneral != null && listaDiagnosticos != null && listaDiagnosticos.Count > 0)
@@ -1205,7 +1220,14 @@ namespace GPA
             fecha = Convert.ToDateTime(mtbFechaConsulta.Text);
             hora = Convert.ToDateTime(mtbHoraConsulta.Text);
             motivoConsulta = txtMotivoConsulta.Text;
+            
             idhc = hc.id_hc;
+
+            if(idhc==0)
+            {
+                HistoriaClinica hc = HistoriaClinicaLN.mostrarHistoriaClinica(pacienteSeleccionado);
+                idhc = hc.id_hc;
+            }
 
             if (listaSintoma != null && listaSintoma.Count > 0)
             {
@@ -1661,6 +1683,7 @@ namespace GPA
             int id_sitio;
             float valorTemperatura;
             string resultado;
+            int idResultado;
 
             if (cboSitioMedicion1.SelectedIndex > 0 && !string.IsNullOrEmpty(txtValorTemperatura1.Text) && !string.IsNullOrEmpty(txtResultadoTemperatura1.Text))
             {
@@ -1671,7 +1694,16 @@ namespace GPA
 
                 resultado = txtResultadoTemperatura1.Text;
 
-                Temperatura temperatura=manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+                try
+                {
+                    idResultado = TemperaturaLN.ObtenerIdResultadoTemperatura(resultado);
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
+
+                Temperatura temperatura=manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura,idResultado);
 
                 if (listaTemperaturas == null)
                     listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
@@ -1688,7 +1720,16 @@ namespace GPA
 
                 resultado = txtResultadoTemperatura2.Text;
 
-                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+                try
+                {
+                    idResultado = TemperaturaLN.ObtenerIdResultadoTemperatura(resultado);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+
+                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura,idResultado);
 
                 if (listaTemperaturas == null)
                     listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
@@ -1705,7 +1746,16 @@ namespace GPA
 
                 resultado = txtResultadoTemperatura3.Text;
 
-                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+                try
+                {
+                    idResultado = TemperaturaLN.ObtenerIdResultadoTemperatura(resultado);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+
+                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura,idResultado);
 
                 if (listaTemperaturas == null)
                     listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
@@ -1722,7 +1772,16 @@ namespace GPA
 
                 resultado = txtResultadoTemperatura4.Text;
 
-                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura);
+                try
+                {
+                    idResultado = TemperaturaLN.ObtenerIdResultadoTemperatura(resultado);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+
+                Temperatura temperatura = manejadorRegistrarExamenGeneral.crearTemperaturaPaso4(id_sitio, resultado, valorTemperatura,idResultado);
 
                 if (listaTemperaturas == null)
                     listaTemperaturas = manejadorRegistrarExamenGeneral.crearListaTemperatura();
@@ -1741,7 +1800,7 @@ namespace GPA
 
         private void cmbExtremidadPresionArterial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            manejadorRegistrarExamenGeneral.mostrarUbicacionesDeExtremidad(Convert.ToInt32(cmbExtremidadPresionArterial.SelectedValue));
+            manejadorRegistrarExamenGeneral.mostrarUbicacionesDeExtremidad(Convert.ToInt32(cmbExtremidadPresionArterial.SelectedValue),this);
         }
 
         public void presentarUbicacionesExtremidadDeExtremidad(List<UbicacionExtremidad> ubicaciones)
@@ -2119,25 +2178,13 @@ namespace GPA
 
         private void btnConsultas_Click(object sender, EventArgs e)
         {
-            presentarConsultas();
+            crHistoriaClinicaConsultas rhc = new crHistoriaClinicaConsultas();
+            rhc.SetDataSource(ConsultaLN.MostrarConsultas(hc.id_hc));
+            crystalReportViewer1.ReportSource = rhc;
+            crystalReportViewer1.RefreshReport();
+            //presentarConsultas();
         }
-        public void presentarConsultas()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            DataTable dt = manejadorConsultarHc.mostrarConsultasAnteriores(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvConsultas);
-        }
+   
 
         private void btnRegistrarMedicacion_Click(object sender, EventArgs e)
         {
@@ -2398,6 +2445,16 @@ namespace GPA
 
         private void generarNuevaConsultaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (manejadorRegistrarAtencionMedicaEnConsultorio == null)
+                manejadorRegistrarAtencionMedicaEnConsultorio = new ManejadorRegistrarAtencionMedicaEnConsultorio();
+
+            if (manejadorRegistrarExamenGeneral == null)
+                manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
+
+            if (manejadorRegistrarAtencionMedicaEnConsultorio == null)
+                manejadorRegistrarAtencionMedicaEnConsultorio = new ManejadorRegistrarAtencionMedicaEnConsultorio();
+
+
             generarNuevaConsulta();
             cargarDatosDeEjemplo();
             medicionesAutomaticaConExamenGeneral = true;
@@ -2784,7 +2841,7 @@ namespace GPA
             ac.Text = "Actualizar tipo de síntoma";
             if (ac.ShowDialog() == DialogResult.OK)
             {
-                presentarTipoSintomas();
+                PresentarTipoSintomas();
             }
         }
 
@@ -2794,7 +2851,7 @@ namespace GPA
             ac.Text = "Actualizar parte del cuerpo donde presenta el síntoma";
             if (ac.ShowDialog() == DialogResult.OK)
             {
-                presentarParteDelCuerpo();
+                PresentarParteDelCuerpo();
             }
         }
 
@@ -2879,11 +2936,15 @@ namespace GPA
         {
             List<RazonamientoDiagnostico> diagnosticos = null;
 
+            if (hc == null)
+                return;
 
             if (chbNuevoDiagnostico.Checked == false)
             {
                 Utilidades.limpiarGrilla(dgvDiagnosticos);
                 dgvDiagnosticos.Columns.Clear();
+
+                cboEstadoDiagnostico.Enabled = false;
 
                 if (manejadorModificarEstadoDiagnostico == null)
                     manejadorModificarEstadoDiagnostico = new ManejadorModificarEstadoDiagnostico();
@@ -2903,6 +2964,8 @@ namespace GPA
             {
                 Utilidades.limpiarGrilla(dgvDiagnosticos);
                 dgvDiagnosticos.Columns.Clear();
+
+                cboEstadoDiagnostico.Enabled = true;
 
                 diagnosticos = null;
                 List<String> columnasGrillaDiagnosticos = new List<string>();
@@ -2962,7 +3025,8 @@ namespace GPA
         {
             bool isCellChecked = (bool)dgvTratamientosDiagnostico.Rows[e.RowIndex].Cells[0].Value;
             Tratamiento tratamientoACancelar = null;
-            tratamientosACancelar = new List<Tratamiento>();
+            if(tratamientosACancelar ==null)
+                tratamientosACancelar = new List<Tratamiento>();
 
             if (isCellChecked)
             {
@@ -3019,291 +3083,404 @@ namespace GPA
             Registrar_Análisis_de_Laboratorio formAnalisis = new Registrar_Análisis_de_Laboratorio();
             formAnalisis.ShowDialog();
         }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            verHabitosDrogaIlicita = false;
-            verHabitosTabaquismo = false;
-            verHabitosAlcoholismo = false;
-            verHabitosMedicamentos = true;
-            verHabitosActividadFisica = false;
-            PresentarHabitosMedicamentos();
-        }
-        private void PresentarHabitosMedicamentos()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarHabitosMedicamentos(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
-
-            for (int i = 0; i < dgvHabitos.Rows.Count  - 1; i++)
-            {
-                if (string.IsNullOrEmpty(dgvHabitos.Rows[i].Cells[7].Value.ToString()) || dgvHabitos.Rows[i].Cells[7].Value.ToString().Equals("/"))
-                {
-                    dgvHabitos.Rows[i].Cells["Dosis 1"].Value = "";
-                }
-                if (dgvHabitos.Rows[i].Cells["Dosis 2"].Value.Equals("/"))
-                {
-                    dgvHabitos.Rows[i].Cells["Dosis 2"].Value = "";
-                }
-                if (dgvHabitos.Rows[i].Cells["Dosis 3"].Value.Equals("/"))
-                {
-                    dgvHabitos.Rows[i].Cells["Dosis 3"].Value = "";
-                }
-            }
-
-        }
         private void btnAPPersonales_Click(object sender, EventArgs e)
         {
-            verAntecedentesFamiliares = false;
-            verAntecedentesPersonales = true;
-            presentarAntecedentesPatologicosPersonales();
+            if (ValidarUsuarioYHc() == false)
+                return;
+            PresentarAntecedentesPatologicosPersonales();
         }
-        private void presentarAntecedentesPatologicosPersonales()
+        public void PresentarAntecedentesPatologicosPersonales()
         {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+             crAntecedentesPatologicosPersonales crPatologicosPersonales = new crAntecedentesPatologicosPersonales();
+             dsAntecedentesPatologicosPersonales dsPatologicosPersonales = null;
+             try
+             {
+                dsPatologicosPersonales = MostrarAntecedentesPatologicosPersonales(hc.id_hc);
+             }
+             catch (Exception e)
+             {
+                 MessageBox.Show("Error al consultar antecedentes patológicos personales: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             }
+             try
+             {
+                 if (dsPatologicosPersonales != null && dsPatologicosPersonales.Tables[0].Rows.Count > 0)
+                 {
+                    crPatologicosPersonales.SetDataSource(dsPatologicosPersonales);
+                   crystalReportViewer1.ReportSource = crPatologicosPersonales;
+                   crystalReportViewer1.RefreshReport();
+                  }
+                else
+                {
+                    MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.mostrarAntecedentesPatologicosPersonales(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesPatologicos);
+             catch (Exception e)
+             {
+                MessageBox.Show("Error al generar el reporte: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             }
         }
-        private void presentarHabitosTabaquismo()
+        public dsAntecedentesPatologicosPersonales MostrarAntecedentesPatologicosPersonales(int idHc)
         {
-            if (pacienteSeleccionado == null)
+            AntecedentePatologicoPersonalDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(AntecedentePatologicoPersonalDAO.getCadenaConexion());
+            dsAntecedentesPatologicosPersonales dsAntecedente = null;
+            SqlDataAdapter da = null;
+            try
             {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                cn.Open();
 
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.MostrarHabitosTabaquismo(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
-        }
-        private void presentarAntecedentesPatologicosFamiliares()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                string consulta = @"select fechaRegistro as 'Fecha de registro',enfermedades as 'Enfermedades', ISNULL(descripcion_otrasEnfermedades,'N/A') as 'Otras Enfermedades'
+                                    from AntecedentesPatologicosPersonales
+                                    where id_hc_fk=@idHc";
 
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.MostrarAntecesPatologicosFamiliares(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvAntecedentesPatologicos);
-        }
-        private void presentarHabitosAlcoholismo()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
 
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DataTable dt = manejadorConsultarHc.MostrarHabitosAlcoholismo(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
-        }
-        private void presentarHabitosActividadFisica()
-        {
-            if (pacienteSeleccionado == null)
-            {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
 
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                da = new SqlDataAdapter(cmd);
+                dsAntecedente = new dsAntecedentesPatologicosPersonales();
+                da.Fill(dsAntecedente, "AntecedentesPatologicosPersonales");
             }
-            DataTable dt = manejadorConsultarHc.mostrarHabitosActividadFisica(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dsAntecedente;
         }
         private void btnAPFamiliares_Click(object sender, EventArgs e)
         {
-            verAntecedentesFamiliares = true;
-            verAntecedentesPersonales = false;
-            presentarAntecedentesPatologicosFamiliares();
+            if (ValidarUsuarioYHc() == false)
+                return;
+            PresentarAntecedentesPatologicosFamiliares();
         }
+        public void PresentarAntecedentesPatologicosFamiliares()
+        {
+            crAntecedentesPatologicosFamiliares cra = new crAntecedentesPatologicosFamiliares();
+            dsAntecedentesPatologicosFamiliares dsAntecedentesPatologicosFamiliares = null;
+            try
+            {
+                dsAntecedentesPatologicosFamiliares = MostrarAntecedentesFamiliares(hc.id_hc);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al consultar antecedentes familiares: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
+            if (dsAntecedentesPatologicosFamiliares.Tables[0].Rows.Count > 0)
+            {
+                try
+                {
+                    cra.SetDataSource(dsAntecedentesPatologicosFamiliares);
+                    crystalReportViewer1.ReportSource = cra;
+                    crystalReportViewer1.RefreshReport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar el reporte: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public dsAntecedentesPatologicosFamiliares MostrarAntecedentesFamiliares(int idHc)
+        {
+            AntecedenteFamiliarDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(AntecedenteFamiliarDAO.getCadenaConexion());
+            dsAntecedentesPatologicosFamiliares DsAntecedentesPatologicosFamiliares = new dsAntecedentesPatologicosFamiliares();
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select convert(date, af.fechaRegistro, 5) as 'fechaRegistro',f.nombre as 'Familiar',af.familiarVive 'Vive',af.enfermedades as 'Enfermedades',ISNULL(af.descripcionOtrasEnfermedades,'N/A') as 'Otras enfermedades',ISNULL(af.causaMuerte,'N/A') as 'Causa de muerte',ISNULL(af.observaciones,'N/A') as 'Observaciones'
+                                    from AntecedentesFamiliares af,Familiar f
+                                    where af.id_familiar_fk=f.id_familiar
+                                    and id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                da.Fill(DsAntecedentesPatologicosFamiliares, "AntecedentesFamiliares");
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return DsAntecedentesPatologicosFamiliares;
+        }
         private void btnTabaquismo_Click(object sender, EventArgs e)
         {
-            verHabitosDrogaIlicita = false;
-            verHabitosTabaquismo = true;
-            verHabitosAlcoholismo = false;
-            verHabitosMedicamentos = false;
-            verHabitosActividadFisica = false;
-            presentarHabitosTabaquismo();
+            if (ValidarUsuarioYHc()==false)
+                return;
+
+            PresentarHabitosTabaquismo();
+        }
+        public void PresentarHabitosTabaquismo()
+        {
+            crHistoriaClinicaHabitosTabaquismo crHabitosTabaquismo = new crHistoriaClinicaHabitosTabaquismo();
+            dsHistoriaClinicaHabitosTabaquismo dsHabitosTabaquismo = null;
+            try
+            {
+                dsHabitosTabaquismo = MostrarHabitosTabaquismo(hc.id_hc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consultar Habitos de Tabaquismo: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            if (dsHabitosTabaquismo.Tables[0].Rows.Count > 0)
+            {
+                try
+                {
+                    crHabitosTabaquismo.SetDataSource(dsHabitosTabaquismo);
+                    crystalReportViewer1.ReportSource = crHabitosTabaquismo;
+                    crystalReportViewer1.RefreshReport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar el reporte: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public dsHistoriaClinicaHabitosTabaquismo MostrarHabitosTabaquismo(int idHc)
+        {
+            HabitoTabaquismoDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(HabitoTabaquismoDAO.getCadenaConexion());
+            dsHistoriaClinicaHabitosTabaquismo dsHabitoTabaquismo = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select  ht.fechaRegistro, COALESCE(NULL,CONVERT(varchar,ef2.nombre),'N/A') as 'ElementoQueFuma',
+						  COALESCE(NULL,CONVERT(varchar,ht.cantidad),'N/A') as 'CantidadFuma',
+						  COALESCE(NULL,CONVERT(varchar,ct2.nombre),'N/A')  as 'UnidadDeTiempoFuma',
+						  COALESCE(NULL,CONVERT(varchar, ht.añosFumando),'N/A')  as 'TiempoFumando',
+						  COALESCE(NULL,CONVERT(varchar, df.cantidadTiempo),'N/A') as 'TiempoDejoFumar' ,
+						  COALESCE(NULL,CONVERT(varchar, et.nombre),'N/A') as 'ElementoTiempoDejoDeFumar',
+						  COALESCE(NULL,CONVERT(varchar, df.cantidadFumaba),'N/A') as 'CantidadFumaba',
+		                  COALESCE(NULL,CONVERT(varchar, ef.nombre),'N/A') as 'ElementoQueFumaba',
+		                  COALESCE(NULL,CONVERT(varchar, ct.nombre),'N/A') as 'ComponenteTiempoFumaba'
+                                    from HabitosTabaquismo ht full outer join DejoDeFumar df on ht.id_habitoFumar=df.id_habitoTabaquismo_fk
+                                    full outer join ElementoDelTiempo et on df.id_elementoDelTiempo_fk=et.id_elementoDelTiempo
+                                    full outer join ElementoQueFuma ef on df.id_elementoQueFuma_fk=ef.id_elemento
+                                    full outer join ComponenteDelTiempo ct on df.id_componenteTiempo_fk=ct.id_componenteTiempo
+                                    full outer join ElementoQueFuma ef2 on ht.id_elementoQueFuma_fk=ef2.id_elemento
+                                    full outer join ComponenteDelTiempo ct2 on ht.id_ComponenteDelTiempo_fk=ct2.id_componenteTiempo
+                                    where ht.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dsHabitoTabaquismo = new dsHistoriaClinicaHabitosTabaquismo();
+                da.Fill(dsHabitoTabaquismo, "HabitosTabaquismo");
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dsHabitoTabaquismo;
         }
 
         private void btnAlcoholismo_Click(object sender, EventArgs e)
         {
-            verHabitosDrogaIlicita = false;
-            verHabitosTabaquismo = false;
-            verHabitosAlcoholismo = true;
-            verHabitosMedicamentos = false;
-            verHabitosActividadFisica = false;
-            presentarHabitosAlcoholismo();
+            if (ValidarUsuarioYHc() == false)
+                return;
+
+            PresentarHabitosAlcoholismo();
         }
+        public void PresentarHabitosAlcoholismo()
+        {
+            crHistoriaClinicaHabitosAlcoholismo crHabitosAlcoholismo= new crHistoriaClinicaHabitosAlcoholismo();
+            dsHistoriaClinicaHabitosAlcoholismo dsHabitosAlcoholismo = null;
+            try
+            {
+                dsHabitosAlcoholismo = MostrarHabitosAlcoholismo(hc.id_hc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consultar Habitos de Alcoholismo: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            if (dsHabitosAlcoholismo.Tables[0].Rows.Count > 0)
+            {
+                try
+                {
+                    crHabitosAlcoholismo.SetDataSource(dsHabitosAlcoholismo);
+                    crystalReportViewer1.ReportSource = crHabitosAlcoholismo;
+                    crystalReportViewer1.RefreshReport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar el reporte: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public static dsHistoriaClinicaHabitosAlcoholismo MostrarHabitosAlcoholismo(int idHc)
+        {
+            HabitoAlcoholismoDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(HabitoAlcoholismoDAO.getCadenaConexion());
+            dsHistoriaClinicaHabitosAlcoholismo dsHabitoAlcoholismo = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select ha.fechaRegistro as 'Fecha de registro',tb.nombre as 'Nombre Bebida',m.nombre as 'Medida',m.descripcion as 'Descripcion', ct.nombre as 'Componente del tiempo', ha.cantidad
+                                    from HabitosAlcoholismo ha, TipoBebida tb, Medida m, ComponenteDelTiempo ct
+                                    where ha.id_tipoBebida_fk=tb.id_tipoBebida
+                                    and m.id_medida=ha.id_medida_fk
+                                    and ha.id_componenteTiempo_fk=ct.id_componenteTiempo
+                                    and ha.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dsHabitoAlcoholismo = new dsHistoriaClinicaHabitosAlcoholismo();
+                da.Fill(dsHabitoAlcoholismo, "HabitosAlcoholismo");
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dsHabitoAlcoholismo;
+        }
+
 
         private void btnActividadFisica_Click(object sender, EventArgs e)
         {
-            verHabitosDrogaIlicita = false;
-            verHabitosTabaquismo = false;
-            verHabitosAlcoholismo = false;
-            verHabitosMedicamentos = false;
-            verHabitosActividadFisica = true;
-            presentarHabitosActividadFisica();
+            if (ValidarUsuarioYHc() == false)
+                return;
+            PresentarHabitosActividadFisica();
         }
+        public void PresentarHabitosActividadFisica()
+        {
+            crHistoriaClinicaHabitoActividadFisica crActividadFisica = new crHistoriaClinicaHabitoActividadFisica();
+            dsHistoriaClinicaHabitoActividadFisica dsActividadFisica = null;
+            try
+            {
+                dsActividadFisica = MostrarHabitosActividadFisica(hc.id_hc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consultar Habitos de Actividad Física: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
+            if (dsActividadFisica.Tables[0].Rows.Count > 0)
+            {
+                try
+                {
+                    crActividadFisica.SetDataSource(dsActividadFisica);
+                    crystalReportViewer1.ReportSource = crActividadFisica;
+                    crystalReportViewer1.RefreshReport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar el reporte: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public dsHistoriaClinicaHabitoActividadFisica MostrarHabitosActividadFisica(int idHc)
+        {
+            HabitoActividadFisicaDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(HabitoActividadFisicaDAO.getCadenaConexion());
+            dsHistoriaClinicaHabitoActividadFisica dsActividadFisica = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select haf.fechaRegistro as 'Fecha registro',af.nombre 'Deporte/Actividad',ISNULL(af.descripcion,'N/A') as 'Descripción deporte o actividad',ga.nombre as 'Grado actividad',ga.descripcion as 'Descripcion grado actividad',iaf.nombre as 'Intesidad Actividad Física'
+                                    from HabitosActividadFisica haf, ActividadFisica af, GradoActividad ga, IntensidadActividadFisica iaf
+                                    where haf.id_actividadFisica_fk=af.id_actividadFisica
+                                    and haf.id_gradoActividadFisica_fk=ga.id_gradoActividad
+                                    and haf.id_intensidad_fk=iaf.id_intensidad
+                                    and haf.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dsActividadFisica = new dsHistoriaClinicaHabitoActividadFisica();
+                da.Fill(dsActividadFisica, "HabitosActividadFisica");
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dsActividadFisica;
+        }
         private void dgvConsultas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            presentarConsulta(dgvConsultas);
+           // presentarConsulta(dgvConsultas);
         }
-        private void presentarConsulta(DataGridView dgv)
-        {
-            if (dgv.Columns.Count == 1 || dgv.CurrentRow == null)
-            {
-                return;
-            }
-            int idConsulta = (int)dgv.CurrentRow.Cells["id_consulta"].Value;
-            Consulta consulta = ConsultaLN.obtenerConsultaIdConsulta(idConsulta);
-            StringBuilder s = new StringBuilder();
-            String cadena = null;
-            
-            DateTime fecha = Convert.ToDateTime(dgv.CurrentRow.Cells["fechaConsulta"].Value);
-            cadena += "\r\nConsulta Número: " + Convert.ToString(dgv.CurrentRow.Cells["nroConsulta"].Value);
-            cadena += "\t\tFecha de registro: " + Convert.ToString(fecha.ToShortDateString());
-
-            cadena += "\r\n\r\nMotivo de Consulta: \r\n" + consulta.motivoConsulta + "\r\n";
-
-            List<MedicionDePresionArterial> mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterialIdConsulta(idConsulta);
-            
-            if(mediciones !=null && mediciones.Count > 0 )
-            {
-                cadena += "\r\n Mediciones de presion arterial: " + "\r\n";
-
-                foreach (MedicionDePresionArterial m in mediciones)
-                {
-                    cadena += "\r\n Fecha y Hora: " + m.fecha;
-                    cadena += "\r\n Extremidad: " + m.extremidad.nombre;
-                    cadena += "\r\n Ubicación Extremidad: " + m.ubicacion.nombre;
-                    cadena += "\r\n Sitio de medición: " + m.sitio.nombre;
-                    cadena += "\r\n Posición: " + m.posicion.nombre;
-                    cadena += "\r\n Momento del día: " + m.momento.nombre;
-
-                    cadena += "\r\n\r\n Detalle de Medición: \r\n";
-
-                    foreach (DetalleMedicionPresionArterial d in m.mediciones)
-                    {
-                        cadena += "\r\n Hora: " + d.hora.ToShortTimeString();
-                        cadena += "\r\n Diastólica: " + d.valorMaximo;
-                        cadena += "\r\n Sistólica: " + d.valorMinimo;
-                        cadena += "\r\n Pulso: " + d.pulso + "\r\n";
-                        cadena += "\r\n-------------------------------------------";
-                    }
-
-                }
-            }
-
-            List<EstudioDiagnosticoPorImagen> estudios = EstudioDiagnosticoPorImagenLN.obtenerEstudioDiagnosticoPorImagenIdConsulta(idConsulta);
-            
-            if(estudios !=null && estudios.Count > 0)
-            {
-                cadena += "\r\nEstudios solicitados y pendientes asociados al diagnóstico:";
-                foreach(EstudioDiagnosticoPorImagen e in estudios)
-                {
-                    cadena += "\r\n\r\nEstudio: " + e.nombreEstudio.nombre;
-
-                    cadena += "\t\tFecha de solicitud: " + Convert.ToString(e.fechaSolicitud.ToShortDateString());
-
-                    if(string.IsNullOrEmpty(e.indicaciones))
-                    {
-                        cadena += "\r\n\r\nIndicaciones: N/A\r\n";
-                    }
-                    else
-                    {
-                       cadena += "\r\n\r\nIndicaciones: \r\n" + e.indicaciones + "\r\n";
-                    }
-                }
-            }
-            cadena += "\r\n-------------------------------------------";
-            List<Laboratorio> analisis = LaboratorioLN.obtenerLaboratorioIdConsulta(idConsulta);
-
-            if (analisis != null && analisis.Count > 0)
-            {
-                cadena += "\r\nAnalisis de Laboratorio solicitados y pendientes asociados al diagnóstico:";
-                foreach (Laboratorio e in analisis)
-                {
-                    cadena += "\r\n\r\nEstudio: " + e.analisis.nombre;
-
-                    cadena += "\t\tFecha de solicitud: " + Convert.ToString(e.fechaSolicitud.ToShortDateString());
-
-                    if (string.IsNullOrEmpty(e.indicaciones))
-                    {
-                        cadena += "\r\n\r\nIndicaciones: N/A\r\n";
-                    }
-                    else
-                    {
-                        cadena += "\r\n\r\nIndicaciones: \r\n" + e.indicaciones + "\r\n";
-                    }
-                }
-            }
-            cadena += "\r\n-------------------------------------------";
-            List<PracticaComplementaria> practicas = PracticaComplementariaLN.obtenerPracticaComplementariaIdConsulta(idConsulta);
-
-            if (practicas != null && practicas.Count > 0)
-            {
-                cadena += "\r\nPrácticas complementarias solicitados y pendientes asociados al diagnóstico:";
-                foreach (PracticaComplementaria e in practicas)
-                {
-                    cadena += "\r\n\r\nEstudio: " + e.tipo.nombre;
-
-                    cadena += "\t\tFecha de solicitud: " + Convert.ToString(e.fechaSolicitud.ToShortDateString());
-
-                    if (string.IsNullOrEmpty(e.indicaciones))
-                    {
-                        cadena += "\r\n\r\nIndicaciones: N/A\r\n";
-                    }
-                    else
-                    {
-                        cadena += "\r\n\r\nIndicaciones: \r\n" + e.indicaciones + "\r\n";
-                    }
-                }
-            }
-            frmInformacionHistoriaClinica form = new frmInformacionHistoriaClinica(cadena);
-            form.ShowDialog();
-            form.Dispose();
-        }
+       
         private void presentarInformacionAntecedentesPatologicos(DataGridView dgv)
         {
             if (dgv.Columns.Count == 1 || dgv.CurrentRow == null)
@@ -3337,28 +3514,79 @@ namespace GPA
 
         private void DrogasIlicitas_Click(object sender, EventArgs e)
         {
-            verHabitosDrogaIlicita = true;
-            verHabitosTabaquismo = false;
-            verHabitosAlcoholismo = false;
-            verHabitosMedicamentos = false;
-            verHabitosActividadFisica = false;
+            if (ValidarUsuarioYHc() == false)
+                return;
+
             presentarHabitosDrogasIlicitas();
         }
         private void presentarHabitosDrogasIlicitas()
         {
-            if (pacienteSeleccionado == null)
+            crHabitoDrogasIlicitas crDrogasIlicitas = new crHabitoDrogasIlicitas();
+            dsHistoriaClinicaHabitosDrogasIlicitas dsDrogasIlicitas = null;
+            try
             {
-                MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                dsDrogasIlicitas = MostrarHabitosDrogasIlicitas(hc.id_hc);
             }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al consultar habitos drogas Ilícitas: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            try
+            {
+                if (dsDrogasIlicitas != null && dsDrogasIlicitas.Tables[0].Rows.Count > 0)
+                {
+                    crDrogasIlicitas.SetDataSource(dsDrogasIlicitas);
+                    crystalReportViewer1.ReportSource = crDrogasIlicitas;
+                    crystalReportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al generar el reporte: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public  dsHistoriaClinicaHabitosDrogasIlicitas MostrarHabitosDrogasIlicitas(int idHc)
+        {
+            HabitoDrogasIlicitasDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(HabitoDrogasIlicitasDAO.getCadenaConexion());
+            dsHistoriaClinicaHabitosDrogasIlicitas dsHabitoDrogaIlicitas = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
 
-            if (hc == null)
-            {
-                MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                string consulta = @"select hd.fechaRegistro as 'Fecha de registro',s.nombre as 'Sustancia',hd.tiempoConsumiendo as 'Tiempo Consumiendo',et.nombre as 'Unidad de tiempo'
+                                    from HabitosDrogasIlicitas hd, Sustancia s, ElementoDelTiempo et
+                                    where hd.id_sustancia_fk=s.id_sustancia
+                                    and hd.id_ElementoDelTiempo_fk=et.id_elementoDelTiempo
+                                    and hd.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dsHabitoDrogaIlicitas = new dsHistoriaClinicaHabitosDrogasIlicitas();
+                da.Fill(dsHabitoDrogaIlicitas, "HabitosDrogasIlicitas");
             }
-            DataTable dt = manejadorConsultarHc.MostrarHabitosDrogasIlicitas(hc.id_hc);
-            Utilidades.presentarDatosEnDataGridView(dt, dgvHabitos);
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dsHabitoDrogaIlicitas;
         }
         private void presentarInformacionHabitos(DataGridView dgv)
         {
@@ -3436,7 +3664,7 @@ namespace GPA
 
         private void dgvHabitos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            presentarInformacionHabitos(dgvHabitos);
+            //presentarInformacionHabitos(dgvHabitos);
         }
 
         private void consultarMedicionesPacienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3466,14 +3694,13 @@ namespace GPA
 
 
         }
-
         private void btnCaracterDelDolor_Click(object sender, EventArgs e)
         {
             ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
             ac.Text = "Caracter del dolor";
             if (ac.ShowDialog() == DialogResult.OK)
             {
-                presentarCaracterDolor();
+                PresentarCaracterDolor();
             }
         }
 
@@ -3483,7 +3710,7 @@ namespace GPA
             ac.Text = "Como se Modifica";
             if (ac.ShowDialog() == DialogResult.OK)
             {
-                presentarComoModificaSintoma();
+                PresentarComoModificaSintoma();
             }
         }
 
@@ -3493,7 +3720,7 @@ namespace GPA
             ac.Text = "Comienzo Síntoma";
             if (ac.ShowDialog() == DialogResult.OK)
             {
-                presentarDescripcionTiempo();
+                PresentarDescripcionTiempo();
             }
         }
 
@@ -3503,8 +3730,506 @@ namespace GPA
             ac.Text = "Elemento Modificacion";
             if (ac.ShowDialog() == DialogResult.OK)
             {
-                presentarElementoModificacion();
+                PresentarElementoModificacion();
             }
         }
+
+        private void btnAlergiaMedicamentos_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVerHistoriaClinica_Click_1(object sender, EventArgs e)
+        {
+            verHistoriaClinica();
+        }
+
+        private void btnConsultas_Click_1(object sender, EventArgs e)
+        {
+            if (ValidarUsuarioYHc() == false)
+                return;
+
+            presentarConsultas();
+        }
+        public void presentarConsultas()
+        {
+            crHistoriaClinicaConsultas rhc = new crHistoriaClinicaConsultas();
+            dsHistoriaClinicaConsultas dsConsulta = null;
+            try
+            {
+                dsConsulta = MostrarConsultas(hc.id_hc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la información de las consultas: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            try
+            {
+                if (dsConsulta != null && dsConsulta.Tables[0].Rows.Count > 0)
+                {
+                    rhc.SetDataSource(dsConsulta);
+                    crystalReportViewer1.ReportSource = rhc;
+                    crystalReportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el reporte: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public dsHistoriaClinicaConsultas MostrarConsultas(int idHc)
+        {
+            ConsultaDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = @"Data Source=DESKTOP-6DMIHKT\SQLEXPRESS;Initial Catalog=SHIART_DB_PRUEBA;Integrated Security=True;Pooling=False";
+
+            dsHistoriaClinicaConsultas dsConsultas = new dsHistoriaClinicaConsultas();
+
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select c.nroConsulta, c.fechaConsulta, c.horaConsulta,c.motivoConsulta
+                                    from Consulta c, Historia_Clinica hc
+                                    where hc.id_hc=c.id_hc_fk 
+                                    and hc.id_hc=@idHc
+                                    order by c.fechaConsulta desc";
+
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+
+                cmd.CommandText = consulta;
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+
+                da.Fill(dsConsultas,"Consulta");
+
+
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return dsConsultas;
+        }
+
+        private void btnEmbarazosAbortos_Click(object sender, EventArgs e)
+        {
+            if (ValidarUsuarioYHc() == false)
+                return;
+            PresentarAntecedentesGineco();
+        }
+        public void PresentarAntecedentesGineco()
+        {
+            crHistoriaClinicaAntecedentesGinecoObstetricos crGineco = new crHistoriaClinicaAntecedentesGinecoObstetricos();
+            dsAntecedentesGineco dsAntecedentesGineco = new dsAntecedentesGineco();
+            try
+            {
+               dsAntecedentesGineco = MostrarAntecedenteGineco(hc.id_hc);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al consultar Antecedentes Gineco Obstétricos: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
+            if (dsAntecedentesGineco!=null && dsAntecedentesGineco.Tables[0].Rows.Count > 0)
+            {
+                if (string.IsNullOrEmpty(dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos"].ToString()) == true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos"] = "N/A";
+
+                if (dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos prematuros"].ToString().Equals(" con parto de tipo ") == true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos prematuros"] = "N/A";
+
+                if (dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos a término"].ToString().Equals(" con parto de tipo ") == true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos a término"] = "N/A";
+
+                if (dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos postérmino"].ToString().Equals(" con parto de tipo ") == true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de embarazos postérmino"] = "N/A";
+
+                if (string.IsNullOrEmpty(dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de abortos"].ToString()) == true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["Cantidad de abortos"] = "N/A";
+
+                if (dsAntecedentesGineco.Tables[0].Rows[0]["CantidadTipo1"].ToString().Equals(" Aborto/s ") ==true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["CantidadTipo1"] = "N/A";
+
+                if (dsAntecedentesGineco.Tables[0].Rows[0]["CantidadTipo2"].ToString().Equals(" Aborto/s ") == true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["CantidadTipo2"] = "N/A";
+
+                if (string.IsNullOrEmpty(dsAntecedentesGineco.Tables[0].Rows[0]["Número de hijos vivos"].ToString())== true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["Número de hijos vivos"] = "N/A";
+
+                if (string.IsNullOrEmpty(dsAntecedentesGineco.Tables[0].Rows[0]["Problemas asociados al embarazo"].ToString()) == true)
+                    dsAntecedentesGineco.Tables[0].Rows[0]["Problemas asociados al embarazo"] = "N/A";
+                try
+                {
+                    crGineco.SetDataSource(dsAntecedentesGineco);
+                    crystalReportViewer1.ReportSource = crGineco;
+                    crystalReportViewer1.RefreshReport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al generar el reporte: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public dsAntecedentesGineco MostrarAntecedenteGineco(int idHc)
+        {
+            AntecedentesGinecoObstetricosDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(AntecedentesGinecoObstetricosDAO.getCadenaConexion());
+            SqlDataAdapter da = null;
+            dsAntecedentesGineco dsAntecedentesGineco = new dsAntecedentesGineco();
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select ag.fechaRegistro, ag.cantidadEmbarazos as 'Cantidad de embarazos',CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino', ab.cantidadTotal as 'Cantidad de abortos',CONCAT(ab.cantidadAbortoTipo1,' Aborto/s ',ta2.nombre) as 'CantidadTipo1', CONCAT(ab.cantidadAbortoTipo2,' Aborto/s ',ta2.nombre) as 'CantidadTipo2', ab.nroHijosVivos as 'Número de hijos vivos',ab.problemasAsociadosAlEmbarazo as 'Problemas asociados al embarazo' 
+                                  from Historia_Clinica hc full outer join AntecedentesGinecoObstetricos ag on  hc.id_hc=ag.id_hc_fk 
+								  full outer join TipoParto tp1 on ag.id_TipoParto1_fk=tp1.id_TipoParto
+								  full outer join TipoParto tp2 on ag.id_TipoParto2_fk=tp2.id_TipoParto
+								  full outer join TipoParto tp3 on ag.id_TipoParto3_fk=tp3.id_TipoParto
+								  full outer join Aborto ab     on ag.id_Aborto_fk=ab.id_aborto
+								  full outer join TipoAborto ta1   on ab.id_TipoAborto1_fk=ta1.id_TipoAborto 
+								  full outer join TipoAborto ta2   on ab.id_TipoAborto2_fk=ta2.id_TipoAborto
+                                  where hc.id_hc=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                
+                da.Fill(dsAntecedentesGineco, "AntecedentesGinecoObstetricos");
+
+                cn.Close();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw new ApplicationException("Error: " + e.Message);
+            }
+            return dsAntecedentesGineco;
+        }
+
+        private void btnAlergias_Click(object sender, EventArgs e)
+        {
+            if (ValidarUsuarioYHc() == false)
+                return;
+
+            PresentarAlergias();
+        }
+        private void PresentarAlergias()
+        {
+            crHistoriaClinicaAlergias crA = new crHistoriaClinicaAlergias();
+            dsAlergias dsAlergia = null;
+            try
+            {
+                dsAlergia = MostrarAlegias(hc.id_hc);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al consultar antecedentes alergias: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            try
+            {
+                if (dsAlergia != null && dsAlergia.Tables[0].Rows.Count > 0)
+                {
+                    crA.SetDataSource(dsAlergia);
+                    crystalReportViewer1.ReportSource = crA;
+                    crystalReportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al generar el reporte: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public dsAlergias MostrarAlegias(int idHc)
+        {
+            AlergiaAlimentoDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(AlergiaAlimentoDAO.getCadenaConexion());
+            dsAlergias dsAlergia = new dsAlergias();
+            SqlDataAdapter da = null;
+
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select aa.fechaRegistro as 'Fecha de registro', a.nombre as 'Nombre del alérgeno', aa.efectos as 'Efectos de la alergia'
+                                        from AlergiaAlimento aa,Alimento a
+                                        where id_hc_fk=@idHc
+                                        and aa.id_alimento_fk=a.id_alimento
+                                        union all
+                                        select ai.fechaRegistro as 'Fecha de registro', ins.nombre as 'Nombre del alérgeno', ai.efectos as 'Efectos de la alergia'
+                                        from AlergiaInsecto ai, Insecto ins
+                                        where ai.id_hc_fk=@idHc
+                                        and ai.id_insecto_fk=ins.id_insecto
+                                        union all
+                                        select am.fechaRegistro as 'Fecha de registro', ma.nombre as 'Nombre del alérgeno', am.efectos as 'Efectos de la alergia'
+                                        from AlergiaMedicamento am, MedicamentoAlergia ma
+                                        where am.id_hc_fk=@idHc
+                                        and am.id_medicamentoAlergia_fk=ma.id_medicamentoAlergia
+                                        union all
+                                        select asa.fechaRegistro as 'Fecha de registro', sa.nombre as 'Nombre del alérgeno', asa.efectos as 'Efectos de la alergia'
+                                        from AlergiaSustanciaAmbiente asa, SustanciaAmbiente sa
+                                        where asa.id_hc_fk=@idHc
+                                        and asa.id_sustanciaAmbiente_fk=sa.id_sustanciaAmbiente
+                                        union all
+                                        select ascp.fechaRegistro as 'Fecha de registro', scp.nombre as 'Nombre del alérgeno', ascp.efectos as 'Efectos de la alergia'
+                                        from AlergiaSustanciaContactoPiel ascp, SustanciaContactoPiel scp
+                                        where ascp.id_hc_fk=@idHc
+                                        and ascp.id_sustanciaContactoPiel_fk=scp.id_sustanciaContactoPiel";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+                da = new SqlDataAdapter(cmd);
+
+                da.Fill(dsAlergia, "Alergias");
+                cn.Close();
+
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            return dsAlergia;
+        }
+
+        private void btnDrogasLicitas_Click(object sender, EventArgs e)
+        {
+            if (ValidarUsuarioYHc() == false)
+                return;
+
+            PresentarHabitosMedicamentos();
+        }
+        private void PresentarHabitosMedicamentos()
+        {
+            crHistoriaClinicaHabitoMedicamento crHabitoMedicamento = new crHistoriaClinicaHabitoMedicamento();
+            dsHistoriaClinicaHabitosMedicamentos dsHabitoMedicamento = null;
+            try
+            {
+                dsHabitoMedicamento = MostrarHabitosMedicamentos(hc.id_hc);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al consultar hábitos de medicamentos: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            try
+            {
+                if (dsHabitoMedicamento != null && dsHabitoMedicamento.Tables[0].Rows.Count > 0)
+                {
+                    crHabitoMedicamento.SetDataSource(dsHabitoMedicamento);
+                    crystalReportViewer1.ReportSource = crHabitoMedicamento;
+                    crystalReportViewer1.RefreshReport();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la información solicitada", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al generar el reporte: " + e.Message + " StackTrace: " + e.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        public static dsHistoriaClinicaHabitosMedicamentos MostrarHabitosMedicamentos(int idHc)
+        {
+            HabitoMedicamentoDAO.setCadenaConexion();
+            SqlConnection cn = new SqlConnection(HabitoMedicamentoDAO.getCadenaConexion());
+            dsHistoriaClinicaHabitosMedicamentos dsHabitoMedicamento = null;
+            SqlDataAdapter da = null;
+            try
+            {
+                cn.Open();
+
+                string consulta = @"select  hm.id_hc_fk,hm.fechaRegistro as 'Fecha de registro',med.nombreGenerico as 'Nombre generico',em.concentracion as 'Concentracion',em.cantidadComprimidos as 'Cantidad de comprimidos',fe.nombre as 'Frecuencia',COALESCE(NULL,md1.nombre,'N/A') as 'Momento del dia 1',case when CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) END as 'Dosis 1',COALESCE(NULL,prem1.nombre,'N/A') as 'Presentacion medicamento 1',COALESCE(NULL,CONVERT(varchar,pm.hora1),'N/A') as 'Hora 1',COALESCE(NULL,md2.nombre,'N/A') as 'Momento del dia 2',case when CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) END as 'Dosis 2',COALESCE(NULL,prem2.nombre,'N/A') as 'Presentacion Medicamento 2',COALESCE(NULL,CONVERT(varchar,pm.hora2),'N/A') as 'Hora 2', case when CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) END as 'Dosis 3',COALESCE(NULL,prem3.nombre,'N/A') as 'Presentacion Medicamento 3',COALESCE(NULL,CONVERT(varchar,pm.hora3),'N/A') as 'Hora 3',COALESCE(NULL,md3.nombre,'N/A') as 'Momento del Dia 3',unidadM.nombre as 'Unidad de Medica',COALESCE(NULL,pm.motivoConsumo,'N/A') as 'Motivo Consumo', COALESCE(NULL,pm.automedicado,'N/A') as 'Automedicado',COALESCE(NULL,pm.motivoCancelacionConsumo,'N/A') as 'Motivo Cancelación Consumo'
+                                    from HabitosMedicamento hm full outer join ProgramacionMedicamento pm on hm.id_programacionMedicamento_fk=pm.id_programacionMedicamento
+                                    full outer join EspecificacionMedicamento em on pm.id_especificacionMedicamento_fk=em.id_especificacion
+                                    full outer join Medicamento med on pm.id_medicamento_fk=med.id_medicamento
+                                    full outer join Frecuencia fe on  pm.id_frecuencia_fk=fe.id_frecuencia
+                                    full outer join MomentoDelDia md1 on  pm.id_momentoDia1_fk=md1.id_momentoDelDia
+                                    full outer join PresentacionMedicamento prem1 on pm.id_presentacionMedicamento1_fk=prem1.id_presentacionMedicamento
+                                    full outer join MomentoDelDia md2 on  pm.id_momentoDia2_fk=md2.id_momentoDelDia
+                                    full outer join PresentacionMedicamento prem2 on pm.id_presentacionMedicamento2_fk=prem2.id_presentacionMedicamento
+                                    full outer join MomentoDelDia md3 on  pm.id_momentoDia3_fk=md3.id_momentoDelDia
+                                    full outer join PresentacionMedicamento prem3 on pm.id_presentacionMedicamento3_fk=prem3.id_presentacionMedicamento
+                                    full outer join UnidadMedida unidadM on  em.id_unidadMedida_fk=unidadM.id_unidadMedida
+                                    where hm.id_hc_fk=@idHc";
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Parameters.AddWithValue("@idHc", idHc);
+
+                cmd.Connection = cn;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                da = new SqlDataAdapter(cmd);
+                dsHabitoMedicamento = new dsHistoriaClinicaHabitosMedicamentos();
+                da.Fill(dsHabitoMedicamento, "HabitosMedicamento");
+            }
+            catch (Exception e)
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                throw e;
+            }
+            cn.Close();
+
+            return dsHabitoMedicamento;
+        }
+
+        private void diagnosticosPorImagenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pacienteSeleccionado == null)
+            {
+                MessageBox.Show("No se seleccionó el paciente!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (hc == null)
+            {
+                hc = consultarHistoriaClinica(pacienteSeleccionado);
+            }
+
+            if (hc != null)
+            {
+                ConsultarEstudios formConsultarEstudios = new ConsultarEstudios(hc.id_hc);
+                formConsultarEstudios.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("El paciente no tiene historia clínica!!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            
+        }
+
+        private void consultarEstadísticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarEstadisticas_PromedioPorcentajeModa formEstadisticas = new ConsultarEstadisticas_PromedioPorcentajeModa();
+            formEstadisticas.ShowDialog();
+        }
+
+        private void consultarPromedioPorCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consultar_EstadisticasMedicionesPromedio formMedicionesPromedio = new Consultar_EstadisticasMedicionesPromedio();
+            formMedicionesPromedio.ShowDialog();
+        }
+
+        private void consultarPromedioPorSitioMedicionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarEstadistica_PromedioSitioMedicion PromedioSitioMedicion = new ConsultarEstadistica_PromedioSitioMedicion();
+            PromedioSitioMedicion.ShowDialog();
+        }
+        public void inicializar()
+        {
+            //manejadorConsultarPaciente. = null; //new ManejadorConsultarPaciente();
+            //manejadorRegistrarAtencionMedicaEnConsultorio = null; //new ManejadorRegistrarAtencionMedicaEnConsultorio();
+            //manejadorConsultarHc = null;
+            //manejadorRegistrarEnfermedadActual = null; //new ManejadorRegistrarEnfermedadActual();
+            if(manejadorRegistrarExamenGeneral == null)
+            {
+                manejadorRegistrarExamenGeneral = new ManejadorRegistrarExamenGeneral();
+            }
+            manejadorRegistrarExamenGeneral.medicion = new MedicionDePresionArterial();
+            //new ManejadorRegistrarExamenGeneral();
+
+            medicionesAutomaticaConExamenGeneral = false;
+
+            //consulta = null;
+            //consultaGenerada = false;
+            //examen = null;
+            if(listaTerritoriosExaminados!=null)
+                listaTerritoriosExaminados.Clear();
+            //listaTerritoriosExaminados = null;
+            if (listaSintoma != null)
+                listaSintoma.Clear();
+            //listaSintoma = null;
+            if (listaTerritoriosExaminados != null)
+                listaTerritoriosExaminados.Clear();
+            //listaTerritoriosExaminados = null;
+            if (listaDiagnosticos != null)
+                listaDiagnosticos.Clear();
+            //listaDiagnosticos = null;
+            if (listaEstudios != null)
+                listaEstudios.Clear();
+            //listaEstudios = null;
+            if (listaLaboratorio != null)
+                listaLaboratorio.Clear();
+            //listaLaboratorio = null;
+            if (listaPracticasComplementarias != null)
+                listaPracticasComplementarias.Clear();
+            //listaPracticasComplementarias = null;
+            if (listaTratamiento != null)
+                listaTratamiento.Clear();
+            //listaTratamiento = null;
+            if (listaTemperaturas != null)
+                listaTemperaturas.Clear();
+            //listaTemperaturas = null;
+        }
+
+        private void dgvPacientesDelProfesionalLogueado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        //public void presentarConsultas()
+        //{
+        //    if (pacienteSeleccionado == null)
+        //    {
+        //        MessageBox.Show("No seleccionó un paciente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return;
+        //    }
+
+        //    if (hc == null)
+        //    {
+        //        MessageBox.Show("El paciente no tiene historia clínica", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return;
+        //    }
+
+        //    DataTable dt = manejadorConsultarHc.mostrarConsultasAnteriores(hc.id_hc);
+        //    Utilidades.presentarDatosEnDataGridView(dt, dgvConsultas);
+        //}
+
     }
 }

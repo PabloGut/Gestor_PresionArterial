@@ -14,7 +14,7 @@ namespace GPA.Manejadores
     {
         public List<EstadoDiagnostico> presentarEstadoDiagnostico()
         {
-            return EstadoDiagnosticoLN.obtenerEstadosDiagnostico();
+            return EstadoDiagnosticoLN.ObtenerEstadosDiagnostico();
         }
         public List<EstudioDiagnosticoPorImagen> presentarEstudiosDiagnosticoPorImagen(int idRazonamiento)
         {

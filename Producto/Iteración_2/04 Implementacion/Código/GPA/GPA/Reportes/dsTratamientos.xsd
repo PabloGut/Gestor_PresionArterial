@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTratamientos" targetNamespace="http://tempuri.org/dsTratamientos.xsd" xmlns:mstns="http://tempuri.org/dsTratamientos.xsd" xmlns="http://tempuri.org/dsTratamientos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTratamientos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTratamientos" msprop:Generator_UserDSName="dsTratamientos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Tratamiento" msprop:Generator_TableClassName="TratamientoDataTable" msprop:Generator_TableVarName="tableTratamiento" msprop:Generator_TablePropName="Tratamiento" msprop:Generator_RowDeletingName="TratamientoRowDeleting" msprop:Generator_RowChangingName="TratamientoRowChanging" msprop:Generator_RowEvHandlerName="TratamientoRowChangeEventHandler" msprop:Generator_RowDeletedName="TratamientoRowDeleted" msprop:Generator_UserTableName="Tratamiento" msprop:Generator_RowChangedName="TratamientoRowChanged" msprop:Generator_RowEvArgName="TratamientoRowChangeEvent" msprop:Generator_RowClassName="TratamientoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_tratamiento" msprop:Generator_ColumnVarNameInTable="columnid_tratamiento" msprop:Generator_ColumnPropNameInRow="id_tratamiento" msprop:Generator_ColumnPropNameInTable="id_tratamientoColumn" msprop:Generator_UserColumnName="id_tratamiento" type="xs:string" minOccurs="0" />
+              <xs:element name="indicaciones" msprop:Generator_ColumnVarNameInTable="columnindicaciones" msprop:Generator_ColumnPropNameInRow="indicaciones" msprop:Generator_ColumnPropNameInTable="indicacionesColumn" msprop:Generator_UserColumnName="indicaciones" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaInicio" msprop:Generator_ColumnVarNameInTable="columnfechaInicio" msprop:Generator_ColumnPropNameInRow="fechaInicio" msprop:Generator_ColumnPropNameInTable="fechaInicioColumn" msprop:Generator_UserColumnName="fechaInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="motivoInicioTratamiento" msprop:Generator_ColumnVarNameInTable="columnmotivoInicioTratamiento" msprop:Generator_ColumnPropNameInRow="motivoInicioTratamiento" msprop:Generator_ColumnPropNameInTable="motivoInicioTratamientoColumn" msprop:Generator_UserColumnName="motivoInicioTratamiento" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaFin" msprop:Generator_ColumnVarNameInTable="columnFechaFin" msprop:Generator_ColumnPropNameInRow="FechaFin" msprop:Generator_ColumnPropNameInTable="FechaFinColumn" msprop:Generator_UserColumnName="FechaFin" type="xs:string" minOccurs="0" />
+              <xs:element name="id_terapia" msprop:Generator_ColumnVarNameInTable="columnid_terapia" msprop:Generator_ColumnPropNameInRow="id_terapia" msprop:Generator_ColumnPropNameInTable="id_terapiaColumn" msprop:Generator_UserColumnName="id_terapia" type="xs:string" minOccurs="0" />
+              <xs:element name="Terapia" msprop:Generator_ColumnVarNameInTable="columnTerapia" msprop:Generator_ColumnPropNameInRow="Terapia" msprop:Generator_ColumnPropNameInTable="TerapiaColumn" msprop:Generator_UserColumnName="Terapia" type="xs:string" minOccurs="0" />
+              <xs:element name="motivoFinTratamiento" msprop:Generator_ColumnVarNameInTable="columnmotivoFinTratamiento" msprop:Generator_ColumnPropNameInRow="motivoFinTratamiento" msprop:Generator_ColumnPropNameInTable="motivoFinTratamientoColumn" msprop:Generator_UserColumnName="motivoFinTratamiento" type="xs:string" minOccurs="0" />
+              <xs:element name="diagnostico" msprop:Generator_ColumnVarNameInTable="columndiagnostico" msprop:Generator_ColumnPropNameInRow="diagnostico" msprop:Generator_ColumnPropNameInTable="diagnosticoColumn" msprop:Generator_UserColumnName="diagnostico" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

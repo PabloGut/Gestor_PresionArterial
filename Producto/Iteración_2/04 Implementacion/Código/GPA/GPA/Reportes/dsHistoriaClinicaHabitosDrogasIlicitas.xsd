@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaHabitosDrogasIlicitas" targetNamespace="http://tempuri.org/dsHistoriaClinicaHabitosDrogasIlicitas.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaHabitosDrogasIlicitas.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaHabitosDrogasIlicitas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaHabitosDrogasIlicitas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaHabitosDrogasIlicitas" msprop:Generator_UserDSName="dsHistoriaClinicaHabitosDrogasIlicitas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HabitosDrogasIlicitas" msprop:Generator_TableClassName="HabitosDrogasIlicitasDataTable" msprop:Generator_TableVarName="tableHabitosDrogasIlicitas" msprop:Generator_TablePropName="HabitosDrogasIlicitas" msprop:Generator_RowDeletingName="HabitosDrogasIlicitasRowDeleting" msprop:Generator_RowChangingName="HabitosDrogasIlicitasRowChanging" msprop:Generator_RowEvHandlerName="HabitosDrogasIlicitasRowChangeEventHandler" msprop:Generator_RowDeletedName="HabitosDrogasIlicitasRowDeleted" msprop:Generator_UserTableName="HabitosDrogasIlicitas" msprop:Generator_RowChangedName="HabitosDrogasIlicitasRowChanged" msprop:Generator_RowEvArgName="HabitosDrogasIlicitasRowChangeEvent" msprop:Generator_RowClassName="HabitosDrogasIlicitasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha_x0020_de_x0020_Registro" msprop:Generator_ColumnVarNameInTable="columnFecha_de_Registro" msprop:Generator_ColumnPropNameInRow="Fecha_de_Registro" msprop:Generator_ColumnPropNameInTable="Fecha_de_RegistroColumn" msprop:Generator_UserColumnName="Fecha de Registro" type="xs:string" minOccurs="0" />
+              <xs:element name="Sustancia" msprop:Generator_ColumnVarNameInTable="columnSustancia" msprop:Generator_ColumnPropNameInRow="Sustancia" msprop:Generator_ColumnPropNameInTable="SustanciaColumn" msprop:Generator_UserColumnName="Sustancia" type="xs:string" minOccurs="0" />
+              <xs:element name="Tiempo_x0020_Consumiendo" msprop:Generator_ColumnVarNameInTable="columnTiempo_Consumiendo" msprop:Generator_ColumnPropNameInRow="Tiempo_Consumiendo" msprop:Generator_ColumnPropNameInTable="Tiempo_ConsumiendoColumn" msprop:Generator_UserColumnName="Tiempo Consumiendo" type="xs:string" minOccurs="0" />
+              <xs:element name="Unidad_x0020_de_x0020_Tiempo" msprop:Generator_ColumnVarNameInTable="columnUnidad_de_Tiempo" msprop:Generator_ColumnPropNameInRow="Unidad_de_Tiempo" msprop:Generator_ColumnPropNameInTable="Unidad_de_TiempoColumn" msprop:Generator_UserColumnName="Unidad de Tiempo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

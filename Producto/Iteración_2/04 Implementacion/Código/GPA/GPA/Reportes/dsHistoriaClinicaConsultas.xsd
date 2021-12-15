@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaConsultas" targetNamespace="http://tempuri.org/dsHistoriaClinicaConsultas.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaConsultas.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaConsultas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SHIART_DB_PRUEBAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SHIART_DB_PRUEBAConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GPA.Properties.Settings.GlobalReference.Default.SHIART_DB_PRUEBAConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaConsultas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaConsultas" msprop:Generator_UserDSName="dsHistoriaClinicaConsultas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Consulta" msprop:Generator_TableClassName="ConsultaDataTable" msprop:Generator_TableVarName="tableConsulta" msprop:Generator_RowChangedName="ConsultaRowChanged" msprop:Generator_TablePropName="Consulta" msprop:Generator_RowDeletingName="ConsultaRowDeleting" msprop:Generator_RowChangingName="ConsultaRowChanging" msprop:Generator_RowEvHandlerName="ConsultaRowChangeEventHandler" msprop:Generator_RowDeletedName="ConsultaRowDeleted" msprop:Generator_RowClassName="ConsultaRow" msprop:Generator_UserTableName="Consulta" msprop:Generator_RowEvArgName="ConsultaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nroConsulta" msprop:Generator_ColumnVarNameInTable="columnnroConsulta" msprop:Generator_ColumnPropNameInRow="nroConsulta" msprop:Generator_ColumnPropNameInTable="nroConsultaColumn" msprop:Generator_UserColumnName="nroConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaConsulta" msprop:Generator_ColumnVarNameInTable="columnfechaConsulta" msprop:Generator_ColumnPropNameInRow="fechaConsulta" msprop:Generator_ColumnPropNameInTable="fechaConsultaColumn" msprop:Generator_UserColumnName="fechaConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="horaConsulta" msprop:Generator_ColumnVarNameInTable="columnhoraConsulta" msprop:Generator_ColumnPropNameInRow="horaConsulta" msprop:Generator_ColumnPropNameInTable="horaConsultaColumn" msprop:Generator_UserColumnName="horaConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="motivoConsulta" msprop:Generator_ColumnVarNameInTable="columnmotivoConsulta" msprop:Generator_ColumnPropNameInRow="motivoConsulta" msprop:Generator_ColumnPropNameInTable="motivoConsultaColumn" msprop:Generator_UserColumnName="motivoConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="id_hc_fk_x0020_" msprop:Generator_ColumnVarNameInTable="columnid_hc_fk_" msprop:Generator_ColumnPropNameInRow="id_hc_fk_" msprop:Generator_ColumnPropNameInTable="id_hc_fk_Column" msprop:Generator_UserColumnName="id_hc_fk " type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Historia_Clinica" msprop:Generator_TableClassName="Historia_ClinicaDataTable" msprop:Generator_TableVarName="tableHistoria_Clinica" msprop:Generator_RowChangedName="Historia_ClinicaRowChanged" msprop:Generator_TablePropName="Historia_Clinica" msprop:Generator_RowDeletingName="Historia_ClinicaRowDeleting" msprop:Generator_RowChangingName="Historia_ClinicaRowChanging" msprop:Generator_RowEvHandlerName="Historia_ClinicaRowChangeEventHandler" msprop:Generator_RowDeletedName="Historia_ClinicaRowDeleted" msprop:Generator_RowClassName="Historia_ClinicaRow" msprop:Generator_UserTableName="Historia_Clinica" msprop:Generator_RowEvArgName="Historia_ClinicaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_hc" msprop:Generator_ColumnVarNameInTable="columnid_hc" msprop:Generator_ColumnPropNameInRow="id_hc" msprop:Generator_ColumnPropNameInTable="id_hcColumn" msprop:Generator_UserColumnName="id_hc" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

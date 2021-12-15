@@ -11,14 +11,15 @@ using System.Windows.Forms;
 using DAO;
 using Entidades.Clases;
 using GPA.Manejadores;
+using Org.BouncyCastle.Utilities;
 
 namespace GPA
 {
     public partial class RegistrarHistoriaClínica : Form
     {
 
-        ProfesionaMedico medico{set;get;}
-        Paciente paciente {set; get;}
+        ProfesionaMedico medico { set; get; }
+        Paciente paciente { set; get; }
 
         ManejadorRegistrarHC manejadorRegistrarHC;
         ManejadorRegistrarEnfermedadActual manejadorRegistrarEnfermedadActual;
@@ -52,17 +53,17 @@ namespace GPA
         List<HabitoMedicamento> listaHabitosMedicamentos;
         List<HabitoActividadFisica> listaHabitosActividadFisica;
 
-        public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado,Paciente pacienteSeleccionado)
+        public RegistrarHistoriaClínica(ProfesionaMedico medicoLogueado, Paciente pacienteSeleccionado)
         {
             InitializeComponent();
-            medico= medicoLogueado;
+            medico = medicoLogueado;
             paciente = pacienteSeleccionado;
             manejadorRegistrarHC = new ManejadorRegistrarHC();
             manejadorRegistrarEnfermedadActual = new ManejadorRegistrarEnfermedadActual();
             manejadorRegistrarAntecedentesMorbidos = new ManejadorRegistrarAntecedentesMorbidos();
             manejadorRegistrarAntecedentesGinecoObstetricos = new ManejadorRegistrarAntecedentesGinecoObstetricos();
             manejadorRegistrarAntecedentesPatologicosFamiliares = new ManejadorRegistrarAntecedentesPatologicosFamiliares();
-            
+
             manejadorRegistrarAlergias = new ManejadorRegistrarAlergias();
             manejadorRegistrarHabitosTabaquismo = new ManejadorRegistrarHabitosTabaquismo();
             manejadorRegistrarHabitosAlcoholismo = new ManejadorRegistrarHabitoAlcoholismo();
@@ -84,30 +85,33 @@ namespace GPA
             listaHabitosDrogasIlicitas = null;
             listaHabitosMedicamentos = null;
             listaHabitosActividadFisica = null;
+
+            cbDejoFumar.Checked = false;
+            habilitarHabitosTabaquismo(true);
         }
         private void RegistrarHistoriaClínica_Load(object sender, EventArgs e)
         {
             habilitarDeshabilitarTabPageYBotones(false);
-            
+
             presentarDatosPacienteYMedico();
 
             presentarFechaYHoraActual();
 
-            presentarTipoSintomas(cboQueSienteElPaciente, manejadorRegistrarEnfermedadActual.mostrarTiposSintomas(),"id_TipoSintoma","nombre");
+            presentarTipoSintomas(cboQueSienteElPaciente, manejadorRegistrarEnfermedadActual.mostrarTiposSintomas(), "id_TipoSintoma", "nombre");
 
-            presentarPartesDelCuerpoHumano(cboParteCuerpo,manejadorRegistrarEnfermedadActual.mostrarPartesDelCuerpoHumano(),"id_parteCuerpo","nombre");
+            presentarPartesDelCuerpoHumano(cboParteCuerpo, manejadorRegistrarEnfermedadActual.mostrarPartesDelCuerpoHumano(), "id_parteCuerpo", "nombre");
 
-            presentarCaracterDelDolor(cboCaracterDolor,manejadorRegistrarEnfermedadActual.mostrarCaracterDelDolor(),"id_caracterDelDolor","nombre");
+            presentarCaracterDelDolor(cboCaracterDolor, manejadorRegistrarEnfermedadActual.mostrarCaracterDelDolor(), "id_caracterDelDolor", "nombre");
 
-            presentarElementosDelTiempo(cboElementoTiempo,manejadorRegistrarEnfermedadActual.mostrarElementosDelTiempo(),"id_elementoDelTiempo","nombre");
+            presentarElementosDelTiempo(cboElementoTiempo, manejadorRegistrarEnfermedadActual.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
-            presentarDescripcionesDelTiempo(cboCuandoComenzo,  manejadorRegistrarEnfermedadActual.mostrarDescripcionesDelTiempo(),"id_descripcionDelTiempo","nombre");
+            presentarDescripcionesDelTiempo(cboCuandoComenzo, manejadorRegistrarEnfermedadActual.mostrarDescripcionesDelTiempo(), "id_descripcionDelTiempo", "nombre");
 
             presentarModificacionesDelSintoma(cboComoModificaSintoma, manejadorRegistrarEnfermedadActual.mostrarModificacionesDelSintoma(), "id_modificacionSintoma", "nombre");
 
             presentarElementosDeModificacionDelSintoma(cboElementoModificacion, manejadorRegistrarEnfermedadActual.mostrarElementosDeModificacion(), "id_elementoDeModificacion", "nombre");
 
-            presentarTiposAntecedentesMorbidos(cboTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarTiposAntecedentesMorbidos(), "id_tipoAntecedenteMorbido", "nombre");
+            presentarTiposAntecedentesMorbidos(cboTipoAntecedenteMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarTiposAntecedentesMorbidos(), "id_tipoAntecedenteMorbido", "nombre");
 
             presentarElementosDelTiempo(cboTiempoOcurridoAntMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
@@ -122,7 +126,7 @@ namespace GPA
             presentarTiposAborto(cboTipoAborto2, manejadorRegistrarAntecedentesGinecoObstetricos.mostrarTiposDeAbortos(), "id_tipoAborto", "nombre");
 
             presentarFamiliares(cboFamiliar, manejadorRegistrarAntecedentesPatologicosFamiliares.mostrarFamiliares(), "id_familiar", "nombre");
-          
+
 
             presentarAlimentos(cboAlimentos, manejadorRegistrarAlergias.mostrarAlimentos(), "id_alimento", "nombre");
 
@@ -156,7 +160,7 @@ namespace GPA
 
             presentarElementosDelTiempo(cboElementoTiempoDrogasIlicitas, manejadorRegistrarHabitosDrogasIlicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
-            presentarMedicamento(cboNombreGenerico, manejadorRegistrarDrogasLicitas.mostrarNombresMedicamento(),"id_medicamento", "nombreGenerico");
+            presentarMedicamento(cboNombreGenerico, manejadorRegistrarDrogasLicitas.mostrarNombresMedicamento(), "id_medicamento", "nombreGenerico");
 
             presentarMomentosDelDia(cboMomentoDia1, manejadorRegistrarDrogasLicitas.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
 
@@ -173,7 +177,7 @@ namespace GPA
             presentarElementosDelTiempo(cboElementoTiempoMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
 
             presentarElementosDelTiempo(cboElementoTiempoCancelacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarElementosDelTiempo(), "id_elementoDelTiempo", "nombre");
-            
+
 
             presentarFrecuenciasDeConsumo(cboFrecuencia, manejadorRegistrarDrogasLicitas.mostrarFrecuencias(), "id_frecuencia", "nombre");
 
@@ -193,7 +197,7 @@ namespace GPA
         }
         public void inicializarComponentes()
         {
-         
+
             rbNoDolor.Checked = true;
 
             rbNoPresentaAntecedentesMorbidos.Checked = true;
@@ -218,8 +222,8 @@ namespace GPA
             rbMedicamentoActual.Checked = true;
             rbNoActividadFisica.Checked = true;
 
-            
-            
+
+
         }
         /*
          * Método para cargar la fecha y hora actual en los textbox.
@@ -249,9 +253,9 @@ namespace GPA
        * El valor de retorno es void.
        * Llama al método cargarCombo.
        */
-        public void presentarPartesDelCuerpoHumano(ComboBox combo,List<ParteDelCuerpo> partesCuerpo,string valueMember,string displayMember)
+        public void presentarPartesDelCuerpoHumano(ComboBox combo, List<ParteDelCuerpo> partesCuerpo, string valueMember, string displayMember)
         {
-            cargarCombo(cboParteCuerpo,partesCuerpo,valueMember,displayMember);
+            cargarCombo(cboParteCuerpo, partesCuerpo, valueMember, displayMember);
         }
         /*
       * Método para mostrar los tipos de dolores(carácter del dolor).
@@ -259,7 +263,7 @@ namespace GPA
       * El valor de retorno es void.
       * Llama al método cargarCombo.
       */
-        public void presentarCaracterDelDolor(ComboBox combo, List<CaracterDelDolor> caracterDelDolor, string valueMember,string displayMember)
+        public void presentarCaracterDelDolor(ComboBox combo, List<CaracterDelDolor> caracterDelDolor, string valueMember, string displayMember)
         {
             cargarCombo(combo, caracterDelDolor, valueMember, displayMember);
         }
@@ -269,9 +273,9 @@ namespace GPA
        * El valor de retorno es void.
        * Llama al método cargarCombo.
        */
-        public void presentarElementosDelTiempo(ComboBox combo,List<ElementoDelTiempo> elementosDelTiempo, string valueMember, string displayMember)
+        public void presentarElementosDelTiempo(ComboBox combo, List<ElementoDelTiempo> elementosDelTiempo, string valueMember, string displayMember)
         {
-            cargarCombo(combo,elementosDelTiempo, valueMember, displayMember);
+            cargarCombo(combo, elementosDelTiempo, valueMember, displayMember);
         }
         /*
          * Método para mostrar las descripciones del tiempo
@@ -279,7 +283,7 @@ namespace GPA
          * El valor de retorno es void.
          * Llama al método cargarCombo.
          */
-        public void presentarDescripcionesDelTiempo(ComboBox combo,List<DescripcionDelTiempo> descripcionesDelTiempo,string valueMember,string displayMember)
+        public void presentarDescripcionesDelTiempo(ComboBox combo, List<DescripcionDelTiempo> descripcionesDelTiempo, string valueMember, string displayMember)
         {
             cargarCombo(combo, descripcionesDelTiempo, valueMember, displayMember);
         }
@@ -291,7 +295,7 @@ namespace GPA
        */
         public void presentarModificacionesDelSintoma(ComboBox combo, List<ModificacionSintoma> modificacionesDelSintoma, string valueMember, string displayMember)
         {
-            cargarCombo(cboComoModificaSintoma, modificacionesDelSintoma,valueMember,displayMember);
+            cargarCombo(cboComoModificaSintoma, modificacionesDelSintoma, valueMember, displayMember);
         }
         /*
        * Método para mostrar los elementos que modifican un síntoma.
@@ -301,7 +305,7 @@ namespace GPA
         */
         public void presentarElementosDeModificacionDelSintoma(ComboBox combo, List<ElementoDeModificacion> elementosDeModificacion, string valueMember, string displayMember)
         {
-            cargarCombo(cboElementoModificacion, elementosDeModificacion, "id_elementoDeModificacion","nombre");
+            cargarCombo(cboElementoModificacion, elementosDeModificacion, "id_elementoDeModificacion", "nombre");
         }
         /*
          * Método para presentar los tipos de antecedentes mórbidos en el combobox.
@@ -329,7 +333,7 @@ namespace GPA
      * El valor de retorno es void.
      * Llama al método cargarCombo.
       */
-        public void presentarOperaciones(ComboBox combo,List<Operacion> operaciones, string valueMember, string displayMember)
+        public void presentarOperaciones(ComboBox combo, List<Operacion> operaciones, string valueMember, string displayMember)
         {
             cargarCombo(cboNombrePorTipoAntecedenteMorbido, operaciones, "id_operacion", "nombre");
         }
@@ -462,9 +466,9 @@ namespace GPA
         public void presentarMedidasBebidasAlcoholicas(ComboBox combo, List<Medida> medidas, string valueMember, string displayMember)
         {
             cargarCombo(combo, medidas, valueMember, displayMember);
-            
+
         }
-        
+
         /*
        * Método para mostrar, las sustancias que son drogas ilicitas,  en el combobox.
        * Recibe como parámetro la referencia del ComboBox, una lista de objetos SustanciaDrogaIlicita, la cadena de caracteres valueMember y la cadena de caracteres displayMember.
@@ -581,13 +585,13 @@ namespace GPA
          * Recibe como parámetro una referencia de un ComboBox, una lista genérica,  un string del valueMember y un string del displayMember.
          * El valor de retorno es void.
          */
-        public void cargarCombo<T>(ComboBox combo,List<T> lista, string valueMember, string displayMember)
+        public void cargarCombo<T>(ComboBox combo, List<T> lista, string valueMember, string displayMember)
         {
             combo.DataSource = lista;
             combo.ValueMember = valueMember;
             combo.DisplayMember = displayMember;
         }
-        
+
         /*
          * Método para presentar los datos del paciente y médico, en los textbox de la interfaz de usuario.
          * No tiene parámetros.
@@ -605,10 +609,10 @@ namespace GPA
 
 
         }
-       
+
         public void medicoLogueado(ProfesionaMedico medicoLogueado)
         {
-           
+
         }
         /*
          * Método para verificar si el paciente seleccionado tiene historia clínica.
@@ -677,29 +681,29 @@ namespace GPA
         }
         public void deshabilitarHabilitarComponentes(Boolean valor)
         {
-            
+
 
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+
 
         }
         public int generarNroHC(int ultimoNroHC)
         {
-            return ultimoNroHC=ultimoNroHC + 1;
+            return ultimoNroHC = ultimoNroHC + 1;
 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-          
-            
+
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -726,6 +730,7 @@ namespace GPA
         {
             registrarHistoriaClinica();
         }
+
         private void rbSiDolor_CheckedChanged(object sender, EventArgs e)
         {
             cboCaracterDolor.Enabled = true;
@@ -741,21 +746,21 @@ namespace GPA
          */
         private void cboTipoAntecedenteMorbido_SelectedIndexChanged(object sender, EventArgs e)
         {
-             TipoAntecedenteMorbido tipo = (TipoAntecedenteMorbido)cboTipoAntecedenteMorbido.SelectedItem;
-             switch (tipo.nombre)
-             {
-                 case "Enfermedad":
-                     presentarEnfermedades(cboNombrePorTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarEnfermedades(tipo.id_tipoAntecedenteMorbido),"id_enfermedad","nombre");
-                     break;
-                 case "Operación":
-                     presentarOperaciones(cboNombrePorTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarOperaciones(tipo.id_tipoAntecedenteMorbido),"id_operacion","nombre");
-                     break;
-                 case "Traumatismo":
-                     presentarTraumatismos(cboNombrePorTipoAntecedenteMorbido,manejadorRegistrarAntecedentesMorbidos.mostrarTraumatismos(tipo.id_tipoAntecedenteMorbido),"id_Traumatismo","nombre");
-                     break;
-                 default:
-                     break;
-             }
+            TipoAntecedenteMorbido tipo = (TipoAntecedenteMorbido)cboTipoAntecedenteMorbido.SelectedItem;
+            switch (tipo.nombre)
+            {
+                case "Enfermedad":
+                    presentarEnfermedades(cboNombrePorTipoAntecedenteMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarEnfermedades(tipo.id_tipoAntecedenteMorbido), "id_enfermedad", "nombre");
+                    break;
+                case "Operación":
+                    presentarOperaciones(cboNombrePorTipoAntecedenteMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarOperaciones(tipo.id_tipoAntecedenteMorbido), "id_operacion", "nombre");
+                    break;
+                case "Traumatismo":
+                    presentarTraumatismos(cboNombrePorTipoAntecedenteMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarTraumatismos(tipo.id_tipoAntecedenteMorbido), "id_Traumatismo", "nombre");
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void rbSiOtraEnfermedad_CheckedChanged(object sender, EventArgs e)
@@ -777,12 +782,12 @@ namespace GPA
         {
             int idMedicamento;
             Int32.TryParse(cboNombreGenerico.SelectedValue.ToString(), out idMedicamento);
-            Utilidades.cargarCombo(cboNombreComercial, manejadorRegistrarDrogasLicitas.mostrarNombresComercialDeMedicamento(idMedicamento),"id_nombreComercial","nombre");
+            Utilidades.cargarCombo(cboNombreComercial, manejadorRegistrarDrogasLicitas.mostrarNombresComercialDeMedicamento(idMedicamento), "id_nombreComercial", "nombre");
         }
 
         private void cboMedidaConsumeAlcohol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Medida medida= (Medida)cboMedidaConsumeAlcohol.SelectedItem;
+            Medida medida = (Medida)cboMedidaConsumeAlcohol.SelectedItem;
             txtDescripcionMedida.Text = medida.descripcion;
         }
 
@@ -808,9 +813,9 @@ namespace GPA
 
             presentarPresentacionMedicamento(cboPresentacionMedicamento, manejadorRegistrarDrogasLicitas.mostrarPresentacionMedicamentoParaUnNombreGenericoYNombreComercial(idMedicamento, idNombreComercial), "id_presentacionMedicamento", "nombre");
 
-            UnidadDeMedida unidad= (UnidadDeMedida) cboUnidadMedida.SelectedItem;
-            PresentacionMedicamento presentacion= (PresentacionMedicamento) cboPresentacionMedicamento.SelectedItem;
-            FormaAdministracion formaAdministracion= (FormaAdministracion) cboFormaAdministración.SelectedItem;
+            UnidadDeMedida unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
+            PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
+            FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
 
             cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
             cboCantidadComprimidos.DataSource = manejadorRegistrarDrogasLicitas.mostrarCantidadComrpimidos(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
@@ -850,14 +855,14 @@ namespace GPA
 
             ParteDelCuerpo parteCuerpo = (ParteDelCuerpo)cboParteCuerpo.SelectedItem;
             sintoma.id_parteCuerpo = parteCuerpo.id_parteCuerpo;
-            
+
             if (string.IsNullOrEmpty(txtDescQueSientePaciente.Text) == false)
             {
                 descripcionQueSiente = txtDescQueSientePaciente.Text;
             }
             sintoma.descripcion = descripcionQueSiente;
 
-            if (rbSiDolor.Checked == true && cboCaracterDolor.SelectedIndex>0)
+            if (rbSiDolor.Checked == true && cboCaracterDolor.SelectedIndex > 0)
             {
                 CaracterDelDolor caracter = (CaracterDelDolor)cboCaracterDolor.SelectedItem;
                 caracterDolor = caracter.nombre;
@@ -870,13 +875,13 @@ namespace GPA
             }
             sintoma.haciaDondeIrradia = haciaDondeIrradia;
 
-            if (mtbFechaComienzoSintoma.MaskFull==true)
+            if (mtbFechaComienzoSintoma.MaskFull == true)
             {
                 fechaInicio = mtbFechaComienzoSintoma.Text;
                 sintoma.fechaInicioSintoma = Convert.ToDateTime(mtbFechaComienzoSintoma.Text);
             }
-            
-            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false && cboElementoTiempo.SelectedIndex>0)
+
+            if (string.IsNullOrEmpty(txtCantTiempoInicioSintoma.Text) == false && cboElementoTiempo.SelectedIndex > 0)
             {
                 ElementoDelTiempo elementoTiempo = (ElementoDelTiempo)cboElementoTiempo.SelectedItem;
                 sintoma.cantidadTiempo = Convert.ToInt32(txtCantTiempoInicioSintoma.Text);
@@ -884,7 +889,7 @@ namespace GPA
             }
             if (cboCuandoComenzo.SelectedIndex > 0)
             {
-                DescripcionDelTiempo descripcion= (DescripcionDelTiempo) cboCuandoComenzo.SelectedItem;
+                DescripcionDelTiempo descripcion = (DescripcionDelTiempo)cboCuandoComenzo.SelectedItem;
                 cuandoComenzo = descripcion.nombre;
                 sintoma.id_descripcionDelTiempo = descripcion.id_descripcionDelTiempo;
             }
@@ -905,13 +910,13 @@ namespace GPA
                 observaciones = txtObservaciones.Text;
             }
             sintoma.observaciones = observaciones;
-            sintoma.fechaRegistro =Convert.ToDateTime(mtbFechaActual.Text);
+            sintoma.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
 
             listaSintomas.Add(sintoma);
 
-            dgvListaSintoma.Rows.Add(nombreSintoma.nombre,descripcionQueSiente,parteCuerpo.nombre,caracterDolor,haciaDondeIrradia,fechaInicio,cantidadTiempoDeComienzo,cuandoComenzo,comoModificaSintoma,elementoModificacionSintoma,observaciones);
-            
-            
+            dgvListaSintoma.Rows.Add(nombreSintoma.nombre, descripcionQueSiente, parteCuerpo.nombre, caracterDolor, haciaDondeIrradia, fechaInicio, cantidadTiempoDeComienzo, cuandoComenzo, comoModificaSintoma, elementoModificacionSintoma, observaciones);
+
+
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los Antecedentes Mórbidos.
@@ -965,11 +970,21 @@ namespace GPA
                 {
                     tratamiento = txtTratamientoAntecedenteMorbido.Text;
                 }
+                else
+                {
+                    MessageBox.Show("Falta ingresar tratamiento del antecedente!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 antecedenteMorbido.tratamiento = tratamiento;
 
                 if (string.IsNullOrEmpty(txtEvoluciónAntecedenteMorbido.Text) == false)
                 {
                     evolución = txtEvoluciónAntecedenteMorbido.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Falta evolución del antecedente ", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
                 antecedenteMorbido.evolución = evolución;
 
@@ -980,10 +995,26 @@ namespace GPA
                     antecedenteMorbido.id_elementoTiempo = componente.id_elementoDelTiempo;
                     antecedenteMorbido.cantidadTiempo = Convert.ToInt32(txtCantTiempoAntecedenteMorbido.Text);
                 }
+                else
+                {
+                    MessageBox.Show("Falta ingresa la cantidad de tiempo de ocurrido el antecedente ", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtCantTiempoAntecedenteMorbido.Focus();
+                    return;
+                }
 
                 listaAntecedentesMorbidos.Add(antecedenteMorbido);
                 dgvAntecedentesMorbidos.Rows.Add(tipoAntecedente, nombreDelTipoDeAntecedente, tratamiento, evolución, tiempo);
+                inicializarAntecedentesMorbidos();
             }
+        }
+        public void inicializarAntecedentesMorbidos()
+        {
+            txtTratamientoAntecedenteMorbido.Clear();
+            txtEvoluciónAntecedenteMorbido.Clear();
+            cboNombrePorTipoAntecedenteMorbido.SelectedIndex = 0;
+            cboTipoAntecedenteMorbido.SelectedIndex = 0;
+            txtCantTiempoAntecedenteMorbido.Clear();
+            cboTiempoOcurridoAntMorbido.SelectedIndex = 0;
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los Antecedentes Patológicos Familiares.
@@ -1005,7 +1036,7 @@ namespace GPA
                 string causaMuerte = "No precisa";
                 string descripcionOtraEnfermedad = "No precisa";
                 string observaciones = "No precisa";
-                
+
                 Familiar familiar = (Familiar)cboFamiliar.SelectedItem;
                 nombreFamiliar = familiar.nombre;
                 antecedente.id_familiar = familiar.id_familiar;
@@ -1022,7 +1053,7 @@ namespace GPA
 
                 if (chbAsma.Checked == true)
                 {
-                    enfermedades = "Asma"; 
+                    enfermedades = "Asma";
                 }
                 if (chbDiabetes.Checked == true)
                 {
@@ -1046,7 +1077,7 @@ namespace GPA
                     {
                         enfermedades += ", ";
                     }
-                    enfermedades += "Anemias";  
+                    enfermedades += "Anemias";
                 }
                 if (chbTuberculosis.Checked == true)
                 {
@@ -1062,7 +1093,7 @@ namespace GPA
                     {
                         enfermedades += ", ";
                     }
-                    enfermedades += "Lepra"; 
+                    enfermedades += "Lepra";
                 }
                 if (chbHepatitis.Checked == true)
                 {
@@ -1078,7 +1109,7 @@ namespace GPA
                     {
                         enfermedades += ", ";
                     }
-                    enfermedades += "Parasitismo"; 
+                    enfermedades += "Parasitismo";
                 }
                 if (chbTranstornosNutricionales.Checked == true)
                 {
@@ -1104,7 +1135,7 @@ namespace GPA
                 }
                 if (string.IsNullOrEmpty(txtDescripcionOtraEnfermedad.Text) == false)
                 {
-                    descripcionOtraEnfermedad = txtDescripcionOtraEnfermedad.Text;    
+                    descripcionOtraEnfermedad = txtDescripcionOtraEnfermedad.Text;
                 }
                 antecedente.descripcionOtrasEnfermedades = descripcionOtraEnfermedad;
 
@@ -1122,7 +1153,17 @@ namespace GPA
                 antecedente.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 listaAntecedentesFamiliares.Add(antecedente);
                 dgvAntecedentesPatologicosFamiliares.Rows.Add(nombreFamiliar, viveFamiliar, enfermedades, otraEnfermedad, descripcionOtraEnfermedad, causaMuerte, observaciones);
+
+                //MessageBox.Show("Antecedente Familiar agregado correctamente ", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                InicializarAntecedentesPatologicosFamiliares();
             }
+        }
+        public void InicializarAntecedentesPatologicosFamiliares()
+        {
+            cboFamiliar.SelectedIndex = 0;
+            txtDescripcionOtraEnfermedad.Clear();
+            txtCausaMuerte.Clear();
+            txtObservacionesAntecedentesPatologicosFamiliares.Clear();
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los Alimentos.
@@ -1131,11 +1172,11 @@ namespace GPA
        */
         public void cargarDatosDataGridViewAlergiaAlimentos()
         {
-            
-            if (rbSiAlergicoAlimentos.Checked == true && cboAlimentos.SelectedIndex > 0 )
-            {   
-                if(listaAlergiasAlimento==null)
-                listaAlergiasAlimento = new List<AlergiaAlimento>();
+
+            if (rbSiAlergicoAlimentos.Checked == true && cboAlimentos.SelectedIndex > 0)
+            {
+                if (listaAlergiasAlimento == null)
+                    listaAlergiasAlimento = new List<AlergiaAlimento>();
 
                 AlergiaAlimento alergia = new AlergiaAlimento();
 
@@ -1153,7 +1194,7 @@ namespace GPA
                 }
                 Alimento alimentoSeleccionado = (Alimento)cboAlimentos.SelectedItem;
                 alimento = alimentoSeleccionado.nombre;
-                
+
 
                 if (string.IsNullOrEmpty(txtEfectosAlergiaAlimentos.Text) == false)
                 {
@@ -1166,7 +1207,13 @@ namespace GPA
 
                 listaAlergiasAlimento.Add(alergia);
                 dgvAlergiasAlimentos.Rows.Add(alergiaAlimento, alimento, efectos);
+                InicializarAlergiasAlimentos();
             }
+        }
+        public void InicializarAlergiasAlimentos()
+        {
+            cboAlimentos.SelectedIndex = 0;
+            txtEfectosAlergiaAlimentos.Clear();
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a las sustancias del ambiente que producen alergias.
@@ -1201,13 +1248,19 @@ namespace GPA
                 {
                     efectos = txtEfectosAlergiaSustanciaAmbiente.Text;
                 }
-                alergia.fechaRegistro =Convert.ToDateTime(mtbFechaActual.Text);
+                alergia.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 alergia.id_sustanciaAmbiente = sustanciaAmbiente.id_sustanciaAmbiente;
                 alergia.efectos = efectos;
 
                 listaAlergiasSustanciaAmbiente.Add(alergia);
                 dgvAlergiasSustanciaAmbiente.Rows.Add(alergiaSustanciaAmbiente, sustancia, efectos);
+                InicializarAlergiaSustanciaAmbiente();
             }
+        }
+        public void InicializarAlergiaSustanciaAmbiente()
+        {
+            txtEfectosAlergiaSustanciaAmbiente.Clear();
+            cboSustanciaAmbiente.SelectedIndex = 0;
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a las sustancias o meteriales que producen alergias.
@@ -1228,8 +1281,8 @@ namespace GPA
                 string efectos = "No precisa";
 
                 alergiaSustanciaContactoPiel = "Si";
-                
-            
+
+
                 SustanciaContactoPiel sustanciaContactoPiel = (SustanciaContactoPiel)cboSustanciaContactoPiel.SelectedItem;
                 sustancia = sustanciaContactoPiel.nombre;
 
@@ -1244,6 +1297,11 @@ namespace GPA
                 listaAlergiaSustanciaContactoPiel.Add(alergia);
                 dgvAlergiasSustanciasContactoPiel.Rows.Add(alergiaSustanciaContactoPiel, sustancia, efectos);
             }
+        }
+        public void InicializarAlergiaSustanciaContactoPiel()
+        {
+            txtEfectosAlergiaSustanciaContactoPiel.Clear();
+            cboSustanciaContactoPiel.SelectedIndex = 0;
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a los insectos.
@@ -1285,7 +1343,13 @@ namespace GPA
 
                 listaAlergiaInsectos.Add(alergia);
                 dgvAlergiasInsectos.Rows.Add(alergiaInsectos, insecto, efectos);
+                InicializarAlergiaInsectos();
             }
+        }
+        public void InicializarAlergiaInsectos()
+        {
+            txtEfectosAlergiaInsecto.Clear();
+            cboInsectos.SelectedIndex = 0;
         }
         /*
         * Método para cargar filas al DatagridView correspondiente a medicamentos que producen alergias.
@@ -1326,7 +1390,14 @@ namespace GPA
 
                 listaAlergiaMedicamento.Add(alergia);
                 dgvAlergiasMedicamentos.Rows.Add(alergiaMedicamento, medicamento, efectos);
+                InicializarMedicamentoAlergia();
+
             }
+        }
+        public void InicializarMedicamentoAlergia()
+        {
+            txtEfectosAlergiasMedicamentos.Clear();
+            cboMedicamentosAlergia.SelectedIndex = 0;
         }
         /*
        * Método para cargar filas al DatagridView correspondiente a los hábitos de tabaquismo.
@@ -1356,7 +1427,7 @@ namespace GPA
             if (rbSiFuma.Checked == true)
             {
                 fuma = "Si";
-                
+
                 if (string.IsNullOrEmpty(txtCantidadQueFuma.Text) == false)
                 {
                     ElementoQueFuma elementoSeleccionado = (ElementoQueFuma)cboElementoQueFuma.SelectedItem;
@@ -1424,6 +1495,21 @@ namespace GPA
 
             listaHabitosTabaquismo.Add(habitoTabaquismo);
             dgvHabitosFumar.Rows.Add(fuma, cantidad, añosFumando, dejoFumar, cantTiempoDejoFumar, descripcionTiempoFumaba, cantidadFumaba);
+            InicializarHabitosTabaquismo();
+        }
+        public void InicializarHabitosTabaquismo()
+        {
+            txtCantidadQueFuma.Clear();
+            cboElementoQueFuma.SelectedIndex = 0;
+            cboComponenteTiempoFuma.SelectedIndex = 0;
+            txtCantidadAñosFumando.Clear();
+
+            txtCantiTiempoDejoFumar.Clear();
+            cboElementosDelTiempoFumaba.SelectedIndex = 0;
+            cboDescripcionDelTiempoFumaba.SelectedIndex = 0;
+            txtCantidadFumaba.Clear();
+            cboElementoFumaba.SelectedIndex = 0;
+            cboComponenteTiempoFumaba.SelectedIndex = 0;
         }
         /*
       * Método para cargar filas al DatagridView correspondiente a los hábitos de alcoholismo.
@@ -1470,7 +1556,16 @@ namespace GPA
                 habitoAlcoholismo.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 listaHabitosAlcoholismo.Add(habitoAlcoholismo);
                 dgvHabitosAlcoholismo.Rows.Add(consumeAlcohol, bebida, estimacionCantidad, descripcion);
+                InicializarHabitosAlcoholismo();
             }
+        }
+        public void InicializarHabitosAlcoholismo()
+        {
+            cboTipoBebida.SelectedIndex = 0;
+            txtCantidadConsume.Clear();
+            cboMedidaConsumeAlcohol.SelectedIndex = 0;
+            cboComponenteTiempoAlcoholismo.SelectedIndex = 0;
+            txtDescripcionMedida.Clear();
         }
         /*
       * Método para cargar filas al DatagridView correspondiente a los hábitos de drogas Ilicitas.
@@ -1511,7 +1606,14 @@ namespace GPA
 
                 listaHabitosDrogasIlicitas.Add(habitoDrogasIlicitas);
                 dgvHabitosDrogasIlicitas.Rows.Add(consumeDrogas, sustancia, tiempoConsumiento);
+                InicializarDrogaIlicita();
             }
+        }
+        public void InicializarDrogaIlicita()
+        {
+            cboSustanciaDrogaIlicita.SelectedIndex = 0;
+            txtCantidadTiempoConsumiendo.Clear();
+            cboElementoTiempoDrogasIlicitas.SelectedIndex = 0;
         }
         /*
          * Método para crear y cargar los objetos HabitoActividadFisica a una lista.
@@ -1526,7 +1628,7 @@ namespace GPA
                     listaHabitosMedicamentos = new List<HabitoMedicamento>();
 
                 HabitoMedicamento habitoMedicamento = new HabitoMedicamento();
-                ProgramacionMedicamento programacion= new ProgramacionMedicamento();
+                ProgramacionMedicamento programacion = new ProgramacionMedicamento();
 
                 EspecificacionMedicamento especificacion = new EspecificacionMedicamento();
 
@@ -1557,9 +1659,9 @@ namespace GPA
 
                 Frecuencia frecuenciaSeleccionada = (Frecuencia)cboFrecuencia.SelectedItem;
                 programacion.id_frecuencia = frecuenciaSeleccionada.id_Frecuencia;
-                
 
-                if(cboMomentoDia1.SelectedIndex > 0)
+
+                if (cboMomentoDia1.SelectedIndex > 0)
                 {
                     MomentoDia momentoDia1 = (MomentoDia)cboMomentoDia1.SelectedItem;
                     programacion.id_momentoDia1 = momentoDia1.idMomentoDia;
@@ -1604,7 +1706,7 @@ namespace GPA
 
                     if (string.IsNullOrEmpty(txtDenominadorCantidad3.Text) == false)
                         programacion.cantidad3Denominador = Convert.ToInt32(txtDenominadorCantidad3.Text);
-                    
+
 
                     PresentacionMedicamento presentacionSeleccionada3 = (PresentacionMedicamento)cboPresentacionMedicamento3.SelectedItem;
                     programacion.id_presentacionMedicamento3 = presentacionSeleccionada3.id_presentacionMedicamento;
@@ -1617,6 +1719,7 @@ namespace GPA
 
                 if (rbMedicamentoActual.Checked == true)
                 {
+                    //Agregar validacion campo txtCantidadTiempoConsumoMedicamento. Validar que no sea nulo
                     programacion.cantidadTiempoConsumo = Convert.ToInt32(txtCantidadTiempoConsumoMedicamento.Text);
                     ElementoDelTiempo elementoTiempoConsumo = (ElementoDelTiempo)cboElementoTiempoMedicamento.SelectedItem;
                     programacion.id_elementoTiempo1 = elementoTiempoConsumo.id_elementoDelTiempo;
@@ -1647,7 +1750,40 @@ namespace GPA
                 habitoMedicamento.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 habitoMedicamento.programacion = programacion;
                 listaHabitosMedicamentos.Add(habitoMedicamento);
+                InicializarHabitoMedicamentos();
             }
+        }
+        public void InicializarHabitoMedicamentos()
+        {
+            cboFrecuencia.SelectedIndex = 0;
+            cboMomentoDia1.SelectedIndex = 0;
+            cboMomentoDia2.SelectedIndex = 0;
+            cboMomentoDia3.SelectedIndex = 0;
+
+            txtNumeradorCantidad1.Clear();
+            txtNumeradorCantidad2.Clear();
+            txtNumeradorCantidad3.Clear();
+
+            cboPresentacionMedicamento1.SelectedIndex = 0;
+            cboPresentacionMedicamento2.SelectedIndex = 0;
+            cboPresentacionMedicamento3.SelectedIndex = 0;
+
+            mtbHora1.Clear();
+            mtbHora2.Clear();
+            mtbHora3.Clear();
+
+            txtMotivoConsumo.Clear();
+            txtMotivoCancelacion.Clear();
+
+            txtCantidadTiempoConsumiendo.Clear();
+            txtCantidadTiempoConsumoMedicamento.Clear();
+
+            cboElementoTiempoMedicamento.SelectedIndex = 0;
+            cboElementoTiempoCancelacionMedicamento.SelectedIndex = 0;
+
+
+
+
         }
         /*
       * Método para cargar filas al DatagridView correspondiente a los hábitos de Actividad física.
@@ -1662,8 +1798,8 @@ namespace GPA
             string descripcion = "";
 
             if (rbSiActividadFisica.Checked == true)
-            {   
-                
+            {
+
                 if (cboActividadFisica.SelectedIndex > -1)
                 {
                     if (listaHabitosActividadFisica == null)
@@ -1691,9 +1827,17 @@ namespace GPA
 
                     listaHabitosActividadFisica.Add(habito);
                     dgvHabitosActividadFisica.Rows.Add(actividad, grado, descripcion, intensidad);
+                    InicializarHabitosActividadFisica();
                 }
             }
 
+        }
+        public void InicializarHabitosActividadFisica()
+        {
+            cboActividadFisica.SelectedIndex = 0;
+            cboGradoActividadFisica.SelectedIndex = 0;
+            txtDescripcionGradoActividadFisica.Clear();
+            cboIntensidad.SelectedIndex = 0;
         }
         /*
          * Método para cargar las columnas del DatagridView correspondiente a los sintomas.
@@ -1731,7 +1875,7 @@ namespace GPA
                 dgvAntecedentesMorbidos.Columns.Add(columna);
             }
 
-            string[] nombreColumnasAntecedentesPatologicosFamiliares = new string[7] { "Familiar", "Vive Si/No", "Enfermedades que padece o padeció", "Otras enfermedades","Descripción", "Causa de muerte", "Observaciones" };
+            string[] nombreColumnasAntecedentesPatologicosFamiliares = new string[7] { "Familiar", "Vive Si/No", "Enfermedades que padece o padeció", "Otras enfermedades", "Descripción", "Causa de muerte", "Observaciones" };
 
 
             for (int i = 0; i < nombreColumnasAntecedentesPatologicosFamiliares.Length; i++)
@@ -1749,7 +1893,7 @@ namespace GPA
        */
         public void agregarColumnaAlergias()
         {
-            string[] nombreColumnasAlergiasAlimento = new string[3] { "Es alergico Si/No", "Alimento", "Efectos"};
+            string[] nombreColumnasAlergiasAlimento = new string[3] { "Es alergico Si/No", "Alimento", "Efectos" };
 
 
             for (int i = 0; i < nombreColumnasAlergiasAlimento.Length; i++)
@@ -1760,7 +1904,7 @@ namespace GPA
                 dgvAlergiasAlimentos.Columns.Add(columna);
             }
 
-            string[] nombreColumnasAlergiasSustanciaDelAmbiente= new string[3] { "Es alergico Si/No", "Sustancia", "Efectos" };
+            string[] nombreColumnasAlergiasSustanciaDelAmbiente = new string[3] { "Es alergico Si/No", "Sustancia", "Efectos" };
 
             for (int i = 0; i < nombreColumnasAlergiasSustanciaDelAmbiente.Length; i++)
             {
@@ -1820,7 +1964,7 @@ namespace GPA
                 dgvHabitosFumar.Columns.Add(columna);
             }
 
-            string[] nombreColumnasHabitoBebidasAlcoholicas = new string[4] { "Consume alcohol Si/No", "Bebida", "Estimación de la cantidad de alcohol","Descripcion de la medida" };
+            string[] nombreColumnasHabitoBebidasAlcoholicas = new string[4] { "Consume alcohol Si/No", "Bebida", "Estimación de la cantidad de alcohol", "Descripcion de la medida" };
 
             for (int i = 0; i < nombreColumnasHabitoBebidasAlcoholicas.Length; i++)
             {
@@ -1830,7 +1974,7 @@ namespace GPA
                 dgvHabitosAlcoholismo.Columns.Add(columna);
             }
 
-            string[] nombreColumnasHabitoDrogasIlicitas = new string[3] { "Consume drogas Si/No", "Sustancia","Cantidad de tiempo consumiento"};
+            string[] nombreColumnasHabitoDrogasIlicitas = new string[3] { "Consume drogas Si/No", "Sustancia", "Cantidad de tiempo consumiento" };
 
             for (int i = 0; i < nombreColumnasHabitoDrogasIlicitas.Length; i++)
             {
@@ -1839,7 +1983,7 @@ namespace GPA
                 columna.Width = 200;
                 dgvHabitosDrogasIlicitas.Columns.Add(columna);
             }
-            string[] nombreColumnasHabitoActividadFisica = new string[4] { "Deporte o actividad", "Grado de la actividad ","Descripción", "Intensidad"};
+            string[] nombreColumnasHabitoActividadFisica = new string[4] { "Deporte o actividad", "Grado de la actividad ", "Descripción", "Intensidad" };
 
             for (int i = 0; i < nombreColumnasHabitoActividadFisica.Length; i++)
             {
@@ -1867,13 +2011,13 @@ namespace GPA
 
             hc.nro_hc = manejadorRegistrarHC.calcularSiguienteNroHc();
 
-            hc.fecha =Convert.ToDateTime(mtbFechaActual.Text);
+            hc.fecha = Convert.ToDateTime(mtbFechaActual.Text);
             hc.hora = Convert.ToDateTime(mtbHoraActual.Text);
             hc.fechaInicioAtencion = Convert.ToDateTime(mtbFechaActual.Text);
 
             hc.motivoConsulta = txtmotivoConsulta.Text;
 
-            idHc=manejadorRegistrarHC.registrarHistoriaClinica(hc);
+            idHc = manejadorRegistrarHC.registrarHistoriaClinica(hc);
 
             registrarEnfermedadActual(idHc);
 
@@ -1909,19 +2053,21 @@ namespace GPA
 
             MessageBox.Show("La historia clínica se registró correctamente!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            habilitarHabitosTabaquismo(true);
+            cbDejoFumar.Checked = false;
 
 
-           
+
         }
         private void registrarEnfermedadActual(int idHc)
-        {   
-            if(listaSintomas!=null && listaSintomas.Count>0)
-            manejadorRegistrarEnfermedadActual.registrarSintomas(listaSintomas, idHc);
+        {
+            if (listaSintomas != null && listaSintomas.Count > 0)
+                manejadorRegistrarEnfermedadActual.registrarSintomas(listaSintomas, idHc);
         }
         private void registrarAntecedentesMorbidos(int idHc)
         {
-            if (listaAntecedentesMorbidos!=null && listaAntecedentesMorbidos.Count > 0)
-            manejadorRegistrarAntecedentesMorbidos.registrarAntecedentesMorbidos(listaAntecedentesMorbidos,idHc);
+            if (listaAntecedentesMorbidos != null && listaAntecedentesMorbidos.Count > 0)
+                manejadorRegistrarAntecedentesMorbidos.registrarAntecedentesMorbidos(listaAntecedentesMorbidos, idHc);
         }
         /*
          * Método para crear los objetos AntecedenteGinecoObstetrico y Aborto.
@@ -1933,64 +2079,136 @@ namespace GPA
             string problemasEmbarazo = "No precisa";
             if (rbSiTieneEmbarazos.Checked == true)
             {
+                if (ValidarCamposEmbarazo() == false)
+                {
+                    MessageBox.Show("Falta ingresar información de los embarazos", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (SumarEmbarazos() == false)
+                {
+                    MessageBox.Show("Total de embarazos difiere a la cantidad por tipo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
 
                 antecedenteGinecoObtetrico.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
 
-                if(string.IsNullOrEmpty(txtCantidadEmbarazos.Text)==false)
-                antecedenteGinecoObtetrico.cantidadEmbarazos = Convert.ToInt32(txtCantidadEmbarazos.Text);
-                
+                if (string.IsNullOrEmpty(txtCantidadEmbarazos.Text) == false)
+                    antecedenteGinecoObtetrico.cantidadEmbarazos = Convert.ToInt32(txtCantidadEmbarazos.Text);
 
-                if(string.IsNullOrEmpty(txtCantidadEmbarazosPrematuro.Text)==false)
-                antecedenteGinecoObtetrico.cantidadEmbarazosPrematuros = Convert.ToInt32(txtCantidadEmbarazosPrematuro.Text);
 
-                if (cboTipoPartoPretermino.SelectedIndex > 0)
+                if (string.IsNullOrEmpty(txtCantidadEmbarazosPrematuro.Text) == false)
                 {
-                    TipoParto tipoParto1Seleccionado = (TipoParto)cboTipoPartoPretermino.SelectedItem;
-                    antecedenteGinecoObtetrico.id_tipoPartoPrematuro = tipoParto1Seleccionado.id_tipoParto;
+                    antecedenteGinecoObtetrico.cantidadEmbarazosPrematuros = Convert.ToInt32(txtCantidadEmbarazosPrematuro.Text);
+
+                    if (cboTipoPartoPretermino.SelectedIndex > 0)
+                    {
+                        TipoParto tipoParto1Seleccionado = (TipoParto)cboTipoPartoPretermino.SelectedItem;
+                        antecedenteGinecoObtetrico.id_tipoPartoPrematuro = tipoParto1Seleccionado.id_tipoParto;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta Seleccionar un tipo de parto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cboTipoPartoPretermino.Focus();
+                        antecedenteGinecoObtetrico = null;
+                        return;
+                    }
                 }
 
-                if(string.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text)==false)
-                antecedenteGinecoObtetrico.cantidadEmbarazosATermino = Convert.ToInt32(txtCantidadEmbarazosATermino.Text);
-
-                if (cboTipoPartoATermino.SelectedIndex > 0)
+                if (string.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text) == false)
                 {
-                    TipoParto tipoParto2Seleccionado = (TipoParto)cboTipoPartoATermino.SelectedItem;
-                    antecedenteGinecoObtetrico.id_tipoPartoATermino = tipoParto2Seleccionado.id_tipoParto;
+                    antecedenteGinecoObtetrico.cantidadEmbarazosATermino = Convert.ToInt32(txtCantidadEmbarazosATermino.Text);
+
+                    if (cboTipoPartoATermino.SelectedIndex > 0)
+                    {
+                        TipoParto tipoParto2Seleccionado = (TipoParto)cboTipoPartoATermino.SelectedItem;
+                        antecedenteGinecoObtetrico.id_tipoPartoATermino = tipoParto2Seleccionado.id_tipoParto;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta Seleccionar un tipo de parto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cboTipoPartoATermino.Focus();
+                        antecedenteGinecoObtetrico = null;
+                        return;
+                    }
                 }
 
-                if(string.IsNullOrEmpty(txtCantidadEmbarazosPosTermino.Text)==false)
-                antecedenteGinecoObtetrico.cantidadEmbarazosPosTermino = Convert.ToInt32(txtCantidadEmbarazosPosTermino.Text);
-
-                if (cboTipoPartoPostermino.SelectedIndex > 0)
+                if (string.IsNullOrEmpty(txtCantidadEmbarazosPosTermino.Text) == false)
                 {
-                    TipoParto tipoParto3Seleccionado = (TipoParto)cboTipoPartoPostermino.SelectedItem;
-                    antecedenteGinecoObtetrico.id_tipoPartoPosTermino = tipoParto3Seleccionado.id_tipoParto;
+                    antecedenteGinecoObtetrico.cantidadEmbarazosPosTermino = Convert.ToInt32(txtCantidadEmbarazosPosTermino.Text);
+                    if (cboTipoPartoPostermino.SelectedIndex > 0)
+                    {
+                        TipoParto tipoParto3Seleccionado = (TipoParto)cboTipoPartoPostermino.SelectedItem;
+                        antecedenteGinecoObtetrico.id_tipoPartoPosTermino = tipoParto3Seleccionado.id_tipoParto;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta Seleccionar un tipo de parto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cboTipoPartoPostermino.Focus();
+                        antecedenteGinecoObtetrico = null;
+                        return;
+                    }
                 }
 
                 if (rbSiTieneAbortos.Checked == true)
                 {
+                    if (ValidarCamposAborto() == false)
+                    {
+                        MessageBox.Show("Falta ingresar información de los abortos", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        antecedenteGinecoObtetrico = null;
+                        return;
+                    }
+                    if (SumarAbortos() == false)
+                    {
+                        MessageBox.Show("Total de abortos difiere a la cantidad por tipo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        antecedenteGinecoObtetrico = null;
+                        return;
+                    }
                     Aborto aborto = new Aborto();
 
-                    aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
+                    if (string.IsNullOrEmpty(txtCantidadAbortos.Text) == false)
+                        aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
 
                     if (string.IsNullOrEmpty(txtCantidadTipoAborto1.Text) == false)
                     {
-                        aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
-                        TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
-                        aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+                        if (cboTipoAborto1.SelectedIndex > 0)
+                        {
+                            aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+                            TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
+                            aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falta Seleccionar un tipo aborto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cboTipoAborto1.Focus();
+                            antecedenteGinecoObtetrico = null;
+                            return;
+                        }
+
                     }
                     if (string.IsNullOrEmpty(txtCantidadTipoAborto2.Text) == false)
                     {
-                        TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
-                        aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
-                        aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+                        if (cboTipoAborto2.SelectedIndex > 0)
+                        {
+                            TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
+                            aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
+                            aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falta Seleccionar un tipo aborto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cboTipoAborto2.Focus();
+                            antecedenteGinecoObtetrico = null;
+                            return;
+                        }
                     }
 
-                    aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
-                    
-                    if(string.IsNullOrEmpty(txtProblemasEmbarazo.Text)==false)
-                    aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
+                    if (string.IsNullOrEmpty(txtCantidadHijosVivos.Text) == false)
+                        aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
+
+                    if (string.IsNullOrEmpty(txtProblemasEmbarazo.Text) == false)
+                        aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
 
                     antecedenteGinecoObtetrico.aborto = aborto;
                 }
@@ -1999,32 +2217,174 @@ namespace GPA
             {
                 if (rbSiTieneAbortos.Checked == true)
                 {
-
+                    if (ValidarCamposAborto() == false)
+                    {
+                        MessageBox.Show("Falta ingresar información de los abortos", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        antecedenteGinecoObtetrico = null;
+                        return;
+                    }
+                    if (SumarAbortos() == false)
+                    {
+                        MessageBox.Show("Total de abortos difiere a la cantidad por tipo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        antecedenteGinecoObtetrico = null;
+                        return;
+                    }
                     antecedenteGinecoObtetrico = new AntecedenteGinecoObstetrico();
                     antecedenteGinecoObtetrico.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
 
                     Aborto aborto = new Aborto();
 
-                    aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
+                    if (string.IsNullOrEmpty(txtCantidadAbortos.Text) == false)
+                        aborto.cantidadTotal = Convert.ToInt32(txtCantidadAbortos.Text);
 
-                    aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
                     TipoAborto tipo1Seleccionado = (TipoAborto)cboTipoAborto1.SelectedItem;
-                    aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+
+                    if (string.IsNullOrEmpty(txtCantidadTipoAborto1.Text) == false && !tipo1Seleccionado.nombre.Equals("--Seleccionar--"))
+                    {
+                        if (!tipo1Seleccionado.nombre.Equals("--Seleccionar--"))
+                        {
+                            aborto.cantidadAbortoTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+                            aborto.id_tipoAborto1 = tipo1Seleccionado.id_tipoAborto;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falta Seleccionar un tipo aborto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cboTipoAborto2.Focus();
+                            antecedenteGinecoObtetrico = null;
+                            return;
+                        }
+                    }
 
                     TipoAborto tipo2Seleccionado = (TipoAborto)cboTipoAborto2.SelectedItem;
-                    aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
-                    aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
 
+                    if (String.IsNullOrEmpty(txtCantidadTipoAborto2.Text) == false && !tipo2Seleccionado.nombre.Equals("--Seleccionar--"))
+                    {
+                        if (!tipo2Seleccionado.nombre.Equals("--Seleccionar--"))
+                        {
+                            aborto.id_tipoAborto2 = tipo2Seleccionado.id_tipoAborto;
+                            aborto.cantidadAbortoTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Falta Seleccionar un tipo aborto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cboTipoAborto2.Focus();
+                            antecedenteGinecoObtetrico = null;
+                            return;
+                        }
+
+                    }
                     aborto.nroHijosVivos = Convert.ToInt32(txtCantidadHijosVivos.Text);
 
-                    if(string.IsNullOrEmpty( txtProblemasEmbarazo.Text)==false)
+                    if (string.IsNullOrEmpty(txtProblemasEmbarazo.Text) == false)
                         aborto.problemasEmbarazo = txtProblemasEmbarazo.Text;
 
                     antecedenteGinecoObtetrico.aborto = aborto;
                 }
             }
-           
-            
+            MessageBox.Show("Se agregó correctamente el antecedente Gineco Obstétrico!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            inicializarAntecedentesGineco();
+        }
+        public void inicializarAntecedentesGineco()
+        {
+            txtCantidadEmbarazos.Clear();
+            txtCantidadEmbarazosATermino.Clear();
+            txtCantidadEmbarazosPosTermino.Clear();
+            txtCantidadEmbarazosPrematuro.Clear();
+            txtCantidadAbortos.Clear();
+            txtCantidadTipoAborto1.Clear();
+            txtCantidadTipoAborto2.Clear();
+            txtProblemasEmbarazo.Clear();
+            txtCantidadHijosVivos.Clear();
+
+            cboTipoPartoATermino.SelectedIndex = 0;
+            cboTipoPartoPostermino.SelectedIndex = 0;
+            cboTipoPartoPretermino.SelectedIndex = 0;
+            cboTipoAborto1.SelectedIndex = 0;
+            cboTipoAborto2.SelectedIndex = 0;
+        }
+        public Boolean SumarEmbarazos()
+        {
+            int cantEmbarazosATermino;
+            int cantEmbarazosPosTermino;
+            int cantEmbarazosPrematuros;
+            int cantEmbarazos;
+
+            if (string.IsNullOrEmpty(txtCantidadEmbarazos.Text) == true)
+                cantEmbarazos = 0;
+            else
+                cantEmbarazos = Convert.ToInt32(txtCantidadEmbarazos.Text);
+
+            if (string.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text) == true)
+                cantEmbarazosATermino = 0;
+            else
+                cantEmbarazosATermino = Convert.ToInt32(txtCantidadEmbarazosATermino.Text);
+
+            if (string.IsNullOrEmpty(txtCantidadEmbarazosPosTermino.Text) == true)
+                cantEmbarazosPosTermino = 0;
+            else
+                cantEmbarazosPosTermino = Convert.ToInt32(txtCantidadEmbarazosPosTermino.Text);
+
+            if (string.IsNullOrEmpty(txtCantidadEmbarazosPrematuro.Text) == true)
+                cantEmbarazosPrematuros = 0;
+            else
+                cantEmbarazosPrematuros = Convert.ToInt32(txtCantidadEmbarazosPrematuro.Text);
+            int Total = cantEmbarazosATermino + cantEmbarazosPosTermino + cantEmbarazosPrematuros;
+
+            if (cantEmbarazos != Total)
+            {
+                return false;
+            }
+            return true;
+        }
+        public Boolean ValidarCamposEmbarazo()
+        {
+            if (String.IsNullOrEmpty(txtCantidadEmbarazos.Text) == true &&
+                String.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text) == true &&
+                String.IsNullOrEmpty(txtCantidadEmbarazosATermino.Text) == true &&
+                String.IsNullOrEmpty(txtCantidadEmbarazosPrematuro.Text) == true)
+            {
+                return false;
+            }
+            return true;
+        }
+        public Boolean SumarAbortos()
+        {
+            int cantabortos;
+            int cantTipo1;
+            int cantTipo2;
+
+            if (string.IsNullOrEmpty(txtCantidadAbortos.Text) == true)
+                cantabortos = 0;
+            else
+                cantabortos = Convert.ToInt32(txtCantidadAbortos.Text);
+
+            if (String.IsNullOrEmpty(txtCantidadTipoAborto1.Text) == true)
+                cantTipo1 = 0;
+            else
+                cantTipo1 = Convert.ToInt32(txtCantidadTipoAborto1.Text);
+
+            if (String.IsNullOrEmpty(txtCantidadTipoAborto2.Text) == true)
+                cantTipo2 = 0;
+            else
+                cantTipo2 = Convert.ToInt32(txtCantidadTipoAborto2.Text);
+
+            int totalAbortos = cantTipo1 + cantTipo2;
+
+            if (cantabortos != totalAbortos)
+            {
+                return false;
+            }
+            return true;
+        }
+        public Boolean ValidarCamposAborto()
+        {
+            if (String.IsNullOrEmpty(txtCantidadAbortos.Text) == true &&
+                String.IsNullOrEmpty(txtCantidadTipoAborto1.Text) == true &&
+                String.IsNullOrEmpty(txtCantidadTipoAborto2.Text) == true)
+            {
+                return false;
+            }
+            return true;
         }
         /*
          * Método para registrar los antecedentes ginecoObstetricos y aborto.
@@ -2048,62 +2408,63 @@ namespace GPA
         */
         private void registrarAntecedentesPatologicosFamiliares(int idHc)
         {
-            if (listaAntecedentesFamiliares!=null && listaAntecedentesFamiliares.Count > 0)
+            if (listaAntecedentesFamiliares != null && listaAntecedentesFamiliares.Count > 0)
             {
                 manejadorRegistrarAntecedentesPatologicosFamiliares.registrarAntecedentesFamiliares(listaAntecedentesFamiliares, idHc);
             }
         }
         public void registrarAntecedentesPatológicosPersonales(int idHc)
         {
-            
+
             //string listaEnfermedades = "";
             string descripcionOtrasEnfermedades = "";
             List<String> enfermedades = new List<String>();
-
+            //enfermedades.Add("Tos Ferina");
+            //enfermedades.Add("Neumonía");
             if (cbTosFerina.Checked == true)
                 enfermedades.Add(" Tos Ferina");
             if (cbNeumonia.Checked == true)
-                 enfermedades.Add(" Neumonía");
+                enfermedades.Add(" Neumonía");
             if (cbBronconeumonia.Checked == true)
-                 enfermedades.Add(" Bronconeumonía ");
+                enfermedades.Add(" Bronconeumonía ");
             if (cbAmigdalitis.Checked == true)
-                 enfermedades.Add(" Amigdalitis ");
+                enfermedades.Add(" Amigdalitis ");
             if (cbFiebreTifoidea.Checked == true)
-                 enfermedades.Add(" Fiebre Tifoidea ");
+                enfermedades.Add(" Fiebre Tifoidea ");
             if (cbDiarrea.Checked == true)
-                 enfermedades.Add(" Diarrea ");
+                enfermedades.Add(" Diarrea ");
             if (cbBronquitis.Checked == true)
                 enfermedades.Add(" Bronquitis ");
             if (cbSinusitis.Checked == true)
-                 enfermedades.Add(" Sinusitis ");
+                enfermedades.Add(" Sinusitis ");
             if (cbDifteria.Checked == true)
-                 enfermedades.Add(" Difteria ");
+                enfermedades.Add(" Difteria ");
             if (cbParoditis.Checked == true)
-                 enfermedades.Add(" Parotiditis ");
+                enfermedades.Add(" Parotiditis ");
             if (cbVaricela.Checked == true)
-                 enfermedades.Add(" Varicela ");
+                enfermedades.Add(" Varicela ");
             if (cbITS.Checked == true)
-                 enfermedades.Add(" ITS ");
+                enfermedades.Add(" ITS ");
             if (cbDengue.Checked == true)
-                 enfermedades.Add(" Dengue ");
+                enfermedades.Add(" Dengue ");
             if (cbRubeola.Checked == true)
-                 enfermedades.Add(" Rubeola ");
+                enfermedades.Add(" Rubeola ");
             if (cbSarampion.Checked == true)
                 enfermedades.Add(" Sarampión ");
             if (cbCefalea.Checked == true)
-                 enfermedades.Add( " Cefalea ");
+                enfermedades.Add(" Cefalea ");
             if (cbArtrosis.Checked == true)
-                 enfermedades.Add( " Artrosis ");
+                enfermedades.Add(" Artrosis ");
             if (cbGastritis.Checked == true)
-                 enfermedades.Add( " Gastritis ");
+                enfermedades.Add(" Gastritis ");
             if (cbAsmaBronquial.Checked == true)
-                 enfermedades.Add(" Asma Bronquial ");
+                enfermedades.Add(" Asma Bronquial ");
             if (cbFiebreReumatica.Checked == true)
-                 enfermedades.Add( " Fiebre Reumática ");
+                enfermedades.Add(" Fiebre Reumática ");
             if (cbInfartoAgudoMiocardio.Checked == true)
-                 enfermedades.Add(" Infarto Agudo de Miocardio ");
+                enfermedades.Add(" Infarto Agudo de Miocardio ");
             if (cbArtritis.Checked == true)
-                 enfermedades.Add( " Artritis ");
+                enfermedades.Add(" Artritis ");
 
             if (string.IsNullOrEmpty(txtDescOtrasEnfermedadesPP.Text) == false)
             {
@@ -2112,7 +2473,7 @@ namespace GPA
 
             manejadorRegistrarAntecedentesPatologicosPersonales = new ManejadorRegistrarAntecedentesPatologicosPersonales();
 
-            DateTime fechaRegistro= Convert.ToDateTime(mtbFechaActual.Text);
+            DateTime fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
 
             manejadorRegistrarAntecedentesPatologicosPersonales.registrarAntecedentesPatologicosPersonales(fechaRegistro, enfermedades, descripcionOtrasEnfermedades, idHc);
         }
@@ -2199,7 +2560,7 @@ namespace GPA
         private void registrarHabitosDrogasLicitas(int idHc)
         {
             if (listaHabitosMedicamentos != null && listaHabitosMedicamentos.Count > 0)
-                manejadorRegistrarDrogasLicitas.registrarHabitosDrogasLicitas(listaHabitosMedicamentos, idHc); 
+                manejadorRegistrarDrogasLicitas.registrarHabitosDrogasLicitas(listaHabitosMedicamentos, idHc);
         }
         private void registrarHabitosActividadFisica(int idHc)
         {
@@ -2243,6 +2604,11 @@ namespace GPA
 
         private void btnAgregarHabitoTabaquismo_Click(object sender, EventArgs e)
         {
+            if (listaHabitosTabaquismo != null && listaHabitosTabaquismo.Count > 0)
+            {
+                MessageBox.Show("Existen registrados Hábitos Tabaquismo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             cargarDatosDataGridViewHabitoTabaquismo();
         }
 
@@ -2268,6 +2634,12 @@ namespace GPA
 
         private void btnAgregarAntecedenteGinecoObstetrico_Click_1(object sender, EventArgs e)
         {
+            if (antecedenteGinecoObtetrico != null)
+            {
+                MessageBox.Show("Existen antecedentes registrados para la consulta.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             AgregarAntecedenteGinecoObstetricos();
         }
 
@@ -2293,17 +2665,22 @@ namespace GPA
 
         private void btnAñadirSustanciaAmbiente_Click(object sender, EventArgs e)
         {
-
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Alergia Sustancia Ambiente";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarSustanciasDelAmbiente(cboSustanciaAmbiente, manejadorRegistrarAlergias.mostrarSustanciasDelAmbiente(), "id_sustanciaAmbiente", "nombre");
+            }
         }
 
         private void rbNoPresentaAntecedentesMorbidos_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void rbPresentaAntecedentesMorbidos_CheckedChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void cboUnidadMedida_SelectedIndexChanged(object sender, EventArgs e)
@@ -2318,7 +2695,7 @@ namespace GPA
                 UnidadDeMedida unidad = (UnidadDeMedida)cboUnidadMedida.SelectedItem;
                 PresentacionMedicamento presentacion = (PresentacionMedicamento)cboPresentacionMedicamento.SelectedItem;
                 FormaAdministracion formaAdministracion = (FormaAdministracion)cboFormaAdministración.SelectedItem;
-                
+
                 if (unidad != null && presentacion != null && formaAdministracion != null)
                 {
                     cboConcentracion.DataSource = manejadorRegistrarDrogasLicitas.mostrarConcentracionMedicamento(idMedicamento, idNombreComercial, unidad.id_unidadMedida, presentacion.id_presentacionMedicamento, formaAdministracion.id_formaAdministracion);
@@ -2360,7 +2737,7 @@ namespace GPA
         }
 
         private void btnSalir_Click_1(object sender, EventArgs e)
-        {   
+        {
             //Modificar!!! Debe cerrar la ventana sin preguntar guardar cambios.
             /*
             DialogResult rd;
@@ -2378,7 +2755,7 @@ namespace GPA
                 }
             }*/
             this.Close();
-            
+
         }
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
@@ -2386,8 +2763,8 @@ namespace GPA
             limpiar();
         }
         public void limpiar()
-        {   
-            
+        {
+
             txtmotivoConsulta.Clear();
             txtTratamientoAntecedenteMorbido.Clear();
             txtEvoluciónAntecedenteMorbido.Clear();
@@ -2402,7 +2779,7 @@ namespace GPA
             txtCantidadEmbarazosPosTermino.Clear();
             txtCantidadEmbarazosPrematuro.Clear();
             antecedenteGinecoObtetrico = null;
-            
+
 
             rbSiTieneAbortos.Checked = true;
             txtCantidadAbortos.Clear();
@@ -2498,14 +2875,132 @@ namespace GPA
             rbNoActividadFisica.Checked = true;
             dgvHabitosActividadFisica.Rows.Clear();
             listaHabitosActividadFisica = null;
-            
+
 
 
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
+            ActualizarNombrePorTipoAntecedenteMorbido pantalla = new ActualizarNombrePorTipoAntecedenteMorbido();
+            pantalla.ShowDialog();
+            presentarTiposAntecedentesMorbidos(cboTipoAntecedenteMorbido, manejadorRegistrarAntecedentesMorbidos.mostrarTiposAntecedentesMorbidos(), "id_tipoAntecedenteMorbido", "nombre");
+        }
 
+        private void DejoDeFumar(object sender, EventArgs e)
+        {
+            if (cbDejoFumar.Checked == true)
+            {
+                habilitarHabitosTabaquismo(false);
+            }
+            else
+            {
+                habilitarHabitosTabaquismo(true);
+            }
+        }
+        public void habilitarHabitosTabaquismo(Boolean dejoFumar)
+        {
+            txtCantidadQueFuma.Enabled = dejoFumar;
+            cboElementoQueFuma.Enabled = dejoFumar;
+            cboComponenteTiempoFuma.Enabled = dejoFumar;
+            txtCantidadAñosFumando.Enabled = dejoFumar;
+
+            txtCantiTiempoDejoFumar.Enabled = !dejoFumar;
+            cboElementosDelTiempoFumaba.Enabled = !dejoFumar;
+            cboDescripcionDelTiempoFumaba.Enabled = !dejoFumar;
+            txtCantidadFumaba.Enabled = !dejoFumar;
+            cboElementoFumaba.Enabled = !dejoFumar;
+            cboComponenteTiempoFumaba.Enabled = !dejoFumar;
+
+        }
+
+        private void groupBox8_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbMedicamentoActual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbMedicamentoActual.Checked == true)
+            {
+                txtMotivoConsumo.Enabled = true;
+                txtCantidadTiempoConsumoMedicamento.Enabled = true;
+                cboElementoTiempoMedicamento.Enabled = true;
+
+                txtMotivoCancelacion.Enabled = false;
+                txtCantTiempoCancelacionMedicamento.Enabled = false;
+                cboElementoTiempoCancelacionMedicamento.Enabled = false;
+            }
+            if (rbMedicamentoActual.Checked == false)
+            {
+                txtMotivoConsumo.Enabled = false;
+                txtCantidadTiempoConsumoMedicamento.Enabled = false;
+                cboElementoTiempoMedicamento.Enabled = false;
+
+                txtMotivoCancelacion.Enabled = true;
+                txtCantTiempoCancelacionMedicamento.Enabled = true;
+                cboElementoTiempoCancelacionMedicamento.Enabled = true;
+            }
+        }
+
+        private void btnAgregarFamiliar_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Familiar";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarFamiliares(cboFamiliar, manejadorRegistrarAntecedentesPatologicosFamiliares.mostrarFamiliares(), "id_familiar", "nombre");
+            }
+        }
+
+        private void btnAgregarAlimento_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Alergia Alimento";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarAlimentos(cboAlimentos, manejadorRegistrarAlergias.mostrarAlimentos(), "id_alimento", "nombre");
+            }
+        }
+
+        private void btnAñadirSustanciaContactoPiel_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Alergia SustanciaContacto Piel";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarSustanciasContactoPiel(cboSustanciaContactoPiel, manejadorRegistrarAlergias.mostrarSustanciasContactoPiel(), "id_sustanciaContactoPiel", "nombre");
+            }
+        }
+
+        private void btnAñadirInsecto_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Alergia Insecto";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarInsectos(cboInsectos, manejadorRegistrarAlergias.mostrarInsectos(), "id_insecto", "nombre");
+            }
+        }
+
+        private void btnAñadirMedicamento_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Alergia Medicamento";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarNombreMedicamentosQueProducenAlergia(cboMedicamentosAlergia, manejadorRegistrarAlergias.mostrarMedicamentosQueProducenAlergias(), "idMedicamentoAlergia", "nombre");
+            }
+        }
+
+        private void brnAgregarTipoBebida_Click(object sender, EventArgs e)
+        {
+            ActualizarCaracteristicas ac = new ActualizarCaracteristicas();
+            ac.Text = "Tipo Bebida";
+            if (ac.ShowDialog() == DialogResult.OK)
+            {
+                presentarTiposBebidas(cboTipoBebida, manejadorRegistrarHabitosAlcoholismo.mostrarTiposDeBebidas(), "id_tipoBebida", "nombre");
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ namespace GPA.Manejadores
 
         public void mostrarTiposDocumento()
         {
-            pantalla.presentarTiposDocumento(TipoDocumentoLN.mostrarTipoDocumento());
+            pantalla.presentarTiposDocumento(TipoDocumentoLN.MostrarTipoDocumento());
         }
 
         public void documentoIngresado(int id_tipoDoc, int nro_documento)

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaPiel" targetNamespace="http://tempuri.org/dsHistoriaClinicaPiel.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaPiel.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaPiel.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaPiel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaPiel" msprop:Generator_UserDSName="dsHistoriaClinicaPiel">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Piel" msprop:Generator_TableClassName="PielDataTable" msprop:Generator_TableVarName="tablePiel" msprop:Generator_TablePropName="Piel" msprop:Generator_RowDeletingName="PielRowDeleting" msprop:Generator_RowChangingName="PielRowChanging" msprop:Generator_RowEvHandlerName="PielRowChangeEventHandler" msprop:Generator_RowDeletedName="PielRowDeleted" msprop:Generator_UserTableName="Piel" msprop:Generator_RowChangedName="PielRowChanged" msprop:Generator_RowEvArgName="PielRowChangeEvent" msprop:Generator_RowClassName="PielRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_consulta" msprop:Generator_ColumnVarNameInTable="columnid_consulta" msprop:Generator_ColumnPropNameInRow="id_consulta" msprop:Generator_ColumnPropNameInTable="id_consultaColumn" msprop:Generator_UserColumnName="id_consulta" type="xs:string" minOccurs="0" />
+              <xs:element name="nroConsulta" msprop:Generator_ColumnVarNameInTable="columnnroConsulta" msprop:Generator_ColumnPropNameInRow="nroConsulta" msprop:Generator_ColumnPropNameInTable="nroConsultaColumn" msprop:Generator_UserColumnName="nroConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaConsulta" msprop:Generator_ColumnVarNameInTable="columnfechaConsulta" msprop:Generator_ColumnPropNameInRow="fechaConsulta" msprop:Generator_ColumnPropNameInTable="fechaConsultaColumn" msprop:Generator_UserColumnName="fechaConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="horaConsulta" msprop:Generator_ColumnVarNameInTable="columnhoraConsulta" msprop:Generator_ColumnPropNameInRow="horaConsulta" msprop:Generator_ColumnPropNameInTable="horaConsultaColumn" msprop:Generator_UserColumnName="horaConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="color" msprop:Generator_ColumnVarNameInTable="columncolor" msprop:Generator_ColumnPropNameInRow="color" msprop:Generator_ColumnPropNameInTable="colorColumn" msprop:Generator_UserColumnName="color" type="xs:string" minOccurs="0" />
+              <xs:element name="elasticidad" msprop:Generator_ColumnVarNameInTable="columnelasticidad" msprop:Generator_ColumnPropNameInRow="elasticidad" msprop:Generator_ColumnPropNameInTable="elasticidadColumn" msprop:Generator_UserColumnName="elasticidad" type="xs:string" minOccurs="0" />
+              <xs:element name="humedad" msprop:Generator_ColumnVarNameInTable="columnhumedad" msprop:Generator_ColumnPropNameInRow="humedad" msprop:Generator_ColumnPropNameInTable="humedadColumn" msprop:Generator_UserColumnName="humedad" type="xs:string" minOccurs="0" />
+              <xs:element name="lesiones" msprop:Generator_ColumnVarNameInTable="columnlesiones" msprop:Generator_ColumnPropNameInRow="lesiones" msprop:Generator_ColumnPropNameInTable="lesionesColumn" msprop:Generator_UserColumnName="lesiones" type="xs:string" minOccurs="0" />
+              <xs:element name="turgor" msprop:Generator_ColumnVarNameInTable="columnturgor" msprop:Generator_ColumnPropNameInRow="turgor" msprop:Generator_ColumnPropNameInTable="turgorColumn" msprop:Generator_UserColumnName="turgor" type="xs:string" minOccurs="0" />
+              <xs:element name="untuosidad" msprop:Generator_ColumnVarNameInTable="columnuntuosidad" msprop:Generator_ColumnPropNameInRow="untuosidad" msprop:Generator_ColumnPropNameInTable="untuosidadColumn" msprop:Generator_UserColumnName="untuosidad" type="xs:string" minOccurs="0" />
+              <xs:element name="temperatura" msprop:Generator_ColumnVarNameInTable="columntemperatura" msprop:Generator_ColumnPropNameInRow="temperatura" msprop:Generator_ColumnPropNameInTable="temperaturaColumn" msprop:Generator_UserColumnName="temperatura" type="xs:string" minOccurs="0" />
+              <xs:element name="id_examenGeneral" msprop:Generator_ColumnVarNameInTable="columnid_examenGeneral" msprop:Generator_ColumnPropNameInRow="id_examenGeneral" msprop:Generator_ColumnPropNameInTable="id_examenGeneralColumn" msprop:Generator_UserColumnName="id_examenGeneral" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

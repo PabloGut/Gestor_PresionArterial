@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsExamenGeneralTemperatura" targetNamespace="http://tempuri.org/dsExamenGeneralTemperatura.xsd" xmlns:mstns="http://tempuri.org/dsExamenGeneralTemperatura.xsd" xmlns="http://tempuri.org/dsExamenGeneralTemperatura.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsExamenGeneralTemperatura" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsExamenGeneralTemperatura" msprop:Generator_UserDSName="dsExamenGeneralTemperatura">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Temperatura" msprop:Generator_TableClassName="TemperaturaDataTable" msprop:Generator_TableVarName="tableTemperatura" msprop:Generator_TablePropName="Temperatura" msprop:Generator_RowDeletingName="TemperaturaRowDeleting" msprop:Generator_RowChangingName="TemperaturaRowChanging" msprop:Generator_RowEvHandlerName="TemperaturaRowChangeEventHandler" msprop:Generator_RowDeletedName="TemperaturaRowDeleted" msprop:Generator_UserTableName="Temperatura" msprop:Generator_RowChangedName="TemperaturaRowChanged" msprop:Generator_RowEvArgName="TemperaturaRowChangeEvent" msprop:Generator_RowClassName="TemperaturaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_consulta" msprop:Generator_ColumnVarNameInTable="columnid_consulta" msprop:Generator_ColumnPropNameInRow="id_consulta" msprop:Generator_ColumnPropNameInTable="id_consultaColumn" msprop:Generator_UserColumnName="id_consulta" type="xs:string" minOccurs="0" />
+              <xs:element name="nroConsulta" msprop:Generator_ColumnVarNameInTable="columnnroConsulta" msprop:Generator_ColumnPropNameInRow="nroConsulta" msprop:Generator_ColumnPropNameInTable="nroConsultaColumn" msprop:Generator_UserColumnName="nroConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaConsulta" msprop:Generator_ColumnVarNameInTable="columnfechaConsulta" msprop:Generator_ColumnPropNameInRow="fechaConsulta" msprop:Generator_ColumnPropNameInTable="fechaConsultaColumn" msprop:Generator_UserColumnName="fechaConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="horaConsulta" msprop:Generator_ColumnVarNameInTable="columnhoraConsulta" msprop:Generator_ColumnPropNameInRow="horaConsulta" msprop:Generator_ColumnPropNameInTable="horaConsultaColumn" msprop:Generator_UserColumnName="horaConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="motivoConsulta" msprop:Generator_ColumnVarNameInTable="columnmotivoConsulta" msprop:Generator_ColumnPropNameInRow="motivoConsulta" msprop:Generator_ColumnPropNameInTable="motivoConsultaColumn" msprop:Generator_UserColumnName="motivoConsulta" type="xs:string" minOccurs="0" />
+              <xs:element name="id_examenGeneral" msprop:Generator_ColumnVarNameInTable="columnid_examenGeneral" msprop:Generator_ColumnPropNameInRow="id_examenGeneral" msprop:Generator_ColumnPropNameInTable="id_examenGeneralColumn" msprop:Generator_UserColumnName="id_examenGeneral" type="xs:string" minOccurs="0" />
+              <xs:element name="SitioMedicion" msprop:Generator_ColumnVarNameInTable="columnSitioMedicion" msprop:Generator_ColumnPropNameInRow="SitioMedicion" msprop:Generator_ColumnPropNameInTable="SitioMedicionColumn" msprop:Generator_UserColumnName="SitioMedicion" type="xs:string" minOccurs="0" />
+              <xs:element name="temperaturaGradosCentigrados" msprop:Generator_ColumnVarNameInTable="columntemperaturaGradosCentigrados" msprop:Generator_ColumnPropNameInRow="temperaturaGradosCentigrados" msprop:Generator_ColumnPropNameInTable="temperaturaGradosCentigradosColumn" msprop:Generator_UserColumnName="temperaturaGradosCentigrados" type="xs:string" minOccurs="0" />
+              <xs:element name="ResultadoTemperatura" msprop:Generator_ColumnVarNameInTable="columnResultadoTemperatura" msprop:Generator_ColumnPropNameInRow="ResultadoTemperatura" msprop:Generator_ColumnPropNameInTable="ResultadoTemperaturaColumn" msprop:Generator_UserColumnName="ResultadoTemperatura" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

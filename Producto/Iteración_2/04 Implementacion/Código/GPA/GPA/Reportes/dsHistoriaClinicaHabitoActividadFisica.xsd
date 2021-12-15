@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaHabitoActividadFisica" targetNamespace="http://tempuri.org/dsHistoriaClinicaHabitoActividadFisica.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaHabitoActividadFisica.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaHabitoActividadFisica.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaHabitoActividadFisica" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaHabitoActividadFisica" msprop:Generator_UserDSName="dsHistoriaClinicaHabitoActividadFisica">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HabitosActividadFisica" msprop:Generator_TableClassName="HabitosActividadFisicaDataTable" msprop:Generator_TableVarName="tableHabitosActividadFisica" msprop:Generator_TablePropName="HabitosActividadFisica" msprop:Generator_RowDeletingName="HabitosActividadFisicaRowDeleting" msprop:Generator_RowChangingName="HabitosActividadFisicaRowChanging" msprop:Generator_RowEvHandlerName="HabitosActividadFisicaRowChangeEventHandler" msprop:Generator_RowDeletedName="HabitosActividadFisicaRowDeleted" msprop:Generator_UserTableName="HabitosActividadFisica" msprop:Generator_RowChangedName="HabitosActividadFisicaRowChanged" msprop:Generator_RowEvArgName="HabitosActividadFisicaRowChangeEvent" msprop:Generator_RowClassName="HabitosActividadFisicaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha_x0020_registro" msprop:Generator_ColumnVarNameInTable="columnFecha_registro" msprop:Generator_ColumnPropNameInRow="Fecha_registro" msprop:Generator_ColumnPropNameInTable="Fecha_registroColumn" msprop:Generator_UserColumnName="Fecha registro" type="xs:string" minOccurs="0" />
+              <xs:element name="Deporte_x002F_Actividad" msprop:Generator_ColumnVarNameInTable="_columnDeporte_Actividad" msprop:Generator_ColumnPropNameInRow="_Deporte_Actividad" msprop:Generator_ColumnPropNameInTable="_Deporte_ActividadColumn" msprop:Generator_UserColumnName="Deporte/Actividad" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripción_x0020_deporte_x0020_o_x0020_actividad" msprop:Generator_ColumnVarNameInTable="columnDescripción_deporte_o_actividad" msprop:Generator_ColumnPropNameInRow="Descripción_deporte_o_actividad" msprop:Generator_ColumnPropNameInTable="Descripción_deporte_o_actividadColumn" msprop:Generator_UserColumnName="Descripción deporte o actividad" type="xs:string" minOccurs="0" />
+              <xs:element name="Grado_x0020_actividad" msprop:Generator_ColumnVarNameInTable="columnGrado_actividad" msprop:Generator_ColumnPropNameInRow="Grado_actividad" msprop:Generator_ColumnPropNameInTable="Grado_actividadColumn" msprop:Generator_UserColumnName="Grado actividad" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion_x0020_grado_x0020_actividad" msprop:Generator_ColumnVarNameInTable="columnDescripcion_grado_actividad" msprop:Generator_ColumnPropNameInRow="Descripcion_grado_actividad" msprop:Generator_ColumnPropNameInTable="Descripcion_grado_actividadColumn" msprop:Generator_UserColumnName="Descripcion grado actividad" type="xs:string" minOccurs="0" />
+              <xs:element name="Intesidad_x0020_Actividad_x0020_Física" msprop:Generator_ColumnVarNameInTable="columnIntesidad_Actividad_Física" msprop:Generator_ColumnPropNameInRow="Intesidad_Actividad_Física" msprop:Generator_ColumnPropNameInTable="Intesidad_Actividad_FísicaColumn" msprop:Generator_UserColumnName="Intesidad Actividad Física" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

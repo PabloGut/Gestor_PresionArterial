@@ -23,8 +23,15 @@ namespace GPA.Manejadores
          */
         public DataTable mostrarPacientesDeMedicoLogueado(int tipoDocMedico, long nroDocMedico)
         {
+            try
+            {
+                return ProfesionalMedicoLN.mostrarPacientesDelMedico(tipoDocMedico, nroDocMedico);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
             
-            return ProfesionalMedicoLN.mostrarPacientesDelMedico(tipoDocMedico,nroDocMedico);
         }
         /*
         * Método para buscar los pacientes que cumplen con los parámetros ingresados.
@@ -33,9 +40,16 @@ namespace GPA.Manejadores
         * Recibe como parámetros tipoDocPaciente, nroDocPaciente y nombreYApellidoPaciente relacionados al Paciente que está siendo buscado.
         * Retorna un dataTable
         */
-        public DataTable mostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, int tipoDocPaciente, long nroDocPaciente, string nombreYApellidoPaciente)
+        public DataTable MostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, int tipoDocPaciente, long nroDocPaciente, string nombreYApellidoPaciente)
         {
-            return PacienteLN.mostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, tipoDocPaciente, nroDocPaciente, nombreYApellidoPaciente); 
+            try
+            {
+                return PacienteLN.MostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, tipoDocPaciente, nroDocPaciente, nombreYApellidoPaciente);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         /*
        * Método para buscar los pacientes que cumplen con los parámetros ingresados.
@@ -44,9 +58,16 @@ namespace GPA.Manejadores
        * Recibe como parámetro nombreYApellidoPaciente relacionados al Paciente que está siendo buscado.
        * Retorna un dataTable
        */
-        public DataTable mostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, string nombreYApellidoPaciente)
+        public DataTable MostrarPacienteBuscadoDelProfesional(int tipoDocMedico, long nroDocMedico, string nombreYApellidoPaciente)
         {
-            return PacienteLN.mostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, nombreYApellidoPaciente);
+            try
+            {
+                return PacienteLN.MostrarPacienteBuscadoDelProfesional(tipoDocMedico, nroDocMedico, nombreYApellidoPaciente);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         /*
          * Método para mostrar los tipos de documentos.
@@ -56,7 +77,14 @@ namespace GPA.Manejadores
          */
         public List<TipoDocumento> mostrarTiposDocumentos()
         {
-            return TipoDocumentoLN.mostrarTipoDocumento();
+            try
+            {
+                return TipoDocumentoLN.MostrarTipoDocumento();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         /*
           * Método para mostrar un paciente.

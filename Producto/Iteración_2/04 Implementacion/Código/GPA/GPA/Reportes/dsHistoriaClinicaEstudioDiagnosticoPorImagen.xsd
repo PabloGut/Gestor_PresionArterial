@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaEstudioDiagnosticoPorImagen" targetNamespace="http://tempuri.org/dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaEstudioDiagnosticoPorImagen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaEstudioDiagnosticoPorImagen" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaEstudioDiagnosticoPorImagen" msprop:Generator_UserDSName="dsHistoriaClinicaEstudioDiagnosticoPorImagen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EstudiosDiagnosticoPorImagen" msprop:Generator_TableClassName="EstudiosDiagnosticoPorImagenDataTable" msprop:Generator_TableVarName="tableEstudiosDiagnosticoPorImagen" msprop:Generator_TablePropName="EstudiosDiagnosticoPorImagen" msprop:Generator_RowDeletingName="EstudiosDiagnosticoPorImagenRowDeleting" msprop:Generator_RowChangingName="EstudiosDiagnosticoPorImagenRowChanging" msprop:Generator_RowEvHandlerName="EstudiosDiagnosticoPorImagenRowChangeEventHandler" msprop:Generator_RowDeletedName="EstudiosDiagnosticoPorImagenRowDeleted" msprop:Generator_UserTableName="EstudiosDiagnosticoPorImagen" msprop:Generator_RowChangedName="EstudiosDiagnosticoPorImagenRowChanged" msprop:Generator_RowEvArgName="EstudiosDiagnosticoPorImagenRowChangeEvent" msprop:Generator_RowClassName="EstudiosDiagnosticoPorImagenRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechaSolicitud" msprop:Generator_ColumnVarNameInTable="columnfechaSolicitud" msprop:Generator_ColumnPropNameInRow="fechaSolicitud" msprop:Generator_ColumnPropNameInTable="fechaSolicitudColumn" msprop:Generator_UserColumnName="fechaSolicitud" type="xs:string" minOccurs="0" />
+              <xs:element name="nombreEstudio" msprop:Generator_ColumnVarNameInTable="columnnombreEstudio" msprop:Generator_ColumnPropNameInRow="nombreEstudio" msprop:Generator_ColumnPropNameInTable="nombreEstudioColumn" msprop:Generator_UserColumnName="nombreEstudio" type="xs:string" minOccurs="0" />
+              <xs:element name="indicaciones" msprop:Generator_ColumnVarNameInTable="columnindicaciones" msprop:Generator_ColumnPropNameInRow="indicaciones" msprop:Generator_ColumnPropNameInTable="indicacionesColumn" msprop:Generator_UserColumnName="indicaciones" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaRealizacion" msprop:Generator_ColumnVarNameInTable="columnfechaRealizacion" msprop:Generator_ColumnPropNameInRow="fechaRealizacion" msprop:Generator_ColumnPropNameInTable="fechaRealizacionColumn" msprop:Generator_UserColumnName="fechaRealizacion" type="xs:string" minOccurs="0" />
+              <xs:element name="informe" msprop:Generator_ColumnVarNameInTable="columninforme" msprop:Generator_ColumnPropNameInRow="informe" msprop:Generator_ColumnPropNameInTable="informeColumn" msprop:Generator_UserColumnName="informe" type="xs:string" minOccurs="0" />
+              <xs:element name="observacionesDeLosResultados" msprop:Generator_ColumnVarNameInTable="columnobservacionesDeLosResultados" msprop:Generator_ColumnPropNameInRow="observacionesDeLosResultados" msprop:Generator_ColumnPropNameInTable="observacionesDeLosResultadosColumn" msprop:Generator_UserColumnName="observacionesDeLosResultados" type="xs:string" minOccurs="0" />
+              <xs:element name="estadoDiagnostico" msprop:Generator_ColumnVarNameInTable="columnestadoDiagnostico" msprop:Generator_ColumnPropNameInRow="estadoDiagnostico" msprop:Generator_ColumnPropNameInTable="estadoDiagnosticoColumn" msprop:Generator_UserColumnName="estadoDiagnostico" type="xs:string" minOccurs="0" />
+              <xs:element name="conceptoInicial" msprop:Generator_ColumnVarNameInTable="columnconceptoInicial" msprop:Generator_ColumnPropNameInRow="conceptoInicial" msprop:Generator_ColumnPropNameInTable="conceptoInicialColumn" msprop:Generator_UserColumnName="conceptoInicial" type="xs:string" minOccurs="0" />
+              <xs:element name="diagnostico" msprop:Generator_ColumnVarNameInTable="columndiagnostico" msprop:Generator_ColumnPropNameInRow="diagnostico" msprop:Generator_ColumnPropNameInTable="diagnosticoColumn" msprop:Generator_UserColumnName="diagnostico" type="xs:string" minOccurs="0" />
+              <xs:element name="id_razonamiento" msprop:Generator_ColumnVarNameInTable="columnid_razonamiento" msprop:Generator_ColumnPropNameInRow="id_razonamiento" msprop:Generator_ColumnPropNameInTable="id_razonamientoColumn" msprop:Generator_UserColumnName="id_razonamiento" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -22,7 +22,7 @@ namespace GPA.Manejadores
 
         public void mostrarTiposDocumento()
         {
-            pantalla.presentarTiposDocumento(TipoDocumentoLN.mostrarTipoDocumento());
+            pantalla.presentarTiposDocumento(TipoDocumentoLN.MostrarTipoDocumento());
         }
 
         public void documentoIngresado(int id_tipoDoc, int nro_documento)
@@ -68,7 +68,7 @@ namespace GPA.Manejadores
 
         public void altaPacienteConfirmada(int id_tipoDoc, int nro_documento, string nombre, string apellido, int telefono, int nroCelular, string email, int id_sexo, string calle, int numero, int piso, string departamento, int codigo_postal, int id_barrio, DateTime fecha_nacimiento, int edad, double altura, int peso, ProfesionaMedico medico)
         {
-            Usuario usuario=generarUsuarioYPassword(nombre, apellido);
+            Usuario usuario = generarUsuarioYPassword(nombre, apellido, nro_documento);
             pantalla.presentarUsuario(usuario.nombre,usuario.pass);
             crearPaciente(id_tipoDoc, nro_documento, nombre, apellido, telefono, nroCelular, email, id_sexo, calle, numero, piso, departamento, codigo_postal, id_barrio, fecha_nacimiento, edad, altura, peso, medico, usuario);
         }
@@ -90,6 +90,16 @@ namespace GPA.Manejadores
             Usuario usuario = new Usuario();
             usuario.nombre = nombre.ToLower().Substring(0,1) + apellido.ToLower();
             usuario.pass = Utilidades.stringAleatorio().Substring(0,8);
+            usuario.fechaCreacion = DateTime.Today;
+            int numeroUsuario = verificarExistenciaUsuario(usuario.nombre); //Buscar usuarios con el mismo nombre, luego recorrer la lista (si Count da >0) guardando el número más alto y al final concatenarlo al nombre de usuario.
+            usuario.nombre += numeroUsuario;
+            return usuario;
+        }
+        public Usuario generarUsuarioYPassword(string nombre, string apellido, int nroDocumento)
+        {
+            Usuario usuario = new Usuario();
+            usuario.nombre = nombre.ToLower().Substring(0, 1) + apellido.ToLower();
+            usuario.pass = nroDocumento.ToString();
             usuario.fechaCreacion = DateTime.Today;
             int numeroUsuario = verificarExistenciaUsuario(usuario.nombre); //Buscar usuarios con el mismo nombre, luego recorrer la lista (si Count da >0) guardando el número más alto y al final concatenarlo al nombre de usuario.
             usuario.nombre += numeroUsuario;

@@ -47,7 +47,7 @@ namespace GPA
         {
             dgvListaAnalisisLaboratorio.Rows.Clear();
 
-            List<AnalisisLaboratorio> listaAnalisis = AnalisisLaboratorioLN.mostrarAnalisisLaboratorio();
+            List<AnalisisLaboratorio> listaAnalisis = AnalisisLaboratorioLN.MostrarAnalisisLaboratorio();
 
             foreach (AnalisisLaboratorio m in listaAnalisis)
             {   

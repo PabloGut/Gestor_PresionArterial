@@ -16,42 +16,63 @@ namespace GPA
 {
     public partial class ConsultarMedicionesPaciente : Form
     {
-        private int idHc { set; get; }
+        private int IdHc { set; get; }
         public DataTable mediciones;
         public DataTable detalleMediciones;
         public ConsultarMedicionesPaciente(int idHc)
         {
             InitializeComponent();
-            this.idHc = idHc;
+            this.IdHc = idHc;
         }
 
         private void ConsultarMedicionesPaciente_Load(object sender, EventArgs e)
         {
-            cargarMedicionesPresionArterial();
-            obtenerDatosYGraficar();
+            CargarMedicionesPresionArterial();
+            ObtenerDatosYGraficar();
         }
-        public void obtenerDatosYGraficar()
+        public void ObtenerDatosYGraficar()
         {
-            mediciones = presentarMediciones(idHc,null,null,null,null,null,null,null);
-            detalleMediciones = MedicionDePresionArterialLN.obtenerMedicionesConFiltro(idHc, null, null, null, null, null, null, null);
-            dgvConsultarMediciones.DataSource = mediciones;
-            graficar(detalleMediciones);
+            try { 
+
+                mediciones = PresentarMediciones(IdHc,null,null,null,null,null,null,null);
+                detalleMediciones = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(IdHc, null, null, null, null, null, null, null);
+                dgvConsultarMediciones.DataSource = mediciones;
+                Graficar(detalleMediciones);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(" Error: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-        public void cargarMedicionesPresionArterial()
+        public void CargarMedicionesPresionArterial()
         {
-            Utilidades.cargarCombo(cboExtremidad, ExtremidadLN.mostrarExtremidades(), "id_extremidad", "nombre");
-            Utilidades.cargarCombo(cboPosicion, PosicionLN.mostrarPosiciones(), "id_posicion", "nombre");
-            Utilidades.cargarCombo(cboSitioMedicion, SitioMedicionLN.mostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
-            Utilidades.cargarCombo(cboMomentoDia, MomentoDiaLN.mostrarMomentosDelDia(), "id_momentoDelDia", "nombre");
+            try
+            {
+                Utilidades.cargarCombo(cboExtremidad, ExtremidadLN.MostrarExtremidades(), "id_extremidad", "nombre");
+                Utilidades.cargarCombo(cboPosicion, PosicionLN.MostrarPosiciones(), "id_posicion", "nombre");
+                Utilidades.cargarCombo(cboSitioMedicion, SitioMedicionLN.MostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
+                Utilidades.cargarCombo(cboMomentoDia, MomentoDiaLN.MostrarMomentosDelDia(), "id_momentoDelDia", "nombre");
+            }
+            catch(Exception ex)
+            {
+                Utilidades.MensajeError(ex);
+            }
         }
 
         private void cboExtremidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             Utilidades.cargarCombo(cboUbicacionExtremidad, UbicacionExtremidadLN.buscarUbicacionesExtremidadDeExtremidad(Convert.ToInt32(cboExtremidad.SelectedValue)), "id_ubicacionExtremidad", "nombre");
         }
-        public DataTable presentarMediciones(int idHc, DateTime? fechaDesde, DateTime? fechaHasta, String extremidad, String momentoDia, String posicion, String ubicacionExtremidad, String sitioMedicion)
+        public DataTable PresentarMediciones(int idHc, DateTime? fechaDesde, DateTime? fechaHasta, String extremidad, String momentoDia, String posicion, String ubicacionExtremidad, String sitioMedicion)
         {
-            return MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(idHc,fechaDesde,fechaHasta,extremidad,momentoDia,posicion,ubicacionExtremidad, sitioMedicion);
+            try 
+            {
+                return MedicionDePresionArterialLN.ObtenerMedicionesPresionArterial(idHc,fechaDesde,fechaHasta,extremidad,momentoDia,posicion,ubicacionExtremidad, sitioMedicion);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void dgvConsultarMediciones_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -75,11 +96,11 @@ namespace GPA
             int id_medicion = Convert.ToInt32(dgvConsultarMediciones.CurrentRow.Cells["id_medicion"].Value);
 
 
-            dgvDetalleMediciones.DataSource = presentarDetalleMediciones(id_medicion, idHc);
+            dgvDetalleMediciones.DataSource = PresentarDetalleMediciones(id_medicion, IdHc);
         }
-        public DataTable presentarDetalleMediciones(int id_medicion, int idHc)
+        public DataTable PresentarDetalleMediciones(int id_medicion, int idHc)
         {
-            return MedicionDePresionArterialLN.obtenerDetalleMedicionesPresionArterial(idHc, id_medicion,null,null,null,null,null,null,null);
+            return MedicionDePresionArterialLN.ObtenerDetalleMedicionesPresionArterial(idHc, id_medicion,null,null,null,null,null,null,null);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -115,18 +136,24 @@ namespace GPA
             if (!String.IsNullOrEmpty(sitioMedicionSeleccionado.nombre) && !sitioMedicionSeleccionado.nombre.Equals("--Seleccionar--"))
                 sitioMedicion = sitioMedicionSeleccionado.nombre;
 
-            DataTable dt= MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(idHc, fechaDesde, fechaHasta, extremidad, momentoDia, posicion, ubicacionExtremidad, sitioMedicion);
-            DataTable detalles= MedicionDePresionArterialLN.obtenerMedicionesConFiltro(idHc, fechaDesde, fechaHasta, extremidad, momentoDia, posicion, ubicacionExtremidad, sitioMedicion);
-            dgvConsultarMediciones.DataSource = dt;
+            try
+            {
+                DataTable dt = MedicionDePresionArterialLN.ObtenerMedicionesPresionArterial(IdHc, fechaDesde, fechaHasta, extremidad, momentoDia, posicion, ubicacionExtremidad, sitioMedicion);
+                DataTable detalles = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(IdHc, fechaDesde, fechaHasta, extremidad, momentoDia, posicion, ubicacionExtremidad, sitioMedicion);
+                dgvConsultarMediciones.DataSource = dt;
 
-            chart1.Series.Remove(chart1.Series["Series1"]);
-            chart1.Series.Remove(chart1.Series["Series2"]);
-            chart1.Series.Remove(chart1.Series["Series3"]);
+                chart1.Series.Remove(chart1.Series["Series1"]);
+                chart1.Series.Remove(chart1.Series["Series2"]);
+                chart1.Series.Remove(chart1.Series["Series3"]);
 
-            graficar(detalles);
-
+                Graficar(detalles);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(" Error: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-        public void graficar(DataTable datatable)
+        public void Graficar(DataTable datatable)
         {
             chart1.Series.Add("Series1");
             chart1.Series.Add("Series2");
@@ -169,7 +196,7 @@ namespace GPA
             chart1.Series.Remove(chart1.Series["Series1"]);
             chart1.Series.Remove(chart1.Series["Series2"]);
             chart1.Series.Remove(chart1.Series["Series3"]);
-            obtenerDatosYGraficar();
+            ObtenerDatosYGraficar();
         }
     }
 }

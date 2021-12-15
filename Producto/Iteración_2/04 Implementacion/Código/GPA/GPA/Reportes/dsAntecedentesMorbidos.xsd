@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAntecedentesMorbidos" targetNamespace="http://tempuri.org/dsAntecedentesMorbidos.xsd" xmlns:mstns="http://tempuri.org/dsAntecedentesMorbidos.xsd" xmlns="http://tempuri.org/dsAntecedentesMorbidos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SHIART_DB_PRUEBAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SHIART_DB_PRUEBAConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GPA.Properties.Settings.GlobalReference.Default.SHIART_DB_PRUEBAConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAntecedentesMorbidos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAntecedentesMorbidos" msprop:Generator_UserDSName="dsAntecedentesMorbidos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AntecedentesMorbidos" msprop:Generator_TableClassName="AntecedentesMorbidosDataTable" msprop:Generator_TableVarName="tableAntecedentesMorbidos" msprop:Generator_TablePropName="AntecedentesMorbidos" msprop:Generator_RowDeletingName="AntecedentesMorbidosRowDeleting" msprop:Generator_RowChangingName="AntecedentesMorbidosRowChanging" msprop:Generator_RowEvHandlerName="AntecedentesMorbidosRowChangeEventHandler" msprop:Generator_RowDeletedName="AntecedentesMorbidosRowDeleted" msprop:Generator_UserTableName="AntecedentesMorbidos" msprop:Generator_RowChangedName="AntecedentesMorbidosRowChanged" msprop:Generator_RowEvArgName="AntecedentesMorbidosRowChangeEvent" msprop:Generator_RowClassName="AntecedentesMorbidosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechaRegistro" msprop:Generator_ColumnVarNameInTable="columnfechaRegistro" msprop:Generator_ColumnPropNameInRow="fechaRegistro" msprop:Generator_ColumnPropNameInTable="fechaRegistroColumn" msprop:Generator_UserColumnName="fechaRegistro" type="xs:string" minOccurs="0" />
+              <xs:element name="evolucion" msprop:Generator_ColumnVarNameInTable="columnevolucion" msprop:Generator_ColumnPropNameInRow="evolucion" msprop:Generator_ColumnPropNameInTable="evolucionColumn" msprop:Generator_UserColumnName="evolucion" type="xs:string" minOccurs="0" />
+              <xs:element name="tratamiento" msprop:Generator_ColumnVarNameInTable="columntratamiento" msprop:Generator_ColumnPropNameInRow="tratamiento" msprop:Generator_ColumnPropNameInTable="tratamientoColumn" msprop:Generator_UserColumnName="tratamiento" type="xs:string" minOccurs="0" />
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

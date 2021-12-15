@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHistoriaClinicaHabitosAlcoholismo" targetNamespace="http://tempuri.org/dsHistoriaClinicaHabitosAlcoholismo.xsd" xmlns:mstns="http://tempuri.org/dsHistoriaClinicaHabitosAlcoholismo.xsd" xmlns="http://tempuri.org/dsHistoriaClinicaHabitosAlcoholismo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHistoriaClinicaHabitosAlcoholismo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHistoriaClinicaHabitosAlcoholismo" msprop:Generator_UserDSName="dsHistoriaClinicaHabitosAlcoholismo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HabitosAlcoholismo" msprop:Generator_TableClassName="HabitosAlcoholismoDataTable" msprop:Generator_TableVarName="tableHabitosAlcoholismo" msprop:Generator_TablePropName="HabitosAlcoholismo" msprop:Generator_RowDeletingName="HabitosAlcoholismoRowDeleting" msprop:Generator_RowChangingName="HabitosAlcoholismoRowChanging" msprop:Generator_RowEvHandlerName="HabitosAlcoholismoRowChangeEventHandler" msprop:Generator_RowDeletedName="HabitosAlcoholismoRowDeleted" msprop:Generator_UserTableName="HabitosAlcoholismo" msprop:Generator_RowChangedName="HabitosAlcoholismoRowChanged" msprop:Generator_RowEvArgName="HabitosAlcoholismoRowChangeEvent" msprop:Generator_RowClassName="HabitosAlcoholismoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha_x0020_de_x0020_registro" msprop:Generator_ColumnVarNameInTable="columnFecha_de_registro" msprop:Generator_ColumnPropNameInRow="Fecha_de_registro" msprop:Generator_ColumnPropNameInTable="Fecha_de_registroColumn" msprop:Generator_UserColumnName="Fecha de registro" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombre_x0020_Bebida" msprop:Generator_ColumnVarNameInTable="columnNombre_Bebida" msprop:Generator_ColumnPropNameInRow="Nombre_Bebida" msprop:Generator_ColumnPropNameInTable="Nombre_BebidaColumn" msprop:Generator_UserColumnName="Nombre Bebida" type="xs:string" minOccurs="0" />
+              <xs:element name="Medida" msprop:Generator_ColumnVarNameInTable="columnMedida" msprop:Generator_ColumnPropNameInRow="Medida" msprop:Generator_ColumnPropNameInTable="MedidaColumn" msprop:Generator_UserColumnName="Medida" type="xs:string" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Componente_x0020_del_x0020_tiempo" msprop:Generator_ColumnVarNameInTable="columnComponente_del_tiempo" msprop:Generator_ColumnPropNameInRow="Componente_del_tiempo" msprop:Generator_ColumnPropNameInTable="Componente_del_tiempoColumn" msprop:Generator_UserColumnName="Componente del tiempo" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
