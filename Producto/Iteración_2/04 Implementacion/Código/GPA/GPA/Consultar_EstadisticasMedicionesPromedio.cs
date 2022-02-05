@@ -30,14 +30,25 @@ namespace GPA
                 if (existe == false)
                     EstadisticasLN.InsertarEstadisticasMedicionesPromedioCategoria();
 
+                //MostrarCantidadPacientesPorCategoría();
+                //MostrarEstadisticaPromedioMedicionesConYSinExamen();
+
+                //DataTable dtPorcentajePorCategoriaConExamen = EstadisticasLN.MostrarEstadisticaPacientesPorCategoriaDataTableConExamen();
+                //GraficoTortaConExamen(dtPorcentajePorCategoriaConExamen);
+                //GraficoBarras(dtPorcentajePorCategoriaConExamen, true);
+
+                //DataTable dtPorcentajePorCategoriaSinExamen = EstadisticasLN.MostrarEstadisticaPacientesPorCategoriaDataTableSinExamen();
+                //GraficoTortaSinExamen(dtPorcentajePorCategoriaSinExamen);
+                //GraficoBarras(dtPorcentajePorCategoriaSinExamen, false);
+
                 MostrarCantidadPacientesPorCategoría();
                 MostrarEstadisticaPromedioMedicionesConYSinExamen();
 
-                DataTable dtPorcentajePorCategoriaConExamen = EstadisticasLN.MostrarEstadisticaPacientesPorCategoriaDataTableConExamen();
+                DataTable dtPorcentajePorCategoriaConExamen = EstadisticasLN.MostrarEstadisticaPacientesPorCategoriaDataTableConExamen(null, null);
                 GraficoTortaConExamen(dtPorcentajePorCategoriaConExamen);
                 GraficoBarras(dtPorcentajePorCategoriaConExamen, true);
 
-                DataTable dtPorcentajePorCategoriaSinExamen = EstadisticasLN.MostrarEstadisticaPacientesPorCategoriaDataTableSinExamen();
+                DataTable dtPorcentajePorCategoriaSinExamen = EstadisticasLN.MostrarEstadisticaPacientesPorCategoriaDataTableSinExamen(null, null);
                 GraficoTortaSinExamen(dtPorcentajePorCategoriaSinExamen);
                 GraficoBarras(dtPorcentajePorCategoriaSinExamen, false);
             }
@@ -51,7 +62,7 @@ namespace GPA
         {
             try
             {
-                ListaEstadisticaCategoriaSitio = EstadisticasLN.MostrarEstadisticaPacientesPorCategoria();
+                ListaEstadisticaCategoriaSitio = EstadisticasLN.MostrarEstadisticaPacientesPorCategoria(null,null);
           
 
                 if (ListaEstadisticaCategoriaSitio != null && ListaEstadisticaCategoriaSitio.Count > 0)
@@ -148,7 +159,7 @@ namespace GPA
         {
             try
             {
-                ListaEstadisticaPromedioConSinExamen = EstadisticasLN.MostrarPromedioMedicionesConYSinExamen();
+                ListaEstadisticaPromedioConSinExamen = EstadisticasLN.MostrarPromedioMedicionesConYSinExamen(null,null);
                 if (ListaEstadisticaPromedioConSinExamen != null && ListaEstadisticaPromedioConSinExamen.Count > 0)
                 {
                     foreach (var item in ListaEstadisticaPromedioConSinExamen)
@@ -217,6 +228,11 @@ namespace GPA
             };
             chart4.Series.Add(serie);
             chart4.DataSource = dtPorcentajePorCategoriaSinExamen;
+        }
+
+        private void btnBuscarMedicionesPromedio_Click(object sender, EventArgs e)
+        {
+      
         }
     }
 }

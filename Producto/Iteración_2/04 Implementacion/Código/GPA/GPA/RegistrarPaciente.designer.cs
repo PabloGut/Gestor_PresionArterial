@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarPaciente));
             this._txtNroDocumento = new System.Windows.Forms.TextBox();
             this.lblNroDocumento = new System.Windows.Forms.Label();
             this._cmbTipoDocumento = new System.Windows.Forms.ComboBox();
@@ -38,6 +39,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.grbDocumento = new System.Windows.Forms.GroupBox();
             this.grbAdicionales = new System.Windows.Forms.GroupBox();
+            this.lblKg = new System.Windows.Forms.Label();
+            this.lblM = new System.Windows.Forms.Label();
             this._txtPeso = new System.Windows.Forms.TextBox();
             this.lblPeso = new System.Windows.Forms.Label();
             this._txtAltura = new System.Windows.Forms.TextBox();
@@ -73,8 +76,6 @@
             this.lblTelefonoFijo = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblM = new System.Windows.Forms.Label();
-            this.lblKg = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.grbDocumento.SuspendLayout();
             this.grbAdicionales.SuspendLayout();
@@ -185,6 +186,24 @@
             this.grbAdicionales.TabIndex = 2;
             this.grbAdicionales.TabStop = false;
             this.grbAdicionales.Text = "Datos Adicionales del Paciente";
+            // 
+            // lblKg
+            // 
+            this.lblKg.AutoSize = true;
+            this.lblKg.Location = new System.Drawing.Point(209, 25);
+            this.lblKg.Name = "lblKg";
+            this.lblKg.Size = new System.Drawing.Size(19, 13);
+            this.lblKg.TabIndex = 15;
+            this.lblKg.Text = "kg";
+            // 
+            // lblM
+            // 
+            this.lblM.AutoSize = true;
+            this.lblM.Location = new System.Drawing.Point(97, 25);
+            this.lblM.Name = "lblM";
+            this.lblM.Size = new System.Drawing.Size(15, 13);
+            this.lblM.TabIndex = 14;
+            this.lblM.Text = "m";
             // 
             // _txtPeso
             // 
@@ -513,24 +532,6 @@
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Nombre:";
             // 
-            // lblM
-            // 
-            this.lblM.AutoSize = true;
-            this.lblM.Location = new System.Drawing.Point(97, 25);
-            this.lblM.Name = "lblM";
-            this.lblM.Size = new System.Drawing.Size(15, 13);
-            this.lblM.TabIndex = 14;
-            this.lblM.Text = "m";
-            // 
-            // lblKg
-            // 
-            this.lblKg.AutoSize = true;
-            this.lblKg.Location = new System.Drawing.Point(209, 25);
-            this.lblKg.Name = "lblKg";
-            this.lblKg.Size = new System.Drawing.Size(19, 13);
-            this.lblKg.TabIndex = 15;
-            this.lblKg.Text = "kg";
-            // 
             // RegistrarPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,6 +542,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "RegistrarPaciente";
             this.Text = "Registrar Paciente";

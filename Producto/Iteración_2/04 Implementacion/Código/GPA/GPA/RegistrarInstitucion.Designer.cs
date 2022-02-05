@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarInstitucion));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEliminarInstitucion = new System.Windows.Forms.Button();
             this.dgvInstituciones = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptarInstitucion = new System.Windows.Forms.Button();
-            this.btnEliminarInstitucion = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInstituciones)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,6 +89,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(422, 270);
             this.panel1.TabIndex = 4;
+            // 
+            // btnEliminarInstitucion
+            // 
+            this.btnEliminarInstitucion.Location = new System.Drawing.Point(95, 235);
+            this.btnEliminarInstitucion.Name = "btnEliminarInstitucion";
+            this.btnEliminarInstitucion.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarInstitucion.TabIndex = 18;
+            this.btnEliminarInstitucion.Text = "Eliminar";
+            this.btnEliminarInstitucion.UseVisualStyleBackColor = true;
+            this.btnEliminarInstitucion.Click += new System.EventHandler(this.btnEliminarInstitucion_Click);
             // 
             // dgvInstituciones
             // 
@@ -141,22 +152,13 @@
             this.btnAceptarInstitucion.UseVisualStyleBackColor = true;
             this.btnAceptarInstitucion.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // btnEliminarInstitucion
-            // 
-            this.btnEliminarInstitucion.Location = new System.Drawing.Point(95, 235);
-            this.btnEliminarInstitucion.Name = "btnEliminarInstitucion";
-            this.btnEliminarInstitucion.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarInstitucion.TabIndex = 18;
-            this.btnEliminarInstitucion.Text = "Eliminar";
-            this.btnEliminarInstitucion.UseVisualStyleBackColor = true;
-            this.btnEliminarInstitucion.Click += new System.EventHandler(this.btnEliminarInstitucion_Click);
-            // 
             // RegistrarInstitucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 300);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrarInstitucion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrarInstitucion";

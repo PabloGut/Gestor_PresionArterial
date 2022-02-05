@@ -56,6 +56,7 @@
             this.consultarEstadísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPromedioPorCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPromedioPorSitioMedicionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.promedioConFiltroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -155,7 +156,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnAgregarSintoma = new System.Windows.Forms.Button();
-            this.btnVerSintomas = new System.Windows.Forms.Button();
             this.btnElementoModificacion = new System.Windows.Forms.Button();
             this.cboElementoModificacion = new System.Windows.Forms.ComboBox();
             this.txtObservacionesSintoma = new System.Windows.Forms.TextBox();
@@ -678,7 +678,8 @@
             this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarEstadísticasToolStripMenuItem,
             this.consultarPromedioPorCategoriaToolStripMenuItem,
-            this.consultarPromedioPorSitioMedicionToolStripMenuItem});
+            this.consultarPromedioPorSitioMedicionToolStripMenuItem,
+            this.promedioConFiltroToolStripMenuItem});
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
             this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
@@ -703,6 +704,13 @@
             this.consultarPromedioPorSitioMedicionToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.consultarPromedioPorSitioMedicionToolStripMenuItem.Text = "Promedio por Sitio Medicion";
             this.consultarPromedioPorSitioMedicionToolStripMenuItem.Click += new System.EventHandler(this.consultarPromedioPorSitioMedicionToolStripMenuItem_Click);
+            // 
+            // promedioConFiltroToolStripMenuItem
+            // 
+            this.promedioConFiltroToolStripMenuItem.Name = "promedioConFiltroToolStripMenuItem";
+            this.promedioConFiltroToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.promedioConFiltroToolStripMenuItem.Text = "Promedio con Filtro";
+            this.promedioConFiltroToolStripMenuItem.Click += new System.EventHandler(this.promedioConFiltroToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -764,6 +772,7 @@
             this.dgvPacientesDelProfesionalLogueado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPacientesDelProfesionalLogueado.Location = new System.Drawing.Point(3, 3);
             this.dgvPacientesDelProfesionalLogueado.Name = "dgvPacientesDelProfesionalLogueado";
+            this.dgvPacientesDelProfesionalLogueado.ReadOnly = true;
             this.dgvPacientesDelProfesionalLogueado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPacientesDelProfesionalLogueado.Size = new System.Drawing.Size(843, 438);
             this.dgvPacientesDelProfesionalLogueado.TabIndex = 1;
@@ -1656,7 +1665,6 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnAgregarSintoma);
-            this.groupBox6.Controls.Add(this.btnVerSintomas);
             this.groupBox6.Controls.Add(this.btnElementoModificacion);
             this.groupBox6.Controls.Add(this.cboElementoModificacion);
             this.groupBox6.Controls.Add(this.txtObservacionesSintoma);
@@ -1699,22 +1707,13 @@
             // 
             // btnAgregarSintoma
             // 
-            this.btnAgregarSintoma.Location = new System.Drawing.Point(158, 365);
+            this.btnAgregarSintoma.Location = new System.Drawing.Point(292, 365);
             this.btnAgregarSintoma.Name = "btnAgregarSintoma";
             this.btnAgregarSintoma.Size = new System.Drawing.Size(132, 29);
             this.btnAgregarSintoma.TabIndex = 24;
             this.btnAgregarSintoma.Text = "Agregar Síntoma";
             this.btnAgregarSintoma.UseVisualStyleBackColor = true;
             this.btnAgregarSintoma.Click += new System.EventHandler(this.btnAgregarSintoma_Click);
-            // 
-            // btnVerSintomas
-            // 
-            this.btnVerSintomas.Location = new System.Drawing.Point(296, 365);
-            this.btnVerSintomas.Name = "btnVerSintomas";
-            this.btnVerSintomas.Size = new System.Drawing.Size(132, 29);
-            this.btnVerSintomas.TabIndex = 23;
-            this.btnVerSintomas.Text = "Ver Síntomas";
-            this.btnVerSintomas.UseVisualStyleBackColor = true;
             // 
             // btnElementoModificacion
             // 
@@ -2572,6 +2571,8 @@
             this.dgvRegionesEstudiadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRegionesEstudiadas.Location = new System.Drawing.Point(67, 459);
             this.dgvRegionesEstudiadas.Name = "dgvRegionesEstudiadas";
+            this.dgvRegionesEstudiadas.ReadOnly = true;
+            this.dgvRegionesEstudiadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegionesEstudiadas.Size = new System.Drawing.Size(740, 112);
             this.dgvRegionesEstudiadas.TabIndex = 21;
             // 
@@ -3242,6 +3243,8 @@
             this.momentoPA});
             this.dgvPresionArterial.Location = new System.Drawing.Point(11, 134);
             this.dgvPresionArterial.Name = "dgvPresionArterial";
+            this.dgvPresionArterial.ReadOnly = true;
+            this.dgvPresionArterial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPresionArterial.Size = new System.Drawing.Size(821, 144);
             this.dgvPresionArterial.TabIndex = 20;
             // 
@@ -3249,51 +3252,61 @@
             // 
             this.fechaPA.HeaderText = "Fecha";
             this.fechaPA.Name = "fechaPA";
+            this.fechaPA.ReadOnly = true;
             // 
             // horaPA
             // 
             this.horaPA.HeaderText = "Hora";
             this.horaPA.Name = "horaPA";
+            this.horaPA.ReadOnly = true;
             // 
             // extremidadPA
             // 
             this.extremidadPA.HeaderText = "Extremidad";
             this.extremidadPA.Name = "extremidadPA";
+            this.extremidadPA.ReadOnly = true;
             // 
             // ubicacionPA
             // 
             this.ubicacionPA.HeaderText = "Ubicación de extremidad";
             this.ubicacionPA.Name = "ubicacionPA";
+            this.ubicacionPA.ReadOnly = true;
             // 
             // posicionPA
             // 
             this.posicionPA.HeaderText = "Posición";
             this.posicionPA.Name = "posicionPA";
+            this.posicionPA.ReadOnly = true;
             // 
             // sitioPA
             // 
             this.sitioPA.HeaderText = "Sitio de medición";
             this.sitioPA.Name = "sitioPA";
+            this.sitioPA.ReadOnly = true;
             // 
             // sistolicaPA
             // 
             this.sistolicaPA.HeaderText = "Presión Sistólica";
             this.sistolicaPA.Name = "sistolicaPA";
+            this.sistolicaPA.ReadOnly = true;
             // 
             // diastolicaPA
             // 
             this.diastolicaPA.HeaderText = "Presión Diastólica";
             this.diastolicaPA.Name = "diastolicaPA";
+            this.diastolicaPA.ReadOnly = true;
             // 
             // pulsoPA
             // 
             this.pulsoPA.HeaderText = "Pulso";
             this.pulsoPA.Name = "pulsoPA";
+            this.pulsoPA.ReadOnly = true;
             // 
             // momentoPA
             // 
             this.momentoPA.HeaderText = "Momento del día";
             this.momentoPA.Name = "momentoPA";
+            this.momentoPA.ReadOnly = true;
             // 
             // btnAgregarPresionArterial
             // 
@@ -3896,6 +3909,8 @@
             this.dgvExamenesARealizar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExamenesARealizar.Location = new System.Drawing.Point(484, 22);
             this.dgvExamenesARealizar.Name = "dgvExamenesARealizar";
+            this.dgvExamenesARealizar.ReadOnly = true;
+            this.dgvExamenesARealizar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvExamenesARealizar.Size = new System.Drawing.Size(347, 228);
             this.dgvExamenesARealizar.TabIndex = 23;
             // 
@@ -4027,14 +4042,17 @@
             this.dataGridViewTextBoxColumn1});
             this.dgvDiagnosticos.Location = new System.Drawing.Point(570, 29);
             this.dgvDiagnosticos.Name = "dgvDiagnosticos";
+            this.dgvDiagnosticos.ReadOnly = true;
             this.dgvDiagnosticos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDiagnosticos.Size = new System.Drawing.Size(253, 189);
             this.dgvDiagnosticos.TabIndex = 15;
+            this.dgvDiagnosticos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiagnosticos_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Diagnósticos";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 215;
             // 
             // txtDiagnostico
@@ -4609,7 +4627,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Button btnVerSintomas;
         private System.Windows.Forms.Button btnCrearHistoriaClinica;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TextBox txtPosicionYDecubito;
@@ -4886,5 +4903,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultarEstadísticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPromedioPorCategoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPromedioPorSitioMedicionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem promedioConFiltroToolStripMenuItem;
     }
 }

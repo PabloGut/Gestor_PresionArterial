@@ -2095,6 +2095,7 @@ namespace GPA
         private void btnAgregarSintoma_Click(object sender, EventArgs e)
         {
             cargarSintomas();
+           
         }
         private void cargarSintomas()
         {
@@ -2174,6 +2175,8 @@ namespace GPA
             sintoma.fechaRegistro = Convert.ToDateTime(mtbFechaConsulta.Text);
 
             listaSintoma.Add(sintoma);
+
+            MessageBox.Show("Síntoma agregado correctamente", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnConsultas_Click(object sender, EventArgs e)
@@ -2530,6 +2533,8 @@ namespace GPA
             }
             Utilidades.agregarColumnasDataGridView(dgvDiagnosticosPaciente, columnasDiagnosticos);
 
+            //Utilidades.AgregarColumnasDataGridViewColumnaCheck(dgvDiagnosticosPaciente, columnasDiagnosticos);
+
             dgvDiagnosticosPaciente.Columns[1].Visible = false;
             dgvDiagnosticosPaciente.Columns[2].Visible = false;
             dgvDiagnosticosPaciente.Columns[3].Visible = false;
@@ -2547,6 +2552,7 @@ namespace GPA
             List<string> columnasDiagnosticos = new List<string>();
             if (dgv.Columns.Count == 0)
             {
+                columnasDiagnosticos.Add("Seleccionado");
                 columnasDiagnosticos.Add("Diagnóstico");
                 columnasDiagnosticos.Add("Estado");
                 columnasDiagnosticos.Add("idRazonamiento");
@@ -2555,7 +2561,8 @@ namespace GPA
                 columnasDiagnosticos.Add("id_diagnostico");
                 
             }
-            Utilidades.agregarColumnasDataGridView(dgv, columnasDiagnosticos);
+            //Utilidades.agregarColumnasDataGridView(dgv, columnasDiagnosticos);
+            Utilidades.AgregarColumnasDataGridViewColumnaCheck(dgv, columnasDiagnosticos);
 
             dgv.Columns[2].Visible = false;
             dgv.Columns[3].Visible = false;
@@ -2564,7 +2571,7 @@ namespace GPA
 
             for (int i = 0; i < diagnosticos.Count; i++)
             {
-                dgv.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].estado.nombre, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico, diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento);
+                dgv.Rows.Add(null,diagnosticos[i].diagnostico, diagnosticos[i].estado.nombre, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico, diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento);
             }
 
         }
@@ -2624,7 +2631,7 @@ namespace GPA
                 columnasEstudios.Add("Terapia");
             }
 
-            Utilidades.agregarColumnasDataGridViewTratamientos(dgvTratamientosDiagnostico, columnasEstudios);
+            Utilidades.AgregarColumnasDataGridViewColumnaCheck(dgvTratamientosDiagnostico, columnasEstudios);
 
            // dgvTratamientosDiagnostico.Columns[1].Visible = false;
             //dgvTratamientosDiagnostico.Columns[4].Visible = false;
@@ -4212,6 +4219,24 @@ namespace GPA
         private void dgvPacientesDelProfesionalLogueado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void promedioConFiltroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consultar_EstadisticasMedicionesPromedioConFiltro PromedioSitioMedicion = new Consultar_EstadisticasMedicionesPromedioConFiltro();
+            PromedioSitioMedicion.ShowDialog();
+         
+           
+        }
+
+        private void dgvDiagnosticos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDiagnosticos.CurrentRow.Cells[0].Value == null || string.IsNullOrEmpty(dgvDiagnosticos.CurrentRow.Cells[0].Value.ToString()))
+                return;
+            if (dgvDiagnosticos.ColumnCount <= 1)
+                return;
+
+            MessageBox.Show("Diagnóstico seleccionado", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //public void presentarConsultas()
         //{

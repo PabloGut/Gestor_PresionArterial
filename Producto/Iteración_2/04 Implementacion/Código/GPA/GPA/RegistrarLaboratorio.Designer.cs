@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarLaboratorio));
             this.label1 = new System.Windows.Forms.Label();
             this.txtAnalisisSolicitado = new System.Windows.Forms.TextBox();
             this.btnAgregarInstitucion = new System.Windows.Forms.Button();
@@ -428,6 +429,7 @@
             this.Controls.Add(this.btnGuardarInformeAnalisis);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrarLaboratorio";
             this.Text = "RegistrarLaboratorio";
             this.Load += new System.EventHandler(this.RegistrarLaboratorio_Load);

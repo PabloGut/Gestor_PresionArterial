@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActualizarCaracteristicas));
             this.lblCaracteristica = new System.Windows.Forms.Label();
             this.txtCaracteristica = new System.Windows.Forms.TextBox();
             this.dgvGrilla = new System.Windows.Forms.DataGridView();
@@ -103,6 +104,7 @@
             this.Controls.Add(this.dgvGrilla);
             this.Controls.Add(this.txtCaracteristica);
             this.Controls.Add(this.lblCaracteristica);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActualizarCaracteristicas";
             this.Text = "ActualizarCaracteristicas";
             this.Load += new System.EventHandler(this.ActualizarCaracteristicas_Load);

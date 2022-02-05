@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarMedicamento));
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnBuscarEspecificacion = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -314,6 +315,7 @@
             this.ClientSize = new System.Drawing.Size(820, 439);
             this.Controls.Add(this.dgvListaMedicamentos);
             this.Controls.Add(this.groupBox16);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrarMedicamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrarMedicamento";

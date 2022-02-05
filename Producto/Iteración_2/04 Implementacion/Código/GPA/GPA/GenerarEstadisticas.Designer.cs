@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarEstadisticas));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGenerarEstadisticas = new System.Windows.Forms.Button();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
@@ -70,6 +71,7 @@
             this.ClientSize = new System.Drawing.Size(954, 473);
             this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GenerarEstadisticas";
             this.Text = "GenerarEstadisticas";
             this.Load += new System.EventHandler(this.GenerarEstadisticas_Load);

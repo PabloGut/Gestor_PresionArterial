@@ -708,26 +708,24 @@ namespace GPA
             dsTratamientoMedicamento dsTratamientoMedicamento;
 
             SqlDataAdapter da = null;
-            string consulta = @"select  t.id_tratamiento,COALESCE(NULL,CONVERT(varchar,t.indicaciones),'N/A') as 'indicaciones',t.fechaInicio, COALESCE(NULL,CONVERT(varchar,t.motivoInicioTratamiento),'N/A') as 'motivoInicioTratamiento', te.id_terapia, te.nombre  as 'Terapia', COALESCE(NULL,CONVERT(varchar,t.fechaFin),'N/A') as 'FechaFin' ,ISNULL(t.motivoFinTratamiento,'N\A') as 'motivoFinTratamiento',ISNULL(rd.diagnostico,'N\A') as 'diagnostico', me.nombreGenerico 'NombreMedicamento',me.concentracion, fre.nombre as 'Frecuencia', COALESCE(NULL,md1.nombre,'N/A') as 'Momento del dia 1', COALESCE(NULL,md2.nombre,'N/A') as 'Momento del dia 2',COALESCE(NULL,md3.nombre,'N/A') as 'Momento del Dia 3', case when CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) END as 'Dosis 1',case when CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) END as 'Dosis 2',case when CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) END as 'Dosis 3', COALESCE(NULL,pre1.nombre,'N/A') as 'Presentacion Medicamento 1',COALESCE(NULL,pre2.nombre,'N/A') as 'Presentacion Medicamento 2', COALESCE(NULL,pre3.nombre,'N/A') as 'Presentacion Medicamento 3',COALESCE(NULL,CONVERT(varchar,pm.hora1),'N/A') as 'Hora 1', COALESCE(NULL,CONVERT(varchar,pm.hora2),'N/A') as 'Hora 2',COALESCE(NULL,CONVERT(varchar,pm.hora3),'N/A') as 'Hora 3', um.nombre as 'UnidadMedida', estp.nombre as 'EstadoProgramacion',esp.concentracion as 'Cantidad'
-                                from Tratamiento t , Terapia te, RazonamientoDiagnostico rd, ExamenGeneral eg, Consulta c, ProgramacionMedicamento pm, Medicamento me, Frecuencia fre, MomentoDelDia md1,MomentoDelDia md2,MomentoDelDia md3, PresentacionMedicamento pre1, PresentacionMedicamento pre2, PresentacionMedicamento pre3, EstadoProgramacion estp, EspecificacionMedicamento esp, UnidadMedida um
-                                where c.id_examenGeneral_fk=eg.id_examenGeneral
-								and t.id_terapia_fk=te.id_terapia
-								and rd.id_examenGeneral_fk=eg.id_examenGeneral
-                                and t.id_razonamientoDiagnostico_fk=rd.id_razonamiento
-								and c.id_hc_fk=@id_hc
-								and te.nombre like 'Medicamentos'
-								and t.id_tratamiento=pm.id_tratamiento_fk
-								and pm.id_medicamento_fk=me.id_medicamento
-								and pm.id_frecuencia_fk=fre.id_frecuencia
-								and pm.id_momentoDia1_fk=md1.id_momentoDelDia
-								and pm.id_momentoDia2_fk=md2.id_momentoDelDia
-								and pm.id_momentoDia3_fk=md3.id_momentoDelDia
-								and pm.id_presentacionMedicamento1_fk=pre1.id_presentacionMedicamento
-								and pm.id_presentacionMedicamento2_fk=pre2.id_presentacionMedicamento
-								and pm.id_presentacionMedicamento3_fk=pre3.id_presentacionMedicamento
-								and pm.id_estado_fk=estp.id_estadoProgramacion
-								and pm.id_especificacionMedicamento_fk=esp.id_especificacion
-								and esp.id_unidadMedida_fk=um.id_unidadMedida";
+            string consulta = @"select  t.id_tratamiento,COALESCE(NULL,CONVERT(varchar,t.indicaciones),'N/A') as 'indicaciones',t.fechaInicio, COALESCE(NULL,CONVERT(varchar,t.motivoInicioTratamiento),'N/A') as 'motivoInicioTratamiento', te.id_terapia, te.nombre  as 'Terapia', COALESCE(NULL,CONVERT(varchar,t.fechaFin),'N/A') as 'FechaFin' ,ISNULL(t.motivoFinTratamiento,'N\A') as 'motivoFinTratamiento',ISNULL(r.diagnostico,'N\A') as 'diagnostico', me.nombreGenerico 'NombreMedicamento',me.concentracion, fre.nombre as 'Frecuencia', COALESCE(NULL,md1.nombre,'N/A') as 'Momento del dia 1', COALESCE(NULL,md2.nombre,'N/A') as 'Momento del dia 2',COALESCE(NULL,md3.nombre,'N/A') as 'Momento del Dia 3', case when CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) END as 'Dosis 1',case when CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) END as 'Dosis 2',case when CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) END as 'Dosis 3', COALESCE(NULL,pre1.nombre,'N/A') as 'Presentacion Medicamento 1',COALESCE(NULL,pre2.nombre,'N/A') as 'Presentacion Medicamento 2', COALESCE(NULL,pre3.nombre,'N/A') as 'Presentacion Medicamento 3',COALESCE(NULL,CONVERT(varchar,pm.hora1),'N/A') as 'Hora 1', COALESCE(NULL,CONVERT(varchar,pm.hora2),'N/A') as 'Hora 2',COALESCE(NULL,CONVERT(varchar,pm.hora3),'N/A') as 'Hora 3', um.nombre as 'UnidadMedida', estp.nombre as 'EstadoProgramacion',esp.concentracion as 'Cantidad'-- me.nombreGenerico,fre.nombre,pre1.nombre,pre2.nombre,pre3.nombre, estp.nombre,esp.cantidadComprimidos,um.nombre,te.nombre
+                                from Tratamiento t left outer join  RazonamientoDiagnostico r on t.id_razonamientoDiagnostico_fk=r.id_razonamiento
+                                left outer join  ProgramacionMedicamento pm on t.id_tratamiento=pm.id_tratamiento_fk
+                                left outer join  ExamenGeneral ex on  r.id_examenGeneral_fk=ex.id_examenGeneral
+                                left outer join  Consulta c on ex.id_examenGeneral=c.id_examenGeneral_fk
+                                left outer join   MomentoDelDia md1 on pm.id_momentoDia1_fk=md1.id_momentoDelDia
+                                left outer join   MomentoDelDia md2 on pm.id_momentoDia2_fk=md2.id_momentoDelDia
+                                left outer join   MomentoDelDia md3 on pm.id_momentoDia3_fk=md3.id_momentoDelDia
+                                left outer join  Medicamento me on me.id_medicamento=pm.id_medicamento_fk
+                                left outer join  Frecuencia fre on pm.id_frecuencia_fk= fre.id_frecuencia
+                                left outer join PresentacionMedicamento pre1 on pm.id_presentacionMedicamento1_fk=pre1.id_presentacionMedicamento
+                                left outer join PresentacionMedicamento pre2 on pm.id_presentacionMedicamento2_fk=pre2.id_presentacionMedicamento
+                                left outer join PresentacionMedicamento pre3 on pm.id_presentacionMedicamento3_fk=pre3.id_presentacionMedicamento
+                                left outer join EstadoProgramacion estp on pm.id_estado_fk=estp.id_estadoProgramacion
+                                left outer join EspecificacionMedicamento esp on pm.id_especificacionMedicamento_fk=esp.id_especificacion
+                                inner join  UnidadMedida um on esp.id_unidadMedida_fk=um.id_unidadMedida
+                                inner join  Terapia te on t.id_terapia_fk=te.id_terapia
+                                where c.id_hc_fk=@id_hc";
             try
             {
                 cn.Open();

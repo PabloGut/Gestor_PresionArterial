@@ -47,7 +47,7 @@ namespace GPA
         {
             try
             {
-                listaPromedioSitio = EstadisticasLN.MostrarEstadisticaPromedioSitio();
+                listaPromedioSitio = EstadisticasLN.MostrarEstadisticaPromedioSitio(null,null);
 
                 foreach (var item in listaPromedioSitio)
                 {
@@ -72,7 +72,7 @@ namespace GPA
         {
             try
             {
-                listaPromedioSitioExtremidad = EstadisticasLN.MostrarEstadisticaPromedioSitioExtremidad();
+                listaPromedioSitioExtremidad = EstadisticasLN.MostrarEstadisticaPromedioSitioExtremidad(null,null);
 
                 foreach (var item in listaPromedioSitioExtremidad)
                 {

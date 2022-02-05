@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarEstadistica_PromedioSitioMedicion));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -416,6 +417,7 @@
             this.ClientSize = new System.Drawing.Size(533, 455);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsultarEstadistica_PromedioSitioMedicion";
             this.Text = "ConsultarEstadistica_PromedioSitioMedicioncs";
             this.Load += new System.EventHandler(this.ConsultarEstadistica_PromedioSitioMedicion_Load);

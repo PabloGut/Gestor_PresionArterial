@@ -33,6 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarEstadisticas_PromedioPorcentajeModa));
             this.label1 = new System.Windows.Forms.Label();
             this.txtEdadPromedio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -276,6 +277,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsultarEstadisticas_PromedioPorcentajeModa";
             this.Text = "Consultar Estadisticas";
             this.Load += new System.EventHandler(this.ConsultarEstadisticas_PromedioPorcentajeModa_Load);

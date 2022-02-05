@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarProfesionalMedico));
             this.panel1 = new System.Windows.Forms.Panel();
             this.grbPersonales = new System.Windows.Forms.GroupBox();
             this._txtFechaNacimiento = new System.Windows.Forms.MaskedTextBox();
@@ -515,6 +516,7 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrarProfesionalMedico";
             this.Text = "Registrar Profesional Medico";
             this.panel1.ResumeLayout(false);

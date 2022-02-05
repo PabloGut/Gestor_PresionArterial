@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActualizarMetodoAnalisisLaboratorio));
             this.label1 = new System.Windows.Forms.Label();
             this.txtMetodoAnalisisLaboratorio = new System.Windows.Forms.TextBox();
             this.dgvListaMetodosAnalisisLaboratorio = new System.Windows.Forms.DataGridView();
@@ -116,6 +117,7 @@
             this.Controls.Add(this.dgvListaMetodosAnalisisLaboratorio);
             this.Controls.Add(this.txtMetodoAnalisisLaboratorio);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActualizarMetodoAnalisisLaboratorio";
             this.Text = "Actualizar Metodo Analisis Laboratorio";
             this.Load += new System.EventHandler(this.ActualizarMetodoAnalisisLaboratorio_Load);

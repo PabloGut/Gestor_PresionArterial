@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActualizarFormaAdministracionMedicamento));
             this.label1 = new System.Windows.Forms.Label();
             this.txtFormaAdministracion = new System.Windows.Forms.TextBox();
             this.btnRegistrarFormaAdministracion = new System.Windows.Forms.Button();
@@ -67,6 +68,7 @@
             this.Controls.Add(this.btnRegistrarFormaAdministracion);
             this.Controls.Add(this.txtFormaAdministracion);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActualizarFormaAdministracionMedicamento";
             this.Text = "ActualizarFormaAdministracionMedicamento";
             this.Load += new System.EventHandler(this.ActualizarFormaAdministracionMedicamento_Load);

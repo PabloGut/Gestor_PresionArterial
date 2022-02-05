@@ -144,6 +144,12 @@
     <Compile Include="Consultar_EstadisticasMedicionesPromedio.Designer.cs">
       <DependentUpon>Consultar_EstadisticasMedicionesPromedio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultar_EstadisticasMedicionesPromedioConFiltro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultar_EstadisticasMedicionesPromedioConFiltro.Designer.cs">
+      <DependentUpon>Consultar_EstadisticasMedicionesPromedioConFiltro.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerarEstadisticas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -657,6 +663,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Consultar_EstadisticasMedicionesPromedio.resx">
       <DependentUpon>Consultar_EstadisticasMedicionesPromedio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultar_EstadisticasMedicionesPromedioConFiltro.resx">
+      <DependentUpon>Consultar_EstadisticasMedicionesPromedioConFiltro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenerarEstadisticas.resx">
       <DependentUpon>GenerarEstadisticas.cs</DependentUpon>

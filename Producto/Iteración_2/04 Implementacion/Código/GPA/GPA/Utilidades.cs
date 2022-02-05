@@ -133,7 +133,7 @@ namespace GPA
                 dgv.Columns.Add(columna);
             }
         }
-        public static void agregarColumnasDataGridViewTratamientos(DataGridView dgv, List<String> nombreColumnas)
+        public static void AgregarColumnasDataGridViewColumnaCheck(DataGridView dgv, List<String> nombreColumnas)
         {
          
 
@@ -172,6 +172,10 @@ namespace GPA
         public static void MensajeError(Exception ex)
         {
             MessageBox.Show(" Error: " + ex.Message + " StackTrace: " + ex.StackTrace, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static void MensajeError(String mensaje)
+        {
+            MessageBox.Show(" Error: " + mensaje, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

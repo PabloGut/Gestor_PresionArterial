@@ -40,10 +40,10 @@ namespace GPA
                 MostrarEstadisticaCantidadPacienteMasculino();
                 MostrarEstadisticaModaEdad();
 
-                DataTable dtF = EstadisticasLN.MostrarEstadisticaCantidadFemeninoDataTable();
-                DataTable dtM = EstadisticasLN.MostrarEstadisticaCantidadMasculinoDataTable();
+                DataTable dtF = EstadisticasLN.MostrarEstadisticaCantidadFemeninoDataTable(null,null);
+                DataTable dtM = EstadisticasLN.MostrarEstadisticaCantidadMasculinoDataTable(null,null);
 
-                DataTable dtPorcentajePacientesPorSexo = EstadisticasLN.MostrarEstadisticaPorcentajePacientesPorSexo();
+                DataTable dtPorcentajePacientesPorSexo = EstadisticasLN.MostrarEstadisticaPorcentajePacientesPorSexo(null,null);
 
                 //listaEstadisticaCantidadFemenino = EstadisticasLN.MostrarCantidadFemenino();
                 //listaEstadisticaCantidadMasculino = EstadisticasLN.MostrarCantidadMasculino();
@@ -61,7 +61,7 @@ namespace GPA
         {
             try
             {
-                List<EstadisticaPromedioEdad> listaEstadisticaPromedio = EstadisticasLN.MostrarEstadisticaEdadPromedio();
+                List<EstadisticaPromedioEdad> listaEstadisticaPromedio = EstadisticasLN.MostrarEstadisticaEdadPromedio(null,null);
 
                 if (listaEstadisticaPromedio != null && listaEstadisticaPromedio.Count > 0)
                 {
@@ -81,7 +81,7 @@ namespace GPA
         {
             try
             {
-                listaEstadisticaCantidadFemenino = EstadisticasLN.MostrarCantidadFemenino();
+                listaEstadisticaCantidadFemenino = EstadisticasLN.MostrarCantidadFemenino(null,null);
 
                 if (listaEstadisticaCantidadFemenino != null && listaEstadisticaCantidadFemenino.Count > 0)
                 {
@@ -102,7 +102,7 @@ namespace GPA
         {
             try
             {
-                listaEstadisticaCantidadMasculino = EstadisticasLN.MostrarCantidadMasculino();
+                listaEstadisticaCantidadMasculino = EstadisticasLN.MostrarCantidadMasculino(null,null);
 
                 if (listaEstadisticaCantidadMasculino != null && listaEstadisticaCantidadMasculino.Count > 0)
                 {
@@ -123,7 +123,7 @@ namespace GPA
         {
             try
             {
-                List<EstadisticaModaEdad> listaEstadisticaEdadModa = EstadisticasLN.MostrarEstadisticaEdadModa();
+                List<EstadisticaModaEdad> listaEstadisticaEdadModa = EstadisticasLN.MostrarEstadisticaEdadModa(null,null);
 
                 if (listaEstadisticaEdadModa != null && listaEstadisticaEdadModa.Count > 0)
                 {
