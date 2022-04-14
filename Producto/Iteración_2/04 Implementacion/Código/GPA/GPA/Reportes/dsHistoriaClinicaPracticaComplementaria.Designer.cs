@@ -297,6 +297,20 @@ namespace GPA.Reportes {
             
             private global::System.Data.DataColumn columnid_razonamiento;
             
+            private global::System.Data.DataColumn columnnro_hc;
+            
+            private global::System.Data.DataColumn columnPaciente;
+            
+            private global::System.Data.DataColumn columnTipoDocumento;
+            
+            private global::System.Data.DataColumn columnNroDocumento;
+            
+            private global::System.Data.DataColumn columnProfesionalMedico;
+            
+            private global::System.Data.DataColumn columnMatricula;
+            
+            private global::System.Data.DataColumn columnFechaInicioAtencion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PracticaComplementariaDataTable() {
@@ -404,6 +418,62 @@ namespace GPA.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nro_hcColumn {
+                get {
+                    return this.columnnro_hc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PacienteColumn {
+                get {
+                    return this.columnPaciente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TipoDocumentoColumn {
+                get {
+                    return this.columnTipoDocumento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NroDocumentoColumn {
+                get {
+                    return this.columnNroDocumento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProfesionalMedicoColumn {
+                get {
+                    return this.columnProfesionalMedico;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MatriculaColumn {
+                get {
+                    return this.columnMatricula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaInicioAtencionColumn {
+                get {
+                    return this.columnFechaInicioAtencion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -439,7 +509,23 @@ namespace GPA.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PracticaComplementariaRow AddPracticaComplementariaRow(string fechaSolicitud, string Practica, string indicaciones, string fechaRealizacion, string observacionesDeLosResultados, string estadoDiagnostico, string conceptoInicial, string diagnostico, string id_razonamiento) {
+            public PracticaComplementariaRow AddPracticaComplementariaRow(
+                        string fechaSolicitud, 
+                        string Practica, 
+                        string indicaciones, 
+                        string fechaRealizacion, 
+                        string observacionesDeLosResultados, 
+                        string estadoDiagnostico, 
+                        string conceptoInicial, 
+                        string diagnostico, 
+                        string id_razonamiento, 
+                        string nro_hc, 
+                        string Paciente, 
+                        string TipoDocumento, 
+                        string NroDocumento, 
+                        string ProfesionalMedico, 
+                        string Matricula, 
+                        string FechaInicioAtencion) {
                 PracticaComplementariaRow rowPracticaComplementariaRow = ((PracticaComplementariaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fechaSolicitud,
@@ -450,7 +536,14 @@ namespace GPA.Reportes {
                         estadoDiagnostico,
                         conceptoInicial,
                         diagnostico,
-                        id_razonamiento};
+                        id_razonamiento,
+                        nro_hc,
+                        Paciente,
+                        TipoDocumento,
+                        NroDocumento,
+                        ProfesionalMedico,
+                        Matricula,
+                        FechaInicioAtencion};
                 rowPracticaComplementariaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPracticaComplementariaRow);
                 return rowPracticaComplementariaRow;
@@ -482,6 +575,13 @@ namespace GPA.Reportes {
                 this.columnconceptoInicial = base.Columns["conceptoInicial"];
                 this.columndiagnostico = base.Columns["diagnostico"];
                 this.columnid_razonamiento = base.Columns["id_razonamiento"];
+                this.columnnro_hc = base.Columns["nro_hc"];
+                this.columnPaciente = base.Columns["Paciente"];
+                this.columnTipoDocumento = base.Columns["TipoDocumento"];
+                this.columnNroDocumento = base.Columns["NroDocumento"];
+                this.columnProfesionalMedico = base.Columns["ProfesionalMedico"];
+                this.columnMatricula = base.Columns["Matricula"];
+                this.columnFechaInicioAtencion = base.Columns["FechaInicioAtencion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -505,6 +605,20 @@ namespace GPA.Reportes {
                 base.Columns.Add(this.columndiagnostico);
                 this.columnid_razonamiento = new global::System.Data.DataColumn("id_razonamiento", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_razonamiento);
+                this.columnnro_hc = new global::System.Data.DataColumn("nro_hc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnro_hc);
+                this.columnPaciente = new global::System.Data.DataColumn("Paciente", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaciente);
+                this.columnTipoDocumento = new global::System.Data.DataColumn("TipoDocumento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoDocumento);
+                this.columnNroDocumento = new global::System.Data.DataColumn("NroDocumento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroDocumento);
+                this.columnProfesionalMedico = new global::System.Data.DataColumn("ProfesionalMedico", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProfesionalMedico);
+                this.columnMatricula = new global::System.Data.DataColumn("Matricula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMatricula);
+                this.columnFechaInicioAtencion = new global::System.Data.DataColumn("FechaInicioAtencion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaInicioAtencion);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -800,6 +914,124 @@ namespace GPA.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nro_hc {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracticaComplementaria.nro_hcColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nro_hc\' de la tabla \'PracticaComplementaria\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracticaComplementaria.nro_hcColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Paciente {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracticaComplementaria.PacienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Paciente\' de la tabla \'PracticaComplementaria\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablePracticaComplementaria.PacienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TipoDocumento {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracticaComplementaria.TipoDocumentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TipoDocumento\' de la tabla \'PracticaComplementaria\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracticaComplementaria.TipoDocumentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NroDocumento {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracticaComplementaria.NroDocumentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroDocumento\' de la tabla \'PracticaComplementaria\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracticaComplementaria.NroDocumentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ProfesionalMedico {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracticaComplementaria.ProfesionalMedicoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ProfesionalMedico\' de la tabla \'PracticaComplementaria\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracticaComplementaria.ProfesionalMedicoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Matricula {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracticaComplementaria.MatriculaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Matricula\' de la tabla \'PracticaComplementaria\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablePracticaComplementaria.MatriculaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FechaInicioAtencion {
+                get {
+                    try {
+                        return ((string)(this[this.tablePracticaComplementaria.FechaInicioAtencionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaInicioAtencion\' de la tabla \'PracticaComplementaria\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePracticaComplementaria.FechaInicioAtencionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsfechaSolicitudNull() {
                 return this.IsNull(this.tablePracticaComplementaria.fechaSolicitudColumn);
             }
@@ -904,6 +1136,90 @@ namespace GPA.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setid_razonamientoNull() {
                 this[this.tablePracticaComplementaria.id_razonamientoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnro_hcNull() {
+                return this.IsNull(this.tablePracticaComplementaria.nro_hcColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnro_hcNull() {
+                this[this.tablePracticaComplementaria.nro_hcColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPacienteNull() {
+                return this.IsNull(this.tablePracticaComplementaria.PacienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPacienteNull() {
+                this[this.tablePracticaComplementaria.PacienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTipoDocumentoNull() {
+                return this.IsNull(this.tablePracticaComplementaria.TipoDocumentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTipoDocumentoNull() {
+                this[this.tablePracticaComplementaria.TipoDocumentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNroDocumentoNull() {
+                return this.IsNull(this.tablePracticaComplementaria.NroDocumentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNroDocumentoNull() {
+                this[this.tablePracticaComplementaria.NroDocumentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsProfesionalMedicoNull() {
+                return this.IsNull(this.tablePracticaComplementaria.ProfesionalMedicoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetProfesionalMedicoNull() {
+                this[this.tablePracticaComplementaria.ProfesionalMedicoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMatriculaNull() {
+                return this.IsNull(this.tablePracticaComplementaria.MatriculaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMatriculaNull() {
+                this[this.tablePracticaComplementaria.MatriculaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaInicioAtencionNull() {
+                return this.IsNull(this.tablePracticaComplementaria.FechaInicioAtencionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaInicioAtencionNull() {
+                this[this.tablePracticaComplementaria.FechaInicioAtencionColumn] = global::System.Convert.DBNull;
             }
         }
         

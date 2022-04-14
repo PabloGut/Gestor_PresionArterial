@@ -34,8 +34,9 @@ namespace Shiart_AppWeb.PaginasWeb
                 cargarCombos();
                 if (cookie != null)
                 {
-                    //mediciones = MedicionDePresionArterialLN.obtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
-                    mediciones = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
+                    //mediciones = MedicionDePresionArterialLN.ObtenerDetalleMedicionesPresionArterial(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
+                    //mediciones = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
+                    mediciones = MedicionDePresionArterialLN.ObtenerMedicionesPresionArterial(Convert.ToInt32(cookie.Value), null, null, null, null, null, null, null);
                     RepeaterMediciones.DataSource = mediciones;
                     RepeaterMediciones.DataBind();
                 }
@@ -119,9 +120,12 @@ namespace Shiart_AppWeb.PaginasWeb
             if (!String.IsNullOrEmpty(ddlFiltroSitioMedicion.SelectedItem.Text) && !ddlFiltroSitioMedicion.SelectedItem.Text.Equals("--Seleccionar--"))
                 sitioMedicionSeleccionado = ddlFiltroSitioMedicion.SelectedItem.Text;
 
+            if(!IsPostBack)
+                detalleMedicionesConFiltro = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value),null,null,null,null,null,null,null);
+            else
+                detalleMedicionesConFiltro = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value), fechaDesde, fechaHasta, extremidad, momentoDiaSeleccionado, posicionSeleccionada, ubicacionExtremidadSeleccionada, sitioMedicionSeleccionado);
 
-            detalleMedicionesConFiltro = MedicionDePresionArterialLN.ObtenerMedicionesConFiltro(Convert.ToInt32(cookie.Value),fechaDesde,fechaHasta,extremidad,momentoDiaSeleccionado,posicionSeleccionada,ubicacionExtremidadSeleccionada,sitioMedicionSeleccionado);
-         
+
             if (detalleMedicionesConFiltro.Rows.Count == 0)
                 return null;
 

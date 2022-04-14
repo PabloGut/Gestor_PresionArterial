@@ -24,143 +24,143 @@ namespace LogicaNegocio
             }
 
         }
-        public static List<EstadisticaPromedioEdad> MostrarEstadisticaEdadPromedio()
+        public static List<EstadisticaPromedioEdad> MostrarEstadisticaEdadPromedio(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.MostrarEstadisticaPromedio();
+                return EstadisticasDAO.MostrarEstadisticaPromedio(FechaDesde,FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static List<EstadisticaCantidadPorSexo> MostrarCantidadFemenino()
+        public static List<EstadisticaCantidadPorSexo> MostrarCantidadFemenino(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesFemenino();
+                return EstadisticasDAO.CantidadPacientesFemenino(FechaDesde, FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static List<EstadisticaCantidadPorSexo> MostrarCantidadMasculino()
+        public static List<EstadisticaCantidadPorSexo> MostrarCantidadMasculino(DateTime? FechaDesde, DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesMasculino();
+                return EstadisticasDAO.CantidadPacientesMasculino(FechaDesde, FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static List<EstadisticaModaEdad> MostrarEstadisticaEdadModa()
+        public static List<EstadisticaModaEdad> MostrarEstadisticaEdadModa(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.ModaEdad();
+                return EstadisticasDAO.ModaEdad(FechaDesde,FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static DataTable MostrarEstadisticaCantidadMasculinoDataTable()
+        public static DataTable MostrarEstadisticaCantidadMasculinoDataTable(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesMasculinoDataTable();
+                return EstadisticasDAO.CantidadPacientesMasculinoDataTable(FechaDesde,FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static DataTable MostrarEstadisticaCantidadFemeninoDataTable()
+        public static DataTable MostrarEstadisticaCantidadFemeninoDataTable(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesFemeninoDataTable();
+                return EstadisticasDAO.CantidadPacientesFemeninoDataTable(FechaDesde,FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static DataTable MostrarEstadisticaPorcentajePacientesPorSexo()
+        public static DataTable MostrarEstadisticaPorcentajePacientesPorSexo(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesPorSexoDataTable();
+                return EstadisticasDAO.CantidadPacientesPorSexoDataTable(FechaDesde,FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static List<EstadisticaCategoriaSitio> MostrarEstadisticaPacientesPorCategoria()
+        public static List<EstadisticaCategoriaSitio> MostrarEstadisticaPacientesPorCategoria(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesPorCategoría();
+                return EstadisticasDAO.CantidadPacientesPorCategoría(FechaDesde, FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static DataTable MostrarEstadisticaPacientesPorCategoriaDataTableConExamen()
+        public static DataTable MostrarEstadisticaPacientesPorCategoriaDataTableConExamen(DateTime? FechaDesde, DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesPorCategoríaDataTableConExamen();
+                return EstadisticasDAO.CantidadPacientesPorCategoríaDataTableConExamen(FechaDesde,FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static DataTable MostrarEstadisticaPacientesPorCategoriaDataTableSinExamen()
+        public static DataTable MostrarEstadisticaPacientesPorCategoriaDataTableSinExamen(DateTime? FechaDesde, DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.CantidadPacientesPorCategoríaDataTableSinExamen();
+                return EstadisticasDAO.CantidadPacientesPorCategoríaDataTableSinExamen(FechaDesde,FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static List<EstadisticaCategoriaSitio> MostrarPromedioMedicionesConYSinExamen()
+        public static List<EstadisticaCategoriaSitio> MostrarPromedioMedicionesConYSinExamen(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.PromedioMedicionesConYSinExamen();
+                return EstadisticasDAO.PromedioMedicionesConYSinExamen(FechaDesde, FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static List<EstadisticaCategoriaSitio> MostrarEstadisticaPromedioSitioExtremidad()
+        public static List<EstadisticaCategoriaSitio> MostrarEstadisticaPromedioSitioExtremidad(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.PromedioMedicionesSitioExtremidad();
+                return EstadisticasDAO.PromedioMedicionesSitioExtremidad(FechaDesde, FechaHasta);
             }
             catch (SqlException e)
             {
                 throw e;
             }
         }
-        public static List<EstadisticaCategoriaSitio> MostrarEstadisticaPromedioSitio()
+        public static List<EstadisticaCategoriaSitio> MostrarEstadisticaPromedioSitio(DateTime? FechaDesde, DateTime? FechaHasta)
         {
             try
             {
-                return EstadisticasDAO.PromedioMedicionesSitio();
+                return EstadisticasDAO.PromedioMedicionesSitio(FechaDesde, FechaHasta);
             }
             catch (SqlException e)
             {

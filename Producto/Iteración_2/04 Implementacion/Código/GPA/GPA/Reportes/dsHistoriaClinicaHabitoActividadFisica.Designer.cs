@@ -291,6 +291,20 @@ namespace GPA.Reportes {
             
             private global::System.Data.DataColumn columnIntesidad_Actividad_Física;
             
+            private global::System.Data.DataColumn columnnro_hc;
+            
+            private global::System.Data.DataColumn columnPaciente;
+            
+            private global::System.Data.DataColumn columnTipoDocumento;
+            
+            private global::System.Data.DataColumn columnNroDocumento;
+            
+            private global::System.Data.DataColumn columnProfesionalMedico;
+            
+            private global::System.Data.DataColumn columnMatricula;
+            
+            private global::System.Data.DataColumn columnFechaInicioAtencion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public HabitosActividadFisicaDataTable() {
@@ -374,6 +388,62 @@ namespace GPA.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nro_hcColumn {
+                get {
+                    return this.columnnro_hc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PacienteColumn {
+                get {
+                    return this.columnPaciente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TipoDocumentoColumn {
+                get {
+                    return this.columnTipoDocumento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NroDocumentoColumn {
+                get {
+                    return this.columnNroDocumento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProfesionalMedicoColumn {
+                get {
+                    return this.columnProfesionalMedico;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MatriculaColumn {
+                get {
+                    return this.columnMatricula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaInicioAtencionColumn {
+                get {
+                    return this.columnFechaInicioAtencion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +479,7 @@ namespace GPA.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public HabitosActividadFisicaRow AddHabitosActividadFisicaRow(string Fecha_registro, string _Deporte_Actividad, string Descripción_deporte_o_actividad, string Grado_actividad, string Descripcion_grado_actividad, string Intesidad_Actividad_Física) {
+            public HabitosActividadFisicaRow AddHabitosActividadFisicaRow(string Fecha_registro, string _Deporte_Actividad, string Descripción_deporte_o_actividad, string Grado_actividad, string Descripcion_grado_actividad, string Intesidad_Actividad_Física, string nro_hc, string Paciente, string TipoDocumento, string NroDocumento, string ProfesionalMedico, string Matricula, string FechaInicioAtencion) {
                 HabitosActividadFisicaRow rowHabitosActividadFisicaRow = ((HabitosActividadFisicaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Fecha_registro,
@@ -417,7 +487,14 @@ namespace GPA.Reportes {
                         Descripción_deporte_o_actividad,
                         Grado_actividad,
                         Descripcion_grado_actividad,
-                        Intesidad_Actividad_Física};
+                        Intesidad_Actividad_Física,
+                        nro_hc,
+                        Paciente,
+                        TipoDocumento,
+                        NroDocumento,
+                        ProfesionalMedico,
+                        Matricula,
+                        FechaInicioAtencion};
                 rowHabitosActividadFisicaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowHabitosActividadFisicaRow);
                 return rowHabitosActividadFisicaRow;
@@ -446,6 +523,13 @@ namespace GPA.Reportes {
                 this.columnGrado_actividad = base.Columns["Grado actividad"];
                 this.columnDescripcion_grado_actividad = base.Columns["Descripcion grado actividad"];
                 this.columnIntesidad_Actividad_Física = base.Columns["Intesidad Actividad Física"];
+                this.columnnro_hc = base.Columns["nro_hc"];
+                this.columnPaciente = base.Columns["Paciente"];
+                this.columnTipoDocumento = base.Columns["TipoDocumento"];
+                this.columnNroDocumento = base.Columns["NroDocumento"];
+                this.columnProfesionalMedico = base.Columns["ProfesionalMedico"];
+                this.columnMatricula = base.Columns["Matricula"];
+                this.columnFechaInicioAtencion = base.Columns["FechaInicioAtencion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -465,6 +549,20 @@ namespace GPA.Reportes {
                 base.Columns.Add(this.columnDescripcion_grado_actividad);
                 this.columnIntesidad_Actividad_Física = new global::System.Data.DataColumn("Intesidad Actividad Física", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIntesidad_Actividad_Física);
+                this.columnnro_hc = new global::System.Data.DataColumn("nro_hc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnro_hc);
+                this.columnPaciente = new global::System.Data.DataColumn("Paciente", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaciente);
+                this.columnTipoDocumento = new global::System.Data.DataColumn("TipoDocumento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoDocumento);
+                this.columnNroDocumento = new global::System.Data.DataColumn("NroDocumento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroDocumento);
+                this.columnProfesionalMedico = new global::System.Data.DataColumn("ProfesionalMedico", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProfesionalMedico);
+                this.columnMatricula = new global::System.Data.DataColumn("Matricula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMatricula);
+                this.columnFechaInicioAtencion = new global::System.Data.DataColumn("FechaInicioAtencion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaInicioAtencion);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -709,6 +807,124 @@ namespace GPA.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nro_hc {
+                get {
+                    try {
+                        return ((string)(this[this.tableHabitosActividadFisica.nro_hcColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nro_hc\' de la tabla \'HabitosActividadFisica\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHabitosActividadFisica.nro_hcColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Paciente {
+                get {
+                    try {
+                        return ((string)(this[this.tableHabitosActividadFisica.PacienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Paciente\' de la tabla \'HabitosActividadFisica\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableHabitosActividadFisica.PacienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TipoDocumento {
+                get {
+                    try {
+                        return ((string)(this[this.tableHabitosActividadFisica.TipoDocumentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TipoDocumento\' de la tabla \'HabitosActividadFisica\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableHabitosActividadFisica.TipoDocumentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NroDocumento {
+                get {
+                    try {
+                        return ((string)(this[this.tableHabitosActividadFisica.NroDocumentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroDocumento\' de la tabla \'HabitosActividadFisica\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHabitosActividadFisica.NroDocumentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ProfesionalMedico {
+                get {
+                    try {
+                        return ((string)(this[this.tableHabitosActividadFisica.ProfesionalMedicoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ProfesionalMedico\' de la tabla \'HabitosActividadFisica\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHabitosActividadFisica.ProfesionalMedicoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Matricula {
+                get {
+                    try {
+                        return ((string)(this[this.tableHabitosActividadFisica.MatriculaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Matricula\' de la tabla \'HabitosActividadFisica\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableHabitosActividadFisica.MatriculaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FechaInicioAtencion {
+                get {
+                    try {
+                        return ((string)(this[this.tableHabitosActividadFisica.FechaInicioAtencionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaInicioAtencion\' de la tabla \'HabitosActividadFisica\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHabitosActividadFisica.FechaInicioAtencionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsFecha_registroNull() {
                 return this.IsNull(this.tableHabitosActividadFisica.Fecha_registroColumn);
             }
@@ -777,6 +993,90 @@ namespace GPA.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIntesidad_Actividad_FísicaNull() {
                 this[this.tableHabitosActividadFisica.Intesidad_Actividad_FísicaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnro_hcNull() {
+                return this.IsNull(this.tableHabitosActividadFisica.nro_hcColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnro_hcNull() {
+                this[this.tableHabitosActividadFisica.nro_hcColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPacienteNull() {
+                return this.IsNull(this.tableHabitosActividadFisica.PacienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPacienteNull() {
+                this[this.tableHabitosActividadFisica.PacienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTipoDocumentoNull() {
+                return this.IsNull(this.tableHabitosActividadFisica.TipoDocumentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTipoDocumentoNull() {
+                this[this.tableHabitosActividadFisica.TipoDocumentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNroDocumentoNull() {
+                return this.IsNull(this.tableHabitosActividadFisica.NroDocumentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNroDocumentoNull() {
+                this[this.tableHabitosActividadFisica.NroDocumentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsProfesionalMedicoNull() {
+                return this.IsNull(this.tableHabitosActividadFisica.ProfesionalMedicoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetProfesionalMedicoNull() {
+                this[this.tableHabitosActividadFisica.ProfesionalMedicoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMatriculaNull() {
+                return this.IsNull(this.tableHabitosActividadFisica.MatriculaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMatriculaNull() {
+                this[this.tableHabitosActividadFisica.MatriculaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaInicioAtencionNull() {
+                return this.IsNull(this.tableHabitosActividadFisica.FechaInicioAtencionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaInicioAtencionNull() {
+                this[this.tableHabitosActividadFisica.FechaInicioAtencionColumn] = global::System.Convert.DBNull;
             }
         }
         

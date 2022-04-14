@@ -47,10 +47,11 @@ namespace DAO
                 throw e;
             }
         }
-        public static List<EstadisticaPromedioEdad> MostrarEstadisticaPromedio()
+        public static List<EstadisticaPromedioEdad> MostrarEstadisticaPromedio(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             SqlConnection cn = null ;
             List<EstadisticaPromedioEdad> estadistica;
+            string consulta = "";
             try
             {
                 setCadenaConexion();
@@ -60,14 +61,45 @@ namespace DAO
 
                 cn.Open();
 
-                string consulta = @"select top 1 id, fecha_registro,promedioEdad from Estadistica_EdadPromedio
-                                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-                                    order by id desc";
+                //consulta = @"select top 1 id, fecha_registro,promedioEdad from Estadistica_EdadPromedio
+                //                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+                //                    order by id desc";
 
-                SqlCommand cmd = new SqlCommand();
+                if(FechaDesde ==null && FechaHasta == null )
+                {
+                    consulta = @"select top 1 id, fecha_registro,promedioEdad from Estadistica_EdadPromedio
+                                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3) ";
+                }
+                else
+                {
+                    consulta = @"select id, fecha_registro,promedioEdad from Estadistica_EdadPromedio
+                                 where 1=1";
+
+                    if (FechaDesde == null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta == null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+
+                consulta += " order by id desc";
+                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+
+                }
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -93,26 +125,63 @@ namespace DAO
                 throw e;
             }
         }
-        public static List<EstadisticaCantidadPorSexo> CantidadPacientesFemenino()
+        public static List<EstadisticaCantidadPorSexo> CantidadPacientesFemenino(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             List<EstadisticaCantidadPorSexo> estadistica = new List<EstadisticaCantidadPorSexo>();
             SqlConnection cn = null;
+            string consulta = "";
             try
             {
                 setCadenaConexion();
                 cn = new SqlConnection(cadenaConexion);
                 cn.Open();
 
-                string consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //                    from cantidadPacientesPorSexo
+                //                    where sexo='Femenino'
+                //                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+                //                    order by id desc";
+
+                if(FechaDesde ==null && FechaHasta == null)
+                {
+                    consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cast(cantidadPacientesPorSexo as float )*100)/cast(cantidadTotalPacientes as float) as 'Porcentaje'
                                     from cantidadPacientesPorSexo
                                     where sexo='Femenino'
-                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-                                    order by id desc";
+                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3) ";
+                }
+                else
+                {
+                    consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cast(cantidadPacientesPorSexo as float )*100)/cast(cantidadTotalPacientes as float) as 'Porcentaje'
+                                    from cantidadPacientesPorSexo
+                                    where sexo='Femenino' ";
+
+                    if (FechaDesde == null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta == null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+
+                consulta += " order by id desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+
+                }
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -142,27 +211,64 @@ namespace DAO
             }
         }
 
-        public static List<EstadisticaCantidadPorSexo> CantidadPacientesMasculino()
+        public static List<EstadisticaCantidadPorSexo> CantidadPacientesMasculino(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             List<EstadisticaCantidadPorSexo> estadistica = new List<EstadisticaCantidadPorSexo>();
             SqlConnection cn = null;
-
+            string consulta = "";
             try
             {
                 cn = new SqlConnection(cadenaConexion);
                 setCadenaConexion();
                 cn.Open();
 
-                string consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //string consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //                    from cantidadPacientesPorSexo
+                //                    where sexo='Masculino'
+                //                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+                //                    order by id desc";
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+                    consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cast(cantidadPacientesPorSexo as float )*100)/cast(cantidadTotalPacientes as float) as 'Porcentaje'
                                     from cantidadPacientesPorSexo
                                     where sexo='Masculino'
-                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-                                    order by id desc";
+                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)";
+                }
+                else
+                {
+                    consulta = @"select id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cast(cantidadPacientesPorSexo as float )*100)/cast(cantidadTotalPacientes as float) as 'Porcentaje'
+                                    from cantidadPacientesPorSexo
+                                    where sexo='Masculino' ";
+
+                    if (FechaDesde == null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta == null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+                consulta += " order by id desc";
+
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+
+                }
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
+
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -191,25 +297,63 @@ namespace DAO
                 throw e;
             }
         }
-        public static List<EstadisticaModaEdad> ModaEdad()
+        public static List<EstadisticaModaEdad> ModaEdad(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             SqlConnection cn = null;
             List <EstadisticaModaEdad> estadistica = new List<EstadisticaModaEdad>();
-
+            String consulta = "";
             try
             {
                 cn = new SqlConnection(cadenaConexion);
                 setCadenaConexion();
                 cn.Open();
 
-                String consulta = @"select distinct moda_edad
+                //String consulta = @"select distinct moda_edad
+                //                from Estadistica_EdadModa
+                //                where  convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)";
+
+
+                consulta = @"select distinct moda_edad
                                 from Estadistica_EdadModa
                                 where  convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)";
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+                    consulta = @"select distinct moda_edad
+                                from Estadistica_EdadModa
+                                where  convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)";
+                }
+                else
+                {
+                    consulta = @"select distinct moda_edad
+                                from Estadistica_EdadModa
+                                where  1=1";
+
+                    if (FechaDesde == null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta == null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+
+                }
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -236,7 +380,7 @@ namespace DAO
             }
         }
 
-        public static DataTable CantidadPacientesMasculinoDataTable()
+        public static DataTable CantidadPacientesMasculinoDataTable(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             DataTable estadistica = new DataTable();
             DataRow fila;
@@ -245,23 +389,59 @@ namespace DAO
             estadistica.Columns.Add("cantidadPacientesPorSexo");
 
             SqlConnection cn = null;
-
+            string consulta = "";
             try
             {
                 cn = new SqlConnection(cadenaConexion);
                 setCadenaConexion();
                 cn.Open();
 
-                string consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //string consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //                    from cantidadPacientesPorSexo
+                //                    where sexo='Masculino'
+                //                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+                //                    order by id desc";
+
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+                    consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
                                     from cantidadPacientesPorSexo
                                     where sexo='Masculino'
-                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-                                    order by id desc";
+                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3) ";
+                }
+                else
+                {
+                    consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                                    from cantidadPacientesPorSexo
+                                    where sexo='Masculino' ";
+
+                    if (FechaDesde == null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta == null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+
+                consulta += " order by id desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+                }
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -284,7 +464,7 @@ namespace DAO
                 throw e;
             }
         }
-        public static DataTable CantidadPacientesFemeninoDataTable()
+        public static DataTable CantidadPacientesFemeninoDataTable(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             DataTable estadistica = new DataTable();
             DataRow fila;
@@ -294,23 +474,59 @@ namespace DAO
             estadistica.Columns.Add("Porcentaje");
 
             SqlConnection cn = null;
-
+            string consulta = "";
             try
             {
                 cn = new SqlConnection(cadenaConexion);
                 setCadenaConexion();
                 cn.Open();
 
-                string consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //string consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //                    from cantidadPacientesPorSexo
+                //                    where sexo='Femenino'
+                //                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+                //                    order by id desc";
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+
+                    consulta = @"select top 1 id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
                                     from cantidadPacientesPorSexo
                                     where sexo='Femenino'
-                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-                                    order by id desc";
+                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)";  
+                }
+                else
+                {
+                    consulta = @"select id,fecha_registro,id_sexo,sexo,cantidadPacientesPorSexo,cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                                    from cantidadPacientesPorSexo
+                                    where sexo='Femenino' ";
+
+                    if (FechaDesde == null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta == null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+
+                consulta += "order by id desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+                }
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -334,7 +550,7 @@ namespace DAO
                 throw e;
             }
         }
-        public static DataTable CantidadPacientesPorSexoDataTable()
+        public static DataTable CantidadPacientesPorSexoDataTable(DateTime? FechaDesde, DateTime? FechaHasta)
         {
             DataTable estadistica = new DataTable();
             DataRow fila;
@@ -344,31 +560,93 @@ namespace DAO
             estadistica.Columns.Add("Porcentaje");
 
             SqlConnection cn = null;
-
+            string consulta = "";
             try
             {
                 cn = new SqlConnection(cadenaConexion);
                 setCadenaConexion();
                 cn.Open();
 
-                string consulta = @" Select cantM.id, cantM.fecha_registro,cantM.id_sexo,cantM.sexo, cantM.cantidadPacientesPorSexo, cantM.cantidadTotalPacientes, cantM.Porcentaje
-                                     from (select top 1 id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
-                                                                    from cantidadPacientesPorSexo
-                                                                    where sexo ='Masculino'
-                                                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-								                                    order by fecha_registro desc) cantM
-                                                                    UNION
-                                     Select cantF.id, cantF.fecha_registro,cantF.id_sexo,cantF.sexo, cantF.cantidadPacientesPorSexo, cantF.cantidadTotalPacientes, cantF.Porcentaje
-                                     from (select top 1 id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
-                                                                    from cantidadPacientesPorSexo
-                                                                    where sexo ='Femenino'
-                                                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-								                                    order by fecha_registro desc) cantF";
+                //string consulta = @" Select cantM.id, cantM.fecha_registro,cantM.id_sexo,cantM.sexo, cantM.cantidadPacientesPorSexo, cantM.cantidadTotalPacientes, cantM.Porcentaje
+                //                     from (select top 1 id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //                                                    from cantidadPacientesPorSexo
+                //                                                    where sexo ='Masculino'
+                //                                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+								        //                            order by fecha_registro desc) cantM
+                //                                                    UNION
+                //                     Select cantF.id, cantF.fecha_registro,cantF.id_sexo,cantF.sexo, cantF.cantidadPacientesPorSexo, cantF.cantidadTotalPacientes, cantF.Porcentaje
+                //                     from (select top 1 id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                //                                                    from cantidadPacientesPorSexo
+                //                                                    where sexo ='Femenino'
+                //                                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+								        //                            order by fecha_registro desc) cantF";
+
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+
+                    consulta = @" SELECT top 2 *
+                                    FROM (
+
+                                    (Select cantM.id, cantM.fecha_registro,cantM.id_sexo,cantM.sexo, cantM.cantidadPacientesPorSexo, cantM.cantidadTotalPacientes, cantM.Porcentaje
+                                                                         from (select id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                                                                                                        from cantidadPacientesPorSexo
+                                                                                                        where sexo ='Masculino'
+																	                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)) cantM)
+                                                                                                        UNION
+
+                                    (Select cantF.id, cantF.fecha_registro,cantF.id_sexo,cantF.sexo, cantF.cantidadPacientesPorSexo, cantF.cantidadTotalPacientes, cantF.Porcentaje
+                                                                         from (select id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                                                                                                        from cantidadPacientesPorSexo
+                                                                                                        where sexo ='Femenino'
+																	                                    and convert(varchar, fecha_registro, 3)= convert(varchar, getdate(), 3)) cantF)
+                                    ) datos
+                                    order by datos.fecha_registro desc";
+                }
+                else
+                {
+                    consulta = @" SELECT *
+                                    FROM (
+
+                                    (Select cantM.id, cantM.fecha_registro,cantM.id_sexo,cantM.sexo, cantM.cantidadPacientesPorSexo, cantM.cantidadTotalPacientes, cantM.Porcentaje
+                                                                         from (select  id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                                                                                                        from cantidadPacientesPorSexo
+                                                                                                        where sexo ='Masculino'
+																	                                    and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)) cantM)
+                                                                                                        UNION
+
+                                    (Select cantF.id, cantF.fecha_registro,cantF.id_sexo,cantF.sexo, cantF.cantidadPacientesPorSexo, cantF.cantidadTotalPacientes, cantF.Porcentaje
+                                                                         from (select  id, fecha_registro,id_sexo,sexo,ISNULL(cantidadPacientesPorSexo,'N/A') as 'cantidadPacientesPorSexo',cantidadTotalPacientes, (cantidadPacientesPorSexo*100)/cantidadTotalPacientes as 'Porcentaje'
+                                                                                                        from cantidadPacientesPorSexo
+                                                                                                        where sexo ='Femenino'
+																	                                    and convert(varchar, fecha_registro, 3)= convert(varchar, getdate(), 3)) cantF)
+                                    ) datos
+                                    order by datos.fecha_registro desc";
+
+                    if (FechaDesde == null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta == null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+                }
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -395,25 +673,61 @@ namespace DAO
         /*
         Metodo para buscar la cantidad de pacientes por categoria 
         */
-        public static List<EstadisticaCategoriaSitio> CantidadPacientesPorCategoría()
+        public static List<EstadisticaCategoriaSitio> CantidadPacientesPorCategoría(DateTime? FechaDesde,DateTime? FechaHasta )
         {
             List<EstadisticaCategoriaSitio> estadistica = new List<EstadisticaCategoriaSitio>();
             SqlConnection cn = null;
+            String consulta = "";
             try
             {
                 setCadenaConexion();
                 cn = new SqlConnection(cadenaConexion);
                 cn.Open();
 
-                string consulta = @"select top 14  id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen
-                                    from Estadistica_MedicionesPorCategoria
-                                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate() , 3)
-                                    order by fecha_registro desc";
+                //string consulta = @"select top 14  id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen
+                //                    from Estadistica_MedicionesPorCategoria
+                //                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate() , 3)
+                //                    order by fecha_registro desc";
+
+
+                if(FechaDesde == null && FechaDesde == null)
+                {
+                    consulta = @"select top 14  id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen
+                                 from Estadistica_MedicionesPorCategoria
+                                 where convert(varchar, fecha_registro, 3)=convert(varchar, getdate() , 3) ";
+                }
+                else
+                {  
+                    consulta = @"select id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen
+                                 from Estadistica_MedicionesPorCategoria
+                                 where 1=1";
+
+                    if (FechaDesde != null)
+                    {
+                        consulta += " and CAST(fecha_registro as date) >= CAST(@fechaDesde as date)";
+                    }
+                    if (FechaHasta !=null)
+                    {
+                        consulta += " and CAST(fecha_registro as date) <= CAST(@fechaHasta as date)";
+                    }
+                }
+                consulta += " order by fecha_registro desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+                    
+                }
+
+                if(FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -442,7 +756,7 @@ namespace DAO
             }
         }
 
-        public static DataTable CantidadPacientesPorCategoríaDataTableConExamen()
+        public static DataTable CantidadPacientesPorCategoríaDataTableConExamen(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             DataTable estadistica = new DataTable();
             DataRow fila;
@@ -456,22 +770,63 @@ namespace DAO
 
             SqlConnection cn = null;
 
+            String consulta = "";
+
             try
             {
                 setCadenaConexion();
                 cn = new SqlConnection(cadenaConexion);
                 cn.Open();
 
-                string consulta = @"select top 7  id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
+                //consulta = @"select top 7  id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
+                //                    from Estadistica_MedicionesPorCategoria
+                //                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate() , 3)
+                //                    and conExamen like 'ConExamen'
+                //                    order by fecha_registro desc";
+
+
+
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+                    consulta = @"select top 7  id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
                                     from Estadistica_MedicionesPorCategoria
                                     where convert(varchar, fecha_registro, 3)=convert(varchar, getdate() , 3)
-                                    and conExamen like 'ConExamen'
-                                    order by fecha_registro desc";
+                                    and conExamen like 'ConExamen' ";
+                }
+                else
+                {
+                    consulta = @"select id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
+                                    from Estadistica_MedicionesPorCategoria
+                                    where conExamen like 'ConExamen'
+                                    and 1=1";
+
+                    if (FechaDesde != null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta != null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+                consulta += " order by fecha_registro desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+
+                }
+
+                if (FechaHasta != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -499,7 +854,7 @@ namespace DAO
                 throw e;
             }
         }
-        public static DataTable CantidadPacientesPorCategoríaDataTableSinExamen()
+        public static DataTable CantidadPacientesPorCategoríaDataTableSinExamen(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             DataTable estadistica = new DataTable();
             DataRow fila;
@@ -512,23 +867,60 @@ namespace DAO
             estadistica.Columns.Add("porcentaje");
 
             SqlConnection cn = null;
-
+            String consulta = "";
             try
             {
                 setCadenaConexion();
                 cn = new SqlConnection(cadenaConexion);
                 cn.Open();
 
-                string consulta = @"select top 7 id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
+                //string consulta = @"select top 7 id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
+                //                    from Estadistica_MedicionesPorCategoria
+                //                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+                //                    and conExamen like 'SinExamen'
+                //                    order by fecha_registro desc";
+
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+                    consulta = @"select top 7 id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
                                     from Estadistica_MedicionesPorCategoria
                                     where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-                                    and conExamen like 'SinExamen'
-                                    order by fecha_registro desc";
+                                    and conExamen like 'SinExamen' ";
+                }
+                else
+                {
+                    consulta = @"select id,fecha_registro,categoria,cantidadPacientes,totalPacientes,conExamen,((cantidadPacientes*100)/totalPacientes) as 'porcentaje'
+                                    from Estadistica_MedicionesPorCategoria
+                                    where conExamen like 'SinExamen' ";
+
+                    if (FechaDesde != null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta != null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+                consulta += " order by fecha_registro desc";
+
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+
+                }
+
+                if (FechaHasta != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -556,28 +948,69 @@ namespace DAO
                 throw e;
             }
         }
-        public static List<EstadisticaCategoriaSitio> PromedioMedicionesConYSinExamen()
+        public static List<EstadisticaCategoriaSitio> PromedioMedicionesConYSinExamen(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             List<EstadisticaCategoriaSitio> estadistica = new List<EstadisticaCategoriaSitio>();
             SqlConnection cn = null;
+            String consulta = "";
             try
             {
                 setCadenaConexion();
                 cn = new SqlConnection(cadenaConexion);
                 cn.Open();
 
-                string consulta = @"select id, fecha_registro,ConExamen,PromedioSistolica,PromedioDiastolica
+                //string consulta = @"select id, fecha_registro,ConExamen,PromedioSistolica,PromedioDiastolica
+                //                     from Estadistica_PromedioSitioMedicion
+                //                     where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+                //                    and (ConExamen like 'SinExamen' or ConExamen like 'ConExamen')
+                //                    and sitioMedicion is null
+                //                    and extremidad is null
+                //                    order by id desc;";
+
+                if (FechaDesde == null && FechaDesde  == null)
+                {
+                    consulta = @"select id, fecha_registro,ConExamen,PromedioSistolica,PromedioDiastolica
                                      from Estadistica_PromedioSitioMedicion
-                                     where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
-                                    and (ConExamen like 'SinExamen' or ConExamen like 'ConExamen')
-                                    and sitioMedicion is null
-                                    and extremidad is null
-                                    order by id desc;";
+                                     where (ConExamen like 'SinExamen' or ConExamen like 'ConExamen')
+                                     and sitioMedicion is null
+                                     and extremidad is null 
+                                     and convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)";
+                }
+                else
+                {
+                    consulta = @"select id, fecha_registro,ConExamen,PromedioSistolica,PromedioDiastolica
+                                     from Estadistica_PromedioSitioMedicion
+                                     where (ConExamen like 'SinExamen' or ConExamen like 'ConExamen')
+                                     and sitioMedicion is null
+                                     and extremidad is null ";
+
+                    if (FechaDesde != null)
+                    {
+                        consulta += " and CAST(fecha_registro as date) >= CAST(@fechaDesde as date)";
+                    }
+                    if (FechaHasta != null)
+                    {
+                        consulta += " and  CAST(fecha_registro as date) <= CAST(@fechaHasta as date)";
+                    }
+                }
+               
+
+                consulta += " order by id desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
+
+                if (FechaDesde != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaDesde", FechaDesde);
+                   
+                }
+                if(FechaHasta != null)
+                {
+                    cmd.Parameters.AddWithValue("@fechaHasta", FechaHasta);
+                }
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -604,23 +1037,53 @@ namespace DAO
                 throw e;
             }
         }
-        public static List<EstadisticaCategoriaSitio> PromedioMedicionesSitioExtremidad()
+        public static List<EstadisticaCategoriaSitio> PromedioMedicionesSitioExtremidad(DateTime? FechaDesde, DateTime? FechaHasta)
         {
             List<EstadisticaCategoriaSitio> estadistica = new List<EstadisticaCategoriaSitio>();
             SqlConnection cn = null;
+            string consulta = "";
             try
             {
                 setCadenaConexion();
                 cn = new SqlConnection(cadenaConexion);
                 cn.Open();
 
-                string consulta = @"select top 4 id, fecha_registro,sitioMedicion,extremidad,PromedioSistolica,PromedioDiastolica
+         //       consulta = @"select top 4 id, fecha_registro,sitioMedicion,extremidad,PromedioSistolica,PromedioDiastolica
+         //                            from Estadistica_PromedioSitioMedicion
+         //                            where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+         //                           and ConExamen is null
+									//and sitioMedicion is not null
+									//and extremidad is not null
+         //                           order by id desc;";
+
+                if (FechaDesde == null && FechaDesde == null)
+                {
+                    consulta = @"select top 4 id, fecha_registro,sitioMedicion,extremidad,PromedioSistolica,PromedioDiastolica
                                      from Estadistica_PromedioSitioMedicion
                                      where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
                                     and ConExamen is null
 									and sitioMedicion is not null
-									and extremidad is not null
-                                    order by id desc;";
+									and extremidad is not null";
+                }
+                else
+                {
+                    consulta = @"select id, fecha_registro,sitioMedicion,extremidad,PromedioSistolica,PromedioDiastolica
+                                    from Estadistica_PromedioSitioMedicion
+                                    where ConExamen is null
+									and sitioMedicion is not null
+									and extremidad is not null ";
+
+                    if (FechaDesde != null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta != null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+
+                consulta += " order by id desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;
@@ -653,23 +1116,53 @@ namespace DAO
                 throw e;
             }
         }
-        public static List<EstadisticaCategoriaSitio> PromedioMedicionesSitio()
+        public static List<EstadisticaCategoriaSitio> PromedioMedicionesSitio(DateTime? FechaDesde,DateTime? FechaHasta)
         {
             List<EstadisticaCategoriaSitio> estadistica = new List<EstadisticaCategoriaSitio>();
             SqlConnection cn = null;
+            string consulta = "";
             try
             {
                 setCadenaConexion();
                 cn = new SqlConnection(cadenaConexion);
                 cn.Open();
 
-                string consulta = @"select id, fecha_registro,sitioMedicion,PromedioSistolica,PromedioDiastolica
-                                     from Estadistica_PromedioSitioMedicion
-                                     where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+         //        consulta = @"select id, fecha_registro,sitioMedicion,PromedioSistolica,PromedioDiastolica
+         //                            from Estadistica_PromedioSitioMedicion
+         //                            where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
+         //                           and ConExamen is null
+									//and sitioMedicion is not null
+									//and extremidad is null
+         //                           order by id desc";
+                
+                if(FechaDesde == null && FechaHasta == null)
+                {
+                    consulta = @"select id, fecha_registro,sitioMedicion,PromedioSistolica,PromedioDiastolica
+                                    from Estadistica_PromedioSitioMedicion
+                                    where convert(varchar, fecha_registro, 3)=convert(varchar, getdate(), 3)
                                     and ConExamen is null
 									and sitioMedicion is not null
-									and extremidad is null
-                                    order by id desc";
+									and extremidad is null ";
+                }
+                else
+                {
+                    consulta = @"select id, fecha_registro,sitioMedicion,PromedioSistolica,PromedioDiastolica
+                                    from Estadistica_PromedioSitioMedicion
+                                    where ConExamen is null
+									and sitioMedicion is not null
+									and extremidad is null ";
+
+                    if (FechaDesde != null)
+                    {
+                        consulta += " and fecha_registro >= @fechaDesde";
+                    }
+                    if (FechaHasta != null)
+                    {
+                        consulta += " and fecha_registro <= @fechaHasta";
+                    }
+                }
+
+                consulta+= " order by id desc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = consulta;

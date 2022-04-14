@@ -62,31 +62,31 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(550, 267);
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.Location = new System.Drawing.Point(483, 262);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(81, 25);
+            this.btnSalir.Size = new System.Drawing.Size(64, 49);
             this.btnSalir.TabIndex = 8;
-            this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(448, 267);
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.Location = new System.Drawing.Point(419, 262);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(81, 25);
+            this.btnCancelar.Size = new System.Drawing.Size(58, 49);
             this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(344, 267);
+            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
+            this.btnAceptar.Location = new System.Drawing.Point(350, 262);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(81, 25);
+            this.btnAceptar.Size = new System.Drawing.Size(63, 49);
             this.btnAceptar.TabIndex = 6;
-            this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
@@ -108,7 +108,7 @@
             this.groupBox1.Controls.Add(this.txtNombrePractica);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(935, 298);
+            this.groupBox1.Size = new System.Drawing.Size(935, 316);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del estudio";
@@ -134,11 +134,11 @@
             // 
             // btnAgregarInstitucion
             // 
+            this.btnAgregarInstitucion.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarInstitucion.Image")));
             this.btnAgregarInstitucion.Location = new System.Drawing.Point(142, 183);
             this.btnAgregarInstitucion.Name = "btnAgregarInstitucion";
-            this.btnAgregarInstitucion.Size = new System.Drawing.Size(119, 23);
+            this.btnAgregarInstitucion.Size = new System.Drawing.Size(39, 38);
             this.btnAgregarInstitucion.TabIndex = 12;
-            this.btnAgregarInstitucion.Text = "Agregar Institución";
             this.btnAgregarInstitucion.UseVisualStyleBackColor = true;
             this.btnAgregarInstitucion.Click += new System.EventHandler(this.btnAgregarInstitucion_Click);
             // 
@@ -222,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 322);
+            this.ClientSize = new System.Drawing.Size(959, 333);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrarEstudio";

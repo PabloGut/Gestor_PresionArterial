@@ -15,10 +15,10 @@ namespace WebApplication1
         {
             if (!IsPostBack)
             {
-                cargarDropDownList(ddlExtremidad, ExtremidadLN.mostrarExtremidades(), "id_extremidad", "nombre");
-                cargarDropDownList(ddlPosicion, PosicionLN.mostrarPosiciones(), "id_posicion", "nombre");
-                cargarDropDownList(ddlSitioMedicion, SitioMedicionLN.mostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
-                cargarDropDownList(ddlMomentoDelDia, MomentoDiaLN.mostrarMomentosDelDia(), "idMomentoDia", "nombre");
+                cargarDropDownList(ddlExtremidad, ExtremidadLN.MostrarExtremidades(), "id_extremidad", "nombre");
+                cargarDropDownList(ddlPosicion, PosicionLN.MostrarPosiciones(), "id_posicion", "nombre");
+                cargarDropDownList(ddlSitioMedicion, SitioMedicionLN.MostrarSitiosDeMedicion(), "id_sitioMedicion", "nombre");
+                cargarDropDownList(ddlMomentoDelDia, MomentoDiaLN.MostrarMomentosDelDia(), "idMomentoDia", "nombre");
                 /*cargarDropDownList(ddlUbicación, UbicacionExtremidadLN.buscarUbicacionesExtremidadDeExtremidad(Convert.ToInt32(ddlExtremidad.SelectedValue)), "id_ubicacionExtremidad", "nombre");*/
             }
         }

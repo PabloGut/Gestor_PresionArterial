@@ -79,6 +79,7 @@
             // 
             // cmbUbicacionPresionArterial
             // 
+            this.cmbUbicacionPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUbicacionPresionArterial.FormattingEnabled = true;
             this.cmbUbicacionPresionArterial.Location = new System.Drawing.Point(90, 61);
             this.cmbUbicacionPresionArterial.Name = "cmbUbicacionPresionArterial";
@@ -96,6 +97,7 @@
             // 
             // cmbMomentoDiaPresionArterial
             // 
+            this.cmbMomentoDiaPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMomentoDiaPresionArterial.FormattingEnabled = true;
             this.cmbMomentoDiaPresionArterial.Location = new System.Drawing.Point(473, 61);
             this.cmbMomentoDiaPresionArterial.Name = "cmbMomentoDiaPresionArterial";
@@ -113,6 +115,7 @@
             // 
             // cmbSitioMedicionPresionArterial
             // 
+            this.cmbSitioMedicionPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSitioMedicionPresionArterial.FormattingEnabled = true;
             this.cmbSitioMedicionPresionArterial.Location = new System.Drawing.Point(675, 22);
             this.cmbSitioMedicionPresionArterial.Name = "cmbSitioMedicionPresionArterial";
@@ -121,6 +124,7 @@
             // 
             // cmbPosicionPresionArterial
             // 
+            this.cmbPosicionPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPosicionPresionArterial.FormattingEnabled = true;
             this.cmbPosicionPresionArterial.Location = new System.Drawing.Point(409, 22);
             this.cmbPosicionPresionArterial.Name = "cmbPosicionPresionArterial";
@@ -129,6 +133,7 @@
             // 
             // cmbExtremidadPresionArterial
             // 
+            this.cmbExtremidadPresionArterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbExtremidadPresionArterial.FormattingEnabled = true;
             this.cmbExtremidadPresionArterial.Location = new System.Drawing.Point(90, 22);
             this.cmbExtremidadPresionArterial.Name = "cmbExtremidadPresionArterial";
@@ -188,6 +193,7 @@
             // 
             this.txtNroMediciones.Location = new System.Drawing.Point(126, 19);
             this.txtNroMediciones.Name = "txtNroMediciones";
+            this.txtNroMediciones.ReadOnly = true;
             this.txtNroMediciones.Size = new System.Drawing.Size(100, 20);
             this.txtNroMediciones.TabIndex = 6;
             // 
@@ -218,6 +224,7 @@
             this.txtMediciones.Location = new System.Drawing.Point(9, 19);
             this.txtMediciones.Multiline = true;
             this.txtMediciones.Name = "txtMediciones";
+            this.txtMediciones.ReadOnly = true;
             this.txtMediciones.Size = new System.Drawing.Size(360, 27);
             this.txtMediciones.TabIndex = 11;
             // 

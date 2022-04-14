@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <asp:Button runat="server" ID="btnIniciar" CssClass="btn btn-primary" AutoPostBack="True" Text="Iniciar" OnClick="btnIniciar_Click"></asp:Button>
                         <asp:Button runat="server" ID="btnMostrarMediciones" CssClass="btn btn-primary" AutoPostBack="True" Text="Mostrar" OnClick="btnMostrarMediciones_Click"></asp:Button>
-                        <asp:Button runat="server" ID="Button2" CssClass="btn btn-primary" AutoPostBack="True" Text="Salir"></asp:Button>
+                       <!-- <asp:Button runat="server" ID="Button2" CssClass="btn btn-primary" AutoPostBack="True" Text="Salir"></asp:Button>-->
                     </div>
                 </div>
             </div>

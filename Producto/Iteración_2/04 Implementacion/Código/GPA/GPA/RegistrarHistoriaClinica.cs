@@ -1750,6 +1750,8 @@ namespace GPA
                 habitoMedicamento.fechaRegistro = Convert.ToDateTime(mtbFechaActual.Text);
                 habitoMedicamento.programacion = programacion;
                 listaHabitosMedicamentos.Add(habitoMedicamento);
+                MessageBox.Show("Programación agregada correctamente.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 InicializarHabitoMedicamentos();
             }
         }
@@ -2281,8 +2283,11 @@ namespace GPA
                     antecedenteGinecoObtetrico.aborto = aborto;
                 }
             }
-            MessageBox.Show("Se agregó correctamente el antecedente Gineco Obstétrico!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            inicializarAntecedentesGineco();
+            if (rbSiTieneEmbarazos.Checked || rbSiTieneAbortos.Checked)
+            {
+                MessageBox.Show("Se agregó correctamente el antecedente Gineco Obstétrico!!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                inicializarAntecedentesGineco();
+            }
         }
         public void inicializarAntecedentesGineco()
         {
@@ -2569,9 +2574,10 @@ namespace GPA
         }
         private void btnAgregarAntecedenteMorbido_Click(object sender, EventArgs e)
         {
+            if (!Utilidades.esCampoNumerico(txtCantTiempoAntecedenteMorbido))
+                return;
             cargarDatosDataGridViewAntecedentesMorbidos();
         }
-
         private void button14_Click(object sender, EventArgs e)
         {
             cargarDatosDataGridViewAntecedentesPatologicosFamiliares();
@@ -2603,15 +2609,32 @@ namespace GPA
         }
 
         private void btnAgregarHabitoTabaquismo_Click(object sender, EventArgs e)
-        {
+        {   
             if (listaHabitosTabaquismo != null && listaHabitosTabaquismo.Count > 0)
             {
                 MessageBox.Show("Existen registrados Hábitos Tabaquismo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            if (!ValidarCampoNumericoHabitoTabaquismo())
+                return;
+
             cargarDatosDataGridViewHabitoTabaquismo();
         }
+        public Boolean ValidarCampoNumericoHabitoTabaquismo()
+        {
+            if (!Utilidades.esCampoNumerico(txtCantidadQueFuma))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadAñosFumando))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantiTiempoDejoFumar))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadFumaba))
+                return false;
 
+            return true;
+
+        }
         private void txtCantidadConsume_TextChanged(object sender, EventArgs e)
         {
 
@@ -2619,6 +2642,15 @@ namespace GPA
 
         private void btnAgregarHabitoDrogaIlicita_Click(object sender, EventArgs e)
         {
+            if (!Utilidades.esCampoNumerico(txtCantidadTiempoConsumiendo))
+                return;
+
+            if (rbSiConsumeDrogas.Checked && (cboSustanciaDrogaIlicita.SelectedIndex == 0 || String.IsNullOrEmpty(txtCantidadTiempoConsumiendo.Text) || cboElementoTiempoDrogasIlicitas.SelectedIndex == 0))
+            {
+                Utilidades.MensajeError("Faltan datos por ingresar");
+                return;
+            }
+
             cargarDatosDataGridViewHabitosDrogasIlicitas();
         }
 
@@ -2640,9 +2672,33 @@ namespace GPA
                 return;
             }
 
+            if (!ValidarCampoNumeroAntecedentesGineco())
+                return;
+
             AgregarAntecedenteGinecoObstetricos();
         }
+        public Boolean ValidarCampoNumeroAntecedentesGineco()
+        {
+            if (!Utilidades.esCampoNumerico(txtCantidadEmbarazosPrematuro))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadEmbarazosATermino))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadEmbarazosPosTermino))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadEmbarazos))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadAbortos))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadTipoAborto1))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadTipoAborto2))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadHijosVivos))
+                return false;
 
+
+            return true;
+        }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
@@ -2650,14 +2706,74 @@ namespace GPA
 
         private void btnAgregarHabitoAlcoholismo_Click(object sender, EventArgs e)
         {
-            cargarDatosDataGridViewHabitoAlcoholismo();
+            if (rbSiConsumeAlcohol.Checked && cboTipoBebida.SelectedIndex > 0)
+            {
+                if (!Utilidades.esCampoNumerico(txtCantidadConsume))
+                    return;
+
+
+                if (cboTipoBebida.SelectedIndex > 0 && (String.IsNullOrEmpty(txtCantidadConsume.Text) || cboMedidaConsumeAlcohol.SelectedIndex == 0 || cboComponenteTiempoAlcoholismo.SelectedIndex == 0))
+                {
+                    Utilidades.MensajeError("Faltan datos por ingresar.");
+                    return;
+                }
+
+                cargarDatosDataGridViewHabitoAlcoholismo();
+            }
         }
 
         private void btnAgregarHabitoMedicamento_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampoNumeroHabitoMedicamento())
+            {
+                return;
+            }
+            if (!ValidarHabitoMedicamento())
+            {
+                Utilidades.MensajeError("Faltan datos por ingresar.");
+                return;
+            }
+
             cargarDatosHabitosDrogasLicitas();
         }
+        public Boolean ValidarHabitoMedicamento()
+        {
+            if (rbSiConsumeMedicamentos.Checked && cboMomentoDia1.SelectedIndex == 0 && cboMomentoDia2.SelectedIndex == 0 && cboMomentoDia3.SelectedIndex == 0)
+                return false;
+            if (cboNombreComercial.SelectedIndex == -1)
+                return false;
+            if(cboFrecuencia.SelectedIndex == 0)
+                return false;
+            if (String.IsNullOrEmpty(txtCantidadTiempoConsumoMedicamento.Text) && String.IsNullOrEmpty(txtCantTiempoCancelacionMedicamento.Text))
+                return false;
+            if (cboMomentoDia1.SelectedIndex > 0 && (String.IsNullOrEmpty(txtNumeradorCantidad1.Text) || cboPresentacionMedicamento1.SelectedIndex == -1 || mtbHora1.Text.Equals("__:__")))
+                return false;
+            if (cboMomentoDia2.SelectedIndex > 0 && (String.IsNullOrEmpty(txtNumeradorCantidad2.Text) || cboPresentacionMedicamento2.SelectedIndex == -1 || mtbHora2.Text.Equals("__:__")))
+                return false;
+            if (cboMomentoDia3.SelectedIndex > 0 && (String.IsNullOrEmpty(txtNumeradorCantidad3.Text) || cboPresentacionMedicamento3.SelectedIndex == -1 || mtbHora3.Text.Equals("__:__")))
+                return false;
 
+            return true;
+        }
+        public Boolean ValidarCampoNumeroHabitoMedicamento()
+        {
+            if (!Utilidades.esCampoNumerico(txtNumeradorCantidad1))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtNumeradorCantidad2))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtNumeradorCantidad3))
+                return false;
+            if (!string.IsNullOrWhiteSpace(txtNumeradorCantidad1.Text) && !string.IsNullOrWhiteSpace(txtDenominadorCantidad1.Text) && !Utilidades.esCampoNumerico(txtDenominadorCantidad1))
+                return false;
+            if (!string.IsNullOrWhiteSpace(txtNumeradorCantidad2.Text) && !string.IsNullOrWhiteSpace(txtDenominadorCantidad2.Text) && !Utilidades.esCampoNumerico(txtDenominadorCantidad2))
+                return false;
+            if (!string.IsNullOrWhiteSpace(txtNumeradorCantidad3.Text) && !string.IsNullOrWhiteSpace(txtDenominadorCantidad3.Text) && !Utilidades.esCampoNumerico(txtDenominadorCantidad3))
+                return false;
+            if (!Utilidades.esCampoNumerico(txtCantidadTiempoConsumoMedicamento))
+                return false;
+            return true;
+
+        }
         private void cboPresentacionMedicamento_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -3002,5 +3118,6 @@ namespace GPA
                 presentarTiposBebidas(cboTipoBebida, manejadorRegistrarHabitosAlcoholismo.mostrarTiposDeBebidas(), "id_tipoBebida", "nombre");
             }
         }
+
     }
 }

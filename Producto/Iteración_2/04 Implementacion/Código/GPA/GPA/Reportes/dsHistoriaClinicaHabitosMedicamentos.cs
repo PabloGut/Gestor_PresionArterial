@@ -4,5 +4,8 @@
 
     partial class dsHistoriaClinicaHabitosMedicamentos
     {
+        partial class HabitosMedicamentoDataTable
+        {
+        }
     }
 }

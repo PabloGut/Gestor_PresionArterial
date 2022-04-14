@@ -178,20 +178,20 @@
             this.grbTratamientoFarmacologico.Controls.Add(this.label83);
             this.grbTratamientoFarmacologico.Controls.Add(this.label82);
             this.grbTratamientoFarmacologico.Controls.Add(this.label81);
-            this.grbTratamientoFarmacologico.Location = new System.Drawing.Point(12, 155);
+            this.grbTratamientoFarmacologico.Location = new System.Drawing.Point(12, 171);
             this.grbTratamientoFarmacologico.Name = "grbTratamientoFarmacologico";
-            this.grbTratamientoFarmacologico.Size = new System.Drawing.Size(661, 262);
+            this.grbTratamientoFarmacologico.Size = new System.Drawing.Size(661, 280);
             this.grbTratamientoFarmacologico.TabIndex = 8;
             this.grbTratamientoFarmacologico.TabStop = false;
             this.grbTratamientoFarmacologico.Text = "Tratamiento Farmacológico";
             // 
             // btnAgregarTratamientoMedicamento
             // 
-            this.btnAgregarTratamientoMedicamento.Location = new System.Drawing.Point(194, 233);
+            this.btnAgregarTratamientoMedicamento.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarTratamientoMedicamento.Image")));
+            this.btnAgregarTratamientoMedicamento.Location = new System.Drawing.Point(261, 234);
             this.btnAgregarTratamientoMedicamento.Name = "btnAgregarTratamientoMedicamento";
-            this.btnAgregarTratamientoMedicamento.Size = new System.Drawing.Size(261, 23);
+            this.btnAgregarTratamientoMedicamento.Size = new System.Drawing.Size(43, 45);
             this.btnAgregarTratamientoMedicamento.TabIndex = 1;
-            this.btnAgregarTratamientoMedicamento.Text = "Agregar tratamiento farmacológico";
             this.btnAgregarTratamientoMedicamento.UseVisualStyleBackColor = true;
             this.btnAgregarTratamientoMedicamento.Click += new System.EventHandler(this.btnAgregarTratamientoMedicamento_Click);
             // 
@@ -557,31 +557,31 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(540, 423);
+            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
+            this.btnAceptar.Location = new System.Drawing.Point(679, 388);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(123, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(52, 49);
             this.btnAceptar.TabIndex = 9;
-            this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(669, 423);
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.Location = new System.Drawing.Point(737, 388);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(123, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(52, 49);
             this.btnCancelar.TabIndex = 10;
-            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAgregarTerapia
             // 
-            this.btnAgregarTerapia.Location = new System.Drawing.Point(269, 121);
+            this.btnAgregarTerapia.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarTerapia.Image")));
+            this.btnAgregarTerapia.Location = new System.Drawing.Point(273, 120);
             this.btnAgregarTerapia.Name = "btnAgregarTerapia";
-            this.btnAgregarTerapia.Size = new System.Drawing.Size(123, 23);
+            this.btnAgregarTerapia.Size = new System.Drawing.Size(43, 45);
             this.btnAgregarTerapia.TabIndex = 11;
-            this.btnAgregarTerapia.Text = "Agregar Terapia";
             this.btnAgregarTerapia.UseVisualStyleBackColor = true;
             this.btnAgregarTerapia.Click += new System.EventHandler(this.btnAgregarTratamiento_Click);
             // 
@@ -604,11 +604,11 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(798, 423);
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.Location = new System.Drawing.Point(794, 388);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.Size = new System.Drawing.Size(52, 49);
             this.btnSalir.TabIndex = 14;
-            this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 

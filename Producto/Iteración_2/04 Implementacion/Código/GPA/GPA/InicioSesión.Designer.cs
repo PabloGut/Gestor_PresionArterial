@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 25);
+            this.label1.Location = new System.Drawing.Point(29, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 0;
@@ -58,14 +58,14 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(78, 25);
+            this.txtUsuario.Location = new System.Drawing.Point(78, 21);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 2;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(78, 69);
+            this.txtPass.Location = new System.Drawing.Point(78, 68);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(100, 20);
@@ -80,12 +80,12 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 176);
+            this.panel1.Size = new System.Drawing.Size(220, 176);
             this.panel1.TabIndex = 4;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(64, 112);
+            this.btnIngresar.Location = new System.Drawing.Point(78, 121);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(75, 23);
             this.btnIngresar.TabIndex = 4;
@@ -97,12 +97,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 200);
+            this.ClientSize = new System.Drawing.Size(244, 200);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InicioSesión";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InicioSesión";
+            this.Text = "Iniciar Sesión";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InicioSesión_FormClosed);
             this.Load += new System.EventHandler(this.InicioSesión_Load);
             this.panel1.ResumeLayout(false);

@@ -66,13 +66,21 @@ namespace GPA
             dsHistoriaClinicaEstudioDiagnosticoPorImagen dsEstudioDiagnosticoImagen = null;
 
             SqlDataAdapter da = null;
-            string consulta = @"select ed.fechaSolicitud,ne.nombre as 'nombreEstudio',COALESCE(NULL,CONVERT(varchar,ed.indicaciones),'N/A') as 'indicaciones', COALESCE(NULL,CONVERT(varchar,ed.fechaRealizacion),'N/A') as 'fechaRealizacion', ISNULL(ed.informe,'N/A') as 'informe', ISNULL(ed.observacionDeLosResultados,'N/A') as 'observacionesDeLosResultados', ediag.nombre as 'estadoDiagnostico',r.conceptoInicial,r.diagnostico,r.id_razonamiento
-                                from Consulta co, ExamenGeneral ex, RazonamientoDiagnostico r, EstadoDiagnostico ediag, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne
+            string consulta = @"select ed.fechaSolicitud,ne.nombre as 'nombreEstudio',COALESCE(NULL,CONVERT(varchar,ed.indicaciones),'N/A') as 'indicaciones', COALESCE(NULL,CONVERT(varchar,ed.fechaRealizacion),'N/A') as 'fechaRealizacion', ISNULL(ed.informe,'N/A') as 'informe', ISNULL(ed.observacionDeLosResultados,'N/A') as 'observacionesDeLosResultados', ediag.nombre as 'estadoDiagnostico',r.conceptoInicial,r.diagnostico,r.id_razonamiento,
+                                hc.nro_hc, pa.nombre+', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento', prof.nombre+', '+prof.apellido as 'ProfesionalMedico', 
+                                prof.matricula as 'Matricula',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion'
+                                from Consulta co, ExamenGeneral ex, RazonamientoDiagnostico r, EstadoDiagnostico ediag, EstudiosDiagnosticoPorImagen ed, NombreEstudio ne,Historia_Clinica hc,Paciente pa, ProfesionalMedico prof, TipoDocumento td
                                 where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
                                 and ed.id_razonamientoDiagnostico_fk=r.id_razonamiento
                                 and ed.id_nombreEstudio_fk=ne.id_nombreEstudio
                                 and r.id_examenGeneral_fk=ex.id_examenGeneral
                                 and co.id_examenGeneral_fk=ex.id_examenGeneral
+                                and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                and pa.id_tipoDoc_fk=td.id_tipoDoc  
+                                and co.id_hc_fk=hc.id_hc
                                 and co.id_hc_fk=@id_hc
                                 order by ed.fechaSolicitud desc";
             try
@@ -141,13 +149,21 @@ namespace GPA
             dsHistoriaClinicaPracticaComplementaria dsPracticaComplementaria = null;
 
             SqlDataAdapter da = null;
-            string consulta = @"select pc.fechaSolicitud,tp.nombre as 'Practica', COALESCE(NULL,CONVERT(varchar,pc.indicaciones),'N/A') as 'indicaciones', COALESCE(NULL,CONVERT(varchar,pc.fechaRealizacion),'N/A') as 'fechaRealizacion', ISNULL(pc.observacionDeLosResultados,'N/A') as 'observacionesDeLosResultados',ediag.nombre as 'estadoDiagnostico',r.conceptoInicial,r.diagnostico,r.id_razonamiento
-                                from  Consulta co, ExamenGeneral ex,RazonamientoDiagnostico r, EstadoDiagnostico ediag, PracticaComplementaria pc, TipoPracticaComplementaria tp
+            string consulta = @"select pc.fechaSolicitud,tp.nombre as 'Practica', COALESCE(NULL,CONVERT(varchar,pc.indicaciones),'N/A') as 'indicaciones', COALESCE(NULL,CONVERT(varchar,pc.fechaRealizacion),'N/A') as 'fechaRealizacion', ISNULL(pc.observacionDeLosResultados,'N/A') as 'observacionesDeLosResultados',ediag.nombre as 'estadoDiagnostico',r.conceptoInicial,r.diagnostico,r.id_razonamiento,
+                                hc.nro_hc, pa.nombre+', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento', prof.nombre+', '+prof.apellido as 'ProfesionalMedico', 
+                                prof.matricula as 'Matricula',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion'
+                                from  Consulta co, ExamenGeneral ex,RazonamientoDiagnostico r, EstadoDiagnostico ediag, PracticaComplementaria pc, TipoPracticaComplementaria tp,Historia_Clinica hc,Paciente pa, ProfesionalMedico prof, TipoDocumento td
                                 where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
                                 and pc.id_razonamientoDiagnostico_fk=r.id_razonamiento
                                 and pc.id_tipoPractica_fk=tp.id_tipoPractica
                                 and r.id_examenGeneral_fk=ex.id_examenGeneral
                                 and co.id_examenGeneral_fk=ex.id_examenGeneral
+                                and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                and pa.id_tipoDoc_fk=td.id_tipoDoc
+                                and co.id_hc_fk=hc.id_hc
                                 and co.id_hc_fk=@id_hc
                                 order by pc.fechaSolicitud desc";
             try
@@ -215,13 +231,21 @@ namespace GPA
             dsHistoriaClinicaAnalisisLaboratorio dsAnalisisLaboratorio = null;
 
             SqlDataAdapter da = null;
-            string consulta = @"select l.fechaSolicitud,il.nombre as 'Estudio',ISNULL(l.indicaciones,'N/A') as 'indicaciones',COALESCE(NULL,CONVERT(varchar,l.fechaRealizacion),'N/A') as 'fechaRealizacion',ISNULL(l.observacionDeLosResultados,'N/A') as 'observacionDeLosResultados',r.conceptoInicial,r.diagnostico,ediag.nombre as 'estadoDiagnostico',r.id_razonamiento
-                                from Consulta co, ExamenGeneral ex,RazonamientoDiagnostico r, EstadoDiagnostico ediag, LaboratorioNueva l, ItemLaboratorio il
+            string consulta = @"select l.fechaSolicitud,il.nombre as 'Estudio',ISNULL(l.indicaciones,'N/A') as 'indicaciones',COALESCE(NULL,CONVERT(varchar,l.fechaRealizacion),'N/A') as 'fechaRealizacion',ISNULL(l.observacionDeLosResultados,'N/A') as 'observacionDeLosResultados',r.conceptoInicial,r.diagnostico,ediag.nombre as 'estadoDiagnostico',r.id_razonamiento,
+                                hc.nro_hc, pa.nombre+', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento', prof.nombre+', '+prof.apellido as 'ProfesionalMedico', 
+                                prof.matricula as 'Matricula',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion'
+                                from Consulta co, ExamenGeneral ex,RazonamientoDiagnostico r, EstadoDiagnostico ediag, LaboratorioNueva l, ItemLaboratorio il,Historia_Clinica hc,Paciente pa, ProfesionalMedico prof, TipoDocumento td
                                 where r.id_estadoDiagnostico_fk=ediag.id_estadoDiagnostico
                                 and l.id_razonamientoDiagnostico_fk=r.id_razonamiento
                                 and l.id_itemLaboratorio_fk=il.id_itemLaboratorio
                                 and r.id_examenGeneral_fk=ex.id_examenGeneral
                                 and co.id_examenGeneral_fk=ex.id_examenGeneral
+                                and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                and pa.id_tipoDoc_fk=td.id_tipoDoc
+                                and co.id_hc_fk=hc.id_hc
                                 and co.id_hc_fk=@id_hc
                                 order by l.fechaSolicitud desc";
             try
@@ -346,24 +370,29 @@ namespace GPA
 
             SqlDataAdapter da = null;
             string consulta = @"select c.id_consulta,
-	                               c.nroConsulta, 
-	                               c.fechaConsulta,
-	                               c.horaConsulta,
-	                               c.motivoConsulta,
-	                               ISNULL(ex.posicionYDecubito,'N/A') as 'posicionYDecubito',
-	                               ISNULL(ex.marchaYDeambulacion,'N/A') as 'marchaYDeambulacion',
-	                               ISNULL(ex.facieExpresionFisonomia,'N/A') as 'facieExpresionFisonomia',
-	                               ISNULL(ex.concienciaEstadoPsiquico,NULL) as 'concienciaEstadoPsiquico',
-	                               ISNULL(ex.constitucionEstadoNutritivo,'N/A') as 'constitucionEstadoNutritivo',
-	                               ISNULL(ex.peso,0) as 'peso',
-	                               ISNULL(ex.talla,0) as 'talla',
-	                               ex.id_examenGeneral,
-	                               ex.descripcionComoRespira,
-	                               ISNULL(ex.observacionesRespiracion,'N/A') as 'observacionesRespiracion'
-                            from Consulta c full outer join ExamenGeneral ex on  c.id_examenGeneral_fk=ex.id_examenGeneral
-                            full outer join Historia_Clinica hc on hc.id_hc=c.id_hc_fk 
-                            where hc.id_hc=@id_hc
-                            order by c.fechaConsulta desc";
+                                c.nroConsulta, 
+                                c.fechaConsulta,
+                                c.horaConsulta,
+                                c.motivoConsulta,
+                                ISNULL(ex.posicionYDecubito,'N/A') as 'posicionYDecubito',
+                                ISNULL(ex.marchaYDeambulacion,'N/A') as 'marchaYDeambulacion',
+                                ISNULL(ex.facieExpresionFisonomia,'N/A') as 'facieExpresionFisonomia',
+                                ISNULL(ex.concienciaEstadoPsiquico,NULL) as 'concienciaEstadoPsiquico',
+                                ISNULL(ex.constitucionEstadoNutritivo,'N/A') as 'constitucionEstadoNutritivo',
+                                ISNULL(ex.peso,0) as 'peso',
+                                ISNULL(ex.talla,0) as 'talla',
+                                ex.id_examenGeneral,
+                                ex.descripcionComoRespira,
+                                ISNULL(ex.observacionesRespiracion,'N/A') as 'observacionesRespiracion',
+                                hc.nro_hc,hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion', pa.nombre + ', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento',
+                                prof.nombre+', '+prof.apellido as 'ProfesionalMedico', prof.matricula as 'Matricula'
+                                from Consulta c full outer join ExamenGeneral ex on  c.id_examenGeneral_fk=ex.id_examenGeneral
+                                full outer join Historia_Clinica hc on hc.id_hc=c.id_hc_fk 
+                                join Paciente pa on hc.id_nrodoc_paciente_fk=pa.nro_documento and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                join ProfesionalMedico prof on hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                join TipoDocumento td on pa.id_tipoDoc_fk=td.id_tipoDoc
+                                where hc.id_hc=@id_hc
+                                order by c.fechaConsulta desc";
             try
             {
                 cn.Close();
@@ -708,7 +737,9 @@ namespace GPA
             dsTratamientoMedicamento dsTratamientoMedicamento;
 
             SqlDataAdapter da = null;
-            string consulta = @"select  t.id_tratamiento,COALESCE(NULL,CONVERT(varchar,t.indicaciones),'N/A') as 'indicaciones',t.fechaInicio, COALESCE(NULL,CONVERT(varchar,t.motivoInicioTratamiento),'N/A') as 'motivoInicioTratamiento', te.id_terapia, te.nombre  as 'Terapia', COALESCE(NULL,CONVERT(varchar,t.fechaFin),'N/A') as 'FechaFin' ,ISNULL(t.motivoFinTratamiento,'N\A') as 'motivoFinTratamiento',ISNULL(r.diagnostico,'N\A') as 'diagnostico', me.nombreGenerico 'NombreMedicamento',me.concentracion, fre.nombre as 'Frecuencia', COALESCE(NULL,md1.nombre,'N/A') as 'Momento del dia 1', COALESCE(NULL,md2.nombre,'N/A') as 'Momento del dia 2',COALESCE(NULL,md3.nombre,'N/A') as 'Momento del Dia 3', case when CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) END as 'Dosis 1',case when CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) END as 'Dosis 2',case when CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) END as 'Dosis 3', COALESCE(NULL,pre1.nombre,'N/A') as 'Presentacion Medicamento 1',COALESCE(NULL,pre2.nombre,'N/A') as 'Presentacion Medicamento 2', COALESCE(NULL,pre3.nombre,'N/A') as 'Presentacion Medicamento 3',COALESCE(NULL,CONVERT(varchar,pm.hora1),'N/A') as 'Hora 1', COALESCE(NULL,CONVERT(varchar,pm.hora2),'N/A') as 'Hora 2',COALESCE(NULL,CONVERT(varchar,pm.hora3),'N/A') as 'Hora 3', um.nombre as 'UnidadMedida', estp.nombre as 'EstadoProgramacion',esp.concentracion as 'Cantidad'-- me.nombreGenerico,fre.nombre,pre1.nombre,pre2.nombre,pre3.nombre, estp.nombre,esp.cantidadComprimidos,um.nombre,te.nombre
+            string consulta = @"select  t.id_tratamiento,COALESCE(NULL,CONVERT(varchar,t.indicaciones),'N/A') as 'indicaciones',t.fechaInicio, COALESCE(NULL,CONVERT(varchar,t.motivoInicioTratamiento),'N/A') as 'motivoInicioTratamiento', te.id_terapia, te.nombre  as 'Terapia', COALESCE(NULL,CONVERT(varchar,t.fechaFin),'N/A') as 'FechaFin' ,ISNULL(t.motivoFinTratamiento,'N\A') as 'motivoFinTratamiento',ISNULL(r.diagnostico,'N\A') as 'diagnostico', me.nombreGenerico 'NombreMedicamento',me.concentracion, fre.nombre as 'Frecuencia', COALESCE(NULL,md1.nombre,'N/A') as 'Momento del dia 1', COALESCE(NULL,md2.nombre,'N/A') as 'Momento del dia 2',COALESCE(NULL,md3.nombre,'N/A') as 'Momento del Dia 3', case when CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) END as 'Dosis 1',case when CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) END as 'Dosis 2',case when CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) END as 'Dosis 3', COALESCE(NULL,pre1.nombre,'N/A') as 'Presentacion Medicamento 1',COALESCE(NULL,pre2.nombre,'N/A') as 'Presentacion Medicamento 2', COALESCE(NULL,pre3.nombre,'N/A') as 'Presentacion Medicamento 3',COALESCE(NULL,CONVERT(varchar,pm.hora1),'N/A') as 'Hora 1', COALESCE(NULL,CONVERT(varchar,pm.hora2),'N/A') as 'Hora 2',COALESCE(NULL,CONVERT(varchar,pm.hora3),'N/A') as 'Hora 3', um.nombre as 'UnidadMedida', estp.nombre as 'EstadoProgramacion',esp.concentracion as 'Cantidad',
+                                hc.nro_hc,hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion', pa.nombre + ', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento',
+                                prof.nombre+', '+prof.apellido as 'ProfesionalMedico', prof.matricula as 'Matricula'
                                 from Tratamiento t left outer join  RazonamientoDiagnostico r on t.id_razonamientoDiagnostico_fk=r.id_razonamiento
                                 left outer join  ProgramacionMedicamento pm on t.id_tratamiento=pm.id_tratamiento_fk
                                 left outer join  ExamenGeneral ex on  r.id_examenGeneral_fk=ex.id_examenGeneral
@@ -725,6 +756,10 @@ namespace GPA
                                 left outer join EspecificacionMedicamento esp on pm.id_especificacionMedicamento_fk=esp.id_especificacion
                                 inner join  UnidadMedida um on esp.id_unidadMedida_fk=um.id_unidadMedida
                                 inner join  Terapia te on t.id_terapia_fk=te.id_terapia
+                                join Historia_Clinica hc on hc.id_hc=c.id_hc_fk 
+                                join Paciente pa on hc.id_nrodoc_paciente_fk=pa.nro_documento and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                join ProfesionalMedico prof on hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                join TipoDocumento td on pa.id_tipoDoc_fk=td.id_tipoDoc
                                 where c.id_hc_fk=@id_hc";
             try
             {
@@ -759,15 +794,23 @@ namespace GPA
             dsTratamientos dsTratamiento;
 
             SqlDataAdapter da = null;
-            string consulta = @"select  t.id_tratamiento,t.indicaciones,t.fechaInicio,t.motivoInicioTratamiento,  COALESCE(NULL,CONVERT(varchar,t.fechaFin),'N/A') as 'FechaFin', te.id_terapia, te.nombre  as 'Terapia',ISNULL(t.motivoFinTratamiento,'N\A') as 'motivoFinTratamiento',ISNULL(rd.diagnostico,'N\A') as 'diagnostico'
-                                from Tratamiento t , Terapia te, RazonamientoDiagnostico rd, ExamenGeneral eg, Consulta c
+            string consulta = @"select  t.id_tratamiento,t.indicaciones,t.fechaInicio,t.motivoInicioTratamiento,  COALESCE(NULL,CONVERT(varchar,t.fechaFin),'N/A') as 'FechaFin', te.id_terapia, te.nombre  as 'Terapia',ISNULL(t.motivoFinTratamiento,'N\A') as 'motivoFinTratamiento',ISNULL(rd.diagnostico,'N\A') as 'diagnostico',
+                                hc.nro_hc,hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion', pa.nombre + ', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento',
+                                prof.nombre+', '+prof.apellido as 'ProfesionalMedico', prof.matricula as 'Matricula'
+                                from Tratamiento t , Terapia te, RazonamientoDiagnostico rd, ExamenGeneral eg, Consulta c,Historia_Clinica hc,Paciente pa, ProfesionalMedico prof, TipoDocumento td
                                 where c.id_examenGeneral_fk=eg.id_examenGeneral
                                 and t.id_terapia_fk=te.id_terapia
                                 and rd.id_examenGeneral_fk=eg.id_examenGeneral
                                 and t.id_razonamientoDiagnostico_fk=rd.id_razonamiento
-                                and c.id_hc_fk=@id_hc
+                                and c.id_hc_fk=12--@id_hc
                                 and te.nombre in('Dieta','Actividad Física')
-                                order by c.fechaConsulta desc";
+                                and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                and pa.id_tipoDoc_fk=td.id_tipoDoc
+                                and c.id_hc_fk=hc.id_hc
+                                 order by c.fechaConsulta desc";
             try
             {
                 cn.Close();

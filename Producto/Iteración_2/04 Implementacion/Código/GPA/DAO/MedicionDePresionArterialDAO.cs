@@ -219,8 +219,8 @@ namespace DAO
             mediciones.Columns.Add("Momento del día");
             mediciones.Columns.Add("Posición");
 
-            mediciones.Columns.Add("Promedio Valor Máximo");
-            mediciones.Columns.Add("Promedio Valor Mínimo");
+            mediciones.Columns.Add("Promedio Sistólica");
+            mediciones.Columns.Add("Promedio Diastólica");
             mediciones.Columns.Add("Promedio Pulso");
             try
             {
@@ -304,8 +304,8 @@ namespace DAO
 
                     promedios=DetalleMedicionPresionArterialDAO.calcularPromedioDetalle(idHistoriaClinica, (int)dr["id_medicion"]);
 
-                    fila["Promedio Valor Máximo"] = promedios.Rows[0]["Promedio Valor Máximo"];
-                    fila["Promedio Valor Mínimo"]= promedios.Rows[0]["Promedio Valor Mínimo"];
+                    fila["Promedio Sistólica"] = promedios.Rows[0]["Promedio Sistólica"];
+                    fila["Promedio Diastólica"]= promedios.Rows[0]["Promedio Diastólica"];
                     fila["Promedio Pulso"] = promedios.Rows[0]["Promedio Pulso"];
 
                     mediciones.Rows.Add(fila);
@@ -431,13 +431,13 @@ namespace DAO
             mediciones.Columns.Add("Momento del día");
             mediciones.Columns.Add("Posición");
 
-            mediciones.Columns.Add("Promedio Valor Máximo");
-            mediciones.Columns.Add("Promedio Valor Mínimo");
+            mediciones.Columns.Add("Promedio Sistólica");
+            mediciones.Columns.Add("Promedio Diastólica");
             mediciones.Columns.Add("Promedio Pulso");
 
             mediciones.Columns.Add("Hora");
-            mediciones.Columns.Add("ValorMaximo");
-            mediciones.Columns.Add("ValorMinimo");
+            mediciones.Columns.Add("valorMaximo");
+            mediciones.Columns.Add("valorMinimo");
             mediciones.Columns.Add("Pulso");
 
             mediciones.Columns.Add("FechaHora");
@@ -447,7 +447,7 @@ namespace DAO
 
             SqlCommand cmd = new SqlCommand();
 
-            string consulta = @"select top(20) m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición',d.hora,d.valorMaximo,d.valorMinimo,d.pulso
+            string consulta = @"select top(50) m.id_medicion,m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)) as 'Extremidad',CAST(uex.nombre as nvarchar(100)) as 'Ubicacion Extremidad',CAST(sm.nombre as nvarchar(100)) as 'Sitio Medicion',CAST(md.nombre as nvarchar(100)) as 'Momento del día',CAST(p.nombre as nvarchar(100)) as 'Posición',d.hora,d.valorMaximo,d.valorMinimo,d.pulso
                                 from MedicionDePrecionArterial m, DetalleMedicionPresionArterial d,Extremidad ex,UbicacionExtremidad uex,SitioMedicion sm, MomentoDelDia md, Posicion p
                                 where m.id_medicion=d.id_medicion_fk
                                 and m.id_extremidad_fk=ex.id_extremidad
@@ -532,8 +532,8 @@ namespace DAO
                     fila["FechaHora"]=fecha.ToShortDateString()+ "\r\n" + hora.ToShortTimeString();
                     promedios = DetalleMedicionPresionArterialDAO.calcularPromedioDetalle(idHistoriaClinica, (int)dr["id_medicion"]);
 
-                    fila["Promedio Valor Máximo"] = promedios.Rows[0]["Promedio Valor Máximo"];
-                    fila["Promedio Valor Mínimo"] = promedios.Rows[0]["Promedio Valor Mínimo"];
+                    fila["Promedio Sistólica"] = promedios.Rows[0]["Promedio Sistólica"];
+                    fila["Promedio Diastólica"] = promedios.Rows[0]["Promedio Diastólica"];
                     fila["Promedio Pulso"] = promedios.Rows[0]["Promedio Pulso"];
 
                     mediciones.Rows.Add(fila);

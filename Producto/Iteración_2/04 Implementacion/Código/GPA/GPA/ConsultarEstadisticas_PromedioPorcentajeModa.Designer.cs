@@ -66,7 +66,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 20);
+            this.label1.Location = new System.Drawing.Point(5, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(462, 17);
             this.label1.TabIndex = 0;
@@ -84,7 +84,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 63);
+            this.label2.Location = new System.Drawing.Point(76, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(391, 17);
             this.label2.TabIndex = 2;
@@ -93,7 +93,7 @@
             // txtCantidadMujeres
             // 
             this.txtCantidadMujeres.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadMujeres.Location = new System.Drawing.Point(401, 60);
+            this.txtCantidadMujeres.Location = new System.Drawing.Point(471, 60);
             this.txtCantidadMujeres.Name = "txtCantidadMujeres";
             this.txtCantidadMujeres.Size = new System.Drawing.Size(76, 23);
             this.txtCantidadMujeres.TabIndex = 3;
@@ -101,7 +101,7 @@
             // txtCantidadVarones
             // 
             this.txtCantidadVarones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadVarones.Location = new System.Drawing.Point(917, 60);
+            this.txtCantidadVarones.Location = new System.Drawing.Point(960, 60);
             this.txtCantidadVarones.Name = "txtCantidadVarones";
             this.txtCantidadVarones.Size = new System.Drawing.Size(76, 23);
             this.txtCantidadVarones.TabIndex = 5;
@@ -110,7 +110,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(516, 63);
+            this.label3.Location = new System.Drawing.Point(562, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(392, 17);
             this.label3.TabIndex = 4;
@@ -139,7 +139,7 @@
             // txtPorcetajeVarones
             // 
             this.txtPorcetajeVarones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPorcetajeVarones.Location = new System.Drawing.Point(930, 54);
+            this.txtPorcetajeVarones.Location = new System.Drawing.Point(557, 87);
             this.txtPorcetajeVarones.Name = "txtPorcetajeVarones";
             this.txtPorcetajeVarones.Size = new System.Drawing.Size(76, 23);
             this.txtPorcetajeVarones.TabIndex = 11;
@@ -148,7 +148,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(518, 57);
+            this.label5.Location = new System.Drawing.Point(143, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(404, 17);
             this.label5.TabIndex = 10;
@@ -157,7 +157,7 @@
             // txtPorcentajeMujeres
             // 
             this.txtPorcentajeMujeres.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPorcentajeMujeres.Location = new System.Drawing.Point(420, 54);
+            this.txtPorcentajeMujeres.Location = new System.Drawing.Point(557, 53);
             this.txtPorcentajeMujeres.Name = "txtPorcentajeMujeres";
             this.txtPorcentajeMujeres.Size = new System.Drawing.Size(76, 23);
             this.txtPorcentajeMujeres.TabIndex = 9;
@@ -166,7 +166,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 57);
+            this.label6.Location = new System.Drawing.Point(144, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(403, 17);
             this.label6.TabIndex = 8;
@@ -185,13 +185,13 @@
             this.panel1.Controls.Add(this.txtCantidadVarones);
             this.panel1.Location = new System.Drawing.Point(10, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1058, 113);
+            this.panel1.Size = new System.Drawing.Size(1058, 121);
             this.panel1.TabIndex = 12;
             // 
             // txtModaEdad
             // 
             this.txtModaEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModaEdad.Location = new System.Drawing.Point(730, 17);
+            this.txtModaEdad.Location = new System.Drawing.Point(960, 17);
             this.txtModaEdad.Name = "txtModaEdad";
             this.txtModaEdad.Size = new System.Drawing.Size(76, 23);
             this.txtModaEdad.TabIndex = 7;
@@ -200,7 +200,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(563, 20);
+            this.label7.Location = new System.Drawing.Point(793, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(161, 17);
             this.label7.TabIndex = 6;

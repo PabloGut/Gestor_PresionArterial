@@ -332,11 +332,12 @@ namespace GPA
             listaTratamientos = null;
             listaMedicamentos = null;
             cboTerapia.Enabled = true;
+            btnAgregarTerapia.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

@@ -16,7 +16,7 @@ using System.Data.SqlClient;
 using System.Data.OleDb;
 using CrystalDecisions.Shared;
 using CrystalDecisions.ReportAppServer;
-
+using System.Text.RegularExpressions;
 namespace GPA
 {
     public partial class MenuPrincipal : Form
@@ -72,6 +72,8 @@ namespace GPA
         private Boolean verHabitosAlcoholismo = false;
         private Boolean verHabitosMedicamentos = false;
         private Boolean verHabitosActividadFisica = false;
+
+        private Boolean existeDiagnosticoSeleccionado;
         public MenuPrincipal(ProfesionaMedico pmLogueado)
         {
             InitializeComponent();
@@ -115,6 +117,9 @@ namespace GPA
                 //dgvPacientesDelProfesionalLogueado.DataSource= manejadorConsultarPaciente.mostrarPacientesDeMedicoLogueado(medicoLogueado.id_tipoDoc, medicoLogueado.nroDoc);
                 CargarDataGridPacientesDelProfesional();
                 dgvPacientesDelProfesionalLogueado.Columns["id_tipoDoc_fk"].Visible = false;
+                dgvPacientesDelProfesionalLogueado.Columns["Nombre"].Width = 200;
+                dgvPacientesDelProfesionalLogueado.Columns["Apellido"].Width = 200;
+                dgvPacientesDelProfesionalLogueado.Columns["Calle"].Width = 250;
                 TextBoxSoloLectura(true);
                 manejadorRegistrarAtencionMedicaEnConsultorio.registrarAtencionMedicaEnConsultorio(this);
                 manejadorRegistrarExamenGeneral.RegistrarExamenGeneral(this);
@@ -457,11 +462,6 @@ namespace GPA
 
         }
 
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void comboBox14_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -798,10 +798,16 @@ namespace GPA
 
                 cn.Open();
 
-                string consulta = @"select am.fechaRegistro, am.evolucion, am.tratamiento,tam.nombre as 'tipo'
-                                    from  AntecedentesMorbidos am, TiposAntecedentesMorbidos tam
+                string consulta = @"select am.fechaRegistro, am.evolucion, am.tratamiento,tam.nombre as 'tipo',hc.nro_hc,pa.nombre + ', '+pa.apellido as 'Paciente',prof.nombre +', '+prof.apellido as 'Profesional',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion',td.nombre as 'TipoDocumento', pa.nro_documento as 'NrodDocumento', prof.matricula as 'Matricula'
+                                     from  AntecedentesMorbidos am, TiposAntecedentesMorbidos tam,Historia_Clinica hc,Paciente pa,ProfesionalMedico prof, TipoDocumento td
                                     where am.id_tipoAntecedenteMorbido_fk=tam.id_tipoAntecedenteMorbido
-                                    and am.id_hc_fk= @idHc";
+                                    and am.id_hc_fk=hc.id_hc
+                                    and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                    and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                    and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                    and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                    and pa.id_tipoDoc_fk=td.id_tipoDoc
+                                    and am.id_hc_fk=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.AddWithValue("@idHc", idHc);
@@ -1051,13 +1057,63 @@ namespace GPA
 
             listaSintoma.Add(sintoma);
         }
+        public Boolean validarAntencionConsultorioTemperaturaPaso4()
+        {
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura1))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tabControl2.SelectedTab = tabPage9;
+                tabPage9.Focus();
+                txtValorTemperatura1.Focus();
+                return false;
 
+            }
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura2))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tabControl2.SelectedTab = tabPage9;
+                tabPage9.Focus();
+                txtValorTemperatura2.Focus();
+                return false;
+
+            }
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura3))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tabControl2.SelectedTab = tabPage9;
+                tabPage9.Focus();
+                txtValorTemperatura3.Focus();
+                return false;
+
+            }
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura4))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tabControl2.SelectedTab = tabPage9;
+                tabPage9.Focus();
+                txtValorTemperatura4.Focus();
+                return false;
+            }
+           
+            return true;
+        }
         private void btnRegistrarAtención_Click(object sender, EventArgs e)
-        {   
+        {
             //Aqui va la validación. Falta validación del examen general.
             if (consultaGenerada == false)
             {
                 MessageBox.Show("Antes de registrar la atención en consultorio y el examen general\n debe generar una nueva consulta", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if(dgvDiagnosticos.Rows.Count > 0 && String.IsNullOrEmpty(Convert.ToString(dgvDiagnosticos.Rows[0].Cells[0].Value)) )
+            {
+                MessageBox.Show("Antes de registrar la atención en consultorio y el examen general debe agregar un diagnóstico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (!validarAntencionConsultorioTemperaturaPaso4())
+            {
                 return;
             }
 
@@ -1140,8 +1196,12 @@ namespace GPA
             if (examen != null && manejadorRegistrarExamenGeneral != null && listaTemperaturas != null && listaTemperaturas.Count > 0)
                 examen.listaTemperaturas = listaTemperaturas;//Agrega la lista de temperaturas corporales al examen general.
 
-            if (examen != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
-                examen.medicion = manejadorRegistrarExamenGeneral.medicion;//Agrega las mediciones de presión arterial al examen
+            if (examen != null && manejadorRegistrarExamenGeneral.medicion!= null)
+            {
+               if(manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0 )
+                    examen.medicion = manejadorRegistrarExamenGeneral.medicion;//Agrega las mediciones de presión arterial al examen
+            }
+               
 
             if (examen != null && manejadorRegistrarExamenGeneral != null && listaDiagnosticos != null && listaDiagnosticos.Count > 0)
                 examen.listaDiagnosticos = listaDiagnosticos;//agrega al examen la lista de diagnosticos. Cada objeto de la lista ya contiene sus correspondientes tratamientos, exploraciones complementarias, programación de medicamentos.
@@ -1182,7 +1242,7 @@ namespace GPA
             if (examen != null && manejadorRegistrarExamenGeneral != null && listaTemperaturas != null && listaTemperaturas.Count > 0)
                 examen.listaTemperaturas = listaTemperaturas;//Agrega la lista de temperaturas corporales al examen general.
 
-            if (examen != null && manejadorRegistrarExamenGeneral != null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
+            if (examen != null && manejadorRegistrarExamenGeneral != null && manejadorRegistrarExamenGeneral.medicion !=null && manejadorRegistrarExamenGeneral.medicion.mediciones != null && manejadorRegistrarExamenGeneral.medicion.mediciones.Count > 0)
                 examen.medicion = manejadorRegistrarExamenGeneral.medicion;//Agrega las mediciones de presión arterial al examen
 
             //if (examen != null && manejadorRegistrarExamenGeneral != null && listaDiagnosticos != null && listaDiagnosticos.Count > 0)
@@ -1811,6 +1871,17 @@ namespace GPA
         /*Agrega una medición de presión arterial a la grilla*/
         private void btnAgregarPresionArterial_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtDiastolicaPresionArterial.Text) || String.IsNullOrEmpty(txtSistolicaPresionArterial.Text) || String.IsNullOrEmpty(txtPulsoPresionArterial.Text))
+            {
+                MessageBox.Show("Falta datos por ingresar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSistolicaPresionArterial.Focus();
+                return;
+            }
+            if (!ValidarNumeroAtencionConsultorioPresionPaso4())
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             Extremidad extremidad = (Extremidad)cmbExtremidadPresionArterial.SelectedItem;
             UbicacionExtremidad ubicacion = (UbicacionExtremidad)cmbUbicacionPresionArterial.SelectedItem;
             Posicion posicion = (Posicion)cmbPosicionPresionArterial.SelectedItem;
@@ -1836,7 +1907,26 @@ namespace GPA
             txtPulsoPresionArterial.Clear();
             registrarAnálisisToolStripMenuItem.Enabled = false;
         }
+        public Boolean ValidarNumeroAtencionConsultorioPresionPaso4()
+        {
+            if (!Utilidades.ValidarCampoNumerico(txtSistolicaPresionArterial))
+            {
+                txtSistolicaPresionArterial.Focus();
+                return false;
+            }
+            if (!Utilidades.ValidarCampoNumerico(txtDiastolicaPresionArterial))
+            {
+                txtDiastolicaPresionArterial.Focus();
+                return false;
+            }
+            if (!Utilidades.ValidarCampoNumerico(txtPulsoPresionArterial))
+            {
+                txtPulsoPresionArterial.Focus();
+                return false;
+            }
 
+            return true;
+        }
         public void presentarCalculosPresionArterial(string promedio, string categoria, string rangoValorMaximo, string rangoValorMinimo)
         {
             //lblPromedioPresionArterial.Text = promedio;
@@ -1902,7 +1992,7 @@ namespace GPA
 
                 dgvDiagnosticos.Rows.Add(txtDiagnostico.Text, nombreEstado);
             }
-            else
+            else if(chbNuevoDiagnostico.Checked == false /*&& cboEstadoDiagnostico.SelectedIndex > 0*/)
             {
                 if (listaEvolucionDiagnostico == null)
                     listaEvolucionDiagnostico = new List<EvolucionDiagnostico>();
@@ -1956,14 +2046,10 @@ namespace GPA
             int id_estudio;
             string indicaciones = "";
 
-            if(chbNuevoDiagnostico.Checked == true)
-            {
+            //if(chbNuevoDiagnostico.Checked == true)
+            //{
 
-            }
-
-
-
-
+            //}
 
             if (cboEstudioARealizar.SelectedIndex > 0)
             {
@@ -2094,6 +2180,11 @@ namespace GPA
         }
         private void btnAgregarSintoma_Click(object sender, EventArgs e)
         {
+            if (!Utilidades.ValidarCampoNumerico(txtCantTiempoInicioSintoma))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             cargarSintomas();
            
         }
@@ -2172,7 +2263,9 @@ namespace GPA
                 observaciones = txtObservaciones.Text;
             }
             sintoma.observaciones = observaciones;
-            sintoma.fechaRegistro = Convert.ToDateTime(mtbFechaConsulta.Text);
+
+            if(string.IsNullOrEmpty(mtbFechaConsulta.Text) == false)
+                sintoma.fechaRegistro = Convert.ToDateTime(mtbFechaConsulta.Text);
 
             listaSintoma.Add(sintoma);
 
@@ -2265,8 +2358,23 @@ namespace GPA
             }
         }
 
-        private void txtValorTemperatura1_TextChanged(object sender, EventArgs e)
+        private void TxtValorTemperatura1_TextChanged(object sender, EventArgs e)
         {
+            //Regex r = new Regex("[0-9]"); "\\d+(,\\d+)?"
+            // Regex r = new Regex("^-?\\d+(?:,\\d+)?$");
+            //if (!string.IsNullOrEmpty(txtValorTemperatura1.Text) && !r.IsMatch(txtValorTemperatura1.Text))
+            //{
+            //    MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura1))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValorTemperatura1.Focus();
+                return;
+            }
+
+
             if (!string.IsNullOrEmpty(txtValorTemperatura1.Text))
             {
                 float valor = float.Parse(txtValorTemperatura1.Text);
@@ -2274,9 +2382,15 @@ namespace GPA
             }
             
         }
-
+       
         private void txtValorTemperatura2_TextChanged(object sender, EventArgs e)
         {
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura2))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValorTemperatura2.Focus();
+                return;
+            }
             if (!string.IsNullOrEmpty(txtValorTemperatura2.Text))
             {
                 float valor = float.Parse(txtValorTemperatura2.Text);
@@ -2286,6 +2400,13 @@ namespace GPA
 
         private void txtValorTemperatura3_TextChanged(object sender, EventArgs e)
         {
+
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura3))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValorTemperatura3.Focus();
+                return;
+            }
             if (!string.IsNullOrEmpty(txtValorTemperatura3.Text))
             {
                 float valor = float.Parse(txtValorTemperatura3.Text);
@@ -2295,6 +2416,13 @@ namespace GPA
 
         private void txtValorTemperatura4_TextChanged(object sender, EventArgs e)
         {
+
+            if (!Utilidades.ValidarCampoNumerico(txtValorTemperatura4))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValorTemperatura4.Focus();
+                return;
+            }
             if (!string.IsNullOrEmpty(txtValorTemperatura4.Text))
             {
                 float valor = float.Parse(txtValorTemperatura4.Text);
@@ -2520,6 +2648,8 @@ namespace GPA
         }
         private void cargarGrillaDiagnosticos(List<RazonamientoDiagnostico> diagnosticos)
         {
+            Utilidades.limpiarGrilla(dgvDiagnosticosPaciente);
+            dgvDiagnosticosPaciente.Columns.Clear();
 
             List<string> columnasDiagnosticos = new List<string>();
             if (dgvDiagnosticosPaciente.Columns.Count == 0)
@@ -2535,16 +2665,18 @@ namespace GPA
 
             //Utilidades.AgregarColumnasDataGridViewColumnaCheck(dgvDiagnosticosPaciente, columnasDiagnosticos);
 
-            dgvDiagnosticosPaciente.Columns[1].Visible = false;
-            dgvDiagnosticosPaciente.Columns[2].Visible = false;
-            dgvDiagnosticosPaciente.Columns[3].Visible = false;
-            dgvDiagnosticosPaciente.Columns[4].Visible = false;
-
-            for (int i = 0; i < diagnosticos.Count; i++)
+            if(dgvDiagnosticosPaciente.Columns.Count > 1)
             {
-                dgvDiagnosticosPaciente.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico,diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento, diagnosticos[i].estado.nombre);
-            }
+                dgvDiagnosticosPaciente.Columns[1].Visible = false;
+                dgvDiagnosticosPaciente.Columns[2].Visible = false;
+                dgvDiagnosticosPaciente.Columns[3].Visible = false;
+                dgvDiagnosticosPaciente.Columns[4].Visible = false;
 
+                for (int i = 0; i < diagnosticos.Count; i++)
+                {
+                    dgvDiagnosticosPaciente.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico, diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento, diagnosticos[i].estado.nombre);
+                }
+            }
         }
         private void cargarGrillaDiagnosticos(List<RazonamientoDiagnostico> diagnosticos, DataGridView dgv)
         {
@@ -2552,7 +2684,7 @@ namespace GPA
             List<string> columnasDiagnosticos = new List<string>();
             if (dgv.Columns.Count == 0)
             {
-                columnasDiagnosticos.Add("Seleccionado");
+                //columnasDiagnosticos.Add("Seleccionado");
                 columnasDiagnosticos.Add("Diagnóstico");
                 columnasDiagnosticos.Add("Estado");
                 columnasDiagnosticos.Add("idRazonamiento");
@@ -2561,8 +2693,8 @@ namespace GPA
                 columnasDiagnosticos.Add("id_diagnostico");
                 
             }
-            //Utilidades.agregarColumnasDataGridView(dgv, columnasDiagnosticos);
-            Utilidades.AgregarColumnasDataGridViewColumnaCheck(dgv, columnasDiagnosticos);
+            Utilidades.agregarColumnasDataGridView(dgv, columnasDiagnosticos);
+            //Utilidades.AgregarColumnasDataGridViewColumnaCheck(dgv, columnasDiagnosticos);
 
             dgv.Columns[2].Visible = false;
             dgv.Columns[3].Visible = false;
@@ -2571,7 +2703,7 @@ namespace GPA
 
             for (int i = 0; i < diagnosticos.Count; i++)
             {
-                dgv.Rows.Add(null,diagnosticos[i].diagnostico, diagnosticos[i].estado.nombre, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico, diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento);
+                dgv.Rows.Add(diagnosticos[i].diagnostico, diagnosticos[i].estado.nombre, diagnosticos[i].id_razonamiento, diagnosticos[i].id_estadoDiagnostico, diagnosticos[i].conceptoInicial, diagnosticos[i].id_razonamiento);
             }
 
         }
@@ -2631,10 +2763,14 @@ namespace GPA
                 columnasEstudios.Add("Terapia");
             }
 
+          
+
             Utilidades.AgregarColumnasDataGridViewColumnaCheck(dgvTratamientosDiagnostico, columnasEstudios);
 
-           // dgvTratamientosDiagnostico.Columns[1].Visible = false;
-            //dgvTratamientosDiagnostico.Columns[4].Visible = false;
+            dgvTratamientosDiagnostico.Columns[1].Visible = false;
+            dgvTratamientosDiagnostico.Columns[4].Visible = false;
+            dgvTratamientosDiagnostico.Columns[3].Width = 500;
+            dgvTratamientosDiagnostico.Columns[5].Width = 500;
         }
         private void cargarColumnasGrillasPracticasDeDiagnostico()
         {
@@ -2772,7 +2908,14 @@ namespace GPA
         }
 
         private void btnAceptarDiagnostico_Click(object sender, EventArgs e)
-        {
+        {   
+            if(dgvDiagnosticosPaciente.Rows.Count == 0 && String.IsNullOrEmpty(txtConceptoInicialExamen.Text) && String.IsNullOrEmpty(txtDiagnosticoCambiarEstado.Text)
+                && String.IsNullOrEmpty(txtMotivoCambioEstado.Text) && cboEstadoDiagnosticoCambio.SelectedIndex == -1 && dgvEstudiosPendientes.Rows.Count ==0
+                && dgvAnalisisLaboratorioPendientes.Rows.Count ==0 && dgvPracticasPendientes.Rows.Count == 0 && dgvTratamientosDiagnostico.Rows.Count == 0
+                || (dgvDiagnosticosPaciente.Rows.Count == 1 && string.IsNullOrEmpty(Convert.ToString(dgvDiagnosticosPaciente.Rows[0].Cells[0].Value))))
+            {
+                return;
+            }
             EstadoDiagnostico estado = (EstadoDiagnostico)cboEstadoDiagnosticoCambio.SelectedItem;
             EvolucionDiagnostico evolucionDiagnostico = new EvolucionDiagnostico();
 
@@ -2969,7 +3112,7 @@ namespace GPA
             }
             else
             {
-                Utilidades.limpiarGrilla(dgvDiagnosticos);
+               // Utilidades.limpiarGrilla(dgvDiagnosticos);
                 dgvDiagnosticos.Columns.Clear();
 
                 cboEstadoDiagnostico.Enabled = true;
@@ -3030,7 +3173,9 @@ namespace GPA
 
         private void dgvTratamientosDiagnostico_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            bool isCellChecked = (bool)dgvTratamientosDiagnostico.Rows[e.RowIndex].Cells[0].Value;
+            //DataGridViewCheckBoxCell check = (DataGridViewCheckBoxCell)dgvDiagnosticos.Rows[e.RowIndex].Cells[0];
+
+            Boolean isCellChecked = Convert.ToBoolean( dgvTratamientosDiagnostico.Rows[e.RowIndex].Cells[0].Value);
             Tratamiento tratamientoACancelar = null;
             if(tratamientosACancelar ==null)
                 tratamientosACancelar = new List<Tratamiento>();
@@ -3136,9 +3281,17 @@ namespace GPA
             {
                 cn.Open();
 
-                string consulta = @"select fechaRegistro as 'Fecha de registro',enfermedades as 'Enfermedades', ISNULL(descripcion_otrasEnfermedades,'N/A') as 'Otras Enfermedades'
-                                    from AntecedentesPatologicosPersonales
-                                    where id_hc_fk=@idHc";
+                string consulta = @"select fechaRegistro as 'Fecha de registro',enfermedades as 'Enfermedades', ISNULL(descripcion_otrasEnfermedades,'N/A') as 'Otras Enfermedades',
+                                    hc.nro_hc, pa.nombre+', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento', prof.nombre+', '+prof.apellido as 'ProfesionalMedico', 
+                                    prof.matricula as 'Matricula',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion'
+                                    from AntecedentesPatologicosPersonales app,Historia_Clinica hc, Paciente pa, ProfesionalMedico prof, TipoDocumento td
+                                    where app.id_hc_fk=hc.id_hc 
+                                    and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                    and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                    and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                    and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                    and pa.id_tipoDoc_fk=td.id_tipoDoc 
+                                    and app.id_hc_fk=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.AddWithValue("@idHc", idHc);
@@ -3210,10 +3363,16 @@ namespace GPA
             {
                 cn.Open();
 
-                string consulta = @"select convert(date, af.fechaRegistro, 5) as 'fechaRegistro',f.nombre as 'Familiar',af.familiarVive 'Vive',af.enfermedades as 'Enfermedades',ISNULL(af.descripcionOtrasEnfermedades,'N/A') as 'Otras enfermedades',ISNULL(af.causaMuerte,'N/A') as 'Causa de muerte',ISNULL(af.observaciones,'N/A') as 'Observaciones'
-                                    from AntecedentesFamiliares af,Familiar f
+                string consulta = @"select convert(date, af.fechaRegistro, 5) as 'fechaRegistro',f.nombre as 'Familiar',af.familiarVive 'Vive',af.enfermedades as 'Enfermedades',ISNULL(af.descripcionOtrasEnfermedades,'N/A') as 'Otras enfermedades',ISNULL(af.causaMuerte,'N/A') as 'Causa de muerte',ISNULL(af.observaciones,'N/A') as 'Observaciones', hc.nro_hc as 'NroHc',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencionConProfesionalMedico', pa.nombre + ', ' + pa.apellido as 'Paciente', td.nombre as 'DniPaciente',hc.id_nrodoc_paciente_fk as 'NroDocumentoPaciente', prof.nombre + ', '+ prof.apellido as 'ProfesionalMedico', prof.matricula
+                                    from AntecedentesFamiliares af,Familiar f,Historia_Clinica hc, Paciente pa, ProfesionalMedico prof, TipoDocumento td
                                     where af.id_familiar_fk=f.id_familiar
-                                    and id_hc_fk=@idHc";
+                                    and af.id_hc_fk=hc.id_hc
+                                    and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                    and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                    and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                    and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                    and hc.id_tipodoc_paciente_fk=td.id_tipoDoc
+                                    and af.id_hc_fk=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.AddWithValue("@idHc", idHc);
@@ -3293,14 +3452,20 @@ namespace GPA
 						  COALESCE(NULL,CONVERT(varchar, et.nombre),'N/A') as 'ElementoTiempoDejoDeFumar',
 						  COALESCE(NULL,CONVERT(varchar, df.cantidadFumaba),'N/A') as 'CantidadFumaba',
 		                  COALESCE(NULL,CONVERT(varchar, ef.nombre),'N/A') as 'ElementoQueFumaba',
-		                  COALESCE(NULL,CONVERT(varchar, ct.nombre),'N/A') as 'ComponenteTiempoFumaba'
+		                  COALESCE(NULL,CONVERT(varchar, ct.nombre),'N/A') as 'ComponenteTiempoFumaba',
+						 hc.nro_hc,hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion', pa.nombre + ', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento',
+						prof.nombre+', '+prof.apellido as 'ProfesionalMedico', prof.matricula as 'Matricula'
                                     from HabitosTabaquismo ht full outer join DejoDeFumar df on ht.id_habitoFumar=df.id_habitoTabaquismo_fk
                                     full outer join ElementoDelTiempo et on df.id_elementoDelTiempo_fk=et.id_elementoDelTiempo
                                     full outer join ElementoQueFuma ef on df.id_elementoQueFuma_fk=ef.id_elemento
                                     full outer join ComponenteDelTiempo ct on df.id_componenteTiempo_fk=ct.id_componenteTiempo
                                     full outer join ElementoQueFuma ef2 on ht.id_elementoQueFuma_fk=ef2.id_elemento
                                     full outer join ComponenteDelTiempo ct2 on ht.id_ComponenteDelTiempo_fk=ct2.id_componenteTiempo
-                                    where ht.id_hc_fk=@idHc";
+                                    join Historia_Clinica hc on ht.id_hc_fk=hc.id_hc
+									join Paciente pa on hc.id_nrodoc_paciente_fk=pa.nro_documento and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                    join ProfesionalMedico prof on hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+								    join TipoDocumento td on pa.id_tipoDoc_fk=td.id_tipoDoc
+									where ht.id_hc_fk=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.AddWithValue("@idHc", idHc);
@@ -3375,8 +3540,14 @@ namespace GPA
                 cn.Open();
 
                 string consulta = @"select ha.fechaRegistro as 'Fecha de registro',tb.nombre as 'Nombre Bebida',m.nombre as 'Medida',m.descripcion as 'Descripcion', ct.nombre as 'Componente del tiempo', ha.cantidad
-                                    from HabitosAlcoholismo ha, TipoBebida tb, Medida m, ComponenteDelTiempo ct
-                                    where ha.id_tipoBebida_fk=tb.id_tipoBebida
+                                    from HabitosAlcoholismo ha, TipoBebida tb, Medida m, ComponenteDelTiempo ct,Historia_Clinica hc, Paciente pa, ProfesionalMedico prof, TipoDocumento td
+                                    where ha.id_hc_fk=hc.id_hc
+									and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+									and hc.id_nrodoc_paciente_fk=pa.nro_documento
+									and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+									and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+									and pa.id_tipoDoc_fk=td.id_tipoDoc  
+									and ha.id_tipoBebida_fk=tb.id_tipoBebida
                                     and m.id_medida=ha.id_medida_fk
                                     and ha.id_componenteTiempo_fk=ct.id_componenteTiempo
                                     and ha.id_hc_fk=@idHc";
@@ -3453,11 +3624,19 @@ namespace GPA
             {
                 cn.Open();
 
-                string consulta = @"select haf.fechaRegistro as 'Fecha registro',af.nombre 'Deporte/Actividad',ISNULL(af.descripcion,'N/A') as 'Descripción deporte o actividad',ga.nombre as 'Grado actividad',ga.descripcion as 'Descripcion grado actividad',iaf.nombre as 'Intesidad Actividad Física'
-                                    from HabitosActividadFisica haf, ActividadFisica af, GradoActividad ga, IntensidadActividadFisica iaf
+                string consulta = @"select haf.fechaRegistro as 'Fecha registro',af.nombre 'Deporte/Actividad',ISNULL(af.descripcion,'N/A') as 'Descripción deporte o actividad',ga.nombre as 'Grado actividad',ga.descripcion as 'Descripcion grado actividad',iaf.nombre as 'Intesidad Actividad Física',
+                                    hc.nro_hc, pa.nombre+', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento', prof.nombre+', '+prof.apellido as 'ProfesionalMedico', 
+                                    prof.matricula as 'Matricula',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion'
+                                    from HabitosActividadFisica haf, ActividadFisica af, GradoActividad ga, IntensidadActividadFisica iaf,Historia_Clinica hc, Paciente pa, ProfesionalMedico prof, TipoDocumento td
                                     where haf.id_actividadFisica_fk=af.id_actividadFisica
                                     and haf.id_gradoActividadFisica_fk=ga.id_gradoActividad
                                     and haf.id_intensidad_fk=iaf.id_intensidad
+                                    and haf.id_hc_fk=hc.id_hc
+                                    and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                    and hc.id_nrodoc_paciente_fk=pa.nro_documento
+                                    and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+                                    and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+                                    and pa.id_tipoDoc_fk=td.id_tipoDoc
                                     and haf.id_hc_fk=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
@@ -3566,11 +3745,19 @@ namespace GPA
             {
                 cn.Open();
 
-                string consulta = @"select hd.fechaRegistro as 'Fecha de registro',s.nombre as 'Sustancia',hd.tiempoConsumiendo as 'Tiempo Consumiendo',et.nombre as 'Unidad de tiempo'
-                                    from HabitosDrogasIlicitas hd, Sustancia s, ElementoDelTiempo et
+                string consulta = @"select hd.fechaRegistro as 'Fecha de registro',s.nombre as 'Sustancia',hd.tiempoConsumiendo as 'Tiempo Consumiendo',et.nombre as 'Unidad de tiempo',
+		                            hc.nro_hc, pa.nombre+', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento', prof.nombre+', '+prof.apellido as 'ProfesionalMedico', 
+		                            prof.matricula as 'Matricula',hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion'
+                                    from HabitosDrogasIlicitas hd, Sustancia s, ElementoDelTiempo et, Historia_Clinica hc,Paciente pa, ProfesionalMedico prof, TipoDocumento td
                                     where hd.id_sustancia_fk=s.id_sustancia
                                     and hd.id_ElementoDelTiempo_fk=et.id_elementoDelTiempo
-                                    and hd.id_hc_fk=@idHc";
+									and hc.id_hc=hd.id_hc_fk
+									and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+									and hc.id_nrodoc_paciente_fk=pa.nro_documento
+									and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+									and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+									and pa.id_tipoDoc_fk=td.id_tipoDoc
+                                    and hc.id_hc=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.AddWithValue("@idHc", idHc);
@@ -3907,7 +4094,8 @@ namespace GPA
             {
                 cn.Open();
 
-                string consulta = @"select ag.fechaRegistro, ag.cantidadEmbarazos as 'Cantidad de embarazos',CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino', ab.cantidadTotal as 'Cantidad de abortos',CONCAT(ab.cantidadAbortoTipo1,' Aborto/s ',ta2.nombre) as 'CantidadTipo1', CONCAT(ab.cantidadAbortoTipo2,' Aborto/s ',ta2.nombre) as 'CantidadTipo2', ab.nroHijosVivos as 'Número de hijos vivos',ab.problemasAsociadosAlEmbarazo as 'Problemas asociados al embarazo' 
+                string consulta = @"select ag.fechaRegistro, ag.cantidadEmbarazos as 'Cantidad de embarazos',CONCAT(ag.cantidadEmbarazosPrematuros,' con parto de tipo ',tp1.nombre) as 'Cantidad de embarazos prematuros', CONCAT(ag.cantidadEmbarazosATermino,' con parto de tipo ',tp2.nombre) as 'Cantidad de embarazos a término',CONCAT(ag.cantidadEmbarazosPosTermino,' con parto de tipo ',tp3.nombre) as 'Cantidad de embarazos postérmino', ab.cantidadTotal as 'Cantidad de abortos',CONCAT(ab.cantidadAbortoTipo1,' Aborto/s ',ta2.nombre) as 'CantidadTipo1', CONCAT(ab.cantidadAbortoTipo2,' Aborto/s ',ta2.nombre) as 'CantidadTipo2', ab.nroHijosVivos as 'Número de hijos vivos',ab.problemasAsociadosAlEmbarazo as 'Problemas asociados al embarazo' ,
+                                  pa.nombre +', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento',pa.nro_documento as 'NroDocumento',prof.nombre+', '+prof.apellido as 'ProfesionalMedico', prof.matricula as 'Matricula', hc.nro_hc, hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion'
                                   from Historia_Clinica hc full outer join AntecedentesGinecoObstetricos ag on  hc.id_hc=ag.id_hc_fk 
 								  full outer join TipoParto tp1 on ag.id_TipoParto1_fk=tp1.id_TipoParto
 								  full outer join TipoParto tp2 on ag.id_TipoParto2_fk=tp2.id_TipoParto
@@ -3915,7 +4103,10 @@ namespace GPA
 								  full outer join Aborto ab     on ag.id_Aborto_fk=ab.id_aborto
 								  full outer join TipoAborto ta1   on ab.id_TipoAborto1_fk=ta1.id_TipoAborto 
 								  full outer join TipoAborto ta2   on ab.id_TipoAborto2_fk=ta2.id_TipoAborto
-                                  where hc.id_hc=@idHc";
+								  join Paciente pa on hc.id_nrodoc_paciente_fk=pa.nro_documento and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+                                  join ProfesionalMedico prof on hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+								  join TipoDocumento td on pa.id_tipoDoc_fk=td.id_tipoDoc
+								  where hc.id_hc=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
 
@@ -3992,27 +4183,39 @@ namespace GPA
             {
                 cn.Open();
 
-                string consulta = @"select aa.fechaRegistro as 'Fecha de registro', a.nombre as 'Nombre del alérgeno', aa.efectos as 'Efectos de la alergia'
-                                        from AlergiaAlimento aa,Alimento a
-                                        where id_hc_fk=@idHc
+                string consulta = @"select aa.fechaRegistro as 'Fecha de registro', a.nombre as 'Nombre del alérgeno', aa.efectos as 'Efectos de la alergia',
+	                                hc.nro_hc,hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencion', pa.nombre + ', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', pa.nro_documento as 'NroDocumento',
+	                                prof.nombre+', '+prof.apellido as 'ProfesionalMedico', prof.matricula as 'Matricula'
+                                        from AlergiaAlimento aa,Alimento a, Historia_Clinica hc, Paciente pa, ProfesionalMedico prof, TipoDocumento td
+                                        where aa.id_hc_fk=@idHc
                                         and aa.id_alimento_fk=a.id_alimento
+										and aa.id_hc_fk=hc.id_hc
+										and hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk
+										and hc.id_nrodoc_paciente_fk=pa.nro_documento
+										and hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk
+										and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
+										and pa.id_tipoDoc_fk=td.id_tipoDoc
                                         union all
-                                        select ai.fechaRegistro as 'Fecha de registro', ins.nombre as 'Nombre del alérgeno', ai.efectos as 'Efectos de la alergia'
+                                        select ai.fechaRegistro as 'Fecha de registro', ins.nombre as 'Nombre del alérgeno', ai.efectos as 'Efectos de la alergia',
+										null,null,null,null,null,null,null
                                         from AlergiaInsecto ai, Insecto ins
                                         where ai.id_hc_fk=@idHc
                                         and ai.id_insecto_fk=ins.id_insecto
                                         union all
-                                        select am.fechaRegistro as 'Fecha de registro', ma.nombre as 'Nombre del alérgeno', am.efectos as 'Efectos de la alergia'
+                                        select am.fechaRegistro as 'Fecha de registro', ma.nombre as 'Nombre del alérgeno', am.efectos as 'Efectos de la alergia',
+										null,null,null,null,null,null,null
                                         from AlergiaMedicamento am, MedicamentoAlergia ma
                                         where am.id_hc_fk=@idHc
                                         and am.id_medicamentoAlergia_fk=ma.id_medicamentoAlergia
                                         union all
-                                        select asa.fechaRegistro as 'Fecha de registro', sa.nombre as 'Nombre del alérgeno', asa.efectos as 'Efectos de la alergia'
+                                        select asa.fechaRegistro as 'Fecha de registro', sa.nombre as 'Nombre del alérgeno', asa.efectos as 'Efectos de la alergia',
+										null,null,null,null,null,null,null
                                         from AlergiaSustanciaAmbiente asa, SustanciaAmbiente sa
                                         where asa.id_hc_fk=@idHc
                                         and asa.id_sustanciaAmbiente_fk=sa.id_sustanciaAmbiente
                                         union all
-                                        select ascp.fechaRegistro as 'Fecha de registro', scp.nombre as 'Nombre del alérgeno', ascp.efectos as 'Efectos de la alergia'
+                                        select ascp.fechaRegistro as 'Fecha de registro', scp.nombre as 'Nombre del alérgeno', ascp.efectos as 'Efectos de la alergia',
+										null,null,null,null,null,null,null
                                         from AlergiaSustanciaContactoPiel ascp, SustanciaContactoPiel scp
                                         where ascp.id_hc_fk=@idHc
                                         and ascp.id_sustanciaContactoPiel_fk=scp.id_sustanciaContactoPiel";
@@ -4088,7 +4291,8 @@ namespace GPA
             {
                 cn.Open();
 
-                string consulta = @"select  hm.id_hc_fk,hm.fechaRegistro as 'Fecha de registro',med.nombreGenerico as 'Nombre generico',em.concentracion as 'Concentracion',em.cantidadComprimidos as 'Cantidad de comprimidos',fe.nombre as 'Frecuencia',COALESCE(NULL,md1.nombre,'N/A') as 'Momento del dia 1',case when CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) END as 'Dosis 1',COALESCE(NULL,prem1.nombre,'N/A') as 'Presentacion medicamento 1',COALESCE(NULL,CONVERT(varchar,pm.hora1),'N/A') as 'Hora 1',COALESCE(NULL,md2.nombre,'N/A') as 'Momento del dia 2',case when CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) END as 'Dosis 2',COALESCE(NULL,prem2.nombre,'N/A') as 'Presentacion Medicamento 2',COALESCE(NULL,CONVERT(varchar,pm.hora2),'N/A') as 'Hora 2', case when CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) END as 'Dosis 3',COALESCE(NULL,prem3.nombre,'N/A') as 'Presentacion Medicamento 3',COALESCE(NULL,CONVERT(varchar,pm.hora3),'N/A') as 'Hora 3',COALESCE(NULL,md3.nombre,'N/A') as 'Momento del Dia 3',unidadM.nombre as 'Unidad de Medica',COALESCE(NULL,pm.motivoConsumo,'N/A') as 'Motivo Consumo', COALESCE(NULL,pm.automedicado,'N/A') as 'Automedicado',COALESCE(NULL,pm.motivoCancelacionConsumo,'N/A') as 'Motivo Cancelación Consumo'
+                string consulta = @"select  hm.id_hc_fk,hm.fechaRegistro as 'Fecha de registro',med.nombreGenerico as 'Nombre generico',em.concentracion as 'Concentracion',em.cantidadComprimidos as 'Cantidad de comprimidos',fe.nombre as 'Frecuencia',COALESCE(NULL,md1.nombre,'N/A') as 'Momento del dia 1',case when CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador1, '/', pm.cantidadDenominador1) END as 'Dosis 1',COALESCE(NULL,prem1.nombre,'N/A') as 'Presentacion medicamento 1',COALESCE(NULL,CONVERT(varchar,pm.hora1),'N/A') as 'Hora 1',COALESCE(NULL,md2.nombre,'N/A') as 'Momento del dia 2',case when CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador2, '/', pm.cantidadDenominador2) END as 'Dosis 2',COALESCE(NULL,prem2.nombre,'N/A') as 'Presentacion Medicamento 2',COALESCE(NULL,CONVERT(varchar,pm.hora2),'N/A') as 'Hora 2', case when CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) = '/' then 'N/A' else CONCAT(pm.cantidadNumerador3, '/', pm.cantidadDenominador3) END as 'Dosis 3',COALESCE(NULL,prem3.nombre,'N/A') as 'Presentacion Medicamento 3',COALESCE(NULL,CONVERT(varchar,pm.hora3),'N/A') as 'Hora 3',COALESCE(NULL,md3.nombre,'N/A') as 'Momento del Dia 3',unidadM.nombre as 'Unidad de Medica',COALESCE(NULL,pm.motivoConsumo,'N/A') as 'Motivo Consumo', COALESCE(NULL,pm.automedicado,'N/A') as 'Automedicado',COALESCE(NULL,pm.motivoCancelacionConsumo,'N/A') as 'Motivo Cancelación Consumo', hc.nro_hc as 'NroHistoriaClinica', pa.nombre +', '+pa.apellido as 'Paciente', td.nombre as 'TipoDocumento', 
+                                    pa.nro_documento as 'NroDocumento', prof.nombre+', '+prof.apellido as 'ProfesionalMedico', prof.matricula, hc.fecha_inicio_atencion_con_profesional as 'FechaInicioAtencionProfesionalMedico'
                                     from HabitosMedicamento hm full outer join ProgramacionMedicamento pm on hm.id_programacionMedicamento_fk=pm.id_programacionMedicamento
                                     full outer join EspecificacionMedicamento em on pm.id_especificacionMedicamento_fk=em.id_especificacion
                                     full outer join Medicamento med on pm.id_medicamento_fk=med.id_medicamento
@@ -4100,6 +4304,10 @@ namespace GPA
                                     full outer join MomentoDelDia md3 on  pm.id_momentoDia3_fk=md3.id_momentoDelDia
                                     full outer join PresentacionMedicamento prem3 on pm.id_presentacionMedicamento3_fk=prem3.id_presentacionMedicamento
                                     full outer join UnidadMedida unidadM on  em.id_unidadMedida_fk=unidadM.id_unidadMedida
+									join Historia_Clinica hc on hm.id_hc_fk=hc.id_hc
+									join Paciente pa on hc.id_tipodoc_paciente_fk=pa.id_tipoDoc_fk and hc.id_nrodoc_paciente_fk=pa.nro_documento
+									join TipoDocumento td on pa.id_tipoDoc_fk=td.id_tipoDoc
+									join ProfesionalMedico prof on hc.id_tipodoc_profesionaMedico_fk=prof.id_tipodoc_fk and hc.id_nrodoc_profesionalMedico_fk=prof.nro_documento
                                     where hm.id_hc_fk=@idHc";
 
                 SqlCommand cmd = new SqlCommand();
@@ -4237,6 +4445,80 @@ namespace GPA
                 return;
 
             MessageBox.Show("Diagnóstico seleccionado", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void panel13_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtHumedadPiel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void validarCampos()
+        {
+           
+        }
+
+        private void txtPeso_Validating(object sender, CancelEventArgs e)
+        {
+        
+        }
+
+        private void txtPeso_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void TxtSistolicaPresionArterial_TextChanged(object sender, EventArgs e)
+        {
+            if (!Utilidades.ValidarCampoNumerico(txtSistolicaPresionArterial))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSistolicaPresionArterial.Focus();
+                return;
+            }
+        }
+
+        private void TxtDiastolicaPresionArterial_TextChanged(object sender, EventArgs e)
+        {
+            if (!Utilidades.ValidarCampoNumerico(txtDiastolicaPresionArterial))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDiastolicaPresionArterial.Focus();
+                return;
+            }
+        }
+
+        private void TxtPulsoPresionArterial_TextChanged(object sender, EventArgs e)
+        {
+            if (!Utilidades.ValidarCampoNumerico(txtDiastolicaPresionArterial))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDiastolicaPresionArterial.Focus();
+                return;
+            }
+        }
+
+        private void TxtCantTiempoInicioSintoma_TextChanged(object sender, EventArgs e)
+        {
+            if (!Utilidades.ValidarCampoNumerico(txtCantTiempoInicioSintoma))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
         //public void presentarConsultas()
         //{

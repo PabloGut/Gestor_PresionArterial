@@ -124,8 +124,8 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@sitioMedicion", sitioMedicion);
             }
 
-            consulta += " group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso";
-
+            consulta += " group by m.id_medicion, m.horaInicio,m.fecha,CAST(ex.nombre as nvarchar(100)),CAST(uex.nombre as nvarchar(100)),CAST(sm.nombre as nvarchar(100)),CAST(md.nombre as nvarchar(100)),CAST(p.nombre as nvarchar(100)), d.id_nroMedicion,d.hora,d.valorMaximo,d.valorMinimo,d.pulso ";
+            consulta += " order by m.fecha desc";
 
 
             SqlDataReader dr = null;
@@ -167,8 +167,8 @@ namespace DAO
             DataTable promedios = new DataTable();
             DataRow fila;
 
-            promedios.Columns.Add("Promedio Valor Máximo");
-            promedios.Columns.Add("Promedio Valor Mínimo");
+            promedios.Columns.Add("Promedio Sistólica");
+            promedios.Columns.Add("Promedio Diastólica");
             promedios.Columns.Add("Promedio Pulso");
 
             setCadenaConexion();
@@ -200,8 +200,8 @@ namespace DAO
                 while (dr.Read())
                 {
                     fila = promedios.NewRow();
-                    fila["Promedio Valor Máximo"] = Convert.ToDouble(dr["PromedioValorMaximo"]);
-                    fila["Promedio Valor Mínimo"] = Convert.ToDouble(dr["PromedioValorMinimo"]);
+                    fila["Promedio Sistólica"] = Convert.ToDouble(dr["PromedioValorMaximo"]);
+                    fila["Promedio Diastólica"] = Convert.ToDouble(dr["PromedioValorMinimo"]);
                     fila["Promedio Pulso"] = Convert.ToDouble(dr["PromedioPulso"]);
 
                     promedios.Rows.Add(fila);

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data;
+using System.Text.RegularExpressions;
 namespace GPA
 {
     public class Utilidades
@@ -150,7 +151,7 @@ namespace GPA
                     //dgv.Columns.Add(doWork);
 
                     DataGridViewCheckBoxColumn CheckBoxColumn = new DataGridViewCheckBoxColumn();
-                    CheckBoxColumn.HeaderText = "Cancelar";
+                    CheckBoxColumn.HeaderText = "Seleccionado";
                     dgv.Columns.Add(CheckBoxColumn);
                     //dgv.Rows.Add(false);
                     //dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
@@ -176,6 +177,25 @@ namespace GPA
         public static void MensajeError(String mensaje)
         {
             MessageBox.Show(" Error: " + mensaje, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static Boolean ValidarCampoNumerico(TextBox textbox)
+        {
+            Regex r = new Regex("^-?\\d+(?:,\\d+)?$");
+            if (!string.IsNullOrEmpty(textbox.Text) && !r.IsMatch(textbox.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+        public static Boolean esCampoNumerico(TextBox campoTexto)
+        {
+            if (!String.IsNullOrEmpty(campoTexto.Text) && !Utilidades.ValidarCampoNumerico(campoTexto))
+            {
+                MessageBox.Show("Debe ingresar un valor numérico", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                campoTexto.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }

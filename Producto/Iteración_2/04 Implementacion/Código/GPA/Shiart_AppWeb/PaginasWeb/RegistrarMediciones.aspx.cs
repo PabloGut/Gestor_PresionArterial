@@ -255,6 +255,7 @@ namespace Shiart_AppWeb.PaginasWeb
                     medicion.ubicacion = uex;
                     medicion.sitio = s;
                     medicion.idHc = hc;
+                    medicion.fecha = DateTime.Now;
                     MedicionDePresionArterialLN.RegistrarMedicionPresionArterialEnHistoriaClinicia(medicion);
                     generarAlerta("Carga finalizada!!!");
                     Session["medicionesPresionArterial"] = medicion;

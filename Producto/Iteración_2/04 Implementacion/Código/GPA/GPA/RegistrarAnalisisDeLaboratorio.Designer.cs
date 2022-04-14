@@ -82,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 23);
+            this.label2.Location = new System.Drawing.Point(6, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 1;
@@ -100,26 +100,26 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(948, 364);
+            this.panel1.Size = new System.Drawing.Size(948, 374);
             this.panel1.TabIndex = 3;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(407, 330);
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.Location = new System.Drawing.Point(229, 316);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(120, 21);
+            this.btnSalir.Size = new System.Drawing.Size(52, 48);
             this.btnSalir.TabIndex = 18;
-            this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(115, 330);
+            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
+            this.btnAceptar.Location = new System.Drawing.Point(115, 316);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(120, 21);
+            this.btnAceptar.Size = new System.Drawing.Size(50, 48);
             this.btnAceptar.TabIndex = 16;
-            this.btnAceptar.Text = "Guardar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
@@ -129,18 +129,18 @@
             this.groupBox2.Controls.Add(this.panelDetalleValorReferencia);
             this.groupBox2.Location = new System.Drawing.Point(599, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(346, 348);
+            this.groupBox2.Size = new System.Drawing.Size(346, 368);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle valor de referencia";
             // 
             // btnAgregarAnalisis
             // 
-            this.btnAgregarAnalisis.Location = new System.Drawing.Point(114, 294);
+            this.btnAgregarAnalisis.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarAnalisis.Image")));
+            this.btnAgregarAnalisis.Location = new System.Drawing.Point(137, 310);
             this.btnAgregarAnalisis.Name = "btnAgregarAnalisis";
-            this.btnAgregarAnalisis.Size = new System.Drawing.Size(98, 23);
+            this.btnAgregarAnalisis.Size = new System.Drawing.Size(43, 45);
             this.btnAgregarAnalisis.TabIndex = 15;
-            this.btnAgregarAnalisis.Text = "Agregar análisis";
             this.btnAgregarAnalisis.UseVisualStyleBackColor = true;
             this.btnAgregarAnalisis.Click += new System.EventHandler(this.btnAgregarAnalisis_Click);
             // 
@@ -158,7 +158,7 @@
             this.panelDetalleValorReferencia.Controls.Add(this.label14);
             this.panelDetalleValorReferencia.Location = new System.Drawing.Point(6, 17);
             this.panelDetalleValorReferencia.Name = "panelDetalleValorReferencia";
-            this.panelDetalleValorReferencia.Size = new System.Drawing.Size(340, 271);
+            this.panelDetalleValorReferencia.Size = new System.Drawing.Size(340, 287);
             this.panelDetalleValorReferencia.TabIndex = 0;
             // 
             // cbUnidadMedidaDetalleValorReferencia
@@ -183,18 +183,18 @@
             // dgvDetallesValorReferencia
             // 
             this.dgvDetallesValorReferencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetallesValorReferencia.Location = new System.Drawing.Point(13, 110);
+            this.dgvDetallesValorReferencia.Location = new System.Drawing.Point(13, 126);
             this.dgvDetallesValorReferencia.Name = "dgvDetallesValorReferencia";
             this.dgvDetallesValorReferencia.Size = new System.Drawing.Size(320, 150);
             this.dgvDetallesValorReferencia.TabIndex = 52;
             // 
             // btnAgregarDetalleValorReferencia
             // 
-            this.btnAgregarDetalleValorReferencia.Location = new System.Drawing.Point(228, 82);
+            this.btnAgregarDetalleValorReferencia.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarDetalleValorReferencia.Image")));
+            this.btnAgregarDetalleValorReferencia.Location = new System.Drawing.Point(228, 73);
             this.btnAgregarDetalleValorReferencia.Name = "btnAgregarDetalleValorReferencia";
-            this.btnAgregarDetalleValorReferencia.Size = new System.Drawing.Size(105, 21);
+            this.btnAgregarDetalleValorReferencia.Size = new System.Drawing.Size(39, 38);
             this.btnAgregarDetalleValorReferencia.TabIndex = 14;
-            this.btnAgregarDetalleValorReferencia.Text = "Agregar detalle";
             this.btnAgregarDetalleValorReferencia.UseVisualStyleBackColor = true;
             this.btnAgregarDetalleValorReferencia.Click += new System.EventHandler(this.btnAgregarDetalleValorReferencia_Click);
             // 
@@ -207,7 +207,7 @@
             // 
             // txtValorMaximoDetalleValorReferencia
             // 
-            this.txtValorMaximoDetalleValorReferencia.Location = new System.Drawing.Point(251, 38);
+            this.txtValorMaximoDetalleValorReferencia.Location = new System.Drawing.Point(251, 37);
             this.txtValorMaximoDetalleValorReferencia.Name = "txtValorMaximoDetalleValorReferencia";
             this.txtValorMaximoDetalleValorReferencia.Size = new System.Drawing.Size(67, 20);
             this.txtValorMaximoDetalleValorReferencia.TabIndex = 12;
@@ -232,7 +232,7 @@
             // 
             // txtValorMinimoDetalleValorReferencia
             // 
-            this.txtValorMinimoDetalleValorReferencia.Location = new System.Drawing.Point(92, 38);
+            this.txtValorMinimoDetalleValorReferencia.Location = new System.Drawing.Point(85, 37);
             this.txtValorMinimoDetalleValorReferencia.Name = "txtValorMinimoDetalleValorReferencia";
             this.txtValorMinimoDetalleValorReferencia.Size = new System.Drawing.Size(68, 20);
             this.txtValorMinimoDetalleValorReferencia.TabIndex = 11;
@@ -240,7 +240,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 41);
+            this.label14.Location = new System.Drawing.Point(8, 41);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 13);
             this.label14.TabIndex = 46;
@@ -248,11 +248,11 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(264, 330);
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.Location = new System.Drawing.Point(171, 316);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(120, 21);
+            this.btnCancelar.Size = new System.Drawing.Size(52, 48);
             this.btnCancelar.TabIndex = 17;
-            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -260,7 +260,7 @@
             this.groupBox1.Controls.Add(this.panelDetalleItem);
             this.groupBox1.Location = new System.Drawing.Point(6, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(587, 263);
+            this.groupBox1.Size = new System.Drawing.Size(587, 269);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle items del estudio de laboratorio";
@@ -286,7 +286,7 @@
             // cbUnidadMedidaValorReferencia
             // 
             this.cbUnidadMedidaValorReferencia.AutoSize = true;
-            this.cbUnidadMedidaValorReferencia.Location = new System.Drawing.Point(22, 68);
+            this.cbUnidadMedidaValorReferencia.Location = new System.Drawing.Point(6, 68);
             this.cbUnidadMedidaValorReferencia.Name = "cbUnidadMedidaValorReferencia";
             this.cbUnidadMedidaValorReferencia.Size = new System.Drawing.Size(113, 17);
             this.cbUnidadMedidaValorReferencia.TabIndex = 6;
@@ -297,7 +297,7 @@
             // cbAgregarDetalleValorReferencia
             // 
             this.cbAgregarDetalleValorReferencia.AutoSize = true;
-            this.cbAgregarDetalleValorReferencia.Location = new System.Drawing.Point(6, 204);
+            this.cbAgregarDetalleValorReferencia.Location = new System.Drawing.Point(6, 209);
             this.cbAgregarDetalleValorReferencia.Name = "cbAgregarDetalleValorReferencia";
             this.cbAgregarDetalleValorReferencia.Size = new System.Drawing.Size(188, 17);
             this.cbAgregarDetalleValorReferencia.TabIndex = 9;
@@ -308,18 +308,18 @@
             // dgvValoresReferencia
             // 
             this.dgvValoresReferencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvValoresReferencia.Location = new System.Drawing.Point(6, 103);
+            this.dgvValoresReferencia.Location = new System.Drawing.Point(6, 109);
             this.dgvValoresReferencia.Name = "dgvValoresReferencia";
             this.dgvValoresReferencia.Size = new System.Drawing.Size(563, 95);
             this.dgvValoresReferencia.TabIndex = 44;
             // 
             // btnAgregarValorReferencia
             // 
-            this.btnAgregarValorReferencia.Location = new System.Drawing.Point(229, 65);
+            this.btnAgregarValorReferencia.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarValorReferencia.Image")));
+            this.btnAgregarValorReferencia.Location = new System.Drawing.Point(229, 56);
             this.btnAgregarValorReferencia.Name = "btnAgregarValorReferencia";
-            this.btnAgregarValorReferencia.Size = new System.Drawing.Size(120, 21);
+            this.btnAgregarValorReferencia.Size = new System.Drawing.Size(39, 38);
             this.btnAgregarValorReferencia.TabIndex = 8;
-            this.btnAgregarValorReferencia.Text = "Agregar detalle";
             this.btnAgregarValorReferencia.UseVisualStyleBackColor = true;
             this.btnAgregarValorReferencia.Click += new System.EventHandler(this.btnAgregarValorReferencia_Click);
             // 
@@ -333,21 +333,21 @@
             // 
             // txtNombreDetalleItem
             // 
-            this.txtNombreDetalleItem.Location = new System.Drawing.Point(53, 23);
+            this.txtNombreDetalleItem.Location = new System.Drawing.Point(53, 22);
             this.txtNombreDetalleItem.Name = "txtNombreDetalleItem";
             this.txtNombreDetalleItem.Size = new System.Drawing.Size(100, 20);
             this.txtNombreDetalleItem.TabIndex = 3;
             // 
             // txtValorMaximoReferencia
             // 
-            this.txtValorMaximoReferencia.Location = new System.Drawing.Point(440, 23);
+            this.txtValorMaximoReferencia.Location = new System.Drawing.Point(440, 22);
             this.txtValorMaximoReferencia.Name = "txtValorMaximoReferencia";
             this.txtValorMaximoReferencia.Size = new System.Drawing.Size(100, 20);
             this.txtValorMaximoReferencia.TabIndex = 5;
             // 
             // txtValorMinimoReferencia
             // 
-            this.txtValorMinimoReferencia.Location = new System.Drawing.Point(246, 23);
+            this.txtValorMinimoReferencia.Location = new System.Drawing.Point(246, 22);
             this.txtValorMinimoReferencia.Name = "txtValorMinimoReferencia";
             this.txtValorMinimoReferencia.Size = new System.Drawing.Size(100, 20);
             this.txtValorMinimoReferencia.TabIndex = 4;
@@ -382,7 +382,7 @@
             // 
             // txtNombreEstudioLaboratorio
             // 
-            this.txtNombreEstudioLaboratorio.Location = new System.Drawing.Point(105, 20);
+            this.txtNombreEstudioLaboratorio.Location = new System.Drawing.Point(96, 19);
             this.txtNombreEstudioLaboratorio.Name = "txtNombreEstudioLaboratorio";
             this.txtNombreEstudioLaboratorio.Size = new System.Drawing.Size(232, 20);
             this.txtNombreEstudioLaboratorio.TabIndex = 1;
@@ -391,7 +391,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 386);
+            this.ClientSize = new System.Drawing.Size(964, 390);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Registrar_Análisis_de_Laboratorio";

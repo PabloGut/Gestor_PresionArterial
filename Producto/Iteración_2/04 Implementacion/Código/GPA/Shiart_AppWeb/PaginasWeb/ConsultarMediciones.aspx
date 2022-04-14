@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblFechaDesde" Text="Fecha Desde" CssClass="col-sm-2"></asp:Label>
                     <asp:TextBox runat="server" ID="txtFechaDesde" CssClass="form-control" AutoPostBack="false"></asp:TextBox>
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtFechaDesde"></asp:CompareValidator>
+                    <!--<asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtFechaDesde"></asp:CompareValidator>-->
                 </div>
                 <div class="form-group">
                     <asp:Calendar runat="server" ID="cFechaDesde" OnSelectionChanged="cFechaDesde_SelectionChanged"></asp:Calendar>
@@ -58,9 +58,7 @@
                 <div class="form-group">
                     <asp:Label runat="server" ID="Label1" Text="Fecha Desde" CssClass="col-sm-2"></asp:Label>
                     <asp:TextBox runat="server" ID="txtFechaHasta" CssClass="form-control" AutoPostBack="false"></asp:TextBox>
-
                 </div>
-
                 <div class="form-group">
                     <asp:Calendar runat="server" ID="cFechaHasta" OnSelectionChanged="cFechaHasta_SelectionChanged"></asp:Calendar>
                 </div>
@@ -137,13 +135,13 @@
                             <asp:GridView ID="gvDetalleMediciones" runat="server" Width="743px" AutoGenerateColumns="False" CssClass="table table-responsive-sm table-responsive-md table-responsive-lg  table-responsive-xl grillaDetalle">
                                 <Columns>
                                     <asp:BoundField DataField="Hora" HeaderText="Hora" />
-                                    <asp:BoundField DataField="Valor Máximo" HeaderText="Valor Máximo" />
-                                    <asp:BoundField DataField="Valor Mínimo" HeaderText="Valor Mínimo" />
+                                    <asp:BoundField DataField="Valor Máximo" HeaderText="Sistólica" />
+                                    <asp:BoundField DataField="Valor Mínimo" HeaderText="Diastólica" />
                                     <asp:BoundField DataField="Pulso" HeaderText="Pulso" />
                                 </Columns>
                             </asp:GridView>
-                     <h4>Promedio Valor Máximo: <%# DataBinder.Eval(Container.DataItem,"Promedio Valor Máximo") %></h4>
-                     <h4>Promedio Valor Mínimo: <%# DataBinder.Eval(Container.DataItem,"Promedio Valor Mínimo") %></h4>
+                     <h4>Promedio Sistólica: <%# DataBinder.Eval(Container.DataItem,"Promedio Sistólica") %></h4>
+                     <h4>Promedio Diastólica: <%# DataBinder.Eval(Container.DataItem,"Promedio Diastólica") %></h4>
                      <h4>Promedio Valor Pulso: <%# DataBinder.Eval(Container.DataItem,"Promedio Pulso") %></h4>
                 </div>
             </div>

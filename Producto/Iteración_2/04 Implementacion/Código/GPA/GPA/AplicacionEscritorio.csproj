@@ -484,6 +484,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsAntecedentesMorbidos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\dsAntecedentesPatologicosFamiliares.cs">
+      <DependentUpon>dsAntecedentesPatologicosFamiliares.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\dsAntecedentesPatologicosFamiliares.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -574,6 +577,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsHistoriaClinicaHabitosAlcoholismo.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\dsHistoriaClinicaHabitosDrogasIlicitas.cs">
+      <DependentUpon>dsHistoriaClinicaHabitosDrogasIlicitas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\dsHistoriaClinicaHabitosDrogasIlicitas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -615,6 +621,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTratamientoMedicamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsTratamientos.cs">
+      <DependentUpon>dsTratamientos.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\dsTratamientos.Designer.cs">
       <AutoGen>True</AutoGen>
