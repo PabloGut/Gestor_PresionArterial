@@ -167,8 +167,8 @@ namespace DAO
             DataTable promedios = new DataTable();
             DataRow fila;
 
-            promedios.Columns.Add("Promedio Sistólica");
-            promedios.Columns.Add("Promedio Diastólica");
+            promedios.Columns.Add("Promedio Sistolica");
+            promedios.Columns.Add("Promedio Diastolica");
             promedios.Columns.Add("Promedio Pulso");
 
             setCadenaConexion();
@@ -200,8 +200,8 @@ namespace DAO
                 while (dr.Read())
                 {
                     fila = promedios.NewRow();
-                    fila["Promedio Sistólica"] = Convert.ToDouble(dr["PromedioValorMaximo"]);
-                    fila["Promedio Diastólica"] = Convert.ToDouble(dr["PromedioValorMinimo"]);
+                    fila["Promedio Sistolica"] = Convert.ToDouble(dr["PromedioValorMaximo"]);
+                    fila["Promedio Diastolica"] = Convert.ToDouble(dr["PromedioValorMinimo"]);
                     fila["Promedio Pulso"] = Convert.ToDouble(dr["PromedioPulso"]);
 
                     promedios.Rows.Add(fila);

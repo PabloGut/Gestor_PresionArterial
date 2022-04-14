@@ -2749,8 +2749,16 @@ namespace Shiart_AppWeb.PaginasWeb
 
                 listaValores.Add(datosExamenes.Rows[i]["Motivo Cambio Estado"].ToString());
 
-                DateTime fechaCambioEstado = Convert.ToDateTime(datosExamenes.Rows[i]["Fecha cambio estado"].ToString());
-                listaValores.Add(fechaCambioEstado.ToShortDateString());
+                string valor = datosExamenes.Rows[i]["Fecha cambio estado"].ToString();
+                if (datosExamenes.Rows[i]["Fecha cambio estado"].ToString() != "")
+                {
+                    DateTime fechaCambioEstado = Convert.ToDateTime(datosExamenes.Rows[i]["Fecha cambio estado"].ToString());
+
+                    listaValores.Add(fechaCambioEstado.ToShortDateString());
+                }
+                else{
+                    listaValores.Add("");
+                }
 
                 resultado = generarCampoPDF(listaCampos, listaValores, resultado, 2, true);
 

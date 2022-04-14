@@ -567,8 +567,8 @@ namespace DAO
             mediciones.Columns.Add("Momento del día");
             mediciones.Columns.Add("Posición");
 
-            mediciones.Columns.Add("Promedio Valor Máximo");
-            mediciones.Columns.Add("Promedio Valor Mínimo");
+            mediciones.Columns.Add("Promedio Sistolica");
+            mediciones.Columns.Add("Promedio Diastolica");
             mediciones.Columns.Add("Promedio Pulso");
 
             SetCadenaConexion();
@@ -615,8 +615,8 @@ namespace DAO
 
                     promedios = DetalleMedicionPresionArterialDAO.calcularPromedioDetalle(idHistoriaClinica, (int)dr["id_medicion"]);
 
-                    fila["Promedio Valor Máximo"] = promedios.Rows[0]["Promedio Valor Máximo"];
-                    fila["Promedio Valor Mínimo"] = promedios.Rows[0]["Promedio Valor Mínimo"];
+                    fila["Promedio Sistolica"] = promedios.Rows[0]["Promedio Sistolica"];
+                    fila["Promedio Diastolica"] = promedios.Rows[0]["Promedio Diastolica"];
                     fila["Promedio Pulso"] = promedios.Rows[0]["Promedio Pulso"];
 
                     mediciones.Rows.Add(fila);
